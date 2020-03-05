@@ -1,0 +1,48 @@
+---
+author: 'Michael Andrew Barrowman'
+date: '`r format(Sys.time(), "%B %Y")`'
+institution: 'University of Manchester'
+division: 'Division of Informatics, Imaging and Data Science'
+advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambie'
+# If you have more two advisors, un-silence line 7
+#altadvisor: ''
+department: 'School of Health Sciences'
+degree: 'PhD Medicine'
+title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site
+output: 
+  thesisdown::thesis_pdf: default
+#  thesisdown::thesis_gitbook: default
+#  thesisdown::thesis_word: default
+#  thesisdown::thesis_epub: default
+# If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
+# use code similar to line 22-23 for the .RMD files. If you are NOT producing a PDF, you can delete or silence lines 21-32 in this YAML header.
+abstract: |
+  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')`
+# If you'd rather include the preliminary content in files instead of inline
+# like below, use a command like that for the abstract above.  Note that a tab is 
+# needed on the line after the `|`.
+acknowledgements: |
+  I would like to thank my...
+#dedication: |
+#  I dedicate this to...
+#preface: |
+#  Insert Preface...
+# Specify the location of the bibliography below
+bibliography: bib/thesis.bib
+# Download your specific csl file and refer to it in the line below.
+csl: csl/apa.csl
+lot: true
+lof: true
+# If you prefer blank lines between paragraphs, un-silence lines  40-41 (this requires package tikz)
+#header-includes:
+#- \usepackage{tikz}
+---
+
+
+```{r include_packages, include = FALSE}
+source("setup.R")
+```
+
+

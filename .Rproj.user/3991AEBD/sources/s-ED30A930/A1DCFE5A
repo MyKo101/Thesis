@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1583414331848.000,
+    "dirty" : false,
+    "encoding" : "ISO8859-1",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A1DCFE5A",
+    "lastKnownWriteTime" : 1583438567,
+    "last_content_update" : 1583438567038,
+    "path" : "C:/Users/mbrxsmbc/Documents/Thesis/index/setup.R",
+    "project_path" : "setup.R",
+    "properties" : {
+        "cursorPosition" : "10,46",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

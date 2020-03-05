@@ -1,0 +1,56 @@
+
+
+```{r setup, include=F}
+source("setup.R")
+```
+
+# Literature Review {#literature-review}
+
+This is the first chapter of my thesis and will include a brief summary of what the current literature looks like. It will be split into sections and subsections as specified in my ToDo List
+
+## Introduction
+
+lorem ipsum blah blah blah
+
+## Clinical Prediction Models
+
+The idea of prognosis dates back to ancient Greece with the work of Hippocrates `r cc("Hippocrates")` and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare...
+
+
+Prognosis research can be broken down into four main categories (with three subcategories `r cc("Riley_Book")`):
+
+* Type I: Fundamental prognosis research `r cc("LR:1")`
+* Type II: Prognostic factor research`r cc("LR:2")`
+* Type III: Prognostic model research`r cc("LR:3")`
+  * Model development`r cc("LR:34")`
+  * Model validation`r cc("LR:35")`
+  * Model impact evaluation`r cc("LR:36")`
+* Type IV: Stratified Medicine `r cc("LR:4")`
+
+
+### Fundamental Prognosis Research
+
+What is it?
+
+### Prognostic Factor Research
+
+The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
+
+
+Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model.
+
+### Prognostic Model Research
+
+#### Model Development
+
+#### Model Validation
+
+#### Impact Evaluation
+
+### Stratified Medicine
+
+### Examples
+
+## Competing Risks & Multi-State Models
+
+
