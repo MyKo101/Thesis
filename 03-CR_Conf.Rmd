@@ -1,5 +1,5 @@
 
-# How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#Conf-CR}
+# How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#chap-Conf-CR}
 
 ## Background
 

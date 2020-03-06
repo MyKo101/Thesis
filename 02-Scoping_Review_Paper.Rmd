@@ -1,5 +1,5 @@
 
-# The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#scoping-review}
+# The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#chap-scoping-review}
 
 
 ## Introduction

@@ -1,0 +1,6 @@
+
+# mscpm Package {#chap-mscpm}
+
+Here is where the Vignette for the `\{mscpm\}` package will go, when I get to coding/writing it all up.
+
+It may be easier to write a bit of code to extract the vignette from the package folder (or write something to push it from there to here)

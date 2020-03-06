@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  6 MAR 2020 11:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  6 MAR 2020 21:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -684,39 +684,42 @@ ap}] [2
 ] [2
 
 
-] (./thesis.toc)
+] (./thesis.toc [3]
+Underfull \vbox (badness 1406) has occurred while \output is active []
+
+[4])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
-[3] [4
+[5] [6
 
 ] (./thesis.lot)
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
-[5] [6
+[7] [8
 
 ] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
-[7] [8
+[9] [10
 
-] [9] [10
+] [11] [12
 
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.209 ...ter{Literature Report}\label{lit-report}}
+l.209 ...iterature Report}\label{chap-lit-report}}
                                                    [1
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.209 ...ter{Literature Report}\label{lit-report}}
+l.209 ...iterature Report}\label{chap-lit-report}}
                                                    [2
 
 ]
@@ -741,7 +744,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.278 ... A Scoping Review}\label{scoping-review}}
+l.278 ...oping Review}\label{chap-scoping-review}}
                                                    [4]
 Chapter 2.
 
@@ -766,31 +769,82 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [11] [12] [13] [14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 499.
-[15
+Chapter 4.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[16] [17] [18
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 499.
+Chapter 5.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[19] [20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[21] [22]
+Chapter 6.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[23
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Package Fancyhdr Warning: \headheight is too small (27.11652pt): 
+Make it at least 41.61652pt.
+We now make it that large for the rest of the document.
+This may cause the page layout to be inconsistent, however.
+
+[24]
+Underfull \vbox (badness 2818) has occurred while \output is active []
+
+[25] [26] [27] [28] [29] [30
+
+]
+Chapter 7.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
+03.
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [31] [32
+
+]
+Chapter 8.
+[33] [34
+
+]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 738.
+[35
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 738.
 (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 499.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 499.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 738.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 738.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: D313E061735F3E1116727723DBA80DDF;1706.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 499.
+(rerunfilecheck)             Checksum: 2801821A167A087A3C5B09C5EE1859AA;4980.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 738.
  ) 
 Here is how much of TeX's memory you used:
- 10431 strings out of 482913
- 159046 string characters out of 5957946
- 425888 words of memory out of 5000000
- 25326 multiletter control sequences out of 15000+600000
- 583645 words of font info for 58 fonts, out of 8000000 for 9000
+ 10674 strings out of 482913
+ 162871 string characters out of 5957946
+ 437359 words of memory out of 5000000
+ 25453 multiletter control sequences out of 15000+600000
+ 583963 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,12n,49p,1142b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathex.
-enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.en
-c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.
-enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-maths
-y.enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ec.
+ 41i,12n,49p,1409b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathex.en
+c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.en
+c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.
 enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
 nc}<c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmbx12
 .pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmex
@@ -802,11 +856,12 @@ m/lmr6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
 m/lmr8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
 m/lmri12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public
 /lm/lmro12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
-ic/lm/lmsy10.pfb>
-Output written on thesis.pdf (29 pages, 204176 bytes).
+ic/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pu
+blic/lm/lmtt12.pfb>
+Output written on thesis.pdf (51 pages, 271052 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 318 compressed objects within 4 object streams
- 96 named destinations out of 1000 (max. 500000)
- 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 757 PDF objects out of 1000 (max. 8388607)
+ 686 compressed objects within 7 object streams
+ 208 named destinations out of 1000 (max. 500000)
+ 537 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,6 +4,11 @@ rmd_files: ["index.Rmd",
             "01-Introduction.Rmd",
             "02-Scoping_Review_Paper.Rmd",
             "03-CR_Conf.Rmd",
+            "04-IPCW_logistic.Rmd",
+            "05-Performance_Metrics.Rmd",
+            "06-Dev_Paper.Rmd",
+            "07-Vignette.Rmd",
+            "10-Conclusion.Rmd",
             "99-references.Rmd"]
 download: [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]]
 delete_merged_file: true

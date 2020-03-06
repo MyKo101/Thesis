@@ -1,5 +1,5 @@
 
-# Literature Report {#lit-report}
+# Literature Report {#chap-lit-report}
 
 This is the first chapter of my thesis and will include a brief summary of what the current literature looks like. It will be split into sections and subsections as specified in my ToDo List
 
