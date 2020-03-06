@@ -1,23 +1,28 @@
-
-
+---
+title: Literature Report
+bibliography: ../bib/thesis.bib
+csl: ../csl/ieee.csl
+number_sections: true
+output:
+  rmarkdown::word_document
+---
 ```{r setup, include=F}
-source("setup.R")
+source("../setup.R")
 ```
 
-# Literature Review {#literature-review}
 
 This is the first chapter of my thesis and will include a brief summary of what the current literature looks like. It will be split into sections and subsections as specified in my ToDo List
 
-## Introduction
+# Introduction
 
 lorem ipsum blah blah blah
 
-## Clinical Prediction Models
+# Clinical Prediction Models
 
 The idea of prognosis dates back to ancient Greece with the work of Hippocrates `r cc("Hippocrates")` and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare...
 
 
-Prognosis research can be broken down into four main categories (with three subcategories `r cc("Riley_Book")`):
+Prognosis research can be broken down into four main categories (with three subcategories [@riley_prognosis_2019]:
 
 * Type I: Fundamental prognosis research `r cc("LR:1")`
 * Type II: Prognostic factor research`r cc("LR:2")`
@@ -28,29 +33,31 @@ Prognosis research can be broken down into four main categories (with three subc
 * Type IV: Stratified Medicine `r cc("LR:4")`
 
 
-### Fundamental Prognosis Research
+## Fundamental Prognosis Research
 
 What is it?
 
-### Prognostic Factor Research
+## Prognostic Factor Research
 
 The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
 
 
 Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model.
 
-### Prognostic Model Research
+## Prognostic Model Research
 
-#### Model Development
+### Model Development
 
-#### Model Validation
+### Model Validation
 
-#### Impact Evaluation
+### Impact Evaluation
 
-### Stratified Medicine
+## Stratified Medicine
 
-### Examples
+## Examples
 
-## Competing Risks & Multi-State Models
+# Competing Risks & Multi-State Models
 
+
+# References
 

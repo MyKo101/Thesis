@@ -32,12 +32,13 @@ acknowledgements: |
 # Specify the location of the bibliography below
 bibliography: bib/thesis.bib
 # Download your specific csl file and refer to it in the line below.
-csl: csl/apa.csl
+csl: csl/ieee.csl #https://github.com/citation-style-language/styles
 lot: true
 lof: true
 # If you prefer blank lines between paragraphs, un-silence lines  40-41 (this requires package tikz)
-#header-includes:
+header-includes:
 #- \usepackage{tikz}
+- \usepackage{amsmath}
 ---
 
 
@@ -45,4 +46,18 @@ lof: true
 source("setup.R")
 ```
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
 
+# Introduction {-}
+
+Overall introduction to the Thesis. This doesn't seem to want to show up.
+
+Why is this?
+
+## Subsectioing
+
+Testing

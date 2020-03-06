@@ -1,10 +1,5 @@
 
-
-```{r setup, include=F}
-source("setup.R")
-```
-
-# Literature Review {#literature-review}
+# Literature Report {#lit-report}
 
 This is the first chapter of my thesis and will include a brief summary of what the current literature looks like. It will be split into sections and subsections as specified in my ToDo List
 
@@ -17,7 +12,7 @@ lorem ipsum blah blah blah
 The idea of prognosis dates back to ancient Greece with the work of Hippocrates `r cc("Hippocrates")` and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare...
 
 
-Prognosis research can be broken down into four main categories (with three subcategories `r cc("Riley_Book")`):
+Prognosis research can be broken down into four main categories (with three subcategories [@riley_prognosis_2019]:
 
 * Type I: Fundamental prognosis research `r cc("LR:1")`
 * Type II: Prognostic factor research`r cc("LR:2")`
@@ -52,5 +47,4 @@ Predictive factor research can give researchers and clinicians an idea of which 
 ### Examples
 
 ## Competing Risks & Multi-State Models
-
 
