@@ -124,7 +124,9 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \Acknowledgements{
-I would like to thank my\ldots{}
+I would like to thank my wife, Rachel, for her constant support throughout my studies. She acted as sounding board for my most boring of thoughts and allowed me to rant and rave about statistical models in every way possible. She would . She endured my frustrations when something wasn't working and encouraged me when my optimism turned to pesimism.
+My thanks also go to my children, Matilda and Theodore, who were an everlasting source of happiness and reprieve from my work. Acting as a distraction (in the best and worst ways) and an incentive.
+My everlasting gratitude will always lie with my parents, Brenda and Andy, who have allowed me to be myself and to find my own path. They never pushed me into something that I didn't want to do, but also guided me towards what I would be good at.
 }
 
 \Dedication{
@@ -171,7 +173,9 @@ Second paragraph of abstract starts here.
 \frontmatter % this stuff will be roman-numbered
 \pagestyle{empty} % this removes page numbers from the frontmatter
   \begin{acknowledgements}
-    I would like to thank my\ldots{}
+    I would like to thank my wife, Rachel, for her constant support throughout my studies. She acted as sounding board for my most boring of thoughts and allowed me to rant and rave about statistical models in every way possible. She would . She endured my frustrations when something wasn't working and encouraged me when my optimism turned to pesimism.
+    My thanks also go to my children, Matilda and Theodore, who were an everlasting source of happiness and reprieve from my work. Acting as a distraction (in the best and worst ways) and an incentive.
+    My everlasting gratitude will always lie with my parents, Brenda and Andy, who have allowed me to be myself and to find my own path. They never pushed me into something that I didn't want to do, but also guided me towards what I would be good at.
   \end{acknowledgements}
 
   \hypersetup{linkcolor=black}
@@ -194,26 +198,13 @@ Second paragraph of abstract starts here.
 
 \include{latex commands.txt}
 
-\hypertarget{introduction}{%
-\chapter*{Introduction}\label{introduction}}
-\addcontentsline{toc}{chapter}{Introduction}
-
-Overall introduction to the Thesis. This doesn't seem to want to show up.
-
-Why is this?
-
-\hypertarget{subsectioing}{%
-\section{Subsectioing}\label{subsectioing}}
-
-Testing
-
 \hypertarget{chap-lit-report}{%
 \chapter{Literature Report}\label{chap-lit-report}}
 
 This is the first chapter of my thesis and will include a brief summary of what the current literature looks like. It will be split into sections and subsections as specified in my ToDo List
 
-\hypertarget{introduction-1}{%
-\section{Introduction}\label{introduction-1}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 lorem ipsum blah blah blah
 
@@ -279,8 +270,8 @@ Predictive factor research can give researchers and clinicians an idea of which 
 \hypertarget{chap-scoping-review}{%
 \chapter{The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review}\label{chap-scoping-review}}
 
-\hypertarget{introduction-2}{%
-\section{Introduction}\label{introduction-2}}
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 eHealthcare is moving towards a more data-driven approach to decision making, exploiting the variety of data sources collected as part of routine care {[}1{]}. This increases efficiency, which is becoming increasingly vital as patients are living longer and requiring more care, while budgets are being reduced {[}2{]}, {[}3{]}. Correspondingly, there has been a shift towards primary prevention, rather than purely treating disease as it arises {[}4{]} therefore clinical prediction models (CPMs) are more relevant than ever before {[}5{]}.
 
@@ -479,8 +470,8 @@ We simulated populations of 10,000 patients to ensure small confidence intervals
 \hypertarget{chap-IPCW-logistic}{%
 \chapter{Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large}\label{chap-IPCW-logistic}}
 
-\hypertarget{introduction-3}{%
-\section{Introduction}\label{introduction-3}}
+\hypertarget{introduction-2}{%
+\section{Introduction}\label{introduction-2}}
 
 Clinical prediction models (CPMs) need to be validated before they are used. A fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with p\% risk of an event, p\% of those have the event {[}1{]}. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) {[}2{]}. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors.
 In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}3{]}. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case {[}4{]}). Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates {[}3{]}, {[}5{]}. However, the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.
@@ -528,8 +519,8 @@ Not Weighting = Bad.
 \hypertarget{chap-performance-metrics}{%
 \chapter{Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models}\label{chap-performance-metrics}}
 
-\hypertarget{introduction-4}{%
-\section{Introduction}\label{introduction-4}}
+\hypertarget{introduction-3}{%
+\section{Introduction}\label{introduction-3}}
 
 Clinical Prediction Models (CPMs) provide individualised risk of a patient's outcome (cite), based on that patient's predictors. These predictions will usually be in the form of a risk score or probability. However, using traditional modelling techniques, these CPMs will only predict a single outcome. Multi-State Clinical Prediction Models (MS-CPMs) combine the multi-state modelling framework to the prognostic field to provide predictions for multiple outcomes in a single model.
 Once a CPM has been developed, it is important to assess how well the model actually performs (cite). This process is called Model Validation and involves comparing the predictions produced by the model to the actual outcomes experienced by patients (cite). It is expected that the development of a CPM will be accompanied by the validation of the model on the same dataset it was developed in (internal validation), using either bootstrapping or cross-validation to account for optimism in the developed model (cite). Models can also be validated on a novel dataset (external validation), which is used to assess the generalisability and transportability of the model (cite).
@@ -622,8 +613,8 @@ Throughout this paper, we will use consistent notation which is shown here for r
 \hypertarget{chap-dev-paper}{%
 \chapter{Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death}\label{chap-dev-paper}}
 
-\hypertarget{introduction-5}{%
-\section{Introduction}\label{introduction-5}}
+\hypertarget{introduction-4}{%
+\section{Introduction}\label{introduction-4}}
 
 Chronic Kidney Disease (CKD) is a progressive disease that affects the ability of the kidneys to filter toxins from the blood. Patients with End-stage Renal Disease (ESRD) are treated using Renal Replacement Therapy (RRT), which collectively describes the treatments designed to emulate the processes performed by the failing kidneys. The three most common treatment modalities are haemodialysis (HD), peritoneal dialysis (PD) and kidney transplant (Tx). The more severe stages of CKD (stages 3 - 5) affects approximately 2.6 million people over the age of 16 in England {[}2{]} with around 63 thousand adult patients registered for RRT in 2015 {[}3{]}, of which 8 thousand were new patients {[}4{]}.
 
@@ -719,6 +710,26 @@ Female patients were more likely to remain in the CKD state than Males, or to re
 
 \hypertarget{discussion-2}{%
 \section{Discussion}\label{discussion-2}}
+
+Paragraph 1
+
+Paragraph 2
+
+The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of multiple outcomes at a wide range of time points. The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
+
+Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients, making the cohort of patients in the development population in worse condition than the general population of CKD patients.
+
+There were also high levels of missingness in the eGFR and uPCR rates of changes would also produce a bias, due to these measures likely being missing not at random. The derivation of the validation dataset ensured that all patients had an eGFR Rate measurement; this was done to avoid data missing not at random (only negative or missing data would be available as patient's eGFR dropped to less than 60), however deriving data in this way could itself induce a survivor bias in the start date used for patients.
+
+We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.
+
+Paragraph 4
+
+Paragraph 5
+
+Paragraph 6
+
+Paragraph 7
 
 \hypertarget{chap-mscpm}{%
 \chapter{mscpm Package}\label{chap-mscpm}}

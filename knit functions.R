@@ -1,5 +1,5 @@
 
-write_chapter_rmd <- function(.file,output="rmarkdown::pdf_document")
+write_chapter_rmd <- function(.file,output="pdf")
 {
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
   if(is.numeric(.file))
@@ -16,14 +16,22 @@ write_chapter_rmd <- function(.file,output="rmarkdown::pdf_document")
   
   title <- paste0("title: ",title)
   
-  if(output == "rmarkdown::word_document")
+  if(output == "pdf")
   {
-    output.header <- c("  rmarkdown::word_document:",
-                       "    reference_docx: \"Ref.docx\"")
+    output.header <- c("output:",
+                       "  bookdown::pdf_document2")
+  } else if(output=="word")
+  {
+    
+    output.header <- c("output:",
+                       "  bookdown::word_document2:",
+                       "    reference_docx: Ref.docx")
   } else
   {
-    output.header <- paste0("  ",output)
+    output.header <- c("output:",
+                       paste0("  bookdown::",output))
   }
+  
   
   header <- c(
     "---",
@@ -31,13 +39,19 @@ write_chapter_rmd <- function(.file,output="rmarkdown::pdf_document")
     "bibliography: ../bib/thesis.bib",
     "csl: ../csl/ieee.csl",
     "number_sections: true",
-    "output:",
     output.header,
     "---",
     "```{r setup, include=F}",
     "source(\"../setup.R\")",
     "```",
-    "\\include{latex commands.txt}"
+    "\\include{latex_commands.txt}",
+    "<style>",
+    "caption {",
+    "  display: table-caption;",
+    "  text-align: center;",
+    "}",
+    "</style>"
+    
   )
   
   rmd <- rmd[-grep("^# ",rmd[1:3])]
@@ -47,9 +61,10 @@ write_chapter_rmd <- function(.file,output="rmarkdown::pdf_document")
   rmd <- c(header,rmd,"","# References","")
   
   writeLines(rmd,paste0("Chapters/",.file))
+  
 }
 
-knit_chapter <- function(.file,output="rmarkdown::pdf_document")
+knit_chapter <- function(.file,output="pdf")
 {
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
   if(is.numeric(.file))
@@ -65,7 +80,7 @@ knit_chapter <- function(.file,output="rmarkdown::pdf_document")
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
 }
 
-knit_all_chapters <- function(output="rmarkdown::pdf_document")
+knit_all_chapters <- function(output="pdf")
 {
   ff <- list.files()
   ff <- ff[grep("^[0-9]",ff)]
@@ -78,7 +93,7 @@ knit_all_chapters <- function(output="rmarkdown::pdf_document")
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
 }
 
-knit_to_Google <- function(.file,output=F)
+knit_to_Google <- function(.file,out=F)
 {
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
   if(is.numeric(.file))
@@ -87,7 +102,7 @@ knit_to_Google <- function(.file,output=F)
     ff <- list.files()
     .file <- ff[grep(.file,ff)]
   }
-  knit_chapter(.file,output="rmarkdown::word_document")
+  knit_chapter(.file,"word")
   
   file.title <- gsub("_"," ",gsub(".Rmd","",gsub("^[0-9][0-9]-","",.file)),fixed=T)
   
@@ -107,7 +122,7 @@ knit_to_Google <- function(.file,output=F)
   
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
   
-  if(output) return(drib)
+  if(out) return(drib)
   
   
   
@@ -119,7 +134,7 @@ knit_all_Google <- function()
   ff <- ff[grep("^[0-9]",ff)]
   ff <- ff[-grep("^(00|99)",ff)]
   
-  docs <- map_dfr(ff,knit_to_Google,output=T)
+  docs <- map_dfr(ff,knit_to_Google,out=T)
   return(docs)
 }
 

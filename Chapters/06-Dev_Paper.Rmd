@@ -4,13 +4,19 @@ bibliography: ../bib/thesis.bib
 csl: ../csl/ieee.csl
 number_sections: true
 output:
-  rmarkdown::word_document:
-    reference_docx: "Ref.docx"
+  bookdown::word_document2:
+    reference_docx: Ref.docx
 ---
 ```{r setup, include=F}
 source("../setup.R")
 ```
-\include{latex commands.txt}
+\include{latex_commands.txt}
+<style>
+caption {
+  display: table-caption;
+  text-align: center;
+}
+</style>
 
 
 # Introduction
@@ -18,9 +24,9 @@ source("../setup.R")
 Chronic Kidney Disease (CKD) is a progressive disease that affects the ability of the kidneys to filter toxins from the blood. Patients with End-stage Renal Disease (ESRD) are treated using Renal Replacement Therapy (RRT), which collectively describes the treatments designed to emulate the processes performed by the failing kidneys. The three most common treatment modalities are haemodialysis (HD), peritoneal dialysis (PD) and kidney transplant (Tx). The more severe stages of CKD (stages 3 - 5) affects approximately 2.6 million people over the age of 16 in England [@barron_chronic_2014-1] with around 63 thousand adult patients registered for RRT in 2015 [@macneill_chapter_2018], of which 8 thousand were new patients [@hole_chapter_2018].
 
 
-Previous prognostic models have been developed to predict mortality [@johnson_predicting_2007; @landray_prediction_2010; @bansal_development_2015-1;@landray_prediction_2010];@marks_looking_2015;@wick_clinical_2017], ESRD [@landray_prediction_2010], the commencements of RRT [@marks_looking_2015], [@johnson_predicting_2008;@schroeder_predicting_2017;@kulkarni_transition_2017] or mortality after beginning dialysis [@floege_development_2015-1;@hemke_survival_2013;@cao_predicting_2015-1]. Some previous models have used the commencement of RRT as a proxy for ESRD [@tangri_predictive_2011;@roy_statistical_2017;tangri_dynamic_2017], while others have investigated the occurrence of cardiovascular events, which are common amongst CKD patients[@shlipak_cardiovascular_2005;@weiner_framingham_2007;@mcmurray_predictors_2011]. Reviews by Grams & Coresh [@grams_assessing_2013], Tangri et al [@tangri_risk_2013] and Ramspek et al [@ramspek_prediction_2017], which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective [@collins_transparent_2015;@bouwmeester_reporting_2012-1]. Methodologically, the majority of existing CKD prediction models fail to account for completing events [@bansal_development_2015-1; @wick_clinical_2017;@perotte_risk_2015], have high risks of bias [@johnson_predicting_2007;@landray_prediction_2010;@johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015;@steyerberg_prognosis_2013].
+Previous prognostic models have been developed to predict mortality [@johnson_predicting_2007; @landray_prediction_2010; @bansal_development_2015;@marks_looking_2015;@wick_clinical_2017], ESRD [@landray_prediction_2010], the commencements of RRT [@marks_looking_2015;@johnson_predicting_2008;@schroeder_predicting_2017;@kulkarni_transition_2017] or mortality after beginning dialysis [@floege_development_2015;@hemke_survival_2013;@cao_predicting_2015]. Some previous models have used the commencement of RRT as a proxy for ESRD [@tangri_predictive_2011;@roy_statistical_2017;@tangri_dynamic_2017], while others have investigated the occurrence of cardiovascular events, which are common amongst CKD patients[@shlipak_cardiovascular_2005;@weiner_framingham_2007;@mcmurray_predictors_2011]. Reviews by Grams & Coresh [@grams_assessing_2013], Tangri et al [@tangri_risk_2013] and Ramspek et al [@ramspek_prediction_2017], which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective [@collins_transparent_2015;@bouwmeester_reporting_2012-1]. Methodologically, the majority of existing CKD prediction models fail to account for completing events [@bansal_development_2015; @wick_clinical_2017;@perotte_risk_2015], have high risks of bias [@johnson_predicting_2007;@landray_prediction_2010;@johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015;@steyerberg_prognosis_2013].
 
-In 2013, Begun et al [@begun_identification_2013-1] developed a Multi-State Clinical Model for assessing patient progression through the severity stages of CKD (III-V), RRT and/or death. In 2014, Allen et al [@allen_chronic_2014-1] focused a similar model on liver transplant patients. In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies and transplant and/or death. 
+In 2013, Begun et al [@begun_identification_2013] developed a Multi-State Clinical Model for assessing patient progression through the severity stages of CKD (III-V), RRT and/or death. In 2014, Allen et al [@allen_chronic_2014] focused a similar model on liver transplant patients. In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies and transplant and/or death. 
 
 Most recently, in 2018, Grams et al [@grams_predicting_2018] developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
 
@@ -69,7 +75,7 @@ Each of the three models were internally validated in the development dataset us
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 1-year, 2-years, 5-years and 9-years. As well as presenting the performance measures over time.
 
-The overall accuracy of each model was assessed using the MSM adjusted Brier Score [`r cc("Performance Metrics")`], which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevelence within the population.
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score [`r cc("Performance Metrics")`], which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
 
 The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1] `r cc("Performance Metrics")`. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
@@ -79,33 +85,139 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 
 ## Data Sources
 
-As seen in `r xx("table 1")`, The Age of both populations were centred around 64-65 with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
-
-`r xx("Insert Table One (continuous)")`
-
-Table 2 shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, which is actually against what is believed to occur in the general public (cite), whereas in the validation population the proportions are much more matched. Ethnicity was very homogeneous in the SKS dataset, and has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
+As seen in table \@ref(tab:Continuous-Demo), The Age of both populations were centred around 64-65 with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
 
 
-`r xx("Insert Table One (categorical)")`
 
-Overall, there were high levels of comorbidities within the SKS population as shown in table 3, but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
+```{r Continuous-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
+  read_csv(col_types=cols()) %>%
+  flextable %>%
+  set_header_labels(res_SKS = "SKS (Development)",
+                    res_UoG = "SERPR (Validation)")%>%
+  stardard_format_table(numeric.cols=2:3,
+                        widths=c(1.64,7.964,8.758)) %>%
+  footnote(i=2:3,j=1,value=as_paragraph("(ml/min/1.73m^2) or per year"),ref_symbol="a") %>%
+  footnote(i=4:5,j=1,value=as_paragraph("(mmHG)"),ref_symbol="b") %>%
+  footnote(i=6,j=1,value=as_paragraph("(kg/m^2)"),ref_symbol="c") %>%
+  footnote(i=c(7,9),j=1,value=as_paragraph("(g/l)"),ref_symbol="d") %>%
+  footnote(i=c(8,10),j=1,value=as_paragraph("(mmol/l)"),ref_symbol="e") %>%
+  footnote(i=11:12,j=1,value=as_paragraph("(gmol/l) or per year"),ref_symbol="f") %>%
+  fontsize(size=7,part="footer") %>%
+  font(fontname="Garamond",part="footer")
+add_flextable_caption("Continuous-Demo","Population demographics for the continuous variables presented as: mean (sd) [min,max] <number missing (percent missing)>")
+
+```
 
 
-`r xx("Insert Table One (comorbs)")`
+
+\@ref(tab:Categorical-Demo) shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, which is actually against what is believed to occur in the general public (cite), whereas in the validation population the proportions are much more matched. Ethnicity was very homogeneous in the SKS dataset, and has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
+
+
+
+```{r Categorical-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
+  read_csv(col_types=cols()) %>%
+  mutate(Variable = if_else(is.na(Variable),Category,Variable)) %>%
+  flextable %>%
+  set_header_labels(res_SKS = "SKS (Development)",
+                    res_UoG = "SERPR (Validation)") %>%
+  merge_h_range(i=1:22,j1=1,j2=2) %>%
+  stardard_format_table(numeric.cols=3:4,
+                        widths=c(2,2.4,3.492,3.625)) %>%
+  align(j=1,align="right") %>%
+  align(i=c(1,4,10,16),j=1,align="left") %>%
+  align(j=1,part="header",align="left") %>%
+  border(i=1,j=1,part="header",border.right=officer::fp_border(width=0)) %>%
+  border(i=1,j=2,part="header",border.left=officer::fp_border(width=0))
+add_flextable_caption("Categorical-Demo","Population demographics for the categorical variables presented as number (percent)")
+
+```
+
+Overall, there were high levels of comorbidities within the SKS population as shown in \@ref(tab:Comorbidity-Demo), but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
+
+
+
+```{r Comorbidity-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+paste0(.wd,"data/Dev_Paper_Comorbidity_Demographics.csv") %>%
+  read_csv(col_types=cols()) %>%
+  flextable %>%
+  set_header_labels(res_SKS = "SKS (Development)",
+                    res_UoG = "SERPR (Validation)")%>%
+  stardard_format_table(numeric.cols = 2:3,
+                        widths=c(1.64,4.366,4.815))
+add_flextable_caption("Comorbidity-Demo","Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>")
+
+```
 
 ## Development
 
 Table 4shows the full results from the Three-State Models, the results for the Two-State and Five-State Models can be seen in Supplementary Material. Older patients are more likely to transition to the Dead state, regardless of whether from CKD or an RRT state and Older patients were less likely to transition into the RRT states. Increased rates of decline of eGFR had large effects on the transition from CKD into RRT, due to an increase in rates to HD and the high prevalance of transitions to HD since the effect on transitions into PD were relatively low, and eGFR decline actually reduced the rate of transition to Tx.
 
 
-`r xx("Insert Model Results")`
+
+```{r Hazard-Ratios, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+paste0(.wd,"data/Dev_Paper_Hazard_Ratios.csv") %>%
+  read_csv(col_types=cols()) %>%
+  flextable %>%
+  set_header_labels(Trans_3cd = "CKD -> Dead",
+                    Trans_3cr = "CKD -> RRT",
+                    Trans_3rd = "RRT -> Dead") %>%
+  stardard_format_table(numeric.cols = 2:4,
+                        widths=c(1.64,5,5,5))  
+add_flextable_caption("Hazard-Ratios","Hazard Ratios for the Three-State Model")
+
+```
+
 
 Female patients were more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had effects on all transitions in some way, and Primary Renal Diagnosis were strongly related to predictions. Patients with Liver Disease were much more likely to undergo a Transplant than those without Liver Disease ($\beta = 12.4$).
 
+## Example
 
 ## Validation
 
 # Discussion
+
+<!-- Provide a summary of the main findings, starting from the research objective. Stick to the facts (no interpretation or speculation): This is essentially a summary from what was reported in the Results section. However try to avoid literally repeating things that were said already.--->
+
+Within our Multi-State Clinical Prediction Model, `r xx("covariate")`, `r xx("covariate")` and `r xx("covariate")` had the largest effect on the predictions for patient outcomes. This was caused by the strong relationship between the time to `r xx("RRT(?)")` and the level of `r xx("covariate")`, which also had a strong link to `r xx("mortality(?)")`, after adjusting for the other covariates within our model. 
+
+`r xx("Describe the baseline hazards, seen in suppl. material")`
+
+`r xx("Describe the validation results")`
+
+
+<!-- Compare what you found with the findings from other studies that had (more or less) the same research objective. Did they find the same, or rather something different? Make sure that you always discuss the 5-10 published studies that are "closest" to your study (in terms of their objective), even though some (or all) of these studies may differ substantially from your study: The goal here is also to provide the reader with an impression of the "scientific landscape" where you study sits.--->
+
+Paragraph 2
+
+<!--Discuss the stengths and limitations of your research methods, considering your research objective; both in general and in relation to other studies. For instance, are there reasons to doubt the validity or representativeness of the findings? Is your study design stronger or weaker than the designs of studies that were conducted previously and tried to answer (more or less) the same question.--->
+
+The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of multiple outcomes at a wide range of time points. The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
+
+Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients, making the cohort of patients in the development population in worse condition than the general population of CKD patients. 
+
+There were also high levels of missingness in the eGFR and uPCR rates of changes would also produce a bias, due to these measures likely being missing not at random. The derivation of the validation dataset ensured that all patients had an eGFR Rate measurement; this was done to avoid data missing not at random (only negative or missing data would be available as patient's eGFR dropped to less than 60), however deriving data in this way could itself induce a survivor bias in the start date used for patients.
+
+We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.
+
+<!--What is the meaning of findings? For instance, which causal mechanisms could presume to have caused what we found? This is the point where you really can start to interpret your findings. It is generally a good idea to build on established theories - even though you might not have used these in the study itself. You are allowed to speculate a little bit here.--->
+
+Paragraph 4
+
+<!--What are the implications of your findings for others, i.e. what should they do with it? For instance, should clinical practice guidelines be changed? Or should the government / commissioners / care institutions invest in particular technology? You can also state implications for researchers ("more research is needed") but this is considered relatively weak.--->
+
+Paragraph 5
+
+<!-- To what extent did you not reach your stated research objectives? In other words, are there any unanswered questions? Or do the results lead to new questions that should be addressed in future research?--->
+
+Paragraph 6
+
+<!--Some authors end the discussion with a short conclusion (2-3 sentences) that reiterates the key finding(s) but combines it with other parts of the discussion, e.g. relation to other studies; limitations; interpretation; implications--->
+ 
+ Paragraph 7
+
+
 
 
 

@@ -1,0 +1,27 @@
+---
+title: "Testing"
+author: "Michael A Barrowman"
+date: "09/03/2020"
+output: word_document
+---
+
+```{r, echo=F}
+library(flextable)
+library(tidyverse)
+tibble(Name = c("Red","Blue","Yellow","Green","Blue-Green"),
+       x=runif(5),y=runif(5)) %>%
+  flextable %>%
+  footnote(i=1,j=1,value=as_paragraph("Test"),ref_symbols = "a") %>%
+  footnote(i=2,j=1,value=as_paragraph("Test2"),ref_symbols = "b") %>%
+  fontsize(size=7,part="footer")
+```
+
+
+```{r, echo=F}
+library(flextable)
+tibble(Name = c("Red","Blue","Yellow","Green","Blue-Green"),
+       x=runif(5),y=runif(5)) %>%
+  flextable %>%
+  footnote(i=1:2,j=1,value=as_paragraph(c("Test","Test2")),ref_symbols = c("a","b"))
+ 
+```

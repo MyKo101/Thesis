@@ -1,0 +1,23 @@
+Variable,Category,res_SKS,res_UoG
+Gender,,,
+, Male,"1,865 (62.56 %)","3,915 (50.42 %)"
+, Female,"1,116 (37.43 %)","3,849 (49.57 %)"
+Ethnicity,,,
+, White,"2,875 (96.44 %)",  683 ( 8.79 %)
+, Asian,   75 ( 2.51 %),   12 ( 0.15 %)
+, Black,   21 ( 0.70 %),    7 ( 0.09 %)
+, Other,   10 ( 0.33 %),    2 ( 0.02 %)
+, <Missing>,    0 ( 0.00 %),"7,060 (90.93 %)"
+Smoking Status,,,
+, Former,"1,535 (51.49 %)",
+, Non-Smoker,  979 (32.84 %),
+, Smoker,  379 (12.71 %),
+, Former 3Y,   46 ( 1.54 %),
+, <Missing>,   42 ( 1.40 %),
+Renal Diagnosis,,,
+, Systemic diseases affecting the kidney,"1,304 (43.74 %)",  299 ( 3.85 %)
+, Glomerular disease,  442 (14.82 %),  225 ( 2.89 %)
+, Tubulointerstitial disease,  268 ( 8.99 %),  164 ( 2.11 %)
+, Miscellaneous renal disorders,  227 ( 7.61 %),  188 ( 2.42 %)
+, Familial / hereditary nephropathies,  173 ( 5.80 %),  102 ( 1.31 %)
+, <Missing>,  567 (19.02 %),"6,786 (87.40 %)"

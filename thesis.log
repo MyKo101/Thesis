@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  6 MAR 2020 23:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  7 MAR 2020 21:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -440,153 +440,34 @@ Package: ltcaption 2018/08/26 v1.4a longtable captions (AR)
 Package caption Info: rotating package is loaded.
 )
 \cslhangindent=\skip72
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/tools/array.sty
-Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
-\col@sep=\dimen175
-\ar@mcellbox=\box55
-\extrarowheight=\dimen176
-\NC@list=\toks33
-\extratabsurround=\skip73
-\backup@length=\skip74
-\ar@cellbox=\box56
-)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip75
-\multirow@cntb=\count281
-\multirow@dima=\skip76
-\bigstrutjot=\dimen177
-) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen178
-\WF@size=\dimen179
-\c@WF@wrappedlines=\count282
-\WF@box=\box57
-\WF@everypar=\toks34
-Package: wrapfig 2003/01/31  v 3.6
-)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
-\everycr=\toks35
-\minrowclearance=\skip77
-)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/pdflscape/pdflscape.s
-ty
-Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
-) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/tabu/tabu.sty
-Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/varwidth/varwidth.sty
-Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box58
-\sift@deathcycles=\count283
-\@vwid@loff=\dimen180
-\@vwid@roff=\dimen181
-)
-\c@taburow=\count284
-\tabu@nbcols=\count285
-\tabu@cnt=\count286
-\tabu@Xcol=\count287
-\tabu@alloc=\count288
-\tabu@nested=\count289
-\tabu@target=\dimen182
-\tabu@spreadtarget=\dimen183
-\tabu@naturalX=\dimen184
-\tabucolX=\dimen185
-\tabu@Xsum=\dimen186
-\extrarowdepth=\dimen187
-\abovetabulinesep=\dimen188
-\belowtabulinesep=\dimen189
-\tabustrutrule=\dimen190
-\tabu@thebody=\toks36
-\tabu@footnotes=\toks37
-\tabu@box=\box59
-\tabu@arstrutbox=\box60
-\tabu@hleads=\box61
-\tabu@vleads=\box62
-\tabu@cellskip=\skip78
-)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/threeparttable/threep
-arttable.sty
-Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box63
-)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/threeparttablex/three
-parttablex.sty
-Package: threeparttablex 2013/07/23 v0.3 by daleif
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
-
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/trimspaces/trimspaces
-.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\TPTL@width=\skip79
-) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box64
-\UL@hyphenbox=\box65
-\UL@skip=\skip80
-\UL@hook=\toks38
-\UL@height=\dimen191
-\UL@pe=\count290
-\UL@pixel=\dimen192
-\ULC@box=\box66
-Package: ulem 2019/11/18
-\ULdepth=\dimen193
-)
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/makecell/makecell.sty
-Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen194
-\c@nlinenum=\count291
-\TeXr@lab=\toks39
-) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/graphics-cfg/color.cf
-g
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-LaTeX Info: Redefining \color on input line 709.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/l3backend/l3backend-p
 dfmode.def
 File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count292
-\l__pdf_internal_box=\box67
-) (./thesis.aux (./latex.aux))
+\l__kernel_color_stack_int=\count281
+\l__pdf_internal_box=\box55
+)
+No file thesis.aux.
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 166.
-LaTeX Font Info:    ... okay on input line 166.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 16
-6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 15
+4.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -601,8 +482,8 @@ sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring OFF on input line 166.
+\AtBeginShipoutBox=\box56
+Package hyperref Info: Link coloring OFF on input line 154.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -613,56 +494,53 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 itlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count293
+\c@section@level=\count282
 )
-LaTeX Info: Redefining \ref on input line 166.
-LaTeX Info: Redefining \pageref on input line 166.
-LaTeX Info: Redefining \nameref on input line 166.
-(./thesis.out) (./thesis.out)
+LaTeX Info: Redefining \ref on input line 154.
+LaTeX Info: Redefining \pageref on input line 154.
+LaTeX Info: Redefining \nameref on input line 154.
 \@outlinefile=\write4
 \openout4 = `thesis.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: threeparttable package is loaded.
-Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-70.
+58.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-70.
+58.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-170.
+158.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-170.
+158.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 170.
+(Font)              <12> on input line 158.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 170.
+(Font)              <8> on input line 158.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 170.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 17
-0.
+(Font)              <6> on input line 158.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 15
+8.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 170
+LaTeX Font Info:    Trying to load font information for U+msa on input line 158
 .
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 170
+LaTeX Font Info:    Trying to load font information for U+msb on input line 158
 .
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -684,28 +562,25 @@ ap}] [2
 ] [2
 
 
-] (./thesis.toc [3]
-Underfull \vbox (badness 1406) has occurred while \output is active []
-
-[4])
+]
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
-[5] [6
+[3] [4
 
-] (./thesis.lot)
+]
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
-[7] [8
+[5] [6
 
-] (./thesis.lof)
+]
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
-[9] [10
+[7] [8
 
-] [11] [12
+] [9] [10
 
 
 ]
@@ -722,7 +597,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.198 \chapter*{Introduction}\label{introduction}}
+l.188 ...iterature Report}\label{chap-lit-report}}
                                                    [1
 
 
@@ -730,34 +605,31 @@ l.198 \chapter*{Introduction}\label{introduction}}
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.198 \chapter*{Introduction}\label{introduction}}
+l.188 ...iterature Report}\label{chap-lit-report}}
                                                    [2
-
-]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.211 ...iterature Report}\label{chap-lit-report}}
-                                                   [3]pdfTeX warning (ext4): de
-stination with the same identifier (name{page.4}) has been already used, duplic
-ate ignored
-<to be read again> 
-                   \relax 
-l.211 ...iterature Report}\label{chap-lit-report}}
-                                                   [4
 
 ]
 Chapter 1.
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-29.
+06.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [5] [6]
+)pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.232 
+       [3]pdfTeX warning (ext4): destination with the same identifier (name{pag
+e.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.257 ...oping Review}\label{chap-scoping-review}}
+                                                   [4]
 Chapter 2.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[7
+[5
 
 ]
 
@@ -766,39 +638,39 @@ Make it at least 27.11652pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[8] [9] [10] [11] [12
+[6] [7] [8] [9] [10
 
 ]
 Chapter 3.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[13] [14] [15] [16
+[11] [12] [13] [14
 
 ]
 Chapter 4.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[17]
+[15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[18] [19] [20
+[16] [17] [18
 
 ]
 Chapter 5.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[21] [22]
+[19] [20]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[23] [24]
+[21] [22]
 Chapter 6.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[25
+[23
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -809,94 +681,33 @@ Make it at least 41.61652pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[26] [27]
+[24] [25]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-62.
+39.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [28] [29] [30] [31] [32
+) [26] [27]
 
-]
-Chapter 7.
-[33] [34
-
-]
-Chapter 8.
-[35] [36
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[37
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[38]
-Underfull \hbox (badness 2293) in paragraph at lines 842--844
- \T1/lmr/m/n/12 chronic kid-ney dis-ease and severely de-creased glomeru-lar fi
-l-tra-tion rate,''
- []
+LaTeX Warning: File `thesis_files/figure-latex/Continuous_Demos-1.png' not foun
+d on input line 679.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+! Package pdftex.def Error: File `thesis_files/figure-latex/Continuous_Demos-1.
+png' not found: using draft setting.
 
-[39]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[40]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[41]
-Overfull \hbox (193.9544pt too wide) in paragraph at lines 938--940
- [][]\T1/lmr/m/n/12 [62] H. Wick-ham, ``The tidy tools man-i-festo.'' https://c
-ran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html,
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[42]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 983.
-[43]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 983.
-(./thesis.aux (./latex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 983.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 983.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 2801821A167A087A3C5B09C5EE1859AA;4980.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 983.
- ) 
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.679 ...iles/figure-latex/Continuous_Demos-1.png}
+                                                   
 Here is how much of TeX's memory you used:
- 10764 strings out of 482913
- 164875 string characters out of 5957946
- 433846 words of memory out of 5000000
- 25457 multiletter control sequences out of 15000+600000
+ 8852 strings out of 482913
+ 137965 string characters out of 5957946
+ 394576 words of memory out of 5000000
+ 23718 multiletter control sequences out of 15000+600000
  583963 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,12n,49p,1409b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
-{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathex.en
-c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
-{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.en
-c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.
-enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
-nc}<c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmbx12
-.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmex
-10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lm
-mi12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/
-lmmi8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm
-/lmr12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
-m/lmr6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
-m/lmr8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
-m/lmri12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public
-/lm/lmro12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
-ic/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pu
-blic/lm/lmtt12.pfb>
-Output written on thesis.pdf (59 pages, 303784 bytes).
-PDF statistics:
- 951 PDF objects out of 1000 (max. 8388607)
- 870 compressed objects within 9 object streams
- 290 named destinations out of 1000 (max. 500000)
- 537 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+!  ==> Fatal error occurred, no output PDF file produced!

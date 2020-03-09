@@ -56,12 +56,3 @@ MathJax.Hub.Config({
 
 \include{latex commands.txt}
 
-# Introduction {-}
-
-Overall introduction to the Thesis. This doesn't seem to want to show up.
-
-Why is this?
-
-## Subsectioing
-
-Testing
