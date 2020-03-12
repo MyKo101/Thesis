@@ -12,7 +12,7 @@ In 2013, Begun et al [@begun_identification_2013] developed a Multi-State Clinic
 
 Most recently, in 2018, Grams et al [@grams_predicting_2018] developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
 
-However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling [@altman_problems_1994-1;	@altman_dangers_1994-1;	@altman_cost_2006-1;	@bennette_against_2012-1;	@butts_chopped_2009-1;	@cumberland_ophthalmic_2014-1;	@dawson_dichotomizing_2012-1;	@dinero_seven_1996-1;	@irwin_negative_2003;	@kuss_danger_2013;	@metze_dichotomization_2008;	@naggara_analysis_2011;	@owen_why_2005;	@royston_dichotomizing_2006;	@schellingerhout_categorizing_2009;	@streiner_breaking_2002;	@van_walraven_leave_2008;	@vintzileos_anathema_2014;	@weinberg_how_1995]. These kinds of cut-offs can be useful when informing patients and clinicians of a patient's diagnosis and to coincide with policy, but inherently cause a loss information when done before the data analysis stage and so these models go against the current statistical recommendations (cite). These kinds of assumptions are also subject to measurement error and interval censoring (cite), i.e. we do not know when exactly when a patient moved from CKD Stage III to CKD Stage IV, or whether drop in estimated Glomerular Function Rate (eGFR) was temporary or inaccurate. For example, Kulkarni [@kulkarni_transition_2017] assumes that a patient with an CPRA of (5%) is the same as a patient with an CPRA of (75%) and that a patient with an CPRA of (89.9%) is vastly different from a patient with an CPRA of (90%). Moreover, none of these papers have undergone any validation process, whether internal or external [@altman_prognosis_2009].
+However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling [@altman_problems_1994-1;	@altman_dangers_1994-1;	@altman_cost_2006-1;	@bennette_against_2012-1;	@butts_chopped_2009-1;	@cumberland_ophthalmic_2014-1;	@dawson_dichotomizing_2012-1;	@dinero_seven_1996-1;	@irwin_negative_2003;	@kuss_danger_2013;	@metze_dichotomization_2008;	@naggara_analysis_2011;	@owen_why_2005;	@royston_dichotomizing_2006;	@schellingerhout_categorizing_2009;	@streiner_breaking_2002;	@van_walraven_leave_2008;	@vintzileos_anathema_2014;	@weinberg_how_1995]. These kinds of cut-offs can be useful when informing patients and clinicians of a patient's diagnosis and to coincide with policy, but inherently cause a loss information when done before the data analysis stage and so these models go against the current statistical recommendations `r cc("Something")`. These kinds of assumptions are also subject to measurement error and interval censoring `r cc("Something")`, i.e. we do not know when exactly when a patient moved from CKD Stage III to CKD Stage IV, or whether drop in estimated Glomerular Function Rate (eGFR) was temporary or inaccurate. For example, Kulkarni [@kulkarni_transition_2017] assumes that a patient with an CPRA of (5%) is the same as a patient with an CPRA of (75%) and that a patient with an CPRA of (89.9%) is vastly different from a patient with an CPRA of (90%). Moreover, none of these papers have undergone any validation process, whether internal or external [@altman_prognosis_2009].
 
 It is also important to note that although these models can be used to predict patient outcomes, these models were not designed to produce individualised patient predictions as is a key aspect of a clinical prediction model; they were designed to assess the methodological advantages of MSMs in this medical field, to describe the prevalence of  over time of different CKD stages and to produce population level predictions for patients with different levels of  panel-reactive antibodies [@royston_prognosis_2009].
 
@@ -51,7 +51,19 @@ Each transition was modelled under a proportional hazards assumption using the R
 
 For variable selection, we stacked the imputed datasets together to create a larger, pseudo-population [@wood_how_2008] and performed backwards-forwards selection based on minimising the AIC at each step (`r cc("Something")`). This was repeated for each transition and for different numbers of evenly spaced knots, K={0,1,2,3,4,5}, which allowed for different transitions to use different sets of variables and numbers of knots in the final model. Some combinations of variables resulted in models that were intractable and so these models were excluded. Once a set of variables were chosen, the R-P model was applied to each imputed dataset individually and the resulting coefficients and cubic spline parameters were aggregated across imputations using Rubin's Rules [@rubin_multiple_1984]. This gave a model fully defined by smooth cubic splines representing the cumulative cause-specific hazard and individualised proportional hazards for each transition.
 
+### Example
+
+Once the models have been developed, we will apply them to two example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.
+
+We have chosen two (artificial) patients to use as examples of the use of our model. Their details can be seen below:
+
+`r xx("Details of example patients data in a two column table")`
+
+The main difference between our two patients are `r xx("blah blah")`.
+
 ### Validation
+
+Further to the simple individual validation performed above. A statistical validation will need to be performed to formally establish the performance of the models.
 
 Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an $\textrm{eGFR} < 30\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$.
 
@@ -70,7 +82,7 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 As seen in table \@ref(tab:Continuous-Demo), The Age of both populations were centred around 64-65 with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
 
 
-
+<br>
 ```{r Continuous-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
@@ -85,18 +97,20 @@ paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
   footnote(i=c(7,9),j=1,value=as_paragraph("(g/l)"),ref_symbol="d") %>%
   footnote(i=c(8,10),j=1,value=as_paragraph("(mmol/l)"),ref_symbol="e") %>%
   footnote(i=11:12,j=1,value=as_paragraph("(gmol/l) or per year"),ref_symbol="f") %>%
-  fontsize(size=7,part="footer") %>%
-  font(fontname="Garamond",part="footer")
+  fontsize(size=8,part="footer") %>%
+  font(fontname="Garamond",part="footer") %>%
+  collapse_footer()
 add_flextable_caption("Continuous-Demo","Population demographics for the continuous variables presented as: mean (sd) [min,max] <number missing (percent missing)>")
 
 ```
 
 
 
-\@ref(tab:Categorical-Demo) shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, which is actually against what is believed to occur in the general public (cite), whereas in the validation population the proportions are much more matched. Ethnicity was very homogeneous in the SKS dataset, and has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
+Table \@ref(tab:Categorical-Demo) shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, which is actually against what is believed to occur in the general public (cite), whereas in the validation population the proportions are much more matched. Ethnicity was very homogeneous in the SKS dataset, and has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
 
 
 
+<br>
 ```{r Categorical-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
@@ -116,10 +130,11 @@ add_flextable_caption("Categorical-Demo","Population demographics for the catego
 
 ```
 
-Overall, there were high levels of comorbidities within the SKS population as shown in \@ref(tab:Comorbidity-Demo), but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
+Overall, there were high levels of comorbidities within the SKS population as shown in table \@ref(tab:Comorbidity-Demo), but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
 
 
 
+<br>
 ```{r Comorbidity-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 paste0(.wd,"data/Dev_Paper_Comorbidity_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
@@ -132,13 +147,17 @@ add_flextable_caption("Comorbidity-Demo","Population comorbidity prevalence for 
 
 ```
 
+
+`r xx("Data about Time Points (i.e. median event times)")`
+
+
 ### Development
 
-Table 4shows the full results from the Three-State Models, the results for the Two-State and Five-State Models can be seen in Supplementary Material. Older patients are more likely to transition to the Dead state, regardless of whether from CKD or an RRT state and Older patients were less likely to transition into the RRT states. Increased rates of decline of eGFR had large effects on the transition from CKD into RRT, due to an increase in rates to HD and the high prevalance of transitions to HD since the effect on transitions into PD were relatively low, and eGFR decline actually reduced the rate of transition to Tx.
+Table \@(ref:PH-Betas) shows the full results from the Three-State Models, the results for the Two-State and Five-State Models can be seen in `r xx("Supplementary Material")`. Older patients are more likely to be placed onto RRT. compared to younger patients, they are more likely to recieve a transplant.
 
 
-
-```{r Hazard-Ratios, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+<br>
+```{r PH-Betas, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 paste0(.wd,"data/Dev_Paper_Hazard_Ratios.csv") %>%
   read_csv(col_types=cols()) %>%
   flextable %>%
@@ -146,15 +165,33 @@ paste0(.wd,"data/Dev_Paper_Hazard_Ratios.csv") %>%
                     Trans_3cr = "CKD -> RRT",
                     Trans_3rd = "RRT -> Dead") %>%
   stardard_format_table(numeric.cols = 2:4,
-                        widths=c(1.64,5,5,5))  
-add_flextable_caption("Hazard-Ratios","Hazard Ratios for the Three-State Model")
+                        widths=c(5.9,4,4,4))  
+add_flextable_caption("PH-Betas","Hazard Ratios for the Three-State Model")
 
 ```
 
 
 Female patients were more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had effects on all transitions in some way, and Primary Renal Diagnosis were strongly related to predictions. Patients with Liver Disease were much more likely to undergo a Transplant than those without Liver Disease ($\beta = 12.4$).
 
+```{r Baseline-Cum, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+paste0(.wd,"data/Dev_Paper_Baseline_Cumulative_Hazard.csv") %>%
+  read_csv(col_types=cols()) %>%
+  select(From,To,L0) %>%
+  group_by(From,To) %>%
+  mutate(L0 = list(eval(parse(text=paste0("function(x) ",L0))))) %>%
+  mutate(t = list(t=1:(9.5*365.25))) %>%
+  unnest(t) %>%
+  ungroup %>% slice(1) %>% pull(L0) 
+         
+  
+
+
+```
+
+`r xx("Baseline Hazards")`
+
 ### Example
+
 
 ### Validation
 
@@ -162,46 +199,40 @@ Female patients were more likely to remain in the CKD state than Males, or to re
 
 <!-- Provide a summary of the main findings, starting from the research objective. Stick to the facts (no interpretation or speculation): This is essentially a summary from what was reported in the Results section. However try to avoid literally repeating things that were said already.--->
 
-Within our Multi-State Clinical Prediction Model, `r xx("covariate")`, `r xx("covariate")` and `r xx("covariate")` had the largest effect on the predictions for patient outcomes. This was caused by the strong relationship between the time to `r xx("RRT(?)")` and the level of `r xx("covariate")`, which also had a strong link to `r xx("mortality(?)")`, after adjusting for the other covariates within our model. 
+We have used data provided by SKS to develop a Multi-State Clinical Prediction Model and then validated this model within the SKS and SERPR datasets. Within our Models, the cause of a patient's renal disease had the widest effect on patient outcomes meaning that outcomes are highly dependent on ERA-EDTA classification of the diagnosis. Most groupings resuted in a lowered hazard of death and an increased hazard of RRT compared to the baseline of Systemic diseases.
 
-`r xx("Describe the baseline hazards, seen in suppl. material")`
+`r xx("Baseline Hazards go up or down?")
 
-`r xx("Describe the validation results")`
+`r xx("Validation results")
 
 
 <!-- Compare what you found with the findings from other studies that had (more or less) the same research objective. Did they find the same, or rather something different? Make sure that you always discuss the 5-10 published studies that are "closest" to your study (in terms of their objective), even though some (or all) of these studies may differ substantially from your study: The goal here is also to provide the reader with an impression of the "scientific landscape" where you study sits.--->
 
 Paragraph 2
 
-<!--Discuss the stengths and limitations of your research methods, considering your research objective; both in general and in relation to other studies. For instance, are there reasons to doubt the validity or representativeness of the findings? Is your study design stronger or weaker than the designs of studies that were conducted previously and tried to answer (more or less) the same question.--->
+In all transitions relating to the 
+
+<!----->
 
 The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of multiple outcomes at a wide range of time points. The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
 
-Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients, making the cohort of patients in the development population in worse condition than the general population of CKD patients. 
+Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients from a wider catchment area, making the cohort of patients in the development population in worse condition than the general population of CKD patients. 
 
 There were also high levels of missingness in the eGFR and uPCR rates of changes would also produce a bias, due to these measures likely being missing not at random. The derivation of the validation dataset ensured that all patients had an eGFR Rate measurement; this was done to avoid data missing not at random (only negative or missing data would be available as patient's eGFR dropped to less than 60), however deriving data in this way could itself induce a survivor bias in the start date used for patients.
 
+In the Five-State Model, We omitted the analysis of the Tx to Dead state due to the anticipated low number of events within the SKS dataset. The lowest number of events for a transition was therefore PD to Dead, which had only `r xx("Number of PD Events")`. Altogether, we considered `r xx("Number of covariates")` and so this equates to an EPV `r xx("EPV")`, which is below the usual rule of thumb of 10 EPV. We also compared this to the work done by `r cc("Events-per for CPMs, Riley Group")` and, even with generous prior information, `r xx("Which models satisfied the criteria?")`.
+
 We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.
 
-<!--What is the meaning of findings? For instance, which causal mechanisms could presume to have caused what we found? This is the point where you really can start to interpret your findings. It is generally a good idea to build on established theories - even though you might not have used these in the study itself. You are allowed to speculate a little bit here.--->
+`r xx("More limitations")`
 
-Paragraph 4
+Despite this, we believe that the advantages of such a model far outweigh these shortcomings.
 
-<!--What are the implications of your findings for others, i.e. what should they do with it? For instance, should clinical practice guidelines be changed? Or should the government / commissioners / care institutions invest in particular technology? You can also state implications for researchers ("more research is needed") but this is considered relatively weak.--->
+Compared to the raw internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations `r cc("Kidney England vs Scotland")`.
 
-Paragraph 5
+Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expediate or delay transitions of patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarind *which* treatment a patient should undergo.
 
-<!-- To what extent did you not reach your stated research objectives? In other words, are there any unanswered questions? Or do the results lead to new questions that should be addressed in future research?--->
+Further research would be needed to establish the efficacy of the use of such a model in clinical practice [@moons_prognosis_2009-1] by comparing it to standard care and establishing whether the use of our model improves patient outcomes, however we have clearly demonstrated the *effectiveness* of our model.
 
-Paragraph 6
-
-<!--Some authors end the discussion with a short conclusion (2-3 sentences) that reiterates the key finding(s) but combines it with other parts of the discussion, e.g. relation to other studies; limitations; interpretation; implications--->
- 
- Paragraph 7
-
-
-
-
-
-
+All three models produced for this work performed well in terms of accuracy, calibration and discrimination when applied internally and externally. This shows directly that the models are suitable for use in populations similar to both our development and our validation datasets. It can also be concluded that the models can be transported to any population with a similar healthcare system to the UK.
 

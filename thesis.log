@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  7 MAR 2020 21:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  11 MAR 2020 09:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -446,8 +446,7 @@ dfmode.def
 File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count281
 \l__pdf_internal_box=\box55
-)
-No file thesis.aux.
+) (./thesis.aux (./latex.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
@@ -499,6 +498,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 154.
 LaTeX Info: Redefining \pageref on input line 154.
 LaTeX Info: Redefining \nameref on input line 154.
+(./thesis.out) (./thesis.out)
 \@outlinefile=\write4
 \openout4 = `thesis.out'.
 
@@ -562,25 +562,28 @@ ap}] [2
 ] [2
 
 
-]
+] (./thesis.toc [3]
+Underfull \vbox (badness 1642) has occurred while \output is active []
+
+[4])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
-[3] [4
+[5] [6
 
-]
+] (./thesis.lot)
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
-[5] [6
+[7] [8
 
-]
+] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
-[7] [8
+[9] [10
 
-] [9] [10
+] [11] [12
 
 
 ]
@@ -687,27 +690,142 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) [26] [27]
+<thesis_files/figure-latex/Continuous-Demo-1.png, id=616, 782.925pt x 252.44313
+pt>
+File: thesis_files/figure-latex/Continuous-Demo-1.png Graphic file (type png)
+<use thesis_files/figure-latex/Continuous-Demo-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/Continuous-Demo-1.png  used 
+on input line 675.
+(pdftex.def)             Requested size: 522.53809pt x 168.48503pt.
 
-LaTeX Warning: File `thesis_files/figure-latex/Continuous_Demos-1.png' not foun
-d on input line 679.
+Overfull \hbox (106.54291pt too wide) in paragraph at lines 675--676
+[][] 
+ []
 
 
-! Package pdftex.def Error: File `thesis_files/figure-latex/Continuous_Demos-1.
-png' not found: using draft setting.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.679 ...iles/figure-latex/Continuous_Demos-1.png}
-                                                   
+[28]
+<thesis_files/figure-latex/Categorical-Demo-1.png, id=625, 490.83376pt x 404.00
+937pt>
+File: thesis_files/figure-latex/Categorical-Demo-1.png Graphic file (type png)
+<use thesis_files/figure-latex/Categorical-Demo-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/Categorical-Demo-1.png  used
+ on input line 681.
+(pdftex.def)             Requested size: 327.38896pt x 269.4766pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[29 <./thesis_files/figure-latex/Continuous-Demo-1.png> <./thesis_files/figure-
+latex/Categorical-Demo-1.png>]
+<thesis_files/figure-latex/Comorbidity-Demo-1.png, id=633, 462.22687pt x 199.24
+437pt>
+File: thesis_files/figure-latex/Comorbidity-Demo-1.png Graphic file (type png)
+<use thesis_files/figure-latex/Comorbidity-Demo-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/Comorbidity-Demo-1.png  used
+ on input line 687.
+(pdftex.def)             Requested size: 307.87071pt x 132.70865pt.
+<thesis_files/figure-latex/PH-Betas-1.png, id=634, 763.35187pt x 608.77437pt>
+File: thesis_files/figure-latex/PH-Betas-1.png Graphic file (type png)
+<use thesis_files/figure-latex/PH-Betas-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/PH-Betas-1.png  used on inpu
+t line 698.
+(pdftex.def)             Requested size: 509.49791pt x 406.32542pt.
+
+Overfull \hbox (93.50273pt too wide) in paragraph at lines 698--699
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[30 <./thesis_files/figure-latex/Comorbidity-Demo-1.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[31 <./thesis_files/figure-latex/PH-Betas-1.png>] [32] [33] [34
+
+]
+Chapter 7.
+[35] [36
+
+]
+Chapter 8.
+[37] [38
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[39
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[40]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[41]
+Underfull \hbox (badness 2293) in paragraph at lines 865--867
+ \T1/lmr/m/n/12 chronic kid-ney dis-ease and severely de-creased glomeru-lar fi
+l-tra-tion rate,''
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[42]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[43]
+Overfull \hbox (193.9544pt too wide) in paragraph at lines 961--963
+ [][]\T1/lmr/m/n/12 [63] H. Wick-ham, ``The tidy tools man-i-festo.'' https://c
+ran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html,
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[44]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1006.
+[45]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1006.
+(./thesis.aux (./latex.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1006.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1006.
+
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 8F323730FEFAB5F7276AB9412BFE8EDD;4932.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1006.
+ ) 
 Here is how much of TeX's memory you used:
- 8852 strings out of 482913
- 137965 string characters out of 5957946
- 394576 words of memory out of 5000000
- 23718 multiletter control sequences out of 15000+600000
+ 9126 strings out of 482913
+ 142930 string characters out of 5957946
+ 399352 words of memory out of 5000000
+ 23870 multiletter control sequences out of 15000+600000
  583963 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,12n,49p,1409b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathex.en
+c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.en
+c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.
+enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
+nc}<c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmbx12
+.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmex
+10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lm
+mi12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/
+lmmi8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm
+/lmr12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
+m/lmr6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
+m/lmr8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
+m/lmri12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public
+/lm/lmro12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
+ic/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pu
+blic/lm/lmtt12.pfb>
+Output written on thesis.pdf (61 pages, 566311 bytes).
+PDF statistics:
+ 968 PDF objects out of 1000 (max. 8388607)
+ 877 compressed objects within 9 object streams
+ 291 named destinations out of 1000 (max. 500000)
+ 549 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!
