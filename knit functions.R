@@ -16,6 +16,15 @@ write_chapter_rmd <- function(.file,output="pdf")
   
   title <- paste0("title: ",title)
   
+  figure.lines <- grep("include_graphics(\"",rmd,fixed=T)
+  if(length(figure.lines) > 0)
+  {
+    rmd[figure.lines] <- gsub("include_graphics(\"",
+                              "include_graphics(\"../",
+                              rmd[figure.lines],
+                              fixed=T)
+  }
+  
   if(output == "pdf")
   {
     output.header <- c("output:",

@@ -84,7 +84,17 @@ collapse_footer <- function(x,sep="; ",footer.height=NULL)
   
 }
 
-
+Dev_Valid_Paper_Var_Names <- function(.tbl,.variable)
+{
+  .tbl %>% 
+    mutate(!!enquo(.variable) := case_when(
+      !!enquo(.variable) == "eGFR.Rate" ~ "eGFR Rate",
+      !!enquo(.variable) == "log.eGFR.Rate" ~ "log(eGFR Rate",
+      !!enquo(.variable) == "uPCR.Rate" ~ "uPCR Rate",
+      !!enquo(.variable) == "log.uPCR.Rate" ~ "log(uPCR Rate",
+      !!enquo(.variable) == "Calcium" ~ "Corrected Calcium",
+      T ~ !!enquo(.variable)))
+}
 
 
 
