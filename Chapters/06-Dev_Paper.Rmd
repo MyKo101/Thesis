@@ -30,7 +30,7 @@ Within CKD, prognostic models have been developed to predict mortality [@johnson
 Methodologically, the majority of existing CKD prediction models fail to account for completing events [@bansal_development_2015; @wick_clinical_2017;@perotte_risk_2015], have high risks of bias [@johnson_predicting_2007;@landray_prediction_2010;@johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015;@steyerberg_prognosis_2013]
 
 
-In 2013, Begun et al [@begun_identification_2013] developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al [@allen_chronic_2014] applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies and kidney transplant and/or death. 
+In 2013, Begun et al [@begun_identification_2013] developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al [@allen_chronic_2014] applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies (CPRA) and kidney transplant and/or death. 
 
 Most recently, in 2018, Grams et al [@grams_predicting_2018] developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
 
@@ -38,7 +38,7 @@ However, the first three of these existing models (Begun, Allen and Kulkarni) ca
 
 It is also important to note that although these models can be used to predict patient outcomes, these models were not designed to produce individualised patient predictions as is a key aspect of a clinical prediction model; they were designed to assess the methodological advantages of MSMs in this medical field, to describe the prevalence of  over time of different CKD stages and to produce population level predictions for patients with different levels of  panel-reactive antibodies [@royston_prognosis_2009].
 
-The fourth model (Grams et al [@grams_assessing_2013]), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is a pair of multinomial logistic models analysed at 2 and 4 years. The major downside of this model is that it can only produce predictions at those predefined time points and it assumes homogeneity of transition times. For example, the first model assumes that a patient who began RRT 1 month after study entry is the same as one who began after 1 year & 11 months into the study and then the second model assumes these patients are the same as one who begins RRT at 3 years and 11 months.
+The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is a pair of multinomial logistic models analysed at 2 and 4 years. The major downside of this model is that it can only produce predictions at those predefined time points and it assumes homogeneity of transition times. For example, the first model assumes that a patient who began RRT 1 month after study entry is the same as one who began after 1 year & 11 months into the study and then the second model assumes these patients are the same as one who begins RRT at 3 years and 11 months.
 
 Therefore, the aim of this study was to improve on previous efforts to model a patient's pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a drastic difference in patient characteristics. Our modeling techniques allow for individual predictions (using a proportional hazards model) of multiple outcomes (using MSMs) at any time point (using cubic splines). The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the (statistically robust) clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models [@collins_transparent_2015;@moons_transparent_2015].
 
@@ -71,7 +71,7 @@ The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Ra
 
 ## Development
 
-Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
+Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
 
 ```{r State-Diagram, echo=F, fig.align="center",out.width="90%", fig.cap="Diagram of the three models, the states being modelled and relevant transitions"}
 knitr::include_graphics("../figure/Dev_Paper_State_Diagrams.png")
@@ -88,7 +88,7 @@ For calendar time and age, if considering non-linear transformations should this
 
 Need to justify the use of log time, rather than just time. I'm sure Iv'e read this in a paper *somewhere*, so need to find the reference. This would also counteract the second point (data driven vs pre-spec). log age & age^2 are data driven  -->
 
-uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for time trends in treatment preferences `r cc("Something")`. Calendar Time was defined as length of time etween start date and  1st January 2019. `r xx("Matt mentioned the use of log Calendar Time rather than simply Calendar Time. I read this a while ago and can't currently locate the paper (I believe it was a simulation study). I'll carry on looking for it though of course")`
+uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for time trends in treatment preferences `r cc("Something")`. Calendar Time was defined as length of time between start date and  1st January 2019. `r xx("Matt mentioned the use of log Calendar Time rather than simply Calendar Time. I read this a while ago and can't currently locate the paper (I believe it was a simulation study). I'll carry on looking for it though of course")`
 
 Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified [@meira-machado_multi-state_2009]. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique [@royston_flexible_2002] to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time [@putter_tutorial_2007].
 
@@ -104,6 +104,7 @@ Once the models have been developed, we will apply them to two example patients 
 
 We have chosen two (artificial) patients to use as examples of the use of our model. Their details can be seen below:
 
+<br>
 ```{r Example-Patient, echo=F, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 tribble(
                               ~`Patient 1`,~`Patient 2`,
@@ -140,7 +141,7 @@ add_flextable_caption("Example-Patient","Details of the Example Patients")
 
 ```
 
-The main differences between our two patients are the difference in age (Patient 1 is twice as old as Patient 1), Patient 2 is a former smoker, but their blood measures are fairly similar with just minor differences. Patient 1's eGFR has dropped to $50\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$, whereas Patient 2's eGFR has risen to $59\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$. Patient 2 has quite a few comorbidities, but Patient 1 has none. Patient 2's uPCR has dropped dramatically recently. Their Primary Renal Diagnosis is also different.
+The main differences between our two patients are the difference in age (Patient 1 is twice as old as Patient 1), Patient 2 is a former smoker, but their blood measures are fairly similar with just minor differences. Patient 1's eGFR has dropped to $50\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$, whereas Patient 2's eGFR has risen to $59\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$. Patient 2 has quite a few comorbidities, but Patient 1 has none. Patient 2's uPCR has dropped dramatically recently. The etiology of their kidney disease is also different.
 
 ## Validation
 
@@ -150,7 +151,7 @@ Each of the three models were internally validated in the development dataset us
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 1-year, 2-years, 5-years and 8-years. As well as presenting the performance measures over time.
 
-The overall accuracy of each model was assessed using the MSM adjusted Brier Score [`r cc("Performance Metrics")`], which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score `r cc("Performance Metrics")`, which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
 
 The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1] `r cc("Performance Metrics")`. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
@@ -228,7 +229,7 @@ add_flextable_caption("Comorbidity-Demo","Population comorbidity prevalence for 
 ```
 
 
-The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in \@ref(tab:Event-Median)
+The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median).
 
 <br>
 ```{r Event-Median, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
@@ -243,7 +244,7 @@ paste0(.wd,"data/Dev_Paper_Event_Median.csv") %>%
   merge_at(i=5:10,j=1) %>%
   merge_at(i=2:3,j=2) %>%
   merge_at(i=5:8,j=2)
-add_flextable_caption("Event-Median","Event times for the two populations presented as Number of Events = Median (Inter Quartile Range) [Min, Max]")
+add_flextable_caption("Event-Median","Event times for the two populations presented as Number of Events = Median (Inter-Quartile Range) [Min, Max]")
 
 ```
 
@@ -268,7 +269,7 @@ add_flextable_caption("PH-Betas","Hazard Ratios for the Three-State Model")
 ```
 
 
-Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and Primary Renal Diagnosis were strongly associated with the transitions giving a wide range of predictions.
+Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
 
 
 ## Example
@@ -404,11 +405,11 @@ Despite this, we believe that the advantages of our models far outweigh these sh
 
 Compared to the raw internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.
 
-Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expediate or delay transitions of patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarind *which* treatment a patient should undergo.
+Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expedite or delay transition of a patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarding *which* treatment might be benficial for a patient.
 
-Further research would be needed to establish the efficacy of the use of such a model in clinical practice [@moons_prognosis_2009-1] by comparing it to standard care and establishing whether the use of our model improves patient outcomes, however we have clearly demonstrated the *effectiveness* of our model.
+Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice [@moons_prognosis_2009-1] by comparing it to standard care and establishing whether the use of our model improves patient outcomes.
 
-All three models produced for this work performed well in terms of accuracy, calibration and discrimination when applied internally and externally. This shows directly that the models are suitable for use in populations similar to both our development and our validation datasets. It can also be concluded that the models can be transported to any population with a similar healthcare system to the UK.
+All three models produced for this work performed well in terms of accuracy, calibration and discrimination when applied internally and externally. This shows directly that the models are suitable for use in populations similar to both our development and our validation datasets. It can also be concluded that the models can be transported and applied to any population with a similar healthcare system to the UK.
 
 
 # References

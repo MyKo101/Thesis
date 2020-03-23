@@ -10,6 +10,13 @@ write_chapter_rmd <- function(.file,output="pdf")
   }
   rmd <- readLines(.file)
   
+  latex.commands <- readLines("latex_commands.txt")
+  
+  latex.slash <- grep("^\\\\",latex.commands)
+  
+  latex.commands[ latex.slash] <- paste0(" - ",latex.commands[ latex.slash])
+  latex.commands[-latex.slash] <- paste0("   ",latex.commands[-latex.slash])
+  
   title <- rmd[grep("^# ",rmd[1:3])]
   title <- substring(title,1,regexpr("{",title,fixed=T)[[1]]-1)
   title <- trimws(gsub("#","",title,fixed=T))
@@ -49,11 +56,12 @@ write_chapter_rmd <- function(.file,output="pdf")
     "csl: ../csl/ieee.csl",
     "number_sections: true",
     output.header,
+    "header-includes:",
+    latex.commands,
     "---",
     "```{r setup, include=F}",
     "source(\"../setup.R\")",
     "```",
-    "\\include{latex_commands.txt}",
     "<style>",
     "caption {",
     "  display: table-caption;",

@@ -3,9 +3,13 @@ pkgs <- c("devtools","thesisdown","tidyverse","rlang","flextable",
 
 purrr::walk(pkgs,library,character.only=T)
 
-cc <- function(x) paste0("[**Cite: ",x,"**]")
-
 xx <- function(x = "xxxx") paste0("[**",x,"**]")
+cc <- function(x) xx(paste0("Cite: ",x))
+LR <- function(x) cc(paste0("LR - ",x))
+
+
+logit <- function(p) log(p/(1-p))
+logit1 <- function(o) exp(o)/(exp(o)+1)
 
 .wd <- "C:/Users/mbrxsmbc/Documents/Thesis/index/"
 

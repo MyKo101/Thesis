@@ -4,14 +4,26 @@ bibliography: ../bib/thesis.bib
 csl: ../csl/ieee.csl
 number_sections: true
 output:
-  rmarkdown::word_document
+  bookdown::pdf_document2
+header-includes:
+ - \usepackage{amsmath}
+   
+ - \newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
+   
+ - \def\logit{\txt{logit}}
+   
+ - \newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
 ---
 ```{r setup, include=F}
 source("../setup.R")
 ```
+<style>
+caption {
+  display: table-caption;
+  text-align: center;
+}
+</style>
 
-
-This is the first chapter of my thesis and will include a brief summary of what the current literature looks like. It will be split into sections and subsections as specified in my ToDo List
 
 # Introduction
 
@@ -24,7 +36,7 @@ The idea of prognosis dates back to ancient Greece with the work of Hippocrates 
 
 Prognosis research can be broken down into four main categories (with three subcategories [@riley_prognosis_2019]:
 
-* Type I: Fundamental prognosis research `r cc("LR:1")`
+* Type I: Fundamental prognosis research [@hemingway_prognosis_2013]
 * Type II: Prognostic factor research`r cc("LR:2")`
 * Type III: Prognostic model research`r cc("LR:3")`
   * Model development`r cc("LR:34")`

@@ -1,0 +1,7 @@
+\usepackage{amsmath}
+
+\newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
+
+\def\logit{\txt{logit}}
+
+\newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
