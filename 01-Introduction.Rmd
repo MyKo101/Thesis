@@ -1,10 +1,6 @@
 
 # Literature Report {#chap-lit-report}
 
-```{r,include=F}
-LR <- function(n) paste0("[**Cite LR:",x,"**]")
-```
-
 ## Introduction
 
 lorem ipsum blah blah blah
@@ -27,21 +23,68 @@ In general, prognosis research can be broken down into four main categories, wit
 
 For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
 
-The model development and validation will usually occur in the same paper `r LR(37,38)`. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice `r LR(39)`, althouhg this does not always occur `r LR(3)`. External validation is considered by some to be more important than the actual deviation of the model as it demonstrates generalisability of the model `r LR(12)`.
+The model development and validation will usually occur in the same paper `r LR(37,38)`. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice `r LR(39)`, althouhg this does not always occur `r LR(3)`. External validation is considered by some to be more important than the actual deviation of the model as it demonstrates generalisability of the model `r LR(12)`, whereas a model on it's own may be highly susceptible to overfitting `r cc()`.
 
 ### Fundamental Prognosis Research
 
-What is it?
+`r xx("What is it? Old definition is incorrect, so will need to write this fresh")`
 
 ### Prognostic Factor Research
 
 The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
 
-Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model.
+Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones `r cc()`. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting `r xx()`, we can demonstrate that `r xx()` is a prognostic factor, [however since the arrow of causation is `r xx()`] `r xx("OR")` [however since `r xx()` causes both `r xx()` and `r xx()`], the relationship is prognostic, but not causal. `r xx("Previously used Apgar score here, reference 40")`
+
+Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results `r LR(2)`. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results `r LR(44)`. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
+
+It is unfortunate, however, that Riley at al `r LR(53)` found that only 35.5% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions `r LR(2)`.
 
 ### Prognostic Model Research
 
+Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome `r LR(3)` and they are deigned to augment the job of a clinician; and not to completely replace them `r LR(40)`. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease `r LR(37,38)`. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratied medicine approach `r LR(37,38)`. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is `r LR(40)`. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician `r LR(18)`. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
+
+Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe `r cc()`. To quote Steyerberg et al `r LR(3)`. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker `r LR(54)` developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
+
 #### Model Development
+
+The first stage of having a useful model is to develop one. Clinical predictive models can take a variety of forms, such as logistic regression, cox models or some kind of machine learning. Regardless of the specific model type being used, there are certain universal truths than should be held up during model development which will be discussed here. The size of the dataset being used is of vital importance as it can combat overfitting of the data, but so is choosing which prognostic factors to be included in the final model. This section will discuss various ideas that researchers need to account for when developing a model from any source and can be applied to any model type.
+
+By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors `r LR(2)`. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality `r LR(5)`, or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables `r LR(55)`. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost `r LR(56)`. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups r LR(7)`.
+
+
+When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor `r LR(57,58)`, know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size `r cc("Riley, EPV work")`. If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) `r LR(59)`.
+
+. This
+will help to minimise selection bias and model instability. In general, it is also recommended that this development
+dataset contain at least 100 events (regardless of number of potential predictors)39,60,61. A systematic review by
+Counsell et al62 found that out of eighty-three prognostic models for acute stroke, less than 50% of them had
+more than 10 EPV. Having a low EPV can lead to overtting of the model which is a concern associated with
+having a small data set. Overtting leads to a worse prediction when the model is used on a new population which
+essentially makes the model useless34. However, just because a dataset is large does not imply that it will be a
+\good" dataset if the quality of the data is lacking39. Having a large amount of data can lead to predictors being
+considered statistically signicant when in reality they only add a small amount of information to the model39.
+The size of the eect of a predictor should therefore be taken into account in the nal model and, if benecial,
+some predictors can be dropped at the nal stage.
+
+
+Large datasets can be used for both development and validation if an eective subset is chosen. This
+subset should not be random or data driven and should be decided before data analysis is begun39. Randomly
+splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result
+in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting
+causing the two populations to be too similar, which is similar to the logic behind the splitting of patients in a
+Randomised Control Trial (RCT). Splitting the population by a specic characteristic (such as geographic location
+or time period) can result in a better internal validation35,63. Derivation of the QRISK2 Score7 (known later as
+QRISK2-2008)10 randomly assigned two thirds of practices to the derivation dataset and the remainder to the
+validation dataset. The NPI model was trained on the rst 500 patients admitted to Nottingham City Hospital
+after the study began5 and later validated on the next 320 patients to be admitted64, this validation was not
+performed at the same time as the initial development and is thus an external validation.
+If a sucient amount of data is available and it has been taken from multiple sources (practices, clinics
+or studies), then it should be clustered to account for heterogeneity across sources65. It is important that any
+sources of potential variability are identied (such as heterogeneity between centres) as this can have an impact
+on the results of any analysis1,39. Heterogeneity is particularly high when using multiple countries as a source
+of data66 or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors67.
+Overlooking of this clustering can lead to incorrect inferences65. The generalisability of the sources of data should
+
 
 #### Model Validation
 

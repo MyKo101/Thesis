@@ -31,19 +31,23 @@ lorem ipsum blah blah blah
 
 # Clinical Prediction Models
 
-The idea of prognosis dates back to ancient Greece with the work of Hippocrates `r cc("Hippocrates")` and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare...
+The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is definde as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is uaully given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modelling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
 
+Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the ffect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to th definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown subtype of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
 
-Prognosis research can be broken down into four main categories (with three subcategories [@riley_prognosis_2019]:
+In general, prognosis research can be broken down into four main categories, with three subcategories [@riley_prognosis_2019]:
 
-* Type I: Fundamental prognosis research [@hemingway_prognosis_2013]
-* Type II: Prognostic factor research`r cc("LR:2")`
-* Type III: Prognostic model research`r cc("LR:3")`
-  * Model development`r cc("LR:34")`
-  * Model validation`r cc("LR:35")`
-  * Model impact evaluation`r cc("LR:36")`
-* Type IV: Stratified Medicine `r cc("LR:4")`
+* Type I: Fundamental prognosis research [@hemingway_prognosis_2013] 
+* Type II: Prognostic factor research [@riley_prognosis_2013]
+* Type III: Prognostic model research [@steyerberg_prognosis_2013]
+  * Model development [@royston_prognosis_2009]
+  * Model validation [@altman_prognosis_2009]
+  * Model impact evaluation [@moons_prognosis_2009]
+* Type IV: Stratified Medicine [@hingorani_prognosis_2013]
 
+For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
+
+The model development and validation will usually occur in the same paper `r LR(37,38)`. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice `r LR(39)`, althouhg this does not always occur `r LR(3)`. External validation is considered by some to be more important than the actual deviation of the model as it demonstrates generalisability of the model `r LR(12)`.
 
 ## Fundamental Prognosis Research
 
@@ -52,7 +56,6 @@ What is it?
 ## Prognostic Factor Research
 
 The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
-
 
 Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model.
 

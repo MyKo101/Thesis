@@ -139,6 +139,10 @@ The discrimination of each model was assessed using the MSM extension to the c-s
 
 The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014] `r cc("Performance Metrics")` which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
 
+### Calculator
+
+As part of this work, we also intend to produce an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
+
 ## Results
 
 ### Data Sources
@@ -356,6 +360,10 @@ Preds_2 <- Preds %>%
 
 
 ### Validation
+
+### Calculator
+
+The calculator is currently available here: [https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/](https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/).
 
 ## Discussion
 

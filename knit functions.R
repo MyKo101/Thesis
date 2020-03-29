@@ -75,7 +75,17 @@ write_chapter_rmd <- function(.file,output="pdf")
   
   rmd <- gsub("^#","",rmd)
   
-  rmd <- c(header,rmd,"","# References","")
+  in.ref <- grep("^# References",rmd)
+  
+  if(length(in.ref)>0)
+  {
+    rmd <- append(rmd,c("", "<div id=\"refs\"></div>",""),after=in.ref)
+  } else 
+  {
+    rmd <- c(rmd,"","# References","")
+  }
+  
+  rmd <- c(header,rmd)
   
   writeLines(rmd,paste0("Chapters/",.file))
   

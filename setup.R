@@ -4,8 +4,8 @@ pkgs <- c("devtools","thesisdown","tidyverse","rlang","flextable",
 purrr::walk(pkgs,library,character.only=T)
 
 xx <- function(x = "xxxx") paste0("[**",x,"**]")
-cc <- function(x) xx(paste0("Cite: ",x))
-LR <- function(x) cc(paste0("LR - ",x))
+cc <- function(x="Something") xx(paste0("Cite: ",x))
+LR <- function(...) cc(paste0("LR - ",paste0(unlist(list(...)),collapse=", ")))
 
 
 logit <- function(p) log(p/(1-p))
@@ -100,6 +100,59 @@ Dev_Valid_Paper_Var_Names <- function(.tbl,.variable)
       T ~ !!enquo(.variable)))
 }
 
-
+as_equation <- function(x,i=NULL,j=NULL,nickname)
+{
+  require(flextable)
+  require(png)
+  fnum <- 0
+  
+  ff <- list.files("codecogs")
+  
+  ff <- ff[grep(paste0("^",nickname),ff)]
+  
+  if(length(ff) > 0 )
+    file.remove(paste0("codecogs/",ff))
+  
+  
+  i <- flextable:::get_rows_id(x[["body"]], i)
+  j <- flextable:::get_columns_id(x[["body"]], j)
+  
+  for(i0 in i) for(j0 in j)
+  {
+    fnum <- fnum + 1
+    eqn <- x$body$dataset[i0,j0]
+    eqn <- gsub("\\","%5C",eqn,fixed=T)
+    eqn <- gsub(" ","",eqn,fixed=T)
+    
+    webaddress <- paste0("https://latex.codecogs.com/png.latex?",eqn)
+    dir <- paste0("codecogs/",nickname," - ",fnum,".png")
+    
+    download.file(webaddress,dir,mode="wb",quiet=T)
+    
+    img <- readPNG(dir)
+    
+    cell.h <- dim(x)$heights[i0]
+    cell.w <- dim(x)$widths[j0]
+    cell.ar <- cell.w/cell.h
+    
+    h <- dim(img)[1]
+    w <- dim(img)[2]
+    ar <- w/h
+    
+    if(cell.ar < ar)
+    {
+      res.h <- cell.h
+      res.w <- cell.h*ar
+    } else{
+      res.w <- cell.w
+      res.h <- cell.w/ar
+    }
+    
+    x <- compose(x,i0,j0,part="body",
+                 value=as_paragraph(as_image(src=dir,height=res.h,width=res.w)))
+  }
+  
+  return(x)
+}
 
 
