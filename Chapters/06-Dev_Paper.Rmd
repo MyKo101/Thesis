@@ -6,11 +6,18 @@ number_sections: true
 output:
   bookdown::word_document2:
     reference_docx: Ref.docx
+header-includes:
+ - \usepackage{amsmath}
+   
+ - \newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
+   
+ - \def\logit{\txt{logit}}
+   
+ - \newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
 ---
 ```{r setup, include=F}
 source("../setup.R")
 ```
-\include{latex_commands.txt}
 <style>
 caption {
   display: table-caption;
@@ -96,8 +103,6 @@ For variable selection, we stacked the imputed datasets together to create a lar
 
 All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors [@white_imputing_2009]. Some variables (smoking status and histories of COPD, LD and ST)  were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset [@janssen_dealing_2009].
 
-All analysis was done in `R 3.6.2` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], as well as the `mice` [@buuren_mice_2011-1], `flexsurv` [@jackson_flexsurv_nodate], `nnet` [@ripley_package_2016] and `furrr` [@vaughan_furrr_2018] packages.
-
 ## Example
 
 Once the models have been developed, we will apply them to two example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.
@@ -156,6 +161,12 @@ The overall accuracy of each model was assessed using the MSM adjusted Brier Sco
 The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1] `r cc("Performance Metrics")`. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
 The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014] `r cc("Performance Metrics")` which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
+
+## Calculator
+
+As part of this work, we also intend to produce an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
+
+All analysis was done in `R 3.6.2` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], as well as the `mice` [@buuren_mice_2011-1], `flexsurv` [@jackson_flexsurv_nodate], `nnet` [@ripley_package_2016] and `furrr` [@vaughan_furrr_2018] packages. The calculator was produced using the `shiny` package [@chang_shiny_2020].
 
 # Results
 
@@ -374,6 +385,10 @@ Preds_2 <- Preds %>%
 
 
 ## Validation
+
+## Calculator
+
+The calculator is currently available here: [https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/](https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/).
 
 # Discussion
 

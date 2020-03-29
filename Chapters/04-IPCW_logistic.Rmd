@@ -75,7 +75,7 @@ This prediction model was used to generate an estimate of the Expected probabili
 
 $$
 \begin{array}{rl}
-F_O(t|Z=z) =& \logit^{-1}\left(\logit\left( F_P(t|z) - 0.2\right)\right)
+F_U(t|Z=z) =& \logit^{-1}\left(\logit\left( F_P(t|z) - 0.2\right)\right)
 \end{array}
 $$
 $$
@@ -170,7 +170,7 @@ tribble(~X,~Estimand,~SE,
   stardard_format_table(widths=c(4,6,6))%>%
   #as_equation(j=2:3,nickname="PM-DGM-time") %>%
   set_header_labels(X = "")
-add_flextable_caption("PM-DGM","Description of the Performance Measures defined at time $t$")
+add_flextable_caption("PM-DGM","Description of how Performance Measures are averaged over time")
 
 ```
 
@@ -195,7 +195,7 @@ Not Weighting = Bad.
 
 # Supplementary Material - Calibration Slope
 
-The main purpose of this paper was to assess the evaluation of calibration-in-the-large at different time points in a time-to-event clinical prediction model. Along with calibration-in-the-large, various methods of calibration can also produce measures of calibration slope. Calibration slope provides an insight into how well the model predicts outcomes across the range of predictions. In an ideal model, the calbration slope would be 1. The Logistic Weighted, Logistic Unweighted and Pseudo-Observation methods described above can provide estimates of the calibration slope. For each of these methods, we first estimate the calibration-in-the-large as above, using a predictor as an offset, then we use this estimate as an offset to predict the calibration slope (without an intercept term).
+The main purpose of this paper was to assess the evaluation of calibration-in-the-large at different time points in a time-to-event clinical prediction model. Along with calibration-in-the-large, various methods of calibration can also produce measures of calibration slope. Calibration slope provides an insight into how well the model predicts outcomes across the range of predictions. In an ideal model, the calibration slope would be 1. The Logistic Weighted, Logistic Unweighted and Pseudo-Observation methods described above can provide estimates of the calibration slope. For each of these methods, we first estimate the calibration-in-the-large as above, using a predictor as an offset, then we use this estimate as an offset to predict the calibration slope (without an intercept term).
 
 ## Results
 
