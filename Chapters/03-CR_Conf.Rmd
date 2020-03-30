@@ -4,11 +4,24 @@ bibliography: ../bib/thesis.bib
 csl: ../csl/ieee.csl
 number_sections: true
 output:
-  rmarkdown::word_document
+  bookdown::word_document2:
+    reference_docx: Ref.docx
+header-includes:
+ - \newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
+   
+ - \def\logit{\txt{logit}}
+   
+ - \newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
 ---
 ```{r setup, include=F}
 source("../setup.R")
 ```
+<style>
+caption {
+  display: table-caption;
+  text-align: center;
+}
+</style>
 
 
 # Background

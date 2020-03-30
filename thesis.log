@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  11 MAR 2020 09:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  29 MAR 2020 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -446,7 +446,7 @@ dfmode.def
 File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count281
 \l__pdf_internal_box=\box55
-) (./thesis.aux (./latex.aux))
+) (./thesis.aux (./latex_commands.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
@@ -562,10 +562,7 @@ ap}] [2
 ] [2
 
 
-] (./thesis.toc [3]
-Underfull \vbox (badness 1642) has occurred while \output is active []
-
-[4])
+] (./thesis.toc [3] [4])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
@@ -587,93 +584,131 @@ Underfull \vbox (badness 1642) has occurred while \output is active []
 
 
 ]
-\openout2 = `latex.aux'.
+\openout2 = `latex_commands.aux'.
 
-No file latex.tex.
+(./latex_commands.tex)
+Chapter 1.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+06.
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.214     M
+           odel development {[}9{]} [1
+
+
+
+]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 14.49998pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.188 ...iterature Report}\label{chap-lit-report}}
-                                                   [1
+l.240 
+       [2]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
- been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.188 ...iterature Report}\label{chap-lit-report}}
-                                                   [2
+l.254 
+       [3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.259 L
+       arge datasets can be used for both development and validation if an e...
+[4] [5] [6
 
 ]
-Chapter 1.
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-06.
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.232 
-       [3]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.257 ...oping Review}\label{chap-scoping-review}}
-                                                   [4]
 Chapter 2.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[5
-
-]
+[7]
 
 Package Fancyhdr Warning: \headheight is too small (14.49998pt): 
 Make it at least 27.11652pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[6] [7] [8] [9] [10
+[8] [9] [10] [11] [12
 
 ]
 Chapter 3.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[11] [12] [13] [14
+[13] [14] [15] [16
 
 ]
 Chapter 4.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[15]
+[17]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[16] [17] [18
+[18]
+Overfull \hbox (27.1267pt too wide) in paragraph at lines 515--516
+[]\T1/lmr/m/n/12 We var-ied the pa-ram-e-ters to take all the values,$\OML/lmm/
+m/it/12 ^^M \OT1/lmr/m/n/12 = \OMS/lmsy/m/n/12 f^^@\OT1/lmr/m/n/12 2\OML/lmm/m/
+it/12 ; \OMS/lmsy/m/n/12 ^^@\OT1/lmr/m/n/12 1\OML/lmm/m/it/12 :\OT1/lmr/m/n/12 
+5\OML/lmm/m/it/12 ; \OMS/lmsy/m/n/12 ^^@\OT1/lmr/m/n/12 1\OML/lmm/m/it/12 ; \OM
+S/lmsy/m/n/12 ^^@\OT1/lmr/m/n/12 0\OML/lmm/m/it/12 :\OT1/lmr/m/n/12 5\OML/lmm/m
+/it/12 ; \OT1/lmr/m/n/12 0\OML/lmm/m/it/12 ; \OT1/lmr/m/n/12 0\OML/lmm/m/it/12 
+:\OT1/lmr/m/n/12 5\OML/lmm/m/it/12 ; \OT1/lmr/m/n/12 1\OML/lmm/m/it/12 ; \OT1/l
+mr/m/n/12 1\OML/lmm/m/it/12 :\OT1/lmr/m/n/12 5\OML/lmm/m/it/12 ; \OT1/lmr/m/n/1
+2 2\OMS/lmsy/m/n/12 g$\T1/lmr/m/n/12 ,
+ []
 
-]
+[19] [20]
+<thesis_files/figure-latex/PM-DGM-time-1.png, id=602, 693.08937pt x 161.10187pt
+>
+File: thesis_files/figure-latex/PM-DGM-time-1.png Graphic file (type png)
+<use thesis_files/figure-latex/PM-DGM-time-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/PM-DGM-time-1.png  used on i
+nput line 597.
+(pdftex.def)             Requested size: 261.16638pt x 60.70557pt.
+<thesis_files/figure-latex/PM-DGM-1.png, id=605, 784.43062pt x 89.83563pt>
+File: thesis_files/figure-latex/PM-DGM-1.png Graphic file (type png)
+<use thesis_files/figure-latex/PM-DGM-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/PM-DGM-1.png  used on input 
+line 603.
+(pdftex.def)             Requested size: 403.88454pt x 46.25421pt.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
+10.
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [21 <./thesis_files/figure-latex/PM-DGM-time-1.png> <./thesis_files/figure-la
+tex/PM-DGM-1.png>] [22]
 Chapter 5.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[19] [20]
+[23
+
+] [24]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[21] [22]
+[25] [26]
 Chapter 6.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[23
+[27
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -684,87 +719,163 @@ Make it at least 41.61652pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[24] [25]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-39.
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [26] [27]
-<thesis_files/figure-latex/Continuous-Demo-1.png, id=616, 782.925pt x 252.44313
-pt>
-File: thesis_files/figure-latex/Continuous-Demo-1.png Graphic file (type png)
-<use thesis_files/figure-latex/Continuous-Demo-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/Continuous-Demo-1.png  used 
-on input line 675.
-(pdftex.def)             Requested size: 522.53809pt x 168.48503pt.
-
-Overfull \hbox (106.54291pt too wide) in paragraph at lines 675--676
-[][] 
- []
-
+[28] [29]
+<figure/Dev_Paper_State_Diagrams.png, id=684, 880.28876pt x 469.755pt>
+File: figure/Dev_Paper_State_Diagrams.png Graphic file (type png)
+<use figure/Dev_Paper_State_Diagrams.png>
+Package pdftex.def Info: figure/Dev_Paper_State_Diagrams.png  used on input lin
+e 800.
+(pdftex.def)             Requested size: 390.25534pt x 208.25543pt.
+[30] [31 <./figure/Dev_Paper_State_Diagrams.png>]
+<thesis_files/figure-latex/Example-Patient-1.png, id=695, 435.12563pt x 393.47p
+t>
+File: thesis_files/figure-latex/Example-Patient-1.png Graphic file (type png)
+<use thesis_files/figure-latex/Example-Patient-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/Example-Patient-1.png  used 
+on input line 823.
+(pdftex.def)             Requested size: 284.76039pt x 257.49957pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[28]
-<thesis_files/figure-latex/Categorical-Demo-1.png, id=625, 490.83376pt x 404.00
+[32] [33 <./thesis_files/figure-latex/Example-Patient-1.png>] [34]
+<thesis_files/figure-latex/Continuous-Demo-1.png, id=716, 793.96625pt x 265.993
+74pt>
+File: thesis_files/figure-latex/Continuous-Demo-1.png Graphic file (type png)
+<use thesis_files/figure-latex/Continuous-Demo-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/Continuous-Demo-1.png  used 
+on input line 859.
+(pdftex.def)             Requested size: 522.5292pt x 175.05717pt.
+
+Overfull \hbox (106.53403pt too wide) in paragraph at lines 859--860
+[][] 
+ []
+
+<thesis_files/figure-latex/Categorical-Demo-1.png, id=718, 506.39188pt x 404.00
 937pt>
 File: thesis_files/figure-latex/Categorical-Demo-1.png Graphic file (type png)
 <use thesis_files/figure-latex/Categorical-Demo-1.png>
 Package pdftex.def Info: thesis_files/figure-latex/Categorical-Demo-1.png  used
- on input line 681.
-(pdftex.def)             Requested size: 327.38896pt x 269.4766pt.
+ on input line 865.
+(pdftex.def)             Requested size: 327.38907pt x 261.19742pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[29 <./thesis_files/figure-latex/Continuous-Demo-1.png> <./thesis_files/figure-
+[35 <./thesis_files/figure-latex/Continuous-Demo-1.png> <./thesis_files/figure-
 latex/Categorical-Demo-1.png>]
-<thesis_files/figure-latex/Comorbidity-Demo-1.png, id=633, 462.22687pt x 199.24
-437pt>
+<thesis_files/figure-latex/Comorbidity-Demo-1.png, id=726, 471.7625pt x 199.244
+37pt>
 File: thesis_files/figure-latex/Comorbidity-Demo-1.png Graphic file (type png)
 <use thesis_files/figure-latex/Comorbidity-Demo-1.png>
 Package pdftex.def Info: thesis_files/figure-latex/Comorbidity-Demo-1.png  used
- on input line 687.
-(pdftex.def)             Requested size: 307.87071pt x 132.70865pt.
-<thesis_files/figure-latex/PH-Betas-1.png, id=634, 763.35187pt x 608.77437pt>
+ on input line 871.
+(pdftex.def)             Requested size: 307.87292pt x 130.02718pt.
+<thesis_files/figure-latex/Event-Median-1.png, id=728, 688.07062pt x 199.24437p
+t>
+File: thesis_files/figure-latex/Event-Median-1.png Graphic file (type png)
+<use thesis_files/figure-latex/Event-Median-1.png>
+Package pdftex.def Info: thesis_files/figure-latex/Event-Median-1.png  used on 
+input line 877.
+(pdftex.def)             Requested size: 448.07004pt x 129.74748pt.
+
+Overfull \hbox (32.07486pt too wide) in paragraph at lines 877--878
+[][] 
+ []
+
+[36 <./thesis_files/figure-latex/Comorbidity-Demo-1.png> <./thesis_files/figure
+-latex/Event-Median-1.png>]
+<thesis_files/figure-latex/PH-Betas-1.png, id=737, 776.40062pt x 608.77437pt>
 File: thesis_files/figure-latex/PH-Betas-1.png Graphic file (type png)
 <use thesis_files/figure-latex/PH-Betas-1.png>
 Package pdftex.def Info: thesis_files/figure-latex/PH-Betas-1.png  used on inpu
-t line 698.
-(pdftex.def)             Requested size: 509.49791pt x 406.32542pt.
+t line 886.
+(pdftex.def)             Requested size: 509.51164pt x 399.5072pt.
 
-Overfull \hbox (93.50273pt too wide) in paragraph at lines 698--699
+Overfull \hbox (93.51646pt too wide) in paragraph at lines 886--887
+[][] 
+ []
+
+
+LaTeX Warning: Reference `fig:Example-Predictions-trend' on page 37 undefined o
+n input line 895.
+
+<thesis_files/figure-latex/Example-Predictions-trend-1.pdf, id=739, 722.7pt x 3
+25.215pt>
+File: thesis_files/figure-latex/Example-Predictions-trend-1.pdf Graphic file (t
+ype pdf)
+<use thesis_files/figure-latex/Example-Predictions-trend-1.pdf>
+Package pdftex.def Info: thesis_files/figure-latex/Example-Predictions-trend-1.
+pdf  used on input line 897.
+(pdftex.def)             Requested size: 722.69823pt x 325.2142pt.
+<thesis_files/figure-latex/Example-Predictions-square-1.pdf, id=740, 722.7pt x 
+325.215pt>
+File: thesis_files/figure-latex/Example-Predictions-square-1.pdf Graphic file (
+type pdf)
+<use thesis_files/figure-latex/Example-Predictions-square-1.pdf>
+Package pdftex.def Info: thesis_files/figure-latex/Example-Predictions-square-1
+.pdf  used on input line 900.
+(pdftex.def)             Requested size: 722.69823pt x 325.2142pt.
+
+Overfull \hbox (289.07823pt too wide) in paragraph at lines 900--901
+ [][] 
+ []
+
+
+Overfull \hbox (306.70305pt too wide) in paragraph at lines 897--902
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[30 <./thesis_files/figure-latex/Comorbidity-Demo-1.png>]
+[37 <./thesis_files/figure-latex/PH-Betas-1.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[31 <./thesis_files/figure-latex/PH-Betas-1.png>] [32] [33] [34
+[38 <./thesis_files/figure-latex/Example-Predictions-trend-1.pdf>]
+Underfull \hbox (badness 6047) in paragraph at lines 909--910
+\T1/lmr/m/n/12 The cal-cu-la-tor is cur-rently avail-able here: []$\T1/lmtt/m/n
+/12 https : / / michael -[] barrowman .
+ []
+
+[39 <./thesis_files/figure-latex/Example-Predictions-square-1.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[40] [41] [42
 
 ]
 Chapter 7.
-[35] [36
-
-]
-Chapter 8.
-[37] [38
+[43] [44
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[39
+[45
 
 ]
+Underfull \hbox (badness 3428) in paragraph at lines 1031--1033
+ \T1/lmr/m/n/12 cu-pa-tion and tran-si-tion prob-a-bil-i-ties in multi-state mo
+d-els,'' \T1/lmr/m/it/12 Bio-met-ri-cal
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[40]
+[46]
+Overfull \hbox (193.9544pt too wide) in paragraph at lines 1052--1054
+ [][]\T1/lmr/m/n/12 [30] H. Wick-ham, ``The tidy tools man-i-festo.'' https://c
+ran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html,
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[41]
-Underfull \hbox (badness 2293) in paragraph at lines 865--867
+[47]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[49]
+Underfull \hbox (badness 2293) in paragraph at lines 1145--1147
  \T1/lmr/m/n/12 chronic kid-ney dis-ease and severely de-creased glomeru-lar fi
 l-tra-tion rate,''
  []
@@ -772,60 +883,65 @@ l-tra-tion rate,''
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[42]
+[50]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[43]
-Overfull \hbox (193.9544pt too wide) in paragraph at lines 961--963
- [][]\T1/lmr/m/n/12 [63] H. Wick-ham, ``The tidy tools man-i-festo.'' https://c
-ran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html,
- []
-
-
+[51]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[44]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1006.
-[45]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1006.
-(./thesis.aux (./latex.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1006.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1006.
+[52]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[53] [54]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1304.
+[55
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1304.
+(./thesis.aux (./latex_commands.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1304.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1304.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 8F323730FEFAB5F7276AB9412BFE8EDD;4932.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1006.
+(rerunfilecheck)             Checksum: 573864C2557E673D490A648A2DBDC56F;5445.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1304.
  ) 
 Here is how much of TeX's memory you used:
- 9126 strings out of 482913
- 142930 string characters out of 5957946
- 399352 words of memory out of 5000000
- 23870 multiletter control sequences out of 15000+600000
+ 9267 strings out of 482913
+ 146791 string characters out of 5957946
+ 397168 words of memory out of 5000000
+ 23939 multiletter control sequences out of 15000+600000
  583963 words of font info for 59 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,12n,49p,1409b,381s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,49p,1926b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
-{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathex.en
-c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}
-{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.en
-c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.
+{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.en
+c}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.
+enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathe
+x.enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.
 enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ts1.e
 nc}<c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmbx12
 .pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmex
 10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lm
 mi12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/
-lmmi8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm
-/lmr12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
-m/lmr6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
-m/lmr8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
-m/lmri12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public
-/lm/lmro12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
-ic/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pu
-blic/lm/lmtt12.pfb>
-Output written on thesis.pdf (61 pages, 566311 bytes).
+lmmi6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm
+/lmmi8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
+m/lmr12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/
+lm/lmr6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/
+lm/lmr8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/
+lm/lmri12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publi
+c/lm/lmro12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pub
+lic/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/p
+ublic/lm/lmsy8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/
+public/lm/lmtt12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msam10.pfb>
+Output written on thesis.pdf (71 pages, 1028963 bytes).
 PDF statistics:
- 968 PDF objects out of 1000 (max. 8388607)
- 877 compressed objects within 9 object streams
- 291 named destinations out of 1000 (max. 500000)
- 549 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1189 PDF objects out of 1200 (max. 8388607)
+ 1070 compressed objects within 11 object streams
+ 352 named destinations out of 1000 (max. 500000)
+ 648 words of extra memory for PDF output out of 10000 (max. 10000000)
 

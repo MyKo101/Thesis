@@ -1,0 +1,32 @@
+---
+title: mscpm Package
+bibliography: ../bib/thesis.bib
+csl: ../csl/ieee.csl
+number_sections: true
+output:
+  bookdown::word_document2:
+    reference_docx: Ref.docx
+header-includes:
+ - \newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
+   
+ - \def\logit{\txt{logit}}
+   
+ - \newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
+---
+```{r setup, include=F}
+source("../setup.R")
+```
+<style>
+caption {
+  display: table-caption;
+  text-align: center;
+}
+</style>
+
+
+Here is where the Vignette for the `\{mscpm\}` package will go, when I get to coding/writing it all up.
+
+It may be easier to write a bit of code to extract the vignette from the package folder (or write something to push it from there to here)
+
+# References
+

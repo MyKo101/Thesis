@@ -10,7 +10,7 @@ write_chapter_rmd <- function(.file,output="pdf")
   }
   rmd <- readLines(.file)
   
-  latex.commands <- readLines("latex_commands.txt")
+  latex.commands <- readLines("latex_commands.tex")
   
   latex.slash <- grep("^\\\\",latex.commands)
   

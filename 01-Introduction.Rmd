@@ -52,38 +52,13 @@ The first stage of having a useful model is to develop one. Clinical predictive 
 By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors `r LR(2)`. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality `r LR(5)`, or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables `r LR(55)`. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost `r LR(56)`. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups r LR(7)`.
 
 
-When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor `r LR(57,58)`, know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size `r cc("Riley, EPV work")`. If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) `r LR(59)`.
-
-. This
-will help to minimise selection bias and model instability. In general, it is also recommended that this development
-dataset contain at least 100 events (regardless of number of potential predictors)39,60,61. A systematic review by
-Counsell et al62 found that out of eighty-three prognostic models for acute stroke, less than 50% of them had
-more than 10 EPV. Having a low EPV can lead to overtting of the model which is a concern associated with
-having a small data set. Overtting leads to a worse prediction when the model is used on a new population which
-essentially makes the model useless34. However, just because a dataset is large does not imply that it will be a
-\good" dataset if the quality of the data is lacking39. Having a large amount of data can lead to predictors being
-considered statistically signicant when in reality they only add a small amount of information to the model39.
-The size of the eect of a predictor should therefore be taken into account in the nal model and, if benecial,
-some predictors can be dropped at the nal stage.
+When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor `r LR(57,58)`, know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size `r cc("Riley, EPV work")`. If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) `r LR(59)`. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) `r LR(39,60,61)`. A systematic review by Counsell et al `r LR(62)` found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al `r cc("riley EPV Work")` showed that less that `r xx("Pull example from Riley EPV")`. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless`r LR(34)`. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking `r LR(39)`. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model `r LR(39)`. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
 
 
-Large datasets can be used for both development and validation if an eective subset is chosen. This
-subset should not be random or data driven and should be decided before data analysis is begun39. Randomly
-splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result
-in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting
-causing the two populations to be too similar, which is similar to the logic behind the splitting of patients in a
-Randomised Control Trial (RCT). Splitting the population by a specic characteristic (such as geographic location
-or time period) can result in a better internal validation35,63. Derivation of the QRISK2 Score7 (known later as
-QRISK2-2008)10 randomly assigned two thirds of practices to the derivation dataset and the remainder to the
-validation dataset. The NPI model was trained on the rst 500 patients admitted to Nottingham City Hospital
-after the study began5 and later validated on the next 320 patients to be admitted64, this validation was not
-performed at the same time as the initial development and is thus an external validation.
-If a sucient amount of data is available and it has been taken from multiple sources (practices, clinics
-or studies), then it should be clustered to account for heterogeneity across sources65. It is important that any
-sources of potential variability are identied (such as heterogeneity between centres) as this can have an impact
-on the results of any analysis1,39. Heterogeneity is particularly high when using multiple countries as a source
-of data66 or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors67.
-Overlooking of this clustering can lead to incorrect inferences65. The generalisability of the sources of data should
+Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun `r LR(39)`. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation `r LR(35,63)`. Derivation of the QRISK2 Score `r LR(7)` (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset `r xx("Check how QRISK3 Does this")`. The NPI model `r xx("Has this been mentioned?")` was trained on the first 500 patients admitted to Nottingham City Hospital after the study began `r LR(5)` and later validated on the next 320 patients to be admitted `r LR(64)`, this validation was not performed at the same time as the initial development and is thus an external validation.
+
+
+If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources `r LR(65)`. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis `r LR(1,39)`. Heterogeneity is particularly high when using multiple countries as a source of data `r LR(66)` or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors `r LR(67)`. Overlooking of this clustering can lead to incorrect inferences `r LR(65)`. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source `r LR(40)`.
 
 
 #### Model Validation

@@ -7,8 +7,6 @@ output:
   bookdown::word_document2:
     reference_docx: Ref.docx
 header-includes:
- - \usepackage{amsmath}
-   
  - \newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
    
  - \def\logit{\txt{logit}}

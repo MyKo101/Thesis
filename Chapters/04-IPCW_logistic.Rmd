@@ -7,8 +7,6 @@ output:
   bookdown::word_document2:
     reference_docx: Ref.docx
 header-includes:
- - \usepackage{amsmath}
-   
  - \newcommand{\txt}[1]{\ensuremath{\textrm{#1}}}
    
  - \def\logit{\txt{logit}}
@@ -89,7 +87,7 @@ The prediction models were assessed at 100 time points, evenly distributed betwe
  
 $$
 \begin{array}{c}
-O_i = I(X_i < t & \delta_i = 1)
+O_i = I(X_i < t\;\&\; \delta_i = 1)
 \end{array}
 $$
 

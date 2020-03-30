@@ -8,7 +8,7 @@ rmd_files: ["index.Rmd",
             "05-Performance_Metrics.Rmd",
             "06-Dev_Paper.Rmd",
             "07-Vignette.Rmd",
-            "10-Conclusion.Rmd",
-            "99-references.Rmd"]
+            "99-references.Rmd",
+            "10-Conclusion.Rmd"]
 download: [["thesis.pdf", "PDF"], ["thesis.epub", "EPUB"], ["thesis.docx", "Word"]]
 delete_merged_file: true
