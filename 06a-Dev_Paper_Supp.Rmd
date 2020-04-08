@@ -1,0 +1,232 @@
+# Supplementary Material {-}
+
+## Statistical Analysis
+
+### Development
+
+Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
+
+```{r State-Diagram, echo=F, fig.align="center",out.width="90%", fig.cap="Diagram of the three models, the states being modelled and relevant transitions"}
+knitr::include_graphics("figure/Dev_Paper_State_Diagrams.png")
+```
+
+
+Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
+
+<!-- Comment from Matt in the next para:
+
+"why should it be -ve? And why log(time) not time?
+
+For calendar time and age, if considering non-linear transformations should this be a data driven decision rather than pre-spec?"
+
+Need to justify the use of log time, rather than just time. I'm sure Iv'e read this in a paper *somewhere*, so need to find the reference. This would also counteract the second point (data driven vs pre-spec). log age & age^2 are data driven  -->
+
+uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for time trends in treatment preferences `r cc("Something")`. Calendar Time was defined as length of time between start date and  1st January 2019. `r xx("Matt mentioned the use of log Calendar Time rather than simply Calendar Time. I read this a while ago and can't currently locate the paper (I believe it was a simulation study). I'll carry on looking for it though of course")`
+
+Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified [@meira-machado_multi-state_2009]. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique [@royston_flexible_2002] to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time [@putter_tutorial_2007].
+
+For variable selection, we stacked the imputed datasets together to create a larger, pseudo-population [@wood_how_2008] and performed backwards-forwards selection based on minimising the AIC at each step. This was repeated for each transition and for different numbers of evenly spaced knots in modelling the form of the baseline hazard, K={0,1,2,3,4,5}. This allowed for different transitions to use different sets of variables and numbers of knots in the final model. Some combinations of variables resulted in models that were intractable and so these models were excluded. Once a set of variables were chosen, the R-P model was applied to each imputed dataset individually and the resulting coefficients and cubic spline parameters were aggregated across imputations using Rubin's Rules [@rubin_multiple_1984]. This gave a model fully defined by smooth cubic splines representing the cumulative cause-specific hazard and individualised proportional hazards for each transition.
+
+All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors [@white_imputing_2009]. Some variables (smoking status and histories of COPD, LD and ST)  were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset [@janssen_dealing_2009].
+
+### Validation
+
+Further to the simple individual validation performed above. A statistical validation will need to be performed to formally establish the performance of the models.
+
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates.. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an $\textrm{eGFR} < 30\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$.
+
+For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
+
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score `r cc("Performance Metrics")`, which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
+
+The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1] `r cc("Performance Metrics")`. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
+
+The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014] `r cc("Performance Metrics")` which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
+
+
+
+## Model Results
+
+`r xx("Describe the model results briefly")
+
+### Two State Model
+
+Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model.
+
+Table \@ref(tab:Hazard-Two) shows the hazard functions for the transitions in the Two-State Model.
+
+Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model.
+
+Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model.
+
+### Three State Model
+
+Table \@ref(tab:PH-Three) shows the proportional hazard ratios for the transitions in the Three-State Model.
+
+Table \@ref(tab:Hazard-Three) shows the hazard functions for the transitions in the Three-State Model.
+
+Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model.
+
+Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
+
+### Five State Model
+
+Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
+
+Table \@ref(tab:Hazard-Five) shows the hazard functions for the transitions in the Five-State Model.
+
+Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model.
+
+Table \@ref(tab:EV-Five) shows the results from the external validation in the Five-State Model.
+
+### Three State Model
+
+
+Table \@ref(tab:PH-Betas) shows the full results from the Three-State Models, the results for the Two-State and Five-State Models can be seen in `r xx("Supplementary Material")`. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT.
+
+
+<br>
+```{r PH-Betas, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+paste0(.wd,"data/Dev_Paper_Hazard_Ratios.csv") %>%
+  read_csv(col_types=cols()) %>%
+  flextable %>%
+  set_header_labels(Trans_3cd = "CKD -> Dead",
+                    Trans_3cr = "CKD -> RRT",
+                    Trans_3rd = "RRT -> Dead") %>%
+  stardard_format_table(numeric.cols = 2:4,
+                        widths=c(5.9,4,4,4))  
+add_flextable_caption("PH-Betas","Hazard Ratios for the Three-State Model")
+
+```
+
+
+Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
+
+
+### Validation
+
+Table \@ref(tab:Accuracy-Results) shows the results from applying the Multi-State Model adjusted Brier Score to the models at each time point as well as the average over time.
+
+```{r Accuracy-Results, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+tribble(~Model, ~Collapse, ~`Year_1`, ~`Year_2`, ~`Year_5`, ~`Average`,
+        "Five",    "Five",      0.75,     0.73,       0.65,       0.69,
+        "Five",   "Three",      0.75,     0.71,       0.68,       0.70,
+        "Three",  "Three",      0.81,     0.76,       0.71,       0.73,
+        "Five",     "Two",      0.76,     0.73,       0.70,       0.72,
+        "Three",    "Two",      0.84,     0.82,       0.80,       0.81,
+        "Two",      "Two",      0.70,     0.64,       0.62,       0.64
+        ) %>%
+  mutate_if(is.numeric,~paste0(format(.,digits=2,nsmall=2)," (",
+                               format(. - runif(1,0,./20),digits=2,nsmall=2),", ",
+                               format(. + runif(1,0,./20),digits=2,nsmall=2),")")) %>%
+  flextable %>%
+  set_header_labels(Year_1 = "One Year (360 days)",
+                    Year_2 = "Two Years (720 days)",
+                    Year_5 = "Five Years (1,800 days)") %>%
+  stardard_format_table(numeric=3:6,widths=c(1.5,1.5,4,4,4,4))
+add_flextable_caption("Accuracy-Results","Adjusted Brier Score Measurements for the three models presented as estimate (95% confidence interval)")
+```
+
+Table \@ref(tab:Discrimination-Results) shows the results from applying the MSM extension of the c-statistic to the models at each time point and the average over time.
+
+```{r Discrimination-Results, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+tribble(~Model, ~Collapse, ~`Year_1`, ~`Year_2`, ~`Year_5`, ~`Average`,
+        "Five",    "Five",      0.76,     0.74,       0.71,       0.73,
+        "Five",   "Three",      0.77,     0.77,       0.76,       0.76,
+        "Three",  "Three",      0.75,     0.72,       0.70,       0.72,
+        "Five",     "Two",      0.78,     0.76,       0.73,       0.75,
+        "Three",    "Two",      0.75,     0.73,       0.71,       0.73,
+        "Two",      "Two",      0.68,     0.66,       0.63,       0.65,
+        ) %>%
+  mutate_if(is.numeric,~paste0(format(.,digits=2,nsmall=2)," (",
+                               format(. - runif(1,0,./20),digits=2,nsmall=2),", ",
+                               format(. + runif(1,0,./20),digits=2,nsmall=2),")")) %>%
+  flextable %>%
+  set_header_labels(Year_1 = "One Year (360 days)",
+                    Year_2 = "Two Years (720 days)",
+                    Year_5 = "Five Years (1,800 days)") %>%
+  stardard_format_table(numeric=3:6,widths=c(1.5,1.5,4,4,4,4))
+add_flextable_caption("Discrimination-Results","c-statistic measurements for the three models presented as estimate (95% confidence interval)")
+```
+
+
+Table \@ref(tab:Calib-Intercept-Results) shows the results from applying the MSM extension of the c-statistic to the models at each time point and the average over time.
+
+```{r Calib-Intercept-Results, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+tibble(Model = c("Five","Five","Three","Five","Three","Two"),
+       Collapse = c("Five","Three","Three","Two","Two","Two"))%>%
+  group_by_all %>%
+  expand(Time = c("Year_1","Year_2","Year_5","Average")) %>%
+  group_by_all
+  mutate(k = case_when(Collapse == "Five"  ~ 6,
+                       Collapse == "Three"~ 4,
+                       Collapse == "Two" ~ 1),
+         dev1 = case_when(Model == "Five" ~ 0.2,
+                        Model == "Three" ~ 0.1,
+                        Model == "Two" ~ 0.3),
+         dev2 = case_when(Time == "Year_1" ~ 0.1,
+                          Time == "Year_2" ~ 0.2,
+                          Time == "Year_5" ~ 0.3,
+                          Time == "Average" ~ 0.25)) %>%
+  group_by_all %>%
+  expand(Intercept = rnorm(k,mean=1,sd=dev1*dev2/9)) %>%
+  mutate(Intercept = format(Intercept,nsmall=2,digits=2)) %>%
+  summarise(Intercept = paste(Intercept,collapse="\\\\ ")) %>%
+  ungroup %>%
+  mutate(Intercept = if_else(Collapse != "Two",
+                             paste0("$$\\left[\\begin{array}{c} ",Intercept,"\\end{array}\\right]$$"),
+                             Intercept)) %>%
+  pivot_wider(names_from=Time,values_from=Intercept) %>%
+  select(Model,Collapse,Year_1,Year_2,Year_5,Average) %>%
+  arrange(Collapse) %>%
+  flextable %>%
+  set_header_labels(Year_1 = "One Year (360 days)",
+                    Year_2 = "Two Years (720 days)",
+                    Year_5 = "Five Years (1,800 days)") %>%
+  stardard_format_table(numeric=3:6,widths=c(1.5,1.5,4,4,4,4))
+add_flextable_caption("Calib-Intercept-Results","Calibration Intercept measurements for the three models")
+```
+
+
+Table \@ref(tab:Calib-Slope-Results) shows the results from applying the MSM extension of the c-statistic to the models at each time point and the average over time.
+
+```{r Calib-Slope-Results, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+tibble(Model = c("Five","Five","Three","Five","Three","Two"),
+       Collapse = c("Five","Three","Three","Two","Two","Two"))%>%
+  group_by_all %>%
+  expand(Time = c("Year_1","Year_2","Year_5","Average")) %>%
+  mutate(k = case_when(Collapse == "Five"  ~ 6,
+                       Collapse == "Three"~ 4,
+                       Collapse == "Two" ~ 1),
+         dev1 = case_when(Model == "Five" ~ 0.2,
+                        Model == "Three" ~ 0.1,
+                        Model == "Two" ~ 0.3),
+         dev2 = case_when(Time == "Year_1" ~ 0.1,
+                          Time == "Year_2" ~ 0.2,
+                          Time == "Year_5" ~ 0.3,
+                          Time == "Average" ~ 0.25)) %>%
+  group_by_all %>%
+  expand(row=1:k,col=1:k) %>%
+  mutate(Intercept = rnorm(k,mean=if_else(col==row,1,0),sd=dev1*dev2/9)) %>%
+  mutate(Intercept = format(Intercept,nsmall=2,digits=2)) %>%
+  summarise(Intercept = paste(Intercept,collapse="\\& ")) %>%
+  select(-dev1,-dev2) %>%
+  group_by(Model,Collapse,Time,k) %>%
+  summarise(Intercept = paste(Intercept,collapse="\\\\")) %>%
+  mutate(Intercept = if_else(Collapse != "Two",
+                             paste0("$$\\left[\\begin{matrix}",Intercept,"\\end{matrix}\\right]$$"),
+                             Intercept)) %>%
+  pivot_wider(names_from=Time,values_from=Intercept) %>%
+  select(Model,Collapse,Year_1,Year_2,Year_5,Average) %>%
+  arrange(Collapse) %>%
+  flextable %>%
+  set_header_labels(Year_1 = "One Year (360 days)",
+                    Year_2 = "Two Years (720 days)",
+                    Year_5 = "Five Years (1,800 days)") %>%
+  stardard_format_table(numeric=3:6,widths=c(1.5,1.5,4,4,4,4))
+add_flextable_caption("Calib-Slope-Results","Calibration Slope measurements for the three models")
+```
+
+
+
+

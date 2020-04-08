@@ -6,9 +6,22 @@ write_chapter_rmd <- function(.file,output="pdf")
   {
     if(.file <10) .file <- paste0("0",.file) else .file <- paste0(.file)
     ff <- list.files()
-    .file <- ff[grep(.file,ff)]
-  }
+    .file <- ff[grep(paste0("^",.file),ff)]
+    if(length(.file)>1)
+    {
+      .supp <- .file[grep("[0-9]{2}[a-z]",.file)]
+      .file <- .file[-grep("[0-9]{2}[a-z]",.file)]
+      .supp <- sort(.supp)
+    } else .supp <- NULL
+  } else .supp <- NULL
   rmd <- readLines(.file)
+  
+  if(!is.null(.supp))
+  {
+    rmd.supp <- lapply(.supp,readLines)
+    rmd.supp <- unlist(rmd.supp)
+  } else rmd.supp <- NULL
+  
   
   latex.commands <- readLines("latex_commands.tex")
   
@@ -22,15 +35,29 @@ write_chapter_rmd <- function(.file,output="pdf")
   title <- trimws(gsub("#","",title,fixed=T))
   
   title <- paste0("title: ",title)
-  
-  figure.lines <- grep("include_graphics(\"",rmd,fixed=T)
-  if(length(figure.lines) > 0)
+
+  replace_figs <- function(x)
   {
-    rmd[figure.lines] <- gsub("include_graphics(\"",
-                              "include_graphics(\"../",
-                              rmd[figure.lines],
-                              fixed=T)
+    figure.lines <- grep("include_graphics(\"",x,fixed=T)
+    if(length(figure.lines) > 0)
+    {
+      x[figure.lines] <- gsub("include_graphics(\"",
+                                "include_graphics(\"../",
+                                x[figure.lines],
+                                fixed=T)
+    }
+    
+    return(x)
   }
+  
+  rmd <- replace_figs(rmd)
+  
+  
+  if(!is.null(.supp))
+  {
+    rmd.supp <- replace_figs(rmd.supp)
+  }
+  
   
   if(output == "pdf")
   {
@@ -77,7 +104,10 @@ write_chapter_rmd <- function(.file,output="pdf")
   
   in.ref <- grep("^# References",rmd)
   
-  if(length(in.ref)>0)
+  if(length(in.ref) == 0 & !is.null(.supp))
+  {
+    rmd <- c(rmd,"# References","<div id=\"refs\"></div>","")
+  } else if(length(in.ref)>0)
   {
     rmd <- append(rmd,c("", "<div id=\"refs\"></div>",""),after=in.ref)
   } else 
@@ -85,55 +115,47 @@ write_chapter_rmd <- function(.file,output="pdf")
     rmd <- c(rmd,"","# References","")
   }
   
-  rmd <- c(header,rmd)
+  
+  rmd <- c(header,rmd,rmd.supp)
   
   writeLines(rmd,paste0("Chapters/",.file))
+  
+  return(paste0("Chapters/",.file))
   
 }
 
 knit_chapter <- function(.file,output="pdf")
 {
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
-  if(is.numeric(.file))
-  {
-    if(.file <10) .file <- paste0("0",.file) else .file <- paste0(.file)
-    ff <- list.files()
-    .file <- ff[grep(.file,ff)]
-  }
-  write_chapter_rmd(.file,output)
+  out.file <- write_chapter_rmd(.file,output)
   
-  setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/Chapters")
-  rmarkdown::render(.file)
-  setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
+  rmarkdown::render(out.file)
+  return(out.file)
 }
 
 knit_all_chapters <- function(output="pdf")
 {
-  ff <- list.files()
-  ff <- ff[grep("^[0-9]",ff)]
-  ff <- ff[-grep("^(00|99)",ff)]
-  
-  for(iff in ff) write_chapter_rmd(iff,output)
-  
-  setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/Chapters")
-  for(iff in ff) rmarkdown::render(iff)
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
+  ff <- list.files()
+  ff <- ff[grep("^[0-9]{2}",ff)]
+  ff <- unique(substring(ff,1,2))
+  ff <- as.numeric(ff)
+  ff <- ff[ff!=0 & ff != 99]
+  
+  out.files <- lapply(ff,knit_chapter,output=output)
+  out.files <- unlist(out.files)
+  return(out.files)
+  
 }
 
 knit_to_Google <- function(.file,out=F)
 {
   setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
-  if(is.numeric(.file))
-  {
-    if(.file <10) .file <- paste0("0",.file) else .file <- paste0(.file)
-    ff <- list.files()
-    .file <- ff[grep(.file,ff)]
-  }
-  knit_chapter(.file,"word")
+  out.file <- knit_chapter(.file,"word")
   
-  file.title <- gsub("_"," ",gsub(".Rmd","",gsub("^[0-9][0-9]-","",.file)),fixed=T)
+  file.title <- gsub("_"," ",gsub(".Rmd","",gsub("^[0-9]{2}-","",basename(out.file))),fixed=T)
   
-  file.docx <- paste0("Chapters/",gsub(".Rmd",".docx",.file))
+  file.docx <- gsub(".Rmd",".docx",out.file)
   
   if(nrow(drive_find(file.title))==0)
   {
@@ -147,7 +169,6 @@ knit_to_Google <- function(.file,out=F)
   cat("\n\nShareable Link for ",file.title,":\n\t",
       "https://docs.google.com/document/d/",drib$id,"/edit?usp=sharing",sep="")
   
-  setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
   
   if(out) return(drib)
   
@@ -157,14 +178,15 @@ knit_to_Google <- function(.file,out=F)
 
 knit_all_Google <- function()
 {
+  setwd("C:/Users/mbrxsmbc/Documents/Thesis/index/")
   ff <- list.files()
-  ff <- ff[grep("^[0-9]",ff)]
-  ff <- ff[-grep("^(00|99)",ff)]
+  ff <- ff[grep("^[0-9]{2}",ff)]
+  ff <- unique(substring(ff,1,2))
+  ff <- as.numeric(ff)
+  ff <- ff[ff!=0 & ff != 99]
   
   docs <- map_dfr(ff,knit_to_Google,out=T)
   return(docs)
 }
-
-
 
 
