@@ -13,14 +13,6 @@ knitr::include_graphics("figure/Dev_Paper_State_Diagrams.png")
 
 Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
 
-<!-- Comment from Matt in the next para:
-
-"why should it be -ve? And why log(time) not time?
-
-For calendar time and age, if considering non-linear transformations should this be a data driven decision rather than pre-spec?"
-
-Need to justify the use of log time, rather than just time. I'm sure Iv'e read this in a paper *somewhere*, so need to find the reference. This would also counteract the second point (data driven vs pre-spec). log age & age^2 are data driven  -->
-
 uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for time trends in treatment preferences `r cc("Something")`. Calendar Time was defined as length of time between start date and  1st January 2019. `r xx("Matt mentioned the use of log Calendar Time rather than simply Calendar Time. I read this a while ago and can't currently locate the paper (I believe it was a simulation study). I'll carry on looking for it though of course")`
 
 Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified [@meira-machado_multi-state_2009]. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique [@royston_flexible_2002] to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time [@putter_tutorial_2007].
@@ -50,36 +42,6 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 `r xx("Describe the model results briefly")
 
 ### Two State Model
-
-Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model.
-
-Table \@ref(tab:Hazard-Two) shows the hazard functions for the transitions in the Two-State Model.
-
-Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model.
-
-Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model.
-
-### Three State Model
-
-Table \@ref(tab:PH-Three) shows the proportional hazard ratios for the transitions in the Three-State Model.
-
-Table \@ref(tab:Hazard-Three) shows the hazard functions for the transitions in the Three-State Model.
-
-Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model.
-
-Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
-
-### Five State Model
-
-Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
-
-Table \@ref(tab:Hazard-Five) shows the hazard functions for the transitions in the Five-State Model.
-
-Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model.
-
-Table \@ref(tab:EV-Five) shows the results from the external validation in the Five-State Model.
-
-### Three State Model
 
 
 Table \@ref(tab:PH-Betas) shows the full results from the Three-State Models, the results for the Two-State and Five-State Models can be seen in `r xx("Supplementary Material")`. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT.

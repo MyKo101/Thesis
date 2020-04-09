@@ -155,3 +155,15 @@ as_equation <- function(x,i=NULL,j=NULL,nickname)
   return(x)
 }
 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,51 +1,46 @@
-% This is the Reed College LaTeX thesis template. Most of the work
-% for the document class was done by Sam Noble (SN), as well as this
-% template. Later comments etc. by Ben Salzberg (BTS). Additional
-% restructuring and APA support by Jess Youngberg (JY).
-% Your comments and suggestions are more than welcome; please email
-% them to cus@reed.edu
-%
-% See http://web.reed.edu/cis/help/latex.html for help. There are a
-% great bunch of help pages there, with notes on
-% getting started, bibtex, etc. Go there and read it if you're not
-% already familiar with LaTeX.
-%
-% Any line that starts with a percent symbol is a comment.
-% They won't show up in the document, and are useful for notes
-% to yourself and explaining commands.
-% Commenting also removes a line from the document;
-% very handy for troubleshooting problems. -BTS
 
-% As far as I know, this follows the requirements laid out in
-% the 2002-2003 Senior Handbook. Ask a librarian to check the
-% document before binding. -SN
+\documentclass[12pt,PhD,twoside,openright]{muthesis}
 
-%%
-%% Preamble
-%%
-% \documentclass{<something>} must begin each LaTeX document
-\documentclass[12pt,twoside]{reedthesis}
-% Packages are extensions to the basic LaTeX functions. Whatever you
-% want to typeset, there is probably a package out there for it.
-% Chemistry (chemtex), screenplays, you name it.
-% Check out CTAN to see: http://www.ctan.org/
-%%
+% Packages MU
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{url} % typeset URL's reasonably
+\def\UrlBreaks{\do\/\do-}
+\usepackage{listings}
+
+\usepackage{pslatex} % Use Postscript fonts
+\usepackage[toc]{}
+% Uncomment this to use a glossary
+% \usepackage[toc]{glossaries}
+% \input{./glossary}
+% \makeglossaries
+
+%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{graphicx,latexsym}
 \usepackage{amsmath}
 \usepackage{amssymb,amsthm}
 \usepackage{longtable,booktabs,setspace}
-\usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
-\usepackage[hyphens]{url}
+% \usepackage{chemarr} %% Useful for one reaction arrow, useless if you're not a chem major
+% \usepackage[hyphens]{url}
 % Added by CII
+\usepackage[anythingbreaks]{}
 \usepackage{hyperref}
+\hypersetup{colorlinks = false}
+\renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\0\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\%\do\.\do\-}
+
+\renewcommand{\chapterautorefname}{Chapter}
+
 \usepackage{lmodern}
 \usepackage{float}
 \floatplacement{figure}{H}
 % End of CII addition
 \usepackage{rotating}
 
-% Next line commented out by CII
-%%% \usepackage{natbib}
+
+\usepackage{natbib}
+%%% --- The following two lines are what needs to be added --- %%%
+%\setcounter{biburllcpenalty}{7000}
+%\setcounter{biburlucpenalty}{8000}
 % Comment out the natbib line above and uncomment the following two lines to use the new
 % biblatex-chicago style, for Chicago A. Also make some changes at the end where the
 % bibliography is included.
@@ -55,15 +50,15 @@
 
 % Added by CII (Thanks, Hadley!)
 % Use ref for internal links
-\renewcommand{\hyperref}[2][???]{\autoref{#1}}
-\def\chapterautorefname{Chapter}
-\def\sectionautorefname{Section}
-\def\subsectionautorefname{Subsection}
+% \renewcommand{\hyperref}[2][???]{\autoref{#1}}
+% \def\chapterautorefname{Chapter}
+% \def\sectionautorefname{Section}
+% \def\subsectionautorefname{Subsection}
 % End of CII addition
 
 % Added by CII
 \usepackage{caption}
-\captionsetup{width=5in}
+% \captionsetup{width=5in}
 % End of CII addition
 
 % \usepackage{times} % other fonts are available like times, bookman, charter, palatino
@@ -73,24 +68,9 @@ $if(highlighting-macros)$
   $highlighting-macros$
 $endif$
 
-% To pass between YAML and LaTeX the dollar signs are added by CII
-\title{$title$}
-\author{$author$}
-% The month and year that you submit your FINAL draft TO THE LIBRARY (May or December)
-\date{$date$}
-\division{$division$}
-\advisor{$advisor$}
-\institution{$institution$}
-\degree{$degree$}
-%If you have two advisors for some reason, you can use the following
-% Uncommented out by CII
-$if(altadvisor)$
-\altadvisor{$altadvisor$}
-$endif$
-% End of CII addition
 
-%%% Remember to use the correct department!
-\department{$department$}
+
+
 % if you're writing a thesis in an interdisciplinary major,
 % uncomment the line below and change the text as appropriate.
 % check the Senior Handbook if unsure.
@@ -98,6 +78,38 @@ $endif$
 % if you want the approval page to say "Approved for the Committee",
 % uncomment the next line
 %\approvedforthe{Committee}
+
+% Added by CII
+%%% Copied from knitr
+%% maxwidth is the original width if it's less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+% \makeatletter
+% \def\maxwidth{ %
+%   \ifdim\Gin@nat@width>\linewidth
+%     \linewidth
+%   \else
+%     \Gin@nat@width
+%   \fi
+% }
+% \makeatother
+
+% \renewcommand{\contentsname}{Table of Contents}
+% End of CII addition
+
+% \setlength{\parskip}{0pt}
+
+% Added by CII
+% $if(space_between_paragraphs)$
+%   %\setlength{\parskip}{\baselineskip}
+%   \usepackage[parfill]{parskip}
+% $endif$
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$for(header-includes)$
+	$header-includes$
+$endfor$
 
 $if(csl-refs)$
 \newlength{\cslhangindent}
@@ -107,115 +119,35 @@ $if(csl-refs)$
   \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
   {\par}
 $endif$
+  
 
-% Added by CII
-%%% Copied from knitr
-%% maxwidth is the original width if it's less than linewidth
-%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
-\makeatletter
-\def\maxwidth{ %
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
-
-\renewcommand{\contentsname}{Table of Contents}
-% End of CII addition
-
-\setlength{\parskip}{0pt}
-
-% Added by CII
-$if(space_between_paragraphs)$
-  %\setlength{\parskip}{\baselineskip}
-  \usepackage[parfill]{parskip}
-$endif$
-
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-\Acknowledgements{
-$acknowledgements$
-}
-
-\Dedication{
-$dedication$
-}
-
-\Preface{
-$preface$
-}
-
-\Abstract{
-$abstract$
-}
-
-$for(header-includes)$
-	$header-includes$
-$endfor$
-% End of CII addition
-%%
-%% End Preamble
-%%
-%
-
+  
 \begin{document}
 
-% Everything below added by CII
-$if(title)$
-  \maketitle
-$endif$
+\title{$title$}
+\author{$author$}
+\principaladviser{$supervisor$}
+\faculty{$faculty$}
+\school{$school$}
+\beforeabstract
 
-\frontmatter % this stuff will be roman-numbered
-\pagestyle{empty} % this removes page numbers from the frontmatter
+\prefacesection{Abstract}
+$abstract$
 
-$if(acknowledgements)$
-  \begin{acknowledgements}
-    $acknowledgements$
-  \end{acknowledgements}
-$endif$
+\afterabstract
 
-$if(preface)$
-  \begin{preface}
-    $preface$
-  \end{preface}
-$endif$
+\prefacesection{Acknowledgements}
 
-$if(toc)$
-  \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-  \setcounter{tocdepth}{$toc-depth$}
-  \tableofcontents
-$endif$
+\begingroup
 
-$if(lot)$
-  \listoftables
-$endif$
-
-$if(lof)$
-  \listoffigures
-$endif$
-
-$if(abstract)$
-  \begin{abstract}
-    $abstract$
-  \end{abstract}
-$endif$
-
-$if(dedication)$
-  \begin{dedication}
-    $dedication$
-  \end{dedication}
-$endif$
-
-\mainmatter % here the regular arabic numbering starts
-\pagestyle{fancyplain} % turns page numbering back on
+\setlength{\parskip}{15pt}
+\setlength{\parindent}{0pt}
+$acknowledgments$
+\endgroup
+\afterpreface
 
 $body$
 
-
-% Index?
 
 \end{document}
 
