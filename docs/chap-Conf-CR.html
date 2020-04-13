@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | thesis.utf8</title>
-  <meta name="description" content="" />
+  <title>Chapter 3 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
+  <meta name="description" content="Chapter 3 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | thesis.utf8" />
+  <meta property="og:title" content="Chapter 3 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta property="og:type" content="book" />
   
   
@@ -16,11 +16,12 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | thesis.utf8" />
+  <meta name="twitter:title" content="Chapter 3 How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   
   
   
 
+<meta name="author" content="Michael Andrew Barrowman" />
 
 
 
@@ -30,7 +31,17 @@
   
   
 <link rel="prev" href="chap-scoping-review.html"/>
-<link rel="next" href="chap-IPCW-logistic.html"/>
+<link rel="next" href="chap-performance-metrics.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
 <script src="libs/header-attrs-2.1.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,74 +60,11 @@
 
 
 
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.0.0/tabwid.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="https://hypothes.is/embed.js" async></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 </head>
 
@@ -130,106 +78,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Page One</a></li>
-<li class="chapter" data-level="2" data-path="chap-lit-report.html"><a href="chap-lit-report.html"><i class="fa fa-check"></i><b>2</b> Literature Report</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="chap-lit-report.html"><a href="chap-lit-report.html#clinical-prediction-models"><i class="fa fa-check"></i><b>2.2</b> Clinical Prediction Models</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#fundamental-prognosis-research"><i class="fa fa-check"></i><b>2.2.1</b> Fundamental Prognosis Research</a></li>
-<li class="chapter" data-level="2.2.2" data-path="chap-lit-report.html"><a href="chap-lit-report.html#prognostic-factor-research"><i class="fa fa-check"></i><b>2.2.2</b> Prognostic Factor Research</a></li>
-<li class="chapter" data-level="2.2.3" data-path="chap-lit-report.html"><a href="chap-lit-report.html#prognostic-model-research"><i class="fa fa-check"></i><b>2.2.3</b> Prognostic Model Research</a></li>
-<li class="chapter" data-level="2.2.4" data-path="chap-lit-report.html"><a href="chap-lit-report.html#stratified-medicine"><i class="fa fa-check"></i><b>2.2.4</b> Stratified Medicine</a></li>
-<li class="chapter" data-level="2.2.5" data-path="chap-lit-report.html"><a href="chap-lit-report.html#examples"><i class="fa fa-check"></i><b>2.2.5</b> Examples</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="chap-lit-report.html"><a href="chap-lit-report.html#competing-risks-multi-state-models"><i class="fa fa-check"></i><b>2.3</b> Competing Risks &amp; Multi-State Models</a></li>
+<li class="chapter" data-level="1" data-path="chap-lit-report.html"><a href="chap-lit-report.html"><i class="fa fa-check"></i><b>1</b> Literature Report</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#introduction-1"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-lit-report.html"><a href="chap-lit-report.html#clinical-prediction-models"><i class="fa fa-check"></i><b>1.2</b> Clinical Prediction Models</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#fundamental-prognosis-research"><i class="fa fa-check"></i><b>1.2.1</b> Fundamental Prognosis Research</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-lit-report.html"><a href="chap-lit-report.html#prognostic-factor-research"><i class="fa fa-check"></i><b>1.2.2</b> Prognostic Factor Research</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap-lit-report.html"><a href="chap-lit-report.html#prognostic-model-research"><i class="fa fa-check"></i><b>1.2.3</b> Prognostic Model Research</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chap-lit-report.html"><a href="chap-lit-report.html#stratified-medicine"><i class="fa fa-check"></i><b>1.2.4</b> Stratified Medicine</a></li>
+<li class="chapter" data-level="1.2.5" data-path="chap-lit-report.html"><a href="chap-lit-report.html#examples"><i class="fa fa-check"></i><b>1.2.5</b> Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html"><i class="fa fa-check"></i><b>3</b> The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#methods"><i class="fa fa-check"></i><b>3.2</b> Methods</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#scope-of-review"><i class="fa fa-check"></i><b>3.2.1</b> Scope of Review</a></li>
-<li class="chapter" data-level="3.2.2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#initial-search-strategy"><i class="fa fa-check"></i><b>3.2.2</b> Initial Search Strategy</a></li>
-<li class="chapter" data-level="3.2.3" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#filtering"><i class="fa fa-check"></i><b>3.2.3</b> Filtering</a></li>
-<li class="chapter" data-level="3.2.4" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#data-extraction"><i class="fa fa-check"></i><b>3.2.4</b> Data Extraction</a></li>
-<li class="chapter" data-level="3.2.5" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#reporting"><i class="fa fa-check"></i><b>3.2.5</b> Reporting</a></li>
+<li class="chapter" data-level="1.3" data-path="chap-lit-report.html"><a href="chap-lit-report.html#competing-risks-multi-state-models"><i class="fa fa-check"></i><b>1.3</b> Competing Risks &amp; Multi-State Models</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html"><i class="fa fa-check"></i><b>4</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
+<li class="chapter" data-level="2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html"><i class="fa fa-check"></i><b>2</b> The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background"><i class="fa fa-check"></i><b>4.1</b> Background</a></li>
-<li class="chapter" data-level="4.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-1"><i class="fa fa-check"></i><b>4.2</b> Methods</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html"><i class="fa fa-check"></i><b>5</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</a>
+<li class="chapter" data-level="2.1" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#introduction-2"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#methods"><i class="fa fa-check"></i><b>2.2</b> Methods</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#methods-2"><i class="fa fa-check"></i><b>5.2</b> Methods</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#theory"><i class="fa fa-check"></i><b>5.2.1</b> Theory</a></li>
-<li class="chapter" data-level="5.2.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#aims"><i class="fa fa-check"></i><b>5.2.2</b> Aims</a></li>
-<li class="chapter" data-level="5.2.3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#data-generating-method"><i class="fa fa-check"></i><b>5.2.3</b> Data Generating Method</a></li>
-<li class="chapter" data-level="5.2.4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#methods-3"><i class="fa fa-check"></i><b>5.2.4</b> Methods</a></li>
-<li class="chapter" data-level="5.2.5" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#estimands"><i class="fa fa-check"></i><b>5.2.5</b> Estimands</a></li>
-<li class="chapter" data-level="5.2.6" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#performance-measures"><i class="fa fa-check"></i><b>5.2.6</b> Performance Measures</a></li>
-<li class="chapter" data-level="5.2.7" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#software"><i class="fa fa-check"></i><b>5.2.7</b> Software</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a></li>
-<li class="chapter" data-level="5.4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#discussion"><i class="fa fa-check"></i><b>5.4</b> Discussion</a></li>
-<li class="chapter" data-level="5.5" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#references"><i class="fa fa-check"></i><b>5.5</b> References</a></li>
-<li class="chapter" data-level="5.6" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#supplementary-material---calibration-slope"><i class="fa fa-check"></i><b>5.6</b> Supplementary Material - Calibration Slope</a>
-<ul>
-<li class="chapter" data-level="5.6.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#results-1"><i class="fa fa-check"></i><b>5.6.1</b> Results</a></li>
-<li class="chapter" data-level="5.6.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#discussion-1"><i class="fa fa-check"></i><b>5.6.2</b> Discussion</a></li>
+<li class="chapter" data-level="2.2.1" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#scope-of-review"><i class="fa fa-check"></i><b>2.2.1</b> Scope of Review</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#initial-search-strategy"><i class="fa fa-check"></i><b>2.2.2</b> Initial Search Strategy</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#filtering"><i class="fa fa-check"></i><b>2.2.3</b> Filtering</a></li>
+<li class="chapter" data-level="2.2.4" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#data-extraction"><i class="fa fa-check"></i><b>2.2.4</b> Data Extraction</a></li>
+<li class="chapter" data-level="2.2.5" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#reporting"><i class="fa fa-check"></i><b>2.2.5</b> Reporting</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html"><i class="fa fa-check"></i><b>6</b> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</a>
+<li class="chapter" data-level="3" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html"><i class="fa fa-check"></i><b>3</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#introduction-3"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
-<li class="chapter" data-level="6.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#motivating-data-set"><i class="fa fa-check"></i><b>6.2</b> Motivating Data Set</a></li>
-<li class="chapter" data-level="6.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#current-approaches"><i class="fa fa-check"></i><b>6.3</b> Current Approaches</a>
+<li class="chapter" data-level="3.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-1"><i class="fa fa-check"></i><b>3.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html"><i class="fa fa-check"></i><b>4</b> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#baseline-models"><i class="fa fa-check"></i><b>6.3.1</b> Baseline Models</a></li>
-<li class="chapter" data-level="6.3.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#notation"><i class="fa fa-check"></i><b>6.3.2</b> Notation</a></li>
-<li class="chapter" data-level="6.3.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#patient-weighting"><i class="fa fa-check"></i><b>6.3.3</b> Patient Weighting</a></li>
-<li class="chapter" data-level="6.3.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---brier-score"><i class="fa fa-check"></i><b>6.3.4</b> Accuracy - Brier Score</a></li>
-<li class="chapter" data-level="6.3.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---c-statistic"><i class="fa fa-check"></i><b>6.3.5</b> Discrimination - c-statistic</a></li>
-<li class="chapter" data-level="6.3.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---intercept-and-slope"><i class="fa fa-check"></i><b>6.3.6</b> Calibration - Intercept and Slope</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#extension-to-multi-state-models"><i class="fa fa-check"></i><b>6.4</b> Extension to Multi-State Models</a>
+<li class="chapter" data-level="4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#motivating-data-set"><i class="fa fa-check"></i><b>4.2</b> Motivating Data Set</a></li>
+<li class="chapter" data-level="4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#current-approaches"><i class="fa fa-check"></i><b>4.3</b> Current Approaches</a>
 <ul>
-<li class="chapter" data-level="6.4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#trivial-extensions"><i class="fa fa-check"></i><b>6.4.1</b> Trivial Extensions</a></li>
-<li class="chapter" data-level="6.4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---multiple-outcome-brier-score"><i class="fa fa-check"></i><b>6.4.2</b> Accuracy - Multiple Outcome Brier Score</a></li>
-<li class="chapter" data-level="6.4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---polytomous-discriminatory-index"><i class="fa fa-check"></i><b>6.4.3</b> Discrimination - Polytomous Discriminatory Index</a></li>
-<li class="chapter" data-level="6.4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---multinomial-intercept-matched-and-unmatched-slopes"><i class="fa fa-check"></i><b>6.4.4</b> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</a></li>
+<li class="chapter" data-level="4.3.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#baseline-models"><i class="fa fa-check"></i><b>4.3.1</b> Baseline Models</a></li>
+<li class="chapter" data-level="4.3.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#notation"><i class="fa fa-check"></i><b>4.3.2</b> Notation</a></li>
+<li class="chapter" data-level="4.3.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#patient-weighting"><i class="fa fa-check"></i><b>4.3.3</b> Patient Weighting</a></li>
+<li class="chapter" data-level="4.3.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---brier-score"><i class="fa fa-check"></i><b>4.3.4</b> Accuracy - Brier Score</a></li>
+<li class="chapter" data-level="4.3.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---c-statistic"><i class="fa fa-check"></i><b>4.3.5</b> Discrimination - c-statistic</a></li>
+<li class="chapter" data-level="4.3.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---intercept-and-slope"><i class="fa fa-check"></i><b>4.3.6</b> Calibration - Intercept and Slope</a></li>
 </ul></li>
-<li class="chapter" data-level="6.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#application-to-real-world-data"><i class="fa fa-check"></i><b>6.5</b> Application to Real-World Data</a>
+<li class="chapter" data-level="4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#extension-to-multi-state-models"><i class="fa fa-check"></i><b>4.4</b> Extension to Multi-State Models</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy"><i class="fa fa-check"></i><b>6.5.1</b> Accuracy</a></li>
-<li class="chapter" data-level="6.5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination"><i class="fa fa-check"></i><b>6.5.2</b> Discrimination</a></li>
-<li class="chapter" data-level="6.5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration"><i class="fa fa-check"></i><b>6.5.3</b> Calibration</a></li>
+<li class="chapter" data-level="4.4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#trivial-extensions"><i class="fa fa-check"></i><b>4.4.1</b> Trivial Extensions</a></li>
+<li class="chapter" data-level="4.4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---multiple-outcome-brier-score"><i class="fa fa-check"></i><b>4.4.2</b> Accuracy - Multiple Outcome Brier Score</a></li>
+<li class="chapter" data-level="4.4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---polytomous-discriminatory-index"><i class="fa fa-check"></i><b>4.4.3</b> Discrimination - Polytomous Discriminatory Index</a></li>
+<li class="chapter" data-level="4.4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---multinomial-intercept-matched-and-unmatched-slopes"><i class="fa fa-check"></i><b>4.4.4</b> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discussion-2"><i class="fa fa-check"></i><b>6.6</b> Discussion</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html"><i class="fa fa-check"></i><b>7</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</a>
+<li class="chapter" data-level="4.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#application-to-real-world-data"><i class="fa fa-check"></i><b>4.5</b> Application to Real-World Data</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#introduction-4"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#methods-4"><i class="fa fa-check"></i><b>7.2</b> Methods</a>
+<li class="chapter" data-level="4.5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy"><i class="fa fa-check"></i><b>4.5.1</b> Accuracy</a></li>
+<li class="chapter" data-level="4.5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination"><i class="fa fa-check"></i><b>4.5.2</b> Discrimination</a></li>
+<li class="chapter" data-level="4.5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration"><i class="fa fa-check"></i><b>4.5.3</b> Calibration</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discussion"><i class="fa fa-check"></i><b>4.6</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html"><i class="fa fa-check"></i><b>5</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources"><i class="fa fa-check"></i><b>7.2.1</b> Data Sources</a></li>
-<li class="chapter" data-level="7.2.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example"><i class="fa fa-check"></i><b>7.2.2</b> Example</a></li>
-<li class="chapter" data-level="7.2.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator"><i class="fa fa-check"></i><b>7.2.3</b> Calculator</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#results-2"><i class="fa fa-check"></i><b>7.3</b> Results</a>
+<li class="chapter" data-level="5.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#methods-2"><i class="fa fa-check"></i><b>5.2</b> Methods</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-1"><i class="fa fa-check"></i><b>7.3.1</b> Data Sources</a></li>
-<li class="chapter" data-level="7.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>7.3.2</b> Example</a></li>
-<li class="chapter" data-level="7.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>7.3.3</b> Calculator</a></li>
+<li class="chapter" data-level="5.2.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources"><i class="fa fa-check"></i><b>5.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="5.2.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#model-design"><i class="fa fa-check"></i><b>5.2.2</b> Model Design</a></li>
+<li class="chapter" data-level="5.2.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example"><i class="fa fa-check"></i><b>5.2.3</b> Example</a></li>
+<li class="chapter" data-level="5.2.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator"><i class="fa fa-check"></i><b>5.2.4</b> Calculator</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#discussion-3"><i class="fa fa-check"></i><b>7.4</b> Discussion</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-1"><i class="fa fa-check"></i><b>5.3.1</b> Data Sources</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>5.3.2</b> Example</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>5.3.3</b> Calculator</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>8</b> Conclusion</a></li>
-<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="5.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#discussion-1"><i class="fa fa-check"></i><b>5.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html"><i class="fa fa-check"></i><b>A</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#statistical-analysis"><i class="fa fa-check"></i><b>A.1</b> Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="A.1.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#development"><i class="fa fa-check"></i><b>A.1.1</b> Development</a></li>
+<li class="chapter" data-level="A.1.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#validation"><i class="fa fa-check"></i><b>A.1.2</b> Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#model-results"><i class="fa fa-check"></i><b>A.2</b> Model Results</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#two-state-model"><i class="fa fa-check"></i><b>A.2.1</b> Two State Model</a></li>
+<li class="chapter" data-level="A.2.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#three-state-model"><i class="fa fa-check"></i><b>A.2.2</b> Three State Model</a></li>
+<li class="chapter" data-level="A.2.3" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#five-state-model"><i class="fa fa-check"></i><b>A.2.3</b> Five State Model</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -239,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Multi-State Clinical Prediction Models in Renal Replacement Therapy</a>
           </h1>
         </div>
 
@@ -247,18 +192,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chap-Conf-CR" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</h1>
-<div id="background" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Background</h2>
+<div id="chap-Conf-CR" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</h1>
+<div id="background" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Background</h2>
 <p>Well-designed observation studies permit researchers to assess treatment effects when randomisation is not feasible. This may be due to cost, suspected non-equipoise treatments or any number of other reasons [1]. While observational studies minimise these issues by being cheaper to run and avoiding randomisation (which, although unknown at the time, may prescribe patients to worse treatments), they are potentially subject to issues such as unmeasured confounding and increased possibility of competing risks (where multiple clinically relevant events occur). Although these issues can arise in any study, Randomised Controlled Trials (RCTs) attempt to mitigate these effects by using randomisation of treatment and strict inclusion/exclusion criteria. However, the estimated treatment effects from RCTs are of potentially limited generalisability, accessibility and implementability [2].</p>
 <p>A confounder is a variable that is a common cause of both treatment and outcome. For example, a patient with a high Body Mass Index (BMI) is more likely to be prescribed statins [3], but are also more likely to suffer a cardiovascular event. These treatment decisions can be affected by variables that are not routinely collected (such as childhood socio-economic status or the severity of a comorbidity [4]. Therefore, if these variables are omitted form (or unavailable for) the analysis of treatment effects in observational studies, then they can bias inferences [5]. As well as having a direct effect on the event-of-interest, confounders (along with other covariates) can also have further reaching effects on a patient’s health by changing the chances of having a competing event. Patients who are more likely to have a competing event are less likely to have an event-of-interest, which can affect inferences from studies ignoring the competing event. In the above BMI example, a high BMI can also increase a patient’s likelihood of developing (and thus dying from) cancer [6].</p>
 <p>The issue of confounding in observational studies has been researched previously [7,8,9], where it has been consistently shown that unmeasured confounding is likely to occur within these natural datasets and that there is poor reporting of this, even after the introduction of the The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Guidelines [10, 11]. Hence, it is widely recognised that sensitivity analyses are vital within the observational setting [12]. However these previous studies do not extend this work into a competing risk setting, meaning research in this space is lacking [13], particularly where the presence of a competing event can affect the rate of occurrence of the event-of-interest. These issues will commonly occur in elderly and comorbid patients where treatment decisions are more complex. As the elderly population grows, the clinical community needs to understand the optimal way to treat patients with complex conditions; here, causal relationships between treatment and outcome need to account for competing events appropriately.</p>
 <p>The most common way of analysing data that contains competing events is using a cause specific perspective, as in the Cox methodology [14], where competing events are considered as censoring events and analysis focuses solely on the event-of-interest. The alternative is to assume a subdistributional perspective, as in the Fine &amp; Gray methodology [15], where patients who have competing events remain in the risk set forever.</p>
 <p>The aim of this paper is to study the bias induced by the presence of unmeasured confounding on treatment effect estimates in the competing risks framework. We investigated how unmeasured confounding affects the apparent effect of treatment under the Fine &amp; Gray and the Cox methodologies and how these estimates differ from their true value. To accomplish this, we used simulations to generate synthetic time-to-event-data and then model under both perspectives. Both the Cox and Fine &amp; Gray models provide hazard ratios to describe the effects of a covariate. A binary covariate will represent a treatment and the coefficients found by the model will be the estimate of interest.</p>
 </div>
-<div id="methods-1" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Methods</h2>
+<div id="methods-1" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Methods</h2>
 <p>We considered a simulation scenario in which our population can experience two events; one of which is the event-of-interest (Event 1), the other is a competing event (Event 2). We model a single unmeasured confounding covariate, <span class="math inline">\(U \sim N (0,1)\)</span> and a binary treatment indicator, <span class="math inline">\(Z\)</span>. We varied how much <span class="math inline">\(U\)</span> and <span class="math inline">\(Z\)</span> affect the probability distribution of the two events as well as how they are correlated. For example, <span class="math inline">\(Z\)</span> could represent whether a patient is prescribed statins, U could be their BMI, the event-of-interest could be cardiovascular disease related mortality and a competing event could be cancer-related mortality. We followed best practice for conducting and reporting simulations studies [16].</p>
 <p>The data-generating mechanism defined two cause-specific hazard functions (one for each event), where the baseline hazard for event 1 was <span class="math inline">\(k\)</span> times that of event 2, see Fig. 1. We assumed a baseline hazard that was either constant (exponential distributed failure times), linearly increasing (Weibull distributed failure times) or biologically plausible [17]. The hazards used were thus:</p>
 <p><span class="math display">\[\begin{align}
@@ -284,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="chap-scoping-review.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="chap-IPCW-logistic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chap-performance-metrics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -328,7 +273,7 @@ gitbook.start({
 },
 "download": [["thesis.pdf", "PDF"]],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

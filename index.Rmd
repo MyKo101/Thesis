@@ -15,24 +15,27 @@ output:
   bookdown::gitbook:
     includes:
       in_header: "hypothesis.html"
-  thesisdown::thesis_pdf: default
+    config:
+      toc:
+        collapse: section
+  thesisdown::thesis_pdf: 
+    includes:
+      in_header: header.tex
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
 # use code similar to line 22-23 for the .RMD files. If you are NOT producing a PDF, you can delete or silence lines 21-32 in this YAML header.
 abstract: |
-  `r if(knitr:::is_latex_output()) paste(readLines("00-abstract.Rmd"), collapse = '\n  ')`
+  `r {source("prelim_Subsection.R");prelim_Subsection("all","abstract")}`
 # If you'd rather include the preliminary content in files instead of inline
 # like below, use a command like that for the abstract above.  Note that a tab is 
 # needed on the line after the `|`.
-# acknowledgements: |
-
-#dedication: |
-#  I dedicate this to...
-#preface: |
-#  Insert Preface...
+acknowledgements: |
+  `r {source("prelim_Subsection.R");prelim_Subsection("all","acknowledgements")}`
 # Specify the location of the bibliography below
 bibliography: bib/thesis.bib
+biblio-style: "ieee"
+link-citations: true
 # Download your specific csl file and refer to it in the line below.
 csl: csl/ieee.csl #https://github.com/citation-style-language/styles
 lot: true
@@ -41,7 +44,21 @@ lof: true
 header-includes:
 #- \usepackage{tikz}
 - \usepackage{amsmath}
-- \usepackage{ulem}
+- \usepackage{rotating}
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage{threeparttablex}
+- \usepackage[normalem]{ulem}
+- \usepackage{makecell}
+- \usepackage{xcolor}
 ---
 
 
@@ -55,14 +72,6 @@ MathJax.Hub.Config({
 });
 </script>
 
-`r paste(readLines("latex_commands.tex"), collapse = '\n  ')`
 
- `r if(knitr:::is_html_output()) paste(readLines("00--prelim.Rmd"), collapse = '\n  ')`
-
-# Page One
-
-HTML Output is `r knitr:::is_html_output()` and LaTeX output is incorrectly `r knitr:::is_html_output()`
-
-Testing new line
-
+`r {source("prelim_Subsection.R");prelim_Subsection("html","all")}`
 

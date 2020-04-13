@@ -1,22 +1,21 @@
-# Preliminary Content {-}
+
+
+
+# Introduction {-}
 
 ## Acknowledgements {-}
 
-  I would like to thank my wife, Rachel, for her constant support throughout my studies. She acted as sounding board for my most boring of thoughts and allowed me to rant and rave about statistical models in every way possible. She endured my frustrations when something wasn't working and encouraged me when my optimism turned to pesimism.
-  
-  My thanks also go to my children, Matilda and Theodore, who were an everlasting source of happiness and reprieve from my work. Acting as a distraction (in the best and worst ways) and an incentive.
-  
-  My everlasting gratitude will always lie with my parents, Brenda and Andy, who have allowed me to be myself and to find my own path. They never pushed me into something that I didn't want to do, but also guided me towards what I would be good at.
-  
-  My final thanks go to my PhD supervisors, Matt, Niels, Glen and Mark, who have provided advice and feedback for over four years. 
+I would like to thank my wife, Rachel, for her constant support throughout my studies. She acted as sounding board for my most boring of thoughts and allowed me to rant and rave about statistical models in every way possible. She endured my frustrations when something wasn't working and encouraged me when my optimism turned to pesimism.
 
-## Preface {-}
+My thanks also go to my children, Matilda and Theodore, who were an everlasting source of happiness and reprieve from my work. Acting as a distraction (in the best and worst ways) and an incentive.
 
-This is an example of a thesis setup to use the reed thesis document class
-(for LaTeX) and the R bookdown package, in general.
+My everlasting gratitude will always lie with my parents, Brenda and Andy, who have allowed me to be myself and to find my own path. They never pushed me into something that I didn't want to do, but also guided me towards what I would be good at.
 
-## Dedication {-}
+My final thanks go to my PhD supervisors, Matt, Niels, Glen and Mark, who have provided advice and feedback for over four years. 
 
-You can have a dedication here if you wish. 
+## Abstract {-}
 
-`r if(!knitr:::is_latex_output()) '## Abstract {-}'`
+The preface pretty much says it all.
+
+Second paragraph of abstract starts here. Prelim
+

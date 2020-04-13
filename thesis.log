@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  9 APR 2020 22:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.4)  13 APR 2020 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,51 +509,160 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \fb@frh=\dimen176
 \FrameRule=\dimen177
 \FrameSep=\dimen178
-) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box57
-\UL@hyphenbox=\box58
-\UL@skip=\skip65
-\UL@hook=\toks34
-\UL@height=\dimen179
-\UL@pe=\count290
-\UL@pixel=\dimen180
-\ULC@box=\box59
-Package: ulem 2019/11/18
-\ULdepth=\dimen181
+) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen179
+\ar@mcellbox=\box57
+\extrarowheight=\dimen180
+\NC@list=\toks34
+\extratabsurround=\skip65
+\backup@length=\skip66
+\ar@cellbox=\box58
 )
-\cslhangindent=\skip66
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip67
+\multirow@cntb=\count290
+\multirow@dima=\skip68
+\bigstrutjot=\dimen181
+) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen182
+\WF@size=\dimen183
+\c@WF@wrappedlines=\count291
+\WF@box=\box59
+\WF@everypar=\toks35
+Package: wrapfig 2003/01/31  v 3.6
+)
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks36
+\minrowclearance=\skip69
+)
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/pdflscape/pdflscape.s
+ty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box60
+\sift@deathcycles=\count292
+\@vwid@loff=\dimen184
+\@vwid@roff=\dimen185
+)
+\c@taburow=\count293
+\tabu@nbcols=\count294
+\tabu@cnt=\count295
+\tabu@Xcol=\count296
+\tabu@alloc=\count297
+\tabu@nested=\count298
+\tabu@target=\dimen186
+\tabu@spreadtarget=\dimen187
+\tabu@naturalX=\dimen188
+\tabucolX=\dimen189
+\tabu@Xsum=\dimen190
+\extrarowdepth=\dimen191
+\abovetabulinesep=\dimen192
+\belowtabulinesep=\dimen193
+\tabustrutrule=\dimen194
+\tabu@thebody=\toks37
+\tabu@footnotes=\toks38
+\tabu@box=\box61
+\tabu@arstrutbox=\box62
+\tabu@hleads=\box63
+\tabu@vleads=\box64
+\tabu@cellskip=\skip70
+)
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/threeparttable/threep
+arttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box65
+)
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/threeparttablex/three
+parttablex.sty
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/trimspaces/trimspaces
+.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\TPTL@width=\skip71
+) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box66
+\UL@hyphenbox=\box67
+\UL@skip=\skip72
+\UL@hook=\toks39
+\UL@height=\dimen195
+\UL@pe=\count299
+\UL@pixel=\dimen196
+\ULC@box=\box68
+Package: ulem 2019/11/18
+\ULdepth=\dimen197
+)
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen198
+\c@nlinenum=\count300
+\TeXr@lab=\toks40
+) (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/graphics-cfg/color.cf
+g
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+\cslhangindent=\skip73
 
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/l3backend/l3backend-p
 dfmode.def
 File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count291
-\l__pdf_internal_box=\box60
+\l__kernel_color_stack_int=\count301
+\l__pdf_internal_box=\box69
 ) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 153.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMS/pzccm/m/n on input line 172.
 LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line
- 153.
+ 172.
 (./OMSpzccm.fd
 File: OMSpzccm.fd 1996/10/30 Fontinst v1.504 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 172.
+LaTeX Font Info:    ... okay on input line 172.
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-53.
+72.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -568,9 +677,9 @@ sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count292
-\AtBeginShipoutBox=\box61
-Package hyperref Info: Link coloring OFF on input line 153.
+\c@lstlisting=\count302
+\AtBeginShipoutBox=\box70
+Package hyperref Info: Link coloring OFF on input line 172.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -581,16 +690,18 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 itlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count293
+\c@section@level=\count303
 )
-LaTeX Info: Redefining \ref on input line 153.
-LaTeX Info: Redefining \pageref on input line 153.
-LaTeX Info: Redefining \nameref on input line 153.
+LaTeX Info: Redefining \ref on input line 172.
+LaTeX Info: Redefining \pageref on input line 172.
+LaTeX Info: Redefining \nameref on input line 172.
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write4
 \openout4 = `thesis.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: threeparttable package is loaded.
+Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 [1
 
@@ -598,492 +709,399 @@ Package caption Info: End \AtBeginDocument code.
 ap}] [2
 
 ] (./thesis.toc
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
 .
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-7.
+6.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-7.
+6.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 7.
+(Font)              <10> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.4> on input line 7.
+(Font)              <7.4> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 7.
+(Font)              <6> on input line 6.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 7.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 7.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 6.
 
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 7.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 6.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 7.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 6.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (20.0041pt too wide) in paragraph at lines 33--33
- [] [][]\OT1/lmr/bx/n/10 Inverse Prob-a-bil-ity Weight-ing Ad-just-ment of the 
-Lo-gis-tic Re-gres-sion Calibration- 
- []
-
-[3] [4])
+) [3])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
-[5] [6
+[4] (./thesis.lot
+Overfull \hbox (10.24591pt too wide) in paragraph at lines 3--3
+ [][] [][]\OT1/lmr/m/n/9 Population de-mo-graph-ics for the con-tin-u-ous vari-
+ables pre-sented as: mean (IQR) [min,max] 
+ []
 
-] (./thesis.lot)
+)
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
-[7] [8
+[5
+
+] [6
 
 ] (./thesis.lof)
 \tf@lof=\write7
 \openout7 = `thesis.lof'.
 
-[9] [10
+[7] [8
+
+] [9] [10
 
 ] [11] [12
 
-] [13] [14
-
 ]
 LaTeX Font Info:    Trying to load font information for OT1+lmtt on input line 
-169.
+188.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [15] [16
+) [13] [14
 
-] [17] [18
+] [15] [16
 
 ]
 Chapter 1.
-[19] [20
 
-]
-Chapter 2.
+Underfull \vbox (badness 3240) has occurred while \output is active []
+
+[17]
+Overfull \hbox (709.53664pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 18 \OT1/lmr/m/sl/10 CHAPTER 1.  DEVELOPMENT AND EXTERNAL VALIDA
+TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
+ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
+ []
+
+[18]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-13.
+42.
 (c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [21] [22] [23]
-Underfull \vbox (badness 6944) has occurred while \output is active []
+) [19]
+<figure/Dev_Paper_State_Diagrams.png, id=347, 880.28876pt x 469.755pt>
+File: figure/Dev_Paper_State_Diagrams.png Graphic file (type png)
+<use figure/Dev_Paper_State_Diagrams.png>
+Package pdftex.def Info: figure/Dev_Paper_State_Diagrams.png  used on input lin
+e 274.
+(pdftex.def)             Requested size: 371.30594pt x 198.14156pt.
 
-[24] [25] [26
+Overfull \hbox (709.53664pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 20 \OT1/lmr/m/sl/10 CHAPTER 1.  DEVELOPMENT AND EXTERNAL VALIDA
+TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
+ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
+ []
+
+[20]
+LaTeX Font Info:    Trying to load font information for OMS+lmr on input line 2
+80.
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 280.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 297.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 297.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 297.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 297.
+
+Overfull \hbox (41.46812pt too wide) in paragraph at lines 297--319
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (87.31343pt too wide) in paragraph at lines 341--368
+ [][] 
+ []
+
+
+Overfull \hbox (4.35442pt too wide) in paragraph at lines 414--431
+ [][] 
+ []
+
+[21 <./figure/Dev_Paper_State_Diagrams.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (709.53664pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 22 \OT1/lmr/m/sl/10 CHAPTER 1.  DEVELOPMENT AND EXTERNAL VALIDA
+TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
+ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
+ []
+
+[22]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package xcolor Warning: Incompatible color definition on input line 433.
+
+[23]
+LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 435.
+LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
+437.
+(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+
+Package xcolor Warning: Incompatible color definition on input line 445.
+
+
+Package xcolor Warning: Incompatible color definition on input line 445.
+
+<figure/Dev_Paper_Example.png, id=397, 1239.12938pt x 301.125pt>
+File: figure/Dev_Paper_Example.png Graphic file (type png)
+<use figure/Dev_Paper_Example.png>
+Package pdftex.def Info: figure/Dev_Paper_Example.png  used on input line 477.
+(pdftex.def)             Requested size: 371.30594pt x 90.2279pt.
+
+Overfull \hbox (709.53664pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 24 \OT1/lmr/m/sl/10 CHAPTER 1.  DEVELOPMENT AND EXTERNAL VALIDA
+TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
+ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
+ []
+
+[24] [25 <./figure/Dev_Paper_Example.png>]
+Overfull \hbox (709.53664pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 26 \OT1/lmr/m/sl/10 CHAPTER 1.  DEVELOPMENT AND EXTERNAL VALIDA
+TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
+ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
+ []
+
+[26]
+Appendix A.
+[27
 
 ]
-Chapter 3.
-[27]
-Overfull \hbox (395.09898pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 28 \OT1/lmr/m/sl/10 CHAPTER 3.  THE APPLICATION OF MULTI-STATE 
-METHODS TO DEVELOP CLINICAL PREDICTION MODELS DESIGNED FOR CLINICAL USE - A SCO
-PING REVIEW
+Overfull \hbox (869.62695pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 28 \OT1/lmr/m/sl/10 APPENDIX A.  DEVELOPMENT AND EXTERNAL VALID
+ATION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PAT
+IENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH - SUPPLEMENTARY MATE
+RIAL
  []
 
-[28] [29]
-Overfull \hbox (395.09898pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 30 \OT1/lmr/m/sl/10 CHAPTER 3.  THE APPLICATION OF MULTI-STATE 
-METHODS TO DEVELOP CLINICAL PREDICTION MODELS DESIGNED FOR CLINICAL USE - A SCO
-PING REVIEW
+[28]
+
+LaTeX Warning: Reference `tab:Hazard-Two' on page 29 undefined on input line 62
+2.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: Reference `tab:IV-Two' on page 29 undefined on input line 624.
+
+
+LaTeX Warning: Reference `tab:EV-Two' on page 29 undefined on input line 626.
+
+[29]
+Overfull \hbox (869.62695pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 30 \OT1/lmr/m/sl/10 APPENDIX A.  DEVELOPMENT AND EXTERNAL VALID
+ATION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PAT
+IENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH - SUPPLEMENTARY MATE
+RIAL
  []
 
-[30] [31]
-Overfull \hbox (395.09898pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 32 \OT1/lmr/m/sl/10 CHAPTER 3.  THE APPLICATION OF MULTI-STATE 
-METHODS TO DEVELOP CLINICAL PREDICTION MODELS DESIGNED FOR CLINICAL USE - A SCO
-PING REVIEW
+[30]
+
+LaTeX Warning: Float too large for page by 27.11836pt on input line 693.
+
+[31]
+
+LaTeX Warning: Reference `tab:Hazard-Three' on page 32 undefined on input line 
+697.
+
+
+LaTeX Warning: Reference `tab:IV-Three' on page 32 undefined on input line 699.
+
+
+
+LaTeX Warning: Reference `tab:EV-Three' on page 32 undefined on input line 701.
+
+
+
+Overfull \hbox (869.62695pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 32 \OT1/lmr/m/sl/10 APPENDIX A.  DEVELOPMENT AND EXTERNAL VALID
+ATION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PAT
+IENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH - SUPPLEMENTARY MATE
+RIAL
  []
 
 [32
 
+
 ]
-Chapter 4.
+Overfull \hbox (91.58002pt too wide) in paragraph at lines 712--768
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 36.11836pt on input line 768.
+
 [33]
-Overfull \hbox (403.50226pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 34 \OT1/lmr/m/sl/10 CHAPTER 4.  HOW UNMEASURED CONFOUNDING IN A
- COMPETING RISKS SETTING CAN AFFECT TREATMENT EFFECT ESTIMATES IN OBSERVATIONAL
- STUDIES
+
+LaTeX Warning: Reference `tab:Hazard-Five' on page 34 undefined on input line 7
+70.
+
+
+LaTeX Warning: Reference `tab:IV-Five' on page 34 undefined on input line 772.
+
+
+LaTeX Warning: Reference `tab:EV-Five' on page 34 undefined on input line 774.
+
+
+Overfull \hbox (869.62695pt too wide) has occurred while \output is active
+\OT1/lmr/m/n/10 34 \OT1/lmr/m/sl/10 APPENDIX A.  DEVELOPMENT AND EXTERNAL VALID
+ATION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PAT
+IENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH - SUPPLEMENTARY MATE
+RIAL
  []
 
-[34] [35]
-Overfull \hbox (403.50226pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 36 \OT1/lmr/m/sl/10 CHAPTER 4.  HOW UNMEASURED CONFOUNDING IN A
- COMPETING RISKS SETTING CAN AFFECT TREATMENT EFFECT ESTIMATES IN OBSERVATIONAL
- STUDIES
- []
+[34
 
-[36
+
+] [35
+
 
 ]
-Chapter 5.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [37]
-Overfull \hbox (233.09148pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 38 \OT1/lmr/m/sl/10 CHAPTER 5.  INVERSE PROBABILITY WEIGHTING A
-DJUSTMENT OF THE LOGISTIC REGRESSION CALIBRATION-IN-THE-LARGE
- []
-
-[38] [39]
-Overfull \hbox (233.09148pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 40 \OT1/lmr/m/sl/10 CHAPTER 5.  INVERSE PROBABILITY WEIGHTING A
-DJUSTMENT OF THE LOGISTIC REGRESSION CALIBRATION-IN-THE-LARGE
- []
-
-[40]
-<thesis_files/figure-latex/PM-DGM-time-1.png, id=622, 693.08937pt x 161.10187pt
->
-File: thesis_files/figure-latex/PM-DGM-time-1.png Graphic file (type png)
-<use thesis_files/figure-latex/PM-DGM-time-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/PM-DGM-time-1.png  used on i
-nput line 606.
-(pdftex.def)             Requested size: 261.16638pt x 60.70557pt.
-
-Overfull \hbox (47.91968pt too wide) in paragraph at lines 610--611
-[]\OT1/lmr/m/n/10 For each es-ti-mand above, $[](\OML/lmm/m/it/10 t\OT1/lmr/m/n
-/10 ) = \OMS/lmsy/m/n/10 f[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 t\OT1/lmr/m/n/10 
-)\OML/lmm/m/it/10 ; []\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 t\OT1/lmr/m/n/10 )\OML/
-lmm/m/it/10 ; []\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 t\OT1/lmr/m/n/10 )\OMS/lmsy/m
-/n/10 g$ \OT1/lmr/m/n/10 and as-so-ci-ated SE, $[](\OML/lmm/m/it/10 t\OT1/lmr/m
-/n/10 ) = \OMS/lmsy/m/n/10 f[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 t\OT1/lmr/m/n/1
-0 )\OML/lmm/m/it/10 ; []\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 t\OT1/lmr/m/n/10 )\OM
-L/lmm/m/it/10 ; []\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 t\OT1/lmr/m/n/10 )\OMS/lmsy
-/m/n/10 g$\OT1/lmr/m/n/10 ,
- []
-
-<thesis_files/figure-latex/PM-DGM-1.png, id=625, 784.43062pt x 89.83563pt>
-File: thesis_files/figure-latex/PM-DGM-1.png Graphic file (type png)
-<use thesis_files/figure-latex/PM-DGM-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/PM-DGM-1.png  used on input 
-line 612.
-(pdftex.def)             Requested size: 403.88454pt x 46.25421pt.
-
-Overfull \hbox (6.31958pt too wide) in paragraph at lines 612--613
-[][] 
- []
-
-[41 <./thesis_files/figure-latex/PM-DGM-time-1.png> <./thesis_files/figure-late
-x/PM-DGM-1.png>]
-Overfull \hbox (233.09148pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 42 \OT1/lmr/m/sl/10 CHAPTER 5.  INVERSE PROBABILITY WEIGHTING A
-DJUSTMENT OF THE LOGISTIC REGRESSION CALIBRATION-IN-THE-LARGE
- []
-
-[42]
-Chapter 6.
-[43
-
-]
-Overfull \hbox (267.18918pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 44 \OT1/lmr/m/sl/10 CHAPTER 6.  PREDICTION MODEL PERFORMANCE ME
-TRICS FOR THE VALIDATION OF MULTI-STATE CLINICAL PREDICTION MODELS
- []
-
-[44]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[45]
-Overfull \hbox (267.18918pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 46 \OT1/lmr/m/sl/10 CHAPTER 6.  PREDICTION MODEL PERFORMANCE ME
-TRICS FOR THE VALIDATION OF MULTI-STATE CLINICAL PREDICTION MODELS
- []
-
-[46]
-Chapter 7.
-[47
-
-]
-Overfull \hbox (709.53664pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 48 \OT1/lmr/m/sl/10 CHAPTER 7.  DEVELOPMENT AND EXTERNAL VALIDA
-TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
-ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
- []
-
-[48] [49]
-
-LaTeX Warning: Reference `tab:Example-Patient' on page 50 undefined on input li
-ne 810.
-
-
-Overfull \hbox (709.53664pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 50 \OT1/lmr/m/sl/10 CHAPTER 7.  DEVELOPMENT AND EXTERNAL VALIDA
-TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
-ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
- []
-
-[50]
-LaTeX Font Info:    Font shape `OT1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/lmtt/b/n' tried instead on input line 813.
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-814.
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmtt on input line 
-823.
-LaTeX Font Info:    No file OMSlmtt.fd. on input line 823.
-
-LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
-(Font)              using `OMS/pzccm/m/n' instead
-(Font)              for symbol `textbackslash' on input line 823.
-
-<thesis_files/figure-latex/unnamed-chunk-1-1.png, id=707, 869.74937pt x 294.600
-63pt>
-File: thesis_files/figure-latex/unnamed-chunk-1-1.png Graphic file (type png)
-<use thesis_files/figure-latex/unnamed-chunk-1-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/unnamed-chunk-1-1.png  used 
-on input line 834.
-(pdftex.def)             Requested size: 568.7942pt x 192.66139pt.
-
-Overfull \hbox (171.22925pt too wide) in paragraph at lines 834--835
-[][] 
- []
-
-[51 <./thesis_files/figure-latex/unnamed-chunk-1-1.png>]
-<thesis_files/figure-latex/Continuous-Demo-1.png, id=718, 793.96625pt x 265.993
-74pt>
-File: thesis_files/figure-latex/Continuous-Demo-1.png Graphic file (type png)
-<use thesis_files/figure-latex/Continuous-Demo-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/Continuous-Demo-1.png  used 
-on input line 860.
-(pdftex.def)             Requested size: 522.5292pt x 175.05717pt.
-
-Overfull \hbox (124.96425pt too wide) in paragraph at lines 860--861
-[][] 
- []
-
-LaTeX Font Info:    Trying to load font information for OML+lmr on input line 8
-62.
-(c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/tex/latex/lm/omllmr.fd
-File: omllmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OML/lmr/m/n' in size <10> not available
-(Font)              Font shape `OML/lmm/m/it' tried instead on input line 862.
-
-Overfull \hbox (709.53664pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 52 \OT1/lmr/m/sl/10 CHAPTER 7.  DEVELOPMENT AND EXTERNAL VALIDA
-TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
-ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
- []
-
-[52 <./thesis_files/figure-latex/Continuous-Demo-1.png>]
-<thesis_files/figure-latex/Categorical-Demo-1.png, id=727, 506.39188pt x 404.00
-937pt>
-File: thesis_files/figure-latex/Categorical-Demo-1.png Graphic file (type png)
-<use thesis_files/figure-latex/Categorical-Demo-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/Categorical-Demo-1.png  used
- on input line 866.
-(pdftex.def)             Requested size: 327.38907pt x 261.19742pt.
-<thesis_files/figure-latex/Comorbidity-Demo-1.png, id=729, 471.7625pt x 199.244
-37pt>
-File: thesis_files/figure-latex/Comorbidity-Demo-1.png Graphic file (type png)
-<use thesis_files/figure-latex/Comorbidity-Demo-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/Comorbidity-Demo-1.png  used
- on input line 872.
-(pdftex.def)             Requested size: 307.87292pt x 130.02718pt.
-[53 <./thesis_files/figure-latex/Categorical-Demo-1.png> <./thesis_files/figure
--latex/Comorbidity-Demo-1.png>]
-<thesis_files/figure-latex/Event-Median-1.png, id=737, 688.07062pt x 199.24437p
-t>
-File: thesis_files/figure-latex/Event-Median-1.png Graphic file (type png)
-<use thesis_files/figure-latex/Event-Median-1.png>
-Package pdftex.def Info: thesis_files/figure-latex/Event-Median-1.png  used on 
-input line 878.
-(pdftex.def)             Requested size: 448.07004pt x 129.74748pt.
-
-Overfull \hbox (50.50508pt too wide) in paragraph at lines 878--879
-[][] 
- []
-
-
-LaTeX Warning: Reference `tab:Example-Patient' on page 54 undefined on input li
-ne 885.
-
-<figure/Dev_Paper_Example.png, id=739, 1239.12938pt x 301.125pt>
-File: figure/Dev_Paper_Example.png Graphic file (type png)
-<use figure/Dev_Paper_Example.png>
-Package pdftex.def Info: figure/Dev_Paper_Example.png  used on input line 887.
-(pdftex.def)             Requested size: 2478.1378pt x 602.28065pt.
-
-Overfull \hbox (2065.57285pt too wide) in paragraph at lines 887--887
-[][] 
+Overfull \hbox (34.94713pt too wide) in paragraph at lines 906--908
+ \OT1/lmr/m/it/10 Pathol-ogy, Re-search and Prac-tice\OT1/lmr/m/n/10 , vol. 204
+, no. 3, pp. 213--214, 2008, doi: []10.1016/j.prp.2007.12.002[]. 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (709.53664pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 54 \OT1/lmr/m/sl/10 CHAPTER 7.  DEVELOPMENT AND EXTERNAL VALIDA
-TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
-ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
+[38]
+Overfull \hbox (4.76935pt too wide) in paragraph at lines 924--926
+ \OT1/lmr/m/n/10 lyzed as such,'' \OT1/lmr/m/it/10 Neu-roepi-demi-ol-ogy\OT1/lm
+r/m/n/10 , vol. 30, no. 3, pp. 138--139, 2008, doi: []10.1159/000126908[]. 
  []
 
-[54 <./thesis_files/figure-latex/Event-Median-1.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[55 <./figure/Dev_Paper_Example.png>]
-Overfull \hbox (709.53664pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 56 \OT1/lmr/m/sl/10 CHAPTER 7.  DEVELOPMENT AND EXTERNAL VALIDA
-TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
-ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
- []
-
-[56] [57]
-Overfull \hbox (709.53664pt too wide) has occurred while \output is active
-\OT1/lmr/m/n/10 58 \OT1/lmr/m/sl/10 CHAPTER 7.  DEVELOPMENT AND EXTERNAL VALIDA
-TION OF A MULTI-STATE CLINICAL PREDICTION MODEL FOR CHRONIC KIDNEY DISEASE PATI
-ENTS PROGRESSING ONTO RENAL REPLACEMENT THERAPY AND DEATH
- []
-
-[58
-
-]
-Chapter 8.
-[59] [60
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[61
-
-]
-Overfull \hbox (4.72093pt too wide) in paragraph at lines 989--991
- |   []   |   []   |   []\OT1/lmr/m/n/10 , vol. 74, pp. 167--176, Jun. 2016, do
-i: []10.1016/j.jclinepi.2015.12.005[]. 
+Overfull \hbox (59.42285pt too wide) in paragraph at lines 957--959
+ \OT1/lmr/m/n/10 The Sal-ford Lung Study,'' \OT1/lmr/m/it/10 Tho-rax\OT1/lmr/m/
+n/10 , vol. 69, pp. 1152--1154, 2014, doi: []http://dx.doi.org/10.1136/thoraxjn
+l-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[62]
-Overfull \hbox (31.93568pt too wide) in paragraph at lines 1028--1030
- |   []   |   []   |   []   |   []\OT1/lmr/m/n/10 , vol. 19, no. 1, pp. 71--99,
- Feb. 2010, doi: []10.1177/0962280209105020[]. 
- []
-
-
-Overfull \hbox (121.69975pt too wide) in paragraph at lines 1037--1039
- [][]\OT1/lmr/m/n/10 [32] H. Wick-ham, ``The tidy tools man-i-festo.'' https://
+[39]
+Overfull \hbox (121.69975pt too wide) in paragraph at lines 972--974
+ [][]\OT1/lmr/m/n/10 [61] H. Wick-ham, ``The tidy tools man-i-festo.'' https://
 cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html,
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[63]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[64]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[65]
-Overfull \hbox (16.07344pt too wide) in paragraph at lines 1121--1123
- |   []\OT1/lmr/m/n/10 , vol. 139, no. 4, pp. 442--445, Feb. 1994, doi: []10.10
-93/ox-ford-jour-nals.aje.a117020[]. 
- []
-
-
-Overfull \hbox (36.27739pt too wide) in paragraph at lines 1151--1153
- |   []   |   []   |   []   |   []\OT1/lmr/m/n/10 , vol. 204, no. 3, pp. 213--2
-14, 2008, doi: []10.1016/j.prp.2007.12.002[]. 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[66]
-Overfull \hbox (7.24742pt too wide) in paragraph at lines 1169--1171
- \OT1/lmr/m/n/10 lyzed as such,'' |   [], vol. 30, no. 3, pp. 138--139, 2008, d
-oi: []10.1159/000126908[]. 
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[67]
-Overfull \hbox (60.56204pt too wide) in paragraph at lines 1193--1195
- \OT1/lmr/m/n/10 The Sal-ford Lung Study,'' |   [], vol. 69, pp. 1152--1154, 20
-14, doi: []http://dx.doi.org/10.1136/thoraxjnl-
- []
-
-
-Overfull \hbox (9.5434pt too wide) in paragraph at lines 1223--1225
- [][]\OT1/lmr/m/n/10 [94] P. Roys-ton and M. K. B. Par-mar, ``Flex-i-ble para-m
+Overfull \hbox (9.5434pt too wide) in paragraph at lines 993--995
+ [][]\OT1/lmr/m/n/10 [68] P. Roys-ton and M. K. B. Par-mar, ``Flex-i-ble para-m
 et-ric proportional-hazards and proportional-
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1230.
-[68]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1230.
+
+Overfull \hbox (21.35556pt too wide) in paragraph at lines 999--1001
+ \OT1/lmr/m/it/10 ogy Dial-y-sis Trans-plan-ta-tion\OT1/lmr/m/n/10 , vol. 27, n
+o. 12, pp. 4414--4419, Dec. 2012, doi: []10.1093/ndt/gfs461[]. 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[40]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1039.
+[41]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1039.
 (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1230.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1230.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1039.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1039.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 558558E2E57E73D2262624E715498C0B;5295.
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+(rerunfilecheck)             Checksum: 9134AD4F795EC7D6EB81397BE249163E;1804.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1230.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1039.
  ) 
 Here is how much of TeX's memory you used:
- 10851 strings out of 482913
- 167766 string characters out of 5957946
- 430770 words of memory out of 5000000
- 25541 multiletter control sequences out of 15000+600000
- 585465 words of font info for 71 fonts, out of 8000000 for 9000
+ 12189 strings out of 482913
+ 184772 string characters out of 5957946
+ 480896 words of memory out of 5000000
+ 26976 multiletter control sequences out of 15000+600000
+ 603505 words of font info for 86 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,9n,42p,1927b,427s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,14n,42p,1602b,366s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 }{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc
-}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.e
-nc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit
-.enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-math
-ex.enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm
-.enc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rmsc
-.enc}<c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pub
-lic/lm/lmbx10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/p
-ublic/lm/lmbx12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1
-/public/lm/lmcsc10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/ty
-pe1/public/lm/lmex10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/
-type1/public/lm/lmmi10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/font
-s/type1/public/lm/lmmi6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fon
-ts/type1/public/lm/lmmi7.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fo
-nts/type1/public/lm/lmr10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/f
-onts/type1/public/lm/lmr17.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/
-fonts/type1/public/lm/lmr6.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/
-fonts/type1/public/lm/lmr7.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/
-fonts/type1/public/lm/lmro10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dis
-t/fonts/type1/public/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-d
-ist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-
-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texm
-f-dist/fonts/type1/public/lm/lmtt10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/te
-xmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on thesis.pdf (68 pages, 861836 bytes).
+}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{
+c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
+}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-mathit.e
+nc}{c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/enc/dvips/lm/lm-rmsc.e
+nc}<c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmbx10
+.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lmbx
+12.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/lm
+bx7.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/lm/l
+mcsc10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public/l
+m/lmmi10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/public
+/lm/lmr10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publi
+c/lm/lmr17.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
+ic/lm/lmr5.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
+ic/lm/lmr7.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
+ic/lm/lmr9.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/publ
+ic/lm/lmri10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/pu
+blic/lm/lmro10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type1/
+public/lm/lmsy10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/type
+1/public/lm/lmtk10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/ty
+pe1/public/lm/lmtt10.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts/
+type1/public/lm/lmtt8.pfb><c:/Users/mbrxsmbc/Documents/TinyTex/texmf-dist/fonts
+/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on thesis.pdf (41 pages, 846022 bytes).
 PDF statistics:
- 1139 PDF objects out of 1200 (max. 8388607)
- 1024 compressed objects within 11 object streams
- 332 named destinations out of 1000 (max. 500000)
- 633 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 733 PDF objects out of 1000 (max. 8388607)
+ 663 compressed objects within 7 object streams
+ 185 named destinations out of 1000 (max. 500000)
+ 211 words of extra memory for PDF output out of 10000 (max. 10000000)
 

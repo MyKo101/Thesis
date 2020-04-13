@@ -1,7 +1,10 @@
-pkgs <- c("devtools","thesisdown","tidyverse","rlang","flextable",
-          "googledrive")
+pkgs <- c("devtools","thesisdown","tidyverse","rlang",
+          "googledrive","magrittr","kableExtra")
 
 purrr::walk(pkgs,library,character.only=T)
+
+
+options(kableExtra.html.bsTable = T)
 
 xx <- function(x = "xxxx") paste0("[**",x,"**]")
 cc <- function(x="Something") xx(paste0("Cite: ",x))
@@ -13,157 +16,213 @@ logit1 <- function(o) exp(o)/(exp(o)+1)
 
 .wd <- "C:/Users/mbrxsmbc/Documents/Thesis/index/"
 
-add_flextable_caption <- function(ref,caption)
+Trans_short2long <- function(x)
 {
-  cat("<caption>(\\#tab:",ref,") ",caption,"</caption>",sep="")
+  t.list <- grep("^Trans_",x)
+  y <- character(length(x))
+  y[-t.list] <- x[-t.list]
+  
+  y[t.list] <- x[t.list] %>%
+    substr(8,9) %>%
+    strsplit("",fixed=T) %>%
+    map(~recode(.,a="Alive",c="CKD",d="Dead",r="RRT",h="HD",p="PD",t="Tx")) %>%
+    map(~paste0(.,collapse=" to ")) %>%
+    unlist
+  
+  return(y)
 }
 
-stardard_format_table <- function(x,numeric.cols=NULL,widths=NULL)
+Dev_Valid_Paper_Var_Names <- function(.tbl,.variable,group_var=NULL,Full_Comorb=0)
 {
-  x.new <- x %>%
-    theme_zebra(odd_header="cornflowerblue") %>%
-    color(part="header",color="white") %>%
-    fontsize(size=8) %>%
-    font(part="all",font="Garamond") %>%
-    padding(padding=0) %>%
-    align(align="left") %>%
-    border(border=officer::fp_border(color="black",width=0.5),part="all") %>%
-    height(height=0.5/2.54)
+  .V <- pull(.tbl,as_name(enquo(.variable)))
   
-  if(is.null(widths))
+  if(!is.null(group_var))
   {
-    x.new <- autofit(x.new)
-  } else 
-  {
-    x.new <- width(x.new,width=widths/2.54)
-  }
-  
-  if(!is.null(numeric.cols))
-  {
-    x.new <- x.new %>%
-      fontsize(j=numeric.cols,size=7) %>%
-      font(j=numeric.cols,font="courier new") %>%
-      align(j=numeric.cols,align="right")
-      
-  }
-  
-  return(x.new)
-  
-}
-
-collapse_footer <- function(x,sep="; ",footer.height=NULL)
-{
-  old.content <- x$footer$content$content$data
-  
-  new.content <- list()
-  
-  sep.content <- old.content[1,1][[1]][1,]
-  sep.content$txt <- sep
-  sep.content$vertical.align <- NA
-  
-  
-  for(i in 1:(nrow(old.content)-1))
-  {
-    old.content[i,1][[1]] <- rbind(old.content[i,1][[1]],sep.content)
-  }
-  
-  new.content[[1]] <- do.call(rbind,old.content[,1])
-  new.content[[1]]$seq_index <- 1:nrow(new.content[[1]])
-  
-  for(i in (2:ncol(old.content))) new.content[[i]] <- old.content[1,i][[1]]
-  
-  dim(new.content) <- c(1,ncol(old.content))
-  
-  colnames(new.content) <- colnames(old.content)
-  
-  x$footer$content$content$data <- new.content
-  
-  x <- merge_at(x,part="footer")
-  
-  if(is.null(footer.height)) footer.height = tail(dim(x)$heights,1)
-  x <- height(x,height=0,part="footer")
-  x <- height(x,i=1,height=footer.height,part="footer")
-  
-  x
-  
-}
-
-Dev_Valid_Paper_Var_Names <- function(.tbl,.variable)
-{
-  .tbl %>% 
-    mutate(!!enquo(.variable) := case_when(
-      !!enquo(.variable) == "eGFR.Rate" ~ "eGFR Rate",
-      !!enquo(.variable) == "log.eGFR.Rate" ~ "log(eGFR Rate",
-      !!enquo(.variable) == "uPCR.Rate" ~ "uPCR Rate",
-      !!enquo(.variable) == "log.uPCR.Rate" ~ "log(uPCR Rate",
-      !!enquo(.variable) == "Calcium" ~ "Corrected Calcium",
-      T ~ !!enquo(.variable)))
-}
-
-as_equation <- function(x,i=NULL,j=NULL,nickname)
-{
-  require(flextable)
-  require(png)
-  fnum <- 0
-  
-  ff <- list.files("codecogs")
-  
-  ff <- ff[grep(paste0("^",nickname),ff)]
-  
-  if(length(ff) > 0 )
-    file.remove(paste0("codecogs/",ff))
-  
-  
-  i <- flextable:::get_rows_id(x[["body"]], i)
-  j <- flextable:::get_columns_id(x[["body"]], j)
-  
-  for(i0 in i) for(j0 in j)
-  {
-    fnum <- fnum + 1
-    eqn <- x$body$dataset[i0,j0]
-    eqn <- gsub("\\","%5C",eqn,fixed=T)
-    eqn <- gsub(" ","",eqn,fixed=T)
+    .grp <- rep(NA,length(.V))
     
-    webaddress <- paste0("https://latex.codecogs.com/png.latex?",eqn)
-    dir <- paste0("codecogs/",nickname," - ",fnum,".png")
+    .grp[grepl("Age",.V,fixed=T)] <- "Age"
+    .grp[grepl("eGFR",.V,fixed=T)] <- "eGFR"
+    .grp[grepl("uPCR",.V,fixed=T)] <- "uPCR"
     
-    download.file(webaddress,dir,mode="wb",quiet=T)
+    .grp[.V %in% c("CCF","COPD","CVA","DM","HT",
+                   "IHD","LD","MI","PVD","ST")] <- "Comorbidity"
     
-    img <- readPNG(dir)
     
-    cell.h <- dim(x)$heights[i0]
-    cell.w <- dim(x)$widths[j0]
-    cell.ar <- cell.w/cell.h
+    .V_g <- grepl(" : ",.V,fixed=T)
     
-    h <- dim(img)[1]
-    w <- dim(img)[2]
-    ar <- w/h
-    
-    if(cell.ar < ar)
+    if(any(.V_g)) 
     {
-      res.h <- cell.h
-      res.w <- cell.h*ar
-    } else{
-      res.w <- cell.w
-      res.h <- cell.w/ar
-    }
+      .grp[!.V_g & is.na(.grp)] <- "Measures"
+      
+      .V_m <- matrix(unlist(str_split(.V[.V_g] ," : ")),ncol=2,byrow=T)
+      
+      .grp[.V_g] <- .V_m[,1]
+      .V[.V_g] <- .V_m[,2]
+    } else .grp[is.na(.grp)] <- "Measures"
     
-    x <- compose(x,i0,j0,part="body",
-                 value=as_paragraph(as_image(src=dir,height=res.h,width=res.w)))
+    .grp <- case_when(.grp == "SmokingStatus" ~ "Smoking Status",
+                      .grp == "Primary Renal" ~ "Primary Renal Diagnosis",
+                      T~.grp)
+    
+    .grp_n <- case_when(.grp == "Age" ~ 1,
+                        .grp == "eGFR" ~ 2,
+                        .grp == "uPCR" ~ 3,
+                        .grp == "Measures" ~ 4,
+                        .grp == "Gender" ~ 5,
+                        .grp == "Smoking Status" ~ 6,
+                        .grp == "Primary Renal Diagnosis" ~ 7,
+                        .grp == "Comorbidity" ~ 8,
+                        T ~ 9)
+    
+    
+  
+    .tbl %<>% mutate(group_temp = .grp,
+                     Order = .grp_n,
+                     !!enquo(.variable) := .V) %>%
+      arrange(Order,group_temp) %>%
+      select(-Order) %>%
+      select(group_temp,!!enquo(.variable),everything()) %>%
+      rename(!!enquo(group_var) := group_temp)
+    
+    
+    .V <- pull(.tbl,as_name(enquo(.variable)))
   }
   
-  return(x)
+  
+  
+  .V <- case_when(.V == "eGFR.Rate" ~ "eGFR Rate",
+                  .V == "log.eGFR.Rate" ~ "log(eGFR Rate)",
+                  .V == "uPCR.Rate" ~ "uPCR Rate",
+                  .V == "log.uPCR.Rate" ~ "log(uPCR Rate)",
+                  .V == "Calcium" ~ "Corrected Calcium",
+                  T ~ .V)
+  
+  .V <- gsub("Former_3Y","Former (3 years+)",.V)
+  .V <- gsub("Non_Smoker","Non-Smoker",.V)
+  
+  if(Full_Comorb == 1)
+  {
+    .V <- case_when(.V == "CCF"  ~ "Congestive Cardiac Failure",
+                    .V == "COPD" ~ "Chronic Obstructive Pulmonary Disease",
+                    .V == "CVA"  ~ "Prior Cerebrovascular Accident",
+                    .V == "DM"   ~ "Diabetes",
+                    .V == "HT"   ~ "Hypertension",
+                    .V == "IHD"  ~ "Ischemic Heart Disease",
+                    .V == "LD"   ~ "Chronic Liver Disease",
+                    .V == "MI"   ~ "Prior Myocardial Infarction",
+                    .V == "PVD"  ~ "Peripheral Vascular Disease",
+                    .V == "ST"   ~ "Solid Tumour")
+  }
+  
+  if(Full_Comorb == 2)
+  {
+    .V <- case_when(.V == "CCF"  ~ "Congestive Cardiac Failure (CCF)",
+                    .V == "COPD" ~ "Chronic Obstructive Pulmonary Disease (COPD)",
+                    .V == "CVA"  ~ "Prior Cerebrovascular Accident (CVA)",
+                    .V == "DM"   ~ "Diabetes (DM)",
+                    .V == "HT"   ~ "Hypertension (HT)",
+                    .V == "IHD"  ~ "Ischemic Heart Disease (IHD)",
+                    .V == "LD"   ~ "Chronic Liver Disease (LD)",
+                    .V == "MI"   ~ "Prior Myocardial Infarction (MI)",
+                    .V == "PVD"  ~ "Peripheral Vascular Disease (PVD)",
+                    .V == "ST"   ~ "Solid Tumour (ST)")
+  }
+  
+  .tbl %<>% mutate(!!enquo(.variable) := .V)
+  
+  .tbl
+  
+}
+
+if_fun <- function(.x,.predicate,.fun,.elsefun=NULL) 
+{
+  if(.predicate) .fun(.x) else 
+    if(!is.null(.elsefun))
+      .elsefun(.x) else
+        .x
+}
+
+get_format <- function(x=NULL)
+{
+  if(knitr:::is_latex_output()) "latex" else "html"
+}
+
+format_choice <- function(.latex,.html)
+{
+  if(get_format() == "latex") .latex else .html
+}
+
+make_linebreaks <- function(.tbl)
+{
+  if(get_format() == "latex")
+  {
+    .out <- .tbl
+    
+    lb_cols <- grepl("\n",lapply(.out,paste0,collapse=""),fixed=T)
+    .out[,lb_cols,drop=F] <- lapply(.out[,lb_cols],linebreak)
+    
+  } else .out <- .tbl
+  return(.out)
+}
+
+to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
+                     col_names=do_nothing,row_names=NULL,group_col=NULL)
+{
+  if(!is.null(group_col))
+  {
+    grp_index <- .tbl[[group_col]] %>%
+      replace(.==""," ") %>%
+      fct_inorder %>%
+      table
+    .tbl %<>% select(-any_of(group_col))
+  }
+  
+  .pre <- .tbl %>%
+    mutate_if(is.character,~replace_na(.,"")) %>%
+    if_fun(get_format()=="html",
+           function(x) mutate_if(x,is.character,
+                                 ~gsub("<","&lt;",.,fixed=T) %>%
+                                   gsub(">","&gt;",.,fixed=T) %>%
+                                   gsub("\n","<br>",.,fixed=T)%>%
+                                   gsub("^2","&sup2;",.,fixed=T)),
+           function(x) mutate_if(x,is.character,
+                                 ~gsub("^2","\\textsuperscript{2}",.,fixed=T) %>%
+                                   gsub("%","\\%",.,fixed=T))) %>%
+    make_linebreaks %>%
+    if_fun(!is.null(row_names),
+           function(x) column_to_rownames(x,row_names))
+  
+  
+  if(get_format() == "html")
+  {
+    caption <- gsub("<","&lt;",caption,fixed=T)
+    caption <- gsub(">","&gt;",caption,fixed=T)
+    caption <- gsub("^2","&sup2;",caption,fixed=T)
+  }
+  
+  .pre %>%
+    kable(format=get_format(),
+          booktabs=T,
+          col.names = col_names(colnames(.pre)),
+          escape=F,
+          caption=paste0(
+            format_choice("{\\small ","<font size=\"2\">"),
+            caption,
+            format_choice("}","</font>")),
+          ...) %>%
+    kable_styling(bootstrap_options="striped",
+                  latex_options="striped",
+                  font_size=format_choice(7,9)) %>%
+    if_fun(lscape,landscape,
+           function(x) kable_styling(x,latex_options="hold_position")) %>%
+    if_fun(!is.null(numeric_cols),
+           function(x) column_spec(x,numeric_cols,monospace = T)) %>%
+    if_fun(!is.null(group_col),
+           function(x) pack_rows(x,index=grp_index))
+  
 }
 
 
+fm <- function(x) footnote_marker_alphabet(x,format=get_format())
 
-
-
-
-
-
-
-
-
-
-
+do_nothing <- function(x) x

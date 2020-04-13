@@ -9,7 +9,9 @@ If you'd like to change the name of the bibliography to something else,
 delete "References" and replace it.
 -->
 
-# References {-}
+`r if(get_format() == "html") "# Full References {-}"`
+`r if(get_format() == "latex") "# References {-}"`
+
 <!--
 This manually sets the header for this unnumbered chapter.
 -->
@@ -38,3 +40,4 @@ nocite: |
 ...
 
 <div id="refs"></div>
+

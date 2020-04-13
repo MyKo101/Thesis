@@ -3,10 +3,6 @@
 
 ## Introduction
 
-A testing ~~introduction~~ beginning of a troubling time provides unsustainability.
-
-What if I need to add a lot of text in between. Like an entirely new paragraph and it waffles on for a while until eventually it stops, but not before pushing the next paragraph further and further form down. This would move the old anchor point further and  it's origin within the document. The risk is that it is only using the single word "provides" to find it. If it is, then there could be a problem when the test is expanded there are other copies of provides within othe regions which may be closer to the original. Alternatively, maybe it is using the surrounding phrase such as which provides or even provides patients, or both with a phrase like which provides patients.
-
 A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical condition, more specifically, a prognostic model allows the prediction of future events [@steyerberg_prognosis_2013]. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models are used in clinical practice to influence treatment decisions such as the prescribing of statins for cardiovascular disease via the application of the QRISK models [@hippisley-cox_development_2017].
 
 
@@ -55,7 +51,16 @@ Both the internal and external validation cohort were used as part of the multin
 
 The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an $\textrm{eGFR} < 60$, their eGFR Rate would be unavailable (i.e. missing). Otherwise, patient eGFRs would *have* to drop to below 60 and thus eGFR Rate would be negative. `r xx("I feel like this bias should have a name, but can't think what to search to find it")`
 
+### Model Design
 
+
+Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
+
+```{r State-Diagram, echo=F, fig.align="center",out.width="90%", fig.cap="Diagram of the three models, the states being modelled and relevant transitions"}
+knitr::include_graphics("figure/Dev_Paper_State_Diagrams.png")
+```
+
+The models were developed and validated as discussed in the Supplementary materials appendix {#chap-dev-paper-supp}.
 
 ### Example
 
@@ -64,8 +69,7 @@ Once the models have been developed, we will apply them to two example patients 
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \@ref(tab:Example-Patient).
 
 <br>
-
-```{r}
+```{r Example-Patient, echo=F}
 tibble(id = 1:3,Age=c("20","40","66"),Gender=c("Female","Male","Female"),
        `Smoking Status`=c("Non-Smoker","Smoker","Non-Smoker"),
        BP=c("144/101","160/90","140/80"),
@@ -80,17 +84,12 @@ tibble(id = 1:3,Age=c("20","40","66"),Gender=c("Female","Male","Female"),
                      "Diabetes\nChronic Obstructive Pulmonary Disease\nHypertension")) %>%
   pivot_longer(-id,names_to="Vars",values_to="Vals") %>% 
   pivot_wider(names_from=id,values_from=Vals,names_prefix="Patient ") %>%
-  flextable %>%
-  stardard_format_table(widths=5) %>%
-  align(part="header",align="center") %>%
-  align(part="body",align="right") %>%
-  padding(part="body",padding.left=3, padding.right=3)
-add_flextable_caption("Example-Patient","Details of the Example Patients")
-
-
+  to_kable(caption="Details of the Example Patients",
+           row_names="Vars") %>%
+  column_spec(2:4,width="4cm")
 ```
 
-Out three example patients cover a broad range of ages and other covariates. A clinically guide prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
+Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
 
 
 ### Calculator
@@ -107,24 +106,26 @@ As seen in table \@ref(tab:Continuous-Demo), The Age of both populations were ce
 
 
 <br>
-```{r Continuous-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+```{r Continuous-Demo, echo=F}
 paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
-  Dev_Valid_Paper_Var_Names(Variable) %>%
-  flextable %>%
-  set_header_labels(res_SKS = "SKS (Development)",
-                    res_UoG = "SERPR (Validation)")%>%
-  stardard_format_table(numeric.cols=2:3,
-                        widths=c(1.64,7.964,8.758)) %>%
-  footnote(i=2:3,j=1,value=as_paragraph("(ml/min/1.73m^2) or per year"),ref_symbol="a") %>%
-  footnote(i=4:5,j=1,value=as_paragraph("(mmHG)"),ref_symbol="b",inline=T) %>%
-  footnote(i=6,j=1,value=as_paragraph("(kg/m^2)"),ref_symbol="c",inline=T) %>%
-  footnote(i=c(7,9),j=1,value=as_paragraph("(g/l)"),ref_symbol="d",inline=T) %>%
-  footnote(i=c(8,10),j=1,value=as_paragraph("(mmol/l)"),ref_symbol="e",inline=T) %>%
-  footnote(i=11:12,j=1,value=as_paragraph("(g/mmol) or per year"),ref_symbol="f",inline=T) %>%
-  fontsize(size=8,part="footer") %>%
-  font(fontname="Garamond",part="footer")
-add_flextable_caption("Continuous-Demo","Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>")
+  Dev_Valid_Paper_Var_Names(Variable,group_var = ".group") %>%
+  rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG) %>%
+  mutate(Variable = paste0(Variable,
+                           case_when(grepl("eGFR",Variable) ~ fm(1),
+                                     grepl("BP",Variable) ~ fm(2),
+                                     Variable == "BMI" ~ fm(3),
+                                     Variable %in% c("Albumin","Haemoglobin") ~ fm(4),
+                                     Variable %in% c("Phosphate","Corrected Calcium") ~ fm(5),
+                                     grepl("uPCR",Variable) ~ fm(6),
+                                     T~""))) %>%
+  to_kable(caption="Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>",
+           group_col=".group", align="rr",
+           row_names="Variable",numeric_cols=2:3) %>%
+  footnote(alphabet=c("(ml/min/1.73m^2) or per year","(mmHG)","(kg/m^2)",
+                      "(g/l)","(mmol/l)","(g/mmol) or per year"),
+           footnote_as_chunk=T)
+  
 
 ```
 
@@ -138,73 +139,63 @@ Table \@ref(tab:Categorical-Demo) shows a breakdown of the categorical variables
 ```{r Categorical-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
-  mutate(Variable = if_else(is.na(Variable),Category,Variable)) %>%
-  flextable %>%
-  set_header_labels(res_SKS = "SKS (Development)",
-                    res_UoG = "SERPR (Validation)") %>%
-  merge_h_range(i=1:22,j1=1,j2=2) %>%
-  stardard_format_table(numeric.cols=3:4,
-                        widths=c(2,2.4,3.492,3.625)) %>%
-  align(j=1,align="right") %>%
-  align(i=c(1,4,10,16),j=1,align="left") %>%
-  align(j=1,part="header",align="left") %>%
-  border(i=1,j=1,part="header",border.right=officer::fp_border(width=0)) %>%
-  border(i=1,j=2,part="header",border.left=officer::fp_border(width=0))
-add_flextable_caption("Categorical-Demo","Population demographics for the categorical variables presented as number (percent)")
+  mutate(Variable = Variable) %>%
+  fill(Variable) %>%
+  mutate(Category = if_else(Category == "<Missing>",
+                            paste0("<",Variable," Missing>"),
+                            Category),
+         Variable = if_else(Variable == "Renal Diagnosis",
+                            "Primary Renal Diagnosis",
+                            Variable)) %>%
+  rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG) %>%
+  filter(!is.na(Category)) %>%
+  to_kable(caption="Population demographics for the categorical variables presented as number (percent)",numeric_cols=c(2,3),row_names="Category",group_col="Variable")
 
 ```
 
 Overall, there were high levels of comorbidities within the SKS population as shown in table \@ref(tab:Comorbidity-Demo), but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
 
-
-<br>
-```{r Comorbidity-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+```{r, Comorbidity-Demo, echo=F}
 paste0(.wd,"data/Dev_Paper_Comorbidity_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
-  flextable %>%
-  set_header_labels(res_SKS = "SKS (Development)",
-                    res_UoG = "SERPR (Validation)")%>%
-  stardard_format_table(numeric.cols = 2:3,
-                        widths=c(1.64,4.366,4.815))
-add_flextable_caption("Comorbidity-Demo","Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>")
+  rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG) %>%
+  Dev_Valid_Paper_Var_Names(Variable,Full_Comorb = 2) %>%
+  to_kable(caption="Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>",
+           row_names="Variable",align="rr",numeric_cols=2:3)
 
 ```
-
 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median).
 
-<br>
-```{r Event-Median, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+```{r Event-Median, echp=F}
 paste0(.wd,"data/Dev_Paper_Event_Median.csv") %>%
   read_csv(col_types=cols()) %>%
-  flextable %>%
-  set_header_labels(res_SKS = "SKS (Development)",
-                    res_UoG = "SERPR (Validation)") %>%
-  stardard_format_table(numeric.cols = 4:5,
-                        widths=c(1.64,1.1,1,6,6)) %>%
-  merge_at(i=2:4,j=1) %>%
-  merge_at(i=5:10,j=1) %>%
-  merge_at(i=2:3,j=2) %>%
-  merge_at(i=5:8,j=2)
-add_flextable_caption("Event-Median","Event times for the two populations presented as Number of Events = Median (Inter-Quartile Range) [Min, Max]")
-
+  rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG)%>%
+  mutate(Transition = paste0(From, " to ",To)) %>%
+  select(-Model,-From,-To) %>%
+  select(Transition,everything()) %>%
+  to_kable(caption="Event times for the two populations presented as Number of Events = Median (Inter-Quartile Range) [Min, Max]",
+           align="crr",numeric_cols=2:3) %>%
+  pack_rows(index=c("Two-State Model"=1,"Three-State Model"=3,"Five-State Model"=6))
+  
 ```
+
 
 ### Example
 
 The example patients seen in Table \@ref(tab:Example-Patient) were passed through our Three-State prediction model and the results for all time-points are shown in figure \@ref(fig:Example-Predictions-trend). The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.
 
-```{r Example-Predictions-trend, fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
+```{r Example-Predictions-trend, out.width="90%", fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
 knitr::include_graphics("figure/Dev_Paper_Example.png")
 ```
 
 ### Calculator
 
-The calculator is available online here: [https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/](https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/).
+The calculator is available online here:
+
+[https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/](https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/).
 
 ## Discussion
-
-<!-- Provide a summary of the main findings, starting from the research objective. Stick to the facts (no interpretation or speculation): This is essentially a summary from what was reported in the Results section. However try to avoid literally repeating things that were said already.--->
 
 We have used data provided by SKS to develop a Multi-State Clinical Prediction Model and then validated this model within the SKS and SERPR datasets. Within our Models, the cause of a patient's renal disease had the widest effect on patient outcomes meaning that outcomes are highly dependent on ERA-EDTA classification of the diagnosis. Most groupings resulted in a lowered hazard of death and an increased hazard of RRT compared to the baseline of Systemic diseases.
 
