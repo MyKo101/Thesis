@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
-  <meta name="description" content="Chapter 4 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <title>Chapter 5 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
+  <meta name="description" content="Chapter 5 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta property="og:title" content="Chapter 5 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta name="twitter:title" content="Chapter 5 Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   
   
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="chap-Conf-CR.html"/>
+<link rel="prev" href="chap-IPCW-logistic.html"/>
 <link rel="next" href="chap-dev-paper.html"/>
 <style type="text/css">
 p.abstract{
@@ -80,7 +80,6 @@ div.abstract{
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
 <ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="chap-lit-report.html"><a href="chap-lit-report.html"><i class="fa fa-check"></i><b>1</b> Literature Report</a>
@@ -110,71 +109,108 @@ div.abstract{
 </ul></li>
 <li class="chapter" data-level="3" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html"><i class="fa fa-check"></i><b>3</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
-<li class="chapter" data-level="3.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-1"><i class="fa fa-check"></i><b>3.2</b> Methods</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html"><i class="fa fa-check"></i><b>4</b> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</a>
+<li class="chapter" data-level="" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#abstract-1"><i class="fa fa-check"></i>Abstract</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#motivating-data-set"><i class="fa fa-check"></i><b>4.2</b> Motivating Data Set</a></li>
-<li class="chapter" data-level="4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#current-approaches"><i class="fa fa-check"></i><b>4.3</b> Current Approaches</a>
+<li class="chapter" data-level="3.0.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background"><i class="fa fa-check"></i><b>3.0.1</b> Background</a></li>
+<li class="chapter" data-level="3.0.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-1"><i class="fa fa-check"></i><b>3.0.2</b> Methods</a></li>
+<li class="chapter" data-level="3.0.3" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#results"><i class="fa fa-check"></i><b>3.0.3</b> Results</a></li>
+<li class="chapter" data-level="3.0.4" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#conclusion"><i class="fa fa-check"></i><b>3.0.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background-1"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-2"><i class="fa fa-check"></i><b>3.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html"><i class="fa fa-check"></i><b>4</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#baseline-models"><i class="fa fa-check"></i><b>4.3.1</b> Baseline Models</a></li>
-<li class="chapter" data-level="4.3.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#notation"><i class="fa fa-check"></i><b>4.3.2</b> Notation</a></li>
-<li class="chapter" data-level="4.3.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#patient-weighting"><i class="fa fa-check"></i><b>4.3.3</b> Patient Weighting</a></li>
-<li class="chapter" data-level="4.3.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---brier-score"><i class="fa fa-check"></i><b>4.3.4</b> Accuracy - Brier Score</a></li>
-<li class="chapter" data-level="4.3.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---c-statistic"><i class="fa fa-check"></i><b>4.3.5</b> Discrimination - c-statistic</a></li>
-<li class="chapter" data-level="4.3.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---intercept-and-slope"><i class="fa fa-check"></i><b>4.3.6</b> Calibration - Intercept and Slope</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#extension-to-multi-state-models"><i class="fa fa-check"></i><b>4.4</b> Extension to Multi-State Models</a>
+<li class="chapter" data-level="4.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#methods-3"><i class="fa fa-check"></i><b>4.2</b> Methods</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#trivial-extensions"><i class="fa fa-check"></i><b>4.4.1</b> Trivial Extensions</a></li>
-<li class="chapter" data-level="4.4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---multiple-outcome-brier-score"><i class="fa fa-check"></i><b>4.4.2</b> Accuracy - Multiple Outcome Brier Score</a></li>
-<li class="chapter" data-level="4.4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---polytomous-discriminatory-index"><i class="fa fa-check"></i><b>4.4.3</b> Discrimination - Polytomous Discriminatory Index</a></li>
-<li class="chapter" data-level="4.4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---multinomial-intercept-matched-and-unmatched-slopes"><i class="fa fa-check"></i><b>4.4.4</b> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</a></li>
+<li class="chapter" data-level="4.2.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#theory"><i class="fa fa-check"></i><b>4.2.1</b> Theory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#aims"><i class="fa fa-check"></i><b>4.2.2</b> Aims</a></li>
+<li class="chapter" data-level="4.2.3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#data-generating-method"><i class="fa fa-check"></i><b>4.2.3</b> Data Generating Method</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#methods-4"><i class="fa fa-check"></i><b>4.2.4</b> Methods</a></li>
+<li class="chapter" data-level="4.2.5" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#estimands"><i class="fa fa-check"></i><b>4.2.5</b> Estimands</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#performance-measures"><i class="fa fa-check"></i><b>4.2.6</b> Performance Measures</a></li>
+<li class="chapter" data-level="4.2.7" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#software"><i class="fa fa-check"></i><b>4.2.7</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#application-to-real-world-data"><i class="fa fa-check"></i><b>4.5</b> Application to Real-World Data</a>
+<li class="chapter" data-level="4.3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#results-1"><i class="fa fa-check"></i><b>4.3</b> Results</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#discussion"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html"><i class="fa fa-check"></i><b>5</b> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy"><i class="fa fa-check"></i><b>4.5.1</b> Accuracy</a></li>
-<li class="chapter" data-level="4.5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination"><i class="fa fa-check"></i><b>4.5.2</b> Discrimination</a></li>
-<li class="chapter" data-level="4.5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration"><i class="fa fa-check"></i><b>4.5.3</b> Calibration</a></li>
-</ul></li>
-<li class="chapter" data-level="4.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discussion"><i class="fa fa-check"></i><b>4.6</b> Discussion</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html"><i class="fa fa-check"></i><b>5</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</a>
+<li class="chapter" data-level="5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#motivating-data-set"><i class="fa fa-check"></i><b>5.2</b> Motivating Data Set</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#current-approaches"><i class="fa fa-check"></i><b>5.3</b> Current Approaches</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#methods-2"><i class="fa fa-check"></i><b>5.2</b> Methods</a>
+<li class="chapter" data-level="5.3.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#baseline-models"><i class="fa fa-check"></i><b>5.3.1</b> Baseline Models</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#notation"><i class="fa fa-check"></i><b>5.3.2</b> Notation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#patient-weighting"><i class="fa fa-check"></i><b>5.3.3</b> Patient Weighting</a></li>
+<li class="chapter" data-level="5.3.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---brier-score"><i class="fa fa-check"></i><b>5.3.4</b> Accuracy - Brier Score</a></li>
+<li class="chapter" data-level="5.3.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---c-statistic"><i class="fa fa-check"></i><b>5.3.5</b> Discrimination - c-statistic</a></li>
+<li class="chapter" data-level="5.3.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---intercept-and-slope"><i class="fa fa-check"></i><b>5.3.6</b> Calibration - Intercept and Slope</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#extension-to-multi-state-models"><i class="fa fa-check"></i><b>5.4</b> Extension to Multi-State Models</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources"><i class="fa fa-check"></i><b>5.2.1</b> Data Sources</a></li>
-<li class="chapter" data-level="5.2.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#model-design"><i class="fa fa-check"></i><b>5.2.2</b> Model Design</a></li>
-<li class="chapter" data-level="5.2.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example"><i class="fa fa-check"></i><b>5.2.3</b> Example</a></li>
-<li class="chapter" data-level="5.2.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator"><i class="fa fa-check"></i><b>5.2.4</b> Calculator</a></li>
+<li class="chapter" data-level="5.4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#trivial-extensions"><i class="fa fa-check"></i><b>5.4.1</b> Trivial Extensions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---multiple-outcome-brier-score"><i class="fa fa-check"></i><b>5.4.2</b> Accuracy - Multiple Outcome Brier Score</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---polytomous-discriminatory-index"><i class="fa fa-check"></i><b>5.4.3</b> Discrimination - Polytomous Discriminatory Index</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---multinomial-intercept-matched-and-unmatched-slopes"><i class="fa fa-check"></i><b>5.4.4</b> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a>
+<li class="chapter" data-level="5.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#application-to-real-world-data"><i class="fa fa-check"></i><b>5.5</b> Application to Real-World Data</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-1"><i class="fa fa-check"></i><b>5.3.1</b> Data Sources</a></li>
-<li class="chapter" data-level="5.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>5.3.2</b> Example</a></li>
-<li class="chapter" data-level="5.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>5.3.3</b> Calculator</a></li>
+<li class="chapter" data-level="5.5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy"><i class="fa fa-check"></i><b>5.5.1</b> Accuracy</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination"><i class="fa fa-check"></i><b>5.5.2</b> Discrimination</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration"><i class="fa fa-check"></i><b>5.5.3</b> Calibration</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#discussion-1"><i class="fa fa-check"></i><b>5.4</b> Discussion</a></li>
+<li class="chapter" data-level="5.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discussion-1"><i class="fa fa-check"></i><b>5.6</b> Discussion</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html"><i class="fa fa-check"></i><b>6</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#methods-5"><i class="fa fa-check"></i><b>6.2</b> Methods</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources"><i class="fa fa-check"></i><b>6.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#model-design"><i class="fa fa-check"></i><b>6.2.2</b> Model Design</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example"><i class="fa fa-check"></i><b>6.2.3</b> Example</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator"><i class="fa fa-check"></i><b>6.2.4</b> Calculator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#results-2"><i class="fa fa-check"></i><b>6.3</b> Results</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-1"><i class="fa fa-check"></i><b>6.3.1</b> Data Sources</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>6.3.2</b> Example</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>6.3.3</b> Calculator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#discussion-2"><i class="fa fa-check"></i><b>6.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html"><i class="fa fa-check"></i><b>A</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material</a>
+<li class="chapter" data-level="A" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html"><i class="fa fa-check"></i><b>A</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#statistical-analysis"><i class="fa fa-check"></i><b>A.1</b> Statistical Analysis</a>
+<li class="chapter" data-level="A.1" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#simulation-details"><i class="fa fa-check"></i><b>A.1</b> Simulation Details</a></li>
+<li class="chapter" data-level="A.2" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#mathematics-of-subdistribution-hazards"><i class="fa fa-check"></i><b>A.2</b> Mathematics of Subdistribution Hazards</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html"><i class="fa fa-check"></i><b>B</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material</a>
 <ul>
-<li class="chapter" data-level="A.1.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#development"><i class="fa fa-check"></i><b>A.1.1</b> Development</a></li>
-<li class="chapter" data-level="A.1.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#validation"><i class="fa fa-check"></i><b>A.1.2</b> Validation</a></li>
-</ul></li>
-<li class="chapter" data-level="A.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#model-results"><i class="fa fa-check"></i><b>A.2</b> Model Results</a>
+<li class="chapter" data-level="B.1" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html#calibration-slope"><i class="fa fa-check"></i><b>B.1</b> Calibration Slope</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#two-state-model"><i class="fa fa-check"></i><b>A.2.1</b> Two State Model</a></li>
-<li class="chapter" data-level="A.2.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#three-state-model"><i class="fa fa-check"></i><b>A.2.2</b> Three State Model</a></li>
-<li class="chapter" data-level="A.2.3" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#five-state-model"><i class="fa fa-check"></i><b>A.2.3</b> Five State Model</a></li>
+<li class="chapter" data-level="B.1.1" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html#results-3"><i class="fa fa-check"></i><b>B.1.1</b> Results</a></li>
+<li class="chapter" data-level="B.1.2" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html#discussion-3"><i class="fa fa-check"></i><b>B.1.2</b> Discussion</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="C" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html"><i class="fa fa-check"></i><b>C</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#statistical-analysis"><i class="fa fa-check"></i><b>C.1</b> Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#development"><i class="fa fa-check"></i><b>C.1.1</b> Development</a></li>
+<li class="chapter" data-level="C.1.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#validation"><i class="fa fa-check"></i><b>C.1.2</b> Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#model-results"><i class="fa fa-check"></i><b>C.2</b> Model Results</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#two-state-model"><i class="fa fa-check"></i><b>C.2.1</b> Two State Model</a></li>
+<li class="chapter" data-level="C.2.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#three-state-model"><i class="fa fa-check"></i><b>C.2.2</b> Three State Model</a></li>
+<li class="chapter" data-level="C.2.3" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#five-state-model"><i class="fa fa-check"></i><b>C.2.3</b> Five State Model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -192,10 +228,12 @@ div.abstract{
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="chap-performance-metrics" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</h1>
-<div id="introduction-3" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<div id="chap-performance-metrics" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</h1>
+<p><em>MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin</em></p>
+<p>Download as individual paper draft: <a href="Chapters/ind_05-Performance_Metrics.pdf">pdf</a>, <a href="Chapters/ind_05-Performance_Metrics.tex">tex</a></p>
+<div id="introduction-4" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction</h2>
 <p>Clinical Prediction Models (CPMs) provide individualised risk of a patient’s outcome (cite), based on that patient’s predictors. These predictions will usually be in the form of a risk score or probability. However, using traditional modelling techniques, these CPMs will only predict a single outcome. Multi-State Clinical Prediction Models (MS-CPMs) combine the multi-state modelling framework to the prognostic field to provide predictions for multiple outcomes in a single model.
 Once a CPM has been developed, it is important to assess how well the model actually performs (cite). This process is called Model Validation and involves comparing the predictions produced by the model to the actual outcomes experienced by patients (cite). It is expected that the development of a CPM will be accompanied by the validation of the model on the same dataset it was developed in (internal validation), using either bootstrapping or cross-validation to account for optimism in the developed model (cite). Models can also be validated on a novel dataset (external validation), which is used to assess the generalisability and transportability of the model (cite).
 During validation, there are different aspects of model performance that we can assess and these are measured using specific metrics. For example, to assess the overall Accuracy of a model, we may use the Brier Score (cite) or to analyse how well a model discriminates between patients, we could use the c-statistic (cite). The current metrics that are commonly used have been designed and extended to work in a variety of model development frameworks. However, these extensions are limited to either a single outcome (as in traditionally developed models) or do not adequately account for the censoring of patients (as commonly occurs in longitudinal data).
@@ -203,77 +241,77 @@ This paper aims to provide use-able extensions to current performance metrics to
 Currently, the most common way to validate an MS-CPMs is by applying traditional methods to compare across two states at a given time and then aggregating the results in an arbitrary manner [cite something]. Other methodologists have extended existing metrics to multinomial outcomes [cite van Calster], which do not contain a time-based component; to simple competing risks scenarios [cite CR c-statistic], which do not contain transient states; or to [… insert third relevant example]. Spitoni et al [cite Spitoni 2018]] developed methods to apply the Brier Score (or any proper score functions) to a multi-state setting and so a simplified and specific version of their work is described in this paper.
 It is the hope of the authors that this work will increase the uptake of multi-state models and the sub-field of MS-CPMs will grow appropriately.</p>
 </div>
-<div id="motivating-data-set" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Motivating Data Set</h2>
+<div id="motivating-data-set" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Motivating Data Set</h2>
 <p>[<strong>Table One for The Glasgow Data</strong>]</p>
-<p>Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table 2) [1]. The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m2, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a “snapshot” of the predictions at the 5 year time point.
+<p>Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table 2) [1]. The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m2, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a snapshot of the predictions at the 5 year time point.
 The Three-State model used in our example is designed as an Illness-Death Model [2], this is one of the simplest MSM designs and has the key advantage over a traditional model that they can predict whether a patient is in or has visited the transient state before reaching the absorbing state (i.e. patient who became ill before dying or who started RRT before dying) (see figure 1).</p>
 <p>[<strong>Figure of the MSM</strong>]</p>
 <p>[<strong>Describe Glasgow Data</strong>]</p>
 </div>
-<div id="current-approaches" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Current Approaches</h2>
+<div id="current-approaches" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Current Approaches</h2>
 <p>Here we describe three commonly used performance metrics for assessing the performance of a traditional survival clinical prediction model. These metrics assess the Accuracy, Discrimination and Calibration of the models being validated. Accuracy is an overall measurement of how well the model predicts the outcomes in the patients. Discrimination assesses how well the model discerns between patients; in a two-state model this is a comparison of patients with and without the outcome, and should assign a higher value to those that experience the outcome. Calibration is the agreement between the observed outcomes and the predicted risks across the full risk-range.
 We are applying cross-sectional metrics at a set time point within the setting of a longitudinal model and so we need to account for the censoring of patients and therefore, each uncensored patient at a given time t will be weighted as per the Inverse Probability of Censoring Weighting (IPCW) [3]. This allows the uncensored patient population to be representative of the entire patient population.</p>
-<div id="baseline-models" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Baseline Models</h3>
+<div id="baseline-models" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Baseline Models</h3>
 <p>To assess the performance of a model, we must compare the values produced by the performance metrics to those of two baseline models; a random or noninformative model and a perfect model.
 A Non-Informative (NI-)model assigns the same probability to all patients to be in any state regardless of covariates and is akin to using the average prevalence in the entire population to define your model. For example, in a Two-State model and an event that occurs in 10% of patients, all patients are predicted to have a 10% chance of having the event. For many metrics, models can be compared to a Non-Informative model to assess whether the model is in fact “better than random”.
 A Perfect (P-)model is one which successfully assigns a 100% probability to all patients, and the predictions are correct; this is the ideal case, which many models can also be compared to as models as close to this display excellent predictive abilities. Although models may perform worse than a non-informative one, we will not consider these in detail here as they are considered to be without worth in terms of predictive ability.
 The metrics produced by these baseline models will often depend on the prevalence of each state and/or the number of states. These values can be used as comparators to provide contextual information regarding the strength of model performance. These baselines metrics for the NI-model and the P-model will be referred to as the NI-level and P-level for the metric.
 In order to allow for simplicity and understanding of these measures, they will be standardised to the same scales.</p>
 </div>
-<div id="notation" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> Notation</h3>
+<div id="notation" class="section level3" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Notation</h3>
 <p>Throughout this paper, we will use consistent notation which is shown here for reference and to avoid repetition in definitions, etc…</p>
 <p>[<strong>Notation Table</strong>]</p>
 </div>
-<div id="patient-weighting" class="section level3" number="4.3.3">
-<h3><span class="header-section-number">4.3.3</span> Patient Weighting</h3>
+<div id="patient-weighting" class="section level3" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Patient Weighting</h3>
 <p>[<strong>Lots of formula, so will leave for now</strong>]</p>
 </div>
-<div id="accuracy---brier-score" class="section level3" number="4.3.4">
-<h3><span class="header-section-number">4.3.4</span> Accuracy - Brier Score</h3>
+<div id="accuracy---brier-score" class="section level3" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Accuracy - Brier Score</h3>
 </div>
-<div id="discrimination---c-statistic" class="section level3" number="4.3.5">
-<h3><span class="header-section-number">4.3.5</span> Discrimination - c-statistic</h3>
+<div id="discrimination---c-statistic" class="section level3" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> Discrimination - c-statistic</h3>
 </div>
-<div id="calibration---intercept-and-slope" class="section level3" number="4.3.6">
-<h3><span class="header-section-number">4.3.6</span> Calibration - Intercept and Slope</h3>
-</div>
-</div>
-<div id="extension-to-multi-state-models" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> Extension to Multi-State Models</h2>
-<div id="trivial-extensions" class="section level3" number="4.4.1">
-<h3><span class="header-section-number">4.4.1</span> Trivial Extensions</h3>
-</div>
-<div id="accuracy---multiple-outcome-brier-score" class="section level3" number="4.4.2">
-<h3><span class="header-section-number">4.4.2</span> Accuracy - Multiple Outcome Brier Score</h3>
-</div>
-<div id="discrimination---polytomous-discriminatory-index" class="section level3" number="4.4.3">
-<h3><span class="header-section-number">4.4.3</span> Discrimination - Polytomous Discriminatory Index</h3>
-<div id="computational-limitations" class="section level4" number="4.4.3.1">
-<h4><span class="header-section-number">4.4.3.1</span> Computational Limitations</h4>
+<div id="calibration---intercept-and-slope" class="section level3" number="5.3.6">
+<h3><span class="header-section-number">5.3.6</span> Calibration - Intercept and Slope</h3>
 </div>
 </div>
-<div id="calibration---multinomial-intercept-matched-and-unmatched-slopes" class="section level3" number="4.4.4">
-<h3><span class="header-section-number">4.4.4</span> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</h3>
+<div id="extension-to-multi-state-models" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Extension to Multi-State Models</h2>
+<div id="trivial-extensions" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Trivial Extensions</h3>
+</div>
+<div id="accuracy---multiple-outcome-brier-score" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Accuracy - Multiple Outcome Brier Score</h3>
+</div>
+<div id="discrimination---polytomous-discriminatory-index" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Discrimination - Polytomous Discriminatory Index</h3>
+<div id="computational-limitations" class="section level4" number="5.4.3.1">
+<h4><span class="header-section-number">5.4.3.1</span> Computational Limitations</h4>
 </div>
 </div>
-<div id="application-to-real-world-data" class="section level2" number="4.5">
-<h2><span class="header-section-number">4.5</span> Application to Real-World Data</h2>
-<div id="accuracy" class="section level3" number="4.5.1">
-<h3><span class="header-section-number">4.5.1</span> Accuracy</h3>
-</div>
-<div id="discrimination" class="section level3" number="4.5.2">
-<h3><span class="header-section-number">4.5.2</span> Discrimination</h3>
-</div>
-<div id="calibration" class="section level3" number="4.5.3">
-<h3><span class="header-section-number">4.5.3</span> Calibration</h3>
+<div id="calibration---multinomial-intercept-matched-and-unmatched-slopes" class="section level3" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</h3>
 </div>
 </div>
-<div id="discussion" class="section level2" number="4.6">
-<h2><span class="header-section-number">4.6</span> Discussion</h2>
+<div id="application-to-real-world-data" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Application to Real-World Data</h2>
+<div id="accuracy" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Accuracy</h3>
+</div>
+<div id="discrimination" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Discrimination</h3>
+</div>
+<div id="calibration" class="section level3" number="5.5.3">
+<h3><span class="header-section-number">5.5.3</span> Calibration</h3>
+</div>
+</div>
+<div id="discussion-1" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Discussion</h2>
 
 </div>
 </div>
@@ -282,7 +320,7 @@ In order to allow for simplicity and understanding of these measures, they will 
           </div>
         </div>
       </div>
-<a href="chap-Conf-CR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-IPCW-logistic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="chap-dev-paper.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

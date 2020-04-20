@@ -1,8 +1,11 @@
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
+*MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
 
+`r add_downloads(4)`
 
 ## Introduction
+
 
 Clinical prediction models (CPMs) need to be validated before they are used. A fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with p% risk of an event, p% of those have the event [@steyerberg_clinical_2008]. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) [@calster_calibration_2016-1]. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors.
 
@@ -110,44 +113,14 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time).
 
 
-```{r PM-DGM-time, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
-
-tribble(~Measure, ~Estimation,~SE,
-  "Bias","\\hat{\\theta}(t) = \\frac{1}{N}\\sum_{i=1}^N\\theta_i(t)-\\theta",
-        "\\hat{\\theta}_{SE}(t) = \\sqrt{\\frac{1}{N(N-1)}\\sum_{i=1}^N\\left(\\theta_i(t) - \\hat{\\theta}(t)\\right)^2}",
-  "EmpSE","\\hat{E}(t) = \\sqrt{\\frac{1}{N-1}\\sum_{i=1}^N\\left(\\theta_i(t) - \\hat{\\theta}\\right)^2}",
-        "\\hat{E}_{SE}(t) = \\frac{\\hat{E}(t)}{\\sqrt{2(N-1)}}",
-  "Coverage","\\hat{C}(t)=\\frac{1}{N}\\sum_{i=1}^NI\\left(\\theta_{i,L}(t) \\le \\theta\\le\\theta_{i,U}(t)\\right)",
-      "\\hat{C}_{SE}(t) = \\frac{\\hat{C}(t)(1-\\hat{C}(t))}{N}"
-) %>%
-  mutate_at(vars(-Measure),~paste0("$$",.,"$$")) %>%
-  flextable %>%
-  stardard_format_table(widths=c(4,6,6))%>%
-  #as_equation(j=2:3,nickname="PM-DGM-time") %>%
-  set_header_labels(Measure = "Performance Measure")
-add_flextable_caption("PM-DGM-time","Description of the Performance Measures defined at time $t$")
 
 
-```
+`r xx("Insert Performance Measures (at time point)")`
 
 For each estimand above, $\hat{Q}(t) = \{\hat{\theta}(t),\hat{E}(t), \hat{C}(t)\}$ and associated SE, $\hat{Q}_\textrm{SE}(t) = \{\hat{\theta}_\textrm{SE}(t),\hat{E}_\textrm{SE}(t), \hat{C}_\textrm{SE}(t)\}$, we average over time. As these measures will be taken at each of the 100 time points, $t_j:j=1...100$, we summarise each of these measures as an average and as weighted average, as seen in table \@ref(tab:PM-DGM). The weight used for the measure at time $t_j$ is the average number of non-censored patients remaining in the population at time $t_j$, defined as $n_j$ (note that this includes patients who have had the event).
 
-```{r PM-DGM, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
 
-tribble(~X,~Estimand,~SE,
-  "Unweighted","\\bar{Q}=\\frac{1}{100}\\sum_{j=1}^{100}\\hat{Q}(t_j)",
-    "\\bar{Q}_{SE}=\\sqrt{\\frac{1}{100}\\sum_{j=1}^{100}\\hat{Q}_{SE}(t_j)^2}",
-  "Weighted","\\bar{Q}'=\\frac{\\sum_{j=1}^{100}n_j\\hat{Q}(t_j)}{\\sum_{j=1}^{100}n_j}",
-    "\\bar{Q}_{SE}^'=\\sqrt{\\frac{\\sum_{j=1}^{100}n_j\\hat{Q}_{SE}(t_j)^2}{\\sum_{j=1}^{100}n_j}}"
-) %>%
-  mutate_at(vars(-X),~paste0("$$",.,"$$")) %>%
-  flextable %>%
-  stardard_format_table(widths=c(4,6,6))%>%
-  #as_equation(j=2:3,nickname="PM-DGM-time") %>%
-  set_header_labels(X = "")
-add_flextable_caption("PM-DGM","Description of how Performance Measures are averaged over time")
-
-```
+`r xx("Insert Performance Meaures averaged over time")`
 
 ### Software
 
@@ -162,23 +135,4 @@ Forthcoming
 Weighting = Good.
 
 Not Weighting = Bad.
-
-## References
-
-## Supplementary Material - Calibration Slope
-
-The main purpose of this paper was to assess the evaluation of calibration-in-the-large at different time points in a time-to-event clinical prediction model. Along with calibration-in-the-large, various methods of calibration can also produce measures of calibration slope. Calibration slope provides an insight into how well the model predicts outcomes across the range of predictions. In an ideal model, the calibration slope would be 1. The Logistic Weighted, Logistic Unweighted and Pseudo-Observation methods described above can provide estimates of the calibration slope. For each of these methods, we first estimate the calibration-in-the-large as above, using a predictor as an offset, then we use this estimate as an offset to predict the calibration slope (without an intercept term).
-
-### Results
-
-blah blah
-
-### Discussion
-
-Brief discussion, much briefer than the main points.
-
-
-
-
-
 

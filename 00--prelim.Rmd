@@ -1,7 +1,12 @@
 
-
-
 # Introduction {-}
+
+## Abstract {-}
+
+The preface pretty much says it all.
+
+Second paragraph of abstract starts here. Prelim
+
 
 ## Acknowledgements {-}
 
@@ -12,10 +17,4 @@ My thanks also go to my children, Matilda and Theodore, who were an everlasting 
 My everlasting gratitude will always lie with my parents, Brenda and Andy, who have allowed me to be myself and to find my own path. They never pushed me into something that I didn't want to do, but also guided me towards what I would be good at.
 
 My final thanks go to my PhD supervisors, Matt, Niels, Glen and Mark, who have provided advice and feedback for over four years. 
-
-## Abstract {-}
-
-The preface pretty much says it all.
-
-Second paragraph of abstract starts here. Prelim
 

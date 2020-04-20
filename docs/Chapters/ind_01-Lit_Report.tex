@@ -1,0 +1,268 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Literature Report},
+  pdfauthor={MA Barrowman},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\newcommand{\txt}[1]{\textrm{#1}}
+
+\def\logit{\txt{logit}}
+
+\newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{rotating}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {}%
+  {\par}
+
+\title{Literature Report}
+\author{MA Barrowman}
+\date{}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Current format: single
+
+lorem ipsum blah blah blah.
+
+Testing Equation: \(1+1=2\)
+
+\[
+1 + 2 = 3
+\]
+\begin{equation}
+1 + 4 = 5
+\end{equation}
+\hypertarget{clinical-prediction-models}{%
+\section{Clinical Prediction Models}\label{clinical-prediction-models}}
+
+The idea of prognosis dates back to ancient Greece with the work of Hippocrates {[}\protect\hyperlink{ref-hippocrates_genuine_1886}{1}{]} and is derived from the Greek for ``know before'' meaning to forecast the future. Within the sphere of healthcare, it is definde as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is uaully given as a probability of having an event in a prespecified number of years. For example, QRISK3 {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{2}{]} provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modelling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
+
+Prognosis allows clinicians to evaluate the natural history of a patient (i.e.~the course of a patient's future without any intervention) in order to establish the ffect of screening for asymptomatic diseases (such as with mammograms{[}\protect\hyperlink{ref-hemingway_prognosis_2013}{3}{]}). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to th definition of myocardial infarction to include non-fatal events {[}\protect\hyperlink{ref-thygesen_universal_2007}{4}{]}) or a previously unknown subtype of a disease (such as Brugada syndrome as a type of cardiovascular disease{[}\protect\hyperlink{ref-probst_long-term_2010}{5}{]})
+
+In general, prognosis research can be broken down into four main categories, with three subcategories {[}\protect\hyperlink{ref-riley_prognosis_2019}{6}{]}:
+\begin{itemize}
+\tightlist
+\item
+  Type I: Fundamental prognosis research {[}\protect\hyperlink{ref-hemingway_prognosis_2013}{3}{]}
+\item
+  Type II: Prognostic factor research {[}\protect\hyperlink{ref-riley_prognosis_2013}{7}{]}
+\item
+  Type III: Prognostic model research {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}
+  \begin{itemize}
+  \tightlist
+  \item
+    Model development {[}\protect\hyperlink{ref-royston_prognosis_2009}{9}{]}
+  \item
+    Model validation {[}\protect\hyperlink{ref-altman_prognosis_2009}{10}{]}
+  \item
+    Model impact evaluation {[}\protect\hyperlink{ref-moons_prognosis_2009}{11}{]}
+  \end{itemize}
+\item
+  Type IV: Stratified Medicine {[}\protect\hyperlink{ref-hingorani_prognosis_2013}{12}{]}
+\end{itemize}
+For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
+
+The model development and validation will usually occur in the same paper {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}, {[}\protect\hyperlink{ref-moons_transparent_2015}{14}{]}. studies into all three of the subcategories of prognostic model research \emph{should} be completed before a model is used in clinical practice {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}, although this does not always occur {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model {[}\protect\hyperlink{ref-collins_systematic_2013}{16}{]}, whereas a model on it's own may be highly susceptible to overfitting {[}\textbf{Cite: Something}{]}.
+
+\hypertarget{fundamental-prognosis-research}{%
+\subsection{Fundamental Prognosis Research}\label{fundamental-prognosis-research}}
+
+{[}\textbf{What is it? Old definition is incorrect, so will need to write this fresh}{]}
+
+\hypertarget{prognostic-factor-research}{%
+\subsection{Prognostic Factor Research}\label{prognostic-factor-research}}
+
+The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
+
+Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates \emph{can} affect an outcome, we cannot figure out which variables \emph{will} affect the outcome. For example, {[}\textbf{xxxx}{]} demonstrated that {[}\textbf{xxxx}{]} is correlated with {[}\textbf{xxxx}{]}, which subsequently used as a covariate in the development of the {[}\textbf{xxxx}{]} model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones {[}\textbf{Cite: Something}{]}. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting {[}\textbf{xxxx}{]}, we can demonstrate that {[}\textbf{xxxx}{]} is a prognostic factor, {[}however since the arrow of causation is {[}\textbf{xxxx}{]}{]} {[}\textbf{OR}{]} {[}however since {[}\textbf{xxxx}{]} causes both {[}\textbf{xxxx}{]} and {[}\textbf{xxxx}{]}{]}, the relationship is prognostic, but not causal. {[}\textbf{Previously used Apgar score here, reference 40}{]}
+
+Counter to the idea that prognostic factors aren't always causal, they are \emph{always} confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results {[}\protect\hyperlink{ref-riley_prognosis_2013}{7}{]}. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results {[}\protect\hyperlink{ref-royston_dichotomizing_2006}{17}{]}. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
+
+It is unfortunate, however, that Riley at al {[}\protect\hyperlink{ref-riley_systematic_2003-1}{18}{]} found that only 35.5\% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions {[}\protect\hyperlink{ref-riley_prognosis_2013}{7}{]}.
+
+\hypertarget{prognostic-model-research}{%
+\subsection{Prognostic Model Research}\label{prognostic-model-research}}
+
+Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]} and they are deigned to augment the job of a clinician; and not to completely replace them {[}\protect\hyperlink{ref-moons_prognosis_2009}{11}{]}. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease {[}\protect\hyperlink{ref-collins_transparent_2015}{13};\textasciitilde moons\_transparent\_2015{]}. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratied medicine approach {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}, {[}\protect\hyperlink{ref-moons_transparent_2015}{14}{]}. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is {[}\protect\hyperlink{ref-moons_prognosis_2009}{11}{]}. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician {[}\textbf{Cite: LR - 18}{]}. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
+
+Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe {[}\textbf{Cite: Something}{]}. To quote Steyerberg et al {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker {[}\protect\hyperlink{ref-bleeker_external_2003}{19}{]} developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
+
+\hypertarget{model-development}{%
+\subsubsection{Model Development}\label{model-development}}
+
+The first stage of having a useful model is to develop one. Clinical predictive models can take a variety of forms, such as logistic regression, cox models or some kind of machine learning. Regardless of the specific model type being used, there are certain universal truths than should be held up during model development which will be discussed here. The size of the dataset being used is of vital importance as it can combat overfitting of the data, but so is choosing which prognostic factors to be included in the final model. This section will discuss various ideas that researchers need to account for when developing a model from any source and can be applied to any model type.
+
+By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors {[}\textbf{Cite: LR - 2}{]}. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality {[}\textbf{Cite: LR - 5}{]}, or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables {[}\textbf{Cite: LR - 55}{]}. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost {[}\textbf{Cite: LR - 56}{]}. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups r LR(7)`.
+
+When developing a predictive model, the size of the dataset being used in an important consideration. A typical ``rule of thumb'' is to have at least 10 events for every potential predictor {[}\textbf{Cite: LR - 57, 58}{]}, know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size {[}\textbf{Cite: Riley, EPV work}{]}. If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) {[}\textbf{Cite: LR - 59}{]}. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) {[}\textbf{Cite: LR - 39, 60, 61}{]}. A systematic review by Counsell et al {[}\textbf{Cite: LR - 62}{]} found that out of eighty-three prognostic models for acute stroke, less than 50\% of them had more than 10 EPV, and the work by Riley et al {[}\textbf{Cite: riley EPV Work}{]} showed that less that {[}\textbf{Pull example from Riley EPV}{]}. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless{[}\textbf{Cite: LR - 34}{]}. However, just because a dataset is large does not imply that it will be a \emph{good} dataset if the quality of the data is lacking {[}\textbf{Cite: LR - 39}{]}. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model {[}\textbf{Cite: LR - 39}{]}. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
+
+Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun {[}\textbf{Cite: LR - 39}{]}. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation {[}\textbf{Cite: LR - 35, 63}{]}. Derivation of the QRISK2 Score {[}\textbf{Cite: LR - 7}{]} (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset {[}\textbf{Check how QRISK3 Does this}{]}. The NPI model {[}\textbf{Has this been mentioned?}{]} was trained on the first 500 patients admitted to Nottingham City Hospital after the study began {[}\textbf{Cite: LR - 5}{]} and later validated on the next 320 patients to be admitted {[}\textbf{Cite: LR - 64}{]}, this validation was not performed at the same time as the initial development and is thus an external validation.
+
+If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources {[}\textbf{Cite: LR - 65}{]}. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis {[}\textbf{Cite: LR - 1, 39}{]}. Heterogeneity is particularly high when using multiple countries as a source of data {[}\textbf{Cite: LR - 66}{]} or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors {[}\textbf{Cite: LR - 67}{]}. Overlooking of this clustering can lead to incorrect inferences {[}\textbf{Cite: LR - 65}{]}. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source {[}\protect\hyperlink{ref-moons_prognosis_2009}{11}{]}.
+
+A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model {[}\textbf{Cite: LR - 34}{]}. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail
+
+\hypertarget{model-validation}{%
+\subsubsection{Model Validation}\label{model-validation}}
+
+\hypertarget{impact-evaluation}{%
+\subsubsection{Impact Evaluation}\label{impact-evaluation}}
+
+\hypertarget{stratified-medicine}{%
+\subsection{Stratified Medicine}\label{stratified-medicine}}
+
+\hypertarget{examples}{%
+\subsection{Examples}\label{examples}}
+
+\hypertarget{competing-risks-multi-state-models}{%
+\section{Competing Risks \& Multi-State Models}\label{competing-risks-multi-state-models}}
+
+\hypertarget{refs}{}
+\begin{cslreferences}
+\leavevmode\hypertarget{ref-hippocrates_genuine_1886}{}%
+{[}1{]} Hippocrates and F. Adams, \emph{The genuine works of Hippocrates;} New York, W. Wood and company, 1886.
+
+\leavevmode\hypertarget{ref-hippisley-cox_development_2017}{}%
+{[}2{]} J. Hippisley-Cox, C. Coupland, and P. Brindle, ``Development and validation of QRISK3 risk prediction algorithms to estimate future risk of cardiovascular disease: Prospective cohort study,'' \emph{BMJ}, vol. 357, May 2017, doi: \href{https://doi.org/10.1136/bmj.j2099}{10.1136/bmj.j2099}.
+
+\leavevmode\hypertarget{ref-hemingway_prognosis_2013}{}%
+{[}3{]} H. Hemingway \emph{et al.}, ``Prognosis research strategy (PROGRESS) 1: A framework for researching clinical outcomes,'' \emph{BMJ}, vol. 346, p. e5595, Feb. 2013, doi: \href{https://doi.org/10.1136/bmj.e5595}{10.1136/bmj.e5595}.
+
+\leavevmode\hypertarget{ref-thygesen_universal_2007}{}%
+{[}4{]} K. Thygesen, J. S. Alpert, H. D. White, and Joint ESC/ACCF/AHA/WHF Task Force for the Redefinition of Myocardial Infarction, ``Universal definition of myocardial infarction,'' \emph{Journal of the American College of Cardiology}, vol. 50, no. 22, pp. 2173--2195, Nov. 2007, doi: \href{https://doi.org/10.1016/j.jacc.2007.09.011}{10.1016/j.jacc.2007.09.011}.
+
+\leavevmode\hypertarget{ref-probst_long-term_2010}{}%
+{[}5{]} Probst \emph{et al.}, ``Long-Term Prognosis of Patients Diagnosed With Brugada Syndrome,'' \emph{Circulation}, vol. 121, no. 5, pp. 635--643, Feb. 2010, doi: \href{https://doi.org/10.1161/CIRCULATIONAHA.109.887026}{10.1161/CIRCULATIONAHA.109.887026}.
+
+\leavevmode\hypertarget{ref-riley_prognosis_2019}{}%
+{[}6{]} R. D. Riley, D. van der Windt, P. Croft, and K. G. M. Moons, \emph{Prognosis Research in Healthcare: Concepts, Methods, and Impact}, First. Oxford University Press, 2019.
+
+\leavevmode\hypertarget{ref-riley_prognosis_2013}{}%
+{[}7{]} R. D. Riley \emph{et al.}, ``Prognosis Research Strategy (PROGRESS) 2: Prognostic Factor Research,'' \emph{PLoS Medicine}, vol. 10, no. 2, Feb. 2013, doi: \href{https://doi.org/10.1371/journal.pmed.1001380}{10.1371/journal.pmed.1001380}.
+
+\leavevmode\hypertarget{ref-steyerberg_prognosis_2013}{}%
+{[}8{]} E. W. Steyerberg \emph{et al.}, ``Prognosis Research Strategy (PROGRESS) 3: Prognostic Model Research,'' \emph{PLOS Medicine}, vol. 10, no. 2, p. e1001381, Feb. 2013, doi: \href{https://doi.org/10.1371/journal.pmed.1001381}{10.1371/journal.pmed.1001381}.
+
+\leavevmode\hypertarget{ref-royston_prognosis_2009}{}%
+{[}9{]} P. Royston, K. G. M. Moons, D. G. Altman, and Y. Vergouwe, ``Prognosis and prognostic research: Developing a prognostic model,'' \emph{BMJ}, vol. 338, p. b604, Mar. 2009, doi: \href{https://doi.org/10.1136/bmj.b604}{10.1136/bmj.b604}.
+
+\leavevmode\hypertarget{ref-altman_prognosis_2009}{}%
+{[}10{]} D. G. Altman, Y. Vergouwe, P. Royston, and K. G. M. Moons, ``Prognosis and prognostic research: Validating a prognostic model,'' \emph{BMJ}, vol. 338, p. b605, May 2009, doi: \href{https://doi.org/10.1136/bmj.b605}{10.1136/bmj.b605}.
+
+\leavevmode\hypertarget{ref-moons_prognosis_2009}{}%
+{[}11{]} K. G. M. Moons, P. Royston, Y. Vergouwe, D. E. Grobbee, and D. G. Altman, ``Prognosis and prognostic research: What, why, and how?'' \emph{BMJ}, vol. 338, p. b375, Feb. 2009, doi: \href{https://doi.org/10.1136/bmj.b375}{10.1136/bmj.b375}.
+
+\leavevmode\hypertarget{ref-hingorani_prognosis_2013}{}%
+{[}12{]} A. D. Hingorani \emph{et al.}, ``Prognosis research strategy (PROGRESS) 4: Stratified medicine research,'' \emph{BMJ}, vol. 346, p. e5793, Feb. 2013, doi: \href{https://doi.org/10.1136/bmj.e5793}{10.1136/bmj.e5793}.
+
+\leavevmode\hypertarget{ref-collins_transparent_2015}{}%
+{[}13{]} G. S. Collins, J. B. Reitsma, D. G. Altman, and K. G. Moons, ``Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD): The TRIPOD Statement,'' \emph{BMC Medicine}, vol. 13, no. 1, p. 1, Jan. 2015, doi: \href{https://doi.org/10.1186/s12916-014-0241-z}{10.1186/s12916-014-0241-z}.
+
+\leavevmode\hypertarget{ref-moons_transparent_2015}{}%
+{[}14{]} K. G. M. Moons \emph{et al.}, ``Transparent Reporting of a multivariable prediction model for Individual Prognosis Or Diagnosis (TRIPOD): Explanation and Elaboration,'' \emph{Annals of Internal Medicine}, vol. 162, no. 1, p. W1, Jan. 2015, doi: \href{https://doi.org/10.7326/M14-0698}{10.7326/M14-0698}.
+
+\leavevmode\hypertarget{ref-riley_external_2016}{}%
+{[}15{]} R. D. Riley \emph{et al.}, ``External validation of clinical prediction models using big datasets from e-health records or IPD meta-analysis: Opportunities and challenges,'' \emph{BMJ}, vol. 353, Jun. 2016, doi: \href{https://doi.org/10.1136/bmj.i3140}{10.1136/bmj.i3140}.
+
+\leavevmode\hypertarget{ref-collins_systematic_2013}{}%
+{[}16{]} G. S. Collins, O. Omar, M. Shanyinde, and L.-M. Yu, ``A systematic review finds prediction models for chronic kidney disease were poorly reported and often developed using inappropriate methods,'' \emph{Journal of Clinical Epidemiology}, vol. 66, no. 3, pp. 268--277, Mar. 2013, doi: \href{https://doi.org/10.1016/j.jclinepi.2012.06.020}{10.1016/j.jclinepi.2012.06.020}.
+
+\leavevmode\hypertarget{ref-royston_dichotomizing_2006}{}%
+{[}17{]} P. Royston, D. G. Altman, and W. Sauerbrei, ``Dichotomizing continuous predictors in multiple regression: A bad idea,'' \emph{Statistics in Medicine}, vol. 25, no. 1, pp. 127--141, Jan. 2006, doi: \href{https://doi.org/10.1002/sim.2331}{10.1002/sim.2331}.
+
+\leavevmode\hypertarget{ref-riley_systematic_2003-1}{}%
+{[}18{]} R. D. Riley \emph{et al.}, ``A systematic review and evaluation of the use of tumour markers in paediatric oncology: Ewing's sarcoma and neuroblastoma,'' \emph{Health Technology Assessment}, vol. 7, no. 5, 2003, doi: \href{https://doi.org/10.3310/hta7050}{10.3310/hta7050}.
+
+\leavevmode\hypertarget{ref-bleeker_external_2003}{}%
+{[}19{]} S. E. Bleeker \emph{et al.}, ``External validation is necessary in prediction research: A clinical example,'' \emph{Journal of Clinical Epidemiology}, vol. 56, no. 9, pp. 826--832, Sep. 2003, doi: \href{https://doi.org/10.1016/s0895-4356(03)00207-5}{10.1016/s0895-4356(03)00207-5}.
+\end{cslreferences}
+\end{document}

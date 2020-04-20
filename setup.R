@@ -1,5 +1,5 @@
 pkgs <- c("devtools","thesisdown","tidyverse","rlang",
-          "googledrive","magrittr","kableExtra")
+          "googledrive","magrittr","kableExtra","stringi")
 
 purrr::walk(pkgs,library,character.only=T)
 
@@ -142,19 +142,51 @@ if_fun <- function(.x,.predicate,.fun,.elsefun=NULL)
         .x
 }
 
-get_format <- function(x=NULL)
+get_format <- function(...)
 {
-  if(knitr:::is_latex_output()) "latex" else "html"
+  .res <- options("output.format")
+  
+  x <- list(...)
+  if(length(x) == 0)
+  {
+    return(.res)
+  } else
+  {
+    return(.res %in% unlist(x))
+  }
+  
 }
 
-format_choice <- function(.latex,.html)
+fb <- function(gitbook=NULL,thesis=NULL,single=NULL)
 {
-  if(get_format() == "latex") .latex else .html
+  .res <- ""
+  if(get_format("gitbook") & !is.null(gitbook)) .res <- gitbook
+  if(get_format("thesis") & !is.null(thesis)) .res <- thesis
+  if(get_format("single") & !is.null(single)) .res <- single
+  return(.res)
+}
+
+add_downloads <- function(filenum)
+{
+  filename <- c("Lit Report",
+                "Scoping Review Paper",
+                "CR Conf",
+                "IPCW logistic",
+                "Performance Metrics",
+                "Dev Paper",
+                "","","",
+                "Conclusion")[filenum] %>%
+    gsub(" ","_",.) %>%
+    paste0("ind_",ifelse(filenum<10,paste0("0",filenum),filenum),"-",.)
+  
+  .res <- paste0("Download as individual paper draft: [pdf](Chapters/",
+         filename,".pdf), [tex](Chapters/",filename,".tex)")
+  fb(.res,.res,"")
 }
 
 make_linebreaks <- function(.tbl)
 {
-  if(get_format() == "latex")
+  if(get_format("thesis","single"))
   {
     .out <- .tbl
     
@@ -165,10 +197,50 @@ make_linebreaks <- function(.tbl)
   return(.out)
 }
 
-to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
-                     col_names=do_nothing,row_names=NULL,group_col=NULL)
+clear_ws <- function(.tbl,cols)
 {
-  if(!is.null(group_col))
+  if(!is.null(cols))
+  {
+    ws_sym <- fb("&emsp;"," ","\\\\quad")
+    suppressWarnings(.tbl %>%
+      mutate_at(cols,
+                function(x) x %>% 
+                  stri_reverse %>%
+                  gsub("  "," #",.) %>%
+                  stri_reverse %>%
+                  gsub("#",ws_sym,.)))
+  } else .tbl
+}
+
+do_colwidths <- function(.tbl,col_widths)
+{
+  .res <- .tbl
+  
+  if(!is.null(col_widths))
+  {
+    if(length(col_widths) == 1)
+    {
+      .res <- .res %>%
+        magic_mirror %>%
+        extract2("ncol") %>%
+        seq_len %>%
+        column_spec(.tbl,column=.,width=col_widths)
+    } else
+    {
+      for(i in 1:length(col_widths))
+      {
+        .res %<>% column_spec(column=i,width=col_widths[i])
+      }
+    }
+  }
+  return(.res)
+}
+
+to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
+                     col_names=do_nothing,row_names=NULL,
+                     group_col=NULL,col_widths=NULL,col_groups=NULL)
+{
+  if(!is.null(group_col)&&!is.na(group_col))
   {
     grp_index <- .tbl[[group_col]] %>%
       replace(.==""," ") %>%
@@ -177,9 +249,18 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
     .tbl %<>% select(-any_of(group_col))
   }
   
+  if(!is.null(col_groups)&&!is.na(col_groups))
+  {
+    col_headers <- col_groups %>%
+      replace(.==""," ") %>%
+      fct_inorder %>%
+      table
+  } else col_headers <- NULL
+  
+  
   .pre <- .tbl %>%
     mutate_if(is.character,~replace_na(.,"")) %>%
-    if_fun(get_format()=="html",
+    if_fun(get_format("gitbook"),
            function(x) mutate_if(x,is.character,
                                  ~gsub("<","&lt;",.,fixed=T) %>%
                                    gsub(">","&gt;",.,fixed=T) %>%
@@ -189,40 +270,58 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
                                  ~gsub("^2","\\textsuperscript{2}",.,fixed=T) %>%
                                    gsub("%","\\%",.,fixed=T))) %>%
     make_linebreaks %>%
+    clear_ws(numeric_cols) %>%
     if_fun(!is.null(row_names),
            function(x) column_to_rownames(x,row_names))
   
-  
-  if(get_format() == "html")
+  if(get_format("gitbook"))
   {
     caption <- gsub("<","&lt;",caption,fixed=T)
     caption <- gsub(">","&gt;",caption,fixed=T)
     caption <- gsub("^2","&sup2;",caption,fixed=T)
   }
   
+  if(get_format("thesis","single"))
+  {
+    caption <- gsub("%","\\%",caption,fixed=T)
+  }
+  
   .pre %>%
-    kable(format=get_format(),
+    kable(format=fb("html","latex","latex"),
           booktabs=T,
           col.names = col_names(colnames(.pre)),
           escape=F,
           caption=paste0(
-            format_choice("{\\small ","<font size=\"2\">"),
+            fb("<font size=\"2\">","{\\small ","{\\small "),
             caption,
-            format_choice("}","</font>")),
+            fb("</font>","}","}")),
           ...) %>%
     kable_styling(bootstrap_options="striped",
                   latex_options="striped",
-                  font_size=format_choice(7,9)) %>%
+                  font_size=fb(9,7,7),
+                  full_width=F) %>%
+    if_fun(!is.null(col_headers),
+           add_header_above(col_headers)) %>%
     if_fun(lscape,landscape,
            function(x) kable_styling(x,latex_options="hold_position")) %>%
     if_fun(!is.null(numeric_cols),
            function(x) column_spec(x,numeric_cols,monospace = T)) %>%
-    if_fun(!is.null(group_col),
-           function(x) pack_rows(x,index=grp_index))
+    if_fun(!is.null(group_col) && !is.na(group_col),
+           function(x) pack_rows(x,index=grp_index)) %>%
+    do_colwidths(col_widths) %>%
+    if_fun(get_format("gitbook"),
+           function(x) scroll_box(x,width="100%")) %>%
+    gsub("\\\\vphantom\\{.*?\\} ","",.) %>% 
+    gsub("\\\\\\quad","\\\\ \\quad",.,fixed=T) 
   
 }
 
 
-fm <- function(x) footnote_marker_alphabet(x,format=get_format())
+fm <- function(x) footnote_marker_alphabet(x,format=fb("html","latex","latex"))
 
 do_nothing <- function(x) x
+
+
+if(knitr:::is_latex_output())
+  options(output.format = "thesis") else 
+    options(output.format = "gitbook")

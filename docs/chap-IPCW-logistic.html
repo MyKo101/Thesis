@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
+  <meta name="description" content="Chapter 4 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  
+  
+  
+
+<meta name="author" content="Michael Andrew Barrowman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="chap-Conf-CR.html"/>
+<link rel="next" href="chap-performance-metrics.html"/>
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/header-attrs-2.1.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="https://hypothes.is/embed.js" async></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="chap-lit-report.html"><a href="chap-lit-report.html"><i class="fa fa-check"></i><b>1</b> Literature Report</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#introduction-1"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="chap-lit-report.html"><a href="chap-lit-report.html#clinical-prediction-models"><i class="fa fa-check"></i><b>1.2</b> Clinical Prediction Models</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#fundamental-prognosis-research"><i class="fa fa-check"></i><b>1.2.1</b> Fundamental Prognosis Research</a></li>
+<li class="chapter" data-level="1.2.2" data-path="chap-lit-report.html"><a href="chap-lit-report.html#prognostic-factor-research"><i class="fa fa-check"></i><b>1.2.2</b> Prognostic Factor Research</a></li>
+<li class="chapter" data-level="1.2.3" data-path="chap-lit-report.html"><a href="chap-lit-report.html#prognostic-model-research"><i class="fa fa-check"></i><b>1.2.3</b> Prognostic Model Research</a></li>
+<li class="chapter" data-level="1.2.4" data-path="chap-lit-report.html"><a href="chap-lit-report.html#stratified-medicine"><i class="fa fa-check"></i><b>1.2.4</b> Stratified Medicine</a></li>
+<li class="chapter" data-level="1.2.5" data-path="chap-lit-report.html"><a href="chap-lit-report.html#examples"><i class="fa fa-check"></i><b>1.2.5</b> Examples</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="chap-lit-report.html"><a href="chap-lit-report.html#competing-risks-multi-state-models"><i class="fa fa-check"></i><b>1.3</b> Competing Risks &amp; Multi-State Models</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html"><i class="fa fa-check"></i><b>2</b> The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#introduction-2"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#methods"><i class="fa fa-check"></i><b>2.2</b> Methods</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#scope-of-review"><i class="fa fa-check"></i><b>2.2.1</b> Scope of Review</a></li>
+<li class="chapter" data-level="2.2.2" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#initial-search-strategy"><i class="fa fa-check"></i><b>2.2.2</b> Initial Search Strategy</a></li>
+<li class="chapter" data-level="2.2.3" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#filtering"><i class="fa fa-check"></i><b>2.2.3</b> Filtering</a></li>
+<li class="chapter" data-level="2.2.4" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#data-extraction"><i class="fa fa-check"></i><b>2.2.4</b> Data Extraction</a></li>
+<li class="chapter" data-level="2.2.5" data-path="chap-scoping-review.html"><a href="chap-scoping-review.html#reporting"><i class="fa fa-check"></i><b>2.2.5</b> Reporting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html"><i class="fa fa-check"></i><b>3</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
+<ul>
+<li class="chapter" data-level="" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#abstract-1"><i class="fa fa-check"></i>Abstract</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background"><i class="fa fa-check"></i><b>3.0.1</b> Background</a></li>
+<li class="chapter" data-level="3.0.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-1"><i class="fa fa-check"></i><b>3.0.2</b> Methods</a></li>
+<li class="chapter" data-level="3.0.3" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#results"><i class="fa fa-check"></i><b>3.0.3</b> Results</a></li>
+<li class="chapter" data-level="3.0.4" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#conclusion"><i class="fa fa-check"></i><b>3.0.4</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3.1" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#background-1"><i class="fa fa-check"></i><b>3.1</b> Background</a></li>
+<li class="chapter" data-level="3.2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#methods-2"><i class="fa fa-check"></i><b>3.2</b> Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html"><i class="fa fa-check"></i><b>4</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#methods-3"><i class="fa fa-check"></i><b>4.2</b> Methods</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#theory"><i class="fa fa-check"></i><b>4.2.1</b> Theory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#aims"><i class="fa fa-check"></i><b>4.2.2</b> Aims</a></li>
+<li class="chapter" data-level="4.2.3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#data-generating-method"><i class="fa fa-check"></i><b>4.2.3</b> Data Generating Method</a></li>
+<li class="chapter" data-level="4.2.4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#methods-4"><i class="fa fa-check"></i><b>4.2.4</b> Methods</a></li>
+<li class="chapter" data-level="4.2.5" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#estimands"><i class="fa fa-check"></i><b>4.2.5</b> Estimands</a></li>
+<li class="chapter" data-level="4.2.6" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#performance-measures"><i class="fa fa-check"></i><b>4.2.6</b> Performance Measures</a></li>
+<li class="chapter" data-level="4.2.7" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#software"><i class="fa fa-check"></i><b>4.2.7</b> Software</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#results-1"><i class="fa fa-check"></i><b>4.3</b> Results</a></li>
+<li class="chapter" data-level="4.4" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html#discussion"><i class="fa fa-check"></i><b>4.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html"><i class="fa fa-check"></i><b>5</b> Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#motivating-data-set"><i class="fa fa-check"></i><b>5.2</b> Motivating Data Set</a></li>
+<li class="chapter" data-level="5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#current-approaches"><i class="fa fa-check"></i><b>5.3</b> Current Approaches</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#baseline-models"><i class="fa fa-check"></i><b>5.3.1</b> Baseline Models</a></li>
+<li class="chapter" data-level="5.3.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#notation"><i class="fa fa-check"></i><b>5.3.2</b> Notation</a></li>
+<li class="chapter" data-level="5.3.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#patient-weighting"><i class="fa fa-check"></i><b>5.3.3</b> Patient Weighting</a></li>
+<li class="chapter" data-level="5.3.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---brier-score"><i class="fa fa-check"></i><b>5.3.4</b> Accuracy - Brier Score</a></li>
+<li class="chapter" data-level="5.3.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---c-statistic"><i class="fa fa-check"></i><b>5.3.5</b> Discrimination - c-statistic</a></li>
+<li class="chapter" data-level="5.3.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---intercept-and-slope"><i class="fa fa-check"></i><b>5.3.6</b> Calibration - Intercept and Slope</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#extension-to-multi-state-models"><i class="fa fa-check"></i><b>5.4</b> Extension to Multi-State Models</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#trivial-extensions"><i class="fa fa-check"></i><b>5.4.1</b> Trivial Extensions</a></li>
+<li class="chapter" data-level="5.4.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy---multiple-outcome-brier-score"><i class="fa fa-check"></i><b>5.4.2</b> Accuracy - Multiple Outcome Brier Score</a></li>
+<li class="chapter" data-level="5.4.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination---polytomous-discriminatory-index"><i class="fa fa-check"></i><b>5.4.3</b> Discrimination - Polytomous Discriminatory Index</a></li>
+<li class="chapter" data-level="5.4.4" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration---multinomial-intercept-matched-and-unmatched-slopes"><i class="fa fa-check"></i><b>5.4.4</b> Calibration - Multinomial Intercept, Matched and Unmatched Slopes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#application-to-real-world-data"><i class="fa fa-check"></i><b>5.5</b> Application to Real-World Data</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#accuracy"><i class="fa fa-check"></i><b>5.5.1</b> Accuracy</a></li>
+<li class="chapter" data-level="5.5.2" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discrimination"><i class="fa fa-check"></i><b>5.5.2</b> Discrimination</a></li>
+<li class="chapter" data-level="5.5.3" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#calibration"><i class="fa fa-check"></i><b>5.5.3</b> Calibration</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="chap-performance-metrics.html"><a href="chap-performance-metrics.html#discussion-1"><i class="fa fa-check"></i><b>5.6</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html"><i class="fa fa-check"></i><b>6</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#methods-5"><i class="fa fa-check"></i><b>6.2</b> Methods</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources"><i class="fa fa-check"></i><b>6.2.1</b> Data Sources</a></li>
+<li class="chapter" data-level="6.2.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#model-design"><i class="fa fa-check"></i><b>6.2.2</b> Model Design</a></li>
+<li class="chapter" data-level="6.2.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example"><i class="fa fa-check"></i><b>6.2.3</b> Example</a></li>
+<li class="chapter" data-level="6.2.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator"><i class="fa fa-check"></i><b>6.2.4</b> Calculator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#results-2"><i class="fa fa-check"></i><b>6.3</b> Results</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-1"><i class="fa fa-check"></i><b>6.3.1</b> Data Sources</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>6.3.2</b> Example</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>6.3.3</b> Calculator</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#discussion-2"><i class="fa fa-check"></i><b>6.4</b> Discussion</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html"><i class="fa fa-check"></i><b>A</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#simulation-details"><i class="fa fa-check"></i><b>A.1</b> Simulation Details</a></li>
+<li class="chapter" data-level="A.2" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#mathematics-of-subdistribution-hazards"><i class="fa fa-check"></i><b>A.2</b> Mathematics of Subdistribution Hazards</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html"><i class="fa fa-check"></i><b>B</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html#calibration-slope"><i class="fa fa-check"></i><b>B.1</b> Calibration Slope</a>
+<ul>
+<li class="chapter" data-level="B.1.1" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html#results-3"><i class="fa fa-check"></i><b>B.1.1</b> Results</a></li>
+<li class="chapter" data-level="B.1.2" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html#discussion-3"><i class="fa fa-check"></i><b>B.1.2</b> Discussion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html"><i class="fa fa-check"></i><b>C</b> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#statistical-analysis"><i class="fa fa-check"></i><b>C.1</b> Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#development"><i class="fa fa-check"></i><b>C.1.1</b> Development</a></li>
+<li class="chapter" data-level="C.1.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#validation"><i class="fa fa-check"></i><b>C.1.2</b> Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#model-results"><i class="fa fa-check"></i><b>C.2</b> Model Results</a>
+<ul>
+<li class="chapter" data-level="C.2.1" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#two-state-model"><i class="fa fa-check"></i><b>C.2.1</b> Two State Model</a></li>
+<li class="chapter" data-level="C.2.2" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#three-state-model"><i class="fa fa-check"></i><b>C.2.2</b> Three State Model</a></li>
+<li class="chapter" data-level="C.2.3" data-path="chap-dev-paper-supp.html"><a href="chap-dev-paper-supp.html#five-state-model"><i class="fa fa-check"></i><b>C.2.3</b> Five State Model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Multi-State Clinical Prediction Models in Renal Replacement Therapy</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chap-IPCW-logistic" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</h1>
+<p><em>MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin</em></p>
+<p>Download as individual paper draft: <a href="Chapters/ind_04-IPCW_logistic.pdf">pdf</a>, <a href="Chapters/ind_04-IPCW_logistic.tex">tex</a></p>
+<div id="introduction-3" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>Clinical prediction models (CPMs) need to be validated before they are used. A fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with p% risk of an event, p% of those have the event <span class="citation">[<a href="#ref-steyerberg_clinical_2008" role="doc-biblioref">20</a>]</span>. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) <span class="citation">[<a href="#ref-calster_calibration_2016-1" role="doc-biblioref">21</a>]</span>. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors.</p>
+<p>In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function <span class="citation">[<a href="#ref-royston_external_2013" role="doc-biblioref">22</a>]</span>. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals<span class="citation">[<a href="#ref-crowson_assessing_2016" role="doc-biblioref">23</a>]</span>; however here we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case <span class="citation">[<a href="#ref-houwelingen_validation_2000" role="doc-biblioref">24</a>]</span>). Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates <span class="citation">[<a href="#ref-royston_external_2013" role="doc-biblioref">22</a>], [<a href="#ref-hippisley-cox_derivation_2007" role="doc-biblioref">25</a>]</span>. However, the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.</p>
+<p>Royston <span class="citation">[<a href="#ref-royston_tools_2014" role="doc-biblioref">26</a>]</span> presents an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson <span class="citation">[<a href="#ref-perme_checking_2008" role="doc-biblioref">27</a>]</span> to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates. In this paper and another <span class="citation">[<a href="#ref-royston_tools_2015" role="doc-biblioref">28</a>]</span> he proposes the comparison of KM curves in risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided.</p>
+<p>QRISK used the overall KM approach in the 2007 paper <span class="citation">[<a href="#ref-hippisley-cox_derivation_2007" role="doc-biblioref">25</a>]</span> with good results (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), but bad results in the QRISK3 update <span class="citation">[<a href="#ref-hippisley-cox_development_2017" role="doc-biblioref">2</a>]</span> (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 18 years) and an important change between the update was the lower age limit moved from 35 to 25.</p>
+<p>A solution to this problem is to apply a weighting to uncensored patients based on their probability of being censored according to a model that accounts for covariates. The Inverse Probability of Censoring Weighting (IPCW) relaxes the assumption that patients who were censored are identical to those that remain at risk. The weighting inflates the patients who were similar to the censored population to account for those patients who are no longer available at a given time.</p>
+<p>Gerds &amp; Schumacher <span class="citation">[<a href="#ref-gerds_consistent_2006" role="doc-biblioref">29</a>]</span> have thoroughly investigated the requirements and advantages of applying an IPCW to a performance measure for modelling using the Brier score as an example and demonstrating the efficacy of its use, which was augmented by Spitoni et al <span class="citation">[<a href="#ref-spitoni_prediction_2018" role="doc-biblioref">30</a>]</span> who demonstrated that any proper scoring rule can be improved by the use of the IPCW. This work has been added to by Han et al <span class="citation">[<a href="#ref-han_comparing_2017" role="doc-biblioref">31</a>]</span> and Liu et al <span class="citation">[<a href="#ref-liu_comparing_2016" role="doc-biblioref">32</a>]</span> who demonstrated that the c-statistic is also suitable.
+In this paper we present an approach to assessing the calibration intercept (calibration-in-the-large) and calibration slope in time-to-event models based on estimating the censoring distribution, and reweighting observations by the inverse of the censoring probability. We first show, theoretically, how this method can be used and evidence that the metrics for calibration are amenable to its use. We then compare simulation results from using this weighted estimate to an unweighted estimate within various commonly used methods of calibration assessment.</p>
+</div>
+<div id="methods-3" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Methods</h2>
+<div id="theory" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Theory</h3>
+<p>[<strong>Lots of Theory work on the probabilities involved from Matt</strong>]</p>
+</div>
+<div id="aims" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Aims</h3>
+<p>The aim of this study is to formalise the bias induced by applying different methods of assessing model calibration to data that is susceptible to censoring and to compare it to the bias when this data has been adjusted by the Inverse Probability of Censoring Weighting (IPCW).</p>
+</div>
+<div id="data-generating-method" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Data Generating Method</h3>
+<p>We simulated populations of patients with survival and censoring times, and took the observed event time as the minimum of these two values along with an event indicator of whether this was the survival or censoring time <span class="citation">[<a href="#ref-burton_design_2006" role="doc-biblioref">33</a>]</span>. Each population was simulated with two parameters: <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\eta\)</span>, which defined the proportional hazards coefficients for the survival and censoring distributions and the baseline hazard function, respectively.</p>
+<p>We varied the parameters to take all the values,<span class="math inline">\(\gamma = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\)</span>, <span class="math inline">\(\beta = \{-2,-1.5,-1,-0.5,0.5,1,1.5,2\}\)</span> and <span class="math inline">\(\eta = \{-\sfrac{1}{2},0,\sfrac{1}{2}\}\)</span>, that is the proportional hazard coefficients took the same values between -2 and 2, but <span class="math inline">\(\beta\)</span> did not take the value of 0 because this would make a predictive model infeasible.</p>
+<p>For each combination of parameters, we generated <span class="math inline">\(N = 100\)</span> populations of <span class="math inline">\(n = 10,000\)</span> patients (a high number of patients was chosen to avoid bias due to a small population size) with a single covariate <span class="math inline">\(Z \sim N(0,1)\)</span>. For each patient, we then generated a survival time, <span class="math inline">\(T\)</span> and a censoring time, <span class="math inline">\(C\)</span>. Survival times were simulated with a baseline hazard <span class="math inline">\(\lambda_0(t) = t^{\eta}\)</span>, and a proportional hazard of <span class="math inline">\(e^{\beta Z}\)</span>. This allows the simulation of a constant baseline hazard (<span class="math inline">\(\eta = 0\)</span>) as well as an increasing (<span class="math inline">\(\eta = \sfrac{1}{2}\)</span>) and decreasing hazard function Censoring times were simulated with a constant baseline hazard, <span class="math inline">\(\lambda_{C,0}(t) = 1\)</span> and a proportional hazard of <span class="math inline">\(e^{\gamma Z}\)</span>.</p>
+<p>Once the survival and censoring times were generated, the event time, <span class="math inline">\(X = \min(T,C)\)</span>, and the event indicator, <span class="math inline">\(\delta = I(T=X)\)</span>, were generated. In the real-world, only <span class="math inline">\(Z\)</span>, <span class="math inline">\(X\)</span> and <span class="math inline">\(\delta\)</span> would be observed.</p>
+<p>For each population, a prediction model for survival, <span class="math inline">\(F_P\)</span> was chosen to be identical to the Data Generating Mechanism (DGM) to emulate a perfectly calibrated model:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+F_P(t|Z = z) = 1 - \exp\left(-\frac{e^{\beta Z}t^{\eta+1}}{\eta+1}\right)
+\end{array}
+\]</span>
+This prediction model was used to generate an estimate of the Expected probability that a given patient, with covariate <span class="math inline">\(z\)</span>, will have an event at the given time. To test the ability of approaches to detect miscalibration, we also derived a prediction model that would systematically over-estimate the prediction model, <span class="math inline">\(F_O\)</span> and one which would systematically under-estimate the prediction, <span class="math inline">\(F_U\)</span>. These are defined as such:</p>
+<p><span class="math display">\[
+\begin{array}{rl}
+F_U(t|Z=z) =&amp; \logit^{-1}\left(\logit\left( F_P(t|z) - 0.2\right)\right)
+\end{array}
+\]</span>
+<span class="math display">\[
+\begin{array}{rl}
+F_O(t|Z=z) =&amp; \logit^{-1}\left(\logit\left( F_P(t|z) + 0.2\right)\right)
+\end{array}
+\]</span></p>
+<p>The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, <span class="math inline">\(X\)</span>. At each time point, <span class="math inline">\(t\)</span>, we removed patients who had been censored (i.e. <span class="math inline">\(T &lt; X_i\)</span> &amp; <span class="math inline">\(\delta_i = 0\)</span>)
+and created an indicator variable for whether each patient had had the event yet or not:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+O_i = I(X_i &lt; t\;\&amp;\; \delta_i = 1)
+\end{array}
+\]</span></p>
+<p>Similarly, we calculate a censoring prediction model, <span class="math inline">\(G\)</span>, to be identical to the DGM:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+G(t|z) = 1-\exp\left(-e^{\gamma Z}t\right)
+\end{array}
+\]</span>
+This is used to calculate an IPCW for all non-censored patients at the last time they were observed (<span class="math inline">\(t\)</span> for patients who have not had an event, and <span class="math inline">\(X_i\)</span> for patients who have had the event), This is defined as:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\omega(t|z) = \frac{1}{1 - G(\min(t,X_i)|z)}
+\end{array}
+\]</span></p>
+</div>
+<div id="methods-4" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Methods</h3>
+<p>At each of these time points, we compare Observed outcomes (<span class="math inline">\(O\)</span>) with the Expected outcomes (<span class="math inline">\(E\)</span>) of the prediction models based on four choices of methodology <span class="citation">[<a href="#ref-riley_prognosis_2019" role="doc-biblioref">6</a>], [<a href="#ref-royston_tools_2014" role="doc-biblioref">26</a>], [<a href="#ref-royston_tools_2015" role="doc-biblioref">28</a>], [<a href="#ref-andersen_pseudo-observations_2010" role="doc-biblioref">34</a>]</span> to produce measures for the calibration-in-the-large</p>
+<ul>
+<li>Kaplan-Meier (KM) - A Kaplan-Meier estimate of survival is estimated from the data and the value of the KM curve at the current time is taken to be the average Observed number of events within the population and this is compared with the average Expected value.</li>
+<li>Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the logit(Expected) value as an offset and the Intercept of the regression is the estimate.</li>
+<li>Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.</li>
+<li>Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed is calculated by removing them from the population and aggregating the difference. Logistic regression is performed using the log cumulative hazard as an offset and the Intercept of the result is the estimate.</li>
+</ul>
+<p>The weights within the LW method create a non-integer number of events within the regression and the PO method can produce values that are not always 0 or 1 (as would be expected in an ordinary logistic regression). The values produced by PO will have to be artificially capped between 0 and 1, but otherwise these two methods do not cause any issues.</p>
+</div>
+<div id="estimands" class="section level3" number="4.2.5">
+<h3><span class="header-section-number">4.2.5</span> Estimands</h3>
+<p>For each set of parameters and methodology, our estimand at time, <span class="math inline">\(t\)</span>, measured in simulation <span class="math inline">\(i = 1,...,N\)</span> is <span class="math inline">\(\theta_i(t)\)</span>, the set of estimates of the calibration-in-the-large for the <span class="math inline">\(F_P\)</span>, <span class="math inline">\(F_U\)</span> and <span class="math inline">\(F_O\)</span> models in order. Therefore our underlying truth for all time points is</p>
+<p><span class="math display">\[\begin{array}{c}
+\theta = \left(0,0.1,-0.1\right)
+\end{array}\]</span></p>
+<p>From this, we can also define our upper and lower bound for a 95% confidence interval as the vectors <span class="math inline">\(\theta_{i,L}(t)\)</span> and <span class="math inline">\(\theta_{i,U}(t)\)</span>.</p>
+</div>
+<div id="performance-measures" class="section level3" number="4.2.6">
+<h3><span class="header-section-number">4.2.6</span> Performance Measures</h3>
+<p>The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, <span class="math inline">\(t\)</span>, along with relevant standard errors and confidence intervals as per current recommendations <span class="citation">[<a href="#ref-morris_using_2019" role="doc-biblioref">35</a>]</span>. These measures can be seen in table <a href="#tab:PM-DGM-time"><strong>??</strong></a>.</p>
+<p>[<strong>Insert Performance Measures (at time point)</strong>]</p>
+<p>For each estimand above, <span class="math inline">\(\hat{Q}(t) = \{\hat{\theta}(t),\hat{E}(t), \hat{C}(t)\}\)</span> and associated SE, <span class="math inline">\(\hat{Q}_\textrm{SE}(t) = \{\hat{\theta}_\textrm{SE}(t),\hat{E}_\textrm{SE}(t), \hat{C}_\textrm{SE}(t)\}\)</span>, we average over time. As these measures will be taken at each of the 100 time points, <span class="math inline">\(t_j:j=1...100\)</span>, we summarise each of these measures as an average and as weighted average, as seen in table <a href="#tab:PM-DGM"><strong>??</strong></a>. The weight used for the measure at time <span class="math inline">\(t_j\)</span> is the average number of non-censored patients remaining in the population at time <span class="math inline">\(t_j\)</span>, defined as <span class="math inline">\(n_j\)</span> (note that this includes patients who have had the event).</p>
+<p>[<strong>Insert Performance Meaures averaged over time</strong>]</p>
+</div>
+<div id="software" class="section level3" number="4.2.7">
+<h3><span class="header-section-number">4.2.7</span> Software</h3>
+<p>All analysis was done in <code>R 3.6.3</code> <span class="citation">[<a href="#ref-r_core_team_r_nodate" role="doc-biblioref">36</a>]</span> using the various <code>tidyverse</code> packages <span class="citation">[<a href="#ref-wickham_tidy_2017" role="doc-biblioref">37</a>]</span>, Kaplan-Meier estimates were found using the <code>survival</code> package <span class="citation">[<a href="#ref-therneau_package_2020" role="doc-biblioref">38</a>]</span>, Pseudo-Observations were evaluated with the <code>pseudo</code> package <span class="citation">[<a href="#ref-perme_pseudo_2017" role="doc-biblioref">39</a>]</span>.</p>
+</div>
+</div>
+<div id="results-1" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Results</h2>
+<p>Forthcoming</p>
+</div>
+<div id="discussion" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Discussion</h2>
+<p>Weighting = Good.</p>
+<p>Not Weighting = Bad.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-hippisley-cox_development_2017">
+<p>[2] J. Hippisley-Cox, C. Coupland, and P. Brindle, “Development and validation of QRISK3 risk prediction algorithms to estimate future risk of cardiovascular disease: Prospective cohort study,” <em>BMJ</em>, vol. 357, May 2017, doi: <a href="https://doi.org/10.1136/bmj.j2099">10.1136/bmj.j2099</a>.</p>
+</div>
+<div id="ref-riley_prognosis_2019">
+<p>[6] R. D. Riley, D. van der Windt, P. Croft, and K. G. M. Moons, <em>Prognosis Research in Healthcare: Concepts, Methods, and Impact</em>, First. Oxford University Press, 2019.</p>
+</div>
+<div id="ref-steyerberg_clinical_2008">
+<p>[20] E. W. Steyerberg, <em>Clinical Prediction Models: A Practical Approach to Development, Validation, and Updating</em>. Springer Science &amp; Business Media, 2008.</p>
+</div>
+<div id="ref-calster_calibration_2016-1">
+<p>[21] B. V. Calster, D. Nieboer, Y. Vergouwe, B. D. Cock, M. J. Pencina, and E. W. Steyerberg, “A calibration hierarchy for risk models was defined: From utopia to empirical data,” <em>Journal of Clinical Epidemiology</em>, vol. 74, pp. 167–176, Jun. 2016, doi: <a href="https://doi.org/10.1016/j.jclinepi.2015.12.005">10.1016/j.jclinepi.2015.12.005</a>.</p>
+</div>
+<div id="ref-royston_external_2013">
+<p>[22] P. Royston and D. G. Altman, “External validation of a Cox prognostic model: Principles and methods,” <em>BMC Medical Research Methodology</em>, vol. 13, no. 1, p. 33, Mar. 2013, doi: <a href="https://doi.org/10.1186/1471-2288-13-33">10.1186/1471-2288-13-33</a>.</p>
+</div>
+<div id="ref-crowson_assessing_2016">
+<p>[23] C. S. Crowson, E. J. Atkinson, and T. M. Therneau, “Assessing Calibration of Prognostic Risk Scores,” <em>Statistical methods in medical research</em>, vol. 25, no. 4, pp. 1692–1706, Aug. 2016, doi: <a href="https://doi.org/10.1177/0962280213497434">10.1177/0962280213497434</a>.</p>
+</div>
+<div id="ref-houwelingen_validation_2000">
+<p>[24] H. C. van Houwelingen, “Validation, calibration, revision and combination of prognostic survival models,” <em>Statistics in Medicine</em>, vol. 19, no. 24, pp. 3401–3415, 2000, doi: <a href="https://doi.org/10.1002/1097-0258(20001230)19:24%3C3401::AID-SIM554%3E3.0.CO;2-2">10.1002/1097-0258(20001230)19:24&lt;3401::AID-SIM554&gt;3.0.CO;2-2</a>.</p>
+</div>
+<div id="ref-hippisley-cox_derivation_2007">
+<p>[25] J. Hippisley-Cox, C. Coupland, Y. Vinogradova, J. Robson, M. May, and P. Brindle, “Derivation and validation of QRISK, a new cardiovascular disease risk score for the United Kingdom: Prospective open cohort study,” <em>BMJ (Clinical research ed.)</em>, vol. 335, no. 7611, p. 136, Jul. 2007, doi: <a href="https://doi.org/10.1136/bmj.39261.471806.55">10.1136/bmj.39261.471806.55</a>.</p>
+</div>
+<div id="ref-royston_tools_2014">
+<p>[26] P. Royston, “Tools for Checking Calibration of a Cox Model in External Validation: Approach Based on Individual Event Probabilities:” <em>The Stata Journal</em>, Dec. 2014, doi: <a href="https://doi.org/10.1177/1536867X1401400403">10.1177/1536867X1401400403</a>.</p>
+</div>
+<div id="ref-perme_checking_2008">
+<p>[27] M. P. Perme and P. K. Andersen, “Checking hazard regression models using pseudo-observations,” <em>Statistics in medicine</em>, vol. 27, no. 25, pp. 5309–5328, Nov. 2008, doi: <a href="https://doi.org/10.1002/sim.3401">10.1002/sim.3401</a>.</p>
+</div>
+<div id="ref-royston_tools_2015">
+<p>[28] P. Royston, “Tools for Checking Calibration of a Cox Model in External Validation: Prediction of Population-Averaged Survival Curves Based on Risk Groups,” <em>The Stata Journal</em>, vol. 15, no. 1, pp. 275–291, Apr. 2015, doi: <a href="https://doi.org/10.1177/1536867X1501500116">10.1177/1536867X1501500116</a>.</p>
+</div>
+<div id="ref-gerds_consistent_2006">
+<p>[29] T. A. Gerds and M. Schumacher, “Consistent Estimation of the Expected Brier Score in General Survival Models with Right-Censored Event Times,” <em>Biometrical Journal</em>, vol. 48, no. 6, pp. 1029–1040, 2006, doi: <a href="https://doi.org/10.1002/bimj.200610301">10.1002/bimj.200610301</a>.</p>
+</div>
+<div id="ref-spitoni_prediction_2018">
+<p>[30] C. Spitoni, V. Lammens, and H. Putter, “Prediction errors for state occupation and transition probabilities in multi-state models,” <em>Biometrical Journal. Biometrische Zeitschrift</em>, vol. 60, no. 1, pp. 34–48, Jan. 2018, doi: <a href="https://doi.org/10.1002/bimj.201600191">10.1002/bimj.201600191</a>.</p>
+</div>
+<div id="ref-han_comparing_2017">
+<p>[31] X. Han, Y. Zhang, and Y. Shao, “On comparing two correlated C indices with censored survival data,” <em>Statistics in medicine</em>, vol. 36, no. 25, pp. 4041–4049, Nov. 2017, doi: <a href="https://doi.org/10.1002/sim.7414">10.1002/sim.7414</a>.</p>
+</div>
+<div id="ref-liu_comparing_2016">
+<p>[32] X. Liu, Z. Jin, and J. H. Graziano, “Comparing paired biomarkers in predicting quantitative health outcome subject to random censoring,” <em>Statistical methods in medical research</em>, vol. 25, no. 1, pp. 447–457, Feb. 2016, doi: <a href="https://doi.org/10.1177/0962280212460434">10.1177/0962280212460434</a>.</p>
+</div>
+<div id="ref-burton_design_2006">
+<p>[33] A. Burton, D. G. Altman, P. Royston, and R. L. Holder, “The design of simulation studies in medical statistics,” <em>Statistics in Medicine</em>, vol. 25, no. 24, pp. 4279–4292, Dec. 2006, doi: <a href="https://doi.org/10.1002/sim.2673">10.1002/sim.2673</a>.</p>
+</div>
+<div id="ref-andersen_pseudo-observations_2010">
+<p>[34] P. K. Andersen and M. Pohar Perme, “Pseudo-observations in survival analysis,” <em>Statistical Methods in Medical Research</em>, vol. 19, no. 1, pp. 71–99, Feb. 2010, doi: <a href="https://doi.org/10.1177/0962280209105020">10.1177/0962280209105020</a>.</p>
+</div>
+<div id="ref-morris_using_2019">
+<p>[35] T. P. Morris, I. R. White, and M. J. Crowther, “Using simulation studies to evaluate statistical methods,” <em>Statistics in Medicine</em>, vol. 38, no. 11, pp. 2074–2102, 2019, doi: <a href="https://doi.org/10.1002/sim.8086">10.1002/sim.8086</a>.</p>
+</div>
+<div id="ref-r_core_team_r_nodate">
+<p>[36] R. C. Team, “R: A Language and Environment for Statistical Computing.” R Foundation for Statistical Computing, Vienna, Austria, Vienna,</p>
+</div>
+<div id="ref-wickham_tidy_2017">
+<p>[37] H. Wickham, “The tidy tools manifesto.” https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.</p>
+</div>
+<div id="ref-therneau_package_2020">
+<p>[38] T. Therneau, “A package for survival analysis in R,” p. 89, Mar. 2020.</p>
+</div>
+<div id="ref-perme_pseudo_2017">
+<p>[39] M. P. Perme, M. Gerster, and K. Rodrigues, “Pseudo: Computes Pseudo-Observations for Modeling.” Jul-2017.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="chap-Conf-CR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="chap-performance-metrics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": [["thesis.pdf", "PDF"]],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

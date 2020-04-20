@@ -9,7 +9,7 @@ advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambi
 department: 'School of Health Sciences'
 degree: 'PhD Medicine'
 title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
-knit: (function(...) bookdown::render_book(...,output_format="all"))
+knit: mpipe::MyRender
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -44,6 +44,7 @@ lof: true
 header-includes:
 #- \usepackage{tikz}
 - \usepackage{amsmath}
+- \usepackage[T1]{fontenc}
 - \usepackage{rotating}
 - \usepackage{booktabs}
 - \usepackage{longtable}
@@ -66,12 +67,42 @@ header-includes:
 source("setup.R")
 ```
 
+  
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
 
+# Introduction {-}
 
-`r {source("prelim_Subsection.R");prelim_Subsection("html","all")}`
+<!--
+To Do List:
+Set up Supervisor's Hypothesis Accounts
+Sort out monospacing in kables (double spaces get rendered as single space. Seems to be happening                                   before being saved as a html)
+Add in written details in Supp. Material
+Figure out scroll_box() for the PH Five-State
+Make equations not in aligns (rolls onto second page in Five-State Model)
+Write up current draft of other papers
+pdf tables aren't aligned
+Add Timeline
+Figure out equation referencing
+Download options showing up in pdf
+Abstract subsections appearing in TOC in Thesis (e.g. 3.0.1 Background)
+Add "Appendix" heading (or page) to thesis version
+
+-->
+
+Welcome to my Thesis. This is formatted as `r fb("a full Gitbook style thesis", "a full UoM formatted thesis", "an individual paper")`.
+  
+I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool to add annotations to *any* webpage. Just highlight the text you want to comment on, and the annotate bubble pops up. Make sure you click Post to Public after writing the annotation (Note that annotations can contain Rich Text / Markdown).
+
+I've written this document to be ready to become my thesis, but each chapter is a separate file, which I can output individually if/when I need.
+
+
+I've also outlined my expected timeline below. This thesis document, along with each chapter's files (at their respective urls) will be updated.
+
+`r fb(gitbook="## Abstract {-}")`
+
+`r {source("prelim_Subsection.R");prelim_Subsection("html","abstract")}`
 

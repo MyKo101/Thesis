@@ -55,5 +55,5 @@ prelim_Subsection <- function(out="latex",name=NULL,prelim="00--prelim.Rmd")
         return(res)
         
       }
-  }
+  } else " "
 }

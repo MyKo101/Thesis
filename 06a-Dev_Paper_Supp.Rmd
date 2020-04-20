@@ -3,7 +3,6 @@
 
 ## Statistical Analysis
 
-
 ### Development
 
 Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
@@ -34,16 +33,16 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 
 ## Model Results
 
-```{r table_formatting, include=F}
-print_table_PH <- function(fn,Model,lscape=F)
+```{r print_table_PH_function, include=F}
+print_table_PH <- function(fn,Model,lscape=F,scroll_width=F)
 {
   sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
   nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
   algn <- paste0(rep("r",nTrans),collapse="")
-  .mid <- paste0(.wd,fn) %>%
+  paste0(.wd,fn) %>%
     read_csv(col_types=cols()) %>%
     select(Var,starts_with(paste0("Trans_",Model)))%>%
-    Dev_Valid_Paper_Var_Names(Var,group_var=".group") %>%
+    Dev_Valid_Paper_Var_Names(Var,group_var=".group")%>%
     to_kable(col_names=Trans_short2long,
              row_names="Var",
              align=algn,
@@ -51,26 +50,107 @@ print_table_PH <- function(fn,Model,lscape=F)
              group_col = ".group",
              caption=paste0("Proportional Hazards for each transition in the ",
                          sModel,"-State Model"),
-             lscape=lscape)
+             lscape=lscape,
+             col_widths=fb(c("4.1cm",rep("4.5cm",nTrans)),
+                           c("4.0cm",rep("4.0cm",nTrans)),
+                           c("4.0cm",rep("4.0cm",nTrans))))
   
-  if(get_format() == "latex")
+}
+```
+
+```{r print_Cum_Haz_eq_function, include=F}
+print_Cum_Haz_eq <- function(fn,Model)
+{
+  sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
+nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
+paste0(.wd,fn) %>%
+  read_csv(col_types=cols()) %>% 
+  filter(Model == sModel) %>%
+  mutate(L0 = gsub("exp(case_when(","",L0,fixed=T),
+         L0 = strsplit(L0,"\n\t\t"),
+         L0 = map(L0,~tibble(haz = .,rn=1:length(.)))) %>%
+  unnest(L0) %>%
+  separate(haz,into=c("Range","Equation"),sep="~") %>%
+  mutate(Transition = paste0(From," to ",To),
+         Range = gsub("t & t","t",Range),
+         Equation = gsub(",","",Equation,fixed=T),
+         From = recode(From,Alive=1,CKD=1,HD=2,PD=3,Tx=4,RRT=5,Dead=6),
+         To = recode(To,Alive=1,CKD=1,HD=2,PD=3,Tx=4,RRT=5,Dead=6)) %>%
+  group_by(Transition,From,To) %>%
+  arrange(Transition,rn) %>%
+  mutate(L0 = paste0(Equation," & ",Range)) %>%
+  summarise(L0 = paste0(L0,collapse="\\\\")) %>%
+  mutate(L0 = paste0("\\begin{equation}\n\\Lambda_{0,",From,To,"}(t)=",
+                     "\\begin{cases}",L0,
+                     "(\\#eq:CH-",sModel,"-",From,To,")",
+                     "\\end{cases}\n\\end{equation}"),
+         L0 = gsub("log","\\log",L0,fixed=T),
+         L0 = gsub("*","",L0,fixed=T),
+         L0 = gsub("<=","\\le",L0,fixed=T)) %>%
+  ungroup %>%
+  pull(L0) %>%
+  paste0(collapse="\n")
+}
+```
+
+```{r list_table_Valid_function, include=F}
+list_table_Valid <- function(fn,Model,external)
+{
+  sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
+  nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
+  
+  cap <- paste0(if_else(external,"External","Internal"),
+                " Validation of the ",
+                sModel,"-State Model, results presented as Estimate (95% CI, where possible)")
+  
+  .mid <- paste0(.wd,fn) %>%
+    read_csv(col_types=cols()) %>%
+    filter(Model == sModel,src == ifelse(external,"UoG","SKS")) %>%
+    select(-Model,-src) %>%
+    arrange(Measure,Collapsed) %>%
+    rename_at(vars(ends_with("Year")),
+              ~gsub("_"," ",.,fixed=T)%>%
+                trimws) %>%
+    rename(Predicting=Collapsed,
+           Average = Overall)
+  
+  
+  .out <- .mid %>%
+    filter(!(Predicting == "Five" & Measure == "Slope")) %>%
+    to_kable(caption=cap,group_col="Measure",align="lrrrr",numeric_cols=2:5)
+  
+  
+  
+  if(Model == 5)
   {
-    .out <- .mid %>%
-      column_spec(1:nTrans+1,width="3cm")
-  }
+    cap <- paste0("Calibration Slope results for the ",
+                  if_else(external,"External","Internal"),
+                  " Validation of the ",
+                  "Five-State Model, results presented as Estimate (95% CI)")
+    
+    
+    diag_pre <- matrix("",nrow=6,ncol=6)
+    diag(diag_pre) <- "**"
+    diag_post <- matrix("",nrow=6,ncol=6)
+    diag(diag_post) <- "**"
+    
+    .out2 <- .mid %>%
+      filter(Predicting == "Five" & Measure == "Slope") %>%
+      pivot_longer(c(-Predicting,-Measure),names_to="Time",values_to="Slope") %>%
+      select(-Measure,-Predicting) #%>%
+      #to_kable(caption=cap,
+      #         row_names = "Time",align="r",numeric_cols=1)
+    
+    
+  } else .out2 <- ""
   
-  if(get_format() == "html")
-  {
-    .out <- .mid  %>%
-      kable_styling(full_width=F) %>%
-      column_spec(1:nTrans+1,width="4.1cm")
-  }
+  list(.out,.out2)
   
-  return(.out)
 }
 
 
 ```
+
 
 `r xx("Describe the model results briefly")`
 
@@ -79,15 +159,30 @@ print_table_PH <- function(fn,Model,lscape=F)
 
 Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model.
 
+
 ```{r PH-Two,echo=F}
 print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",2,lscape=F)
 ```
 
-Table \@ref(tab:Hazard-Two) shows the hazard functions for the transitions in the Two-State Model.
+Equation \@ref(eq:CH-Two-16) below shows the hazard functions for the transition from Alive to Dead in the Two-State Model.
+
+`r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",2)`
 
 Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model.
 
+
+```{r IV-Two,echo=F}
+res <- list_table_Valid("data/Dev_Paper_Validation.csv",2,F)
+res[[1]]
+```
+
 Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model.
+
+
+```{r EV-Two,echo=F}
+res <- list_table_Valid("data/Dev_Paper_Validation.csv",2,T)
+res[[1]]
+```
 
 ### Three State Model
 
@@ -100,26 +195,61 @@ print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",3,lscape=T)
 
 Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
 
-Table \@ref(tab:Hazard-Three) shows the hazard functions for the transitions in the Three-State Model.
+Equation \@ref(eq:CH-Three-16) shows the equation for 
+
+The equations in \@ref(eq:Cum-Haz-Three) shows the hazard functions for the transition from CKD to Dead in the Three-State Model.
+
+`r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",3)`
 
 Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model.
 
+```{r IV-Three,echo=F}
+res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,F)
+res[[1]]
+```
+
 Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
+
+
+```{r EV-Three,echo=F}
+res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,T)
+res[[1]]
+```
 
 ### Five State Model
 
 Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
 
 ```{r PH-Five,echo=F}
-print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",5,lscape=T)
+print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",5,lscape=T,scroll_width=T)
 ```
 
-Table \@ref(tab:Hazard-Five) shows the hazard functions for the transitions in the Five-State Model.
+The equations in \@ref(eq:Cum-Haz-Five) shows the hazard functions for the transitions in the Five-State Model.
+
+`r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",5)`
 
 Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model.
 
+
+```{r IV-Five,echo=F}
+res_IV <- list_table_Valid("data/Dev_Paper_Validation.csv",5,F)
+res_IV[[1]]
+```
+
+
 Table \@ref(tab:EV-Five) shows the results from the external validation in the Five-State Model.
 
+```{r EV-Five,echo=F}
+res_EV <- list_table_Valid("data/Dev_Paper_Validation.csv",5,T)
+res_EV[[1]]
+```
+
+```{r Five-Valid-Slope, echo=F}
+full_join(rename(res_IV[[2]],Internal=Slope),
+          rename(res_EV[[2]],External=Slope),
+          by="Time") %>%
+  to_kable(caption="Calibration Slope results for both the External and Internal Validation for the Five-State Model",align="rr",row_names="Time",numeric_cols=2:3,col_widths=rep("5cm",3))
+```
 
 
 

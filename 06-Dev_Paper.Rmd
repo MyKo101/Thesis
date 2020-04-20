@@ -1,5 +1,8 @@
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
+*MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
+
+`r add_downloads(6)`
 
 ## Introduction
 
@@ -60,7 +63,7 @@ Three separate models were developed, so we could determine a clinically viable 
 knitr::include_graphics("figure/Dev_Paper_State_Diagrams.png")
 ```
 
-The models were developed and validated as discussed in the Supplementary materials appendix {#chap-dev-paper-supp}.
+The models were developed and validated as discussed in the Supplementary materials appendix \@ref(chap-dev-paper-supp).
 
 ### Example
 
@@ -68,7 +71,7 @@ Once the models have been developed, we will apply them to two example patients 
 
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \@ref(tab:Example-Patient).
 
-<br>
+
 ```{r Example-Patient, echo=F}
 tibble(id = 1:3,Age=c("20","40","66"),Gender=c("Female","Male","Female"),
        `Smoking Status`=c("Non-Smoker","Smoker","Non-Smoker"),
@@ -85,8 +88,8 @@ tibble(id = 1:3,Age=c("20","40","66"),Gender=c("Female","Male","Female"),
   pivot_longer(-id,names_to="Vars",values_to="Vals") %>% 
   pivot_wider(names_from=id,values_from=Vals,names_prefix="Patient ") %>%
   to_kable(caption="Details of the Example Patients",
-           row_names="Vars") %>%
-  column_spec(2:4,width="4cm")
+           row_names="Vars",
+           col_widths=rep("3.5cm",4))
 ```
 
 Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
@@ -120,8 +123,9 @@ paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
                                      grepl("uPCR",Variable) ~ fm(6),
                                      T~""))) %>%
   to_kable(caption="Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>",
-           group_col=".group", align="rr",
-           row_names="Variable",numeric_cols=2:3) %>%
+           group_col=".group", align="rr", lscape=T,
+           row_names="Variable",numeric_cols=2:3,
+           col_widths=c("3cm","6cm","6cm")) %>%
   footnote(alphabet=c("(ml/min/1.73m^2) or per year","(mmHG)","(kg/m^2)",
                       "(g/l)","(mmol/l)","(g/mmol) or per year"),
            footnote_as_chunk=T)
@@ -134,9 +138,7 @@ paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
 Table \@ref(tab:Categorical-Demo) shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, whereas in the validation population the proportions are much more matched. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
 
 
-
-<br>
-```{r Categorical-Demo, echo=FALSE, results='asis', message = FALSE, warning = FALSE, error=FALSE, tidy = FALSE}
+```{r Categorical-Demo, echo=FALSE}
 paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
   read_csv(col_types=cols()) %>%
   mutate(Variable = Variable) %>%
@@ -149,7 +151,7 @@ paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
                             Variable)) %>%
   rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG) %>%
   filter(!is.na(Category)) %>%
-  to_kable(caption="Population demographics for the categorical variables presented as number (percent)",numeric_cols=c(2,3),row_names="Category",group_col="Variable")
+  to_kable(caption="Population demographics for the categorical variables presented as number (percent)",align="rr",numeric_cols=2:3,row_names="Category",group_col="Variable")
 
 ```
 
@@ -167,17 +169,16 @@ paste0(.wd,"data/Dev_Paper_Comorbidity_Demographics.csv") %>%
 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median).
 
-```{r Event-Median, echp=F}
+```{r Event-Median, echo=F}
 paste0(.wd,"data/Dev_Paper_Event_Median.csv") %>%
   read_csv(col_types=cols()) %>%
   rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG)%>%
   mutate(Transition = paste0(From, " to ",To)) %>%
-  select(-Model,-From,-To) %>%
+  select(-From,-To) %>%
   select(Transition,everything()) %>%
-  to_kable(caption="Event times for the two populations presented as Number of Events = Median (Inter-Quartile Range) [Min, Max]",
-           align="crr",numeric_cols=2:3) %>%
-  pack_rows(index=c("Two-State Model"=1,"Three-State Model"=3,"Five-State Model"=6))
-  
+  to_kable(caption="Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]",
+           align="lrr",numeric_cols=2:3,group_col = "Model")
+
 ```
 
 
@@ -185,7 +186,7 @@ paste0(.wd,"data/Dev_Paper_Event_Median.csv") %>%
 
 The example patients seen in Table \@ref(tab:Example-Patient) were passed through our Three-State prediction model and the results for all time-points are shown in figure \@ref(fig:Example-Predictions-trend). The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.
 
-```{r Example-Predictions-trend, out.width="90%", fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
+```{r Example-Predictions-trend, out.width="100%", fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
 knitr::include_graphics("figure/Dev_Paper_Example.png")
 ```
 
@@ -218,4 +219,8 @@ Although not directly assessing causality in regards to state-transitions, our T
 Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice [@moons_prognosis_2009-1] by comparing it to standard care and establishing whether the use of our model improves patient outcomes.
 
 All three models produced for this work performed well in terms of accuracy, calibration and discrimination when applied internally and externally. This shows directly that the models are suitable for use in populations similar to both our development and our validation datasets. It can also be concluded that the models can be transported and applied to any population with a similar healthcare system to the UK.
+
+
+
+
 

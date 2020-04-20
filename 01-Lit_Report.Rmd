@@ -3,7 +3,19 @@
 
 ## Introduction
 
-lorem ipsum blah blah blah
+Current format: `r get_format()`
+
+lorem ipsum blah blah blah.
+
+Testing Equation: $1+1=2$
+
+$$
+1 + 2 = 3
+$$
+
+\begin{equation}
+1 + 4 = 5
+\end{equation}
 
 ## Clinical Prediction Models
 
@@ -23,7 +35,7 @@ In general, prognosis research can be broken down into four main categories, wit
 
 For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
 
-The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviation of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting `r cc()`.
+The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting `r cc()`.
 
 ### Fundamental Prognosis Research
 
@@ -35,9 +47,9 @@ The aim of prognostic factor research (Type II) is to discover which factors are
 
 Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones `r cc()`. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting `r xx()`, we can demonstrate that `r xx()` is a prognostic factor, [however since the arrow of causation is `r xx()`] `r xx("OR")` [however since `r xx()` causes both `r xx()` and `r xx()`], the relationship is prognostic, but not causal. `r xx("Previously used Apgar score here, reference 40")`
 
-Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomozing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
+Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
 
-It is unfortunate, however, that Riley at al [@riley_systematic_2003] found that only 35.5% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions [@riley_prognosis_2013].
+It is unfortunate, however, that Riley at al [@riley_systematic_2003-1] found that only 35.5% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions [@riley_prognosis_2013].
 
 ### Prognostic Model Research
 

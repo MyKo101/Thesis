@@ -1,0 +1,14 @@
+
+# How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
+
+## Simulation Details
+
+<!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM1_ESM.docx -->
+
+The populations 
+
+## Mathematics of Subdistribution Hazards
+
+<!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM2_ESM.docx -->
+
+Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportio

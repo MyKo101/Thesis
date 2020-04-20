@@ -1,6 +1,12 @@
 
 # The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#chap-scoping-review}
+*MA Barrowman, D Jenkins, GP Martin, N Peek, M Lambie, M Sperrin*
 
+<!-- this bit should be blank for single -->
+
+`r add_downloads(2)`
+
+Scoping Review Protcol Pre-print link [here](https://doi.org/10.17605/OSF.IO/HR6QD)
 
 ## Introduction
 
