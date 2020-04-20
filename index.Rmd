@@ -82,18 +82,8 @@ MathJax.Hub.Config({
 
 <!--
 To Do List:
-Set up Supervisor's Hypothesis Accounts
-Sort out monospacing in kables (double spaces get rendered as single space. Seems to be happening                                   before being saved as a html)
-Add in written details in Supp. Material
-Figure out scroll_box() for the PH Five-State
-Make equations not in aligns (rolls onto second page in Five-State Model)
 Write up current draft of other papers
-pdf tables aren't aligned
 Add Timeline
-Figure out equation referencing
-Download options showing up in pdf
-Abstract subsections appearing in TOC in Thesis (e.g. 3.0.1 Background)
-Add "Appendix" heading (or page) to thesis version
 
 -->
 
@@ -110,8 +100,6 @@ I've written this document to be ready to become my thesis, but each chapter is 
 
 Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/Thesis). I originally used Github as my backup, but then decided to increase how I used it.
 
-
-I've also outlined my expected timeline below. This thesis document, along with each chapter's files (at their respective urls) will be updated.
 
 `r fb(gitbook="## Abstract {-}")`
 
