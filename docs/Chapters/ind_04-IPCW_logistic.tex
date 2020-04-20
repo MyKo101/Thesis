@@ -90,6 +90,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{geometry}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
@@ -106,12 +107,32 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\hypertarget{abstract}{%
+\section*{Abstract}\label{abstract}}
+\addcontentsline{toc}{section}{Abstract}
+
 \hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\subsection*{Introduction}\label{introduction}}
+\addcontentsline{toc}{subsection}{Introduction}
+
+\hypertarget{methods}{%
+\subsection*{Methods}\label{methods}}
+\addcontentsline{toc}{subsection}{Methods}
+
+\hypertarget{results}{%
+\subsection*{Results}\label{results}}
+\addcontentsline{toc}{subsection}{Results}
+
+\hypertarget{discussion}{%
+\subsection*{Discussion}\label{discussion}}
+\addcontentsline{toc}{subsection}{Discussion}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 Clinical prediction models (CPMs) need to be validated before they are used. A fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with p\% risk of an event, p\% of those have the event {[}\protect\hyperlink{ref-steyerberg_clinical_2008}{1}{]}. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) {[}\protect\hyperlink{ref-calster_calibration_2016-1}{2}{]}. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors.
 
-In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals{[}\protect\hyperlink{ref-crowson_assessing_2016}{4}{]}; however here we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case {[}\protect\hyperlink{ref-houwelingen_validation_2000}{5}{]}). Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}, {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{6}{]}. However, the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.
+In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals {[}\protect\hyperlink{ref-crowson_assessing_2016}{4}{]}; however here we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case {[}\protect\hyperlink{ref-houwelingen_validation_2000}{5}{]}). Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}, {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{6}{]}. However, the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.
 
 Royston {[}\protect\hyperlink{ref-royston_tools_2014}{7}{]} presents an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson {[}\protect\hyperlink{ref-perme_checking_2008}{8}{]} to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates. In this paper and another {[}\protect\hyperlink{ref-royston_tools_2015}{9}{]} he proposes the comparison of KM curves in risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided.
 
@@ -122,13 +143,13 @@ A solution to this problem is to apply a weighting to uncensored patients based 
 Gerds \& Schumacher {[}\protect\hyperlink{ref-gerds_consistent_2006}{11}{]} have thoroughly investigated the requirements and advantages of applying an IPCW to a performance measure for modelling using the Brier score as an example and demonstrating the efficacy of its use, which was augmented by Spitoni et al {[}\protect\hyperlink{ref-spitoni_prediction_2018}{12}{]} who demonstrated that any proper scoring rule can be improved by the use of the IPCW. This work has been added to by Han et al {[}\protect\hyperlink{ref-han_comparing_2017}{13}{]} and Liu et al {[}\protect\hyperlink{ref-liu_comparing_2016}{14}{]} who demonstrated that the c-statistic is also suitable.
 In this paper we present an approach to assessing the calibration intercept (calibration-in-the-large) and calibration slope in time-to-event models based on estimating the censoring distribution, and reweighting observations by the inverse of the censoring probability. We first show, theoretically, how this method can be used and evidence that the metrics for calibration are amenable to its use. We then compare simulation results from using this weighted estimate to an unweighted estimate within various commonly used methods of calibration assessment.
 
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\hypertarget{methods-1}{%
+\section{Methods}\label{methods-1}}
 
 \hypertarget{theory}{%
 \subsection{Theory}\label{theory}}
 
-{[}\textbf{Lots of Theory work on the probabilities involved from Matt}{]}
+{[}\textbf{Lots of Theory work on the probabilities. May need to drop this if we're unable to do it between us.}{]}
 
 \hypertarget{aims}{%
 \subsection{Aims}\label{aims}}
@@ -190,8 +211,8 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 \end{array}
 \]
 
-\hypertarget{methods-1}{%
-\subsection{Methods}\label{methods-1}}
+\hypertarget{methods-2}{%
+\subsection{Methods}\label{methods-2}}
 
 At each of these time points, we compare Observed outcomes (\(O\)) with the Expected outcomes (\(E\)) of the prediction models based on four choices of methodology {[}\protect\hyperlink{ref-royston_tools_2014}{7}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{9}{]}, {[}\protect\hyperlink{ref-riley_prognosis_2019}{16}{]}, {[}\protect\hyperlink{ref-andersen_pseudo-observations_2010}{17}{]} to produce measures for the calibration-in-the-large
 \begin{itemize}
@@ -203,7 +224,7 @@ At each of these time points, we compare Observed outcomes (\(O\)) with the Expe
 \item
   Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
 \item
-  Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed is calculated by removing them from the population and aggregating the difference. Logistic regression is performed using the log cumulative hazard as an offset and the Intercept of the result is the estimate.
+  Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Logistic regression is performed using the log cumulative hazard as an offset and the Intercept of the result is the estimate.
 \end{itemize}
 The weights within the LW method create a non-integer number of events within the regression and the PO method can produce values that are not always 0 or 1 (as would be expected in an ordinary logistic regression). The values produced by PO will have to be artificially capped between 0 and 1, but otherwise these two methods do not cause any issues.
 
@@ -221,25 +242,48 @@ From this, we can also define our upper and lower bound for a 95\% confidence in
 \subsection{Performance Measures}\label{performance-measures}}
 
 The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, \(t\), along with relevant standard errors and confidence intervals as per current recommendations {[}\protect\hyperlink{ref-morris_using_2019}{18}{]}. These measures can be seen in table \ref{tab:PM-DGM-time}.
+\begin{table}
 
-{[}\textbf{Insert Performance Measures (at time point)}{]}
-
+\caption{\label{tab:PM-DGM-time}{\small Performance Measures to be taken at each time point}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{lll}
+\toprule
+Performance Measure & Estimation & SE\\
+\midrule
+\rowcolor{gray!6}  Bias & $\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$ & $\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$\\
+EmpSE & $\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$ & $\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$\\
+\rowcolor{gray!6}  Coverage & $\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$ & $\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$\\
+\bottomrule
+\end{tabular}
+\end{table}
 For each estimand above, \(\hat{Q}(t) = \{\hat{\theta}(t),\hat{E}(t), \hat{C}(t)\}\) and associated SE, \(\hat{Q}_\textrm{SE}(t) = \{\hat{\theta}_\textrm{SE}(t),\hat{E}_\textrm{SE}(t), \hat{C}_\textrm{SE}(t)\}\), we average over time. As these measures will be taken at each of the 100 time points, \(t_j:j=1...100\), we summarise each of these measures as an average and as weighted average, as seen in table \ref{tab:PM-DGM}. The weight used for the measure at time \(t_j\) is the average number of non-censored patients remaining in the population at time \(t_j\), defined as \(n_j\) (note that this includes patients who have had the event).
+\begin{table}
 
-{[}\textbf{Insert Performance Meaures averaged over time}{]}
-
+\caption{\label{tab:PM-DGM}{\small Performance Measures to be taken at each time point}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{lll}
+\toprule
+Performance Measure & Estimand & SE\\
+\midrule
+\rowcolor{gray!6}  Unweighted & $\bar{Q}=\frac{1}{100}\sum_{j=1}^{100}\hat{Q}(t_j)$ & $\bar{Q}_{SE}=\sqrt{\frac{1}{100}\sum_{j=1}^{100} \hat{Q}_{SE}(t_j)^2 }$\\
+Weighted & $\bar{Q}^{\prime}=\frac{\sum_{j=1}^{100}n_j\hat{Q}(t_j) }{\sum_{j=1}^{100}n_j}$ & $\bar{Q}^{\prime}_{SE} = \sqrt{\frac{\sum_{j=1}^{100} n_j \hat{Q}_{SE}(t_j)^2 }{\sum_{j=1}^{100}n_j}}$\\
+\bottomrule
+\end{tabular}
+\end{table}
 \hypertarget{software}{%
 \subsection{Software}\label{software}}
 
 All analysis was done in \texttt{R\ 3.6.3} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{19}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{20}{]}, Kaplan-Meier estimates were found using the \texttt{survival} package {[}\protect\hyperlink{ref-therneau_package_2020}{21}{]}, Pseudo-Observations were evaluated with the \texttt{pseudo} package {[}\protect\hyperlink{ref-perme_pseudo_2017}{22}{]}.
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
+\hypertarget{results-1}{%
+\section{Results}\label{results-1}}
 
 Forthcoming
 
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\hypertarget{discussion-1}{%
+\section{Discussion}\label{discussion-1}}
 
 Weighting = Good.
 
@@ -257,15 +301,19 @@ Not Weighting = Bad.
 
 The main purpose of this paper was to assess the evaluation of calibration-in-the-large at different time points in a time-to-event clinical prediction model. Along with calibration-in-the-large, various methods of calibration can also produce measures of calibration slope. Calibration slope provides an insight into how well the model predicts outcomes across the range of predictions. In an ideal model, the calibration slope would be 1. The Logistic Weighted, Logistic Unweighted and Pseudo-Observation methods described above can provide estimates of the calibration slope. For each of these methods, we first estimate the calibration-in-the-large as above, using a predictor as an offset, then we use this estimate as an offset to predict the calibration slope (without an intercept term).
 
-\hypertarget{results-1}{%
-\subsubsection{Results}\label{results-1}}
+\hypertarget{results-2}{%
+\subsubsection{Results}\label{results-2}}
 
 blah blah
 
-\hypertarget{discussion-1}{%
-\subsubsection{Discussion}\label{discussion-1}}
+\hypertarget{discussion-2}{%
+\subsubsection{Discussion}\label{discussion-2}}
 
 Brief discussion, much briefer than the main points.
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
 \begin{cslreferences}

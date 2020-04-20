@@ -90,6 +90,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{geometry}
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
@@ -106,8 +107,36 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\hypertarget{abstract}{%
+\section*{Abstract}\label{abstract}}
+\addcontentsline{toc}{section}{Abstract}
+
 \hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
+\subsection*{Introduction}\label{introduction}}
+\addcontentsline{toc}{subsection}{Introduction}
+
+Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict multiple outcomes with a single model can be advantageous. Multi-State Models are a method to provide these kinds of predictions.
+
+\hypertarget{methods}{%
+\subsection*{Methods}\label{methods}}
+\addcontentsline{toc}{subsection}{Methods}
+
+We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead). We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients. Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
+
+\hypertarget{results}{%
+\subsection*{Results}\label{results}}
+\addcontentsline{toc}{subsection}{Results}
+
+Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall. The Three-State Model was used to develop the online Calculator.
+
+\hypertarget{discusssion}{%
+\subsection*{Discusssion}\label{discusssion}}
+\addcontentsline{toc}{subsection}{Discusssion}
+
+Our CPMs provide clinicians and patients with multiple outcome predictions. This implies that users of these models can get more information about their potential future without a loss to the quality of that prediction.
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
 
 A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical condition, more specifically, a prognostic model allows the prediction of future events {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{1}{]}. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models are used in clinical practice to influence treatment decisions such as the prescribing of statins for cardiovascular disease via the application of the QRISK models {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{2}{]}.
 
@@ -127,8 +156,8 @@ The fourth model (Grams), is presented as a Multi-State Model and the transition
 
 Therefore, the aim of this study was to improve on previous efforts to model a patient's pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a drastic difference in patient characteristics. Our modeling techniques allow for individual predictions (using a proportional hazards model) of multiple outcomes (using MSMs) at any time point (using cubic splines). The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the (statistically robust) clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models {[}\protect\hyperlink{ref-collins_transparent_2015}{23}{]}, {[}\protect\hyperlink{ref-moons_transparent_2015}{52}{]}.
 
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
+\hypertarget{methods-1}{%
+\section{Methods}\label{methods-1}}
 
 \hypertarget{data-sources}{%
 \subsection{Data Sources}\label{data-sources}}
@@ -157,7 +186,7 @@ Both the internal and external validation cohort were used as part of the multin
 \item
   Patient is not enduring an AKI {[}\protect\hyperlink{ref-forni_renal_2017-1}{58}{]}, {[}\protect\hyperlink{ref-noauthor_kdigo_2012}{59}{]}.
 \end{itemize}
-The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an \(\textrm{eGFR} < 60\), their eGFR Rate would be unavailable (i.e.~missing). Otherwise, patient eGFRs would \emph{have} to drop to below 60 and thus eGFR Rate would be negative. {[}\textbf{I feel like this bias should have a name, but can't think what to search to find it}{]}
+The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an \(\textrm{eGFR} < 60\), their eGFR Rate would be unavailable (i.e.~missing). Otherwise, patient eGFRs would \emph{have} to drop to below 60 and thus eGFR Rate would be negative.
 
 \hypertarget{model-design}{%
 \subsection{Model Design}\label{model-design}}
@@ -171,7 +200,7 @@ Three separate models were developed, so we could determine a clinically viable 
 
 \caption{Diagram of the three models, the states being modelled and relevant transitions}\label{fig:State-Diagram}
 \end{figure}
-The models were developed and validated as discussed in the Supplementary materials appendix \ref{chap-dev-paper-supp}.
+The models were developed and validated as discussed in the Supplementary materials.
 
 \hypertarget{example}{%
 \subsection{Example}\label{example}}
@@ -216,19 +245,21 @@ As part of this work, we also intend to produce an online calculator to allow pa
 
 All analysis was done in \texttt{R\ 3.6.2} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{60}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{61}{]}, as well as the \texttt{mice} {[}\protect\hyperlink{ref-buuren_mice_2011-1}{62}{]}, \texttt{flexsurv} {[}\protect\hyperlink{ref-jackson_flexsurv_nodate}{63}{]}, \texttt{nnet} {[}\protect\hyperlink{ref-ripley_package_2016}{64}{]} and \texttt{furrr} {[}\protect\hyperlink{ref-vaughan_furrr_2018}{65}{]} packages. The calculator was produced using the \texttt{shiny} package {[}\protect\hyperlink{ref-chang_shiny_2020}{66}{]}.
 
-\hypertarget{results}{%
-\section{Results}\label{results}}
+\hypertarget{results-1}{%
+\section{Results}\label{results-1}}
 
 \hypertarget{data-sources-1}{%
 \subsection{Data Sources}\label{data-sources-1}}
 
 As seen in table \ref{tab:Continuous-Demo}, The Age of both populations were centred around 64-65 with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
+
+\newgeometry{margin=2cm}
 \begin{landscape}\begin{table}
 
 \caption{\label{tab:Continuous-Demo}{\small Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3cm}>{\raggedleft\arraybackslash}p{6cm}>{\raggedleft\arraybackslash}p{6cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedleft\arraybackslash}p{33em}>{\ttfamily\raggedleft\arraybackslash}p{36em}}
 \toprule
   & SKS (Development) & SERPR (Validation)\\
 \midrule
@@ -257,13 +288,15 @@ As seen in table \ref{tab:Continuous-Demo}, The Age of both populations were cen
 \end{tabular}
 \end{table}
 \end{landscape}
+\restoregeometry
+
 Table \ref{tab:Categorical-Demo} shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, whereas in the validation population the proportions are much more matched. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
 \begin{table}[!h]
 
 \caption{\label{tab:Categorical-Demo}{\small Population demographics for the categorical variables presented as number (percent)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
 \toprule
   & SKS (Development) & SERPR (Validation)\\
 \midrule
@@ -302,7 +335,7 @@ Overall, there were high levels of comorbidities within the SKS population as sh
 \caption{\label{tab:Comorbidity-Demo}{\small Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
 \toprule
   & SKS (Development) & SERPR (Validation)\\
 \midrule
@@ -326,7 +359,7 @@ The median date for the date of death was 3.9 years in the SKS population and 4.
 \caption{\label{tab:Event-Median}{\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
 \toprule
 Transition & SKS (Development) & SERPR (Validation)\\
 \midrule
@@ -352,7 +385,12 @@ Transition & SKS (Development) & SERPR (Validation)\\
 
 The example patients seen in Table \ref{tab:Example-Patient} were passed through our Three-State prediction model and the results for all time-points are shown in figure \ref{fig:Example-Predictions-trend}. The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16\% chance of mortality by year 10 and 0\% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90\% chance of starting RRT, and over 70\% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50\% chance of dying, and after 2 years that probability rises to over 85\% with no chance of RRT.
 \begin{figure}
-\includegraphics[width=1\linewidth]{figure/Dev_Paper_Example} \caption{Results of Example Patients}\label{fig:Example-Predictions-trend}
+
+{\centering \includegraphics[width=1\linewidth]{figure/Dev_Paper_Example} 
+
+}
+
+\caption{Results of Example Patients}\label{fig:Example-Predictions-trend}
 \end{figure}
 \hypertarget{calculator-1}{%
 \subsection{Calculator}\label{calculator-1}}
@@ -401,53 +439,47 @@ All three models produced for this work performed well in terms of accuracy, cal
 
 Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e.~future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications {[}\protect\hyperlink{ref-venkat-raman_new_2012}{70}{]}). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
 
-uPCR and eGFR Rate of change were also calculated {[}\protect\hyperlink{ref-kovesdy_past_2016}{71}{]}, {[}\protect\hyperlink{ref-naimark_past_2016}{72}{]} as the difference between the two most recent measures divided by time difference in years. \(\textrm{Age}^2\), log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for time trends in treatment preferences {[}\textbf{Cite: Something}{]}. Calendar Time was defined as length of time between start date and 1st January 2019. {[}\textbf{Matt mentioned the use of log Calendar Time rather than simply Calendar Time. I read this a while ago and can't currently locate the paper (I believe it was a simulation study). I'll carry on looking for it though of course}{]}
+uPCR and eGFR Rate of change were also calculated {[}\protect\hyperlink{ref-kovesdy_past_2016}{71}{]}, {[}\protect\hyperlink{ref-naimark_past_2016}{72}{]} as the difference between the two most recent measures divided by time difference in years. \(\textrm{Age}^2\), log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences {[}\protect\hyperlink{ref-bhatnagar_epidemiology_2015}{73}{]}. Calendar Time was defined as length of time between start date and 1st January 2019.
 
-Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified {[}\protect\hyperlink{ref-meira-machado_multi-state_2009}{73}{]}. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique {[}\protect\hyperlink{ref-royston_flexible_2002}{68}{]} to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time {[}\protect\hyperlink{ref-putter_tutorial_2007}{74}{]}.
+Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified {[}\protect\hyperlink{ref-meira-machado_multi-state_2009}{74}{]}. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique {[}\protect\hyperlink{ref-royston_flexible_2002}{68}{]} to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time {[}\protect\hyperlink{ref-putter_tutorial_2007}{75}{]}.
 
-For variable selection, we stacked the imputed datasets together to create a larger, pseudo-population {[}\protect\hyperlink{ref-wood_how_2008}{75}{]} and performed backwards-forwards selection based on minimising the AIC at each step. This was repeated for each transition and for different numbers of evenly spaced knots in modelling the form of the baseline hazard, K=\{0,1,2,3,4,5\}. This allowed for different transitions to use different sets of variables and numbers of knots in the final model. Some combinations of variables resulted in models that were intractable and so these models were excluded. Once a set of variables were chosen, the R-P model was applied to each imputed dataset individually and the resulting coefficients and cubic spline parameters were aggregated across imputations using Rubin's Rules {[}\protect\hyperlink{ref-rubin_multiple_1984}{76}{]}. This gave a model fully defined by smooth cubic splines representing the cumulative cause-specific hazard and individualised proportional hazards for each transition.
+For variable selection, we stacked the imputed datasets together to create a larger, pseudo-population {[}\protect\hyperlink{ref-wood_how_2008}{76}{]} and performed backwards-forwards selection based on minimising the AIC at each step. This was repeated for each transition and for different numbers of evenly spaced knots in modelling the form of the baseline hazard, K=\{0,1,2,3,4,5\}. This allowed for different transitions to use different sets of variables and numbers of knots in the final model. Some combinations of variables resulted in models that were intractable and so these models were excluded. Once a set of variables were chosen, the R-P model was applied to each imputed dataset individually and the resulting coefficients and cubic spline parameters were aggregated across imputations using Rubin's Rules {[}\protect\hyperlink{ref-rubin_multiple_1984}{77}{]}. This gave a model fully defined by smooth cubic splines representing the cumulative cause-specific hazard and individualised proportional hazards for each transition.
 
-All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors {[}\protect\hyperlink{ref-white_imputing_2009}{77}{]}. Some variables (smoking status and histories of COPD, LD and ST) were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset {[}\protect\hyperlink{ref-janssen_dealing_2009}{78}{]}.
+All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors {[}\protect\hyperlink{ref-white_imputing_2009}{78}{]}. Some variables (smoking status and histories of COPD, LD and ST) were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset {[}\protect\hyperlink{ref-janssen_dealing_2009}{79}{]}.
 
 \hypertarget{validation}{%
 \subsubsection{Validation}\label{validation}}
 
-Further to the simple individual validation performed above. A statistical validation will need to be performed to formally establish the performance of the models.
-
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR{[}\protect\hyperlink{ref-schomaker_bootstrap_2018}{79}{]}. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates.. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an \(\textrm{eGFR} < 30\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\).
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR{[}\protect\hyperlink{ref-schomaker_bootstrap_2018}{80}{]}. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR \textless{} 30/ml/min/1.73m\textsuperscript{2}.
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have \(K=4\) pathways a patient can take and for the Five-State model, we have \(K=7\). To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
 
-The performance metrics were chosen from those defined in chapter \{\#chap-performance-metrics\}.
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score {[}\protect\hyperlink{ref-chap-performance-metrics}{81}{]}, which is a proper score function {[}\protect\hyperlink{ref-gneiting_strictly_2007}{82}{]} assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
 
-The overall accuracy of each model was assessed using the MSM adjusted Brier Scoreas defined in , which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
+The discrimination of each model was assessed using the MSM extension to the c-statistic {[}\protect\hyperlink{ref-chap-performance-metrics}{81}{]}, {[}\protect\hyperlink{ref-calster_extending_2012-1}{83}{]}. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
-The discrimination of each model was assessed using the MSM extension to the c-statistic {[}\protect\hyperlink{ref-calster_extending_2012-1}{80}{]}. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
-
-The calibration of each model was assessed using MSM multinomial logistic regression (MLR) {[}\protect\hyperlink{ref-hoorde_assessing_2014}{81}{]} which extends the logistic regression to three or more mutually exclusive outcomes {[}\protect\hyperlink{ref-riley_prognosis_2019}{82}{]}. This produces an intercept vector of length \(K-1\) and a Slope-matrix of dimension \((K-1) \times (K-1)\). As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible. The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix (\(I\)) as possible.
+The calibration of each model was assessed using MSM multinomial logistic regression (MLR) {[}\protect\hyperlink{ref-chap-performance-metrics}{81}{]}, {[}\protect\hyperlink{ref-hoorde_assessing_2014}{84}{]} which extends the logistic regression to three or more mutually exclusive outcomes {[}\protect\hyperlink{ref-riley_prognosis_2019}{85}{]}. This produces an intercept vector of length \(K-1\) and a Slope-matrix of dimension \((K-1) \times (K-1)\). As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible. The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix (\(I\)) as possible.
 
 \hypertarget{model-results}{%
 \subsection{Model Results}\label{model-results}}
 
-{[}\textbf{Describe the model results briefly}{]}
-
 \hypertarget{two-state-model}{%
 \subsubsection{Two State Model}\label{two-state-model}}
 
-Table \ref{tab:PH-Two} shows the proportional hazard ratios for the transitions in the Two-State Model.
+Table \ref{tab:PH-Two} shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA {[}\protect\hyperlink{ref-venkat-raman_new_2012}{70}{]} definition of Systemic diseases affecting the kidney had the highest likelihood of death.
 \begin{table}[!h]
 
 \caption{\label{tab:PH-Two}{\small Proportional Hazards for each transition in the Two-State Model}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{54em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
 \toprule
   & Alive to Dead\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{2}{l}{\textbf{Age}}\\
 \hspace{1em}(Age-60) & 0.110 (\quad -0.055, \quad 0.275)\\
-\hspace{1em}(Age-60)\textsuperscript{2} & -0.000 (\quad -0.001, \quad 0.000)\\
+\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (\quad -0.001, \quad 0.000)\\
 \rowcolor{gray!6}  \hspace{1em}log(Age) & -2.853 ( -12.306, \quad 6.599)\\
 \addlinespace[0.3em]
 \multicolumn{2}{l}{\textbf{eGFR}}\\
@@ -497,57 +529,65 @@ Table \ref{tab:PH-Two} shows the proportional hazard ratios for the transitions 
 \bottomrule
 \end{tabular}
 \end{table}
-Equation \eqref{eq:CH-Two-16} below shows the hazard functions for the transition from Alive to Dead in the Two-State Model.
+Equation \eqref{eq:CH-Two-16} below shows the baseline cumulative hazard functions for the transition from Alive to Dead in the Two-State Model.
 \begin{equation}
 \Lambda_{0,16}(t)=\begin{cases} 1.15764\log(t)+6.17808 & 0 \le t < 3 \\ 0.00075\log(t)^3-0.00247\log(t)^2+1.16036\log(t)+6.17708 & 3 \le t < 520 \\ 0.13983\log(t)^3-2.61165\log(t)^2+17.47602\log(t)-27.83122 & 520 \le t < 984 \\ -0.19361\log(t)^3+4.28227\log(t)^2-30.03426\log(t)+81.30981 & 984 \le t < 1454 \\ -0.15458\log(t)^3+3.42966\log(t)^2-23.82553\log(t)+66.23901 & 1454 \le t < 2009 \\ 0.37097\log(t)^3-8.56171\log(t)^2+67.37553\log(t)-164.97265 & 2009 \le t < 2900 \\ -0.16209\log(t)^3+4.18769\log(t)^2-34.26862\log(t)+105.14551 & 2900 \le t < 5497 \\ 1.79561\log(t)+1.61764)) & 5497 \le t \label{eq:CH-Two-16}\end{cases}
 \end{equation}
-Table \ref{tab:IV-Two} shows the results from the internal validation in the Two-State Model.
+Table \ref{tab:IV-Two} shows the results from the internal validation in the Two-State Model. Calibration Intercept is close to 0, implying the model is well calibrated overall with a high c-statistic and Brier Score. Calibration Slope above 1 implies that the model under-estimates outcomes.
 \begin{table}[!h]
 
 \caption{\label{tab:IV-Two}{\small Internal Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Predicting & One Year & Two Year & Five Year & Average\\
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & 0.67 ( 0.67,\quad 0.68) & 0.72 ( 0.71,\quad 0.72) & 0.62 ( 0.61,\quad 0.62) & 0.63 ( 0.62,\quad 0.63)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & 0.84 ( 0.83,\quad 0.84) & 0.85 ( 0.85,\quad 0.85) & 0.79 ( 0.79,\quad 0.79) & 0.81 ( 0.81,\quad 0.81)\\
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Two & < 60 & 0.63 ( 0.62,\quad 0.63) & 0.69 ( 0.69,\quad 0.69) & 0.66 ( 0.66,\quad 0.67) & 0.63 ( 0.62,\quad 0.63)\\
+\hspace{1em}Two & < 30 & 0.71 ( 0.71,\quad 0.72) & 0.68 ( 0.68,\quad 0.69) & 0.66 ( 0.66,\quad 0.66) & 0.63 ( 0.63,\quad 0.64)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & 0.00 (-0.00,\quad 0.00) & 0.03 ( 0.03,\quad 0.04) & 0.01 ( 0.01,\quad 0.02) & 0.00 (-0.00,\quad 0.00)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & ** 1.19** & ** 1.23** & ** 2.15** & ** 1.60**\\
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Two & < 60 & 0.82 ( 0.82,\quad 0.82) & 0.85 ( 0.84,\quad 0.85) & 0.81 ( 0.81,\quad 0.81) & 0.81 ( 0.81,\quad 0.82)\\
+\hspace{1em}Two & < 30 & 0.84 ( 0.84,\quad 0.84) & 0.83 ( 0.82,\quad 0.83) & 0.83 ( 0.82,\quad 0.83) & 0.81 ( 0.81,\quad 0.81)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Two & < 60 & 0.01 ( 0.00,\quad 0.01) & 0.01 ( 0.00,\quad 0.01) & -0.02 (-0.02, -0.01) & -0.00 (-0.01, -0.00)\\
+\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.02) & 0.00 ( 0.00,\quad 0.01) & 0.00 ( 0.00,\quad 0.01) & -0.00 (-0.00, -0.00)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Two & < 60 & \emph{1.33} & \emph{1.46} & \emph{1.26} & \emph{1.48}\\
+\hspace{1em}Two & < 30 & \emph{1.23} & \emph{1.25} & \emph{1.30} & \emph{1.51}\\
 \bottomrule
 \end{tabular}
 \end{table}
-Table \ref{tab:EV-Two} shows the results from the external validation in the Two-State Model.
+Table \ref{tab:EV-Two} shows the results from the external validation in the Two-State Model, which shows similar results to the internal validation with slightly impaired perfomance, which is to be expected in an external validation.
 \begin{table}[!h]
 
 \caption{\label{tab:EV-Two}{\small External Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Predicting & One Year & Two Year & Five Year & Average\\
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & 0.63 ( 0.63,\quad 0.64) & 0.62 ( 0.62,\quad 0.63) & 0.56 ( 0.55,\quad 0.56) & 0.57 ( 0.56,\quad 0.57)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & 0.83 ( 0.82,\quad 0.83) & 0.81 ( 0.81,\quad 0.81) & 0.78 ( 0.78,\quad 0.78) & 0.78 ( 0.78,\quad 0.79)\\
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Two & < 60 & 0.64 ( 0.63,\quad 0.64) & 0.57 ( 0.56,\quad 0.57) & 0.57 ( 0.56,\quad 0.58) & 0.56 ( 0.56,\quad 0.57)\\
+\hspace{1em}Two & < 30 & 0.67 ( 0.66,\quad 0.67) & 0.64 ( 0.63,\quad 0.64) & 0.57 ( 0.56,\quad 0.57) & 0.57 ( 0.56,\quad 0.57)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & 0.03 ( 0.03,\quad 0.03) & -0.05 (-0.06, -0.05) & -0.02 (-0.02, -0.01) & -0.00 (-0.01, -0.00)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & ** 1.56** & ** 1.64** & ** 2.35** & ** 1.99**\\
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Two & < 60 & 0.81 ( 0.81,\quad 0.82) & 0.81 ( 0.80,\quad 0.81) & 0.80 ( 0.79,\quad 0.80) & 0.78 ( 0.78,\quad 0.78)\\
+\hspace{1em}Two & < 30 & 0.81 ( 0.81,\quad 0.81) & 0.80 ( 0.80,\quad 0.81) & 0.78 ( 0.78,\quad 0.79) & 0.78 ( 0.78,\quad 0.78)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Two & < 60 & -0.00 (-0.00,\quad 0.00) & 0.02 ( 0.01,\quad 0.02) & 0.00 ( 0.00,\quad 0.01) & -0.00 (-0.00,\quad 0.00)\\
+\hspace{1em}Two & < 30 & 0.02 ( 0.01,\quad 0.02) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,\quad 0.02) & -0.00 (-0.00,\quad 0.00)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Two & < 60 & \emph{1.29} & \emph{1.25} & \emph{1.72} & \emph{2.21}\\
+\hspace{1em}Two & < 30 & \emph{1.37} & \emph{1.37} & \emph{2.05} & \emph{1.88}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -555,19 +595,21 @@ Predicting & One Year & Two Year & Five Year & Average\\
 \subsubsection{Three State Model}\label{three-state-model}}
 
 In the Three-State Model, older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \ref{tab:PH-Three}.
+
+\newgeometry{margin=2cm}
 \begin{landscape}\begin{table}
 
 \caption{\label{tab:PH-Three}{\small Proportional Hazards for each transition in the Three-State Model}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{54em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
 \toprule
   & CKD to Dead & CKD to RRT & RRT to Dead\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Age}}\\
 \hspace{1em}(Age-60) & 0.161 (\quad -0.051, \quad 0.374) & -0.041 (\quad -0.051,\quad -0.031) & 0.063 ( \quad 0.050, \quad 0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{2} & -0.000 (\quad -0.002, \quad 0.000) & -0.000 (\quad -0.000,\quad -0.000) & \\
+\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (\quad -0.002, \quad 0.000) & -0.000 (\quad -0.000,\quad -0.000) & \\
 \rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969, \quad 6.518) &  & \\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{eGFR}}\\
@@ -618,11 +660,11 @@ In the Three-State Model, older patients are predicted to be likely to transitio
 \end{tabular}
 \end{table}
 \end{landscape}
+\restoregeometry
+
 Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
 
-Equation \eqref{eq:CH-Three-16} shows the equation for
-
-The equations in \eqref{eq:Cum-Haz-Three} shows the hazard functions for the transition from CKD to Dead in the Three-State Model.
+The equations \eqref{eq:CH-Three-16}, \eqref{eq:CH-Three-15} and \eqref{eq:CH-Three-56} shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.
 \begin{equation}
 \Lambda_{0,16}(t)=\begin{cases} 1.19795\log(t)+17.68798 & 0 \le t < 3 \\ -9e-05\log(t)^3+3e-04\log(t)^2+1.19761\log(t)+17.68811 & 3 \le t < 443 \\ 0.15869\log(t)^3-2.9019\log(t)^2+18.88018\log(t)-18.22403 & 443 \le t < 873 \\ -0.30096\log(t)^3+6.43659\log(t)^2-44.36299\log(t)+124.54338 & 873 \le t < 1295 \\ -0.04158\log(t)^3+0.86028\log(t)^2-4.40166\log(t)+29.08554 & 1295 \le t < 1876 \\ 0.51263\log(t)^3-11.67048\log(t)^2+90.03919\log(t)-208.17245 & 1876 \le t < 2738 \\ -0.23992\log(t)^3+6.19863\log(t)^2-51.3924\log(t)+164.96467 & 2738 \le t < 5497 \\ 1.98997\log(t)+11.72244)) & 5497 \le t \label{eq:CH-Three-16}\end{cases}
 \end{equation}
@@ -632,32 +674,40 @@ The equations in \eqref{eq:Cum-Haz-Three} shows the hazard functions for the tra
 \begin{equation}
 \Lambda_{0,56}(t)=\begin{cases} 1.35522\log(t)-7.7618 & 0 \le t < 8 \\ -0.01704\log(t)^3+0.1063\log(t)^2+1.13417\log(t)-7.60859 & 8 \le t < 196 \\ 0.21761\log(t)^3-3.6103\log(t)^2+20.75671\log(t)-42.14228 & 196 \le t < 506 \\ -0.67558\log(t)^3+13.07415\log(t)^2-83.12956\log(t)+173.47479 & 506 \le t < 816 \\ 0.8043\log(t)^3-16.69103\log(t)^2+116.42771\log(t)-272.49495 & 816 \le t < 1388 \\ -1.26732\log(t)^3+28.27738\log(t)^2-208.94656\log(t)+512.26643 & 1388 \le t < 1927 \\ 0.17019\log(t)^3-4.34244\log(t)^2+37.78861\log(t)-109.83234 & 1927 \le t < 4940 \\ 0.85568\log(t)-5.12598)) & 4940 \le t \label{eq:CH-Three-56}\end{cases}
 \end{equation}
-Table \ref{tab:IV-Three} shows the results from the internal validation in the Three-State Model.
+Table \ref{tab:IV-Three} shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the \textless60 eGFR group than in the \textless30 eGFR group. All measures degraded over time, but the average scores remained strong.
 \begin{table}[!h]
 
 \caption{\label{tab:IV-Three}{\small Internal Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Predicting & One Year & Two Year & Five Year & Average\\
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & 0.72 ( 0.72,\quad 0.73) & 0.72 ( 0.71,\quad 0.72) & 0.69 ( 0.69,\quad 0.70) & 0.68 ( 0.67,\quad 0.68)\\
-\hspace{1em}Two & 0.76 ( 0.76,\quad 0.76) & 0.70 ( 0.70,\quad 0.71) & 0.64 ( 0.64,\quad 0.65) & 0.68 ( 0.67,\quad 0.68)\\
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Three & < 60 & 0.74 ( 0.74,\quad 0.75) & 0.68 ( 0.68,\quad 0.69) & 0.64 ( 0.64,\quad 0.65) & 0.67 ( 0.67,\quad 0.68)\\
+\hspace{1em}Three & < 30 & 0.75 ( 0.74,\quad 0.75) & 0.73 ( 0.73,\quad 0.73) & 0.68 ( 0.67,\quad 0.68) & 0.68 ( 0.67,\quad 0.68)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.75 ( 0.75,\quad 0.75) & 0.75 ( 0.75,\quad 0.76) & 0.67 ( 0.67,\quad 0.67) & 0.67 ( 0.67,\quad 0.68)\\
+\hspace{1em}Two & < 30 & 0.71 ( 0.71,\quad 0.72) & 0.72 ( 0.72,\quad 0.73) & 0.65 ( 0.65,\quad 0.66) & 0.67 ( 0.67,\quad 0.68)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & 0.87 ( 0.87,\quad 0.87) & 0.86 ( 0.86,\quad 0.86) & 0.84 ( 0.84,\quad 0.84) & 0.84 ( 0.83,\quad 0.84)\\
-\hspace{1em}Two & 0.87 ( 0.87,\quad 0.87) & 0.86 ( 0.86,\quad 0.86) & 0.83 ( 0.83,\quad 0.83) & 0.84 ( 0.83,\quad 0.84)\\
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Three & < 60 & 0.87 ( 0.87,\quad 0.87) & 0.84 ( 0.84,\quad 0.85) & 0.84 ( 0.84,\quad 0.84) & 0.83 ( 0.83,\quad 0.84)\\
+\hspace{1em}Three & < 30 & 0.87 ( 0.86,\quad 0.87) & 0.84 ( 0.84,\quad 0.84) & 0.84 ( 0.84,\quad 0.84) & 0.83 ( 0.83,\quad 0.84)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,\quad 0.86) & 0.86 ( 0.86,\quad 0.86) & 0.83 ( 0.83,\quad 0.84) & 0.83 ( 0.83,\quad 0.84)\\
+\hspace{1em}Two & < 30 & 0.86 ( 0.85,\quad 0.86) & 0.86 ( 0.85,\quad 0.86) & 0.85 ( 0.85,\quad 0.85) & 0.84 ( 0.83,\quad 0.84)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & \makecell[l]{0.01 ( 0.00,\quad 0.01)\\ \quad 0.00 ( 0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)} & \makecell[l]{-0.01 (-0.01, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)} & \makecell[l]{0.00 ( 0.00,\quad 0.00)\\ -0.01 (-0.01, -0.00)\\ \quad 0.00 ( 0.00,\quad 0.01)} & \makecell[l]{-0.00 (-0.00,\quad 0.00)\\ \quad 0.00 ( 0.00,\quad 0.00)\\ \quad 0.00 (-0.00,\quad 0.00)}\\
-\hspace{1em}Two & 0.01 ( 0.00,\quad 0.01) & 0.00 ( 0.00,\quad 0.00) & 0.00 ( 0.00,\quad 0.01) & 0.00 (-0.00,\quad 0.00)\\
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.01)\\\quad 0.00 ( 0.00,\quad 0.00)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.02, -0.01)\\\quad 0.00 ( 0.00,\quad 0.00)} & \makecell[r]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 ( 0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)}\\
+\hspace{1em}Three & < 30 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)\\\quad 0.00 (-0.00,\quad 0.00)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.00)\\\quad 0.03 ( 0.02,\quad 0.03)} & \makecell[r]{-0.02 (-0.02, -0.01)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.00 (-0.01, -0.00) & 0.02 ( 0.01,\quad 0.02) & 0.00 (-0.00,\quad 0.00) & -0.00 (-0.00,\quad 0.00)\\
+\hspace{1em}Two & < 30 & -0.00 (-0.00,\quad 0.00) & -0.04 (-0.04, -0.04) & 0.00 ( 0.00,\quad 0.01) & -0.00 (-0.00,\quad 0.00)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & \makecell[l]{** 1.16**, -0.05,\quad 0.02\\ \quad 0.00, ** 1.18**,\quad 0.02\\ -0.02, -0.02, ** 1.30**} & \makecell[l]{** 1.24**,\quad 0.00, -0.03\\ \quad 0.04, ** 1.21**,\quad 0.03\\ \quad 0.01, -0.02, ** 1.26**} & \makecell[l]{** 1.24**, -0.06,\quad 0.00\\ \quad 0.03, ** 1.27**, -0.02\\ \quad 0.03, -0.00, ** 1.12**} & \makecell[l]{** 1.31**, -0.00,\quad 0.00\\ -0.00, ** 1.34**,\quad 0.00\\ \quad 0.01, -0.00, ** 1.33**}\\
-\hspace{1em}Two & ** 1.27** & ** 1.28** & ** 1.11** & ** 1.34**\\
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.25},\quad 0.00,\quad 0.04\\ -0.03,\quad \emph{1.10}, -0.00\\ -0.00,\quad 0.01,\quad \emph{1.16}} & \makecell[r]{\emph{1.17}, -0.06,\quad 0.01\\\quad 0.03,\quad \emph{1.25}, -0.01\\ -0.01,\quad 0.01,\quad \emph{1.37}} & \makecell[r]{\emph{1.21}, -0.02, -0.01\\\quad 0.01,\quad \emph{1.44}, -0.04\\ -0.02,\quad 0.02,\quad \emph{1.27}} & \makecell[r]{\emph{1.32}, -0.01,\quad 0.00\\ -0.00,\quad \emph{1.37}, -0.01\\ -0.00,\quad 0.00,\quad \emph{1.33}}\\
+\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21},\quad 0.02,\quad 0.07\\ -0.04,\quad \emph{1.24},\quad 0.07\\\quad 0.01,\quad 0.01,\quad \emph{1.16}} & \makecell[r]{\emph{1.36}, -0.00, -0.01\\\quad 0.00,\quad \emph{1.31},\quad 0.03\\ -0.02, -0.00,\quad \emph{1.26}} & \makecell[r]{\emph{1.35}, -0.04, -0.01\\\quad 0.04,\quad \emph{1.33},\quad 0.04\\\quad 0.04, -0.02,\quad \emph{1.34}} & \makecell[r]{\emph{1.31},\quad 0.00,\quad 0.00\\ -0.01,\quad \emph{1.33},\quad 0.01\\ -0.00,\quad 0.00,\quad \emph{1.35}}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.28} & \emph{1.27} & \emph{1.31}\\
+\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.21} & \emph{1.21} & \emph{1.34}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -667,26 +717,34 @@ Table \ref{tab:EV-Three} shows the results from the external validation in the T
 \caption{\label{tab:EV-Three}{\small External Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Predicting & One Year & Two Year & Five Year & Average\\
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & 0.64 ( 0.64,\quad 0.64) & 0.66 ( 0.65,\quad 0.66) & 0.61 ( 0.60,\quad 0.61) & 0.62 ( 0.62,\quad 0.63)\\
-\hspace{1em}Two & 0.66 ( 0.66,\quad 0.67) & 0.65 ( 0.65,\quad 0.66) & 0.61 ( 0.60,\quad 0.61) & 0.62 ( 0.62,\quad 0.63)\\
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Three & < 60 & 0.69 ( 0.68,\quad 0.69) & 0.70 ( 0.69,\quad 0.70) & 0.61 ( 0.60,\quad 0.61) & 0.62 ( 0.62,\quad 0.63)\\
+\hspace{1em}Three & < 30 & 0.68 ( 0.67,\quad 0.68) & 0.72 ( 0.71,\quad 0.72) & 0.65 ( 0.64,\quad 0.65) & 0.63 ( 0.62,\quad 0.63)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.67 ( 0.67,\quad 0.67) & 0.70 ( 0.69,\quad 0.70) & 0.63 ( 0.63,\quad 0.63) & 0.62 ( 0.62,\quad 0.63)\\
+\hspace{1em}Two & < 30 & 0.66 ( 0.66,\quad 0.67) & 0.70 ( 0.70,\quad 0.70) & 0.65 ( 0.65,\quad 0.66) & 0.63 ( 0.62,\quad 0.63)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & 0.84 ( 0.83,\quad 0.84) & 0.83 ( 0.83,\quad 0.83) & 0.80 ( 0.80,\quad 0.80) & 0.81 ( 0.81,\quad 0.81)\\
-\hspace{1em}Two & 0.83 ( 0.83,\quad 0.84) & 0.82 ( 0.82,\quad 0.82) & 0.80 ( 0.80,\quad 0.80) & 0.81 ( 0.80,\quad 0.81)\\
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Three & < 60 & 0.82 ( 0.82,\quad 0.82) & 0.83 ( 0.83,\quad 0.83) & 0.79 ( 0.79,\quad 0.79) & 0.81 ( 0.80,\quad 0.81)\\
+\hspace{1em}Three & < 30 & 0.85 ( 0.84,\quad 0.85) & 0.84 ( 0.84,\quad 0.84) & 0.83 ( 0.83,\quad 0.83) & 0.81 ( 0.81,\quad 0.81)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.85 ( 0.85,\quad 0.86) & 0.84 ( 0.84,\quad 0.85) & 0.80 ( 0.80,\quad 0.80) & 0.81 ( 0.80,\quad 0.81)\\
+\hspace{1em}Two & < 30 & 0.83 ( 0.83,\quad 0.83) & 0.82 ( 0.82,\quad 0.82) & 0.80 ( 0.80,\quad 0.81) & 0.81 ( 0.81,\quad 0.81)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & \makecell[l]{-0.00 (-0.01, -0.00)\\ \quad 0.00 ( 0.00,\quad 0.01)\\ -0.02 (-0.02, -0.02)} & \makecell[l]{-0.03 (-0.03, -0.03)\\ \quad 0.02 ( 0.01,\quad 0.02)\\ \quad 0.01 ( 0.00,\quad 0.01)} & \makecell[l]{0.01 ( 0.00,\quad 0.01)\\ \quad 0.03 ( 0.03,\quad 0.04)\\ -0.02 (-0.02, -0.02)} & \makecell[l]{0.00 (-0.00,\quad 0.00)\\ \quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
-\hspace{1em}Two & -0.05 (-0.05, -0.05) & -0.02 (-0.02, -0.01) & -0.03 (-0.03, -0.02) & -0.00 (-0.00,\quad 0.00)\\
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.01 ( 0.01,\quad 0.02)\\ -0.01 (-0.01, -0.00)\\\quad 0.00 ( 0.00,\quad 0.01)} & \makecell[r]{0.05 ( 0.04,\quad 0.05)\\\quad 0.01 ( 0.00,\quad 0.01)\\\quad 0.00 ( 0.00,\quad 0.00)} & \makecell[r]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.01)}\\
+\hspace{1em}Three & < 30 & \makecell[r]{0.04 ( 0.04,\quad 0.05)\\\quad 0.01 ( 0.00,\quad 0.01)\\\quad 0.00 ( 0.00,\quad 0.01)} & \makecell[r]{0.02 ( 0.01,\quad 0.02)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.01 ( 0.01,\quad 0.02)} & \makecell[r]{0.01 ( 0.01,\quad 0.01)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.01)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 (-0.00,\quad 0.00) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,\quad 0.02) & -0.00 (-0.00,\quad 0.00)\\
+\hspace{1em}Two & < 30 & 0.02 ( 0.01,\quad 0.02) & -0.00 (-0.00,\quad 0.00) & 0.01 ( 0.00,\quad 0.01) & -0.00 (-0.00,\quad 0.00)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & \makecell[l]{** 1.16**,\quad 0.05,\quad 0.04\\ \quad 0.03, ** 1.20**,\quad 0.01\\ \quad 0.00, -0.00, ** 1.19**} & \makecell[l]{** 1.29**,\quad 0.00, -0.00\\ -0.03, ** 1.27**,\quad 0.05\\ -0.00, -0.02, ** 1.32**} & \makecell[l]{** 1.92**,\quad 0.05, -0.05\\ -0.03, ** 1.64**, -0.01\\ \quad 0.04,\quad 0.06, ** 1.21**} & \makecell[l]{** 1.56**,\quad 0.00,\quad 0.00\\ -0.00, ** 1.53**,\quad 0.01\\ -0.00,\quad 0.00, ** 1.60**}\\
-\hspace{1em}Two & ** 1.32** & ** 1.29** & ** 1.59** & ** 1.55**\\
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.35}, -0.04,\quad 0.04\\\quad 0.06,\quad \emph{1.49}, -0.03\\\quad 0.01,\quad 0.00,\quad \emph{1.25}} & \makecell[r]{\emph{1.13}, -0.00,\quad 0.08\\ -0.02,\quad \emph{1.31},\quad 0.01\\ -0.03,\quad 0.01,\quad \emph{1.39}} & \makecell[r]{\emph{1.45}, -0.02,\quad 0.03\\\quad 0.03,\quad \emph{1.73},\quad 0.03\\\quad 0.04, -0.00,\quad \emph{1.47}} & \makecell[r]{\emph{1.54},\quad 0.00, -0.00\\\quad 0.01,\quad \emph{1.52},\quad 0.00\\ -0.00,\quad 0.00,\quad \emph{1.54}}\\
+\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.23},\quad 0.03,\quad 0.00\\ -0.05,\quad \emph{1.20}, -0.04\\ -0.00, -0.00,\quad \emph{1.37}} & \makecell[r]{\emph{0.99}, -0.01, -0.00\\\quad 0.04,\quad \emph{1.34}, -0.03\\\quad 0.00,\quad 0.01,\quad \emph{1.46}} & \makecell[r]{\emph{1.56},\quad 0.00,\quad 0.00\\ -0.05,\quad \emph{1.49},\quad 0.03\\\quad 0.03,\quad 0.01,\quad \emph{1.63}} & \makecell[r]{\emph{1.62}, -0.01,\quad 0.01\\ -0.00,\quad \emph{1.53},\quad 0.01\\\quad 0.00, -0.00,\quad \emph{1.58}}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.28} & \emph{1.26} & \emph{1.64} & \emph{1.51}\\
+\hspace{1em}Two & < 30 & \emph{1.18} & \emph{1.25} & \emph{1.57} & \emph{1.59}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -694,19 +752,21 @@ Predicting & One Year & Two Year & Five Year & Average\\
 \subsubsection{Five State Model}\label{five-state-model}}
 
 Table \ref{tab:PH-Five} shows the proportional hazard ratios for the transitions in the Five-State Model.
+
+\newgeometry{margin=2cm}
 \begin{landscape}\begin{table}
 
 \caption{\label{tab:PH-Five}{\small Proportional Hazards for each transition in the Five-State Model}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}>{\raggedleft\arraybackslash}p{4.0cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{54em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
 \toprule
   & CKD to Dead & CKD to HD & CKD to PD & CKD to Tx & HD to Dead & PD to Dead\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{Age}}\\
 \hspace{1em}(Age-60) & 0.161 (\quad -0.051, \quad 0.374) & -0.029 (\quad -0.047,\quad -0.011) & -0.037 (\quad -0.057,\quad -0.018) & -0.099 (\quad -0.127,\quad -0.072) & 0.069 ( \quad 0.051, \quad 0.087) & 0.046 ( \quad 0.024, \quad 0.068)\\
-\hspace{1em}(Age-60)\textsuperscript{2} & -0.000 (\quad -0.002, \quad 0.000) & -0.000 (\quad -0.001, \quad 0.000) & -0.000 (\quad -0.000, \quad 0.000) & -0.000 (\quad -0.001,\quad -0.000) &  & \\
+\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (\quad -0.002, \quad 0.000) & -0.000 (\quad -0.001, \quad 0.000) & -0.000 (\quad -0.000, \quad 0.000) & -0.000 (\quad -0.001,\quad -0.000) &  & \\
 \rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969, \quad 6.518) &  &  &  &  & \\
 \addlinespace[0.3em]
 \multicolumn{7}{l}{\textbf{eGFR}}\\
@@ -757,7 +817,9 @@ Table \ref{tab:PH-Five} shows the proportional hazard ratios for the transitions
 \end{tabular}
 \end{table}
 \end{landscape}
-The equations in \eqref{eq:Cum-Haz-Five} shows the hazard functions for the transitions in the Five-State Model.
+\restoregeometry
+
+The equations \eqref{eq:CH-Five-12}, \eqref{eq:CH-Five-13}, \eqref{eq:CH-Five-14} and \eqref{eq:CH-Five-16} show the baseline cumulative hazard functions from the CKD state to HD, PD, Tx and Dead, respectively. Equation \eqref{eq:CH-Five-26} shows the baseline cumulative hazard function from HD to Dead and Equation \eqref{eq:CH-Five-36} shows the baseline cumulative hazard function from PD to Dead.
 \begin{equation}
 \Lambda_{0,16}(t)=\begin{cases} 1.19795\log(t)+17.68798 & 0 \le t < 3 \\ -9e-05\log(t)^3+3e-04\log(t)^2+1.19761\log(t)+17.68811 & 3 \le t < 443 \\ 0.15869\log(t)^3-2.9019\log(t)^2+18.88018\log(t)-18.22403 & 443 \le t < 873 \\ -0.30096\log(t)^3+6.43659\log(t)^2-44.36299\log(t)+124.54338 & 873 \le t < 1295 \\ -0.04158\log(t)^3+0.86028\log(t)^2-4.40166\log(t)+29.08554 & 1295 \le t < 1876 \\ 0.51263\log(t)^3-11.67048\log(t)^2+90.03919\log(t)-208.17245 & 1876 \le t < 2738 \\ -0.23992\log(t)^3+6.19863\log(t)^2-51.3924\log(t)+164.96467 & 2738 \le t < 5497 \\ 1.98997\log(t)+11.72244)) & 5497 \le t \label{eq:CH-Five-16}\end{cases}
 \end{equation}
@@ -776,35 +838,46 @@ The equations in \eqref{eq:Cum-Haz-Five} shows the hazard functions for the tran
 \begin{equation}
 \Lambda_{0,36}(t)=\begin{cases} 1.55188\log(t)-8.40785 & 0 \le t < 9 \\ -0.02867\log(t)^3+0.18901\log(t)^2+1.13657\log(t)-8.10367 & 9 \le t < 167 \\ 0.24473\log(t)^3-4.00711\log(t)^2+22.60308\log(t)-44.70978 & 167 \le t < 553 \\ -0.99362\log(t)^3+19.45322\log(t)^2-125.54725\log(t)+267.14313 & 553 \le t < 875 \\ 1.22972\log(t)^3-25.73085\log(t)^2+180.53981\log(t)-424.02428 & 875 \le t < 1410 \\ -1.86859\log(t)^3+41.67205\log(t)^2-308.23775\log(t)+757.44556 & 1410 \le t < 1937 \\ 0.31596\log(t)^3-7.93077\log(t)^2+67.19201\log(t)-189.72839 & 1937 \le t < 4302 \\ 0.83657\log(t)-4.66673)) & 4302 \le t \label{eq:CH-Five-36}\end{cases}
 \end{equation}
-Table \ref{tab:IV-Five} shows the results from the internal validation in the Five-State Model.
+Table \ref{tab:IV-Five} shows the results from the internal validation in the Five-State Model. The calibration slope results are shown in a seperate table for both the internal and external validation.
 \begin{table}[!h]
 
 \caption{\label{tab:IV-Five}{\small Internal Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Predicting & One Year & Two Year & Five Year & Average\\
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & 0.72 ( 0.72,\quad 0.73) & 0.73 ( 0.73,\quad 0.74) & 0.72 ( 0.71,\quad 0.72) & 0.70 ( 0.69,\quad 0.70)\\
-\hspace{1em}Three & 0.75 ( 0.75,\quad 0.75) & 0.70 ( 0.70,\quad 0.70) & 0.70 ( 0.70,\quad 0.71) & 0.69 ( 0.69,\quad 0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Two & 0.74 ( 0.73,\quad 0.74) & 0.74 ( 0.74,\quad 0.75) & 0.66 ( 0.66,\quad 0.67) & 0.69 ( 0.68,\quad 0.69)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & 0.88 ( 0.88,\quad 0.88) & 0.86 ( 0.86,\quad 0.86) & 0.85 ( 0.85,\quad 0.85) & 0.84 ( 0.84,\quad 0.84)\\
-\rowcolor{gray!6}  \hspace{1em}Three & 0.86 ( 0.86,\quad 0.86) & 0.87 ( 0.87,\quad 0.87) & 0.83 ( 0.83,\quad 0.84) & 0.84 ( 0.84,\quad 0.84)\\
-\hspace{1em}Two & 0.87 ( 0.87,\quad 0.87) & 0.85 ( 0.85,\quad 0.85) & 0.85 ( 0.85,\quad 0.86) & 0.84 ( 0.84,\quad 0.85)\\
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Five & < 60 & 0.74 ( 0.74,\quad 0.75) & 0.72 ( 0.72,\quad 0.72) & 0.67 ( 0.66,\quad 0.67) & 0.69 ( 0.69,\quad 0.69)\\
+\hspace{1em}Five & < 30 & 0.76 ( 0.75,\quad 0.76) & 0.71 ( 0.71,\quad 0.72) & 0.65 ( 0.65,\quad 0.66) & 0.68 ( 0.68,\quad 0.69)\\
+\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.72 ( 0.72,\quad 0.73) & 0.72 ( 0.72,\quad 0.72) & 0.66 ( 0.66,\quad 0.67) & 0.68 ( 0.68,\quad 0.69)\\
+\hspace{1em}Three & < 30 & 0.72 ( 0.71,\quad 0.72) & 0.74 ( 0.73,\quad 0.74) & 0.67 ( 0.67,\quad 0.68) & 0.69 ( 0.68,\quad 0.69)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.74 ( 0.74,\quad 0.74) & 0.72 ( 0.72,\quad 0.73) & 0.67 ( 0.67,\quad 0.68) & 0.69 ( 0.68,\quad 0.69)\\
+\hspace{1em}Two & < 30 & 0.74 ( 0.73,\quad 0.74) & 0.72 ( 0.72,\quad 0.73) & 0.72 ( 0.71,\quad 0.72) & 0.69 ( 0.69,\quad 0.69)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & \makecell[l]{-0.03 (-0.03, -0.02)\\ -0.00 (-0.00, -0.00)\\ -0.02 (-0.02, -0.01)\\ -0.01 (-0.01, -0.01)\\ -0.00 (-0.00,\quad 0.00)\\ \quad 0.04 ( 0.03,\quad 0.04)} & \makecell[l]{0.00 ( 0.00,\quad 0.00)\\ \quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00, -0.00)\\ \quad 0.01 ( 0.00,\quad 0.01)\\ -0.01 (-0.01, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[l]{0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.00)\\ \quad 0.01 ( 0.01,\quad 0.01)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)} & \makecell[l]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.01, -0.00)\\ \quad 0.00 (-0.00,\quad 0.00)\\ \quad 0.00 (-0.00,\quad 0.00)\\ \quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
-\hspace{1em}Three & \makecell[l]{0.02 ( 0.01,\quad 0.02)\\ -0.01 (-0.02, -0.01)\\ \quad 0.01 ( 0.00,\quad 0.01)} & \makecell[l]{-0.01 (-0.01, -0.00)\\ \quad 0.00 ( 0.00,\quad 0.00)\\ \quad 0.02 ( 0.02,\quad 0.03)} & \makecell[l]{-0.02 (-0.02, -0.02)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.00,\quad 0.00)} & \makecell[l]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & -0.02 (-0.02, -0.01) & 0.00 ( 0.00,\quad 0.01) & 0.01 ( 0.00,\quad 0.01) & -0.00 (-0.00,\quad 0.00)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & \makecell[l]{** 1.14**,\quad 0.03,\quad 0.03\\ -0.00, ** 1.20**, -0.00\\ \quad 0.00,\quad 0.01, ** 1.16**} & \makecell[l]{** 1.18**,\quad 0.04,\quad 0.01\\ \quad 0.03, ** 1.17**,\quad 0.00\\ -0.00,\quad 0.03, ** 1.31**} & \makecell[l]{** 1.04**,\quad 0.01, -0.00\\ -0.02, ** 1.28**,\quad 0.01\\ -0.02, -0.02, ** 1.27**} & \makecell[l]{** 1.32**,\quad 0.00, -0.00\\ -0.00, ** 1.27**, -0.00\\ -0.00,\quad 0.00, ** 1.30**}\\
-\rowcolor{gray!6}  \hspace{1em}Two & ** 1.15** & ** 1.23** & ** 1.35** & ** 1.25**\\
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Five & < 60 & 0.88 ( 0.88,\quad 0.88) & 0.86 ( 0.85,\quad 0.86) & 0.83 ( 0.83,\quad 0.84) & 0.84 ( 0.84,\quad 0.84)\\
+\hspace{1em}Five & < 30 & 0.88 ( 0.87,\quad 0.88) & 0.87 ( 0.87,\quad 0.87) & 0.86 ( 0.86,\quad 0.86) & 0.84 ( 0.84,\quad 0.85)\\
+\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.87 ( 0.87,\quad 0.87) & 0.87 ( 0.86,\quad 0.87) & 0.84 ( 0.84,\quad 0.84) & 0.84 ( 0.84,\quad 0.84)\\
+\hspace{1em}Three & < 30 & 0.86 ( 0.86,\quad 0.86) & 0.87 ( 0.87,\quad 0.87) & 0.85 ( 0.85,\quad 0.85) & 0.84 ( 0.84,\quad 0.85)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,\quad 0.86) & 0.86 ( 0.86,\quad 0.87) & 0.84 ( 0.84,\quad 0.84) & 0.84 ( 0.84,\quad 0.84)\\
+\hspace{1em}Two & < 30 & 0.86 ( 0.86,\quad 0.86) & 0.87 ( 0.87,\quad 0.88) & 0.81 ( 0.81,\quad 0.81) & 0.84 ( 0.84,\quad 0.84)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Five & < 60 & \makecell[r]{0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\\quad 0.01 ( 0.00,\quad 0.01)\\ -0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,\quad 0.01)\\\quad 0.01 ( 0.01,\quad 0.01)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00, -0.00)\\\quad 0.00 ( 0.00,\quad 0.01)\\\quad 0.00 ( 0.00,\quad 0.00)} & \makecell[r]{-0.01 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\ -0.01 (-0.01, -0.00)\\ -0.04 (-0.05, -0.04)\\\quad 0.01 ( 0.00,\quad 0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.01)}\\
+\hspace{1em}Five & < 30 & \makecell[r]{-0.02 (-0.02, -0.02)\\\quad 0.00 ( 0.00,\quad 0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\\quad 0.01 ( 0.01,\quad 0.01)\\\quad 0.00 ( 0.00,\quad 0.00)} & \makecell[r]{0.00 ( 0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.01)\\ -0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.01, -0.00)\\\quad 0.00 ( 0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.01, -0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.01,\quad 0.02)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.00 ( 0.00,\quad 0.00)} & \makecell[r]{0.02 ( 0.02,\quad 0.02)\\ -0.02 (-0.02, -0.02)\\\quad 0.02 ( 0.02,\quad 0.02)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00, -0.00)}\\
+\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.01 ( 0.00,\quad 0.01)} & \makecell[r]{0.00 ( 0.00,\quad 0.00)\\\quad 0.01 ( 0.00,\quad 0.01)\\\quad 0.01 ( 0.01,\quad 0.01)} & \makecell[r]{0.00 ( 0.00,\quad 0.00)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{-0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.01 (-0.01, -0.00) & 0.01 ( 0.00,\quad 0.01) & 0.00 (-0.00,\quad 0.00) & -0.00 (-0.01, -0.00)\\
+\hspace{1em}Two & < 30 & -0.03 (-0.03, -0.03) & 0.02 ( 0.01,\quad 0.02) & -0.00 (-0.00,\quad 0.00) & 0.00 (-0.00,\quad 0.00)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.19},\quad 0.01,\quad 0.01\\ -0.01,\quad \emph{1.07}, -0.02\\ -0.07,\quad 0.00,\quad \emph{1.11}} & \makecell[r]{\emph{1.16}, -0.01, -0.01\\ -0.00,\quad \emph{1.11}, -0.01\\\quad 0.01, -0.00,\quad \emph{1.35}} & \makecell[r]{\emph{1.24}, -0.00,\quad 0.00\\ -0.07,\quad \emph{1.28},\quad 0.00\\ -0.03,\quad 0.01,\quad \emph{1.18}} & \makecell[r]{\emph{1.30},\quad 0.01, -0.00\\\quad 0.00,\quad \emph{1.29}, -0.00\\ -0.00,\quad 0.00,\quad \emph{1.32}}\\
+\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21}, -0.01,\quad 0.01\\ -0.02,\quad \emph{1.18}, -0.01\\\quad 0.02, -0.01,\quad \emph{1.15}} & \makecell[r]{\emph{1.12},\quad 0.01,\quad 0.00\\ -0.02,\quad \emph{1.27},\quad 0.00\\\quad 0.03,\quad 0.04,\quad \emph{1.18}} & \makecell[r]{\emph{1.34},\quad 0.12, -0.02\\\quad 0.02,\quad \emph{1.43}, -0.05\\\quad 0.00,\quad 0.09,\quad \emph{1.19}} & \makecell[r]{\emph{1.27},\quad 0.00, -0.00\\ -0.00,\quad \emph{1.28},\quad 0.00\\ -0.00, -0.00,\quad \emph{1.29}}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.03} & \emph{1.25} & \emph{1.25}\\
+\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.16} & \emph{1.38} & \emph{1.28}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -814,48 +887,63 @@ Table \ref{tab:EV-Five} shows the results from the external validation in the Fi
 \caption{\label{tab:EV-Five}{\small External Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Predicting & One Year & Two Year & Five Year & Average\\
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & 0.70 ( 0.70,\quad 0.70) & 0.70 ( 0.70,\quad 0.70) & 0.59 ( 0.59,\quad 0.60) & 0.65 ( 0.64,\quad 0.65)\\
-\hspace{1em}Three & 0.68 ( 0.68,\quad 0.69) & 0.66 ( 0.66,\quad 0.66) & 0.63 ( 0.63,\quad 0.64) & 0.63 ( 0.63,\quad 0.64)\\
-\rowcolor{gray!6}  \hspace{1em}Two & 0.74 ( 0.73,\quad 0.74) & 0.71 ( 0.70,\quad 0.71) & 0.64 ( 0.64,\quad 0.65) & 0.64 ( 0.64,\quad 0.65)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & 0.86 ( 0.86,\quad 0.86) & 0.82 ( 0.82,\quad 0.82) & 0.81 ( 0.81,\quad 0.82) & 0.82 ( 0.81,\quad 0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Three & 0.87 ( 0.87,\quad 0.87) & 0.86 ( 0.86,\quad 0.86) & 0.81 ( 0.81,\quad 0.82) & 0.82 ( 0.81,\quad 0.82)\\
-\hspace{1em}Two & 0.86 ( 0.85,\quad 0.86) & 0.84 ( 0.83,\quad 0.84) & 0.79 ( 0.79,\quad 0.80) & 0.81 ( 0.81,\quad 0.82)\\
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Five & < 60 & 0.70 ( 0.70,\quad 0.71) & 0.72 ( 0.71,\quad 0.72) & 0.64 ( 0.64,\quad 0.65) & 0.63 ( 0.63,\quad 0.64)\\
+\hspace{1em}Five & < 30 & 0.73 ( 0.72,\quad 0.73) & 0.71 ( 0.70,\quad 0.71) & 0.67 ( 0.67,\quad 0.68) & 0.64 ( 0.64,\quad 0.65)\\
+\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.69 ( 0.68,\quad 0.69) & 0.71 ( 0.71,\quad 0.71) & 0.67 ( 0.66,\quad 0.67) & 0.64 ( 0.63,\quad 0.64)\\
+\hspace{1em}Three & < 30 & 0.69 ( 0.68,\quad 0.69) & 0.68 ( 0.68,\quad 0.69) & 0.63 ( 0.63,\quad 0.64) & 0.63 ( 0.62,\quad 0.63)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.69 ( 0.68,\quad 0.69) & 0.68 ( 0.68,\quad 0.69) & 0.60 ( 0.60,\quad 0.60) & 0.64 ( 0.63,\quad 0.64)\\
+\hspace{1em}Two & < 30 & 0.73 ( 0.72,\quad 0.73) & 0.67 ( 0.67,\quad 0.67) & 0.64 ( 0.63,\quad 0.64) & 0.63 ( 0.63,\quad 0.64)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & \makecell[l]{-0.05 (-0.06, -0.05)\\ \quad 0.00 (-0.00,\quad 0.00)\\ -0.01 (-0.01, -0.01)\\ \quad 0.01 ( 0.00,\quad 0.01)\\ -0.01 (-0.02, -0.01)\\ -0.03 (-0.03, -0.03)} & \makecell[l]{-0.00 (-0.00,\quad 0.00)\\ \quad 0.03 ( 0.03,\quad 0.03)\\ -0.00 (-0.00, -0.00)\\ \quad 0.00 ( 0.00,\quad 0.01)\\ -0.01 (-0.01, -0.00)\\ \quad 0.00 (-0.00,\quad 0.00)} & \makecell[l]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.01, -0.01)\\ \quad 0.04 ( 0.04,\quad 0.04)\\ \quad 0.01 ( 0.00,\quad 0.01)\\ \quad 0.01 ( 0.00,\quad 0.01)\\ -0.02 (-0.02, -0.01)} & \makecell[l]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ \quad 0.00 ( 0.00,\quad 0.01)\\ \quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
-\hspace{1em}Three & \makecell[l]{-0.00 (-0.01, -0.00)\\ \quad 0.00 (-0.00,\quad 0.00)\\ \quad 0.00 ( 0.00,\quad 0.00)} & \makecell[l]{-0.03 (-0.03, -0.02)\\ -0.02 (-0.02, -0.02)\\ \quad 0.00 ( 0.00,\quad 0.01)} & \makecell[l]{-0.03 (-0.03, -0.03)\\ \quad 0.02 ( 0.01,\quad 0.02)\\ -0.01 (-0.01, -0.00)} & \makecell[l]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & 0.01 ( 0.01,\quad 0.02) & 0.02 ( 0.02,\quad 0.02) & 0.02 ( 0.02,\quad 0.03) & 0.00 ( 0.00,\quad 0.00)\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & \makecell[l]{** 1.39**, -0.03, -0.00\\ \quad 0.04, ** 1.38**,\quad 0.02\\ -0.01, -0.00, ** 1.24**} & \makecell[l]{** 1.35**, -0.03,\quad 0.09\\ -0.00, ** 1.47**,\quad 0.00\\ -0.03, -0.01, ** 1.22**} & \makecell[l]{** 1.66**, -0.05,\quad 0.02\\ \quad 0.01, ** 1.65**, -0.04\\ -0.05, -0.01, ** 1.62**} & \makecell[l]{** 1.43**,\quad 0.00, -0.00\\ \quad 0.00, ** 1.50**, -0.00\\ -0.00, -0.00, ** 1.53**}\\
-\rowcolor{gray!6}  \hspace{1em}Two & ** 1.11** & ** 1.14** & ** 1.65** & ** 1.47**\\
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Five & < 60 & 0.85 ( 0.85,\quad 0.85) & 0.85 ( 0.84,\quad 0.85) & 0.82 ( 0.82,\quad 0.82) & 0.82 ( 0.81,\quad 0.82)\\
+\hspace{1em}Five & < 30 & 0.85 ( 0.85,\quad 0.85) & 0.83 ( 0.82,\quad 0.83) & 0.82 ( 0.82,\quad 0.82) & 0.81 ( 0.81,\quad 0.82)\\
+\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.83 ( 0.83,\quad 0.84) & 0.83 ( 0.82,\quad 0.83) & 0.81 ( 0.81,\quad 0.82) & 0.81 ( 0.81,\quad 0.82)\\
+\hspace{1em}Three & < 30 & 0.87 ( 0.87,\quad 0.87) & 0.84 ( 0.84,\quad 0.84) & 0.82 ( 0.82,\quad 0.82) & 0.82 ( 0.81,\quad 0.82)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.84 ( 0.84,\quad 0.85) & 0.85 ( 0.84,\quad 0.85) & 0.81 ( 0.81,\quad 0.81) & 0.82 ( 0.82,\quad 0.82)\\
+\hspace{1em}Two & < 30 & 0.84 ( 0.83,\quad 0.84) & 0.84 ( 0.84,\quad 0.84) & 0.81 ( 0.81,\quad 0.82) & 0.82 ( 0.81,\quad 0.82)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Five & < 60 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\\quad 0.04 ( 0.03,\quad 0.04)\\\quad 0.00 ( 0.00,\quad 0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,\quad 0.01)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.03, -0.02)\\ -0.01 (-0.01, -0.00)\\\quad 0.01 ( 0.00,\quad 0.01)} & \makecell[r]{0.00 ( 0.00,\quad 0.01)\\ -0.00 (-0.01, -0.00)\\ -0.02 (-0.03, -0.02)\\\quad 0.01 ( 0.01,\quad 0.02)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)} & \makecell[r]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.01, -0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.01, -0.00)\\\quad 0.00 (-0.00,\quad 0.00)}\\
+\hspace{1em}Five & < 30 & \makecell[r]{0.02 ( 0.01,\quad 0.02)\\ -0.01 (-0.01, -0.00)\\\quad 0.02 ( 0.01,\quad 0.02)\\ -0.02 (-0.03, -0.02)\\\quad 0.03 ( 0.02,\quad 0.03)\\\quad 0.01 ( 0.01,\quad 0.01)} & \makecell[r]{0.02 ( 0.02,\quad 0.03)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\\quad 0.02 ( 0.02,\quad 0.02)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.03 ( 0.02,\quad 0.03)\\\quad 0.00 ( 0.00,\quad 0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.02 ( 0.01,\quad 0.02)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00, -0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{0.00 ( 0.00,\quad 0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.02)} & \makecell[r]{-0.01 (-0.01, -0.00)\\\quad 0.02 ( 0.02,\quad 0.03)\\\quad 0.01 ( 0.01,\quad 0.02)} & \makecell[r]{0.01 ( 0.00,\quad 0.01)\\ -0.03 (-0.04, -0.03)\\ -0.02 (-0.03, -0.02)} & \makecell[r]{0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\\quad 0.00 (-0.00,\quad 0.00)}\\
+\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\ -0.02 (-0.02, -0.02)\\ -0.03 (-0.04, -0.03)} & \makecell[r]{0.01 ( 0.01,\quad 0.02)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.02 ( 0.02,\quad 0.02)\\ -0.05 (-0.05, -0.04)\\\quad 0.01 ( 0.01,\quad 0.01)} & \makecell[r]{-0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)\\ -0.00 (-0.00,\quad 0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 ( 0.00,\quad 0.01) & -0.02 (-0.02, -0.02) & -0.00 (-0.00,\quad 0.00) & 0.00 (-0.00,\quad 0.00)\\
+\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.01) & 0.02 ( 0.02,\quad 0.03) & 0.01 ( 0.01,\quad 0.01) & -0.00 (-0.00,\quad 0.00)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.01}, -0.00, -0.00\\\quad 0.01,\quad \emph{1.21}, -0.05\\\quad 0.08, -0.05,\quad \emph{1.22}} & \makecell[r]{\emph{1.40},\quad 0.02, -0.02\\ -0.03,\quad \emph{1.28}, -0.03\\ -0.07,\quad 0.06,\quad \emph{1.12}} & \makecell[r]{\emph{1.61}, -0.03,\quad 0.04\\\quad 0.03,\quad \emph{1.76},\quad 0.00\\\quad 0.04, -0.00,\quad \emph{1.45}} & \makecell[r]{\emph{1.46}, -0.00, -0.00\\\quad 0.00,\quad \emph{1.50}, -0.01\\ -0.00, -0.00,\quad \emph{1.45}}\\
+\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.24}, -0.00, -0.00\\ -0.02,\quad \emph{1.20}, -0.05\\ -0.01, -0.07,\quad \emph{1.34}} & \makecell[r]{\emph{1.39},\quad 0.03,\quad 0.00\\ -0.04,\quad \emph{1.24},\quad 0.04\\ -0.03, -0.01,\quad \emph{1.18}} & \makecell[r]{\emph{1.28},\quad 0.02,\quad 0.03\\ -0.09,\quad \emph{1.38},\quad 0.02\\ -0.07, -0.00,\quad \emph{1.44}} & \makecell[r]{\emph{1.51}, -0.00,\quad 0.00\\\quad 0.00,\quad \emph{1.41}, -0.00\\ -0.00, -0.00,\quad \emph{1.47}}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.38} & \emph{1.12} & \emph{1.25} & \emph{1.46}\\
+\hspace{1em}Two & < 30 & \emph{1.26} & \emph{1.28} & \emph{1.35} & \emph{1.55}\\
 \bottomrule
 \end{tabular}
 \end{table}
-\textbackslash begin\{table\}{[}!h{]}
+Table \ref{tab:Five-Valid-Slope} shows the calibration slopes for the model in the internal and external datasets in both the \textless{} 60 eGFR and \textless30 eGFR sub-populations.
+\begin{table}[!h]
 
-\textbackslash caption\{(\#tab:Five\_Slope)\{\small Calibration Slope results for both the External and Internal Validation for the Five-State Model\}\}
+\caption{\label{tab:Five-Valid-Slope}{\small Calibration Slope results for both the External and Internal Validation for the Five-State Model}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{5cm}>{\raggedleft\arraybackslash}p{5cm}>{\raggedleft\arraybackslash}p{5cm}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}}
 \toprule
-  & Internal & External\\
+  & Internal < 60 & Internal < 30 & External < 60 & External < 30\\
 \midrule
-\rowcolor{gray!6}  One Year & ** 1.18**,\quad 0.01,\quad 0.03,\quad 0.04,\quad 0.01,\quad 0.10\newline  -0.04, ** 1.16**, -0.01,\quad 0.03,\quad 0.06, -0.02\newline  -0.02, -0.04, ** 1.22**,\quad 0.00,\quad 0.00,\quad 0.03\newline  -0.01,\quad 0.02, -0.00, ** 1.14**,\quad 0.04,\quad 0.00\newline \quad 0.00,\quad 0.03, -0.00,\quad 0.02, ** 1.18**,\quad 0.02\newline  -0.00, -0.02,\quad 0.02,\quad 0.01,\quad 0.01, ** 1.04** & ** 1.26**,\quad 0.00,\quad 0.03, -0.01,\quad 0.01, -0.02\newline  -0.01, ** 1.10**, -0.00, -0.03,\quad 0.01,\quad 0.01\newline  -0.00, -0.02, ** 1.21**, -0.02,\quad 0.01,\quad 0.00\newline  -0.03, -0.00, -0.02, ** 1.38**, -0.03,\quad 0.02\newline  -0.01,\quad 0.00, -0.01, -0.00, ** 1.06**,\quad 0.01\newline  -0.02,\quad 0.01,\quad 0.04,\quad 0.02, -0.02, ** 1.20**\\
-Two Year & ** 1.15**, -0.01,\quad 0.01, -0.00,\quad 0.02, -0.00\newline  -0.03, ** 1.15**, -0.02,\quad 0.06, -0.02,\quad 0.04\newline \quad 0.01, -0.02, ** 1.06**,\quad 0.02,\quad 0.03,\quad 0.02\newline \quad 0.03,\quad 0.03, -0.00, ** 1.16**,\quad 0.02,\quad 0.00\newline  -0.02, -0.02, -0.02,\quad 0.02, ** 1.20**, -0.01\newline  -0.03, -0.00, -0.04,\quad 0.00,\quad 0.04, ** 1.15** & ** 1.01**, -0.03,\quad 0.02, -0.00, -0.00,\quad 0.00\newline \quad 0.01, ** 1.21**,\quad 0.04,\quad 0.00,\quad 0.03,\quad 0.02\newline \quad 0.07, -0.06, ** 1.43**, -0.03,\quad 0.01, -0.00\newline  -0.00,\quad 0.08,\quad 0.00, ** 1.33**, -0.02,\quad 0.01\newline \quad 0.04,\quad 0.03, -0.01,\quad 0.01, ** 1.25**,\quad 0.02\newline \quad 0.03, -0.05,\quad 0.02, -0.01,\quad 0.01, ** 1.28**\\
-\rowcolor{gray!6}  Five Year & ** 1.32**,\quad 0.02,\quad 0.01,\quad 0.04, -0.00,\quad 0.08\newline \quad 0.00, ** 1.25**,\quad 0.03,\quad 0.02, -0.00, -0.02\newline  -0.00,\quad 0.01, ** 1.17**, -0.04,\quad 0.04,\quad 0.06\newline  -0.03, -0.02,\quad 0.01, ** 1.10**,\quad 0.00,\quad 0.00\newline \quad 0.01,\quad 0.05, -0.06,\quad 0.00, ** 1.19**, -0.04\newline  -0.01, -0.03,\quad 0.03,\quad 0.05, -0.00, ** 1.25** & ** 1.34**,\quad 0.03, -0.06, -0.02, -0.04,\quad 0.02\newline  -0.00, ** 1.36**,\quad 0.03, -0.00,\quad 0.02, -0.03\newline \quad 0.01, -0.00, ** 1.31**, -0.02, -0.02,\quad 0.00\newline  -0.01,\quad 0.02, -0.00, ** 1.27**,\quad 0.09,\quad 0.00\newline  -0.00,\quad 0.07,\quad 0.04,\quad 0.03, ** 1.51**,\quad 0.07\newline  -0.02, -0.04, -0.04,\quad 0.06, -0.01, ** 1.71**\\
-Average & ** 1.29**,\quad 0.00, -0.00,\quad 0.02,\quad 0.01,\quad 0.00\newline \quad 0.00, ** 1.29**,\quad 0.00, -0.00,\quad 0.00, -0.00\newline  -0.01,\quad 0.00, ** 1.25**, -0.01,\quad 0.01,\quad 0.00\newline  -0.00,\quad 0.01,\quad 0.01, ** 1.30**,\quad 0.00, -0.00\newline  -0.00,\quad 0.01, -0.00, -0.00, ** 1.31**, -0.00\newline  -0.00,\quad 0.00, -0.00, -0.00,\quad 0.00, ** 1.32** & ** 1.40**,\quad 0.00,\quad 0.00,\quad 0.00,\quad 0.00,\quad 0.00\newline \quad 0.00, ** 1.48**, -0.00,\quad 0.00, -0.01,\quad 0.00\newline \quad 0.00, -0.00, ** 1.56**, -0.00, -0.00, -0.00\newline \quad 0.00,\quad 0.00, -0.00, ** 1.52**,\quad 0.00, -0.01\newline \quad 0.01,\quad 0.00,\quad 0.00,\quad 0.00, ** 1.48**,\quad 0.00\newline  -0.00,\quad 0.00, -0.00,\quad 0.00,\quad 0.00, ** 1.45**\\
+\rowcolor{gray!6}  One Year & \emph{1.14}, -0.01,\quad 0.00,\quad 0.02,\quad 0.00,\quad 0.01\newline  -0.00,\quad \emph{1.09}, -0.05, -0.01,\quad 0.01,\quad 0.00\newline  -0.04,\quad 0.06,\quad \emph{1.22},\quad 0.02,\quad 0.03,\quad 0.00\newline  -0.06,\quad 0.02,\quad 0.01,\quad \emph{1.25},\quad 0.00, -0.02\newline  -0.02,\quad 0.03,\quad 0.02, -0.02,\quad \emph{1.13},\quad 0.00\newline \quad 0.05, -0.04, -0.06, -0.02, -0.00,\quad \emph{1.30} & \emph{1.07},\quad 0.03,\quad 0.02,\quad 0.02,\quad 0.01, -0.00\newline \quad 0.00,\quad \emph{1.18},\quad 0.01,\quad 0.00, -0.06,\quad 0.01\newline \quad 0.01,\quad 0.00,\quad \emph{1.03},\quad 0.00, -0.05,\quad 0.00\newline  -0.04, -0.03, -0.03,\quad \emph{1.11},\quad 0.01, -0.03\newline \quad 0.00, -0.03, -0.02, -0.02,\quad \emph{1.15},\quad 0.01\newline \quad 0.02, -0.01,\quad 0.00, -0.00, -0.01,\quad \emph{1.11} & \emph{1.16},\quad 0.02, -0.00, -0.01,\quad 0.00,\quad 0.06\newline  -0.03,\quad \emph{1.08}, -0.00, -0.00,\quad 0.04, -0.04\newline  -0.05, -0.02,\quad \emph{1.18}, -0.04, -0.05,\quad 0.02\newline  -0.01, -0.04, -0.06,\quad \emph{1.17},\quad 0.00, -0.00\newline  -0.01, -0.02,\quad 0.00, -0.01,\quad \emph{1.14}, -0.04\newline \quad 0.03, -0.00, -0.03,\quad 0.00,\quad 0.01,\quad \emph{1.23} & \emph{1.31},\quad 0.02,\quad 0.05, -0.00, -0.01, -0.00\newline \quad 0.02,\quad \emph{1.16},\quad 0.04,\quad 0.01,\quad 0.04, -0.03\newline \quad 0.04,\quad 0.01,\quad \emph{1.08},\quad 0.01,\quad 0.01, -0.04\newline  -0.04, -0.04, -0.01,\quad \emph{1.08}, -0.00, -0.00\newline  -0.02,\quad 0.04, -0.03, -0.03,\quad \emph{1.27}, -0.00\newline  -0.01,\quad 0.02,\quad 0.03, -0.02,\quad 0.07,\quad \emph{1.16}\\
+Two Year & \emph{1.42}, -0.05,\quad 0.03, -0.01, -0.05,\quad 0.00\newline \quad 0.02,\quad \emph{1.12},\quad 0.03, -0.01,\quad 0.03, -0.00\newline \quad 0.01, -0.01,\quad \emph{1.22}, -0.00,\quad 0.00,\quad 0.04\newline  -0.03,\quad 0.00, -0.05,\quad \emph{1.21}, -0.01,\quad 0.00\newline  -0.02, -0.03, -0.00, -0.01,\quad \emph{1.39}, -0.00\newline  -0.03,\quad 0.04,\quad 0.04, -0.00,\quad 0.03,\quad \emph{1.15} & \emph{1.14}, -0.02,\quad 0.04,\quad 0.02,\quad 0.00, -0.09\newline  -0.01,\quad \emph{1.10},\quad 0.00, -0.07, -0.01, -0.00\newline  -0.03,\quad 0.02,\quad \emph{1.12},\quad 0.03,\quad 0.00, -0.04\newline \quad 0.00,\quad 0.02, -0.03,\quad \emph{1.11}, -0.02,\quad 0.01\newline  -0.00, -0.06, -0.05,\quad 0.02,\quad \emph{1.11}, -0.03\newline \quad 0.07, -0.01, -0.03,\quad 0.02,\quad 0.04,\quad \emph{1.18} & \emph{1.25},\quad 0.02,\quad 0.01,\quad 0.02, -0.07,\quad 0.02\newline \quad 0.00,\quad \emph{1.39},\quad 0.08, -0.03,\quad 0.02,\quad 0.05\newline  -0.01, -0.01,\quad \emph{1.26},\quad 0.04, -0.04,\quad 0.03\newline  -0.00, -0.00, -0.10,\quad \emph{1.21}, -0.04,\quad 0.02\newline  -0.02, -0.02,\quad 0.02, -0.08,\quad \emph{1.20}, -0.00\newline  -0.04,\quad 0.00, -0.05,\quad 0.02, -0.06,\quad \emph{1.44} & \emph{1.39}, -0.04,\quad 0.00, -0.00,\quad 0.01, -0.01\newline  -0.06,\quad \emph{1.31},\quad 0.03,\quad 0.00,\quad 0.02, -0.06\newline \quad 0.00, -0.02,\quad \emph{1.14},\quad 0.01, -0.04,\quad 0.04\newline \quad 0.01, -0.02,\quad 0.00,\quad \emph{1.37}, -0.03,\quad 0.00\newline \quad 0.04, -0.02, -0.00, -0.01,\quad \emph{1.34},\quad 0.02\newline  -0.02,\quad 0.02, -0.03, -0.02, -0.01,\quad \emph{1.32}\\
+\rowcolor{gray!6}  Five Year & \emph{1.22}, -0.00,\quad 0.05, -0.00, -0.05,\quad 0.05\newline  -0.04,\quad \emph{1.11}, -0.01,\quad 0.03,\quad 0.04,\quad 0.03\newline \quad 0.02, -0.03,\quad \emph{1.24}, -0.03, -0.03,\quad 0.01\newline \quad 0.02, -0.03, -0.00,\quad \emph{1.20}, -0.05,\quad 0.01\newline \quad 0.00,\quad 0.08, -0.00,\quad 0.01,\quad \emph{1.25}, -0.06\newline \quad 0.01, -0.00, -0.00,\quad 0.03, -0.05,\quad \emph{1.14} & \emph{1.27},\quad 0.02,\quad 0.02, -0.03,\quad 0.04, -0.06\newline  -0.00,\quad \emph{1.20}, -0.00,\quad 0.00,\quad 0.04, -0.00\newline  -0.03, -0.02,\quad \emph{1.22},\quad 0.02,\quad 0.05,\quad 0.03\newline \quad 0.00, -0.02, -0.01,\quad \emph{1.30}, -0.00,\quad 0.04\newline \quad 0.00, -0.05,\quad 0.00, -0.05,\quad \emph{1.31},\quad 0.01\newline  -0.01, -0.04, -0.05,\quad 0.02, -0.00,\quad \emph{1.19} & \emph{1.45}, -0.04,\quad 0.06, -0.07,\quad 0.00,\quad 0.04\newline  -0.01,\quad \emph{1.31},\quad 0.04,\quad 0.01, -0.01,\quad 0.03\newline \quad 0.01,\quad 0.06,\quad \emph{1.50},\quad 0.01,\quad 0.02, -0.00\newline  -0.01,\quad 0.00,\quad 0.08,\quad \emph{1.56},\quad 0.02,\quad 0.01\newline  -0.09,\quad 0.01, -0.02, -0.06,\quad \emph{1.47}, -0.00\newline  -0.03,\quad 0.04,\quad 0.07,\quad 0.08,\quad 0.01,\quad \emph{1.35} & \emph{1.32},\quad 0.04, -0.04, -0.01, -0.02,\quad 0.03\newline  -0.06,\quad \emph{1.21},\quad 0.01,\quad 0.00, -0.06, -0.01\newline \quad 0.01, -0.08,\quad \emph{1.70},\quad 0.04, -0.03, -0.05\newline  -0.01,\quad 0.03, -0.02,\quad \emph{1.35}, -0.02,\quad 0.02\newline  -0.05, -0.03,\quad 0.03, -0.04,\quad \emph{1.43},\quad 0.07\newline \quad 0.01,\quad 0.04, -0.04, -0.01, -0.00,\quad \emph{1.28}\\
+Average & \emph{1.28},\quad 0.00, -0.00,\quad 0.01,\quad 0.00,\quad 0.00\newline \quad 0.00,\quad \emph{1.28},\quad 0.00,\quad 0.00, -0.00,\quad 0.01\newline \quad 0.00,\quad 0.01,\quad \emph{1.25},\quad 0.00, -0.00,\quad 0.00\newline  -0.00,\quad 0.00,\quad 0.00,\quad \emph{1.28}, -0.00,\quad 0.00\newline  -0.00,\quad 0.00, -0.00,\quad 0.01,\quad \emph{1.26}, -0.00\newline  -0.00,\quad 0.01,\quad 0.00, -0.00, -0.00,\quad \emph{1.31} & \emph{1.31},\quad 0.01, -0.00,\quad 0.00,\quad 0.00,\quad 0.00\newline  -0.00,\quad \emph{1.29}, -0.00,\quad 0.00, -0.00,\quad 0.00\newline  -0.00,\quad 0.00,\quad \emph{1.30}, -0.00, -0.00, -0.00\newline \quad 0.00, -0.00, -0.00,\quad \emph{1.28},\quad 0.00, -0.01\newline \quad 0.00,\quad 0.00,\quad 0.00,\quad 0.00,\quad \emph{1.27}, -0.01\newline \quad 0.01, -0.00, -0.00, -0.00,\quad 0.00,\quad \emph{1.28} & \emph{1.46},\quad 0.01, -0.00,\quad 0.00, -0.01,\quad 0.00\newline \quad 0.01,\quad \emph{1.46},\quad 0.01,\quad 0.00, -0.00, -0.00\newline  -0.00,\quad 0.00,\quad \emph{1.54}, -0.01,\quad 0.00, -0.00\newline \quad 0.00, -0.02,\quad 0.00,\quad \emph{1.51}, -0.00,\quad 0.01\newline  -0.01,\quad 0.00,\quad 0.00, -0.00,\quad \emph{1.47}, -0.00\newline \quad 0.00, -0.00, -0.00, -0.00, -0.01,\quad \emph{1.47} & \emph{1.49}, -0.00, -0.00, -0.00, -0.01,\quad 0.01\newline  -0.01,\quad \emph{1.45}, -0.00,\quad 0.00,\quad 0.00, -0.00\newline \quad 0.00, -0.00,\quad \emph{1.44},\quad 0.01, -0.00, -0.01\newline \quad 0.00, -0.00,\quad 0.01,\quad \emph{1.47}, -0.00,\quad 0.00\newline  -0.00, -0.00, -0.00,\quad 0.00,\quad \emph{1.47},\quad 0.01\newline \quad 0.00, -0.00, -0.00, -0.00,\quad 0.00,\quad \emph{1.44}\\
 \bottomrule
 \end{tabular}
-\textbackslash end\{table\}
+\end{table}
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
 \begin{cslreferences}
@@ -1075,34 +1163,43 @@ Average & ** 1.29**,\quad 0.00, -0.00,\quad 0.02,\quad 0.01,\quad 0.00\newline \
 \leavevmode\hypertarget{ref-naimark_past_2016}{}%
 {[}72{]} D. M. J. Naimark \emph{et al.}, ``Past Decline Versus Current eGFR and Subsequent Mortality Risk,'' \emph{Journal of the American Society of Nephrology}, vol. 27, no. 8, pp. 2456--2466, Aug. 2016, doi: \href{https://doi.org/10.1681/ASN.2015060688}{10.1681/ASN.2015060688}.
 
+\leavevmode\hypertarget{ref-bhatnagar_epidemiology_2015}{}%
+{[}73{]} P. Bhatnagar, K. Wickramasinghe, J. Williams, M. Rayner, and N. Townsend, ``The epidemiology of cardiovascular disease in the UK 2014,'' \emph{Heart}, vol. 101, no. 15, pp. 1182--1189, Aug. 2015, doi: \href{https://doi.org/10.1136/heartjnl-2015-307516}{10.1136/heartjnl-2015-307516}.
+
 \leavevmode\hypertarget{ref-meira-machado_multi-state_2009}{}%
-{[}73{]} L. Meira-Machado, J. de Uña-Álvarez, C. Cadarso-Suárez, and P. K. Andersen, ``Multi-state models for the analysis of time-to-event data,'' \emph{Statistical methods in medical research}, vol. 18, no. 2, pp. 195--222, Apr. 2009, doi: \href{https://doi.org/10.1177/0962280208092301}{10.1177/0962280208092301}.
+{[}74{]} L. Meira-Machado, J. de Uña-Álvarez, C. Cadarso-Suárez, and P. K. Andersen, ``Multi-state models for the analysis of time-to-event data,'' \emph{Statistical methods in medical research}, vol. 18, no. 2, pp. 195--222, Apr. 2009, doi: \href{https://doi.org/10.1177/0962280208092301}{10.1177/0962280208092301}.
 
 \leavevmode\hypertarget{ref-putter_tutorial_2007}{}%
-{[}74{]} H. Putter, M. Fiocco, and R. B. Geskus, ``Tutorial in biostatistics: Competing risks and multi-state models,'' \emph{Statistics in Medicine}, vol. 26, no. 11, pp. 2389--2430, May 2007, doi: \href{https://doi.org/10.1002/sim.2712}{10.1002/sim.2712}.
+{[}75{]} H. Putter, M. Fiocco, and R. B. Geskus, ``Tutorial in biostatistics: Competing risks and multi-state models,'' \emph{Statistics in Medicine}, vol. 26, no. 11, pp. 2389--2430, May 2007, doi: \href{https://doi.org/10.1002/sim.2712}{10.1002/sim.2712}.
 
 \leavevmode\hypertarget{ref-wood_how_2008}{}%
-{[}75{]} A. M. Wood, I. R. White, and P. Royston, ``How should variable selection be performed with multiply imputed data?'' \emph{Statistics in Medicine}, vol. 27, no. 17, pp. 3227--3246, Jul. 2008, doi: \href{https://doi.org/10.1002/sim.3177}{10.1002/sim.3177}.
+{[}76{]} A. M. Wood, I. R. White, and P. Royston, ``How should variable selection be performed with multiply imputed data?'' \emph{Statistics in Medicine}, vol. 27, no. 17, pp. 3227--3246, Jul. 2008, doi: \href{https://doi.org/10.1002/sim.3177}{10.1002/sim.3177}.
 
 \leavevmode\hypertarget{ref-rubin_multiple_1984}{}%
-{[}76{]} D. B. Rubin, \emph{Multiple Imputation for Nonresponse in Surveys}. New York, NY: John Wiley \& Sons, Inc, 1984.
+{[}77{]} D. B. Rubin, \emph{Multiple Imputation for Nonresponse in Surveys}. New York, NY: John Wiley \& Sons, Inc, 1984.
 
 \leavevmode\hypertarget{ref-white_imputing_2009}{}%
-{[}77{]} I. R. White and P. Royston, ``Imputing missing covariate values for the Cox model,'' \emph{Statistics in Medicine}, vol. 28, no. 15, pp. 1982--1998, Jul. 2009, doi: \href{https://doi.org/10.1002/sim.3618}{10.1002/sim.3618}.
+{[}78{]} I. R. White and P. Royston, ``Imputing missing covariate values for the Cox model,'' \emph{Statistics in Medicine}, vol. 28, no. 15, pp. 1982--1998, Jul. 2009, doi: \href{https://doi.org/10.1002/sim.3618}{10.1002/sim.3618}.
 
 \leavevmode\hypertarget{ref-janssen_dealing_2009}{}%
-{[}78{]} K. J. M. Janssen \emph{et al.}, ``Dealing with missing predictor values when applying clinical prediction models,'' \emph{Clinical Chemistry}, vol. 55, no. 5, pp. 994--1001, May 2009, doi: \href{https://doi.org/10.1373/clinchem.2008.115345}{10.1373/clinchem.2008.115345}.
+{[}79{]} K. J. M. Janssen \emph{et al.}, ``Dealing with missing predictor values when applying clinical prediction models,'' \emph{Clinical Chemistry}, vol. 55, no. 5, pp. 994--1001, May 2009, doi: \href{https://doi.org/10.1373/clinchem.2008.115345}{10.1373/clinchem.2008.115345}.
 
 \leavevmode\hypertarget{ref-schomaker_bootstrap_2018}{}%
-{[}79{]} M. Schomaker and C. Heumann, ``Bootstrap inference when using multiple imputation,'' \emph{Statistics in Medicine}, vol. 37, no. 14, pp. 2252--2266, 2018, doi: \href{https://doi.org/10.1002/sim.7654}{10.1002/sim.7654}.
+{[}80{]} M. Schomaker and C. Heumann, ``Bootstrap inference when using multiple imputation,'' \emph{Statistics in Medicine}, vol. 37, no. 14, pp. 2252--2266, 2018, doi: \href{https://doi.org/10.1002/sim.7654}{10.1002/sim.7654}.
+
+\leavevmode\hypertarget{ref-chap-performance-metrics}{}%
+{[}81{]} N. P. MA Barrowman GP Martin, ``Prediction model performance metrics for the validation of multi-state clinical prediction models,'' \emph{Unpublished Draft}.
+
+\leavevmode\hypertarget{ref-gneiting_strictly_2007}{}%
+{[}82{]} T. Gneiting and A. E. Raftery, ``Strictly Proper Scoring Rules, Prediction, and Estimation,'' \emph{Journal of the American Statistical Association}, vol. 102, no. 477, pp. 359--378, Mar. 2007, doi: \href{https://doi.org/10.1198/016214506000001437}{10.1198/016214506000001437}.
 
 \leavevmode\hypertarget{ref-calster_extending_2012-1}{}%
-{[}80{]} B. V. Calster, V. V. Belle, Y. Vergouwe, D. Timmerman, S. V. Huffel, and E. W. Steyerberg, ``Extending the c-statistic to nominal polytomous outcomes: The Polytomous Discrimination Index,'' \emph{Statistics in Medicine}, vol. 31, no. 23, pp. 2610--2626, 2012, doi: \href{https://doi.org/10.1002/sim.5321}{10.1002/sim.5321}.
+{[}83{]} B. V. Calster, V. V. Belle, Y. Vergouwe, D. Timmerman, S. V. Huffel, and E. W. Steyerberg, ``Extending the c-statistic to nominal polytomous outcomes: The Polytomous Discrimination Index,'' \emph{Statistics in Medicine}, vol. 31, no. 23, pp. 2610--2626, 2012, doi: \href{https://doi.org/10.1002/sim.5321}{10.1002/sim.5321}.
 
 \leavevmode\hypertarget{ref-hoorde_assessing_2014}{}%
-{[}81{]} K. V. Hoorde, Y. Vergouwe, D. Timmerman, S. V. Huffel, E. W. Steyerberg, and B. V. Calster, ``Assessing calibration of multinomial risk prediction models,'' \emph{Statistics in Medicine}, vol. 33, no. 15, pp. 2585--2596, Jul. 2014, doi: \href{https://doi.org/10.1002/sim.6114}{10.1002/sim.6114}.
+{[}84{]} K. V. Hoorde, Y. Vergouwe, D. Timmerman, S. V. Huffel, E. W. Steyerberg, and B. V. Calster, ``Assessing calibration of multinomial risk prediction models,'' \emph{Statistics in Medicine}, vol. 33, no. 15, pp. 2585--2596, Jul. 2014, doi: \href{https://doi.org/10.1002/sim.6114}{10.1002/sim.6114}.
 
 \leavevmode\hypertarget{ref-riley_prognosis_2019}{}%
-{[}82{]} R. D. Riley, D. van der Windt, P. Croft, and K. G. M. Moons, \emph{Prognosis Research in Healthcare: Concepts, Methods, and Impact}, First. Oxford University Press, 2019.
+{[}85{]} R. D. Riley, D. van der Windt, P. Croft, and K. G. M. Moons, \emph{Prognosis Research in Healthcare: Concepts, Methods, and Impact}, First. Oxford University Press, 2019.
 \end{cslreferences}
 \end{document}

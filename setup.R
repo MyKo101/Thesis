@@ -181,19 +181,28 @@ add_downloads <- function(filenum)
   
   .res <- paste0("Download as individual paper draft: [pdf](Chapters/",
          filename,".pdf), [tex](Chapters/",filename,".tex)")
-  fb(.res,.res,"")
+  fb(gitbook=.res)
 }
 
 make_linebreaks <- function(.tbl)
 {
   if(get_format("thesis","single"))
   {
-    .out <- .tbl
+    n.lsub <- function(x) paste0("\\makecell[r]{",
+                     gsub("\n","\\\\",x,fixed=T),"}")
+  } else {
+    n.lsub <- function(x) gsub("\n","<br>",x,fixed=T)
+  }
     
-    lb_cols <- grepl("\n",lapply(.out,paste0,collapse=""),fixed=T)
-    .out[,lb_cols,drop=F] <- lapply(.out[,lb_cols],linebreak)
+  .out <- .tbl
+  for(i in 1:nrow(.tbl)) for(j in 1:ncol(.tbl))
+  {
+    if(grepl("\n",.tbl[i,j]))
+    {
+      .out[i,j] <- n.lsub(.tbl[i,j])
+    }
+  }
     
-  } else .out <- .tbl
   return(.out)
 }
 
@@ -212,27 +221,40 @@ clear_ws <- function(.tbl,cols)
   } else .tbl
 }
 
-do_colwidths <- function(.tbl,col_widths)
+do_colspace <- function(.tbl,numeric_cols,col_widths)
 {
+  ncols <- .tbl %>%
+    magic_mirror %>%
+    extract2("ncol")
+  
+  mono <- rep(F,ncols)
+  
+  if(!is.null(numeric_cols))
+  {
+    mono[numeric_cols] <- T
+  }
+  
+  if(is.null(col_widths))
+  {
+    wid <- rep(NA,ncols)
+  } else if(length(col_widths==1))
+  {
+    wid <- rep(col_widths,ncols)
+  } else
+  {
+    wid <- col_widths
+  }
+  
   .res <- .tbl
   
-  if(!is.null(col_widths))
+  for(i in 1:ncols)
   {
-    if(length(col_widths) == 1)
-    {
-      .res <- .res %>%
-        magic_mirror %>%
-        extract2("ncol") %>%
-        seq_len %>%
-        column_spec(.tbl,column=.,width=col_widths)
-    } else
-    {
-      for(i in 1:length(col_widths))
-      {
-        .res %<>% column_spec(column=i,width=col_widths[i])
-      }
-    }
+    .res %<>% if_fun(is.na(wid[i]),
+                     function(x) column_spec(x,column=i,monospace=mono[i]),
+                     function(x) column_spec(x,column=i,monospace=mono[i],width=wid[i]))
   }
+  
+  
   return(.res)
 }
 
@@ -261,14 +283,19 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
   .pre <- .tbl %>%
     mutate_if(is.character,~replace_na(.,"")) %>%
     if_fun(get_format("gitbook"),
-           function(x) mutate_if(x,is.character,
+           function(x) mutate_at(x,numeric_cols,
                                  ~gsub("<","&lt;",.,fixed=T) %>%
-                                   gsub(">","&gt;",.,fixed=T) %>%
-                                   gsub("\n","<br>",.,fixed=T)%>%
-                                   gsub("^2","&sup2;",.,fixed=T)),
+                                   gsub(">","&gt;",.,fixed=T)) %>%
+             mutate_if(is.character,
+                       ~gsub("\\^([a-zA-Z0-9])","<sup>\\1</sup>",.) %>%
+                         gsub("<strong>","**",.,fixed=T) %>%
+                         gsub("</strong>","**",.,fixed=T)),
            function(x) mutate_if(x,is.character,
-                                 ~gsub("^2","\\textsuperscript{2}",.,fixed=T) %>%
-                                   gsub("%","\\%",.,fixed=T))) %>%
+                                 ~gsub("\\^[a-zA-Z0-9]",
+                                       "\\\\textsuperscript{\\1}",.) %>%
+                                   gsub("%","\\%",.,fixed=T) %>%
+                                   gsub("<strong>","\\emph{",.,fixed=T) %>%
+                                   gsub("</strong>","}",.,fixed=T))) %>%
     make_linebreaks %>%
     clear_ws(numeric_cols) %>%
     if_fun(!is.null(row_names),
@@ -302,17 +329,15 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
                   full_width=F) %>%
     if_fun(!is.null(col_headers),
            add_header_above(col_headers)) %>%
-    if_fun(lscape,landscape,
+    if_fun(lscape,
+           function(x) landscape(x,margin="2cm"),
            function(x) kable_styling(x,latex_options="hold_position")) %>%
-    if_fun(!is.null(numeric_cols),
-           function(x) column_spec(x,numeric_cols,monospace = T)) %>%
     if_fun(!is.null(group_col) && !is.na(group_col),
            function(x) pack_rows(x,index=grp_index)) %>%
-    do_colwidths(col_widths) %>%
+    do_colspace(numeric_cols,col_widths) %>%
     if_fun(get_format("gitbook"),
            function(x) scroll_box(x,width="100%")) %>%
-    gsub("\\\\vphantom\\{.*?\\} ","",.) %>% 
-    gsub("\\\\\\quad","\\\\ \\quad",.,fixed=T) 
+    gsub("\\\\vphantom\\{.*?\\} ","",.)
   
 }
 

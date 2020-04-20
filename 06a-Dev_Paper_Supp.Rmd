@@ -7,7 +7,7 @@
 
 Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
 
-uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for time trends in treatment preferences `r cc("Something")`. Calendar Time was defined as length of time between start date and  1st January 2019. `r xx("Matt mentioned the use of log Calendar Time rather than simply Calendar Time. I read this a while ago and can't currently locate the paper (I believe it was a simulation study). I'll carry on looking for it though of course")`
+uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences [@bhatnagar_epidemiology_2015]. Calendar Time was defined as length of time between start date and  1st January 2019.
 
 Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified [@meira-machado_multi-state_2009]. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique [@royston_flexible_2002] to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time [@putter_tutorial_2007].
 
@@ -17,24 +17,22 @@ All missing data were assumed to be missing at random and so were multiply imput
 
 ### Validation
 
-Further to the simple individual validation performed above. A statistical validation will need to be performed to formally establish the performance of the models.
-
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates.. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an $\textrm{eGFR} < 30\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$.
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m`r fb("<sup>2</sup>","\\textsuperscript{2}","\\textsuperscript{2}")`.
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
 
-The performance metrics were chosen from those defined in chapter {#chap-performance-metrics}.
+`r fb("The performance metrics were chosen from those defined in chapter \\ref@(chap-performance-metrics)","The performance metrics were chosen from those defined in chapter \\ref@(chap-performance-metrics)","")`
 
-The overall accuracy of each model was assessed using the MSM adjusted Brier Scoreas defined in , which is a proper score function assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score`r fb(single=" [@chap-performance-metrics]")`, which is a proper score function [@gneiting_strictly_2007] assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
 
-The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1]. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
+The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1`r fb(single=";@chap-performance-metrics")`]. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
-The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014] which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
+The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014`r fb(single=";@chap-performance-metrics")`] which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
 
 ## Model Results
 
 ```{r print_table_PH_function, include=F}
-print_table_PH <- function(fn,Model,lscape=F,scroll_width=F)
+print_table_PH <- function(fn,Model,lscape=F)
 {
   sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
   nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
@@ -51,9 +49,7 @@ print_table_PH <- function(fn,Model,lscape=F,scroll_width=F)
              caption=paste0("Proportional Hazards for each transition in the ",
                          sModel,"-State Model"),
              lscape=lscape,
-             col_widths=fb(c("4.1cm",rep("4.5cm",nTrans)),
-                           c("4.0cm",rep("4.0cm",nTrans)),
-                           c("4.0cm",rep("4.0cm",nTrans))))
+             col_widths=c("54em",rep("43em",nTrans)))
   
 }
 ```
@@ -107,39 +103,30 @@ list_table_Valid <- function(fn,Model,external)
     read_csv(col_types=cols()) %>%
     filter(Model == sModel,src == ifelse(external,"UoG","SKS")) %>%
     select(-Model,-src) %>%
-    arrange(Measure,Collapsed) %>%
+    arrange(Measure,Collapsed,!low.eGFR) %>%
+    mutate(low.eGFR = if_else(low.eGFR,"< 60","< 30")) %>%
     rename_at(vars(ends_with("Year")),
               ~gsub("_"," ",.,fixed=T)%>%
                 trimws) %>%
     rename(Predicting=Collapsed,
-           Average = Overall)
+           Average = Overall,
+           eGFR = low.eGFR)
   
   
   .out <- .mid %>%
     filter(!(Predicting == "Five" & Measure == "Slope")) %>%
-    to_kable(caption=cap,group_col="Measure",align="lrrrr",numeric_cols=2:5)
+    to_kable(caption=cap,group_col="Measure",align="llrrrr",numeric_cols=3:6)
   
   
   
   if(Model == 5)
   {
-    cap <- paste0("Calibration Slope results for the ",
-                  if_else(external,"External","Internal"),
-                  " Validation of the ",
-                  "Five-State Model, results presented as Estimate (95% CI)")
-    
-    
-    diag_pre <- matrix("",nrow=6,ncol=6)
-    diag(diag_pre) <- "**"
-    diag_post <- matrix("",nrow=6,ncol=6)
-    diag(diag_post) <- "**"
-    
     .out2 <- .mid %>%
       filter(Predicting == "Five" & Measure == "Slope") %>%
-      pivot_longer(c(-Predicting,-Measure),names_to="Time",values_to="Slope") %>%
-      select(-Measure,-Predicting) #%>%
-      #to_kable(caption=cap,
-      #         row_names = "Time",align="r",numeric_cols=1)
+      select(-Predicting,-Measure) %>%
+      mutate(eGFR = paste0(if_else(external,"External ","Internal "),eGFR)) %>%
+      pivot_longer(-eGFR,names_to="Time",values_to="Slope") %>%
+      pivot_wider(names_from=eGFR,values_from=Slope) 
     
     
   } else .out2 <- ""
@@ -152,23 +139,20 @@ list_table_Valid <- function(fn,Model,external)
 ```
 
 
-`r xx("Describe the model results briefly")`
-
 ### Two State Model
 
 
-Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model.
-
+Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA [@venkat-raman_new_2012] definition of Systemic diseases affecting the kidney had the highest likelihood of death.
 
 ```{r PH-Two,echo=F}
 print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",2,lscape=F)
 ```
 
-Equation \@ref(eq:CH-Two-16) below shows the hazard functions for the transition from Alive to Dead in the Two-State Model.
+Equation \@ref(eq:CH-Two-16) below shows the baseline cumulative hazard functions for the transition from Alive to Dead in the Two-State Model.
 
 `r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",2)`
 
-Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model.
+Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model. Calibration Intercept is close to 0, implying the model is well calibrated overall with a high c-statistic and Brier Score. Calibration Slope above 1 implies that the model under-estimates outcomes.
 
 
 ```{r IV-Two,echo=F}
@@ -176,7 +160,7 @@ res <- list_table_Valid("data/Dev_Paper_Validation.csv",2,F)
 res[[1]]
 ```
 
-Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model.
+Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model, which shows similar results to the internal validation with slightly impaired perfomance, which is to be expected in an external validation.
 
 
 ```{r EV-Two,echo=F}
@@ -195,13 +179,11 @@ print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",3,lscape=T)
 
 Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
 
-Equation \@ref(eq:CH-Three-16) shows the equation for 
-
-The equations in \@ref(eq:Cum-Haz-Three) shows the hazard functions for the transition from CKD to Dead in the Three-State Model.
+The equations \@ref(eq:CH-Three-16), \@ref(eq:CH-Three-15) and \@ref(eq:CH-Three-56) shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.
 
 `r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",3)`
 
-Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model.
+Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
 
 ```{r IV-Three,echo=F}
 res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,F)
@@ -221,14 +203,14 @@ res[[1]]
 Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
 
 ```{r PH-Five,echo=F}
-print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",5,lscape=T,scroll_width=T)
+print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",5,lscape=T)
 ```
 
-The equations in \@ref(eq:Cum-Haz-Five) shows the hazard functions for the transitions in the Five-State Model.
+The equations \@ref(eq:CH-Five-12), \@ref(eq:CH-Five-13), \@ref(eq:CH-Five-14) and \@ref(eq:CH-Five-16) show the baseline cumulative hazard functions from the CKD state to HD, PD, Tx and Dead, respectively. Equation \@ref(eq:CH-Five-26) shows the baseline cumulative hazard function from HD to Dead and Equation \@ref(eq:CH-Five-36) shows the baseline cumulative hazard function from PD to Dead.
 
 `r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",5)`
 
-Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model.
+Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model. The calibration slope results are shown in a seperate table for both the internal and external validation.
 
 
 ```{r IV-Five,echo=F}
@@ -244,13 +226,14 @@ res_EV <- list_table_Valid("data/Dev_Paper_Validation.csv",5,T)
 res_EV[[1]]
 ```
 
-```{r Five-Valid-Slope, echo=F}
-full_join(rename(res_IV[[2]],Internal=Slope),
-          rename(res_EV[[2]],External=Slope),
-          by="Time") %>%
-  to_kable(caption="Calibration Slope results for both the External and Internal Validation for the Five-State Model",align="rr",row_names="Time",numeric_cols=2:3,col_widths=rep("5cm",3))
-```
+Table \@ref(tab:Five-Valid-Slope) shows the calibration slopes for the model in the internal and external datasets in both the < 60 eGFR and <30 eGFR sub-populations.
 
+
+```{r Five-Valid-Slope, echo=F}
+full_join(res_IV[[2]],res_EV[[2]],
+          by="Time") %>%
+  to_kable(caption="Calibration Slope results for both the External and Internal Validation for the Five-State Model",align="rr",row_names="Time",numeric_cols=2:5,col_widths=rep("20em",5))
+```
 
 
 

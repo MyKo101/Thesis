@@ -4,13 +4,28 @@
 
 `r add_downloads(4)`
 
+## Abstract {-}
+
+### Introduction {-}
+
+### Methods {-}
+
+### Results {-}
+
+### Discussion {-}
+
+
+`r fb("### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","")`
+
+
+
 ## Introduction
 
 
 Clinical prediction models (CPMs) need to be validated before they are used. A fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with p% risk of an event, p% of those have the event [@steyerberg_clinical_2008]. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) [@calster_calibration_2016-1]. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors.
 
 
-In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals[@crowson_assessing_2016]; however here we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case [@houwelingen_validation_2000]). Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates [@royston_external_2013;@hippisley-cox_derivation_2007]. However, the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.
+In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals [@crowson_assessing_2016]; however here we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case [@houwelingen_validation_2000]). Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates [@royston_external_2013;@hippisley-cox_derivation_2007]. However, the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.
 
 Royston [@royston_tools_2014] presents an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson [@perme_checking_2008] to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates. In this paper and another [@royston_tools_2015] he proposes the comparison of KM curves in risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided.
 
@@ -26,7 +41,7 @@ In this paper we present an approach to assessing the calibration intercept (cal
 
 ### Theory
 
-`r xx("Lots of Theory work on the probabilities involved from Matt")`
+`r xx("Lots of Theory work on the probabilities. May need to drop this if we're unable to do it between us.")`
 
 ### Aims
 
@@ -94,7 +109,7 @@ At each of these time points, we compare Observed outcomes ($O$) with the Expect
 * Kaplan-Meier (KM) - A Kaplan-Meier estimate of survival is estimated from the data and the value of the KM curve at the current time is taken to be the average Observed number of events within the population and this is compared with the average Expected value.
 * Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the logit(Expected) value as an offset and the Intercept of the regression is the estimate.
 * Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
-* Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed is calculated by removing them from the population and aggregating the difference. Logistic regression is performed using the log cumulative hazard as an offset and the Intercept of the result is the estimate.
+* Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Logistic regression is performed using the log cumulative hazard as an offset and the Intercept of the result is the estimate.
 
 The weights within the LW method create a non-integer number of events within the regression and the PO method can produce values that are not always 0 or 1 (as would be expected in an ordinary logistic regression). The values produced by PO will have to be artificially capped between 0 and 1, but otherwise these two methods do not cause any issues.
 
@@ -113,14 +128,58 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time).
 
 
+```{r PM-DGM-time,echo=F}
+
+tribble(~"Performance Measure",~"Estimation",~"SE",
+        "Bias","$\\hat{\\theta}(t) = \\frac{1}{N} \\sum_{i=1}^N\\theta_i(t) - \\theta$","$\\hat{\\theta}_{SE}(t) = \\sqrt{\\frac{1}{N(N-1)} \\sum_{i=1}^N \\left(\\theta_i(t) - \\hat{\\theta}(t)\\right)^2}$",
+        "EmpSE","$\\hat{E}(t) = \\sqrt{\\frac{1}{N-1}\\sum_{i=1}^N\\left(\\theta_i(t) - \\hat{\\theta}(t)\\right)^2}$","$\\hat{E}_{SE}(t)=\\frac{\\hat{E}(t)}{\\sqrt{2(N-1)}}$",
+        "Coverage","$\\hat{C}(t)=\\frac{1}{N}\\sum_{i=1}^NI\\left(\\theta_{i,L}(t) \\le \\theta \\le \\theta_{i,U}(t)\\right)$","$\\hat{C}_{SE}(t) = \\frac{\\hat{C}(t)\\left(1-\\hat{C}(t)\\right)}{N}$")%>%
+  if_fun(get_format("gitbook"),
+         function(x) mutate(x,
+                            Estimation = gsub("$","$$",Estimation,fixed=T),
+                            SE = gsub("$","$$",SE,fixed=T))) %>%
+  kable(format=fb("html","latex","latex"),
+        caption=paste0(fb("<font size=\"2\">","{\\small ","{\\small "),
+                       "Performance Measures to be taken at each time point",
+                       fb("</font>","}","}")),
+        booktabs=T,escape=F) %>%
+  kable_styling(bootstrap_options="striped",
+                latex_options="striped",
+                font_size=fb(9,7,7),
+                full_width=F) %>%
+  #column_spec() %>%
+    if_fun(get_format("gitbook"),
+           function(x) scroll_box(x,width="100%"))
+
+```
 
 
-`r xx("Insert Performance Measures (at time point)")`
 
 For each estimand above, $\hat{Q}(t) = \{\hat{\theta}(t),\hat{E}(t), \hat{C}(t)\}$ and associated SE, $\hat{Q}_\textrm{SE}(t) = \{\hat{\theta}_\textrm{SE}(t),\hat{E}_\textrm{SE}(t), \hat{C}_\textrm{SE}(t)\}$, we average over time. As these measures will be taken at each of the 100 time points, $t_j:j=1...100$, we summarise each of these measures as an average and as weighted average, as seen in table \@ref(tab:PM-DGM). The weight used for the measure at time $t_j$ is the average number of non-censored patients remaining in the population at time $t_j$, defined as $n_j$ (note that this includes patients who have had the event).
 
 
-`r xx("Insert Performance Meaures averaged over time")`
+```{r PM-DGM, echo=F}
+tribble(~"Performance Measure",~"Estimand",~"SE",
+        "Unweighted","$\\bar{Q}=\\frac{1}{100}\\sum_{j=1}^{100}\\hat{Q}(t_j)$","$\\bar{Q}_{SE}=\\sqrt{\\frac{1}{100}\\sum_{j=1}^{100} \\hat{Q}_{SE}(t_j)^2 }$",
+        "Weighted","$\\bar{Q}^{\\prime}=\\frac{\\sum_{j=1}^{100}n_j\\hat{Q}(t_j) }{\\sum_{j=1}^{100}n_j}$","$\\bar{Q}^{\\prime}_{SE} = \\sqrt{\\frac{\\sum_{j=1}^{100} n_j \\hat{Q}_{SE}(t_j)^2 }{\\sum_{j=1}^{100}n_j}}$") %>%
+  if_fun(get_format("gitbook"),
+         function(x) mutate(x,
+                            Estimand = gsub("$","$$",Estimand,fixed=T),
+                            SE = gsub("$","$$",SE,fixed=T))) %>%
+  kable(format=fb("html","latex","latex"),
+        caption=paste0(fb("<font size=\"2\">","{\\small ","{\\small "),
+                       "Performance Measures to be taken at each time point",
+                       fb("</font>","}","}")),
+        booktabs=T,escape=F) %>%
+  kable_styling(bootstrap_options="striped",
+                latex_options="striped",
+                font_size=fb(9,7,7),
+                full_width=F) %>%
+  #column_spec() %>%
+    if_fun(get_format("gitbook"),
+           function(x) scroll_box(x,width="100%"))
+```
+
 
 ### Software
 

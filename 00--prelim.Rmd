@@ -3,12 +3,14 @@
 
 ## Abstract {-}
 
-The preface pretty much says it all.
-
-Second paragraph of abstract starts here. Prelim
+Insert Abstract Here...
 
 
 ## Acknowledgements {-}
+
+Insert Ackowledgements Here...
+
+<!--
 
 I would like to thank my wife, Rachel, for her constant support throughout my studies. She acted as sounding board for my most boring of thoughts and allowed me to rant and rave about statistical models in every way possible. She endured my frustrations when something wasn't working and encouraged me when my optimism turned to pesimism.
 
@@ -18,3 +20,4 @@ My everlasting gratitude will always lie with my parents, Brenda and Andy, who h
 
 My final thanks go to my PhD supervisors, Matt, Niels, Glen and Mark, who have provided advice and feedback for over four years. 
 
+-->

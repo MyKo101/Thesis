@@ -10,6 +10,7 @@ department: 'School of Health Sciences'
 degree: 'PhD Medicine'
 title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
 knit: mpipe::MyRender
+#knit: bookdown::render_book
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -33,7 +34,7 @@ abstract: |
 acknowledgements: |
   `r {source("prelim_Subsection.R");prelim_Subsection("all","acknowledgements")}`
 # Specify the location of the bibliography below
-bibliography: bib/thesis.bib
+bibliography: ["bib/thesis.bib","bib/MyCites.bib"]
 biblio-style: "ieee"
 link-citations: true
 # Download your specific csl file and refer to it in the line below.
@@ -60,6 +61,7 @@ header-includes:
 - \usepackage[normalem]{ulem}
 - \usepackage{makecell}
 - \usepackage{xcolor}
+- \usepackage{geometry}
 ---
 
 
@@ -73,6 +75,8 @@ MathJax.Hub.Config({
   TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
+
+`r fb(gitbook=readLines("header.tex"))`
 
 # Introduction {-}
 
@@ -93,11 +97,18 @@ Add "Appendix" heading (or page) to thesis version
 
 -->
 
-Welcome to my Thesis. This is formatted as `r fb("a full Gitbook style thesis", "a full UoM formatted thesis", "an individual paper")`.
+Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template).
   
-I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool to add annotations to *any* webpage. Just highlight the text you want to comment on, and the annotate bubble pops up. Make sure you click Post to Public after writing the annotation (Note that annotations can contain Rich Text / Markdown).
+I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Just highlight the text you want to comment on, and the annotate bubble pops up. Make sure you click Post to Public after writing the annotation and annotations.
 
-I've written this document to be ready to become my thesis, but each chapter is a separate file, which I can output individually if/when I need.
+Google Docs was great, but when I started to use R Markdown, I realised I could embed tables and equations automatically using `kable` and `LaTeX` and it'll would make it much easier to collate papers into my thesis. Google Docs on it's own became rather clunky (especially with tables, just like Word) and whenever I updated a document using R Markdown, any comments that were added to the document were lost. It was also difficult for you to remember *where* each document lived. Gitbook solves these problems.
+
+
+I've written this document to be ready to become my thesis, but each chapter is a separate file, which can be downloaded within the chapter as a pdf or a a raw tex file (including relevant supplementary material). 
+
+
+
+Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/Thesis). I originally used Github as my backup, but then decided to increase how I used it.
 
 
 I've also outlined my expected timeline below. This thesis document, along with each chapter's files (at their respective urls) will be updated.

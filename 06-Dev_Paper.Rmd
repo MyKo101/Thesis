@@ -4,6 +4,27 @@
 
 `r add_downloads(6)`
 
+## Abstract {-}
+
+### Introduction {-}
+
+Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict multiple outcomes with a single model can be advantageous. Multi-State Models are a method to provide these kinds of predictions.
+
+### Methods {-}
+
+We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead). We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients. Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
+
+### Results {-}
+
+Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall. The Three-State Model was used to develop the online Calculator.
+
+### Discusssion {-}
+
+Our CPMs provide clinicians and patients with multiple outcome predictions. This implies that users of these models can get more information about their potential future without a loss to the quality of that prediction.
+
+`r fb("### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","")`
+
+
 ## Introduction
 
 A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical condition, more specifically, a prognostic model allows the prediction of future events [@steyerberg_prognosis_2013]. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models are used in clinical practice to influence treatment decisions such as the prescribing of statins for cardiovascular disease via the application of the QRISK models [@hippisley-cox_development_2017].
@@ -52,7 +73,7 @@ Both the internal and external validation cohort were used as part of the multin
 * Patient is 18 or over
 * Patient is not enduring an AKI [@forni_renal_2017-1; @noauthor_kdigo_2012].
 
-The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an $\textrm{eGFR} < 60$, their eGFR Rate would be unavailable (i.e. missing). Otherwise, patient eGFRs would *have* to drop to below 60 and thus eGFR Rate would be negative. `r xx("I feel like this bias should have a name, but can't think what to search to find it")`
+The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an $\textrm{eGFR} < 60$, their eGFR Rate would be unavailable (i.e. missing). Otherwise, patient eGFRs would *have* to drop to below 60 and thus eGFR Rate would be negative.
 
 ### Model Design
 
@@ -63,7 +84,7 @@ Three separate models were developed, so we could determine a clinically viable 
 knitr::include_graphics("figure/Dev_Paper_State_Diagrams.png")
 ```
 
-The models were developed and validated as discussed in the Supplementary materials appendix \@ref(chap-dev-paper-supp).
+The models were developed and validated as discussed in the Supplementary materials`r fb(" in appendix \\@ref(chap-dev-paper-supp)"," in appendix \\@ref(chap-dev-paper-supp)")`.
 
 ### Example
 
@@ -125,7 +146,7 @@ paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
   to_kable(caption="Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>",
            group_col=".group", align="rr", lscape=T,
            row_names="Variable",numeric_cols=2:3,
-           col_widths=c("3cm","6cm","6cm")) %>%
+           col_widths=c("13em","33em","36em")) %>%
   footnote(alphabet=c("(ml/min/1.73m^2) or per year","(mmHG)","(kg/m^2)",
                       "(g/l)","(mmol/l)","(g/mmol) or per year"),
            footnote_as_chunk=T)
@@ -186,7 +207,7 @@ paste0(.wd,"data/Dev_Paper_Event_Median.csv") %>%
 
 The example patients seen in Table \@ref(tab:Example-Patient) were passed through our Three-State prediction model and the results for all time-points are shown in figure \@ref(fig:Example-Predictions-trend). The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.
 
-```{r Example-Predictions-trend, out.width="100%", fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
+```{r Example-Predictions-trend, out.width="100%", fig.align="center", fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
 knitr::include_graphics("figure/Dev_Paper_Example.png")
 ```
 
