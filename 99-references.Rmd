@@ -10,6 +10,7 @@ delete "References" and replace it.
 -->
 
 # References {-}
+`r fb(thesis="\\chaptermark{References}")`
 
 <!--
 This manually sets the header for this unnumbered chapter.

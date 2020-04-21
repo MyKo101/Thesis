@@ -1,5 +1,6 @@
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
+`r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding - Supp}")`
 
 ## Simulation Details
 

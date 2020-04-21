@@ -1,6 +1,8 @@
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
+`r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large}")`
+`r Updated(4)`
 
 `r add_downloads(4)`
 

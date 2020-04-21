@@ -166,22 +166,33 @@ fb <- function(gitbook=NULL,thesis=NULL,single=NULL)
   return(.res)
 }
 
+get.files <- function(filenum,dir=".",pre="^")
+{
+  filenum %>%
+    ifelse(.<10,paste0("0",.),.) %>%
+    paste0(pre,.) %>%
+    grep(.,list.files(dir)) %>%
+    extract(list.files(dir),.)
+}
+
 add_downloads <- function(filenum)
 {
-  filename <- c("Lit Report",
-                "Scoping Review Paper",
-                "CR Conf",
-                "IPCW logistic",
-                "Performance Metrics",
-                "Dev Paper",
-                "","","",
-                "Conclusion")[filenum] %>%
-    gsub(" ","_",.) %>%
-    paste0("ind_",ifelse(filenum<10,paste0("0",filenum),filenum),"-",.)
+  .files <- get.files(filenum,dir="docs/Chapters",pre="^ind_")
+  
+  .files.pdf <- .files[grep("(.)\\.pdf$",.files)]
+  .files.tex <- .files[grep("(.)\\.tex$",.files)]
   
   .res <- paste0("Download as individual paper draft: [pdf](Chapters/",
-         filename,".pdf), [tex](Chapters/",filename,".tex)")
+                 .files.pdf,"), [tex](Chapters/",.files.tex,")")
   fb(gitbook=.res)
+}
+
+Updated <- function(filenum)
+{
+  get.files(filenum) %>%
+    file.mtime %>%
+    max %>%
+    format("Last updated: %d %b")
 }
 
 make_linebreaks <- function(.tbl)
@@ -289,7 +300,9 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
              mutate_if(is.character,
                        ~gsub("\\^([a-zA-Z0-9])","<sup>\\1</sup>",.) %>%
                          gsub("<strong>","**",.,fixed=T) %>%
-                         gsub("</strong>","**",.,fixed=T)),
+                         gsub("</strong>","**",.,fixed=T) %>%
+                         gsub("&lt;strong&gt;","**",.,fixed=T) %>%
+                         gsub("&lt;/strong&gt;","**",.,fixed=T)),
            function(x) mutate_if(x,is.character,
                                  ~gsub("\\^[a-zA-Z0-9]",
                                        "\\\\textsuperscript{\\1}",.) %>%

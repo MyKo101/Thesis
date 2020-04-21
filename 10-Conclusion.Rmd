@@ -1,8 +1,10 @@
 
 # Conclusion {#chap-conclusion}
+`r fb(thesis="\\chaptermark{Conclusion}")`
+`r Updated(10)`
 
 Here is where my concluding section will go.
 
-The final word.
 
 The end.
+

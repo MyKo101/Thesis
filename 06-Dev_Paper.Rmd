@@ -1,6 +1,8 @@
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
+`r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
+`r Updated(6)`
 
 `r add_downloads(6)`
 

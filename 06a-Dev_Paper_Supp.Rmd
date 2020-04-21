@@ -1,5 +1,6 @@
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material{#chap-dev-paper-supp}
+`r fb(thesis="\\chaptermark{Development and Validation of MSCPM - Supp}")`
 
 ## Statistical Analysis
 

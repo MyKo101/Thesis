@@ -21,7 +21,7 @@ output:
         collapse: section
   thesisdown::thesis_pdf: 
     includes:
-      in_header: header.tex
+      in_header: [header.tex, latex_packages.txt]
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
@@ -54,26 +54,8 @@ csl: csl/ieee.csl #https://github.com/citation-style-language/styles
 lot: true
 lof: true
 # If you prefer blank lines between paragraphs, un-silence lines  40-41 (this requires package tikz)
-header-includes:
-#- \usepackage{tikz}
-- \usepackage{amsmath}
-- \usepackage[T1]{fontenc}
-- \usepackage{rotating}
-- \usepackage{booktabs}
-- \usepackage{longtable}
-- \usepackage{array}
-- \usepackage{multirow}
-- \usepackage{wrapfig}
-- \usepackage{float}
-- \usepackage{colortbl}
-- \usepackage{pdflscape}
-- \usepackage{tabu}
-- \usepackage{threeparttable}
-- \usepackage{threeparttablex}
-- \usepackage[normalem]{ulem}
-- \usepackage{makecell}
-- \usepackage{xcolor}
-- \usepackage{geometry}
+#header-includes: |
+#  
 ---
 
 
@@ -92,36 +74,23 @@ MathJax.Hub.Config({
 
 <!--
 To Do List:
-Set up Supervisor's Hypothesis Accounts
-Sort out monospacing in kables (double spaces get rendered as single space. Seems to be happening                                   before being saved as a html)
-Add in written details in Supp. Material
-Figure out scroll_box() for the PH Five-State
-Make equations not in aligns (rolls onto second page in Five-State Model)
 Write up current draft of other papers
-pdf tables aren't aligned
 Add Timeline
-Figure out equation referencing
-Download options showing up in pdf
-Abstract subsections appearing in TOC in Thesis (e.g. 3.0.1 Background)
-Add "Appendix" heading (or page) to thesis version
 
 -->
 
-Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template).
+Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The html version can be found [here](https://michaelbarrowman.co.uk/thesis).
   
-I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Just highlight the text you want to comment on, and the annotate bubble pops up. Make sure you click Post to Public after writing the annotation and annotations.
+I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Annotated text can be seen highlighted and to add your own, just highlight the text you want to comment on, and the annotate bubble pops up (try it now). Make sure you click Post to Public after writing the annotation and annotations can include Rich Text and Markdown. You can view Annotations by clicking the menu on the right and this will show all comments.
 
-Google Docs was great, but when I started to use R Markdown, I realised I could embed tables and equations automatically using `kable` and `LaTeX` and it'll would make it much easier to collate papers into my thesis. Google Docs on it's own became rather clunky (especially with tables, just like Word) and whenever I updated a document using R Markdown, any comments that were added to the document were lost. It was also difficult for you to remember *where* each document lived. Gitbook solves these problems.
+Google Docs was great, but when I started to use R Markdown for other purposes, I realised I could embed tables and equations much easier and automatically using `kable`. Google Docs on it's own became rather clunky (especially with tables, just like Word) and whenever I updated a document using R Markdown, any comments that were added to the document were lost. It was also difficult for you to remember *where* each document lived. Since R Markdown can also output to `LaTeX` I thought it would be easier to collate papers together. I'd have had to do this kind of transition over to`LaTeX` for my thesis eventually and this would have been difficult and tedious from Google Docs or Word.
+  
 
-
-I've written this document to be ready to become my thesis, but each chapter is a separate file, which can be downloaded within the chapter as a pdf or a a raw tex file (including relevant supplementary material). 
+Importantly, I've also added in functionality to output each chapter individually. For unpublished papers, there will be a link to download the pdf and tex versions of the individual paper.
 
 
 
 Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/Thesis). I originally used Github as my backup, but then decided to increase how I used it.
-
-
-I've also outlined my expected timeline below. This thesis document, along with each chapter's files (at their respective urls) will be updated.
 
 
 
@@ -132,82 +101,20 @@ I've also outlined my expected timeline below. This thesis document, along with 
 
 
 # Literature Report {#chap-lit-report}
+\chaptermark{Literaure Report}
+Last updated: 21 Apr
 
 ## Introduction
 
-Current format: thesis
-
-lorem ipsum blah blah blah.
-
-Testing Equation: $1+1=2$
-
-$$
-1 + 2 = 3
-$$
-
-\begin{equation}
-1 + 4 = 5
-\end{equation}
-
 ## Clinical Prediction Models
-
-The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is definde as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is uaully given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modelling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
-
-Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the ffect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to th definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown subtype of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
-
-In general, prognosis research can be broken down into four main categories, with three subcategories [@riley_prognosis_2019]:
-
-* Type I: Fundamental prognosis research [@hemingway_prognosis_2013] 
-* Type II: Prognostic factor research [@riley_prognosis_2013]
-* Type III: Prognostic model research [@steyerberg_prognosis_2013]
-  * Model development [@royston_prognosis_2009]
-  * Model validation [@altman_prognosis_2009]
-  * Model impact evaluation [@moons_prognosis_2009]
-* Type IV: Stratified Medicine [@hingorani_prognosis_2013]
-
-For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
-
-The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [**Cite: Something**].
 
 ### Fundamental Prognosis Research
 
-[**What is it? Old definition is incorrect, so will need to write this fresh**]
-
 ### Prognostic Factor Research
-
-The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
-
-Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, [**xxxx**] demonstrated that [**xxxx**] is correlated with [**xxxx**], which subsequently used as a covariate in the development of the [**xxxx**] model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones [**Cite: Something**]. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting [**xxxx**], we can demonstrate that [**xxxx**] is a prognostic factor, [however since the arrow of causation is [**xxxx**]] [**OR**] [however since [**xxxx**] causes both [**xxxx**] and [**xxxx**]], the relationship is prognostic, but not causal. [**Previously used Apgar score here, reference 40**]
-
-Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
-
-It is unfortunate, however, that Riley at al [@riley_systematic_2003-1] found that only 35.5% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions [@riley_prognosis_2013].
 
 ### Prognostic Model Research
 
-Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome [@steyerberg_prognosis_2013] and they are deigned to augment the job of a clinician; and not to completely replace them [@moons_prognosis_2009]. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease [@collins_transparent_2015;~moons_transparent_2015]. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratied medicine approach [@collins_transparent_2015;@moons_transparent_2015]. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is [@moons_prognosis_2009]. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician [**Cite: LR - 18**]. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
-
-Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe [**Cite: Something**]. To quote Steyerberg et al [@steyerberg_prognosis_2013]. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
-
 #### Model Development
-
-The first stage of having a useful model is to develop one. Clinical predictive models can take a variety of forms, such as logistic regression, cox models or some kind of machine learning. Regardless of the specific model type being used, there are certain universal truths than should be held up during model development which will be discussed here. The size of the dataset being used is of vital importance as it can combat overfitting of the data, but so is choosing which prognostic factors to be included in the final model. This section will discuss various ideas that researchers need to account for when developing a model from any source and can be applied to any model type.
-
-By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors [**Cite: LR - 2**]. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality [**Cite: LR - 5**], or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables [**Cite: LR - 55**]. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost [**Cite: LR - 56**]. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups r LR(7)`.
-
-
-When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [**Cite: LR - 57, 58**], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [**Cite: Riley, EPV work**]. If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [**Cite: LR - 59**]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [**Cite: LR - 39, 60, 61**]. A systematic review by Counsell et al [**Cite: LR - 62**] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [**Cite: riley EPV Work**] showed that less that [**Pull example from Riley EPV**]. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless[**Cite: LR - 34**]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [**Cite: LR - 39**]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [**Cite: LR - 39**]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
-
-
-Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun [**Cite: LR - 39**]. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation [**Cite: LR - 35, 63**]. Derivation of the QRISK2 Score [**Cite: LR - 7**] (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset [**Check how QRISK3 Does this**]. The NPI model [**Has this been mentioned?**] was trained on the first 500 patients admitted to Nottingham City Hospital after the study began [**Cite: LR - 5**] and later validated on the next 320 patients to be admitted [**Cite: LR - 64**], this validation was not performed at the same time as the initial development and is thus an external validation.
-
-
-If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources [**Cite: LR - 65**]. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis [**Cite: LR - 1, 39**]. Heterogeneity is particularly high when using multiple countries as a source of data [**Cite: LR - 66**] or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors [**Cite: LR - 67**]. Overlooking of this clustering can lead to incorrect inferences [**Cite: LR - 65**]. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source [@moons_prognosis_2009].
-
-<!-- Removed paragraph on missing data --->
-
-A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [**Cite: LR - 34**]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail
-
 
 #### Model Validation
 
@@ -219,18 +126,29 @@ A prediction model researcher needs to select clinically relevant potential pred
 
 ## Competing Risks & Multi-State Models
 
+## Chronic Kidney Disease
+
+### Clinical Prediction Models
+
+### Multi-State Models
+
+
+
+
+
+
 
 <!--chapter:end:01-Lit_Report.Rmd-->
 
 
 # The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#chap-scoping-review}
 *MA Barrowman, D Jenkins, GP Martin, N Peek, M Lambie, M Sperrin*
+\chaptermark{Scoping Review}
+Last updated: 21 Apr
 
-<!-- this bit should be blank for single -->
 
 
 
-Scoping Review Protcol Pre-print link [here](https://doi.org/10.17605/OSF.IO/HR6QD)
 
 ## Introduction
 
@@ -244,10 +162,6 @@ However, little is known about how widely these types of models are implemented 
 
 
 ## Methods
-
-$$ 
-A= \pi r^2
-$$
 
 ### Scope of Review
 
@@ -364,31 +278,36 @@ A table of the extracted information will be included with the paper, depending 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#chap-Conf-CR}
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
+\chaptermark{Competing Risks and Unmeasured Confounding}
+Last updated: 21 Apr
+
 
 Published as: **MA Barrowman**, N Peek, M Lambie et al, How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies, BMC Medical Research Methodology (2019) doi: [10.1186/s12874-019-0808-7](https://doi.org/10.1186/s12874-019-0808-7)
 
 ## Abstract {-}
 
-### Background
+### Background {-}
 Analysis of competing risks is commonly achieved through a cause specific or a subdistribution framework using Cox or Fine & Gray models, respectively. The estimation of treatment effects in observational data is prone to unmeasured confounding which causes bias. There has been limited research into such biases in a competing risks framework.
 
-### Methods
+### Methods {-}
 We designed simulations to examine bias in the estimated treatment effect under Cox and Fine & Gray models with unmeasured confounding present. We varied the strength of the unmeasured confounding (i.e. the unmeasured variable's effect on the probability of treatment and both outcome events) in different scenarios.
 
-### Results
+### Results {-}
 In both the Cox and Fine & Gray models, correlation between the unmeasured confounder and the probability of treatment created biases in the same direction (upward/downward) as the effect of the unmeasured confounder on the event-of-interest. The association between correlation and bias is reversed if the unmeasured confounder affects the competing event. These effects are reversed for the bias on the treatment effect of the competing event and are amplified when there are uneven treatment arms.
 
-### Conclusion
+### Conclusion {-}
 The effect of unmeasured confounding on an event-of-interest or a competing event should not be overlooked in observational studies as strong correlations can lead to bias in treatment effect estimates and therefore cause inaccurate results to lead to false conclusions. This is true for cause specific perspective, but moreso for a subdistribution perspective. This can have ramifications if real-world treatment decisions rely on conclusions from these biased results. Graphical visualisation to aid in understanding the systems involved and potential confounders/events leading to sensitivity analyses that assumes unmeasured confounders exists should be performed to assess the robustness of results.
 
+### Supplementary Material {-}
 
+Supplementary Material is in Appendix \@ref(chap-Conf-CR-supp)
 
 
 ## Background
 
 Well-designed observation studies permit researchers to assess treatment effects when randomisation is not feasible. This may be due to cost, suspected non-equipoise treatments or any number of other reasons [1]. While observational studies minimise these issues by being cheaper to run and avoiding randomisation (which, although unknown at the time, may prescribe patients to worse treatments), they are potentially subject to issues such as unmeasured confounding and increased possibility of competing risks (where multiple clinically relevant events occur). Although these issues can arise in any study, Randomised Controlled Trials (RCTs) attempt to mitigate these effects by using randomisation of treatment and strict inclusion/exclusion criteria. However, the estimated treatment effects from RCTs are of potentially limited generalisability, accessibility and implementability [2].
 
-A confounder is a variable that is a common cause of both treatment and outcome. For example, a patient with a high Body Mass Index (BMI) is more likely to be prescribed statins [3], but are also more likely to suffer a cardiovascular event. These treatment decisions can be affected by variables that are not routinely collected (such as childhood socio-economic status or the severity of a comorbidity [4]. Therefore, if these variables are omitted form (or unavailable for) the analysis of treatment effects in observational studies, then they can bias inferences [5]. As well as having a direct effect on the event-of-interest, confounders (along with other covariates) can also have further reaching effects on a patient’s health by changing the chances of having a competing event. Patients who are more likely to have a competing event are less likely to have an event-of-interest, which can affect inferences from studies ignoring the competing event. In the above BMI example, a high BMI can also increase a patient’s likelihood of developing (and thus dying from) cancer [6].
+A confounder is a variable that is a common cause of both treatment and outcome. For example, a patient with a high Body Mass Index (BMI) is more likely to be prescribed statins [3], but are also more likely to suffer a cardiovascular event. These treatment decisions can be affected by variables that are not routinely collected (such as childhood socio-economic status or the severity of a comorbidity [4]. Therefore, if these variables are omitted form (or unavailable for) the analysis of treatment effects in observational studies, then they can bias inferences [5]. As well as having a direct effect on the event-of-interest, confounders (along with other covariates) can also have further reaching effects on a patient's health by changing the chances of having a competing event. Patients who are more likely to have a competing event are less likely to have an event-of-interest, which can affect inferences from studies ignoring the competing event. In the above BMI example, a high BMI can also increase a patient's likelihood of developing (and thus dying from) cancer [6].
 
 The issue of confounding in observational studies has been researched previously [7,8,9], where it has been consistently shown that unmeasured confounding is likely to occur within these natural datasets and that there is poor reporting of this, even after the introduction of the The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) Guidelines [10, 11]. Hence, it is widely recognised that sensitivity analyses are vital within the observational setting [12]. However these previous studies do not extend this work into a competing risk setting, meaning research in this space is lacking [13], particularly where the presence of a competing event can affect the rate of occurrence of the event-of-interest. These issues will commonly occur in elderly and comorbid patients where treatment decisions are more complex. As the elderly population grows, the clinical community needs to understand the optimal way to treat patients with complex conditions; here, causal relationships between treatment and outcome need to account for competing events appropriately.
 
@@ -398,9 +317,9 @@ The aim of this paper is to study the bias induced by the presence of unmeasured
 
 ## Methods
 
-We considered a simulation scenario in which our population can experience two events; one of which is the event-of-interest (Event 1), the other is a competing event (Event 2). We model a single unmeasured confounding covariate, $U \sim N (0,1)$ and a binary treatment indicator, $Z$. We varied how much $U$ and $Z$ affect the probability distribution of the two events as well as how they are correlated. For example, $Z$ could represent whether a patient is prescribed statins, U could be their BMI, the event-of-interest could be cardiovascular disease related mortality and a competing event could be cancer-related mortality. We followed best practice for conducting and reporting simulations studies [16].
+We considered a simulation scenario in which our population can experience two events; one of which is the event-of-interest (Event 1), the other is a competing event (Event 2). We model a single unmeasured confounding covariate, $U \sim N (0,1)$ and a binary treatment indicator, $Z$. We varied how much $U$ and $Z$ affect the probability distribution of the two events as well as how they are correlated. For example, $Z$ could represent whether a patient is prescribed statins, $U$ could be their BMI, the event-of-interest could be cardiovascular disease related mortality and a competing event could be cancer-related mortality. We followed best practice for conducting and reporting simulations studies [16].
 
-The data-generating mechanism defined two cause-specific hazard functions (one for each event), where the baseline hazard for event 1 was $k$ times that of event 2, see Fig. 1. We assumed a baseline hazard that was either constant (exponential distributed failure times), linearly increasing (Weibull distributed failure times) or biologically plausible [17]. The hazards used were thus:
+The data-generating mechanism defined two cause-specific hazard functions (one for each event), where the baseline hazard for event 1 was $k$ times that of event 2, see Fig. \@ref(fig:Transition_Diagram). We assumed a baseline hazard that was either constant (exponential distributed failure times), linearly increasing (Weibull distributed failure times) or biologically plausible [17]. The hazards used were thus:
 
 
 \begin{align}
@@ -411,7 +330,7 @@ The data-generating mechanism defined two cause-specific hazard functions (one f
 \begin{equation}
 \lambda_0(t) \begin{cases}
 1 & \textrm{Exponential}\\
-2t & \textrm{Webull}\\
+2t & \textrm{Weibull}\\
 \exp{-18+7.3t-11.5t^{0.5}\log(t) + 9.5t^{0.5}} & \textrm{Plausible}
 \end{cases}
 \end{equation}
@@ -419,15 +338,139 @@ The data-generating mechanism defined two cause-specific hazard functions (one f
 
 In the above equations, $\beta$ and $\gamma$ are the effects of the confounding covariate and the treatment effect respectively with the subscripts representing which event they are affecting. These two hazard functions entirely describe how a population will behave [18].
 
-[**Insert Figure 1**]
+\includegraphics[width=450px]{figure/CR_Conf/Transition_Diagram} 
 
-We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [19]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Additional file 1. Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. 2, where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
+We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [19]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Additional file 1. Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. \@ref(fig:Model_DAG), where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
+
+
+
+\begin{center}\includegraphics[width=450px]{figure/CR_Conf/DAG} \end{center}
+
+From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, $\Gamma_1$ and $\Gamma_2$, to be in these conditions [20] (See Additional file 2). It's worth noting that the values of $\Gamma$ will depend on the current value of $\rho$ since they are calculated using the expected distribution of end-times. However, it has been shown [18, 21] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the "true" values of the $\Gamma$ will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [20].
+
+
+We used the simulated data to estimate the treatment effects under the Cox and Fine & Gray regression methods. We specify that $U$ is unmeasured and so it wasn't included in the analysis models. As discussed earlier, the Cox model defines the risk set at time $t$ to be all patients who have not had any event by time $t$, whereas the Fine & Gray defines it to be those who have not had the event-of-interest (or competing event) by time $t$.
+
+
+For our models, for the events, $i={1,2}$, we therefore defined the CSH function estimate, $\hat{\lambda}_i$, and the SH function estimate, $\hat{h}_i$, to be
+
+$$
+\hat{\lambda}_i(t|Z) = \hat{\lambda}_{i0}(t)e^{\hat{\gamma}_iZ} \qquad\qquad 
+\hat{h}_i(t|Z) = \hat{h}_{i0}(t)e^{\hat{\Gamma}_iZ}
+$$
+
+
+Where $\hat{\lambda}_{i0}(t)$ and $\hat{h}_{i0}(t)$ are the baseline hazard and baseline subdistribution hazard function estimates for the entire population (i.e. no stratification), and $\hat{\gamma}_i$ and $\hat{\Gamma}_i$ are the estimated treatment effects. From these estimates, we also extracted the estimate of the subdistribution treatment effect in a hypothetical RCT, where $\rho=0$ and $\pi=0.5$ to give $\hat{\Gamma}_{10}$ and  $\hat{\Gamma}_{20}$. To investigate how the correlation between $U$ and $Z$ affects the treatment effect estimate, we compared the explicitly prescribed or calculated values with the simulated estimates. Three performance measures for both events, along with appropriate 95% confidence intervals, were calculated for each set of parameters:
+
+* $\theta_{\textrm{RCT},i} = \textrm{E}\left[\hat{\Gamma}_i - \hat{\Gamma}_{i0}\right]$ ~ The average difference between the SH treatment effect estimate from an idealised, hypothetical RCT situation.
+
+* $\theta_{\textrm{Exp},i} = \textrm{E}\left[\hat{\Gamma}_i - \Gamma_i\right]$ ~ The average bias of the SH treatment effect estimate from the explicitly calculated value.
+
+* $\theta_{\textrm{CSH},i} = \textrm{E}\left[\hat{\gamma}_i - \gamma_i\right]$ ~ The average bias of the CSH treatment effect estimate from the predefined treatment effect.
+
+As mentioned above, the value of $\Gamma$ will depend on the current value of $\rho$ and so the estimation of the explicit bias will be a measure of the total bias induced on our estimate of the subdistribution treatment effect in those specific set of parameters. We also evaluate the bias compared to an idealised RCT to see how much of this bias could be mitigated if we were to perform an RCT to assess the effectiveness of the hypothetical treatment. Finally, we found the explicit bias in the cause specific treatment effect to again see the total bias applied to this measure. We did not compared the CSH bias to an idealised RCT as we believed that this could easily be inferred from the CSH explicit results, whereas this information wouldn't be as obvious in the SH treatment effect due to the existence of a relationship between $\Gamma$ and $\rho$.
+
+Eight Scenarios were simulated based on real-world situations. In each scenario, $\rho$ varied across 5 different values ranging from 0 to their maximum possible value (0.797 for all Scenarios apart from Scenario 5, where it is 0.57, due to the bounds imposed by the values of $\pi$). One other parameter (different for different scenarios) varied across 3 different values, and all other parameters were fixed as detailed in Table 1. Each simulation was run 100 times and the performance measures were each pooled to provide small confidence intervals. This gives a total of 1,500 simulations for each of the 8 scenarios. Descriptions of the different scenarios are given below:
+
+1. No Effect. To investigate whether treatment with no true effect ($\gamma_2=\gamma_2=0$) can have an "artificial" treatment effect induced on them in the analysis models through the confounding effect on the event-of-interest. $\beta_1$ varied between -1, 0 and 1.
+
+2. Positive Effect. To investigate whether treatment effects can be reversed when the treatment is beneficial for both the event-of-interest and the competing event ($\gamma_2=\gamma_2=-1$). $\beta_1$ varied between -1, 0 and 1.
+
+3. Differential Effect. To investigate how treatment effect estimates react when the effect is different for the event-of-interest ($\gamma_2=-1$) and the competing event ($\gamma_2=1$). $\beta_1$ varied between -1, 0 and 1.
+
+4. Competing Confounder. To investigate whether treatments with no true effect ($\gamma_1=\gamma_2=0$) can have an "artificial" treatment effect induced on them by the effect of a confounded variable on the competing event only ($\beta_1=0$). $\beta_2$ varied between -1, 0 and 1.
+
+5. Uneven Arms. To investigate how having uneven arms on a treatment in the population can have an effect on the treatment effect estimate ($\gamma_1=-1$, $\gamma_2=0$). $\pi$ varied between $\sfrac{1}{10}$, $\sfrac{1}{2}$ and $\sfrac{9}{10}$.
+
+6. Uneven Events. To investigate how events with different frequencies can induce a bias on the treatment effect, despite no treatment effect being present ($\gamma_1=\gamma_2=0$). $k$ varied between $\sfrac{1}{2}$, $\sfrac{1}{2}$ and 2.
+
+7. Weibull Distribution. To investigate whether a linearly increasing baseline hazard function affects the results found in Scenario 1. $\beta_1$ varied between -1, 0 and 1.
+
+8. Plausible Distribution. To investigate whether a biologically plausible baseline hazard function affects the results found in Scenario 1. $\beta_1$ varied between -1, 0 and 1.
+
+[**Insert Table 1**]
+
+## Results
+
+The first row of Fig. 3 shows the results for Scenario 1 (No Effect). When $\beta_1=\beta_2=0$ (the green line), correlation between $U$ and $Z$ doesn't imbue any bias on the treatment effect estimate for either event under any of the three measures, since all of the subdistribution treatment effects (estimated, calculated and hypothetical RCT) are approximately zero. When $\beta_1>0$, there is a strong positive association between correlation ($\rho$) and the RCT and CSH biases for the event-of-interest and a negative association for the RCT bias for the competing event. Similarly, these associations are reversed when $\beta_1<0$.
+
+
+
+
+
+There was no effect on $\theta_{\textrm{CSH}}$ for the competing event in this Scenario regardless of $\rho$ or $\beta_1$. These results are similar to those found in Scenario 2 (Positive Effect) and Scenario 3 (Negative Effect) shown in Figs. 4 and 5. However, in both of these Scenarios, there is an overall positive shift in $\theta_{\textrm{CSH}}$ when $\beta_1\neq0$.
+
+
+
+
+The magnitude of $\theta_{\textrm{Exp}}$ is greatly reduced and is the reverse of the other associations when $\beta_1\neq0$ in Scenario 1 for the event-of-interest and when $\beta_1>0$ it stays extremely small for low values of $\rho$, and becomes negative for large $\rho$ for the competing event. In Scenario 2, $\theta_{\textrm{Exp}}$ behaves similarly to Scenario 1 for both events when $\beta_1<0$ and the event-of-interest, but for the competing event, when $\beta_1>0$, the $\theta_{\textrm{Exp}}$ is much tighter to 0. The competing event data for $\theta_{\textrm{Exp}}$ in Scenario 3 is similar to Scenario 2 with $\beta_1>0$ shifted downwards, but the event-of-interest has a near constant level of bias regardless of $\rho$, apart from in the case when $\beta_1<0$, the bias switches direction.
+
+
+
+
+In Scenario 4 (Competing Confounder), as would be expected, the results for the event-of-interest and the results for the competing event are swapped from those of Scenario 1 as shown in Fig. 6. Scenario 5 (Uneven Arms) portrays a bias similar to Scenario 1 where $\beta_1=1$, however, the magnitude of the RCT and CSH bias is increased when $\pi\neq0.5$ as shown in Fig. 7.
+
+
+
+
+
+The parameters for Scenario 6 (Uneven Events) were similar to the parameters for Scenario 1 (No Effect), when $\beta_1=1$. This also reflects in the results in Fig. 8 which look similar to the results for this set of parameters in Scenario 1. This bias is largely unaffected by the value of $k$. The results of Scenario 7 (Weibull Distribution) and Scenario 8 (Plausible Distribution) were nearly identical to those of Scenario 1 as shown in Figs. 9 and 10.
+
+
+
+
+
+As per our original hypotheses, Scenario 1 demonstrated that it is possible to induce a treatment effect when one isn't present through confounding effects on all biases, apart from the competing event CSH. In Scenario 2, with high enough correlation, the CSH event-of-interest bias could be greater than 1, meaning that the raw CSH treatment effect was close to 0, despite an actual treatment effect of -1, similarly large positive biases in the SH imply a treatment with no benefit and/or detrimental effect, despite the true treatment being beneficial for both events. This finding is similar for Scenario 3 with large biases changing the direction of the treatment effect (beneficial vs detrimental).
+
+
+
+
+Scenario 4 demonstrated that even without a treatment effect and with no confounding effect on the event-of-interest, a treatment effect can be induced on the SH methodology, which can imply a beneficial/detrimental treatment, depending on whether the confounder was detrimental/beneficial. Fortunately, it does not induce an effect on the CSH treatment effect for the event-of-interest.
+
+
+
+
+Scenarios 5 and 6 investigated other population level effects; differences in the size of the treatment arms and differences in the magnitude of the hazards of the events. Scenario 5 demonstrated that having uneven treatment arms can exacerbate the bias induced on both the $\theta_{\textrm{RCT}}$ and $\theta_{\textrm{CSH}}$ for both events and Scenario 6 showed that the different baseline hazards had little effect on the levels of bias in the results. This finding was supported by the additional findings of Scenarios 7 and 8, which showed that the underlying hazard functions did not affect the treatment effect biases compared to a constant hazard.
+
+
+
+
+
+## Discussion
+
+This is the first paper to investigate the issue of unmeasured confounding on a treatment effect in a competing risks scenario. Herein, we have demonstrated that regardless of the actual effect of a treatment on a population that is susceptible to competing risks, bias can be induced by the presence of unmeasured confounding. This bias is largely determined by the strength of the confounding relationship with the treatment decision and size of confounding effect on both the event-of-interest and any competing events. This effect is present regardless of any difference in event rates between the events being investigated and is also exacerbated by misbalances in the number of patients who received treatment and the number of patients who did not.
+
+Our study has shown how different the case would be if a similar population (without inclusion/exclusion criteria) were put through an RCT and how the correlation between an unmeasured confounder and the treatment is removed, as would be the case in a pragmatic RCT. By combining the biases from an RCT and the explicitly calculated treatment effect, we can also use these results to infer how much of the bias found here is from omitted variable bias [22] and how much is explicitly due to the correlation between the covariates. Omitted variable bias occurs when a missing covariate has an effect on the outcome, but is not correlated with the treatment (and so is not a true confounder). It can occur even if the omitted variable is initially evenly distributed between the two treatment arms because, as patients on one arm have events earlier than the other, the distributions of the omitted variable drift apart. This makes up some of the bias caused by unmeasured confounding, but not all of it. For example, in Scenario 3 (Differential Effect), the treatment lowered the hazard of the event-of-interest, but increased the hazard of the competing event; with a median level of correlation ($\rho=0.4$), the event-of-interest bias from the RCT when there is a negative confounding effect ($\beta_1<0$) is -0.628 and the bias from the explicit estimate is $0.295$ and therefore, the amount of bias due purely to the correlation between the unmeasured confounder and the treatment is actually -0.923. In this instance, some of the omitted variable bias is actually mitigating the bias from the correlation; if we have two biasing effects that can potentially cancel each other out, we could encounter a Type III error [23] which is very difficult to prove and can cause huge problems for reproducibility (if you eliminate a single source of bias, your results will be farther from the truth).
+
+Our simulations indicate that a higher (lower) value of $\beta_1$ and a lower (higher) value of $\beta_2$ will produce a higher (lower) bias in the event-of-interest. These two biasing effects could cancel out to produce a situation similar to above. In our scenarios, we saw that, even when a treatment has no effect on the event-of-interest or a competing event (i.e. the treatment is a placebo), both a cause specific treatment effect and a subdistribution treatment effect can be found. This also implies that the biasing effect of unmeasured confounders (both omitted variable and correlation bias) can result in researchers reaching incorrect conclusions about how a treatment affects a population in multiple ways. We could have a treatment that is beneficial for the prevention of both types of event, but due to the effects of an unmeasured confounder, it could be found to have a detrimental effect (for one or both) on patients from a subdistribution perspective.
+
+Our investigation augments Lin et al's study into unmeasured confounding in a Cox model [5] by extending their conclusion (that bias is in the same direction as the confounder's effect and dependent on its strength) into a competing risks framework (i.e. by considering the Fine & Gray model as well) and demonstrating that this effect is reversed when there is confounding with the competing event. Lin et al. [5] also highlight the problems of omitted variable bias, which comes from further misspecification of the model; this finding was observed in our results as described above for Scenario 3.
+
+The results from Scenario 7 (Weibull Distribution) and Scenario 8 (Plausible Distribution) are almost identical to those of Scenario 1 (No Effect) which implies that, by assuming both hazard functions in question are the same, we can assume they are both constant for simplicity. Since both the Cox and Fine & Gray models are ambiguous to underlying hazard functions and treatment effects are estimated without consideration for the baseline hazard function, it makes intuitive sense that the results would be identical regardless of what underlying functions were used to generate our data. This makes calculation of the explicit subdistribution treatment effect much simpler for future researchers.
+
+Thompson et al. used the paradox that smoking reduces melanoma risk to motivate simulations similar to ours, which demonstrated how the exclusion of competing risks, when assessing confounding, can lead to unintuitive, mis-specified and possibly dangerous conclusions [24]. They hypothesised that the association found elsewhere [25] may be caused by bias due to ignoring competing events and used Monte Carlo simulations to provide examples of scenarios where these results would be possible. They demonstrated how a competing event could cause incorrect conclusions when that competing event is ignored - a conclusion we also confirm through the existence of bias induced on the Cox modelled treatment effect even with no correlation between the unmeasured confounder and treatment (i.e. $\theta_{\textrm{CSH,1}} \neq 0$ in Scenarios 2 & 3). Thompson's team began with a situation where there may be a bias due to a competing event and reverse-engineered a scenario to find the potential sources of bias, whereas our study explored different scenarios and investigated the biased results they potentially produced.
+
+Groenwold et al. [26] proposed methods to perform simulations to evaluate how much unmeasured confounding would be necessary for a true effect to be null given that an effect has been found in the data. Their methods can easily be applied to any metric in clinical studies (such as the different hazard ratios estimated here). Currently, epidemiologists will instigate methods such as DAGs, see Fig. \@ref(fig:Model_DAG), to visualise where unmeasured confounding may be a problem in analysis [27] and statisticians who deal with such models will use transition diagrams, see Fig. \@ref(fig:Model_Transitions), to visualise potential patient pathways [28]. Using these two visualisation techniques in parallel will allow researchers to anticipate these issues, successfully plan to combat them (through changes to protocol or sensitivity analysis, etc. ...) and/or implement simulations to seek hidden sources of bias (using the methods of Groenwold [26] and Thompson [24]) or to adjust their findings by assuming biases similar to those demonstrated in our paper exist in their work.
+
+
+
+The work presented here could be extended to include more complicated designs such as more competing events, more covariates and differing hazard functions. However, the intention of this paper was to provide a simple dissection of specific scenarios that allow for generalisation to clinical work. The main limitation of this work, to use of the same hazard functions for both events in each of our scenarios, was a pragmatic decision made to reduce computation time. The next largest limitation was the lack of censoring events, and was chosen to simplify interpretation of the model. This situation is unlikely to happen in the real world. However, since both the Cox and the Fine & Gray modelling techniques are robust to any underlying baseline hazard and independent censoring of patients [14, 15, 29], these simplifications should not have had a detrimental effect on the bias estimates given in this paper. This perspective on censoring is similar to the view of Lesko et al. [30] in that censoring would provide less clarity of the presented results.
+
+## Conclusion
+
+This paper has demonstrated that unmeasured confounding in observational studies can have an effect on the accuracy of outcomes for both a Cox and a Fine & Gray model. We have added to the literature by incorporating the effect of confounding on a competing event as well as on the event-of-interest simultaneously. The effect of confounding is present and reversed compared to that of confounding on the event-of-interest. This makes intuitive sense as a negative effect on a competing event has a similar effect at the population level as a positive effect on the event-of-interest (and vice versa). This should not be overlooked, even when dealing with populations where the potential for competing events is much smaller than potential for the event-of-interest and is especially true when the two arms of a study are unequal. Therefore, we recommend that research with the potential to suffer from these issues be accompanied by sensitivity analyses investigating potential unmeasured confounding using established epidemiological techniques applied to any competing events as well as the event-of-interest. In short, unmeasured variables can cause problems with research, but by being knowledgeable about what we don't know, we can make inferences despite this missing data.
+
+
+
+
 
 <!--chapter:end:03-CR_Conf.Rmd-->
 
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
+\chaptermark{IPCW Calibration-in-the-Large}
+Last updated: 21 Apr
 
 
 
@@ -614,52 +657,25 @@ Not Weighting = Bad.
 
 # Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
+\chaptermark{Performance Measures}
+Last updated: 21 Apr
 
 
 
 ## Introduction
 
-Clinical Prediction Models (CPMs) provide individualised risk of a patient's outcome (cite), based on that patient's predictors. These predictions will usually be in the form of a risk score or probability. However, using traditional modelling techniques, these CPMs will only predict a single outcome. Multi-State Clinical Prediction Models (MS-CPMs) combine the multi-state modelling framework to the prognostic field to provide predictions for multiple outcomes in a single model.
-Once a CPM has been developed, it is important to assess how well the model actually performs (cite). This process is called Model Validation and involves comparing the predictions produced by the model to the actual outcomes experienced by patients (cite). It  is expected that the development of a CPM will be accompanied by the validation of the model on the same dataset it was developed in (internal validation), using either bootstrapping or cross-validation to account for optimism in the developed model (cite). Models can also be validated on a novel dataset (external validation), which is used to assess the generalisability and transportability of the model (cite).
- During validation, there are different aspects of model performance that we can assess and these are measured using specific metrics. For example, to assess the overall Accuracy of a model, we may use the Brier Score (cite) or to analyse how well a model discriminates between patients, we could use the c-statistic (cite).  The current metrics that are commonly used have been designed and extended to work in a variety of model development frameworks. However, these extensions are limited to either a single outcome (as in traditionally developed models) or do not adequately account for the censoring of patients (as commonly occurs in longitudinal data).
-This paper aims to provide use-able extensions to current performance metrics to be used when validating MS-CPMs. It is essential that these extensions are directly comparable with current metrics (to allow for quicker adoption), that they are collapsible to the current metrics and that they adjust for the bias induced by the censoring of patients.
-Currently, the most common way to validate an MS-CPMs is by applying traditional methods to compare across two states at a given time and then aggregating the results in an arbitrary manner [cite something]. Other methodologists have extended existing metrics to multinomial outcomes [cite van Calster], which do not contain a time-based component; to simple competing risks scenarios [cite CR c-statistic], which do not contain transient states; or to [... insert third relevant example]. Spitoni et al [cite Spitoni 2018]] developed methods to apply the Brier Score (or any proper score functions) to a multi-state setting and so a simplified and specific version of their work is described in this paper.
- It is the hope of the authors that this work will increase the uptake of multi-state models and the sub-field of MS-CPMs will grow appropriately.
-
 ## Motivating Data Set
 
-[**Table One for The Glasgow Data**]
-
-Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table 2) [1]. The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m2, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a snapshot of the predictions at the 5 year time point.
-The Three-State model used in our example is designed as an Illness-Death Model [2], this is one of the simplest MSM designs and has the key advantage over a traditional model that they can predict whether a patient is in or has visited the transient state before reaching the absorbing state (i.e. patient who became ill before dying or who started RRT before dying) (see figure 1). 
-
-[**Figure of the MSM**]
-
-[**Describe Glasgow Data**]
-
 ## Current Approaches
-
-Here we describe three commonly used performance metrics  for assessing the performance of a traditional survival  clinical prediction model. These metrics assess the Accuracy, Discrimination and Calibration of the models being validated. Accuracy is an overall measurement of how well the model predicts the outcomes in the patients. Discrimination assesses how well the model discerns between patients; in a two-state model this is a comparison of patients with and without the outcome, and should assign a higher value to those that experience the outcome. Calibration is the agreement between the observed outcomes and the predicted risks across the full risk-range. 
-We are applying cross-sectional metrics at a set time point within the setting of a longitudinal model and so we need to account for the censoring of patients and therefore, each uncensored patient at a given time t will be weighted as per the Inverse Probability of Censoring Weighting (IPCW) [3]. This allows the uncensored patient population to be representative of the entire patient population.
 
 
 ### Baseline Models
 
-To assess the performance of a model, we must compare the values produced by the performance metrics to those of two baseline models; a random or noninformative model and a perfect model.
-A Non-Informative (NI-)model assigns the same probability to all patients to be in any state regardless of covariates and is akin to using the average prevalence in the entire population to define your model. For example, in a Two-State model and an event that occurs in 10% of patients, all patients are predicted to have a 10% chance of having the event. For many metrics, models can be compared to a Non-Informative model to assess whether the model is in fact "better than random".
-A Perfect (P-)model is one which successfully assigns a 100% probability to all patients, and the predictions are correct; this is the ideal case, which many models can also be compared to as models as close to this display excellent predictive abilities. Although models may perform worse than a non-informative one, we will not consider these in detail here as they are considered to be without worth in terms of predictive ability.
-The  metrics produced by these baseline models will often depend on the prevalence of each state and/or the number of states. These values can be used as comparators to provide contextual information regarding the strength of model performance. These baselines metrics for the NI-model and the P-model will be referred to as the NI-level and P-level for the metric.
-In order to allow for simplicity and understanding of these measures, they will be standardised to the same scales.
-
 ### Notation
 
-Throughout this paper, we will use consistent notation which is shown here for reference and to avoid repetition in definitions, etc...
-
-[**Notation Table**]
 
 ### Patient Weighting
 
-[**Lots of formula, so will leave for now**]
 
 ### Accuracy - Brier Score
 
@@ -697,6 +713,8 @@ Throughout this paper, we will use consistent notation which is shown here for r
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
+\chaptermark{Development and Validation of MSCPM}
+Last updated: 21 Apr
 
 
 
@@ -1032,12 +1050,14 @@ All three models produced for this work performed well in terms of accuracy, cal
 
 
 # Conclusion {#chap-conclusion}
+\chaptermark{Conclusion}
+Last updated: 21 Apr
 
 Here is where my concluding section will go.
 
-The final word.
 
 The end.
+
 
 <!--chapter:end:10-Conclusion.Rmd-->
 
@@ -1047,6 +1067,7 @@ The end.
 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
+\chaptermark{Competing Risks and Unmeasured Confounding - Supp}
 
 ## Simulation Details
 
@@ -1064,6 +1085,7 @@ Due to the relationship between the cause specific hazard functions and the subd
 
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material {#chap-IPCW-logistic-supp}
+\chaptermark{IPCW Calibration-in-the-Large - Supp}
 
 ## Calibration Slope
 
@@ -1088,6 +1110,7 @@ Brief discussion, much briefer than the main points.
 
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material{#chap-dev-paper-supp}
+\chaptermark{Development and Validation of MSCPM - Supp}
 
 ## Statistical Analysis
 
@@ -1651,6 +1674,7 @@ delete "References" and replace it.
 -->
 
 # References {-}
+\chaptermark{References}
 
 <!--
 This manually sets the header for this unnumbered chapter.
