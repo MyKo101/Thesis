@@ -102,15 +102,18 @@ Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/
 
 # Literature Report {#chap-lit-report}
 \chaptermark{Literaure Report}
-Last updated: 21 Apr
+Last updated: 23 Apr
 
 ## Introduction
 
+
 ## Clinical Prediction Models
+
 
 ### Fundamental Prognosis Research
 
 ### Prognostic Factor Research
+
 
 ### Prognostic Model Research
 
@@ -131,11 +134,6 @@ Last updated: 21 Apr
 ### Clinical Prediction Models
 
 ### Multi-State Models
-
-
-
-
-
 
 
 <!--chapter:end:01-Lit_Report.Rmd-->
@@ -470,7 +468,7 @@ This paper has demonstrated that unmeasured confounding in observational studies
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
 \chaptermark{IPCW Calibration-in-the-Large}
-Last updated: 21 Apr
+Last updated: 23 Apr
 
 
 
@@ -597,7 +595,7 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 
 ### Performance Measures
 
-The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time).
+The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time). For these estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from singly large random effects.
 
 
 \begin{table}
@@ -643,7 +641,10 @@ All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `ti
 
 ## Results
 
-Forthcoming
+
+\includegraphics[width=29.51in]{figure/IPCW_Logistic/Main_Plot} 
+
+The results in \@ref(fig:MainPlot) show the results averaged across all $\beta$, $\gamma$ and $eta$ parameters. In both the Over- and Under-Prediction Models the Bias is closest to zero for the KM Method, with the Weighted remaining constant over time and Pseudo and Unweighted drifting. For Coverage, the none of the models accurately predicted the correct Over- or Under-Prediction value for our estimate, however in the Perfect model, Weighted had the highest Coverage (although still not the expected 95%). Empirical Standard Error was on average very low for all Methods (with the highest estimate being around 0.15), again KM produced the lowest error.
 
 ## Discussion
 
@@ -651,14 +652,15 @@ Weighting = Good.
 
 Not Weighting = Bad.
 
+**limitation**: Maybe the "True" $\theta$ for the under and over predictions were wrong and that would explain the low Coverage.
+
 
 <!--chapter:end:04-IPCW_logistic.Rmd-->
 
-
 # Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Performance Measures}
-Last updated: 21 Apr
+\chaptermark{Development and Validation of MSCPM}
+Last updated: 23 Apr
 
 
 
@@ -673,9 +675,7 @@ Last updated: 21 Apr
 
 ### Notation
 
-
 ### Patient Weighting
-
 
 ### Accuracy - Brier Score
 
@@ -704,9 +704,6 @@ Last updated: 21 Apr
 ### Calibration
 
 ## Discussion
-
-
-
 
 <!--chapter:end:05-Performance_Metrics.Rmd-->
 
@@ -1094,7 +1091,11 @@ The main purpose of this paper was to assess the evaluation of calibration-in-th
 
 ### Results
 
-blah blah
+
+
+\includegraphics[width=29.51in]{figure/IPCW_Logistic/Slope_Plot} 
+
+Results currently show bias/coverage/EmpsE away from 0, rather than 1. Needs fixing. Oops.
 
 ### Discussion
 

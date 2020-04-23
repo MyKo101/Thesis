@@ -256,7 +256,7 @@ div.abstract{
 <div id="chap-IPCW-logistic" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</h1>
 <p><em>MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin</em></p>
-<p>Last updated: 21 Apr</p>
+<p>Last updated: 23 Apr</p>
 <p>Download as individual paper draft: <a href="Chapters/ind_04-IPCW_logistic.pdf">pdf</a>, <a href="Chapters/ind_04-IPCW_logistic.tex">tex</a></p>
 <div id="abstract-2" class="section level2 unnumbered" number="">
 <h2>Abstract</h2>
@@ -361,7 +361,7 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 </div>
 <div id="performance-measures" class="section level3" number="4.2.6">
 <h3><span class="header-section-number">4.2.6</span> Performance Measures</h3>
-<p>The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, <span class="math inline">\(t\)</span>, along with relevant standard errors and confidence intervals as per current recommendations <span class="citation">[<a href="#ref-morris_using_2019" role="doc-biblioref">18</a>]</span>. These measures can be seen in table <a href="chap-IPCW-logistic.html#tab:PM-DGM-time">4.1</a>.</p>
+<p>The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, <span class="math inline">\(t\)</span>, along with relevant standard errors and confidence intervals as per current recommendations <span class="citation">[<a href="#ref-morris_using_2019" role="doc-biblioref">18</a>]</span>. These measures can be seen in table <a href="chap-IPCW-logistic.html#tab:PM-DGM-time">4.1</a>. For these estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving <span class="math inline">\(N=90\)</span> to avoid biasing the results from singly large random effects.</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -470,12 +470,14 @@ Weighted
 </div>
 <div id="results-3" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Results</h2>
-<p>Forthcoming</p>
+<p><img src="figure/IPCW_Logistic/Main_Plot.png" width="1062" /></p>
+<p>The results in <a href="#fig:MainPlot"><strong>??</strong></a> show the results averaged across all <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(eta\)</span> parameters. In both the Over- and Under-Prediction Models the Bias is closest to zero for the KM Method, with the Weighted remaining constant over time and Pseudo and Unweighted drifting. For Coverage, the none of the models accurately predicted the correct Over- or Under-Prediction value for our estimate, however in the Perfect model, Weighted had the highest Coverage (although still not the expected 95%). Empirical Standard Error was on average very low for all Methods (with the highest estimate being around 0.15), again KM produced the lowest error.</p>
 </div>
 <div id="discussion-2" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Discussion</h2>
 <p>Weighting = Good.</p>
 <p>Not Weighting = Bad.</p>
+<p><strong>limitation</strong>: Maybe the “True” <span class="math inline">\(\theta\)</span> for the under and over predictions were wrong and that would explain the low Coverage.</p>
 
 </div>
 </div>

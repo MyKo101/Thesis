@@ -127,7 +127,7 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 
 ### Performance Measures
 
-The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time).
+The measures we will take as performance measures as the Bias, the Empirical Standard Error as the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time). For these estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from singly large random effects.
 
 
 ```{r PM-DGM-time,echo=F}
@@ -189,11 +189,17 @@ All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `ti
 
 ## Results
 
-Forthcoming
+```{r MainPlot,echo=F, fig.caption="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods. The dotted/dashed lines show the unweighted/weighted average across all time points"}
+knitr:::include_graphics("figure/IPCW_Logistic/Main_Plot.png")
+```
+
+The results in \@ref(fig:MainPlot) show the results averaged across all $\beta$, $\gamma$ and $eta$ parameters. In both the Over- and Under-Prediction Models the Bias is closest to zero for the KM Method, with the Weighted remaining constant over time and Pseudo and Unweighted drifting. For Coverage, the none of the models accurately predicted the correct Over- or Under-Prediction value for our estimate, however in the Perfect model, Weighted had the highest Coverage (although still not the expected 95%). Empirical Standard Error was on average very low for all Methods (with the highest estimate being around 0.15), again KM produced the lowest error.
 
 ## Discussion
 
 Weighting = Good.
 
 Not Weighting = Bad.
+
+**limitation**: Maybe the "True" $\theta$ for the under and over predictions were wrong and that would explain the low Coverage.
 

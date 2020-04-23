@@ -9,7 +9,12 @@ The main purpose of this paper was to assess the evaluation of calibration-in-th
 
 ### Results
 
-blah blah
+
+```{r SlopePlot,echo=F}
+knitr:::include_graphics("figure/IPCW_Logistic/Slope_Plot.png")
+```
+
+Results currently show bias/coverage/EmpsE away from 0, rather than 1. Needs fixing. Oops.
 
 ### Discussion
 

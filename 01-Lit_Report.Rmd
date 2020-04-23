@@ -5,11 +5,14 @@
 
 ## Introduction
 
+
 ## Clinical Prediction Models
+
 
 ### Fundamental Prognosis Research
 
 ### Prognostic Factor Research
+
 
 ### Prognostic Model Research
 
@@ -30,9 +33,4 @@
 ### Clinical Prediction Models
 
 ### Multi-State Models
-
-
-
-
-
 
