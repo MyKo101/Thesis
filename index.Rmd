@@ -9,8 +9,8 @@ advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambi
 department: 'School of Health Sciences'
 degree: 'PhD Medicine'
 title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
-knit: mpipe::MyRender
-#knit: bookdown::render_book
+knit: MyThesis::MyRender
+#knit: MyThesis::simple_render
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -27,13 +27,13 @@ output:
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
 # use code similar to line 22-23 for the .RMD files. If you are NOT producing a PDF, you can delete or silence lines 21-32 in this YAML header.
 abstract: |
-  `r {source("prelim_Subsection.R");prelim_Subsection("all","abstract")}`
+  `r prelim_Subsection("all","abstract")`
 # If you'd rather include the preliminary content in files instead of inline
 # like below, use a command like that for the abstract above.  Note that a tab is 
 # needed on the line after the `|`.
 acknowledgements: |
-  `r {source("prelim_Subsection.R");prelim_Subsection("all","acknowledgements")}`
-# Specify the location of the bibliography below
+  `r prelim_Subsection("all","acknowledgements")`
+# Specify the location of the bibliography below 
 bibliography: ["bib/thesis.bib","bib/MyCites.bib"]
 biblio-style: "ieee"
 link-citations: true
@@ -41,14 +41,17 @@ link-citations: true
 csl: csl/ieee.csl #https://github.com/citation-style-language/styles
 lot: true
 lof: true
-# If you prefer blank lines between paragraphs, un-silence lines  40-41 (this requires package tikz)
 #header-includes: |
 #  `r cat(readLines("latex_packages.txt"))`
 ---
 
 
 ```{r include_packages, include = FALSE}
-source("setup.R")
+if(knitr:::is_latex_output())
+  options(output.format = "thesis") else 
+    options(output.format = "gitbook")
+library(MyThesis)
+
 ```
 
   
@@ -84,5 +87,5 @@ Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/
 
 `r fb(gitbook="## Abstract {-}")`
 
-`r {source("prelim_Subsection.R");prelim_Subsection("html","abstract")}`
+`r prelim_Subsection("html","abstract")`
 

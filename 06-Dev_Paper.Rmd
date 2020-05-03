@@ -133,7 +133,7 @@ As seen in table \@ref(tab:Continuous-Demo), The Age of both populations were ce
 
 <br>
 ```{r Continuous-Demo, echo=F}
-paste0(.wd,"data/Dev_Paper_Continuous_Demographics.csv") %>%
+"data/Dev_Paper_Continuous_Demographics.csv" %>%
   read_csv(col_types=cols()) %>%
   Dev_Valid_Paper_Var_Names(Variable,group_var = ".group") %>%
   rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG) %>%
@@ -162,7 +162,7 @@ Table \@ref(tab:Categorical-Demo) shows a breakdown of the categorical variables
 
 
 ```{r Categorical-Demo, echo=FALSE}
-paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
+"data/Dev_Paper_Categorical_Demographics.csv" %>%
   read_csv(col_types=cols()) %>%
   mutate(Variable = Variable) %>%
   fill(Variable) %>%
@@ -181,7 +181,7 @@ paste0(.wd,"data/Dev_Paper_Categorical_Demographics.csv") %>%
 Overall, there were high levels of comorbidities within the SKS population as shown in table \@ref(tab:Comorbidity-Demo), but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
 
 ```{r, Comorbidity-Demo, echo=F}
-paste0(.wd,"data/Dev_Paper_Comorbidity_Demographics.csv") %>%
+"data/Dev_Paper_Comorbidity_Demographics.csv" %>%
   read_csv(col_types=cols()) %>%
   rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG) %>%
   Dev_Valid_Paper_Var_Names(Variable,Full_Comorb = 2) %>%
@@ -193,7 +193,7 @@ paste0(.wd,"data/Dev_Paper_Comorbidity_Demographics.csv") %>%
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median).
 
 ```{r Event-Median, echo=F}
-paste0(.wd,"data/Dev_Paper_Event_Median.csv") %>%
+"data/Dev_Paper_Event_Median.csv" %>%
   read_csv(col_types=cols()) %>%
   rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG)%>%
   mutate(Transition = paste0(From, " to ",To)) %>%

@@ -38,7 +38,7 @@ print_table_PH <- function(fn,Model,lscape=F)
   sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
   nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
   algn <- paste0(rep("r",nTrans),collapse="")
-  paste0(.wd,fn) %>%
+  fn %>%
     read_csv(col_types=cols()) %>%
     select(Var,starts_with(paste0("Trans_",Model)))%>%
     Dev_Valid_Paper_Var_Names(Var,group_var=".group")%>%
@@ -60,7 +60,7 @@ print_Cum_Haz_eq <- function(fn,Model)
 {
   sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
 nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
-paste0(.wd,fn) %>%
+fn %>%
   read_csv(col_types=cols()) %>% 
   filter(Model == sModel) %>%
   mutate(L0 = gsub("exp(case_when(","",L0,fixed=T),
@@ -100,7 +100,7 @@ list_table_Valid <- function(fn,Model,external)
                 " Validation of the ",
                 sModel,"-State Model, results presented as Estimate (95% CI, where possible)")
   
-  .mid <- paste0(.wd,fn) %>%
+  .mid <- fn %>%
     read_csv(col_types=cols()) %>%
     filter(Model == sModel,src == ifelse(external,"UoG","SKS")) %>%
     select(-Model,-src) %>%

@@ -1,21 +1,48 @@
-pkgs <- c("devtools","thesisdown","tidyverse","rlang",
-          "googledrive","magrittr","kableExtra","stringi")
+#' @name 
+#' Functions
+#' 
+#' @title 
+#' Functions exported
+#' 
+#' @description 
+#' All functions used in development of thesis
+#' 
 
-purrr::walk(pkgs,library,character.only=T)
+#' @export
+go<- function(x=NULL)
+{
+  devtools::document()
+  devtools::install(quick=T,quiet=T,upgrade="never",dependencies=T)
+  library(MyThesis)
+  file.edit("index.Rmd")
+  if(!is.null(x))
+  {
+    x <- if(x<10) paste0("0",x) else paste0(x)
+    ff <- list.files()
+    ff <- ff[grep(paste0("^",x),ff)]
+    if(length(ff)>0)
+    {
+      ff <- lapply(ff,file.edit)
+    }
+  }
+}
 
-
-options(kableExtra.html.bsTable = T)
-
+#' @export
 xx <- function(x = "xxxx") paste0("[**",x,"**]")
+
+#' @export
 cc <- function(x="Something") xx(paste0("Cite: ",x))
+
+#' @export
 LR <- function(...) cc(paste0("LR - ",paste0(unlist(list(...)),collapse=", ")))
 
-
+#' @export
 logit <- function(p) log(p/(1-p))
+
+#' @export
 logit1 <- function(o) exp(o)/(exp(o)+1)
 
-.wd <- "C:/Users/mbrxsmbc/Documents/Thesis/index/"
-
+#' @export
 Trans_short2long <- function(x)
 {
   t.list <- grep("^Trans_",x)
@@ -32,6 +59,68 @@ Trans_short2long <- function(x)
   return(y)
 }
 
+#' @export
+prelim_Subsection <- function(out="latex",name=NULL,prelim="00--prelim.Rmd")
+{
+  if(out == "latex")
+    check_out_func <- knitr:::is_latex_output() else
+      if(out=="html")
+        check_out_func <- knitr:::is_html_output() else
+          check_out_func <- T
+        
+        if(check_out_func)
+        {
+          rmd <- readLines(prelim)
+          heading.lines <- grep("^## ",rmd)
+          
+          headings <- rmd[heading.lines]
+          headings <- gsub("^##","",headings)
+          headings <- gsub("{-}","",headings,fixed=T)
+          headings <- trimws(headings)
+          
+          if(is.null(name))
+            return(headings) else if(name == "all")
+            {
+              res <- rmd
+              while(res[1] == "") res <- res[-1]
+              while(res[length(res)] == "") res <- res[-length(res)]
+              res <- trimws(res)
+              
+              res <- paste0(res,collapse="\n")
+              
+              res <- gsub("\n ##","\n##",res,fixed=T)
+              
+              return(res)
+            } else
+            {
+              which.heading <- which(tolower(name) == tolower(headings))
+              if(length(which.heading)==0)
+                stop("Heading ",name," not found in prelim file: ",prelim)
+              
+              rows <- c(heading.lines[1],
+                        rep(heading.lines[-1],each=2),
+                        length(rmd)+1)
+              rows <- matrix(rows,ncol=2,byrow=T)
+              
+              start.row <- rows[which.heading,1]+1
+              end.row <- rows[which.heading,2]-1
+              
+              
+              row.seq <- seq(start.row,end.row)
+              
+              res <- rmd[row.seq]
+              while(res[1] == "") res <- res[-1]
+              while(res[length(res)] == "") res <- res[-length(res)]
+              res <- trimws(res)
+              res <- paste0(res,collapse="\n  ")
+              res <- gsub("\n  \n","  \\par\n  \n",res,fixed=T)
+              return(res)
+              
+            }
+        } else " "
+}
+
+#' @export
 Dev_Valid_Paper_Var_Names <- function(.tbl,.variable,group_var=NULL,Full_Comorb=0)
 {
   .V <- pull(.tbl,as_name(enquo(.variable)))
@@ -75,7 +164,7 @@ Dev_Valid_Paper_Var_Names <- function(.tbl,.variable,group_var=NULL,Full_Comorb=
                         T ~ 9)
     
     
-  
+    
     .tbl %<>% mutate(group_temp = .grp,
                      Order = .grp_n,
                      !!enquo(.variable) := .V) %>%
@@ -134,6 +223,7 @@ Dev_Valid_Paper_Var_Names <- function(.tbl,.variable,group_var=NULL,Full_Comorb=
   
 }
 
+#' @export
 if_fun <- function(.x,.predicate,.fun,.elsefun=NULL) 
 {
   if(.predicate) .fun(.x) else 
@@ -142,9 +232,10 @@ if_fun <- function(.x,.predicate,.fun,.elsefun=NULL)
         .x
 }
 
+#' @export
 get_format <- function(...)
 {
-  .res <- options("output.format")
+  .res <- options("output.format")$output.format
   
   x <- list(...)
   if(length(x) == 0)
@@ -157,6 +248,7 @@ get_format <- function(...)
   
 }
 
+#' @export
 fb <- function(gitbook=NULL,thesis=NULL,single=NULL)
 {
   .res <- ""
@@ -166,6 +258,7 @@ fb <- function(gitbook=NULL,thesis=NULL,single=NULL)
   return(.res)
 }
 
+#' @export
 get.files <- function(filenum,dir=".",pre="^")
 {
   filenum %>%
@@ -175,6 +268,7 @@ get.files <- function(filenum,dir=".",pre="^")
     extract(list.files(dir),.)
 }
 
+#' @export
 add_downloads <- function(filenum)
 {
   .files <- get.files(filenum,dir="docs/Chapters",pre="^ind_")
@@ -187,6 +281,7 @@ add_downloads <- function(filenum)
   fb(gitbook=.res)
 }
 
+#' @export
 Updated <- function(filenum)
 {
   get.files(filenum) %>%
@@ -195,16 +290,17 @@ Updated <- function(filenum)
     format("Last updated: %d %b")
 }
 
+#' @export
 make_linebreaks <- function(.tbl)
 {
   if(get_format("thesis","single"))
   {
     n.lsub <- function(x) paste0("\\makecell[r]{",
-                     gsub("\n","\\\\",x,fixed=T),"}")
+                                 gsub("\n","\\\\",x,fixed=T),"}")
   } else {
     n.lsub <- function(x) gsub("\n","<br>",x,fixed=T)
   }
-    
+  
   .out <- .tbl
   for(i in 1:nrow(.tbl)) for(j in 1:ncol(.tbl))
   {
@@ -213,25 +309,27 @@ make_linebreaks <- function(.tbl)
       .out[i,j] <- n.lsub(.tbl[i,j])
     }
   }
-    
+  
   return(.out)
 }
 
+#' @export
 clear_ws <- function(.tbl,cols)
 {
   if(!is.null(cols))
   {
     ws_sym <- fb("&emsp;"," ","\\\\quad")
     suppressWarnings(.tbl %>%
-      mutate_at(cols,
-                function(x) x %>% 
-                  stri_reverse %>%
-                  gsub("  "," #",.) %>%
-                  stri_reverse %>%
-                  gsub("#",ws_sym,.)))
+                       mutate_at(cols,
+                                 function(x) x %>% 
+                                   stri_reverse %>%
+                                   gsub("  "," #",.) %>%
+                                   stri_reverse %>%
+                                   gsub("#",ws_sym,.)))
   } else .tbl
 }
 
+#' @export
 do_colspace <- function(.tbl,numeric_cols,col_widths)
 {
   ncols <- .tbl %>%
@@ -269,6 +367,7 @@ do_colspace <- function(.tbl,numeric_cols,col_widths)
   return(.res)
 }
 
+#' @export
 to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
                      col_names=do_nothing,row_names=NULL,
                      group_col=NULL,col_widths=NULL,col_groups=NULL)
@@ -355,11 +454,55 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
 }
 
 
+#' @export
 fm <- function(x) footnote_marker_alphabet(x,format=fb("html","latex","latex"))
 
+#' @export
 do_nothing <- function(x) x
 
 
-if(knitr:::is_latex_output())
-  options(output.format = "thesis") else 
-    options(output.format = "gitbook")
+#' @export
+Pull_comments <- function(dir)
+{
+  site <- paste0("https://michaelbarrowman.co.uk/Thesis/",dir,".html")
+  comlist <- hypothesisr::hs_search_all(uri=site)
+  
+  comlist %>%
+    select(created,user,text,target) %>%
+    mutate(position = map_int(target,~Pull_Target_detail(.,"position")),
+           source = map_chr(target,~Pull_Target_detail(.,"text"))) %>%
+    separate("user",into=c(NA,"user",NA),sep="[:@]") %>%
+    mutate(dt = as_datetime(created)) %>%
+    select(dt,user,position,source,text)
+}
+
+#' @export
+Pull_Target_detail <- function(target,detail)
+{
+  # details = c("position","text")
+  if(length(target)<2)
+  {
+    res <- NA
+  } else {
+    selector <- target[[2]][[1]]
+    if(detail == "position")
+    {
+      res <- min(selector$startOffset,na.rm=T)
+    } else if(detail == "text")
+    {
+      res <- selector %>%
+        filter(!is.na(prefix) & !is.na(exact) & !is.na(suffix)) %>%
+        transmute(text = paste(prefix,exact,suffix,sep="**")) %>%
+        slice(1) %>%
+        pull(text)
+    }
+  }
+  
+  return(res)
+}
+
+
+
+
+
+
