@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Methods | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</title>
+  <meta name="description" content="2 Methods | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Methods | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Methods | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies" />
+  
+  
+  
+
+<meta name="author" content="MA Barrowman" />
+<meta name="author" content="N Peek" />
+<meta name="author" content="M Lambie" />
+<meta name="author" content="GP Martin" />
+<meta name="author" content="M Sperrin" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="background-1.html"/>
+<link rel="next" href="results-1.html"/>
+<script src="libs/header-attrs-2.1.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a>
+<ul>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#methods"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#results"><i class="fa fa-check"></i>Results</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="background-1.html"><a href="background-1.html"><i class="fa fa-check"></i><b>1</b> Background</a></li>
+<li class="chapter" data-level="2" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
+<li class="chapter" data-level="3" data-path="results-1.html"><a href="results-1.html"><i class="fa fa-check"></i><b>3</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>4</b> Discussion</a></li>
+<li class="chapter" data-level="5" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>5</b> Conclusion</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="chapConfCRsupp.html"><a href="chapConfCRsupp.html"><i class="fa fa-check"></i><b>A</b> Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="chapConfCRsupp.html"><a href="chapConfCRsupp.html#simulation-details"><i class="fa fa-check"></i><b>A.1</b> Simulation Details</a></li>
+<li class="chapter" data-level="A.2" data-path="chapConfCRsupp.html"><a href="chapConfCRsupp.html#mathematics-of-subdistribution-hazards"><i class="fa fa-check"></i><b>A.2</b> Mathematics of Subdistribution Hazards</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods-1" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Methods</h1>
+<p>We considered a simulation scenario in which our population can experience two events; one of which is the event-of-interest (Event 1), the other is a competing event (Event 2). We model a single unmeasured confounding covariate, <span class="math inline">\(U \sim N (0,1)\)</span> and a binary treatment indicator, <span class="math inline">\(Z\)</span>. We varied how much <span class="math inline">\(U\)</span> and <span class="math inline">\(Z\)</span> affect the probability distribution of the two events as well as how they are correlated. For example, <span class="math inline">\(Z\)</span> could represent whether a patient is prescribed statins, <span class="math inline">\(U\)</span> could be their BMI, the event-of-interest could be cardiovascular disease related mortality and a competing event could be cancer-related mortality. We followed best practice for conducting and reporting simulations studies [16].</p>
+<p>The data-generating mechanism defined two cause-specific hazard functions (one for each event), where the baseline hazard for event 1 was <span class="math inline">\(k\)</span> times that of event 2, see Fig. @ref(fig:Transition_Diagram). We assumed a baseline hazard that was either constant (exponential distributed failure times), linearly increasing (Weibull distributed failure times) or biologically plausible [17]. The hazards used were thus:</p>
+<p><span class="math display">\[\begin{align}
+\lambda_1(t|U,Z) &amp;= ke^{\beta_1U + \gamma_1Z}\lambda_0(t)\\
+\lambda_2(t|U,Z) &amp;= ke^{\beta_2U + \gamma_2Z}\lambda_0(t)
+\end{align}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\lambda_0(t) \begin{cases}
+1 &amp; \textrm{Exponential}\\
+2t &amp; \textrm{Weibull}\\
+\exp{-18+7.3t-11.5t^{0.5}\log(t) + 9.5t^{0.5}} &amp; \textrm{Plausible}
+\end{cases}
+\end{equation}\]</span></p>
+<p>In the above equations, <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span> are the effects of the confounding covariate and the treatment effect respectively with the subscripts representing which event they are affecting. These two hazard functions entirely describe how a population will behave [18].</p>
+<p><img src="figure/CR_Conf/Transition_Diagram.png" width="450px" /></p>
+<p>We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\gamma\)</span>. In order to simulate the confounding of <span class="math inline">\(U\)</span> and <span class="math inline">\(Z\)</span>, we generated these values such that <span class="math inline">\(\textrm{Corr}(U,Z) = \rho\)</span> and <span class="math inline">\(\Pr(Z = 1) = \pi\)</span> [19]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Additional file 1. Due to the methods used to generate the populations, the possible values for <span class="math inline">\(\rho\)</span> are bounded by the choice of <span class="math inline">\(\pi\)</span> such that when <span class="math inline">\(\pi = 0.5\)</span>, <span class="math inline">\(\left|\rho\right| &lt;= 0.797\)</span> and when <span class="math inline">\(\pi = 0.1\)</span> (or <span class="math inline">\(\pi=0.9\)</span>), <span class="math inline">\(\left|\rho\right| &lt;= 0.57\)</span>. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. @ref(fig:Model_DAG), where <span class="math inline">\(T\)</span> is the event time and <span class="math inline">\(\delta\)</span> is the event type indicator (1 for event-of-interest and 2 for competing event).</p>
+<p><img src="figure/CR_Conf/DAG.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, <span class="math inline">\(\Gamma_1\)</span> and <span class="math inline">\(\Gamma_2\)</span>, to be in these conditions [20] (See Additional file 2). It’s worth noting that the values of <span class="math inline">\(\Gamma\)</span> will depend on the current value of <span class="math inline">\(\rho\)</span> since they are calculated using the expected distribution of end-times. However, it has been shown [18, 21] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the “true” values of the <span class="math inline">\(\Gamma\)</span> will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [20].</p>
+<p>We used the simulated data to estimate the treatment effects under the Cox and Fine &amp; Gray regression methods. We specify that <span class="math inline">\(U\)</span> is unmeasured and so it wasn’t included in the analysis models. As discussed earlier, the Cox model defines the risk set at time <span class="math inline">\(t\)</span> to be all patients who have not had any event by time <span class="math inline">\(t\)</span>, whereas the Fine &amp; Gray defines it to be those who have not had the event-of-interest (or competing event) by time <span class="math inline">\(t\)</span>.</p>
+<p>For our models, for the events, <span class="math inline">\(i={1,2}\)</span>, we therefore defined the CSH function estimate, <span class="math inline">\(\hat{\lambda}_i\)</span>, and the SH function estimate, <span class="math inline">\(\hat{h}_i\)</span>, to be</p>
+<p><span class="math display">\[
+\hat{\lambda}_i(t|Z) = \hat{\lambda}_{i0}(t)e^{\hat{\gamma}_iZ} \qquad\qquad 
+\hat{h}_i(t|Z) = \hat{h}_{i0}(t)e^{\hat{\Gamma}_iZ}
+\]</span></p>
+<p>Where <span class="math inline">\(\hat{\lambda}_{i0}(t)\)</span> and <span class="math inline">\(\hat{h}_{i0}(t)\)</span> are the baseline hazard and baseline subdistribution hazard function estimates for the entire population (i.e. no stratification), and <span class="math inline">\(\hat{\gamma}_i\)</span> and <span class="math inline">\(\hat{\Gamma}_i\)</span> are the estimated treatment effects. From these estimates, we also extracted the estimate of the subdistribution treatment effect in a hypothetical RCT, where <span class="math inline">\(\rho=0\)</span> and <span class="math inline">\(\pi=0.5\)</span> to give <span class="math inline">\(\hat{\Gamma}_{10}\)</span> and <span class="math inline">\(\hat{\Gamma}_{20}\)</span>. To investigate how the correlation between <span class="math inline">\(U\)</span> and <span class="math inline">\(Z\)</span> affects the treatment effect estimate, we compared the explicitly prescribed or calculated values with the simulated estimates. Three performance measures for both events, along with appropriate 95% confidence intervals, were calculated for each set of parameters:</p>
+<ul>
+<li><p><span class="math inline">\(\theta_{\textrm{RCT},i} = \textrm{E}\left[\hat{\Gamma}_i - \hat{\Gamma}_{i0}\right]\)</span> ~ The average difference between the SH treatment effect estimate from an idealised, hypothetical RCT situation.</p></li>
+<li><p><span class="math inline">\(\theta_{\textrm{Exp},i} = \textrm{E}\left[\hat{\Gamma}_i - \Gamma_i\right]\)</span> ~ The average bias of the SH treatment effect estimate from the explicitly calculated value.</p></li>
+<li><p><span class="math inline">\(\theta_{\textrm{CSH},i} = \textrm{E}\left[\hat{\gamma}_i - \gamma_i\right]\)</span> ~ The average bias of the CSH treatment effect estimate from the predefined treatment effect.</p></li>
+</ul>
+<p>As mentioned above, the value of <span class="math inline">\(\Gamma\)</span> will depend on the current value of <span class="math inline">\(\rho\)</span> and so the estimation of the explicit bias will be a measure of the total bias induced on our estimate of the subdistribution treatment effect in those specific set of parameters. We also evaluate the bias compared to an idealised RCT to see how much of this bias could be mitigated if we were to perform an RCT to assess the effectiveness of the hypothetical treatment. Finally, we found the explicit bias in the cause specific treatment effect to again see the total bias applied to this measure. We did not compared the CSH bias to an idealised RCT as we believed that this could easily be inferred from the CSH explicit results, whereas this information wouldn’t be as obvious in the SH treatment effect due to the existence of a relationship between <span class="math inline">\(\Gamma\)</span> and <span class="math inline">\(\rho\)</span>.</p>
+<p>Eight Scenarios were simulated based on real-world situations. In each scenario, <span class="math inline">\(\rho\)</span> varied across 5 different values ranging from 0 to their maximum possible value (0.797 for all Scenarios apart from Scenario 5, where it is 0.57, due to the bounds imposed by the values of <span class="math inline">\(\pi\)</span>). One other parameter (different for different scenarios) varied across 3 different values, and all other parameters were fixed as detailed in Table 1. Each simulation was run 100 times and the performance measures were each pooled to provide small confidence intervals. This gives a total of 1,500 simulations for each of the 8 scenarios. Descriptions of the different scenarios are given below:</p>
+<ol style="list-style-type: decimal">
+<li><p>No Effect. To investigate whether treatment with no true effect (<span class="math inline">\(\gamma_2=\gamma_2=0\)</span>) can have an “artificial” treatment effect induced on them in the analysis models through the confounding effect on the event-of-interest. <span class="math inline">\(\beta_1\)</span> varied between -1, 0 and 1.</p></li>
+<li><p>Positive Effect. To investigate whether treatment effects can be reversed when the treatment is beneficial for both the event-of-interest and the competing event (<span class="math inline">\(\gamma_2=\gamma_2=-1\)</span>). <span class="math inline">\(\beta_1\)</span> varied between -1, 0 and 1.</p></li>
+<li><p>Differential Effect. To investigate how treatment effect estimates react when the effect is different for the event-of-interest (<span class="math inline">\(\gamma_2=-1\)</span>) and the competing event (<span class="math inline">\(\gamma_2=1\)</span>). <span class="math inline">\(\beta_1\)</span> varied between -1, 0 and 1.</p></li>
+<li><p>Competing Confounder. To investigate whether treatments with no true effect (<span class="math inline">\(\gamma_1=\gamma_2=0\)</span>) can have an “artificial” treatment effect induced on them by the effect of a confounded variable on the competing event only (<span class="math inline">\(\beta_1=0\)</span>). <span class="math inline">\(\beta_2\)</span> varied between -1, 0 and 1.</p></li>
+<li><p>Uneven Arms. To investigate how having uneven arms on a treatment in the population can have an effect on the treatment effect estimate (<span class="math inline">\(\gamma_1=-1\)</span>, <span class="math inline">\(\gamma_2=0\)</span>). <span class="math inline">\(\pi\)</span> varied between <span class="math inline">\(\sfrac{1}{10}\)</span>, <span class="math inline">\(\sfrac{1}{2}\)</span> and <span class="math inline">\(\sfrac{9}{10}\)</span>.</p></li>
+<li><p>Uneven Events. To investigate how events with different frequencies can induce a bias on the treatment effect, despite no treatment effect being present (<span class="math inline">\(\gamma_1=\gamma_2=0\)</span>). <span class="math inline">\(k\)</span> varied between <span class="math inline">\(\sfrac{1}{2}\)</span>, <span class="math inline">\(\sfrac{1}{2}\)</span> and 2.</p></li>
+<li><p>Weibull Distribution. To investigate whether a linearly increasing baseline hazard function affects the results found in Scenario 1. <span class="math inline">\(\beta_1\)</span> varied between -1, 0 and 1.</p></li>
+<li><p>Plausible Distribution. To investigate whether a biologically plausible baseline hazard function affects the results found in Scenario 1. <span class="math inline">\(\beta_1\)</span> varied between -1, 0 and 1.</p></li>
+</ol>
+<p>[<strong>Insert Table 1</strong>]</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="background-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="results-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ind_03-CR_Conf.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

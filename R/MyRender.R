@@ -16,6 +16,26 @@ simple_render <- function(...)
 }
 
 #' @export
+go<- function(x=NULL,get.comments=F)
+{
+  devtools::document()
+  devtools::install(upgrade="never",dependencies=T)
+  library(MyThesis)
+  file.edit("index.Rmd")
+  if(!is.null(x))
+  {
+    x <- if(x<10) paste0("0",x) else paste0(x)
+    ff <- list.files()
+    ff <- ff[grep(paste0("^",x),ff)]
+    if(length(ff)>0)
+    {
+      ff <- lapply(ff,file.edit)
+    }
+    if(get.comments) Pull_Comments(x)
+  }
+}
+
+#' @export
 MyRender <- function(...)
 {
   requireNamespace("bookdown",quietly=T)

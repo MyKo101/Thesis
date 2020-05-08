@@ -6,9 +6,9 @@
 
 ### Development
 
-Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
+Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). ~~Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]).~~ As well as those included in `r fb(gitbook="\\@ref(chap-dev-paper)", thesis="\\@ref(chap-dev-paper)", single="the main text")`, ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models. 
 
-uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences [@bhatnagar_epidemiology_2015]. Calendar Time was defined as length of time between start date and  1st January 2019.
+~~uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]~~<mark>Rates of change were calculated</mark> as the difference between the two most recent measures divided by time difference in years. ~~$\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model.~~ log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences [@bhatnagar_epidemiology_2015]. Calendar Time was defined as length of time between start date and  1st January 2019.
 
 Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified [@meira-machado_multi-state_2009]. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique [@royston_flexible_2002] to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time [@putter_tutorial_2007].
 
@@ -16,9 +16,11 @@ For variable selection, we stacked the imputed datasets together to create a lar
 
 All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors [@white_imputing_2009]. Some variables (smoking status and histories of COPD, LD and ST)  were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset [@janssen_dealing_2009].
 
+
+
 ### Validation
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m`r fb("<sup>2</sup>","\\textsuperscript{2}","\\textsuperscript{2}")`.
+~~Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m`r fb("<sup>2</sup>","\\textsuperscript{2}","\\textsuperscript{2}")`.~~
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
 
@@ -31,114 +33,6 @@ The discrimination of each model was assessed using the MSM extension to the c-s
 The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014`r fb(single=";@chap-performance-metrics")`] which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
 
 ## Model Results
-
-```{r print_table_PH_function, include=F}
-print_table_PH <- function(fn,Model,lscape=F)
-{
-  sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
-  nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
-  algn <- paste0(rep("r",nTrans),collapse="")
-  fn %>%
-    read_csv(col_types=cols()) %>%
-    select(Var,starts_with(paste0("Trans_",Model)))%>%
-    Dev_Valid_Paper_Var_Names(Var,group_var=".group")%>%
-    to_kable(col_names=Trans_short2long,
-             row_names="Var",
-             align=algn,
-             numeric_cols=1:nTrans+1,
-             group_col = ".group",
-             caption=paste0("Proportional Hazards for each transition in the ",
-                         sModel,"-State Model"),
-             lscape=lscape,
-             col_widths=c("54em",rep("43em",nTrans)))
-  
-}
-```
-
-```{r print_Cum_Haz_eq_function, include=F}
-print_Cum_Haz_eq <- function(fn,Model)
-{
-  sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
-nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
-fn %>%
-  read_csv(col_types=cols()) %>% 
-  filter(Model == sModel) %>%
-  mutate(L0 = gsub("exp(case_when(","",L0,fixed=T),
-         L0 = strsplit(L0,"\n\t\t"),
-         L0 = map(L0,~tibble(haz = .,rn=1:length(.)))) %>%
-  unnest(L0) %>%
-  separate(haz,into=c("Range","Equation"),sep="~") %>%
-  mutate(Transition = paste0(From," to ",To),
-         Range = gsub("t & t","t",Range),
-         Equation = gsub(",","",Equation,fixed=T),
-         From = recode(From,Alive=1,CKD=1,HD=2,PD=3,Tx=4,RRT=5,Dead=6),
-         To = recode(To,Alive=1,CKD=1,HD=2,PD=3,Tx=4,RRT=5,Dead=6)) %>%
-  group_by(Transition,From,To) %>%
-  arrange(Transition,rn) %>%
-  mutate(L0 = paste0(Equation," & ",Range)) %>%
-  summarise(L0 = paste0(L0,collapse="\\\\")) %>%
-  mutate(L0 = paste0("\\begin{equation}\n\\Lambda_{0,",From,To,"}(t)=",
-                     "\\begin{cases}",L0,
-                     "(\\#eq:CH-",sModel,"-",From,To,")",
-                     "\\end{cases}\n\\end{equation}"),
-         L0 = gsub("log","\\log",L0,fixed=T),
-         L0 = gsub("*","",L0,fixed=T),
-         L0 = gsub("<=","\\le",L0,fixed=T)) %>%
-  ungroup %>%
-  pull(L0) %>%
-  paste0(collapse="\n")
-}
-```
-
-```{r list_table_Valid_function, include=F}
-list_table_Valid <- function(fn,Model,external)
-{
-  sModel <- recode(Model,`2`="Two",`3`="Three",`5`="Five")
-  nTrans <- case_when(Model == 2 ~ 1,Model==3~3,Model==5~6)
-  
-  cap <- paste0(if_else(external,"External","Internal"),
-                " Validation of the ",
-                sModel,"-State Model, results presented as Estimate (95% CI, where possible)")
-  
-  .mid <- fn %>%
-    read_csv(col_types=cols()) %>%
-    filter(Model == sModel,src == ifelse(external,"UoG","SKS")) %>%
-    select(-Model,-src) %>%
-    arrange(Measure,Collapsed,!low.eGFR) %>%
-    mutate(low.eGFR = if_else(low.eGFR,"< 60","< 30")) %>%
-    rename_at(vars(ends_with("Year")),
-              ~gsub("_"," ",.,fixed=T)%>%
-                trimws) %>%
-    rename(Predicting=Collapsed,
-           Average = Overall,
-           eGFR = low.eGFR)
-  
-  
-  .out <- .mid %>%
-    filter(!(Predicting == "Five" & Measure == "Slope")) %>%
-    to_kable(caption=cap,group_col="Measure",align="llrrrr",numeric_cols=3:6)
-  
-  
-  
-  if(Model == 5)
-  {
-    .out2 <- .mid %>%
-      filter(Predicting == "Five" & Measure == "Slope") %>%
-      select(-Predicting,-Measure) %>%
-      mutate(eGFR = paste0(if_else(external,"External ","Internal "),eGFR)) %>%
-      pivot_longer(-eGFR,names_to="Time",values_to="Slope") %>%
-      pivot_wider(names_from=eGFR,values_from=Slope) 
-    
-    
-  } else .out2 <- ""
-  
-  list(.out,.out2)
-  
-}
-
-
-```
-
 
 ### Two State Model
 
@@ -171,33 +65,20 @@ res[[1]]
 
 ### Three State Model
 
-In the Three-State Model, older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
-
-```{r PH-Three,echo=F}
-print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",3,lscape=T)
-```
+~~In the Three-State Model, older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).(...)~~
 
 
-Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
+~~Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.~~
 
 The equations \@ref(eq:CH-Three-16), \@ref(eq:CH-Three-15) and \@ref(eq:CH-Three-56) shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.
 
 `r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",3)`
 
-Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
+Validation results for the Three-State Model can be found in `r fb(gitbook="Chapter \\@ref(chap-dev-paper)", thesis="Chapter \\@ref(chap-dev-paper)", single="the main text")`.
 
-```{r IV-Three,echo=F}
-res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,F)
-res[[1]]
-```
+~~Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.(...)~~
 
-Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
-
-
-```{r EV-Three,echo=F}
-res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,T)
-res[[1]]
-```
+~~Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.(...)~~
 
 ### Five State Model
 

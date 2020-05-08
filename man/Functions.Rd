@@ -2,10 +2,10 @@
 % Please edit documentation in R/FunctionList.R
 \name{Functions}
 \alias{Functions}
-\alias{go}
+\alias{xx}
 \title{Functions exported}
 \usage{
-go(x = NULL)
+xx(x = "xxxx")
 }
 \description{
 All functions used in development of thesis

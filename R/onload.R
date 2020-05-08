@@ -8,4 +8,5 @@
     "magrittr")
   purrr::walk(pkgs,library,character.only=T)
   options(kableExtra.html.bsTable = T)
+  options(output.format = "gitbook")
 }

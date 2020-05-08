@@ -1,10 +1,11 @@
-Person,Username,Link,Email
-Matt Sperrin,MS_Supp,https://hypothes.is/users/MS_Supp,ujovhgngtxfdevwofb@ttirv.org
-Niels Peek,NP_Supp,https://hypothes.is/users/NP_Supp,vfz84771@eoopy.com
-Glen Martin,GM_Supp,https://hypothes.is/users/GM_Supp,kocir79038@govdep5012.com
-Mark Lambie,ML_Supp,https://hypothes.is/users/ML_Supp,castiel.arlin@uuluu.net
-Alex Pate,AP_MB,https://hypothes.is/users/AP_MB,jolav69979@homedepinst.com
-Dave Jenkins,DJ_MB,https://hypothes.is/users/DJ_MB,megex52929@lagsixtome.com
-Camilla Sammut-Powell,CSP_MB,https://hypothes.is/users/CSP_MB,avneet.alivya@uuluu.net
-Will Hulme,WH_MB,https://hypothes.is/users/WH_MB,libim54923@homedepinst.com
-External,Ext_MB,https://hypothes.is/users/Ext_MB,efnjxjrzkaxmowesnf@awdrt.net
+Person,Username,Link,Email,token
+Mike Barrowman,myko101,https://hypothes.is/users/myko101,myko101ab@gmail.com,6879-nAPHzIGsNYXQef9DhcAuw-9LZP7jIxQ6CAvdaDelp2I
+Matt Sperrin,MS_Supp,https://hypothes.is/users/MS_Supp,ujovhgngtxfdevwofb@ttirv.org,6879-hUSNb_b2pa-LJVBtkwbZEWaVKFibca4Xqs2z3C-SnbM
+Niels Peek,NP_Supp,https://hypothes.is/users/NP_Supp,vfz84771@eoopy.com,
+Glen Martin,GM_Supp,https://hypothes.is/users/GM_Supp,kocir79038@govdep5012.com,6879-nqBvsvPJeFsOd-2tzI68Gtr0hpLXQbophccaoVXD4vo
+Mark Lambie,ML_Supp,https://hypothes.is/users/ML_Supp,castiel.arlin@uuluu.net,
+Alex Pate,AP_MB,https://hypothes.is/users/AP_MB,jolav69979@homedepinst.com,
+Dave Jenkins,DJ_MB,https://hypothes.is/users/DJ_MB,megex52929@lagsixtome.com,
+Camilla Sammut-Powell,CSP_MB,https://hypothes.is/users/CSP_MB,avneet.alivya@uuluu.net,
+Will Hulme,WH_MB,https://hypothes.is/users/WH_MB,libim54923@homedepinst.com,
+External,Ext_MB,https://hypothes.is/users/Ext_MB,efnjxjrzkaxmowesnf@awdrt.net,

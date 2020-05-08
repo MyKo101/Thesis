@@ -16,6 +16,7 @@ output:
   bookdown::gitbook:
     includes:
       in_header: "hypothesis.html"
+      css: style.css  
     config:
       toc:
         collapse: section
@@ -81,6 +82,8 @@ Add Timeline
 Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The html version can be found [here](https://michaelbarrowman.co.uk/thesis).
   
 I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Annotated text can be seen highlighted and to add your own, just highlight the text you want to comment on, and the annotate bubble pops up (try it now). Make sure you click Post to Public after writing the annotation and annotations can include Rich Text and Markdown. You can view Annotations by clicking the menu on the right and this will show all comments.
+
+<mark>New note: Comments added to textual whitespace (e.g. spaces or equations), don't get targetted correctly. They appear in the system where they should be, but the whitespace doesn't get highlighted in the text, which makes it a bit harder to locate them and add in the edits (e.g. if you want me to add a bit more text to the end of a sentence). If you could, please highlight *some* text (even a full stop works).</mark>
 
 Google Docs was great, but when I started to use R Markdown for other purposes, I realised I could embed tables and equations much easier and automatically using `kable`. Google Docs on it's own became rather clunky (especially with tables, just like Word) and whenever I updated a document using R Markdown, any comments that were added to the document were lost. It was also difficult for you to remember *where* each document lived. Since R Markdown can also output to `LaTeX` I thought it would be easier to collate papers together. I'd have had to do this kind of transition over to`LaTeX` for my thesis eventually and this would have been difficult and tedious from Google Docs or Word.
   
@@ -834,7 +837,7 @@ Throughout this paper, we will use consistent notation which is shown here for r
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
 \chaptermark{Development and Validation of MSCPM}
-Last updated: 29 Apr
+Last updated: 08 May
 
 
 
@@ -846,7 +849,7 @@ Clinical Prediction Models (CPMs) provide individualised predictions for patient
 
 ### Methods {-}
 
-We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead). We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients. Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
+We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our <mark>external</mark> validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead). We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients. Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
 
 ### Results {-}
 
@@ -854,7 +857,7 @@ Of the three models produced, Age was a strong predictor of mortality in all cas
 
 ### Discusssion {-}
 
-Our CPMs provide clinicians and patients with multiple outcome predictions. This implies that users of these models can get more information about their potential future without a loss to the quality of that prediction.
+Our CPMs provide clinicians and patients with ~~multiple outcome predictions~~ <mark>multi-dimensional predictions across different outcome states and any time point</mark>. This implies that users of these models can get more information about their potential future without a loss to the quality of that prediction.
 
 ### Supplementary Material {-}
 
@@ -863,27 +866,27 @@ Our CPMs provide clinicians and patients with multiple outcome predictions. This
 
 ## Introduction
 
-A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical condition, more specifically, a prognostic model allows the prediction of future events [@steyerberg_prognosis_2013]. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models are used in clinical practice to influence treatment decisions such as the prescribing of statins for cardiovascular disease via the application of the QRISK models [@hippisley-cox_development_2017].
+A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical ~~condition~~<mark>event</mark>, more specifically, a prognostic model allows the prediction of future events [@steyerberg_prognosis_2013]. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models ~~are~~<mark>can be</mark> used in clinical practice to influence treatment decisions~~ such as the prescribing of statins for cardiovascular disease via the application of the QRISK models [@hippisley-cox_development_2017]~~.
 
 
-Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality [@johnson_predicting_2007; @landray_prediction_2010; @bansal_development_2015; @marks_looking_2015; @wick_clinical_2017], ESRD [@landray_prediction_2010], the commencements of RRT [@marks_looking_2015; @johnson_predicting_2008; @schroeder_predicting_2017; @kulkarni_transition_2017] or mortality after beginning dialysis [@floege_development_2015; @hemke_survival_2013; @cao_predicting_2015]. Some previous models have used the commencement of RRT as a proxy for ESRD [@tangri_predictive_2011; @roy_statistical_2017; @tangri_dynamic_2017], while others have investigated the occurrence of cardiovascular events within CKD patients[@shlipak_cardiovascular_2005; @weiner_framingham_2007; @mcmurray_predictors_2011]. Reviews by Grams & Coresh [@grams_assessing_2013], Tangri et al [@tangri_risk_2013] and Ramspek et al [@ramspek_prediction_2017], which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective [@collins_transparent_2015; @bouwmeester_reporting_2012-1]. 
+Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality [@johnson_predicting_2007; @landray_prediction_2010; @bansal_development_2015; @marks_looking_2015; @wick_clinical_2017], ~~ESRD~~<mark>End-Stage Renal Disease</mark> [@landray_prediction_2010], the commencements of <mark>Renal Replacement Therapy</mark> (RRT) [@marks_looking_2015; @johnson_predicting_2008; @schroeder_predicting_2017; @kulkarni_transition_2017] or mortality after beginning dialysis [@floege_development_2015; @hemke_survival_2013; @cao_predicting_2015]. Some previous models have used the commencement of RRT as a proxy for ~~ESRD~~<mark>CKD Stage V</mark> [@tangri_predictive_2011; @roy_statistical_2017; @tangri_dynamic_2017], while others have investigated the occurrence of cardiovascular events within CKD patients[@shlipak_cardiovascular_2005; @weiner_framingham_2007; @mcmurray_predictors_2011]. Reviews by Grams & Coresh [@grams_assessing_2013], Tangri et al [@tangri_risk_2013] and Ramspek et al [@ramspek_prediction_2017], which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective [@collins_transparent_2015; @bouwmeester_reporting_2012-1]. 
 
 
-Methodologically, the majority of existing CKD prediction models fail to account for completing events [@bansal_development_2015; @wick_clinical_2017; @perotte_risk_2015], have high risks of bias [@johnson_predicting_2007; @landray_prediction_2010; @johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015; @steyerberg_prognosis_2013]
+Methodologically, the majority of existing CKD prediction models fail to account for competing events [@bansal_development_2015; @wick_clinical_2017; @perotte_risk_2015], have high risks of bias [@johnson_predicting_2007; @landray_prediction_2010; @johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015; @steyerberg_prognosis_2013]
 
 
-In 2013, Begun et al [@begun_identification_2013] developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al [@allen_chronic_2014] applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies (CPRA) and kidney transplant and/or death. 
+In 2013, Begun et al [@begun_identification_2013] developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al [@allen_chronic_2014] applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies ~~(CPRA)~~ and kidney transplant and/or death. 
 
 Most recently, in 2018, Grams et al [@grams_predicting_2018] developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
 
 
-However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling [@altman_problems_1994-1;	@altman_dangers_1994-1;	@altman_cost_2006-1;	@bennette_against_2012-1;	@butts_chopped_2009-1;	@cumberland_ophthalmic_2014-1;	@dawson_dichotomizing_2012-1;	@dinero_seven_1996-1;	@irwin_negative_2003;	@kuss_danger_2013;	@metze_dichotomization_2008;	@naggara_analysis_2011;	@owen_why_2005;	@royston_dichotomizing_2006;	@schellingerhout_categorizing_2009;	@streiner_breaking_2002;	@van_walraven_leave_2008;	@vintzileos_anathema_2014;	@weinberg_how_1995]. These kinds of cut-offs can be useful when informing patients and clinicians of a patient's diagnosis and to coincide with policy, but inherently cause a loss of information when done before the data analysis stage and so these models go against current statistical recommendations [@altman_problems_1994-1;	@altman_dangers_1994-1;	@altman_cost_2006-1;	@bennette_against_2012-1;	@butts_chopped_2009-1;	@cumberland_ophthalmic_2014-1;	@dawson_dichotomizing_2012-1;	@dinero_seven_1996-1;	@irwin_negative_2003;	@kuss_danger_2013;	@metze_dichotomization_2008;	@naggara_analysis_2011;	@owen_why_2005;	@royston_dichotomizing_2006;	@schellingerhout_categorizing_2009;	@streiner_breaking_2002;	@van_walraven_leave_2008;	@vintzileos_anathema_2014;	@weinberg_how_1995]. These kinds of assumptions are also subject to measurement error [@van_smeden_reflection_2019] and interval censoring [@sun_interval_2005], i.e. we do not know when exactly when a patient moved from CKD Stage III to CKD Stage IV, or whether drop in estimated Glomerular Function Rate (eGFR) was temporary or inaccurate. For example, Kulkarni [@kulkarni_transition_2017] assumes that a patient with an CPRA of (5%) is the same as a patient with an CPRA of (75%) and that a patient with an CPRA of (89.9%) is vastly different from a patient with an CPRA of (90%). Moreover, none of these models have undergone any validation process, whether internal or external [@altman_prognosis_2009].
+However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling [@royston_dichotomizing_2006] ~~[@altman_problems_1994-1;	@altman_dangers_1994-1;	@altman_cost_2006-1;	@bennette_against_2012-1;	@butts_chopped_2009-1;	@cumberland_ophthalmic_2014-1;	@dawson_dichotomizing_2012-1;	@dinero_seven_1996-1;	@irwin_negative_2003;	@kuss_danger_2013;	@metze_dichotomization_2008;	@naggara_analysis_2011;	@owen_why_2005;	@royston_dichotomizing_2006;	@schellingerhout_categorizing_2009;	@streiner_breaking_2002;	@van_walraven_leave_2008;	@vintzileos_anathema_2014;	@weinberg_how_1995]. These kinds of cut-offs can be useful when informing patients and clinicians of a patient's diagnosis and to coincide with policy, but inherently cause a loss of information when done before the data analysis stage and so these models go against current statistical recommendations [@altman_problems_1994-1;	@altman_dangers_1994-1;	@altman_cost_2006-1;	@bennette_against_2012-1;	@butts_chopped_2009-1;	@cumberland_ophthalmic_2014-1;	@dawson_dichotomizing_2012-1;	@dinero_seven_1996-1;	@irwin_negative_2003;	@kuss_danger_2013;	@metze_dichotomization_2008;	@naggara_analysis_2011;	@owen_why_2005;	@royston_dichotomizing_2006;	@schellingerhout_categorizing_2009;	@streiner_breaking_2002;	@van_walraven_leave_2008;	@vintzileos_anathema_2014;	@weinberg_how_1995]. These kinds of assumptions are also subject to measurement error [@van_smeden_reflection_2019] and interval censoring [@sun_interval_2005], i.e. we do not know when exactly when a patient moved from CKD Stage III to CKD Stage IV, or whether drop in estimated Glomerular Function Rate (eGFR) was temporary or inaccurate. For example, Kulkarni [@kulkarni_transition_2017] assumes that a patient with an CPRA of (5%) is the same as a patient with an CPRA of (75%) and that a patient with an CPRA of (89.9%) is vastly different from a patient with an CPRA of (90%). Moreover,~~<mark>and</mark> none of these models have undergone any validation process, whether internal or external [@altman_prognosis_2009].
 
 It is also important to note that although these models can be used to predict patient outcomes, they were not designed to produce individualised patient predictions as is a key aspect of a clinical prediction model; they were designed to assess the methodological advantages of MSMs in this medical field, to describe the prevalence of  over time of different CKD stages and to produce population level predictions for patients with different levels of  panel-reactive antibodies [@royston_prognosis_2009].
 
-The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is a pair of multinomial logistic models analysed at 2 and 4 years. The major downside of this model is that it can only produce predictions at those predefined time points and it assumes homogeneity of transition times. For example, the first model assumes that a patient who began RRT 1 month after study entry is the same as one who began after 1 year & 11 months into the study and then the second model assumes these patients are the same as one who begins RRT at 3 years and 11 months.
+The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is ~~a pair of~~<mark>two</mark> multinomial logistic models analysed at 2 and 4 years<mark>, which assumes homogeneity of transition times</mark>. ~~The major downside of this model is that it can only produce predictions at those predefined time points and it assumes homogeneity of transition times~~<mark>Two downsides to the implementation of this model are that it can only produce predictions at those predefined time points and that it is unable to estimate duration of time on dialysis.</mark>~~For example, the first model assumes that a patient who began RRT 1 month after study entry is the same as one who began after 1 year & 11 months into the study and then the second model assumes these patients are the same as one who begins RRT at 3 years and 11 months.~~
 
-Therefore, the aim of this study was to improve on previous efforts to model a patient's pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a drastic difference in patient characteristics. Our modeling techniques allow for individual predictions (using a proportional hazards model) of multiple outcomes (using MSMs) at any time point (using cubic splines). The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the (statistically robust) clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models [@collins_transparent_2015; @moons_transparent_2015].
+Therefore, ~~the aim of this study was to improve on previous efforts to model a~~<mark>our aim is to develop a CPM - we do this by modelling</mark> patient~~'s~~ pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a ~~drastic~~<mark>clinical</mark> difference in patient characteristics. Our modeling techniques allow for individual predictions ~~(using a proportional hazards model)~~ of multiple outcomes ~~(using MSMs)~~ at any time point ~~(using cubic splines)~~. The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the ~~(statistically robust)~~ clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models [@collins_transparent_2015; @moons_transparent_2015].
 
 ## Methods
 
@@ -892,13 +895,12 @@ Therefore, the aim of this study was to improve on previous efforts to model a p
 The models were developed using data from the Salford Kidney Study (SKS) cohort of patients (previously named the CRISIS cohort), established in the Department of Renal Medicine, Salford Royal NHS Foundation Trust (SRFT). The SKS is a large longitudinal CKD cohort recruiting CKD patients since 2002. This cohort collects detailed annualised phenotypic and laboratory data, and plasma, serum and whole blood stored at -80\textdegree C for biomarker and genotypic analyses. Recruitment of patients into SKS has been described in multiple previous studies [@hoefield_factors_2010;
 @chinnadurai_increased_2019-1] and these have included a CKD progression prognostic factor study and to evidence the increased risk of cardiovascular events in diabetic kidney patients. In brief, any patient referred to Salford renal service (catchment population 1.5 million) who is 18 years or over and has an eGFR measurement of less than $60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$ (calculated using the CKD-EPI formula [@levey_new_2009]) was approached to be consented for the study participation.
 
-At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford's Integrated Record (SIR) [@new_obtaining_2014]. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient's time within the cohort. 
+At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford's Integrated Record ~~(SIR)~~ [@new_obtaining_2014]. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient's time within the cohort. 
 
-Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient's start date for our model as their first date after consent at which their eGFR was recorded to be below $60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$. Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD ($\textrm{eGFR} \lessapprox 60$) *and* those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient at any time during their CKD journey.
+Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient's start date for our model as their first date after consent at which their eGFR was recorded to be below $60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$. Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD ($\textrm{eGFR} \lessapprox 60$) *and* those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient at any time during their CKD journey <mark>prior to commencement of RRT</mark>.
 
-This allows for a wider range of baseline eGFR measurements and patients who have been suffering from CKD, translating to a model which can be applied to 
+All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was ~~also available within SIR and so~~ also included in the SKS database.
 
-All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was also available within SIR and so also included in the SKS database.
 
 For external validation of the model, we extracted an independent cohort from the West of Scotland Electronic Renal Patient Record (SERPR). Our extract of SERPR contains all patients known to the Glasgow and Forth Valley renal service who had an eGFR measure of less than $60\textrm{ml}/\textrm{min}/1.73m^2$ between January 2006 and January 2016. This cohort has been previously used in Chronic Kidney Disease Prognosis consortium studies investigating outcomes in patients with CKD [@matsushita_cohort_2013] and a similar cohort has been used for the analysis of skin tumours amongst renal transplant patients. Use of anonymised data from this database has been approved by the West of Scotland Ethics Committee for use of NHS Greater Glasgow and Clyde 'Safe Haven' data for research.
 
@@ -913,7 +915,6 @@ The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Ra
 
 ### Model Design
 
-
 Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
 
 \begin{figure}
@@ -925,11 +926,19 @@ Three separate models were developed, so we could determine a clinically viable 
 \caption{Diagram of the three models, the states being modelled and relevant transitions}(\#fig:State-Diagram)
 \end{figure}
 
-The models were developed and validated as discussed in the Supplementary materials in appendix \@ref(chap-dev-paper-supp).
+<mark>Missing data was handled using multiple imputation [@white_imputing_2009] using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). From these variables, uPCR and eGFR Rate of change were also derived [@kovesdy_past_2016; @naimark_past_2016] as well as their log transforms and log(Age) and Age$^2$.</mark>
+
+### Validation
+
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m\textsuperscript{2}.
+
+Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \@ref(chap-performance-metrics).
+
+Further details of how ~~T~~<mark>t</mark>he models were developed and validated is discussed in the Supplementary materials in appendix \@ref(chap-dev-paper-supp).
 
 ### Example
 
-Once the models have been developed, we will apply them to two example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.
+Once the models have been developed, we will apply them to ~~two~~<mark>three</mark> example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.
 
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \@ref(tab:Example-Patient).
 
@@ -968,16 +977,18 @@ Out three example patients cover a broad range of ages and other covariates. A c
 
 ### Calculator
 
-As part of this work, we also intend to produce an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
+As part of this work, we <mark>have</mark> also ~~intend to~~ produce<mark>d</mark> an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
 
 All analysis was done in `R 3.6.2` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], as well as the `mice` [@buuren_mice_2011-1], `flexsurv` [@jackson_flexsurv_nodate], `nnet` [@ripley_package_2016] and `furrr` [@vaughan_furrr_2018] packages. The calculator was produced using the `shiny` package [@chang_shiny_2020].
 
 ## Results
 
-### Data Sources
+### Data Sources (Separate Tables)
+<mark>Glen commented about combining the below tables into a single one. I'm still not sure the best way to do this (aesthetically). I've kept the old version of this section and added a copy of it below where I've re-written some bits to point to the right table.</mark>
 
-As seen in table \@ref(tab:Continuous-Demo), The Age of both populations were centred around 64-65 with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
+As seen in table \@ref(tab:Continuous-Demo), the Age of <mark>the</mark>~~both~~ populations ~~were centred around 64-65~~<mark>had a mean of 64.4  and 65.9 respectively</mark> with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
 
+<!-- Combine the "table ones" into a single table -->
 
 <br>
 
@@ -1116,6 +1127,300 @@ Transition & SKS (Development) & SERPR (Validation)\\
 \bottomrule
 \end{tabular}
 \end{table}
+<!-- Inclue shortened development and validation section here -->
+
+### Data Sources (Single Table draft)
+
+As seen in table \@ref(tab:Table-One), the Age of <mark>the</mark>~~both~~ populations ~~were centred around 64-65~~<mark>had a mean of 64.4  and 65.9 respectively</mark> with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . ~~Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17).~~ The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. ~~Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0).~~ Levels of missingness were much higher in the SERPR dataset in most continuous variables.
+
+
+<br>
+
+\newgeometry{margin=2cm}
+\begin{landscape}\begin{table}
+
+\caption{(\#tab:Table-One){\small Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedleft\arraybackslash}p{33em}>{\ttfamily\raggedleft\arraybackslash}p{36em}}
+\toprule
+  & SKS (Development) & SERPR (Validation)\\
+\midrule
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Age}}\\
+\hspace{1em}Age & 64.378 (19.000) [ 20.000,  94.000] <    0 ( 0.00\%)> & 65.880 (17.000) [    18.000,    98.000] <    0 ( 0.00\%)>\\
+\addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{eGFR}}\\
+\hspace{1em}eGFR\textsuperscript{a} & 30.368 (22.386) [  3.577,  59.965] <    0 ( 0.00\%)> & 36.132 (21.444) [     1.651,    59.998] <    0 ( 0.00\%)>\\
+\rowcolor{gray!6}  \hspace{1em}eGFR Rate\textsuperscript{a} & -0.015 ( 0.293) [-19.107,  33.781] <1,278 (42.87\%)> & -25.476 (44.229) [-8,755.272, 9,260.375] <    0 ( 0.00\%)>\\
+\addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{uPCR}}\\
+\hspace{1em}uPCR\textsuperscript{f} & 0.112 ( 0.103) [  0.000,   2.025] <  245 ( 8.21\%)> & 0.184 ( 0.147) [     0.000,     6.390] <7,513 (96.76\%)>\\
+\rowcolor{gray!6}  \hspace{1em}uPCR Rate\textsuperscript{f} & -0.096 ( 0.188) [-70.727,  28.198] <1,777 (59.61\%)> & 73.177 ( 0.384) [    -2.255, 3,051.403] <7,721 (99.44\%)>\\
+\addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Measures}}\\
+\hspace{1em}SBP\textsuperscript{b} & 140.193 (29.000) [ 77.000, 220.000] <   50 ( 1.67\%)> & 147.746 (33.000) [    82.000,   258.000] <6,880 (88.61\%)>\\
+\rowcolor{gray!6}  \hspace{1em}DBP\textsuperscript{b} & 74.555 (14.000) [ 36.000, 159.000] <   52 ( 1.74\%)> & 76.263 (18.000) [    35.000,   128.000] <6,879 (88.60\%)>\\
+\hspace{1em}BMI\textsuperscript{c} & 28.848 ( 7.842) [ 13.182,  61.466] <  572 (19.18\%)> & 29.331 ( 7.851) [    15.343,    48.301] <7,681 (98.93\%)>\\
+\rowcolor{gray!6}  \hspace{1em}Albumin\textsuperscript{d} & 42.152 ( 5.000) [ 12.000,  52.000] <   60 ( 2.01\%)> & 36.490 ( 6.000) [     7.000,    53.000] <3,455 (44.50\%)>\\
+\hspace{1em}Corrected Calcium\textsuperscript{e} & 2.302 ( 0.180) [  1.209,   3.660] <   68 ( 2.28\%)> & 2.408 ( 0.160) [     1.419,     3.610] <5,113 (65.85\%)>\\
+\rowcolor{gray!6}  \hspace{1em}Haemoglobin\textsuperscript{d} & 122.977 (23.000) [ 61.000, 195.000] <   72 ( 2.41\%)> & 108.588 (30.000) [     6.250,   208.000] <3,968 (51.10\%)>\\
+\hspace{1em}Phosphate\textsuperscript{e} & 1.162 ( 0.320) [  0.430,   3.710] <   87 ( 2.91\%)> & 1.203 ( 0.320) [     0.370,     4.370] <5,127 (66.03\%)>\\
+\bottomrule
+\multicolumn{3}{l}{\textsuperscript{a} (ml/min/1.73m\textasciicircum{}2) or per year \textsuperscript{b} (mmHG) \textsuperscript{c} (kg/m\textasciicircum{}2) \textsuperscript{d} (g/l) \textsuperscript{e} (mmol/l) \textsuperscript{f} (g/mmol) or per year}\\
+\end{tabular}
+\end{table}
+\end{landscape}
+\restoregeometry
+
+\begin{table}[!h]
+
+\caption{(\#tab:Table-One){\small Population demographics for the categorical variables presented as number (percent)}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\toprule
+  & SKS (Development) & SERPR (Validation)\\
+\midrule
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Gender}}\\
+\hspace{1em}Male & 1,865 (62.56 \%) & 3,915 (50.42 \%)\\
+\hspace{1em}Female & 1,116 (37.43 \%) & 3,849 (49.57 \%)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Ethnicity}}\\
+\hspace{1em}White & 2,875 (96.44 \%) & 683 ( 8.79 \%)\\
+\hspace{1em}Asian & 75 ( 2.51 \%) & 12 ( 0.15 \%)\\
+\rowcolor{gray!6}  \hspace{1em}Black & 21 ( 0.70 \%) & 7 ( 0.09 \%)\\
+\hspace{1em}Other & 10 ( 0.33 \%) & 2 ( 0.02 \%)\\
+\rowcolor{gray!6}  \hspace{1em}<Ethnicity Missing> & 0 ( 0.00 \%) & 7,060 (90.93 \%)\\
+\addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Smoking Status}}\\
+\hspace{1em}Former & 1,535 (51.49 \%) & \\
+\rowcolor{gray!6}  \hspace{1em}Non-Smoker & 979 (32.84 \%) & \\
+\hspace{1em}Smoker & 379 (12.71 \%) & \\
+\rowcolor{gray!6}  \hspace{1em}Former 3Y & 46 ( 1.54 \%) & \\
+\hspace{1em}<Smoking Status Missing> & 42 ( 1.40 \%) & \\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Primary Renal Diagnosis}}\\
+\hspace{1em}Systemic diseases affecting the kidney & 1,304 (43.74 \%) & 299 ( 3.85 \%)\\
+\hspace{1em}Glomerular disease & 442 (14.82 \%) & 225 ( 2.89 \%)\\
+\rowcolor{gray!6}  \hspace{1em}Tubulointerstitial disease & 268 ( 8.99 \%) & 164 ( 2.11 \%)\\
+\hspace{1em}Miscellaneous renal disorders & 227 ( 7.61 \%) & 188 ( 2.42 \%)\\
+\rowcolor{gray!6}  \hspace{1em}Familial / hereditary nephropathies & 173 ( 5.80 \%) & 102 ( 1.31 \%)\\
+\hspace{1em}<Renal Diagnosis Missing> & 567 (19.02 \%) & 6,786 (87.40 \%)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+
+\caption{(\#tab:Table-One){\small Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\toprule
+  & SKS (Development) & SERPR (Validation)\\
+\midrule
+\rowcolor{gray!6}  Diabetes (DM) & 992 (33.32\%) <  4 (0.13\%)> & 1,546 (19.91\%) <    0 ( 0.00\%)>\\
+Congestive Cardiac Failure (CCF) & 2,414 (81.08\%) <  4 (0.13\%)> & 406 ( 5.22\%) <    0 ( 0.00\%)>\\
+\rowcolor{gray!6}  Prior Myocardial Infarction (MI) & 2,492 (83.70\%) <  4 (0.13\%)> & 556 ( 7.16\%) <    0 ( 0.00\%)>\\
+Ischemic Heart Disease (IHD) & 2,393 (80.38\%) <  4 (0.13\%)> & 867 (11.16\%) <    0 ( 0.00\%)>\\
+\rowcolor{gray!6}  Peripheral Vascular Disease (PVD) & 2,485 (83.47\%) <  4 (0.13\%)> & 376 ( 4.84\%) <    0 ( 0.00\%)>\\
+\addlinespace
+Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) <  4 (0.13\%)> & 184 ( 2.36\%) <    0 ( 0.00\%)>\\
+\rowcolor{gray!6}  Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.98\%) <  4 (0.13\%)> & \\
+Chronic Liver Disease (LD) & 2,891 (97.11\%) <  4 (0.13\%)> & \\
+\rowcolor{gray!6}  Solid Tumour (ST) & 2,570 (86.32\%) <  4 (0.13\%)> & \\
+Hypertension (HT) & 2,546 (91.48\%) <198 (6.64\%)> & 3,122 (40.21\%) <    0 ( 0.00\%)>\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+Table \@ref(tab:Table-One) also shows a breakdown of the categorical variables across the populations. In the development population, ~~there are farmore males than females~~<mark>crude proportions of males were numerically higher than females</mark> whereas in the validation population the proportions are much more matched<mark>(62.6% male vs 50.4% male)</mark>. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. ~~The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).~~
+
+Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.~~, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546)  and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.~~
+
+
+The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median2).
+
+\begin{table}[!h]
+
+\caption{(\#tab:Event-Median2){\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\toprule
+Transition & SKS (Development) & SERPR (Validation)\\
+\midrule
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Two}}\\
+\hspace{1em}Alive to Dead & 1,427 ~ 3.9 y (4.3 y) [15.0 y] & 3,025 ~ 4.9 y (3.3 y) [10.1 y]\\
+\addlinespace[0.3em]
+\multicolumn{3}{l}{\textbf{Three}}\\
+\hspace{1em}CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
+\rowcolor{gray!6}  \hspace{1em}CKD to RRT & 680 ~ 2.5 y (3.3 y) [14.1 y] & 1,130 ~ 3.8 y (3.8 y) [10.1 y]\\
+\hspace{1em}RRT to Dead & 302 ~ 2.2 y (3.2 y) [13.5 y] & 446 ~ 1.5 y (2.4 y) [ 9.1 y]\\
+\rowcolor{gray!6}  CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
+\hspace{1em}CKD to HD & 344 ~ 2.5 y (3.5 y) [14.1 y] & 887 ~ 3.8 y (3.7 y) [10.1 y]\\
+\rowcolor{gray!6}  \hspace{1em}CKD to PD & 229 ~ 2.0 y (2.9 y) [12.9 y] & 149 ~ 3.5 y (4.1 y) [ 9.6 y]\\
+\hspace{1em}CKD to Tx & 107 ~ 3.2 y (2.7 y) [12.1 y] & 94 ~ 4.8 y (4.5 y) [ 9.7 y]\\
+\rowcolor{gray!6}  \hspace{1em}HD to Dead & 185 ~ 2.0 y (3.2 y) [11.8 y] & 398 ~ 1.5 y (2.5 y) [ 9.1 y]\\
+\hspace{1em}PD to Dead & 107 ~ 2.3 y (3.2 y) [11.7 y] & 47 ~ 2.1 y (2.3 y) [ 8.5 y]\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+### Development
+
+Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix \@ref(chap-dev-paper-supp). Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
+
+\begin{table}[!h]
+
+\caption{(\#tab:PH-Three){\small Proportional Hazards for each transition in the Three-State Model}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
+\toprule
+  & CKD to Dead & CKD to RRT & RRT to Dead\\
+\midrule
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Age}}\\
+\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.041 (  -0.051,  -0.031) & 0.063 (   0.050,   0.076)\\
+\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.000,  -0.000) & \\
+\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  & \\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{eGFR}}\\
+\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.095 (  -0.108,  -0.082) & 0.011 (  -0.001,   0.025)\\
+\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.363,   0.250)\\
+\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) &  & 0.227 (  -0.770,   1.225)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{uPCR}}\\
+\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.112,   1.288) & -0.108 (  -0.736,   0.519)\\
+\hspace{1em}uPCR Rate &  & -0.019 (  -0.045,   0.005) & 0.036 (  -0.062,   0.136)\\
+\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.310,   0.747) & -0.198 (  -0.534,   0.137)\\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Measures}}\\
+\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.005 (  -0.000,   0.011) & \\
+\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.006 (  -0.001,   0.015) & \\
+\hspace{1em}BMI &  &  & \\
+\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.032 (  -0.059,  -0.004) & -0.044 (  -0.079,  -0.009)\\
+\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) & -0.515 (  -1.207,   0.177) & \\
+\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.005 (  -0.012,   0.001) & -0.005 (  -0.014,   0.003)\\
+\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.869 (  -0.059,   1.799) & \\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Gender}}\\
+\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.277 (  -0.455,  -0.099) & \\
+\addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Smoking Status}}\\
+\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.133 (  -0.757,   0.490) & -0.282 (  -1.082,   0.518)\\
+\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.039) & -0.294 (  -0.598,   0.009)\\
+\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.175 (  -0.076,   0.428) & 0.387 (   0.068,   0.706)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
+\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 1.029 (   0.720,   1.338) & -0.562 (  -1.084,  -0.040)\\
+\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.165 (  -0.465,   0.134) & -0.488 (  -0.883,  -0.094)\\
+\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.553,   0.620)\\
+\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.265 (  -0.577,   0.046) & -0.310 (  -0.803,   0.181)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{4}{l}{\textbf{Comorbidity}}\\
+\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.141 (  -0.074,   0.358) & 0.200 (  -0.096,   0.496)\\
+\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) &  & -0.299 (  -0.597,  -0.002)\\
+\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) & 0.234 (  -0.061,   0.530) & 0.186 (  -0.199,   0.572)\\
+\hspace{1em}IHD & 0.102 (  -0.041,   0.245) & -0.077 (  -0.334,   0.179) & -0.097 (  -0.424,   0.228)\\
+\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) & -0.168 (  -0.405,   0.068) & -0.183 (  -0.492,   0.126)\\
+\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  & -0.168 (  -0.577,   0.240)\\
+\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & \\
+\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.316 (  -0.731,   0.097) & -0.270 (  -0.858,   0.318)\\
+\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.611,   0.055)\\
+\hspace{1em}HT &  & 0.274 (  -0.176,   0.726) & -0.416 (  -1.104,   0.271)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
+
+### Validation
+
+Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
+
+\begin{table}[!h]
+
+\caption{(\#tab:IV-Three){\small Internal Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\toprule
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
+\midrule
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Three & < 60 & 0.74 ( 0.74,  0.75) & 0.68 ( 0.68,  0.69) & 0.64 ( 0.64,  0.65) & 0.67 ( 0.67,  0.68)\\
+\hspace{1em}Three & < 30 & 0.75 ( 0.74,  0.75) & 0.73 ( 0.73,  0.73) & 0.68 ( 0.67,  0.68) & 0.68 ( 0.67,  0.68)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.75 ( 0.75,  0.75) & 0.75 ( 0.75,  0.76) & 0.67 ( 0.67,  0.67) & 0.67 ( 0.67,  0.68)\\
+\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.72 ( 0.72,  0.73) & 0.65 ( 0.65,  0.66) & 0.67 ( 0.67,  0.68)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
+\hspace{1em}Three & < 30 & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.86) & 0.83 ( 0.83,  0.84) & 0.83 ( 0.83,  0.84)\\
+\hspace{1em}Two & < 30 & 0.86 ( 0.85,  0.86) & 0.86 ( 0.85,  0.86) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.83,  0.84)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
+\hspace{1em}Three & < 30 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)\\  0.03 ( 0.02,  0.03)} & \makecell[r]{-0.02 (-0.02, -0.01)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.00 (-0.01, -0.00) & 0.02 ( 0.01,  0.02) & 0.00 (-0.00,  0.00) & -0.00 (-0.00,  0.00)\\
+\hspace{1em}Two & < 30 & -0.00 (-0.00,  0.00) & -0.04 (-0.04, -0.04) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.25},  0.00,  0.04\\ -0.03,  \emph{1.10}, -0.00\\ -0.00,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.17}, -0.06,  0.01\\  0.03,  \emph{1.25}, -0.01\\ -0.01,  0.01,  \emph{1.37}} & \makecell[r]{\emph{1.21}, -0.02, -0.01\\  0.01,  \emph{1.44}, -0.04\\ -0.02,  0.02,  \emph{1.27}} & \makecell[r]{\emph{1.32}, -0.01,  0.00\\ -0.00,  \emph{1.37}, -0.01\\ -0.00,  0.00,  \emph{1.33}}\\
+\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21},  0.02,  0.07\\ -0.04,  \emph{1.24},  0.07\\  0.01,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.36}, -0.00, -0.01\\  0.00,  \emph{1.31},  0.03\\ -0.02, -0.00,  \emph{1.26}} & \makecell[r]{\emph{1.35}, -0.04, -0.01\\  0.04,  \emph{1.33},  0.04\\  0.04, -0.02,  \emph{1.34}} & \makecell[r]{\emph{1.31},  0.00,  0.00\\ -0.01,  \emph{1.33},  0.01\\ -0.00,  0.00,  \emph{1.35}}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.28} & \emph{1.27} & \emph{1.31}\\
+\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.21} & \emph{1.21} & \emph{1.34}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
+
+
+\begin{table}[!h]
+
+\caption{(\#tab:EV-Three){\small External Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
+\centering
+\fontsize{7}{9}\selectfont
+\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
+\toprule
+Predicting & eGFR & One Year & Two Year & Five Year & Average\\
+\midrule
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Brier}}\\
+\hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.70 ( 0.69,  0.70) & 0.61 ( 0.60,  0.61) & 0.62 ( 0.62,  0.63)\\
+\hspace{1em}Three & < 30 & 0.68 ( 0.67,  0.68) & 0.72 ( 0.71,  0.72) & 0.65 ( 0.64,  0.65) & 0.63 ( 0.62,  0.63)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.67 ( 0.67,  0.67) & 0.70 ( 0.69,  0.70) & 0.63 ( 0.63,  0.63) & 0.62 ( 0.62,  0.63)\\
+\hspace{1em}Two & < 30 & 0.66 ( 0.66,  0.67) & 0.70 ( 0.70,  0.70) & 0.65 ( 0.65,  0.66) & 0.63 ( 0.62,  0.63)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{c-statistic}}\\
+\hspace{1em}Three & < 60 & 0.82 ( 0.82,  0.82) & 0.83 ( 0.83,  0.83) & 0.79 ( 0.79,  0.79) & 0.81 ( 0.80,  0.81)\\
+\hspace{1em}Three & < 30 & 0.85 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.83) & 0.81 ( 0.81,  0.81)\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.85 ( 0.85,  0.86) & 0.84 ( 0.84,  0.85) & 0.80 ( 0.80,  0.80) & 0.81 ( 0.80,  0.81)\\
+\hspace{1em}Two & < 30 & 0.83 ( 0.83,  0.83) & 0.82 ( 0.82,  0.82) & 0.80 ( 0.80,  0.81) & 0.81 ( 0.81,  0.81)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Intercept}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.05 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
+\hspace{1em}Three & < 30 & \makecell[r]{0.04 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.00 (-0.00,  0.00)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 (-0.00,  0.00) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
+\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.01 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
+\rowcolor{gray!6}  \addlinespace[0.3em]
+\multicolumn{6}{l}{\textbf{Slope}}\\
+\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.35}, -0.04,  0.04\\  0.06,  \emph{1.49}, -0.03\\  0.01,  0.00,  \emph{1.25}} & \makecell[r]{\emph{1.13}, -0.00,  0.08\\ -0.02,  \emph{1.31},  0.01\\ -0.03,  0.01,  \emph{1.39}} & \makecell[r]{\emph{1.45}, -0.02,  0.03\\  0.03,  \emph{1.73},  0.03\\  0.04, -0.00,  \emph{1.47}} & \makecell[r]{\emph{1.54},  0.00, -0.00\\  0.01,  \emph{1.52},  0.00\\ -0.00,  0.00,  \emph{1.54}}\\
+\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.23},  0.03,  0.00\\ -0.05,  \emph{1.20}, -0.04\\ -0.00, -0.00,  \emph{1.37}} & \makecell[r]{\emph{0.99}, -0.01, -0.00\\  0.04,  \emph{1.34}, -0.03\\  0.00,  0.01,  \emph{1.46}} & \makecell[r]{\emph{1.56},  0.00,  0.00\\ -0.05,  \emph{1.49},  0.03\\  0.03,  0.01,  \emph{1.63}} & \makecell[r]{\emph{1.62}, -0.01,  0.01\\ -0.00,  \emph{1.53},  0.01\\  0.00, -0.00,  \emph{1.58}}\\
+\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.28} & \emph{1.26} & \emph{1.64} & \emph{1.51}\\
+\hspace{1em}Two & < 30 & \emph{1.18} & \emph{1.25} & \emph{1.57} & \emph{1.59}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 ### Example
@@ -1143,7 +1448,7 @@ We have used data provided by SKS to develop a Multi-State Clinical Prediction M
 
 Models performed well in model validation with the Three-State Model slightly out performing the other two models in calibration and overall predictive ability, however the Five-State model performed marginally better in terms of discriminative ability. Both Multi-State Models outperformed the Two-State (Traditional) Model.
 
-The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of multiple outcomes at a wide range of time points. The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
+The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of ~~multiple~~<mark>different</mark> outcomes at a wide range of time points. <mark>The model can also be used to estimate an expected amount of time that a patient will be on RRT</mark> The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
 
 Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients from a wider catchment area, making the cohort of patients in the development population in worse condition than the general population of CKD patients. 
 
@@ -1153,9 +1458,9 @@ In the Five-State Model, We omitted the analysis of the Tx to Dead state due to 
 
 We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, (however this is a much weaker assumption [@royston_flexible_2002]), which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable. 
 
-Compared to the raw internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.
+Compared to the ~~raw~~<mark>apparent</mark> internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.
 
-Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expedite or delay transition of a patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarding *which* treatment might be benficial for a patient.
+~~Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expedite or delay transition of a patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarding *which* treatment might be benficial for a patient.~~
 
 Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice [@moons_prognosis_2009-1] by comparing it to standard care and establishing whether the use of our model improves patient outcomes.
 
@@ -1238,9 +1543,9 @@ Brief discussion, much briefer than the main points.
 
 ### Development
 
-Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). Ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
+Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates). ~~Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]).~~ As well as those included in \@ref(chap-dev-paper), ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models. 
 
-uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]  as the difference between the two most recent measures divided by time difference in years. $\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model. log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences [@bhatnagar_epidemiology_2015]. Calendar Time was defined as length of time between start date and  1st January 2019.
+~~uPCR and eGFR Rate of change were also calculated [@kovesdy_past_2016; @naimark_past_2016]~~<mark>Rates of change were calculated</mark> as the difference between the two most recent measures divided by time difference in years. ~~$\textrm{Age}^2$, log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model.~~ log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences [@bhatnagar_epidemiology_2015]. Calendar Time was defined as length of time between start date and  1st January 2019.
 
 Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified [@meira-machado_multi-state_2009]. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique [@royston_flexible_2002] to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time [@putter_tutorial_2007].
 
@@ -1248,9 +1553,11 @@ For variable selection, we stacked the imputed datasets together to create a lar
 
 All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors [@white_imputing_2009]. Some variables (smoking status and histories of COPD, LD and ST)  were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset [@janssen_dealing_2009].
 
+
+
 ### Validation
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m\textsuperscript{2}.
+~~Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR[@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m\textsuperscript{2}.~~
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
 
@@ -1264,13 +1571,6 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 
 ## Model Results
 
-
-
-
-
-
-
-
 ### Two State Model
 
 
@@ -1281,7 +1581,7 @@ Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions
 \caption{(\#tab:PH-Two){\small Proportional Hazards for each transition in the Two-State Model}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{54em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
 \toprule
   & Alive to Dead\\
 \midrule
@@ -1411,77 +1711,10 @@ Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 
 ### Three State Model
 
-In the Three-State Model, older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
+~~In the Three-State Model, older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).(...)~~
 
 
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{(\#tab:PH-Three){\small Proportional Hazards for each transition in the Three-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{54em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to RRT & RRT to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.041 (  -0.051,  -0.031) & 0.063 (   0.050,   0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.000,  -0.000) & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.095 (  -0.108,  -0.082) & 0.011 (  -0.001,   0.025)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.363,   0.250)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) &  & 0.227 (  -0.770,   1.225)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.112,   1.288) & -0.108 (  -0.736,   0.519)\\
-\hspace{1em}uPCR Rate &  & -0.019 (  -0.045,   0.005) & 0.036 (  -0.062,   0.136)\\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.310,   0.747) & -0.198 (  -0.534,   0.137)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.005 (  -0.000,   0.011) & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.006 (  -0.001,   0.015) & \\
-\hspace{1em}BMI &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.032 (  -0.059,  -0.004) & -0.044 (  -0.079,  -0.009)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) & -0.515 (  -1.207,   0.177) & \\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.005 (  -0.012,   0.001) & -0.005 (  -0.014,   0.003)\\
-\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.869 (  -0.059,   1.799) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.277 (  -0.455,  -0.099) & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.133 (  -0.757,   0.490) & -0.282 (  -1.082,   0.518)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.039) & -0.294 (  -0.598,   0.009)\\
-\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.175 (  -0.076,   0.428) & 0.387 (   0.068,   0.706)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 1.029 (   0.720,   1.338) & -0.562 (  -1.084,  -0.040)\\
-\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.165 (  -0.465,   0.134) & -0.488 (  -0.883,  -0.094)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.553,   0.620)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.265 (  -0.577,   0.046) & -0.310 (  -0.803,   0.181)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.141 (  -0.074,   0.358) & 0.200 (  -0.096,   0.496)\\
-\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) &  & -0.299 (  -0.597,  -0.002)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) & 0.234 (  -0.061,   0.530) & 0.186 (  -0.199,   0.572)\\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.245) & -0.077 (  -0.334,   0.179) & -0.097 (  -0.424,   0.228)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) & -0.168 (  -0.405,   0.068) & -0.183 (  -0.492,   0.126)\\
-\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  & -0.168 (  -0.577,   0.240)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & \\
-\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.316 (  -0.731,   0.097) & -0.270 (  -0.858,   0.318)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.611,   0.055)\\
-\hspace{1em}HT &  & 0.274 (  -0.176,   0.726) & -0.416 (  -1.104,   0.271)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry
-
-
-Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
+~~Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.~~
 
 The equations \@ref(eq:CH-Three-16), \@ref(eq:CH-Three-15) and \@ref(eq:CH-Three-56) shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.
 
@@ -1495,84 +1728,11 @@ The equations \@ref(eq:CH-Three-16), \@ref(eq:CH-Three-15) and \@ref(eq:CH-Three
 \Lambda_{0,56}(t)=\begin{cases} 1.35522\log(t)-7.7618 & 0 \le t < 8 \\ -0.01704\log(t)^3+0.1063\log(t)^2+1.13417\log(t)-7.60859 & 8 \le t < 196 \\ 0.21761\log(t)^3-3.6103\log(t)^2+20.75671\log(t)-42.14228 & 196 \le t < 506 \\ -0.67558\log(t)^3+13.07415\log(t)^2-83.12956\log(t)+173.47479 & 506 \le t < 816 \\ 0.8043\log(t)^3-16.69103\log(t)^2+116.42771\log(t)-272.49495 & 816 \le t < 1388 \\ -1.26732\log(t)^3+28.27738\log(t)^2-208.94656\log(t)+512.26643 & 1388 \le t < 1927 \\ 0.17019\log(t)^3-4.34244\log(t)^2+37.78861\log(t)-109.83234 & 1927 \le t < 4940 \\ 0.85568\log(t)-5.12598)) & 4940 \le t (\#eq:CH-Three-56)\end{cases}
 \end{equation}
 
-Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
+Validation results for the Three-State Model can be found in Chapter \@ref(chap-dev-paper).
 
-\begin{table}[!h]
+~~Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.(...)~~
 
-\caption{(\#tab:IV-Three){\small Internal Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.74 ( 0.74,  0.75) & 0.68 ( 0.68,  0.69) & 0.64 ( 0.64,  0.65) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Three & < 30 & 0.75 ( 0.74,  0.75) & 0.73 ( 0.73,  0.73) & 0.68 ( 0.67,  0.68) & 0.68 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.75 ( 0.75,  0.75) & 0.75 ( 0.75,  0.76) & 0.67 ( 0.67,  0.67) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.72 ( 0.72,  0.73) & 0.65 ( 0.65,  0.66) & 0.67 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.86) & 0.83 ( 0.83,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.85,  0.86) & 0.86 ( 0.85,  0.86) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)\\  0.03 ( 0.02,  0.03)} & \makecell[r]{-0.02 (-0.02, -0.01)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.00 (-0.01, -0.00) & 0.02 ( 0.01,  0.02) & 0.00 (-0.00,  0.00) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.00 (-0.00,  0.00) & -0.04 (-0.04, -0.04) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.25},  0.00,  0.04\\ -0.03,  \emph{1.10}, -0.00\\ -0.00,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.17}, -0.06,  0.01\\  0.03,  \emph{1.25}, -0.01\\ -0.01,  0.01,  \emph{1.37}} & \makecell[r]{\emph{1.21}, -0.02, -0.01\\  0.01,  \emph{1.44}, -0.04\\ -0.02,  0.02,  \emph{1.27}} & \makecell[r]{\emph{1.32}, -0.01,  0.00\\ -0.00,  \emph{1.37}, -0.01\\ -0.00,  0.00,  \emph{1.33}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21},  0.02,  0.07\\ -0.04,  \emph{1.24},  0.07\\  0.01,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.36}, -0.00, -0.01\\  0.00,  \emph{1.31},  0.03\\ -0.02, -0.00,  \emph{1.26}} & \makecell[r]{\emph{1.35}, -0.04, -0.01\\  0.04,  \emph{1.33},  0.04\\  0.04, -0.02,  \emph{1.34}} & \makecell[r]{\emph{1.31},  0.00,  0.00\\ -0.01,  \emph{1.33},  0.01\\ -0.00,  0.00,  \emph{1.35}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.28} & \emph{1.27} & \emph{1.31}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.21} & \emph{1.21} & \emph{1.34}\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
-
-
-\begin{table}[!h]
-
-\caption{(\#tab:EV-Three){\small External Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.70 ( 0.69,  0.70) & 0.61 ( 0.60,  0.61) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Three & < 30 & 0.68 ( 0.67,  0.68) & 0.72 ( 0.71,  0.72) & 0.65 ( 0.64,  0.65) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.67 ( 0.67,  0.67) & 0.70 ( 0.69,  0.70) & 0.63 ( 0.63,  0.63) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.66 ( 0.66,  0.67) & 0.70 ( 0.70,  0.70) & 0.65 ( 0.65,  0.66) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.82 ( 0.82,  0.82) & 0.83 ( 0.83,  0.83) & 0.79 ( 0.79,  0.79) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Three & < 30 & 0.85 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.85 ( 0.85,  0.86) & 0.84 ( 0.84,  0.85) & 0.80 ( 0.80,  0.80) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Two & < 30 & 0.83 ( 0.83,  0.83) & 0.82 ( 0.82,  0.82) & 0.80 ( 0.80,  0.81) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.05 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{0.04 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.00 (-0.00,  0.00)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 (-0.00,  0.00) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.01 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.35}, -0.04,  0.04\\  0.06,  \emph{1.49}, -0.03\\  0.01,  0.00,  \emph{1.25}} & \makecell[r]{\emph{1.13}, -0.00,  0.08\\ -0.02,  \emph{1.31},  0.01\\ -0.03,  0.01,  \emph{1.39}} & \makecell[r]{\emph{1.45}, -0.02,  0.03\\  0.03,  \emph{1.73},  0.03\\  0.04, -0.00,  \emph{1.47}} & \makecell[r]{\emph{1.54},  0.00, -0.00\\  0.01,  \emph{1.52},  0.00\\ -0.00,  0.00,  \emph{1.54}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.23},  0.03,  0.00\\ -0.05,  \emph{1.20}, -0.04\\ -0.00, -0.00,  \emph{1.37}} & \makecell[r]{\emph{0.99}, -0.01, -0.00\\  0.04,  \emph{1.34}, -0.03\\  0.00,  0.01,  \emph{1.46}} & \makecell[r]{\emph{1.56},  0.00,  0.00\\ -0.05,  \emph{1.49},  0.03\\  0.03,  0.01,  \emph{1.63}} & \makecell[r]{\emph{1.62}, -0.01,  0.01\\ -0.00,  \emph{1.53},  0.01\\  0.00, -0.00,  \emph{1.58}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.28} & \emph{1.26} & \emph{1.64} & \emph{1.51}\\
-\hspace{1em}Two & < 30 & \emph{1.18} & \emph{1.25} & \emph{1.57} & \emph{1.59}\\
-\bottomrule
-\end{tabular}
-\end{table}
+~~Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.(...)~~
 
 ### Five State Model
 
@@ -1585,7 +1745,7 @@ Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transition
 \caption{(\#tab:PH-Five){\small Proportional Hazards for each transition in the Five-State Model}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{54em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
 \toprule
   & CKD to Dead & CKD to HD & CKD to PD & CKD to Tx & HD to Dead & PD to Dead\\
 \midrule

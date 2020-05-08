@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Results | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</title>
+  <meta name="description" content="3 Results | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies" />
+  <meta name="generator" content="bookdown 0.17.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Results | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Results | How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies" />
+  
+  
+  
+
+<meta name="author" content="MA Barrowman" />
+<meta name="author" content="N Peek" />
+<meta name="author" content="M Lambie" />
+<meta name="author" content="GP Martin" />
+<meta name="author" content="M Sperrin" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="methods-1.html"/>
+<link rel="next" href="discussion.html"/>
+<script src="libs/header-attrs-2.1.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html"><i class="fa fa-check"></i>Abstract</a>
+<ul>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#background"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#methods"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#results"><i class="fa fa-check"></i>Results</a></li>
+<li class="chapter" data-level="" data-path="abstract.html"><a href="abstract.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="background-1.html"><a href="background-1.html"><i class="fa fa-check"></i><b>1</b> Background</a></li>
+<li class="chapter" data-level="2" data-path="methods-1.html"><a href="methods-1.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
+<li class="chapter" data-level="3" data-path="results-1.html"><a href="results-1.html"><i class="fa fa-check"></i><b>3</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>4</b> Discussion</a></li>
+<li class="chapter" data-level="5" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>5</b> Conclusion</a></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="chapConfCRsupp.html"><a href="chapConfCRsupp.html"><i class="fa fa-check"></i><b>A</b> Supplementary Material</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="chapConfCRsupp.html"><a href="chapConfCRsupp.html#simulation-details"><i class="fa fa-check"></i><b>A.1</b> Simulation Details</a></li>
+<li class="chapter" data-level="A.2" data-path="chapConfCRsupp.html"><a href="chapConfCRsupp.html#mathematics-of-subdistribution-hazards"><i class="fa fa-check"></i><b>A.2</b> Mathematics of Subdistribution Hazards</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="results-1" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Results</h1>
+<p>The first row of Fig. 3 shows the results for Scenario 1 (No Effect). When <span class="math inline">\(\beta_1=\beta_2=0\)</span> (the green line), correlation between <span class="math inline">\(U\)</span> and <span class="math inline">\(Z\)</span> doesn’t imbue any bias on the treatment effect estimate for either event under any of the three measures, since all of the subdistribution treatment effects (estimated, calculated and hypothetical RCT) are approximately zero. When <span class="math inline">\(\beta_1&gt;0\)</span>, there is a strong positive association between correlation (<span class="math inline">\(\rho\)</span>) and the RCT and CSH biases for the event-of-interest and a negative association for the RCT bias for the competing event. Similarly, these associations are reversed when <span class="math inline">\(\beta_1&lt;0\)</span>.</p>
+<p>There was no effect on <span class="math inline">\(\theta_{\textrm{CSH}}\)</span> for the competing event in this Scenario regardless of <span class="math inline">\(\rho\)</span> or <span class="math inline">\(\beta_1\)</span>. These results are similar to those found in Scenario 2 (Positive Effect) and Scenario 3 (Negative Effect) shown in Figs. 4 and 5. However, in both of these Scenarios, there is an overall positive shift in <span class="math inline">\(\theta_{\textrm{CSH}}\)</span> when <span class="math inline">\(\beta_1\neq0\)</span>.</p>
+<p>The magnitude of <span class="math inline">\(\theta_{\textrm{Exp}}\)</span> is greatly reduced and is the reverse of the other associations when <span class="math inline">\(\beta_1\neq0\)</span> in Scenario 1 for the event-of-interest and when <span class="math inline">\(\beta_1&gt;0\)</span> it stays extremely small for low values of <span class="math inline">\(\rho\)</span>, and becomes negative for large <span class="math inline">\(\rho\)</span> for the competing event. In Scenario 2, <span class="math inline">\(\theta_{\textrm{Exp}}\)</span> behaves similarly to Scenario 1 for both events when <span class="math inline">\(\beta_1&lt;0\)</span> and the event-of-interest, but for the competing event, when <span class="math inline">\(\beta_1&gt;0\)</span>, the <span class="math inline">\(\theta_{\textrm{Exp}}\)</span> is much tighter to 0. The competing event data for <span class="math inline">\(\theta_{\textrm{Exp}}\)</span> in Scenario 3 is similar to Scenario 2 with <span class="math inline">\(\beta_1&gt;0\)</span> shifted downwards, but the event-of-interest has a near constant level of bias regardless of <span class="math inline">\(\rho\)</span>, apart from in the case when <span class="math inline">\(\beta_1&lt;0\)</span>, the bias switches direction.</p>
+<p>In Scenario 4 (Competing Confounder), as would be expected, the results for the event-of-interest and the results for the competing event are swapped from those of Scenario 1 as shown in Fig. 6. Scenario 5 (Uneven Arms) portrays a bias similar to Scenario 1 where <span class="math inline">\(\beta_1=1\)</span>, however, the magnitude of the RCT and CSH bias is increased when <span class="math inline">\(\pi\neq0.5\)</span> as shown in Fig. 7.</p>
+<p>The parameters for Scenario 6 (Uneven Events) were similar to the parameters for Scenario 1 (No Effect), when <span class="math inline">\(\beta_1=1\)</span>. This also reflects in the results in Fig. 8 which look similar to the results for this set of parameters in Scenario 1. This bias is largely unaffected by the value of <span class="math inline">\(k\)</span>. The results of Scenario 7 (Weibull Distribution) and Scenario 8 (Plausible Distribution) were nearly identical to those of Scenario 1 as shown in Figs. 9 and 10.</p>
+<p>As per our original hypotheses, Scenario 1 demonstrated that it is possible to induce a treatment effect when one isn’t present through confounding effects on all biases, apart from the competing event CSH. In Scenario 2, with high enough correlation, the CSH event-of-interest bias could be greater than 1, meaning that the raw CSH treatment effect was close to 0, despite an actual treatment effect of -1, similarly large positive biases in the SH imply a treatment with no benefit and/or detrimental effect, despite the true treatment being beneficial for both events. This finding is similar for Scenario 3 with large biases changing the direction of the treatment effect (beneficial vs detrimental).</p>
+<p>Scenario 4 demonstrated that even without a treatment effect and with no confounding effect on the event-of-interest, a treatment effect can be induced on the SH methodology, which can imply a beneficial/detrimental treatment, depending on whether the confounder was detrimental/beneficial. Fortunately, it does not induce an effect on the CSH treatment effect for the event-of-interest.</p>
+<p>Scenarios 5 and 6 investigated other population level effects; differences in the size of the treatment arms and differences in the magnitude of the hazards of the events. Scenario 5 demonstrated that having uneven treatment arms can exacerbate the bias induced on both the <span class="math inline">\(\theta_{\textrm{RCT}}\)</span> and <span class="math inline">\(\theta_{\textrm{CSH}}\)</span> for both events and Scenario 6 showed that the different baseline hazards had little effect on the levels of bias in the results. This finding was supported by the additional findings of Scenarios 7 and 8, which showed that the underlying hazard functions did not affect the treatment effect biases compared to a constant hazard.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="methods-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discussion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ind_03-CR_Conf.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
