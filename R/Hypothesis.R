@@ -13,7 +13,9 @@ Pull_Comments <- function(filenum,return=F)
   
   .pull <- .dirs %>%
     paste0("https://michaelbarrowman.co.uk/Thesis/",.) %>%
-    map_dfr(~hypothesisr::hs_search_all(uri=.)) 
+    map_dfr(~suppressMessages(hypothesisr::hs_search_all(uri=.)))
+  
+  if(!"references" %in% names(.pull)) .pull$references <- NULL_list(nrow(.pull))
   
   if(nrow(.pull) == 0)
   {
@@ -83,6 +85,7 @@ Current_html <- function(comlist)
   Children <- comlist %>%
     mutate(child = map_lgl(references,~cID %in% .)) %>%
     filter(child)
+    
   
   
   header <- paste0("<html>
@@ -93,7 +96,7 @@ Current_html <- function(comlist)
                 }
               </style>
             </head>",
-                   if(Parent$Replied)"Replied!",
+                   if(Parent$Replied) "Replied!",
             "<body>
               <table>")
   
@@ -163,7 +166,7 @@ Done_Comment <- function()
       read_csv("data/Hypothesis.csv",col_types=cols()),
       by="Username")
   
-  hs_update(token=cCom$token,
+  hypothesisr::hs_update(token=cCom$token,
             id = cCom$id,
             tag = "Done")
   
@@ -217,7 +220,7 @@ Reply_Comment <- function(reply)
       read_csv("data/Hypothesis.csv",col_types=cols()),
       by="Username")
   
-  hs_create(token = mytoken,
+  hypothesisr::hs_create(token = mytoken,
             uri=uri,
             user = "acct:myko101@hypothes.is",
             text = reply,
@@ -225,7 +228,7 @@ Reply_Comment <- function(reply)
             )
   
   
-  hs_update(token=cCom$token,
+  hypothesisr::hs_update(token=cCom$token,
             id = cCom$id,
             tag = "Replied")
   
@@ -253,7 +256,8 @@ Update_Comments <-function()
 {
   for(i in 1:10)
   {
-    Pull_Comments(i)
+    cat("\nFile number: ",i,"\n")
+    comlist <- Pull_Comments(i,return=T)
     To_Be_Deleted <- .comlist %>%
       filter(Done)
     if(nrow(To_Be_Deleted) > 0)
@@ -263,7 +267,7 @@ Update_Comments <-function()
         left_join(read_csv("data/Hypothesis.csv",col_types=cols()),
                   by="Username") %>%
         split(1:nrow(.)) %>%
-        map(~hs_delete(.$token,.$id))
+        map(~hypothesisr::hs_delete(.$token,.$id))
     }
   }
 }

@@ -203,12 +203,11 @@ div.abstract{
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#results-5"><i class="fa fa-check"></i><b>6.3</b> Results</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-separate-tables"><i class="fa fa-check"></i><b>6.3.1</b> Data Sources (Separate Tables)</a></li>
-<li class="chapter" data-level="6.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-single-table-draft"><i class="fa fa-check"></i><b>6.3.2</b> Data Sources (Single Table draft)</a></li>
-<li class="chapter" data-level="6.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#development"><i class="fa fa-check"></i><b>6.3.3</b> Development</a></li>
-<li class="chapter" data-level="6.3.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#validation-1"><i class="fa fa-check"></i><b>6.3.4</b> Validation</a></li>
-<li class="chapter" data-level="6.3.5" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>6.3.5</b> Example</a></li>
-<li class="chapter" data-level="6.3.6" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>6.3.6</b> Calculator</a></li>
+<li class="chapter" data-level="6.3.1" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#data-sources-1"><i class="fa fa-check"></i><b>6.3.1</b> Data Sources</a></li>
+<li class="chapter" data-level="6.3.2" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#development"><i class="fa fa-check"></i><b>6.3.2</b> Development</a></li>
+<li class="chapter" data-level="6.3.3" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#validation-1"><i class="fa fa-check"></i><b>6.3.3</b> Validation</a></li>
+<li class="chapter" data-level="6.3.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#example-1"><i class="fa fa-check"></i><b>6.3.4</b> Example</a></li>
+<li class="chapter" data-level="6.3.5" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#calculator-1"><i class="fa fa-check"></i><b>6.3.5</b> Calculator</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="chap-dev-paper.html"><a href="chap-dev-paper.html#discussion-4"><i class="fa fa-check"></i><b>6.4</b> Discussion</a></li>
 </ul></li>
@@ -262,25 +261,25 @@ div.abstract{
 <div id="chap-dev-paper" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</h1>
 <p><em>MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin</em></p>
-<p>Last updated: 08 May</p>
+<p>Last updated: 27 May</p>
 <p>Download as individual paper draft: <a href="Chapters/ind_06-Dev_Paper.pdf">pdf</a>, <a href="Chapters/ind_06-Dev_Paper.tex">tex</a></p>
 <div id="abstract-3" class="section level2 unnumbered" number="">
 <h2>Abstract</h2>
 <div id="introduction-6" class="section level3 unnumbered" number="">
 <h3>Introduction</h3>
-<p>Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict multiple outcomes with a single model can be advantageous. Multi-State Models are a method to provide these kinds of predictions.</p>
+<p>Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict <del>multiple outcomes</del><mark>a multi-dimensional outcome</mark> with a single model can be advantageous. <del>Multi-State Models are a method to provide these kinds of predictions.</del> <mark>Many CPMs have been developed to predict the risk of different outcomes in individuals following chronic kidney disease (CKD) onset, but few allow the ability to predict the risk of patients transitioning onto renal replacement therapy (RRT) as well as death. For example, the risk of having a transplant within 1 year following dialysis, or the risk of remaining on dialysis until death. Multi-state models provide the vehicle to make such predictions, but have not been used within the CKD context.</mark></p>
 </div>
 <div id="methods-5" class="section level3 unnumbered" number="">
 <h3>Methods</h3>
-<p>We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our <mark>external</mark> validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead). We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients. Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.</p>
+<p>We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our external validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead).~~ We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients.~~ Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.</p>
 </div>
 <div id="results-4" class="section level3 unnumbered" number="">
 <h3>Results</h3>
-<p>Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall. The Three-State Model was used to develop the online Calculator.</p>
+<p>Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall <mark>with a Brier Score of 0.67/0.62 (internal/external, respectively), c-statistic of 0.83/0.81 and an averaged calibration intercept of 0.00/0.00 and slope diagonal of 1.34/1.53 (indicating under-prediction of all non-untreated CKD states for more extreme values)</mark>. The Three-State Model was used to develop the online Calculator.</p>
 </div>
 <div id="discusssion" class="section level3 unnumbered" number="">
 <h3>Discusssion</h3>
-<p>Our CPMs provide clinicians and patients with <del>multiple outcome predictions</del> <mark>multi-dimensional predictions across different outcome states and any time point</mark>. This implies that users of these models can get more information about their potential future without a loss to the quality of that prediction.</p>
+<p>Our CPMs provide clinicians and patients with multi-dimensional predictions across different outcome states and any time point. This implies that users of these models can get more information about their potential future without a loss to the <del>quality of that prediction.</del><mark>model’s calibration nor its discriminative ability.</mark></p>
 </div>
 <div id="supplementary-material-2" class="section level3 unnumbered" number="">
 <h3>Supplementary Material</h3>
@@ -289,33 +288,32 @@ div.abstract{
 </div>
 <div id="introduction-7" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Introduction</h2>
-<p>A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical <del>condition</del><mark>event</mark>, more specifically, a prognostic model allows the prediction of future events <span class="citation">[<a href="#ref-steyerberg_prognosis_2013" role="doc-biblioref">8</a>]</span>. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models <del>are</del><mark>can be</mark> used in clinical practice to influence treatment decisions~~ such as the prescribing of statins for cardiovascular disease via the application of the QRISK models <span class="citation">[<a href="#ref-hippisley-cox_development_2017" role="doc-biblioref">2</a>]</span>~~.</p>
-<p>Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality <span class="citation">[<a href="#ref-johnson_predicting_2007" role="doc-biblioref">56</a>]–[<a href="#ref-wick_clinical_2017" role="doc-biblioref">60</a>]</span>, <del>ESRD</del><mark>End-Stage Renal Disease</mark> <span class="citation">[<a href="#ref-landray_prediction_2010" role="doc-biblioref">57</a>]</span>, the commencements of <mark>Renal Replacement Therapy</mark> (RRT) <span class="citation">[<a href="#ref-marks_looking_2015" role="doc-biblioref">59</a>], [<a href="#ref-johnson_predicting_2008" role="doc-biblioref">61</a>]–[<a href="#ref-kulkarni_transition_2017" role="doc-biblioref">63</a>]</span> or mortality after beginning dialysis <span class="citation">[<a href="#ref-floege_development_2015" role="doc-biblioref">64</a>]–[<a href="#ref-cao_predicting_2015" role="doc-biblioref">66</a>]</span>. Some previous models have used the commencement of RRT as a proxy for <del>ESRD</del><mark>CKD Stage V</mark> <span class="citation">[<a href="#ref-tangri_predictive_2011" role="doc-biblioref">67</a>]–[<a href="#ref-tangri_dynamic_2017" role="doc-biblioref">69</a>]</span>, while others have investigated the occurrence of cardiovascular events within CKD patients<span class="citation">[<a href="#ref-shlipak_cardiovascular_2005" role="doc-biblioref">70</a>]–[<a href="#ref-mcmurray_predictors_2011" role="doc-biblioref">72</a>]</span>. Reviews by Grams &amp; Coresh <span class="citation">[<a href="#ref-grams_assessing_2013" role="doc-biblioref">73</a>]</span>, Tangri et al <span class="citation">[<a href="#ref-tangri_risk_2013" role="doc-biblioref">74</a>]</span> and Ramspek et al <span class="citation">[<a href="#ref-ramspek_prediction_2017" role="doc-biblioref">75</a>]</span>, which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective <span class="citation">[<a href="#ref-collins_transparent_2015" role="doc-biblioref">13</a>], [<a href="#ref-bouwmeester_reporting_2012-1" role="doc-biblioref">76</a>]</span>.</p>
-<p>Methodologically, the majority of existing CKD prediction models fail to account for competing events <span class="citation">[<a href="#ref-bansal_development_2015" role="doc-biblioref">58</a>], [<a href="#ref-wick_clinical_2017" role="doc-biblioref">60</a>], [<a href="#ref-perotte_risk_2015" role="doc-biblioref">77</a>]</span>, have high risks of bias <span class="citation">[<a href="#ref-johnson_predicting_2007" role="doc-biblioref">56</a>], [<a href="#ref-landray_prediction_2010" role="doc-biblioref">57</a>], [<a href="#ref-johnson_predicting_2008" role="doc-biblioref">61</a>]</span> or are otherwise flawed compared to modern clinical prediction standards <span class="citation">[<a href="#ref-steyerberg_prognosis_2013" role="doc-biblioref">8</a>], [<a href="#ref-collins_transparent_2015" role="doc-biblioref">13</a>]</span></p>
-<p>In 2013, Begun et al <span class="citation">[<a href="#ref-begun_identification_2013" role="doc-biblioref">78</a>]</span> developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient’s future. In 2014, Allen et al <span class="citation">[<a href="#ref-allen_chronic_2014" role="doc-biblioref">79</a>]</span> applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al <span class="citation">[<a href="#ref-kulkarni_transition_2017" role="doc-biblioref">63</a>]</span> developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies <del>(CPRA)</del> and kidney transplant and/or death.</p>
-<p>Most recently, in 2018, Grams et al <span class="citation">[<a href="#ref-grams_predicting_2018" role="doc-biblioref">80</a>]</span> developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.</p>
-<p>However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling <span class="citation">[<a href="#ref-royston_dichotomizing_2006" role="doc-biblioref">17</a>]</span> <del><span class="citation">[<a href="#ref-royston_dichotomizing_2006" role="doc-biblioref">17</a>], [<a href="#ref-altman_problems_1994-1" role="doc-biblioref">81</a>]–[<a href="#ref-weinberg_how_1995" role="doc-biblioref">98</a>]</span>. These kinds of cut-offs can be useful when informing patients and clinicians of a patient’s diagnosis and to coincide with policy, but inherently cause a loss of information when done before the data analysis stage and so these models go against current statistical recommendations <span class="citation">[<a href="#ref-royston_dichotomizing_2006" role="doc-biblioref">17</a>], [<a href="#ref-altman_problems_1994-1" role="doc-biblioref">81</a>]–[<a href="#ref-weinberg_how_1995" role="doc-biblioref">98</a>]</span>. These kinds of assumptions are also subject to measurement error <span class="citation">[<a href="#ref-van_smeden_reflection_2019" role="doc-biblioref">99</a>]</span> and interval censoring <span class="citation">[<a href="#ref-sun_interval_2005" role="doc-biblioref">100</a>]</span>, i.e. we do not know when exactly when a patient moved from CKD Stage III to CKD Stage IV, or whether drop in estimated Glomerular Function Rate (eGFR) was temporary or inaccurate. For example, Kulkarni <span class="citation">[<a href="#ref-kulkarni_transition_2017" role="doc-biblioref">63</a>]</span> assumes that a patient with an CPRA of (5%) is the same as a patient with an CPRA of (75%) and that a patient with an CPRA of (89.9%) is vastly different from a patient with an CPRA of (90%). Moreover,</del><mark>and</mark> none of these models have undergone any validation process, whether internal or external <span class="citation">[<a href="#ref-altman_prognosis_2009" role="doc-biblioref">10</a>]</span>.</p>
+<p>A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical event, more specifically, a prognostic model allows the prediction of future events <span class="citation">[<a href="#ref-steyerberg_prognosis_2013" role="doc-biblioref">8</a>]</span>. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models can be used in clinical practice to influence treatment decisions.</p>
+<p>Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality <span class="citation">[<a href="#ref-johnson_predicting_2007" role="doc-biblioref">57</a>]–[<a href="#ref-wick_clinical_2017" role="doc-biblioref">61</a>]</span>, End-Stage Renal Disease <span class="citation">[<a href="#ref-landray_prediction_2010" role="doc-biblioref">58</a>]</span>, the commencements of Renal Replacement Therapy (RRT) <span class="citation">[<a href="#ref-marks_looking_2015" role="doc-biblioref">60</a>], [<a href="#ref-johnson_predicting_2008" role="doc-biblioref">62</a>]–[<a href="#ref-kulkarni_transition_2017" role="doc-biblioref">64</a>]</span> or mortality after beginning dialysis <span class="citation">[<a href="#ref-floege_development_2015" role="doc-biblioref">65</a>]–[<a href="#ref-cao_predicting_2015" role="doc-biblioref">67</a>]</span>. Some previous models have used the commencement of RRT as a proxy for CKD Stage V <span class="citation">[<a href="#ref-tangri_predictive_2011" role="doc-biblioref">68</a>]–[<a href="#ref-tangri_dynamic_2017" role="doc-biblioref">70</a>]</span>, while others have investigated the occurrence of cardiovascular events within CKD patients<span class="citation">[<a href="#ref-shlipak_cardiovascular_2005" role="doc-biblioref">71</a>]–[<a href="#ref-mcmurray_predictors_2011" role="doc-biblioref">73</a>]</span>. Reviews by Grams &amp; Coresh <span class="citation">[<a href="#ref-grams_assessing_2013" role="doc-biblioref">74</a>]</span>, Tangri et al <span class="citation">[<a href="#ref-tangri_risk_2013" role="doc-biblioref">75</a>]</span> and Ramspek et al <span class="citation">[<a href="#ref-ramspek_prediction_2017" role="doc-biblioref">76</a>]</span>, which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective <span class="citation">[<a href="#ref-collins_transparent_2015" role="doc-biblioref">13</a>], [<a href="#ref-bouwmeester_reporting_2012-1" role="doc-biblioref">77</a>]</span>.</p>
+<p>Methodologically, the majority of existing CKD prediction models fail to account for competing events <span class="citation">[<a href="#ref-bansal_development_2015" role="doc-biblioref">59</a>], [<a href="#ref-wick_clinical_2017" role="doc-biblioref">61</a>], [<a href="#ref-perotte_risk_2015" role="doc-biblioref">78</a>]</span>, have high risks of bias <span class="citation">[<a href="#ref-johnson_predicting_2007" role="doc-biblioref">57</a>], [<a href="#ref-landray_prediction_2010" role="doc-biblioref">58</a>], [<a href="#ref-johnson_predicting_2008" role="doc-biblioref">62</a>]</span> or are otherwise flawed compared to modern clinical prediction standards <span class="citation">[<a href="#ref-steyerberg_prognosis_2013" role="doc-biblioref">8</a>], [<a href="#ref-collins_transparent_2015" role="doc-biblioref">13</a>]</span></p>
+<p>In 2013, Begun et al <span class="citation">[<a href="#ref-begun_identification_2013" role="doc-biblioref">79</a>]</span> developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient’s future. In 2014, Allen et al <span class="citation">[<a href="#ref-allen_chronic_2014" role="doc-biblioref">80</a>]</span> applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al <span class="citation">[<a href="#ref-kulkarni_transition_2017" role="doc-biblioref">64</a>]</span> developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies and kidney transplant and/or death.</p>
+<p>Most recently, in 2018, Grams et al <span class="citation">[<a href="#ref-grams_predicting_2018" role="doc-biblioref">81</a>]</span> developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.</p>
+<p>However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling <span class="citation">[<a href="#ref-royston_dichotomizing_2006" role="doc-biblioref">17</a>]</span> and none of these models have undergone any validation process, whether internal or external <span class="citation">[<a href="#ref-altman_prognosis_2009" role="doc-biblioref">10</a>]</span>.</p>
 <p>It is also important to note that although these models can be used to predict patient outcomes, they were not designed to produce individualised patient predictions as is a key aspect of a clinical prediction model; they were designed to assess the methodological advantages of MSMs in this medical field, to describe the prevalence of over time of different CKD stages and to produce population level predictions for patients with different levels of panel-reactive antibodies <span class="citation">[<a href="#ref-royston_prognosis_2009" role="doc-biblioref">9</a>]</span>.</p>
-<p>The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is <del>a pair of</del><mark>two</mark> multinomial logistic models analysed at 2 and 4 years<mark>, which assumes homogeneity of transition times</mark>. <del>The major downside of this model is that it can only produce predictions at those predefined time points and it assumes homogeneity of transition times</del><mark>Two downsides to the implementation of this model are that it can only produce predictions at those predefined time points and that it is unable to estimate duration of time on dialysis.</mark><del>For example, the first model assumes that a patient who began RRT 1 month after study entry is the same as one who began after 1 year &amp; 11 months into the study and then the second model assumes these patients are the same as one who begins RRT at 3 years and 11 months.</del></p>
-<p>Therefore, <del>the aim of this study was to improve on previous efforts to model a</del><mark>our aim is to develop a CPM - we do this by modelling</mark> patient<del>’s</del> pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a <del>drastic</del><mark>clinical</mark> difference in patient characteristics. Our modeling techniques allow for individual predictions <del>(using a proportional hazards model)</del> of multiple outcomes <del>(using MSMs)</del> at any time point <del>(using cubic splines)</del>. The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the <del>(statistically robust)</del> clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models <span class="citation">[<a href="#ref-collins_transparent_2015" role="doc-biblioref">13</a>], [<a href="#ref-moons_transparent_2015" role="doc-biblioref">14</a>]</span>.</p>
+<p>The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is two multinomial logistic models analysed at 2 and 4 years, which assumes homogeneity of transition times. Two downsides to the implementation of this model are that it can only produce predictions at those predefined time points and that it is unable to estimate duration of time on dialysis.</p>
+<p>Therefore, our aim is to develop a CPM - we do this by modelling patient pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a clinical difference in patient characteristics. Our modeling techniques allow for individual predictions of <del>multiple outcomes</del><mark>multi-dimensional outcomes</mark> at any time point . The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models <span class="citation">[<a href="#ref-collins_transparent_2015" role="doc-biblioref">13</a>], [<a href="#ref-moons_transparent_2015" role="doc-biblioref">14</a>]</span>.</p>
 </div>
 <div id="methods-6" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Methods</h2>
 <div id="data-sources" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Data Sources</h3>
-<p>The models were developed using data from the Salford Kidney Study (SKS) cohort of patients (previously named the CRISIS cohort), established in the Department of Renal Medicine, Salford Royal NHS Foundation Trust (SRFT). The SKS is a large longitudinal CKD cohort recruiting CKD patients since 2002. This cohort collects detailed annualised phenotypic and laboratory data, and plasma, serum and whole blood stored at -80C for biomarker and genotypic analyses. Recruitment of patients into SKS has been described in multiple previous studies <span class="citation">[<a href="#ref-hoefield_factors_2010" role="doc-biblioref">101</a>], [<a href="#ref-chinnadurai_increased_2019-1" role="doc-biblioref">102</a>]</span> and these have included a CKD progression prognostic factor study and to evidence the increased risk of cardiovascular events in diabetic kidney patients. In brief, any patient referred to Salford renal service (catchment population 1.5 million) who is 18 years or over and has an eGFR measurement of less than <span class="math inline">\(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\)</span> (calculated using the CKD-EPI formula <span class="citation">[<a href="#ref-levey_new_2009" role="doc-biblioref">103</a>]</span>) was approached to be consented for the study participation.</p>
-<p>At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford’s Integrated Record <del>(SIR)</del> <span class="citation">[<a href="#ref-new_obtaining_2014" role="doc-biblioref">104</a>]</span>. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient’s time within the cohort.</p>
-<p>Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient’s start date for our model as their first date after consent at which their eGFR was recorded to be below <span class="math inline">\(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\)</span>. Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD (<span class="math inline">\(\textrm{eGFR} \lessapprox 60\)</span>) <em>and</em> those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient at any time during their CKD journey <mark>prior to commencement of RRT</mark>.</p>
-<p>All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was <del>also available within SIR and so</del> also included in the SKS database.</p>
-<p>For external validation of the model, we extracted an independent cohort from the West of Scotland Electronic Renal Patient Record (SERPR). Our extract of SERPR contains all patients known to the Glasgow and Forth Valley renal service who had an eGFR measure of less than <span class="math inline">\(60\textrm{ml}/\textrm{min}/1.73m^2\)</span> between January 2006 and January 2016. This cohort has been previously used in Chronic Kidney Disease Prognosis consortium studies investigating outcomes in patients with CKD <span class="citation">[<a href="#ref-matsushita_cohort_2013" role="doc-biblioref">105</a>]</span> and a similar cohort has been used for the analysis of skin tumours amongst renal transplant patients. Use of anonymised data from this database has been approved by the West of Scotland Ethics Committee for use of NHS Greater Glasgow and Clyde ‘Safe Haven’ data for research.</p>
-<p>Both the internal and external validation cohort were used as part of the multinational validation cohort used by Grams et al in their multinomial CPM discussed above <span class="citation">[<a href="#ref-grams_predicting_2018" role="doc-biblioref">80</a>]</span>. In SERPR, start dates were calculated to be the first time point where the following conditions were met:</p>
+<p>The models were developed using data from the Salford Kidney Study (SKS) cohort of patients (previously named the CRISIS cohort), established in the Department of Renal Medicine, Salford Royal NHS Foundation Trust (SRFT). The SKS is a large longitudinal CKD cohort recruiting CKD patients since 2002. This cohort collects detailed annualised phenotypic and laboratory data, and plasma, serum and whole blood stored at -80C for biomarker and genotypic analyses. Recruitment of patients into SKS has been described in multiple previous studies <span class="citation">[<a href="#ref-hoefield_factors_2010" role="doc-biblioref">82</a>], [<a href="#ref-chinnadurai_increased_2019-1" role="doc-biblioref">83</a>]</span> and these have included a CKD progression prognostic factor study and to evidence the increased risk of cardiovascular events in diabetic kidney patients. In brief, any patient referred to Salford renal service (catchment population 1.5 million) who is 18 years or over and has an eGFR measurement of less than <span class="math inline">\(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\)</span> (calculated using the CKD-EPI formula <span class="citation">[<a href="#ref-levey_new_2009" role="doc-biblioref">84</a>]</span>) was approached to be consented for the study participation.</p>
+<p>At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford’s Integrated Record <span class="citation">[<a href="#ref-new_obtaining_2014" role="doc-biblioref">85</a>]</span>. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient’s time within the cohort.</p>
+<p>Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient’s start date for our model as their first date after consent at which their eGFR was recorded to be below <span class="math inline">\(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\)</span>. Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD (<span class="math inline">\(\textrm{eGFR} \lessapprox 60\)</span>) <em>and</em> those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient at any time during their CKD journey prior to commencement of RRT.</p>
+<p>All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was also included in the SKS database.</p>
+<p>For external validation of the model, we extracted an independent cohort from the West of Scotland Electronic Renal Patient Record (SERPR). Our extract of SERPR contains all patients known to the Glasgow and Forth Valley renal service who had an eGFR measure of less than <span class="math inline">\(60\textrm{ml}/\textrm{min}/1.73m^2\)</span> between January 2006 and January 2016. This cohort has been previously used in Chronic Kidney Disease Prognosis consortium studies investigating outcomes in patients with CKD <span class="citation">[<a href="#ref-matsushita_cohort_2013" role="doc-biblioref">86</a>]</span> and a similar cohort has been used for the analysis of skin tumours amongst renal transplant patients. Use of anonymised data from this database has been approved by the West of Scotland Ethics Committee for use of NHS Greater Glasgow and Clyde ‘Safe Haven’ data for research.</p>
+<p>Both the internal and external validation cohort were used as part of the multinational validation cohort used by Grams et al in their multinomial CPM discussed above <span class="citation">[<a href="#ref-grams_predicting_2018" role="doc-biblioref">81</a>]</span>. In SERPR, start dates were calculated to be the first time point where the following conditions were met:</p>
 <ul>
 <li>eGFR is measured at less than 60</li>
 <li>There is at least one prior eGFR measurement</li>
 <li>Patient is 18 or over</li>
-<li>Patient is not enduring an AKI <span class="citation">[<a href="#ref-forni_renal_2017-1" role="doc-biblioref">106</a>], [<a href="#ref-noauthor_kdigo_2012" role="doc-biblioref">107</a>]</span>.</li>
 </ul>
-<p>The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an <span class="math inline">\(\textrm{eGFR} &lt; 60\)</span>, their eGFR Rate would be unavailable (i.e. missing). Otherwise, patient eGFRs would <em>have</em> to drop to below 60 and thus eGFR Rate would be negative.</p>
+<p>The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an <span class="math inline">\(\textrm{eGFR} &lt; 60\)</span>, their eGFR Rate would be unavailable (i.e. missing). Otherwise, patient eGFRs would <em>have</em> to drop to below 60 and thus eGFR Rate would be negative. In addition, to avoid Acute Kidney Incident events, we also filtered measurements of eGFR Rate that were more extreme than 1.5x those found in the SKS population.</p>
 </div>
 <div id="model-design" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Model Design</h3>
@@ -326,19 +324,18 @@ div.abstract{
 Figure 6.1: Diagram of the three models, the states being modelled and relevant transitions
 </p>
 </div>
-<p><mark>Missing data was handled using multiple imputation <span class="citation">[<a href="#ref-white_imputing_2009" role="doc-biblioref">108</a>]</span> using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications <span class="citation">[<a href="#ref-venkat-raman_new_2012" role="doc-biblioref">109</a>]</span>). From these variables, uPCR and eGFR Rate of change were also derived <span class="citation">[<a href="#ref-kovesdy_past_2016" role="doc-biblioref">110</a>], [<a href="#ref-naimark_past_2016" role="doc-biblioref">111</a>]</span> as well as their log transforms and log(Age) and Age<span class="math inline">\(^2\)</span>.</mark></p>
+<p>Missing data was handled using multiple imputation <span class="citation">[<a href="#ref-white_imputing_2009" role="doc-biblioref">87</a>]</span> using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications <span class="citation">[<a href="#ref-venkat-raman_new_2012" role="doc-biblioref">88</a>]</span>). From these variables, uPCR and eGFR Rate of change were also derived <span class="citation">[<a href="#ref-kovesdy_past_2016" role="doc-biblioref">89</a>], [<a href="#ref-naimark_past_2016" role="doc-biblioref">90</a>]</span> as well as their log transforms and log(Age) and Age<span class="math inline">\(^2\)</span>. For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition.</p>
 </div>
 <div id="validation" class="section level3" number="6.2.3">
 <h3><span class="header-section-number">6.2.3</span> Validation</h3>
-<p>Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR<span class="citation">[<a href="#ref-schomaker_bootstrap_2018" role="doc-biblioref">112</a>]</span>. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR &lt; 30/ml/min/1.73m<sup>2</sup>.</p>
-<p>Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter <a href="chap-performance-metrics.html#chap-performance-metrics">5</a>.</p>
-<p>Further details of how <del>T</del><mark>t</mark>he models were developed and validated is discussed in the Supplementary materials in appendix <a href="chap-dev-paper-supp.html#chap-dev-paper-supp">C</a>.</p>
+<p>Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR <span class="citation">[<a href="#ref-schomaker_bootstrap_2018" role="doc-biblioref">91</a>]</span>. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR &lt; 30/ml/min/1.73m<sup>2</sup>.</p>
+<p>Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter <a href="chap-performance-metrics.html#chap-performance-metrics">5</a>. <mark>These measures were taken at One-Year, Two-Years and Five-Years after the patient’s start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.</p>
+<p>Further details of how the models were developed and validated is discussed in the Supplementary materials in appendix <a href="chap-dev-paper-supp.html#chap-dev-paper-supp">C</a>.</p>
 </div>
 <div id="example" class="section level3" number="6.2.4">
 <h3><span class="header-section-number">6.2.4</span> Example</h3>
-<p>Once the models have been developed, we will apply them to <del>two</del><mark>three</mark> example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.</p>
+<p>Once the models have been developed, we will apply them to three example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.</p>
 <p>We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table <a href="chap-dev-paper.html#tab:Example-Patient">6.1</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:Example-Patient">Table 6.1: </span><font size="2">Details of the Example Patients</font>
@@ -556,572 +553,919 @@ Diabetes<br>Chronic Obstructive Pulmonary Disease<br>Hypertension
 </tr>
 </tbody>
 </table>
-</div>
 <p>Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.</p>
 </div>
 <div id="calculator" class="section level3" number="6.2.5">
 <h3><span class="header-section-number">6.2.5</span> Calculator</h3>
-<p>As part of this work, we <mark>have</mark> also <del>intend to</del> produce<mark>d</mark> an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.</p>
-<p>All analysis was done in <code>R 3.6.2</code> <span class="citation">[<a href="#ref-r_core_team_r_nodate" role="doc-biblioref">51</a>]</span> using the various <code>tidyverse</code> packages <span class="citation">[<a href="#ref-wickham_tidy_2017" role="doc-biblioref">52</a>]</span>, as well as the <code>mice</code> <span class="citation">[<a href="#ref-buuren_mice_2011-1" role="doc-biblioref">113</a>]</span>, <code>flexsurv</code> <span class="citation">[<a href="#ref-jackson_flexsurv_nodate" role="doc-biblioref">114</a>]</span>, <code>nnet</code> <span class="citation">[<a href="#ref-ripley_package_2016" role="doc-biblioref">115</a>]</span> and <code>furrr</code> <span class="citation">[<a href="#ref-vaughan_furrr_2018" role="doc-biblioref">116</a>]</span> packages. The calculator was produced using the <code>shiny</code> package <span class="citation">[<a href="#ref-chang_shiny_2020" role="doc-biblioref">55</a>]</span>.</p>
+<p>As part of this work, we have also produced an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.</p>
+<p>All analysis was done in <code>R 3.6.2</code> <span class="citation">[<a href="#ref-r_core_team_r_nodate" role="doc-biblioref">52</a>]</span> using the various <code>tidyverse</code> packages <span class="citation">[<a href="#ref-wickham_tidy_2017" role="doc-biblioref">53</a>]</span>, as well as the <code>mice</code> <span class="citation">[<a href="#ref-buuren_mice_2011-1" role="doc-biblioref">92</a>]</span>, <code>flexsurv</code> <span class="citation">[<a href="#ref-jackson_flexsurv_nodate" role="doc-biblioref">93</a>]</span>, <code>nnet</code> <span class="citation">[<a href="#ref-ripley_package_2016" role="doc-biblioref">94</a>]</span> and <code>furrr</code> <span class="citation">[<a href="#ref-vaughan_furrr_2018" role="doc-biblioref">95</a>]</span> packages. The calculator was produced using the <code>shiny</code> package <span class="citation">[<a href="#ref-chang_shiny_2020" role="doc-biblioref">56</a>]</span>.</p>
 </div>
 </div>
 <div id="results-5" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Results</h2>
-<div id="data-sources-separate-tables" class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Data Sources (Separate Tables)</h3>
-<p><mark>Glen commented about combining the below tables into a single one. I’m still not sure the best way to do this (aesthetically). I’ve kept the old version of this section and added a copy of it below where I’ve re-written some bits to point to the right table.</mark></p>
-<p>As seen in table <a href="chap-dev-paper.html#tab:Continuous-Demo">6.2</a>, the Age of <mark>the</mark><del>both</del> populations <del>were centred around 64-65</del><mark>had a mean of 64.4 and 65.9 respectively</mark> with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.</p>
-<!-- Combine the "table ones" into a single table -->
+<div id="data-sources-1" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Data Sources</h3>
+<p>As seen in table <a href="chap-dev-paper.html#tab:Table-One">6.2</a>, the Age of the populations had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Levels of missingness were much higher in the SERPR dataset in most continuous variables.</p>
 <br>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:Continuous-Demo">Table 6.2: </span><font size="2">Population demographics for the continuous variables presented as: mean (IQR) [min,max] &lt;number missing (percent missing)&gt;</font>
+<span id="tab:Table-One">Table 6.2: </span><font size="2">Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)</font>
 </caption>
 <thead>
 <tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+SKS
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+SERPR
+</div>
+</th>
+</tr>
+<tr>
 <th style="text-align:left;">
+Variable
 </th>
-<th style="text-align:right;">
-SKS (Development)
+<th style="text-align:left;">
+mean/n (IQR/p)
 </th>
-<th style="text-align:right;">
-SERPR (Validation)
+<th style="text-align:left;">
+missing n (p)
+</th>
+<th style="text-align:left;">
+range
+</th>
+<th style="text-align:left;">
+mean/n (IQR/p)
+</th>
+<th style="text-align:left;">
+missing n (p)
+</th>
+<th style="text-align:left;">
+range
 </th>
 </tr>
 </thead>
 <tbody>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Age</strong>
-</td>
-</tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Age
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-64.378 (19.000) [ 20.000,  94.000] &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+64.378 (19.000)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-65.880 (17.000) [    18.000,    98.000] &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    0 ( 0.00%)
 </td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>eGFR</strong>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[ 20.000,  94.000]
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-eGFR<sup>a</sup>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+66.064 (17.000)
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-30.368 (22.386) [  3.577,  59.965] &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (  0.00%)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-36.132 (21.444) [     1.651,    59.998] &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[  11.000,  98.000]
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-eGFR Rate<sup>a</sup>
+<td style="text-align:left;width: 26em; ">
+eGFR
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
--0.015 ( 0.293) [-19.107,  33.781] &lt;1,278 (42.87%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+30.369 (22.387)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
--25.476 (44.229) [-8,755.272, 9,260.375] &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    0 ( 0.00%)
 </td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>uPCR</strong>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[  3.578,  59.966]
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-uPCR<sup>f</sup>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+35.647 (20.565)
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-0.112 ( 0.103) [  0.000,   2.025] &lt;  245 ( 8.21%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (  0.00%)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-0.184 ( 0.147) [     0.000,     6.390] &lt;7,513 (96.76%)&gt;
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[   1.199,  59.994]
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-uPCR Rate<sup>f</sup>
+<td style="text-align:left;width: 26em; ">
+eGFR Rate
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
--0.096 ( 0.188) [-70.727,  28.198] &lt;1,777 (59.61%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+-0.016 ( 0.294)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-73.177 ( 0.384) [    -2.255, 3,051.403] &lt;7,721 (99.44%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+1,278 (42.87%)
 </td>
-</tr>
-<tr grouplength="7">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Measures</strong>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[-19.107,  33.782]
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-SBP<sup>b</sup>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  1.319 (21.897)
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-140.193 (29.000) [ 77.000, 220.000] &lt;   50 ( 1.67%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (  0.00%)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-147.746 (33.000) [    82.000,   258.000] &lt;6,880 (88.61%)&gt;
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[ -28.636,  50.653]
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-DBP<sup>b</sup>
+<td style="text-align:left;width: 26em; ">
+SBP
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-74.555 (14.000) [ 36.000, 159.000] &lt;   52 ( 1.74%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+140.193 (29.000)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-76.263 (18.000) [    35.000,   128.000] &lt;6,879 (88.60%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  50 ( 1.68%)
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-BMI<sup>c</sup>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[ 77.000, 220.000]
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-28.848 ( 7.842) [ 13.182,  61.466] &lt;  572 (19.18%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+145.981 (30.000)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-29.331 ( 7.851) [    15.343,    48.301] &lt;7,681 (98.93%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+6,345 ( 82.31%)
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Albumin<sup>d</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-42.152 ( 5.000) [ 12.000,  52.000] &lt;   60 ( 2.01%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-36.490 ( 6.000) [     7.000,    53.000] &lt;3,455 (44.50%)&gt;
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[  82.000, 258.000]
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Corrected Calcium<sup>e</sup>
+<td style="text-align:left;width: 26em; ">
+DBP
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-2.302 ( 0.180) [  1.209,   3.660] &lt;   68 ( 2.28%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+74.556 (14.000)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-2.408 ( 0.160) [     1.419,     3.610] &lt;5,113 (65.85%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  52 ( 1.74%)
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Haemoglobin<sup>d</sup>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[ 36.000, 159.000]
 </td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-122.977 (23.000) [ 61.000, 195.000] &lt;   72 ( 2.41%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+76.742 (17.000)
 </td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-108.588 (30.000) [     6.250,   208.000] &lt;3,968 (51.10%)&gt;
+<td style="text-align:left;width: 14em; font-family: monospace;">
+6,345 ( 82.31%)
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Phosphate<sup>e</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-1.162 ( 0.320) [  0.430,   3.710] &lt;   87 ( 2.91%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-1.203 ( 0.320) [     0.370,     4.370] &lt;5,127 (66.03%)&gt;
-</td>
-</tr>
-</tbody>
-</table>
-<tfoot>
-<tr>
-<td style="padding: 0; border: 0;" colspan="100%">
-<sup>a</sup> (ml/min/1.73m^2) or per year <sup>b</sup> (mmHG) <sup>c</sup> (kg/m^2) <sup>d</sup> (g/l) <sup>e</sup> (mmol/l) <sup>f</sup> (g/mmol) or per year
-</td>
-</tr>
-</tfoot>
-</div>
-<p>Table <a href="chap-dev-paper.html#tab:Categorical-Demo">6.3</a> shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, whereas in the validation population the proportions are much more matched. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:Categorical-Demo">Table 6.3: </span><font size="2">Population demographics for the categorical variables presented as number (percent)</font>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-SKS (Development)
-</th>
-<th style="text-align:right;">
-SERPR (Validation)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Gender</strong>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[  35.000, 128.000]
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
+BMI
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+28.848 ( 7.842)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  572 (19.19%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[ 13.182,  61.467]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+29.020 ( 6.811)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,491 ( 97.17%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[  17.073,  52.403]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+Albumin
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+42.152 ( 5.000)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  60 ( 2.01%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[ 12.000,  52.000]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+36.475 ( 6.000)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+3,134 ( 40.65%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[   7.000,  53.000]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+Calcium
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2.302 ( 0.180)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  68 ( 2.28%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[  1.210,   3.660]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  2.407 ( 0.160)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+4,513 ( 58.54%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[   1.455,   3.400]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+Haemoglobin
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+122.978 (23.000)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  72 ( 2.42%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[ 61.000, 195.000]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+109.269 (29.000)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+3,557 ( 46.14%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[   7.100, 208.000]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+Phosphate
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  1.163 ( 0.320)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  87 ( 2.92%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[  0.430,   3.710]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  1.194 ( 0.320)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+4,510 ( 58.50%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[   0.320,   4.370]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+uPCR
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  0.112 ( 0.103)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  245 ( 8.22%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[  0.001,   2.025]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.178 ( 0.177)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,170 ( 93.01%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[   0.001,   1.943]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+uPCR Rate
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+-0.096 ( 0.188)
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+1,777 (59.61%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+[-70.727,  28.199]
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  4.621 ( 0.905)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,495 ( 97.22%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+[-176.200, 952.812]
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
+Gender:
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    0 ( 0.00%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (  0.00%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
 Male
 </td>
-<td style="text-align:right;font-family: monospace;">
-1,865 (62.56 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  1,865 (62.56%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-3,915 (50.42 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  3,885 (50.40%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Female
 </td>
-<td style="text-align:right;font-family: monospace;">
-1,116 (37.43 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  1,116 (37.44%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-3,849 (49.57 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
 </td>
-</tr>
-<tr grouplength="5">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Ethnicity</strong>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  3,824 (49.60%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
+Ethnicity:
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    0 ( 0.00%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,009 ( 90.92%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
 White
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,875 (96.44 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,875 (96.44%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-683 ( 8.79 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    679 ( 8.81%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Asian
 </td>
-<td style="text-align:right;font-family: monospace;">
-75 ( 2.51 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    75 ( 2.52%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-12 ( 0.15 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    12 ( 0.16%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Black
 </td>
-<td style="text-align:right;font-family: monospace;">
-21 ( 0.70 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    21 ( 0.70%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-7 ( 0.09 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      7 ( 0.09%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Other
 </td>
-<td style="text-align:right;font-family: monospace;">
-10 ( 0.33 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    10 ( 0.34%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2 ( 0.02 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<ethnicity missing> </ethnicity>
+<td style="text-align:left;width: 14em; font-family: monospace;">
 </td>
-<td style="text-align:right;font-family: monospace;">
-0 ( 0.00 %)
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      2 ( 0.03%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-7,060 (90.93 %)
+<td style="text-align:left;width: 14em; font-family: monospace;">
 </td>
-</tr>
-<tr grouplength="5">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Smoking Status</strong>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
+SmokingStatus:
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  42 ( 1.41%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709 (100.00%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
 Former
 </td>
-<td style="text-align:right;font-family: monospace;">
-1,535 (51.49 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  1,535 (51.49%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 ( 0.00%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Non-Smoker
 </td>
-<td style="text-align:right;font-family: monospace;">
-979 (32.84 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    979 (32.84%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 ( 0.00%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Smoker
 </td>
-<td style="text-align:right;font-family: monospace;">
-379 (12.71 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    379 (12.71%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 ( 0.00%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Former 3Y
 </td>
-<td style="text-align:right;font-family: monospace;">
-46 ( 1.54 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    46 ( 1.54%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
 </td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<smoking status missing> </smoking>
+<td style="text-align:left;width: 14em; font-family: monospace;">
 </td>
-<td style="text-align:right;font-family: monospace;">
-42 ( 1.40 %)
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 ( 0.00%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 14em; font-family: monospace;">
 </td>
-</tr>
-<tr grouplength="6">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Primary Renal Diagnosis</strong>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
+DiagGroup:
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  567 (19.02%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+6,640 ( 86.13%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 26em; ">
 Systemic diseases affecting the kidney
 </td>
-<td style="text-align:right;font-family: monospace;">
-1,304 (43.74 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  1,304 (43.74%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-299 ( 3.85 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    316 ( 4.10%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Glomerular disease
 </td>
-<td style="text-align:right;font-family: monospace;">
-442 (14.82 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    442 (14.83%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-225 ( 2.89 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    278 ( 3.61%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Tubulointerstitial disease
 </td>
-<td style="text-align:right;font-family: monospace;">
-268 ( 8.99 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    268 ( 8.99%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-164 ( 2.11 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    173 ( 2.24%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Miscellaneous renal disorders
 </td>
-<td style="text-align:right;font-family: monospace;">
-227 ( 7.61 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    227 ( 7.61%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-188 ( 2.42 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    198 ( 2.57%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
+<td style="text-align:left;width: 26em; ">
 Familial / hereditary nephropathies
 </td>
-<td style="text-align:right;font-family: monospace;">
-173 ( 5.80 %)
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    173 ( 5.80%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-102 ( 1.31 %)
+<td style="text-align:left;width: 11em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    104 ( 1.35%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<renal diagnosis missing> </renal>
-</td>
-<td style="text-align:right;font-family: monospace;">
-567 (19.02 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-6,786 (87.40 %)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Overall, there were high levels of comorbidities within the SKS population as shown in table <a href="chap-dev-paper.html#tab:Comorbidity-Demo">6.4</a>, but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546) and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:Comorbidity-Demo">Table 6.4: </span><font size="2">Population comorbidity prevalence for the two populations presented as number (percent) &lt;number missing (percent missing)&gt;</font>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-SKS (Development)
-</th>
-<th style="text-align:right;">
-SERPR (Validation)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Diabetes (DM)
 </td>
-<td style="text-align:right;font-family: monospace;">
-992 (33.32%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    992 (33.32%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-1,546 (19.91%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  1,535 (19.91%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Congestive Cardiac Failure (CCF)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,414 (81.08%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,414 (81.09%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-406 ( 5.22%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    408 ( 5.29%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Prior Myocardial Infarction (MI)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,492 (83.70%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,492 (83.71%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-556 ( 7.16%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    556 ( 7.21%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Ischemic Heart Disease (IHD)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,393 (80.38%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,393 (80.38%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-867 (11.16%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    863 (11.19%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Peripheral Vascular Disease (PVD)
+<td style="text-align:left;width: 26em; ">
+Peripheral Vascular Disease (PVA)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,485 (83.47%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,485 (83.47%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-376 ( 4.84%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    376 ( 4.88%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Prior Cerebrovascular Accident (CVA)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,727 (91.60%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,727 (91.60%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-184 ( 2.36%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    186 ( 2.41%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Chronic Obstructive Pulmonary Disease (COPD)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,411 (80.98%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,411 (80.99%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 (     %)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709 ( 100.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Chronic Liver Disease (LD)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,891 (97.11%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,891 (97.11%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 (     %)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709 ( 100.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-Solid Tumour (ST)
+<td style="text-align:left;width: 26em; ">
+Prior Solid Tumour (ST)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,570 (86.32%) &lt;  4 (0.13%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,570 (86.33%)
 </td>
-<td style="text-align:right;font-family: monospace;">
+<td style="text-align:left;width: 11em; font-family: monospace;">
+    4 ( 0.13%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+      0 (     %)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709 ( 100.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
+<td style="text-align:left;width: 26em; ">
 Hypertension (HT)
 </td>
-<td style="text-align:right;font-family: monospace;">
-2,546 (91.48%) &lt;198 (6.64%)&gt;
+<td style="text-align:left;width: 13em; font-family: monospace;">
+  2,546 (91.48%)
 </td>
-<td style="text-align:right;font-family: monospace;">
-3,122 (40.21%) &lt;    0 ( 0.00%)&gt;
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  198 ( 6.64%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  3,114 (40.39%)
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0 (   0.0%)
+</td>
+<td style="text-align:left;width: 19em; font-family: monospace;">
 </td>
 </tr>
 </tbody>
 </table>
-</div>
-<p>The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table <a href="chap-dev-paper.html#tab:Event-Median">6.5</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<p>Table <a href="chap-dev-paper.html#tab:Table-One">6.2</a> also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6% male vs 50.4% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model.</p>
+<p>Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.</p>
+<p>The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table <a href="chap-dev-paper.html#tab:Event-Median2">6.3</a>.</p>
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:Event-Median">Table 6.5: </span><font size="2">Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]</font>
+<span id="tab:Event-Median2">Table 6.3: </span><font size="2">Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]</font>
 </caption>
 <thead>
 <tr>
@@ -1265,712 +1609,12 @@ PD to Dead
 </tbody>
 </table>
 </div>
-<!-- Inclue shortened development and validation section here -->
-</div>
-<div id="data-sources-single-table-draft" class="section level3" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Data Sources (Single Table draft)</h3>
-<p>As seen in table <a href="chap-dev-paper.html#tab:Table-One">6.6</a>, the Age of <mark>the</mark><del>both</del> populations <del>were centred around 64-65</del><mark>had a mean of 64.4 and 65.9 respectively</mark> with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . <del>Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17).</del> The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. <del>Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0).</del> Levels of missingness were much higher in the SERPR dataset in most continuous variables.</p>
-<br>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:Table-One">Table 6.6: </span><font size="2">Population demographics for the continuous variables presented as: mean (IQR) [min,max] &lt;number missing (percent missing)&gt;</font>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-SKS (Development)
-</th>
-<th style="text-align:right;">
-SERPR (Validation)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Age</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Age
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-64.378 (19.000) [ 20.000,  94.000] &lt;    0 ( 0.00%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-65.880 (17.000) [    18.000,    98.000] &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>eGFR</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-eGFR<sup>a</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-30.368 (22.386) [  3.577,  59.965] &lt;    0 ( 0.00%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-36.132 (21.444) [     1.651,    59.998] &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-eGFR Rate<sup>a</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
--0.015 ( 0.293) [-19.107,  33.781] &lt;1,278 (42.87%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
--25.476 (44.229) [-8,755.272, 9,260.375] &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>uPCR</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-uPCR<sup>f</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-0.112 ( 0.103) [  0.000,   2.025] &lt;  245 ( 8.21%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-0.184 ( 0.147) [     0.000,     6.390] &lt;7,513 (96.76%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-uPCR Rate<sup>f</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
--0.096 ( 0.188) [-70.727,  28.198] &lt;1,777 (59.61%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-73.177 ( 0.384) [    -2.255, 3,051.403] &lt;7,721 (99.44%)&gt;
-</td>
-</tr>
-<tr grouplength="7">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Measures</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-SBP<sup>b</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-140.193 (29.000) [ 77.000, 220.000] &lt;   50 ( 1.67%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-147.746 (33.000) [    82.000,   258.000] &lt;6,880 (88.61%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-DBP<sup>b</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-74.555 (14.000) [ 36.000, 159.000] &lt;   52 ( 1.74%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-76.263 (18.000) [    35.000,   128.000] &lt;6,879 (88.60%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-BMI<sup>c</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-28.848 ( 7.842) [ 13.182,  61.466] &lt;  572 (19.18%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-29.331 ( 7.851) [    15.343,    48.301] &lt;7,681 (98.93%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Albumin<sup>d</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-42.152 ( 5.000) [ 12.000,  52.000] &lt;   60 ( 2.01%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-36.490 ( 6.000) [     7.000,    53.000] &lt;3,455 (44.50%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Corrected Calcium<sup>e</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-2.302 ( 0.180) [  1.209,   3.660] &lt;   68 ( 2.28%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-2.408 ( 0.160) [     1.419,     3.610] &lt;5,113 (65.85%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Haemoglobin<sup>d</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-122.977 (23.000) [ 61.000, 195.000] &lt;   72 ( 2.41%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-108.588 (30.000) [     6.250,   208.000] &lt;3,968 (51.10%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;width: 13em; " indentlevel="1">
-Phosphate<sup>e</sup>
-</td>
-<td style="text-align:right;width: 33em; font-family: monospace;">
-1.162 ( 0.320) [  0.430,   3.710] &lt;   87 ( 2.91%)&gt;
-</td>
-<td style="text-align:right;width: 36em; font-family: monospace;">
-1.203 ( 0.320) [     0.370,     4.370] &lt;5,127 (66.03%)&gt;
-</td>
-</tr>
-</tbody>
-</table>
-<tfoot>
-<tr>
-<td style="padding: 0; border: 0;" colspan="100%">
-<sup>a</sup> (ml/min/1.73m^2) or per year <sup>b</sup> (mmHG) <sup>c</sup> (kg/m^2) <sup>d</sup> (g/l) <sup>e</sup> (mmol/l) <sup>f</sup> (g/mmol) or per year
-</td>
-</tr>
-</tfoot>
-</div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<div id="development" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Development</h3>
+<p>Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix <a href="chap-dev-paper-supp.html#chap-dev-paper-supp">C</a>. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table <a href="chap-dev-paper.html#tab:PH-Three">6.4</a>.</p>
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:Table-One">Table 6.6: </span><font size="2">Population demographics for the categorical variables presented as number (percent)</font>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-SKS (Development)
-</th>
-<th style="text-align:right;">
-SERPR (Validation)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="2">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Gender</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Male
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,865 (62.56 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-3,915 (50.42 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Female
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,116 (37.43 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-3,849 (49.57 %)
-</td>
-</tr>
-<tr grouplength="5">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Ethnicity</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-White
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,875 (96.44 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-683 ( 8.79 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Asian
-</td>
-<td style="text-align:right;font-family: monospace;">
-75 ( 2.51 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-12 ( 0.15 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Black
-</td>
-<td style="text-align:right;font-family: monospace;">
-21 ( 0.70 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-7 ( 0.09 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Other
-</td>
-<td style="text-align:right;font-family: monospace;">
-10 ( 0.33 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2 ( 0.02 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<ethnicity missing> </ethnicity>
-</td>
-<td style="text-align:right;font-family: monospace;">
-0 ( 0.00 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-7,060 (90.93 %)
-</td>
-</tr>
-<tr grouplength="5">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Smoking Status</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Former
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,535 (51.49 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Non-Smoker
-</td>
-<td style="text-align:right;font-family: monospace;">
-979 (32.84 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Smoker
-</td>
-<td style="text-align:right;font-family: monospace;">
-379 (12.71 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Former 3Y
-</td>
-<td style="text-align:right;font-family: monospace;">
-46 ( 1.54 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<smoking status missing> </smoking>
-</td>
-<td style="text-align:right;font-family: monospace;">
-42 ( 1.40 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr grouplength="6">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Primary Renal Diagnosis</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Systemic diseases affecting the kidney
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,304 (43.74 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-299 ( 3.85 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Glomerular disease
-</td>
-<td style="text-align:right;font-family: monospace;">
-442 (14.82 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-225 ( 2.89 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Tubulointerstitial disease
-</td>
-<td style="text-align:right;font-family: monospace;">
-268 ( 8.99 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-164 ( 2.11 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Miscellaneous renal disorders
-</td>
-<td style="text-align:right;font-family: monospace;">
-227 ( 7.61 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-188 ( 2.42 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Familial / hereditary nephropathies
-</td>
-<td style="text-align:right;font-family: monospace;">
-173 ( 5.80 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-102 ( 1.31 %)
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-<renal diagnosis missing> </renal>
-</td>
-<td style="text-align:right;font-family: monospace;">
-567 (19.02 %)
-</td>
-<td style="text-align:right;font-family: monospace;">
-6,786 (87.40 %)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:Table-One">Table 6.6: </span><font size="2">Population comorbidity prevalence for the two populations presented as number (percent) &lt;number missing (percent missing)&gt;</font>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-SKS (Development)
-</th>
-<th style="text-align:right;">
-SERPR (Validation)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Diabetes (DM)
-</td>
-<td style="text-align:right;font-family: monospace;">
-992 (33.32%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,546 (19.91%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congestive Cardiac Failure (CCF)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,414 (81.08%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-406 ( 5.22%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Prior Myocardial Infarction (MI)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,492 (83.70%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-556 ( 7.16%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ischemic Heart Disease (IHD)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,393 (80.38%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-867 (11.16%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Peripheral Vascular Disease (PVD)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,485 (83.47%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-376 ( 4.84%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Prior Cerebrovascular Accident (CVA)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,727 (91.60%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-184 ( 2.36%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chronic Obstructive Pulmonary Disease (COPD)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,411 (80.98%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chronic Liver Disease (LD)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,891 (97.11%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Solid Tumour (ST)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,570 (86.32%) &lt;  4 (0.13%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Hypertension (HT)
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,546 (91.48%) &lt;198 (6.64%)&gt;
-</td>
-<td style="text-align:right;font-family: monospace;">
-3,122 (40.21%) &lt;    0 ( 0.00%)&gt;
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Table <a href="chap-dev-paper.html#tab:Table-One">6.6</a> also shows a breakdown of the categorical variables across the populations. In the development population, <del>there are farmore males than females</del><mark>crude proportions of males were numerically higher than females</mark> whereas in the validation population the proportions are much more matched<mark>(62.6% male vs 50.4% male)</mark>. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. <del>The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).</del></p>
-<p>Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.<del>, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33% and over 97% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40% (3,122), followed by diabetes mellitus at 20% (1,546) and cerebrovascular accident was the lowest prevalence at 2.36% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.</del></p>
-<p>The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table <a href="chap-dev-paper.html#tab:Event-Median2">6.7</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:Event-Median2">Table 6.7: </span><font size="2">Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]</font>
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Transition
-</th>
-<th style="text-align:right;">
-SKS (Development)
-</th>
-<th style="text-align:right;">
-SERPR (Validation)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Two</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Alive to Dead
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,427 ~ 3.9 y (4.3 y) [15.0 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-3,025 ~ 4.9 y (3.3 y) [10.1 y]
-</td>
-</tr>
-<tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Three</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to Dead
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,125 ~ 3.5 y (4.2 y) [15.0 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,579 ~ 4.8 y (3.2 y) [10.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to RRT
-</td>
-<td style="text-align:right;font-family: monospace;">
-680 ~ 2.5 y (3.3 y) [14.1 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,130 ~ 3.8 y (3.8 y) [10.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-RRT to Dead
-</td>
-<td style="text-align:right;font-family: monospace;">
-302 ~ 2.2 y (3.2 y) [13.5 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-446 ~ 1.5 y (2.4 y) [ 9.1 y]
-</td>
-</tr>
-<tr grouplength="6">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Five</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to Dead
-</td>
-<td style="text-align:right;font-family: monospace;">
-1,125 ~ 3.5 y (4.2 y) [15.0 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-2,579 ~ 4.8 y (3.2 y) [10.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to HD
-</td>
-<td style="text-align:right;font-family: monospace;">
-344 ~ 2.5 y (3.5 y) [14.1 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-887 ~ 3.8 y (3.7 y) [10.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to PD
-</td>
-<td style="text-align:right;font-family: monospace;">
-229 ~ 2.0 y (2.9 y) [12.9 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-149 ~ 3.5 y (4.1 y) [ 9.6 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to Tx
-</td>
-<td style="text-align:right;font-family: monospace;">
-107 ~ 3.2 y (2.7 y) [12.1 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-94 ~ 4.8 y (4.5 y) [ 9.7 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-HD to Dead
-</td>
-<td style="text-align:right;font-family: monospace;">
-185 ~ 2.0 y (3.2 y) [11.8 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-398 ~ 1.5 y (2.5 y) [ 9.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-PD to Dead
-</td>
-<td style="text-align:right;font-family: monospace;">
-107 ~ 2.3 y (3.2 y) [11.7 y]
-</td>
-<td style="text-align:right;font-family: monospace;">
-47 ~ 2.1 y (2.3 y) [ 8.5 y]
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="development" class="section level3" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Development</h3>
-<p>Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix <a href="chap-dev-paper-supp.html#chap-dev-paper-supp">C</a>. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table <a href="chap-dev-paper.html#tab:PH-Three">6.8</a>.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-<table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:PH-Three">Table 6.8: </span><font size="2">Proportional Hazards for each transition in the Three-State Model</font>
+<span id="tab:PH-Three">Table 6.4: </span><font size="2">Proportional Hazards for each transition in the Three-State Model</font>
 </caption>
 <thead>
 <tr>
@@ -1998,13 +1642,13 @@ RRT to Dead
 (Age-60)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.161 (  -0.051,   0.374)
+0.161 (  -0.051,   0.374)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.041 (  -0.051,  -0.031)
+-0.041 (  -0.051,  -0.031)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.063 (   0.050,   0.076)
+0.063 (   0.050,   0.076)
 </td>
 </tr>
 <tr>
@@ -2012,10 +1656,10 @@ RRT to Dead
 (Age-60)<sup>2</sup>
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.000 (  -0.002,   0.000)
+-0.000 (  -0.002,   0.000)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.000 (  -0.000,  -0.000)
+-0.000 (  -0.000,  -0.000)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2025,7 +1669,7 @@ RRT to Dead
 log(Age)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--5.725 ( -17.969,   6.518)
+-5.725 ( -17.969,   6.518)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2042,13 +1686,13 @@ log(Age)
 eGFR
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.013 (  -0.019,  -0.006)
+-0.013 (  -0.019,  -0.006)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.095 (  -0.108,  -0.082)
+-0.095 (  -0.108,  -0.082)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.011 (  -0.001,   0.025)
+0.011 (  -0.001,   0.025)
 </td>
 </tr>
 <tr>
@@ -2058,10 +1702,10 @@ eGFR Rate
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.055 (  -0.021,   0.131)
+0.055 (  -0.021,   0.131)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.056 (  -0.363,   0.250)
+-0.056 (  -0.363,   0.250)
 </td>
 </tr>
 <tr>
@@ -2069,12 +1713,12 @@ eGFR Rate
 log(eGFR Rate)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.042 (  -0.125,   0.210)
+0.042 (  -0.125,   0.210)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.227 (  -0.770,   1.225)
+0.227 (  -0.770,   1.225)
 </td>
 </tr>
 <tr grouplength="3">
@@ -2087,13 +1731,13 @@ log(eGFR Rate)
 uPCR
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.125 (  -0.318,   0.569)
+0.125 (  -0.318,   0.569)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.700 (   0.112,   1.288)
+0.700 (   0.112,   1.288)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.108 (  -0.736,   0.519)
+-0.108 (  -0.736,   0.519)
 </td>
 </tr>
 <tr>
@@ -2103,10 +1747,10 @@ uPCR Rate
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.019 (  -0.045,   0.005)
+-0.019 (  -0.045,   0.005)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.036 (  -0.062,   0.136)
+0.036 (  -0.062,   0.136)
 </td>
 </tr>
 <tr>
@@ -2116,10 +1760,10 @@ log(uPCR Rate)
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.218 (  -0.310,   0.747)
+0.218 (  -0.310,   0.747)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.198 (  -0.534,   0.137)
+-0.198 (  -0.534,   0.137)
 </td>
 </tr>
 <tr grouplength="7">
@@ -2132,10 +1776,10 @@ log(uPCR Rate)
 SBP
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.001 (  -0.004,   0.002)
+-0.001 (  -0.004,   0.002)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.005 (  -0.000,   0.011)
+0.005 (  -0.000,   0.011)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2145,10 +1789,10 @@ SBP
 DBP
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.006 (   0.000,   0.013)
+0.006 (   0.000,   0.013)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.006 (  -0.001,   0.015)
+0.006 (  -0.001,   0.015)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2169,13 +1813,13 @@ BMI
 Albumin
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.044 (  -0.064,  -0.024)
+-0.044 (  -0.064,  -0.024)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.032 (  -0.059,  -0.004)
+-0.032 (  -0.059,  -0.004)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.044 (  -0.079,  -0.009)
+-0.044 (  -0.079,  -0.009)
 </td>
 </tr>
 <tr>
@@ -2183,10 +1827,10 @@ Albumin
 Corrected Calcium
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.280 (  -0.192,   0.752)
+0.280 (  -0.192,   0.752)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.515 (  -1.207,   0.177)
+-0.515 (  -1.207,   0.177)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2196,13 +1840,13 @@ Corrected Calcium
 Haemoglobin
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.013 (  -0.017,  -0.008)
+-0.013 (  -0.017,  -0.008)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.005 (  -0.012,   0.001)
+-0.005 (  -0.012,   0.001)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.005 (  -0.014,   0.003)
+-0.005 (  -0.014,   0.003)
 </td>
 </tr>
 <tr>
@@ -2210,10 +1854,10 @@ Haemoglobin
 Phosphate
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.511 (   0.132,   0.890)
+0.511 (   0.132,   0.890)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.869 (  -0.059,   1.799)
+0.869 (  -0.059,   1.799)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2228,10 +1872,10 @@ Phosphate
 Female
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.235 (  -0.371,  -0.099)
+-0.235 (  -0.371,  -0.099)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.277 (  -0.455,  -0.099)
+-0.277 (  -0.455,  -0.099)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2246,13 +1890,13 @@ Female
 Former (3 years+)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.212 (  -0.879,   0.453)
+-0.212 (  -0.879,   0.453)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.133 (  -0.757,   0.490)
+-0.133 (  -0.757,   0.490)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.282 (  -1.082,   0.518)
+-0.282 (  -1.082,   0.518)
 </td>
 </tr>
 <tr>
@@ -2260,13 +1904,13 @@ Former (3 years+)
 Non-Smoker
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.198 (  -0.345,  -0.051)
+-0.198 (  -0.345,  -0.051)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.162 (  -0.364,   0.039)
+-0.162 (  -0.364,   0.039)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.294 (  -0.598,   0.009)
+-0.294 (  -0.598,   0.009)
 </td>
 </tr>
 <tr>
@@ -2274,13 +1918,13 @@ Non-Smoker
 Smoker
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.356 (   0.160,   0.551)
+0.356 (   0.160,   0.551)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.175 (  -0.076,   0.428)
+0.175 (  -0.076,   0.428)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.387 (   0.068,   0.706)
+0.387 (   0.068,   0.706)
 </td>
 </tr>
 <tr grouplength="4">
@@ -2293,13 +1937,13 @@ Smoker
 Familial / hereditary nephropathies
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.424 (  -0.854,   0.006)
+-0.424 (  -0.854,   0.006)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-1.029 (   0.720,   1.338)
+1.029 (   0.720,   1.338)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.562 (  -1.084,  -0.040)
+-0.562 (  -1.084,  -0.040)
 </td>
 </tr>
 <tr>
@@ -2307,13 +1951,13 @@ Familial / hereditary nephropathies
 Glomerular disease
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.394 (  -0.635,  -0.154)
+-0.394 (  -0.635,  -0.154)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.165 (  -0.465,   0.134)
+-0.165 (  -0.465,   0.134)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.488 (  -0.883,  -0.094)
+-0.488 (  -0.883,  -0.094)
 </td>
 </tr>
 <tr>
@@ -2321,13 +1965,13 @@ Glomerular disease
 Miscellaneous renal disorders
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.263 (  -0.505,  -0.021)
+-0.263 (  -0.505,  -0.021)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.649 (  -1.143,  -0.155)
+-0.649 (  -1.143,  -0.155)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.033 (  -0.553,   0.620)
+0.033 (  -0.553,   0.620)
 </td>
 </tr>
 <tr>
@@ -2335,13 +1979,13 @@ Miscellaneous renal disorders
 Tubulointerstitial disease
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.463 (  -0.741,  -0.184)
+-0.463 (  -0.741,  -0.184)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.265 (  -0.577,   0.046)
+-0.265 (  -0.577,   0.046)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.310 (  -0.803,   0.181)
+-0.310 (  -0.803,   0.181)
 </td>
 </tr>
 <tr grouplength="10">
@@ -2354,13 +1998,13 @@ Tubulointerstitial disease
 DM
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.122 (  -0.011,   0.255)
+0.122 (  -0.011,   0.255)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.141 (  -0.074,   0.358)
+0.141 (  -0.074,   0.358)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.200 (  -0.096,   0.496)
+0.200 (  -0.096,   0.496)
 </td>
 </tr>
 <tr>
@@ -2368,12 +2012,12 @@ DM
 CCF
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.394 (  -0.535,  -0.253)
+-0.394 (  -0.535,  -0.253)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.299 (  -0.597,  -0.002)
+-0.299 (  -0.597,  -0.002)
 </td>
 </tr>
 <tr>
@@ -2381,13 +2025,13 @@ CCF
 MI
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.246 (  -0.397,  -0.094)
+-0.246 (  -0.397,  -0.094)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.234 (  -0.061,   0.530)
+0.234 (  -0.061,   0.530)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.186 (  -0.199,   0.572)
+0.186 (  -0.199,   0.572)
 </td>
 </tr>
 <tr>
@@ -2395,13 +2039,13 @@ MI
 IHD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.102 (  -0.041,   0.245)
+0.102 (  -0.041,   0.245)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.077 (  -0.334,   0.179)
+-0.077 (  -0.334,   0.179)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.097 (  -0.424,   0.228)
+-0.097 (  -0.424,   0.228)
 </td>
 </tr>
 <tr>
@@ -2409,13 +2053,13 @@ IHD
 PVD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.248 (  -0.394,  -0.103)
+-0.248 (  -0.394,  -0.103)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.168 (  -0.405,   0.068)
+-0.168 (  -0.405,   0.068)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.183 (  -0.492,   0.126)
+-0.183 (  -0.492,   0.126)
 </td>
 </tr>
 <tr>
@@ -2423,12 +2067,12 @@ PVD
 CVA
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.070 (  -0.252,   0.111)
+-0.070 (  -0.252,   0.111)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.168 (  -0.577,   0.240)
+-0.168 (  -0.577,   0.240)
 </td>
 </tr>
 <tr>
@@ -2436,7 +2080,7 @@ CVA
 COPD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.289 (  -0.433,  -0.145)
+-0.289 (  -0.433,  -0.145)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2448,13 +2092,13 @@ COPD
 LD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.169 (  -0.578,   0.239)
+-0.169 (  -0.578,   0.239)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.316 (  -0.731,   0.097)
+-0.316 (  -0.731,   0.097)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.270 (  -0.858,   0.318)
+-0.270 (  -0.858,   0.318)
 </td>
 </tr>
 <tr>
@@ -2462,13 +2106,13 @@ LD
 ST
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.274 (  -0.431,  -0.117)
+-0.274 (  -0.431,  -0.117)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.181 (  -0.516,   0.153)
+-0.181 (  -0.516,   0.153)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.278 (  -0.611,   0.055)
+-0.278 (  -0.611,   0.055)
 </td>
 </tr>
 <tr>
@@ -2478,24 +2122,22 @@ HT
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.274 (  -0.176,   0.726)
+0.274 (  -0.176,   0.726)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.416 (  -1.104,   0.271)
+-0.416 (  -1.104,   0.271)
 </td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.</p>
 </div>
-<div id="validation-1" class="section level3" number="6.3.4">
-<h3><span class="header-section-number">6.3.4</span> Validation</h3>
-<p>Table <a href="chap-dev-paper.html#tab:IV-Three">6.9</a> shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the &lt;60 eGFR group than in the &lt;30 eGFR group. All measures degraded over time, but the average scores remained strong.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<div id="validation-1" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Validation</h3>
+<p>Table <a href="chap-dev-paper.html#tab:IV-Three">6.5</a> shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the &lt;60 eGFR group than in the &lt;30 eGFR group. All measures degraded over time, but the average scores remained strong.</p>
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:IV-Three">Table 6.9: </span><font size="2">Internal Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
+<span id="tab:IV-Three">Table 6.5: </span><font size="2">Internal Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
 </caption>
 <thead>
 <tr>
@@ -2533,16 +2175,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.74 ( 0.74,  0.75)
+0.74 ( 0.74,  0.75)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.68 ( 0.68,  0.69)
+0.68 ( 0.68,  0.69)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.64 ( 0.64,  0.65)
+0.64 ( 0.64,  0.65)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.67 ( 0.67,  0.68)
+0.67 ( 0.67,  0.68)
 </td>
 </tr>
 <tr>
@@ -2553,16 +2195,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.75 ( 0.74,  0.75)
+0.75 ( 0.74,  0.75)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.73 ( 0.73,  0.73)
+0.73 ( 0.73,  0.73)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.68 ( 0.67,  0.68)
+0.68 ( 0.67,  0.68)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.68 ( 0.67,  0.68)
+0.68 ( 0.67,  0.68)
 </td>
 </tr>
 <tr>
@@ -2573,16 +2215,16 @@ Two
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.75 ( 0.75,  0.75)
+0.75 ( 0.75,  0.75)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.75 ( 0.75,  0.76)
+0.75 ( 0.75,  0.76)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.67 ( 0.67,  0.67)
+0.67 ( 0.67,  0.67)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.67 ( 0.67,  0.68)
+0.67 ( 0.67,  0.68)
 </td>
 </tr>
 <tr>
@@ -2593,16 +2235,16 @@ Two
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.71 ( 0.71,  0.72)
+0.71 ( 0.71,  0.72)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.72 ( 0.72,  0.73)
+0.72 ( 0.72,  0.73)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.65 ( 0.65,  0.66)
+0.65 ( 0.65,  0.66)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.67 ( 0.67,  0.68)
+0.67 ( 0.67,  0.68)
 </td>
 </tr>
 <tr grouplength="4">
@@ -2618,16 +2260,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.87 ( 0.87,  0.87)
+0.87 ( 0.87,  0.87)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.84,  0.85)
+0.84 ( 0.84,  0.85)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.84,  0.84)
+0.84 ( 0.84,  0.84)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.84)
+0.83 ( 0.83,  0.84)
 </td>
 </tr>
 <tr>
@@ -2638,16 +2280,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.87 ( 0.86,  0.87)
+0.87 ( 0.86,  0.87)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.84,  0.84)
+0.84 ( 0.84,  0.84)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.84,  0.84)
+0.84 ( 0.84,  0.84)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.84)
+0.83 ( 0.83,  0.84)
 </td>
 </tr>
 <tr>
@@ -2658,16 +2300,16 @@ Two
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.86 ( 0.86,  0.86)
+0.86 ( 0.86,  0.86)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.86 ( 0.86,  0.86)
+0.86 ( 0.86,  0.86)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.84)
+0.83 ( 0.83,  0.84)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.84)
+0.83 ( 0.83,  0.84)
 </td>
 </tr>
 <tr>
@@ -2678,16 +2320,16 @@ Two
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.86 ( 0.85,  0.86)
+0.86 ( 0.85,  0.86)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.86 ( 0.85,  0.86)
+0.86 ( 0.85,  0.86)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.85 ( 0.85,  0.85)
+0.85 ( 0.85,  0.85)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.83,  0.84)
+0.84 ( 0.83,  0.84)
 </td>
 </tr>
 <tr grouplength="4">
@@ -2703,16 +2345,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00)
+-0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br>  0.00 ( 0.00,  0.00)
+0.00 (-0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br>  0.00 ( 0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
 -0.02 (-0.02, -0.01)<br> -0.01 (-0.02, -0.01)<br> -0.00 (-0.01, -0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 ( 0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)
+0.00 ( 0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr>
@@ -2723,16 +2365,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.01 (-0.01, -0.01)<br> -0.00 (-0.00, -0.00)<br>  0.00 (-0.00,  0.00)
+-0.01 (-0.01, -0.01)<br> -0.00 (-0.00, -0.00)<br>  0.00 (-0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00)<br>  0.03 ( 0.02,  0.03)
+0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00)<br>  0.03 ( 0.02,  0.03)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.02 (-0.02, -0.01)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00)
+-0.02 (-0.02, -0.01)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)
+0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr>
@@ -2746,13 +2388,13 @@ Two
 -0.00 (-0.01, -0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.02 ( 0.01,  0.02)
+0.02 ( 0.01,  0.02)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)
+0.00 (-0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)
+-0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr>
@@ -2763,16 +2405,16 @@ Two
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)
+-0.00 (-0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
 -0.04 (-0.04, -0.04)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 ( 0.00,  0.01)
+0.00 ( 0.00,  0.01)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)
+-0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr grouplength="4">
@@ -2788,16 +2430,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.25</strong>,  0.00,  0.04<br> -0.03,  <strong>1.10</strong>, -0.00<br> -0.00,  0.01,  <strong>1.16</strong>
+<strong>1.25</strong>,  0.00,  0.04<br> -0.03,  <strong>1.10</strong>, -0.00<br> -0.00,  0.01,  <strong>1.16</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.17</strong>, -0.06,  0.01<br>  0.03,  <strong>1.25</strong>, -0.01<br> -0.01,  0.01,  <strong>1.37</strong>
+<strong>1.17</strong>, -0.06,  0.01<br>  0.03,  <strong>1.25</strong>, -0.01<br> -0.01,  0.01,  <strong>1.37</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.21</strong>, -0.02, -0.01<br>  0.01,  <strong>1.44</strong>, -0.04<br> -0.02,  0.02,  <strong>1.27</strong>
+<strong>1.21</strong>, -0.02, -0.01<br>  0.01,  <strong>1.44</strong>, -0.04<br> -0.02,  0.02,  <strong>1.27</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.32</strong>, -0.01,  0.00<br> -0.00,  <strong>1.37</strong>, -0.01<br> -0.00,  0.00,  <strong>1.33</strong>
+<strong>1.32</strong>, -0.01,  0.00<br> -0.00,  <strong>1.37</strong>, -0.01<br> -0.00,  0.00,  <strong>1.33</strong>
 </td>
 </tr>
 <tr>
@@ -2808,16 +2450,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.21</strong>,  0.02,  0.07<br> -0.04,  <strong>1.24</strong>,  0.07<br>  0.01,  0.01,  <strong>1.16</strong>
+<strong>1.21</strong>,  0.02,  0.07<br> -0.04,  <strong>1.24</strong>,  0.07<br>  0.01,  0.01,  <strong>1.16</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.36</strong>, -0.00, -0.01<br>  0.00,  <strong>1.31</strong>,  0.03<br> -0.02, -0.00,  <strong>1.26</strong>
+<strong>1.36</strong>, -0.00, -0.01<br>  0.00,  <strong>1.31</strong>,  0.03<br> -0.02, -0.00,  <strong>1.26</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.35</strong>, -0.04, -0.01<br>  0.04,  <strong>1.33</strong>,  0.04<br>  0.04, -0.02,  <strong>1.34</strong>
+<strong>1.35</strong>, -0.04, -0.01<br>  0.04,  <strong>1.33</strong>,  0.04<br>  0.04, -0.02,  <strong>1.34</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.31</strong>,  0.00,  0.00<br> -0.01,  <strong>1.33</strong>,  0.01<br> -0.00,  0.00,  <strong>1.35</strong>
+<strong>1.31</strong>,  0.00,  0.00<br> -0.01,  <strong>1.33</strong>,  0.01<br> -0.00,  0.00,  <strong>1.35</strong>
 </td>
 </tr>
 <tr>
@@ -2862,12 +2504,10 @@ Two
 </tr>
 </tbody>
 </table>
-</div>
-<p>Table <a href="chap-dev-paper.html#tab:EV-Three">6.10</a> shows the results from the external validation in the Three-State Model.</p>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<p>Table <a href="chap-dev-paper.html#tab:EV-Three">6.6</a> shows the results from the external validation in the Three-State Model.</p>
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:EV-Three">Table 6.10: </span><font size="2">External Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
+<span id="tab:EV-Three">Table 6.6: </span><font size="2">External Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
 </caption>
 <thead>
 <tr>
@@ -2905,16 +2545,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.69 ( 0.68,  0.69)
+0.69 ( 0.68,  0.69)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.70 ( 0.69,  0.70)
+0.70 ( 0.69,  0.70)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.61 ( 0.60,  0.61)
+0.61 ( 0.60,  0.61)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.62 ( 0.62,  0.63)
+0.62 ( 0.62,  0.63)
 </td>
 </tr>
 <tr>
@@ -2925,16 +2565,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.68 ( 0.67,  0.68)
+0.68 ( 0.67,  0.68)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.72 ( 0.71,  0.72)
+0.72 ( 0.71,  0.72)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.65 ( 0.64,  0.65)
+0.65 ( 0.64,  0.65)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.63 ( 0.62,  0.63)
+0.63 ( 0.62,  0.63)
 </td>
 </tr>
 <tr>
@@ -2945,16 +2585,16 @@ Two
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.67 ( 0.67,  0.67)
+0.67 ( 0.67,  0.67)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.70 ( 0.69,  0.70)
+0.70 ( 0.69,  0.70)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.63 ( 0.63,  0.63)
+0.63 ( 0.63,  0.63)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.62 ( 0.62,  0.63)
+0.62 ( 0.62,  0.63)
 </td>
 </tr>
 <tr>
@@ -2965,16 +2605,16 @@ Two
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.66 ( 0.66,  0.67)
+0.66 ( 0.66,  0.67)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.70 ( 0.70,  0.70)
+0.70 ( 0.70,  0.70)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.65 ( 0.65,  0.66)
+0.65 ( 0.65,  0.66)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.63 ( 0.62,  0.63)
+0.63 ( 0.62,  0.63)
 </td>
 </tr>
 <tr grouplength="4">
@@ -2990,16 +2630,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.82 ( 0.82,  0.82)
+0.82 ( 0.82,  0.82)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.83)
+0.83 ( 0.83,  0.83)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.79 ( 0.79,  0.79)
+0.79 ( 0.79,  0.79)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.81 ( 0.80,  0.81)
+0.81 ( 0.80,  0.81)
 </td>
 </tr>
 <tr>
@@ -3010,16 +2650,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.85 ( 0.84,  0.85)
+0.85 ( 0.84,  0.85)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.84,  0.84)
+0.84 ( 0.84,  0.84)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.83)
+0.83 ( 0.83,  0.83)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.81 ( 0.81,  0.81)
+0.81 ( 0.81,  0.81)
 </td>
 </tr>
 <tr>
@@ -3030,16 +2670,16 @@ Two
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.85 ( 0.85,  0.86)
+0.85 ( 0.85,  0.86)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.84 ( 0.84,  0.85)
+0.84 ( 0.84,  0.85)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.80 ( 0.80,  0.80)
+0.80 ( 0.80,  0.80)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.81 ( 0.80,  0.81)
+0.81 ( 0.80,  0.81)
 </td>
 </tr>
 <tr>
@@ -3050,16 +2690,16 @@ Two
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.83 ( 0.83,  0.83)
+0.83 ( 0.83,  0.83)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.82 ( 0.82,  0.82)
+0.82 ( 0.82,  0.82)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.80 ( 0.80,  0.81)
+0.80 ( 0.80,  0.81)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.81 ( 0.81,  0.81)
+0.81 ( 0.81,  0.81)
 </td>
 </tr>
 <tr grouplength="4">
@@ -3075,16 +2715,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.00)<br> -0.00 (-0.00, -0.00)
+0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.00)<br> -0.00 (-0.00, -0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.01 ( 0.01,  0.02)<br> -0.01 (-0.01, -0.00)<br>  0.00 ( 0.00,  0.01)
+0.01 ( 0.01,  0.02)<br> -0.01 (-0.01, -0.00)<br>  0.00 ( 0.00,  0.01)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.05 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00)
+0.05 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)
+-0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)
 </td>
 </tr>
 <tr>
@@ -3095,16 +2735,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.04 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.01)
+0.04 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.01)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.02 ( 0.01,  0.02)<br> -0.00 (-0.00,  0.00)<br>  0.01 ( 0.01,  0.02)
+0.02 ( 0.01,  0.02)<br> -0.00 (-0.00,  0.00)<br>  0.01 ( 0.01,  0.02)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.01 ( 0.01,  0.01)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)
+0.01 ( 0.01,  0.01)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)
+0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr>
@@ -3115,16 +2755,16 @@ Two
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.00 (-0.00,  0.00)
+0.00 (-0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
 -0.05 (-0.05, -0.04)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.01 ( 0.01,  0.02)
+0.01 ( 0.01,  0.02)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)
+-0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr>
@@ -3135,16 +2775,16 @@ Two
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.02 ( 0.01,  0.02)
+0.02 ( 0.01,  0.02)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)
+-0.00 (-0.00,  0.00)
 </td>
 <td style="text-align:right;font-family: monospace;">
-0.01 ( 0.00,  0.01)
+0.01 ( 0.00,  0.01)
 </td>
 <td style="text-align:right;font-family: monospace;">
--0.00 (-0.00,  0.00)
+-0.00 (-0.00,  0.00)
 </td>
 </tr>
 <tr grouplength="4">
@@ -3160,16 +2800,16 @@ Three
 &lt; 60
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.35</strong>, -0.04,  0.04<br>  0.06,  <strong>1.49</strong>, -0.03<br>  0.01,  0.00,  <strong>1.25</strong>
+<strong>1.35</strong>, -0.04,  0.04<br>  0.06,  <strong>1.49</strong>, -0.03<br>  0.01,  0.00,  <strong>1.25</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.13</strong>, -0.00,  0.08<br> -0.02,  <strong>1.31</strong>,  0.01<br> -0.03,  0.01,  <strong>1.39</strong>
+<strong>1.13</strong>, -0.00,  0.08<br> -0.02,  <strong>1.31</strong>,  0.01<br> -0.03,  0.01,  <strong>1.39</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.45</strong>, -0.02,  0.03<br>  0.03,  <strong>1.73</strong>,  0.03<br>  0.04, -0.00,  <strong>1.47</strong>
+<strong>1.45</strong>, -0.02,  0.03<br>  0.03,  <strong>1.73</strong>,  0.03<br>  0.04, -0.00,  <strong>1.47</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.54</strong>,  0.00, -0.00<br>  0.01,  <strong>1.52</strong>,  0.00<br> -0.00,  0.00,  <strong>1.54</strong>
+<strong>1.54</strong>,  0.00, -0.00<br>  0.01,  <strong>1.52</strong>,  0.00<br> -0.00,  0.00,  <strong>1.54</strong>
 </td>
 </tr>
 <tr>
@@ -3180,16 +2820,16 @@ Three
 &lt; 30
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.23</strong>,  0.03,  0.00<br> -0.05,  <strong>1.20</strong>, -0.04<br> -0.00, -0.00,  <strong>1.37</strong>
+<strong>1.23</strong>,  0.03,  0.00<br> -0.05,  <strong>1.20</strong>, -0.04<br> -0.00, -0.00,  <strong>1.37</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>0.99</strong>, -0.01, -0.00<br>  0.04,  <strong>1.34</strong>, -0.03<br>  0.00,  0.01,  <strong>1.46</strong>
+<strong>0.99</strong>, -0.01, -0.00<br>  0.04,  <strong>1.34</strong>, -0.03<br>  0.00,  0.01,  <strong>1.46</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.56</strong>,  0.00,  0.00<br> -0.05,  <strong>1.49</strong>,  0.03<br>  0.03,  0.01,  <strong>1.63</strong>
+<strong>1.56</strong>,  0.00,  0.00<br> -0.05,  <strong>1.49</strong>,  0.03<br>  0.03,  0.01,  <strong>1.63</strong>
 </td>
 <td style="text-align:right;font-family: monospace;">
-<strong>1.62</strong>, -0.01,  0.01<br> -0.00,  <strong>1.53</strong>,  0.01<br>  0.00, -0.00,  <strong>1.58</strong>
+<strong>1.62</strong>, -0.01,  0.01<br> -0.00,  <strong>1.53</strong>,  0.01<br>  0.00, -0.00,  <strong>1.58</strong>
 </td>
 </tr>
 <tr>
@@ -3235,9 +2875,8 @@ Two
 </tbody>
 </table>
 </div>
-</div>
-<div id="example-1" class="section level3" number="6.3.5">
-<h3><span class="header-section-number">6.3.5</span> Example</h3>
+<div id="example-1" class="section level3" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Example</h3>
 <p>The example patients seen in Table <a href="chap-dev-paper.html#tab:Example-Patient">6.1</a> were passed through our Three-State prediction model and the results for all time-points are shown in figure <a href="chap-dev-paper.html#fig:Example-Predictions-trend">6.2</a>. The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.</p>
 <div class="figure" style="text-align: center"><span id="fig:Example-Predictions-trend"></span>
 <img src="figure/Dev_Paper_Example.png" alt="Results of Example Patients" width="100%" />
@@ -3246,8 +2885,8 @@ Figure 6.2: Results of Example Patients
 </p>
 </div>
 </div>
-<div id="calculator-1" class="section level3" number="6.3.6">
-<h3><span class="header-section-number">6.3.6</span> Calculator</h3>
+<div id="calculator-1" class="section level3" number="6.3.5">
+<h3><span class="header-section-number">6.3.5</span> Calculator</h3>
 <p>The calculator is available online here:</p>
 <p><a href="https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/">https://michael-barrowman.shinyapps.io/MSCPM_for_CKD_Patients/</a>.</p>
 </div>
@@ -3256,23 +2895,19 @@ Figure 6.2: Results of Example Patients
 <h2><span class="header-section-number">6.4</span> Discussion</h2>
 <p>We have used data provided by SKS to develop a Multi-State Clinical Prediction Model and then validated this model within the SKS and SERPR datasets. Within our Models, the cause of a patient’s renal disease had the widest effect on patient outcomes meaning that outcomes are highly dependent on ERA-EDTA classification of the diagnosis. Most groupings resulted in a lowered hazard of death and an increased hazard of RRT compared to the baseline of Systemic diseases.</p>
 <p>Models performed well in model validation with the Three-State Model slightly out performing the other two models in calibration and overall predictive ability, however the Five-State model performed marginally better in terms of discriminative ability. Both Multi-State Models outperformed the Two-State (Traditional) Model.</p>
-<p>The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of <del>multiple</del><mark>different</mark> outcomes at a wide range of time points. <mark>The model can also be used to estimate an expected amount of time that a patient will be on RRT</mark> The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.</p>
+<p>The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of different outcomes at a wide range of time points. The model can also be used to estimate an expected amount of time that a patient will be on RRT The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.</p>
 <p>Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients from a wider catchment area, making the cohort of patients in the development population in worse condition than the general population of CKD patients.</p>
 <p>There were also high levels of missingness in the eGFR and uPCR rates of changes would also produce a bias, due to these measures likely being missing not at random. The derivation of the validation dataset ensured that all patients had an eGFR Rate measurement; this was done to avoid data missing not at random (only negative or missing data would be available as patient’s eGFR dropped to less than 60), however deriving data in this way could itself induce a survivor bias in the start date used for patients.</p>
 <p>In the Five-State Model, We omitted the analysis of the Tx to Dead state due to the anticipated low number of events within the SKS dataset. The lowest number of events for a transition was therefore PD to Dead, which had only 107. Altogether, we considered 26 covariates (with 4 categorical covariates) and so this equates to 36 predictor parameters and an events per predictor parameter (EPP) of 2.97. This is below the recommendations of Riley et al <span class="citation">[<a href="#ref-riley_minimum_2019" role="doc-biblioref">22</a>]</span>, whose calculations produce a requirement of 4.54 EPP. This requirement was also not satisfied by the CKD to PD transition (EPP = 6.36,required = 10.2) or the CKD to Tx transition (EPP = 2.97, required = 17.6). Fortunately, this limitation is confined to the Five-State Model.</p>
-<p>We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, (however this is a much weaker assumption <span class="citation">[<a href="#ref-royston_flexible_2002" role="doc-biblioref">117</a>]</span>), which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.</p>
-<p>Compared to the <del>raw</del><mark>apparent</mark> internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.</p>
-<p><del>Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expedite or delay transition of a patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarding <em>which</em> treatment might be benficial for a patient.</del></p>
-<p>Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice <span class="citation">[<a href="#ref-moons_prognosis_2009-1" role="doc-biblioref">118</a>]</span> by comparing it to standard care and establishing whether the use of our model improves patient outcomes.</p>
+<p>We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, (however this is a much weaker assumption <span class="citation">[<a href="#ref-royston_flexible_2002" role="doc-biblioref">96</a>]</span>), which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.</p>
+<p>Compared to the apparent internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.</p>
+<p>Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice <span class="citation">[<a href="#ref-moons_prognosis_2009-1" role="doc-biblioref">97</a>]</span> by comparing it to standard care and establishing whether the use of our model improves patient outcomes.</p>
 <p>All three models produced for this work performed well in terms of accuracy, calibration and discrimination when applied internally and externally. This shows directly that the models are suitable for use in populations similar to both our development and our validation datasets. It can also be concluded that the models can be transported and applied to any population with a similar healthcare system to the UK.</p>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-hippisley-cox_development_2017">
-<p>[2] J. Hippisley-Cox, C. Coupland, and P. Brindle, “Development and validation of QRISK3 risk prediction algorithms to estimate future risk of cardiovascular disease: Prospective cohort study,” <em>BMJ</em>, vol. 357, May 2017, doi: <a href="https://doi.org/10.1136/bmj.j2099">10.1136/bmj.j2099</a>.</p>
-</div>
 <div id="ref-steyerberg_prognosis_2013">
 <p>[8] E. W. Steyerberg <em>et al.</em>, “Prognosis Research Strategy (PROGRESS) 3: Prognostic Model Research,” <em>PLOS Medicine</em>, vol. 10, no. 2, p. e1001381, Feb. 2013, doi: <a href="https://doi.org/10.1371/journal.pmed.1001381">10.1371/journal.pmed.1001381</a>.</p>
 </div>
@@ -3295,142 +2930,124 @@ Figure 6.2: Results of Example Patients
 <p>[22] R. D. Riley <em>et al.</em>, “Minimum sample size for developing a multivariable prediction model: PART II - binary and time-to-event outcomes,” <em>Statistics in Medicine</em>, vol. 38, no. 7, pp. 1276–1296, 2019, doi: <a href="https://doi.org/10.1002/sim.7992">10.1002/sim.7992</a>.</p>
 </div>
 <div id="ref-r_core_team_r_nodate">
-<p>[51] R. C. Team, “R: A Language and Environment for Statistical Computing.” R Foundation for Statistical Computing, Vienna, Austria, Vienna,</p>
+<p>[52] R. C. Team, “R: A Language and Environment for Statistical Computing.” R Foundation for Statistical Computing, Vienna, Austria, Vienna,</p>
 </div>
 <div id="ref-wickham_tidy_2017">
-<p>[52] H. Wickham, “The tidy tools manifesto.” https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.</p>
+<p>[53] H. Wickham, “The tidy tools manifesto.” https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.</p>
 </div>
 <div id="ref-chang_shiny_2020">
-<p>[55] W. Chang <em>et al.</em>, “Shiny: Web Application Framework for R.” Mar-2020.</p>
+<p>[56] W. Chang <em>et al.</em>, “Shiny: Web Application Framework for R.” Mar-2020.</p>
 </div>
 <div id="ref-johnson_predicting_2007">
-<p>[56] E. S. Johnson, M. L. Thorp, X. Yang, O. L. Charansonney, and D. H. Smith, “Predicting renal replacement therapy and mortality in CKD,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 50, no. 4, pp. 559–565, Oct. 2007, doi: <a href="https://doi.org/10.1053/j.ajkd.2007.07.006">10.1053/j.ajkd.2007.07.006</a>.</p>
+<p>[57] E. S. Johnson, M. L. Thorp, X. Yang, O. L. Charansonney, and D. H. Smith, “Predicting renal replacement therapy and mortality in CKD,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 50, no. 4, pp. 559–565, Oct. 2007, doi: <a href="https://doi.org/10.1053/j.ajkd.2007.07.006">10.1053/j.ajkd.2007.07.006</a>.</p>
 </div>
 <div id="ref-landray_prediction_2010">
-<p>[57] M. J. Landray <em>et al.</em>, “Prediction of ESRD and death among people with CKD: The Chronic Renal Impairment in Birmingham (CRIB) prospective cohort study,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 56, no. 6, pp. 1082–1094, Dec. 2010, doi: <a href="https://doi.org/10.1053/j.ajkd.2010.07.016">10.1053/j.ajkd.2010.07.016</a>.</p>
+<p>[58] M. J. Landray <em>et al.</em>, “Prediction of ESRD and death among people with CKD: The Chronic Renal Impairment in Birmingham (CRIB) prospective cohort study,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 56, no. 6, pp. 1082–1094, Dec. 2010, doi: <a href="https://doi.org/10.1053/j.ajkd.2010.07.016">10.1053/j.ajkd.2010.07.016</a>.</p>
 </div>
 <div id="ref-bansal_development_2015">
-<p>[58] N. Bansal <em>et al.</em>, “Development and validation of a model to predict 5-year risk of death without ESRD among older adults with CKD,” <em>Clinical journal of the American Society of Nephrology: CJASN</em>, vol. 10, no. 3, pp. 363–371, Mar. 2015, doi: <a href="https://doi.org/10.2215/CJN.04650514">10.2215/CJN.04650514</a>.</p>
+<p>[59] N. Bansal <em>et al.</em>, “Development and validation of a model to predict 5-year risk of death without ESRD among older adults with CKD,” <em>Clinical journal of the American Society of Nephrology: CJASN</em>, vol. 10, no. 3, pp. 363–371, Mar. 2015, doi: <a href="https://doi.org/10.2215/CJN.04650514">10.2215/CJN.04650514</a>.</p>
 </div>
 <div id="ref-marks_looking_2015">
-<p>[59] A. Marks <em>et al.</em>, “Looking to the future: Predicting renal replacement outcomes in a large community cohort with chronic kidney disease,” <em>Nephrology, Dialysis, Transplantation: Official Publication of the European Dialysis and Transplant Association - European Renal Association</em>, vol. 30, no. 9, pp. 1507–1517, Sep. 2015, doi: <a href="https://doi.org/10.1093/ndt/gfv089">10.1093/ndt/gfv089</a>.</p>
+<p>[60] A. Marks <em>et al.</em>, “Looking to the future: Predicting renal replacement outcomes in a large community cohort with chronic kidney disease,” <em>Nephrology, Dialysis, Transplantation: Official Publication of the European Dialysis and Transplant Association - European Renal Association</em>, vol. 30, no. 9, pp. 1507–1517, Sep. 2015, doi: <a href="https://doi.org/10.1093/ndt/gfv089">10.1093/ndt/gfv089</a>.</p>
 </div>
 <div id="ref-wick_clinical_2017">
-<p>[60] J. P. Wick <em>et al.</em>, “A Clinical Risk Prediction Tool for 6-Month Mortality After Dialysis Initiation Among Older Adults,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 69, no. 5, pp. 568–575, May 2017, doi: <a href="https://doi.org/10.1053/j.ajkd.2016.08.035">10.1053/j.ajkd.2016.08.035</a>.</p>
+<p>[61] J. P. Wick <em>et al.</em>, “A Clinical Risk Prediction Tool for 6-Month Mortality After Dialysis Initiation Among Older Adults,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 69, no. 5, pp. 568–575, May 2017, doi: <a href="https://doi.org/10.1053/j.ajkd.2016.08.035">10.1053/j.ajkd.2016.08.035</a>.</p>
 </div>
 <div id="ref-johnson_predicting_2008">
-<p>[61] E. S. Johnson, M. L. Thorp, R. W. Platt, and D. H. Smith, “Predicting the risk of dialysis and transplant among patients with CKD: A retrospective cohort study,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 52, no. 4, pp. 653–660, Oct. 2008, doi: <a href="https://doi.org/10.1053/j.ajkd.2008.04.026">10.1053/j.ajkd.2008.04.026</a>.</p>
+<p>[62] E. S. Johnson, M. L. Thorp, R. W. Platt, and D. H. Smith, “Predicting the risk of dialysis and transplant among patients with CKD: A retrospective cohort study,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 52, no. 4, pp. 653–660, Oct. 2008, doi: <a href="https://doi.org/10.1053/j.ajkd.2008.04.026">10.1053/j.ajkd.2008.04.026</a>.</p>
 </div>
 <div id="ref-kulkarni_transition_2017">
-<p>[63] S. Kulkarni <em>et al.</em>, “Transition probabilities between changing sensitization levels, waitlist activity status and competing-risk kidney transplant outcomes using multi-state modeling,” <em>PLOS ONE</em>, vol. 12, no. 12, p. e0190277, Dec. 2017, doi: <a href="https://doi.org/10.1371/journal.pone.0190277">10.1371/journal.pone.0190277</a>.</p>
+<p>[64] S. Kulkarni <em>et al.</em>, “Transition probabilities between changing sensitization levels, waitlist activity status and competing-risk kidney transplant outcomes using multi-state modeling,” <em>PLOS ONE</em>, vol. 12, no. 12, p. e0190277, Dec. 2017, doi: <a href="https://doi.org/10.1371/journal.pone.0190277">10.1371/journal.pone.0190277</a>.</p>
 </div>
 <div id="ref-floege_development_2015">
-<p>[64] J. Floege <em>et al.</em>, “Development and validation of a predictive mortality risk score from a European hemodialysis cohort,” <em>Kidney International</em>, vol. 87, no. 5, pp. 996–1008, May 2015, doi: <a href="https://doi.org/10.1038/ki.2014.419">10.1038/ki.2014.419</a>.</p>
+<p>[65] J. Floege <em>et al.</em>, “Development and validation of a predictive mortality risk score from a European hemodialysis cohort,” <em>Kidney International</em>, vol. 87, no. 5, pp. 996–1008, May 2015, doi: <a href="https://doi.org/10.1038/ki.2014.419">10.1038/ki.2014.419</a>.</p>
 </div>
 <div id="ref-cao_predicting_2015">
-<p>[66] X.-Y. Cao <em>et al.</em>, “Predicting one-year mortality in peritoneal dialysis patients: An analysis of the China Peritoneal Dialysis Registry,” <em>International Journal of Medical Sciences</em>, vol. 12, no. 4, pp. 354–361, 2015, doi: <a href="https://doi.org/10.7150/ijms.11694">10.7150/ijms.11694</a>.</p>
+<p>[67] X.-Y. Cao <em>et al.</em>, “Predicting one-year mortality in peritoneal dialysis patients: An analysis of the China Peritoneal Dialysis Registry,” <em>International Journal of Medical Sciences</em>, vol. 12, no. 4, pp. 354–361, 2015, doi: <a href="https://doi.org/10.7150/ijms.11694">10.7150/ijms.11694</a>.</p>
 </div>
 <div id="ref-tangri_predictive_2011">
-<p>[67] N. Tangri <em>et al.</em>, “A predictive model for progression of chronic kidney disease to kidney failure,” <em>JAMA</em>, vol. 305, no. 15, pp. 1553–1559, Apr. 2011, doi: <a href="https://doi.org/10.1001/jama.2011.451">10.1001/jama.2011.451</a>.</p>
+<p>[68] N. Tangri <em>et al.</em>, “A predictive model for progression of chronic kidney disease to kidney failure,” <em>JAMA</em>, vol. 305, no. 15, pp. 1553–1559, Apr. 2011, doi: <a href="https://doi.org/10.1001/jama.2011.451">10.1001/jama.2011.451</a>.</p>
 </div>
 <div id="ref-tangri_dynamic_2017">
-<p>[69] N. Tangri <em>et al.</em>, “A Dynamic Predictive Model for Progression of CKD,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 69, no. 4, pp. 514–520, Apr. 2017, doi: <a href="https://doi.org/10.1053/j.ajkd.2016.07.030">10.1053/j.ajkd.2016.07.030</a>.</p>
+<p>[70] N. Tangri <em>et al.</em>, “A Dynamic Predictive Model for Progression of CKD,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 69, no. 4, pp. 514–520, Apr. 2017, doi: <a href="https://doi.org/10.1053/j.ajkd.2016.07.030">10.1053/j.ajkd.2016.07.030</a>.</p>
 </div>
 <div id="ref-shlipak_cardiovascular_2005">
-<p>[70] M. G. Shlipak <em>et al.</em>, “Cardiovascular mortality risk in chronic kidney disease: Comparison of traditional and novel risk factors,” <em>JAMA</em>, vol. 293, no. 14, pp. 1737–1745, Apr. 2005, doi: <a href="https://doi.org/10.1001/jama.293.14.1737">10.1001/jama.293.14.1737</a>.</p>
+<p>[71] M. G. Shlipak <em>et al.</em>, “Cardiovascular mortality risk in chronic kidney disease: Comparison of traditional and novel risk factors,” <em>JAMA</em>, vol. 293, no. 14, pp. 1737–1745, Apr. 2005, doi: <a href="https://doi.org/10.1001/jama.293.14.1737">10.1001/jama.293.14.1737</a>.</p>
 </div>
 <div id="ref-mcmurray_predictors_2011">
-<p>[72] J. J. V. McMurray <em>et al.</em>, “Predictors of fatal and nonfatal cardiovascular events in patients with type 2 diabetes mellitus, chronic kidney disease, and anemia: An analysis of the Trial to Reduce cardiovascular Events with Aranesp (darbepoetin-alfa) Therapy (TREAT),” <em>American Heart Journal</em>, vol. 162, no. 4, pp. 748–755.e3, Oct. 2011, doi: <a href="https://doi.org/10.1016/j.ahj.2011.07.016">10.1016/j.ahj.2011.07.016</a>.</p>
+<p>[73] J. J. V. McMurray <em>et al.</em>, “Predictors of fatal and nonfatal cardiovascular events in patients with type 2 diabetes mellitus, chronic kidney disease, and anemia: An analysis of the Trial to Reduce cardiovascular Events with Aranesp (darbepoetin-alfa) Therapy (TREAT),” <em>American Heart Journal</em>, vol. 162, no. 4, pp. 748–755.e3, Oct. 2011, doi: <a href="https://doi.org/10.1016/j.ahj.2011.07.016">10.1016/j.ahj.2011.07.016</a>.</p>
 </div>
 <div id="ref-grams_assessing_2013">
-<p>[73] M. E. Grams and J. Coresh, “Assessing risk in chronic kidney disease: A methodological review,” <em>Nature Reviews. Nephrology</em>, vol. 9, no. 1, pp. 18–25, Jan. 2013, doi: <a href="https://doi.org/10.1038/nrneph.2012.248">10.1038/nrneph.2012.248</a>.</p>
+<p>[74] M. E. Grams and J. Coresh, “Assessing risk in chronic kidney disease: A methodological review,” <em>Nature Reviews. Nephrology</em>, vol. 9, no. 1, pp. 18–25, Jan. 2013, doi: <a href="https://doi.org/10.1038/nrneph.2012.248">10.1038/nrneph.2012.248</a>.</p>
 </div>
 <div id="ref-tangri_risk_2013">
-<p>[74] N. Tangri <em>et al.</em>, “Risk prediction models for patients with chronic kidney disease: A systematic review,” <em>Annals of Internal Medicine</em>, vol. 158, no. 8, pp. 596–603, Apr. 2013, doi: <a href="https://doi.org/10.7326/0003-4819-158-8-201304160-00004">10.7326/0003-4819-158-8-201304160-00004</a>.</p>
+<p>[75] N. Tangri <em>et al.</em>, “Risk prediction models for patients with chronic kidney disease: A systematic review,” <em>Annals of Internal Medicine</em>, vol. 158, no. 8, pp. 596–603, Apr. 2013, doi: <a href="https://doi.org/10.7326/0003-4819-158-8-201304160-00004">10.7326/0003-4819-158-8-201304160-00004</a>.</p>
 </div>
 <div id="ref-ramspek_prediction_2017">
-<p>[75] C. L. Ramspek, P. W. Voskamp, F. J. van Ittersum, R. T. Krediet, F. W. Dekker, and M. van Diepen, “Prediction models for the mortality risk in chronic dialysis patients: A systematic review and independent external validation study,” <em>Clinical Epidemiology</em>, vol. 9, pp. 451–464, 2017, doi: <a href="https://doi.org/10.2147/CLEP.S139748">10.2147/CLEP.S139748</a>.</p>
+<p>[76] C. L. Ramspek, P. W. Voskamp, F. J. van Ittersum, R. T. Krediet, F. W. Dekker, and M. van Diepen, “Prediction models for the mortality risk in chronic dialysis patients: A systematic review and independent external validation study,” <em>Clinical Epidemiology</em>, vol. 9, pp. 451–464, 2017, doi: <a href="https://doi.org/10.2147/CLEP.S139748">10.2147/CLEP.S139748</a>.</p>
 </div>
 <div id="ref-bouwmeester_reporting_2012-1">
-<p>[76] W. Bouwmeester <em>et al.</em>, “Reporting and Methods in Clinical Prediction Research: A Systematic Review,” <em>PLOS Medicine</em>, vol. 9, no. 5, p. e1001221, May 2012, doi: <a href="https://doi.org/10.1371/journal.pmed.1001221">10.1371/journal.pmed.1001221</a>.</p>
+<p>[77] W. Bouwmeester <em>et al.</em>, “Reporting and Methods in Clinical Prediction Research: A Systematic Review,” <em>PLOS Medicine</em>, vol. 9, no. 5, p. e1001221, May 2012, doi: <a href="https://doi.org/10.1371/journal.pmed.1001221">10.1371/journal.pmed.1001221</a>.</p>
 </div>
 <div id="ref-perotte_risk_2015">
-<p>[77] A. Perotte, R. Ranganath, J. S. Hirsch, D. Blei, and N. Elhadad, “Risk prediction for chronic kidney disease progression using heterogeneous electronic health record data and time series analysis,” <em>Journal of the American Medical Informatics Association: JAMIA</em>, vol. 22, no. 4, pp. 872–880, Jul. 2015, doi: <a href="https://doi.org/10.1093/jamia/ocv024">10.1093/jamia/ocv024</a>.</p>
+<p>[78] A. Perotte, R. Ranganath, J. S. Hirsch, D. Blei, and N. Elhadad, “Risk prediction for chronic kidney disease progression using heterogeneous electronic health record data and time series analysis,” <em>Journal of the American Medical Informatics Association: JAMIA</em>, vol. 22, no. 4, pp. 872–880, Jul. 2015, doi: <a href="https://doi.org/10.1093/jamia/ocv024">10.1093/jamia/ocv024</a>.</p>
 </div>
 <div id="ref-begun_identification_2013">
-<p>[78] A. Begun, A. Icks, R. Waldeyer, S. Landwehr, M. Koch, and G. Giani, “Identification of a multistate continuous-time nonhomogeneous Markov chain model for patients with decreased renal function.” <em>Medical decision making : an international journal of the Society for Medical Decision Making</em>, vol. 33, no. 2, pp. 298–306, Feb. 2013, doi: <a href="https://doi.org/10.1177/0272989X12466731">10.1177/0272989X12466731</a>.</p>
+<p>[79] A. Begun, A. Icks, R. Waldeyer, S. Landwehr, M. Koch, and G. Giani, “Identification of a multistate continuous-time nonhomogeneous Markov chain model for patients with decreased renal function.” <em>Medical decision making : an international journal of the Society for Medical Decision Making</em>, vol. 33, no. 2, pp. 298–306, Feb. 2013, doi: <a href="https://doi.org/10.1177/0272989X12466731">10.1177/0272989X12466731</a>.</p>
 </div>
 <div id="ref-allen_chronic_2014">
-<p>[79] A. M. Allen, W. R. Kim, T. M. Therneau, J. J. Larson, J. K. Heimbach, and A. D. Rule, “Chronic kidney disease and associated mortality after liver transplantation–a time-dependent analysis using measured glomerular filtration rate,” <em>Journal of Hepatology</em>, vol. 61, no. 2, pp. 286–292, Aug. 2014, doi: <a href="https://doi.org/10.1016/j.jhep.2014.03.034">10.1016/j.jhep.2014.03.034</a>.</p>
+<p>[80] A. M. Allen, W. R. Kim, T. M. Therneau, J. J. Larson, J. K. Heimbach, and A. D. Rule, “Chronic kidney disease and associated mortality after liver transplantation–a time-dependent analysis using measured glomerular filtration rate,” <em>Journal of Hepatology</em>, vol. 61, no. 2, pp. 286–292, Aug. 2014, doi: <a href="https://doi.org/10.1016/j.jhep.2014.03.034">10.1016/j.jhep.2014.03.034</a>.</p>
 </div>
 <div id="ref-grams_predicting_2018">
-<p>[80] M. E. Grams <em>et al.</em>, “Predicting timing of clinical outcomes in patients with chronic kidney disease and severely decreased glomerular filtration rate,” <em>Kidney International</em>, vol. 93, no. 6, pp. 1442–1451, Jun. 2018, doi: <a href="https://doi.org/10.1016/j.kint.2018.01.009">10.1016/j.kint.2018.01.009</a>.</p>
-</div>
-<div id="ref-altman_problems_1994-1">
-<p>[81] D. G. Altman, “Problems in dichotomizing continuous variables,” <em>American Journal of Epidemiology</em>, vol. 139, no. 4, pp. 442–445, Feb. 1994, doi: <a href="https://doi.org/10.1093/oxfordjournals.aje.a117020">10.1093/oxfordjournals.aje.a117020</a>.</p>
-</div>
-<div id="ref-weinberg_how_1995">
-<p>[98] C. R. Weinberg, “How Bad Is Categorization?” <em>Epidemiology</em>, vol. 6, no. 4, pp. 345–347, 1995.</p>
-</div>
-<div id="ref-van_smeden_reflection_2019">
-<p>[99] M. van Smeden, T. L. Lash, and R. H. H. Groenwold, “Reflection on modern methods: Five myths about measurement error in epidemiological research,” <em>International Journal of Epidemiology</em>, Oct. 19AD, doi: <a href="https://doi.org/10.1093/ije/dyz251">10.1093/ije/dyz251</a>.</p>
-</div>
-<div id="ref-sun_interval_2005">
-<p>[100] J. Sun, “Interval Censoring,” in <em>Encyclopedia of Biostatistics</em>, American Cancer Society, 2005.</p>
+<p>[81] M. E. Grams <em>et al.</em>, “Predicting timing of clinical outcomes in patients with chronic kidney disease and severely decreased glomerular filtration rate,” <em>Kidney International</em>, vol. 93, no. 6, pp. 1442–1451, Jun. 2018, doi: <a href="https://doi.org/10.1016/j.kint.2018.01.009">10.1016/j.kint.2018.01.009</a>.</p>
 </div>
 <div id="ref-hoefield_factors_2010">
-<p>[101] R. A. Hoefield <em>et al.</em>, “Factors associated with kidney disease progression and mortality in a referred CKD population,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 56, no. 6, pp. 1072–1081, Dec. 2010, doi: <a href="https://doi.org/10.1053/j.ajkd.2010.06.010">10.1053/j.ajkd.2010.06.010</a>.</p>
+<p>[82] R. A. Hoefield <em>et al.</em>, “Factors associated with kidney disease progression and mortality in a referred CKD population,” <em>American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation</em>, vol. 56, no. 6, pp. 1072–1081, Dec. 2010, doi: <a href="https://doi.org/10.1053/j.ajkd.2010.06.010">10.1053/j.ajkd.2010.06.010</a>.</p>
 </div>
 <div id="ref-chinnadurai_increased_2019-1">
-<p>[102] R. Chinnadurai, C. Chrysochou, and P. A. Kalra, “Increased Risk for Cardiovascular Events in Patients with Diabetic Kidney Disease and Non-Alcoholic Fatty Liver Disease,” <em>Nephron</em>, vol. 141, no. 1, pp. 24–30, 2019, doi: <a href="https://doi.org/10.1159/000493472">10.1159/000493472</a>.</p>
+<p>[83] R. Chinnadurai, C. Chrysochou, and P. A. Kalra, “Increased Risk for Cardiovascular Events in Patients with Diabetic Kidney Disease and Non-Alcoholic Fatty Liver Disease,” <em>Nephron</em>, vol. 141, no. 1, pp. 24–30, 2019, doi: <a href="https://doi.org/10.1159/000493472">10.1159/000493472</a>.</p>
 </div>
 <div id="ref-levey_new_2009">
-<p>[103] A. S. Levey <em>et al.</em>, “A new equation to estimate glomerular filtration rate,” <em>Annals of Internal Medicine</em>, vol. 150, no. 9, pp. 604–612, May 2009, doi: <a href="https://doi.org/10.7326/0003-4819-150-9-200905050-00006">10.7326/0003-4819-150-9-200905050-00006</a>.</p>
+<p>[84] A. S. Levey <em>et al.</em>, “A new equation to estimate glomerular filtration rate,” <em>Annals of Internal Medicine</em>, vol. 150, no. 9, pp. 604–612, May 2009, doi: <a href="https://doi.org/10.7326/0003-4819-150-9-200905050-00006">10.7326/0003-4819-150-9-200905050-00006</a>.</p>
 </div>
 <div id="ref-new_obtaining_2014">
-<p>[104] J. P. New, N. D. Bakerly, D. Leather, and A. Woodcock, “Obtaining real-world evidence: The Salford Lung Study,” <em>Thorax</em>, vol. 69, pp. 1152–1154, 2014, doi: <a href="https://doi.org/http://dx.doi.org/10.1136/thoraxjnl-2014-205259">http://dx.doi.org/10.1136/thoraxjnl-2014-205259</a>.</p>
+<p>[85] J. P. New, N. D. Bakerly, D. Leather, and A. Woodcock, “Obtaining real-world evidence: The Salford Lung Study,” <em>Thorax</em>, vol. 69, pp. 1152–1154, 2014, doi: <a href="https://doi.org/http://dx.doi.org/10.1136/thoraxjnl-2014-205259">http://dx.doi.org/10.1136/thoraxjnl-2014-205259</a>.</p>
 </div>
 <div id="ref-matsushita_cohort_2013">
-<p>[105] K. Matsushita <em>et al.</em>, “Cohort Profile: The Chronic Kidney Disease Prognosis Consortium,” <em>International Journal of Epidemiology</em>, vol. 42, no. 6, pp. 1660–1668, Dec. 2013, doi: <a href="https://doi.org/10.1093/ije/dys173">10.1093/ije/dys173</a>.</p>
-</div>
-<div id="ref-forni_renal_2017-1">
-<p>[106] L. G. Forni <em>et al.</em>, “Renal recovery after acute kidney injury,” <em>Intensive Care Medicine</em>, vol. 43, no. 6, pp. 855–866, 2017, doi: <a href="https://doi.org/10.1007/s00134-017-4809-x">10.1007/s00134-017-4809-x</a>.</p>
-</div>
-<div id="ref-noauthor_kdigo_2012">
-<p>[107] “KDIGO Clinical Practice Guideline for Acute Kidney Injury,” <em>OFFICIAL JOURNAL OF THE INTERNATIONAL SOCIETY OF NEPHROLOGY</em>, p. 141, 2012.</p>
+<p>[86] K. Matsushita <em>et al.</em>, “Cohort Profile: The Chronic Kidney Disease Prognosis Consortium,” <em>International Journal of Epidemiology</em>, vol. 42, no. 6, pp. 1660–1668, Dec. 2013, doi: <a href="https://doi.org/10.1093/ije/dys173">10.1093/ije/dys173</a>.</p>
 </div>
 <div id="ref-white_imputing_2009">
-<p>[108] I. R. White and P. Royston, “Imputing missing covariate values for the Cox model,” <em>Statistics in Medicine</em>, vol. 28, no. 15, pp. 1982–1998, Jul. 2009, doi: <a href="https://doi.org/10.1002/sim.3618">10.1002/sim.3618</a>.</p>
+<p>[87] I. R. White and P. Royston, “Imputing missing covariate values for the Cox model,” <em>Statistics in Medicine</em>, vol. 28, no. 15, pp. 1982–1998, Jul. 2009, doi: <a href="https://doi.org/10.1002/sim.3618">10.1002/sim.3618</a>.</p>
 </div>
 <div id="ref-venkat-raman_new_2012">
-<p>[109] G. Venkat-Raman <em>et al.</em>, “New primary renal diagnosis codes for the ERA-EDTA,” <em>Nephrology Dialysis Transplantation</em>, vol. 27, no. 12, pp. 4414–4419, Dec. 2012, doi: <a href="https://doi.org/10.1093/ndt/gfs461">10.1093/ndt/gfs461</a>.</p>
+<p>[88] G. Venkat-Raman <em>et al.</em>, “New primary renal diagnosis codes for the ERA-EDTA,” <em>Nephrology Dialysis Transplantation</em>, vol. 27, no. 12, pp. 4414–4419, Dec. 2012, doi: <a href="https://doi.org/10.1093/ndt/gfs461">10.1093/ndt/gfs461</a>.</p>
 </div>
 <div id="ref-kovesdy_past_2016">
-<p>[110] C. P. Kovesdy <em>et al.</em>, “Past Decline Versus Current eGFR and Subsequent ESRD Risk,” <em>Journal of the American Society of Nephrology</em>, vol. 27, no. 8, pp. 2447–2455, Aug. 2016, doi: <a href="https://doi.org/10.1681/ASN.2015060687">10.1681/ASN.2015060687</a>.</p>
+<p>[89] C. P. Kovesdy <em>et al.</em>, “Past Decline Versus Current eGFR and Subsequent ESRD Risk,” <em>Journal of the American Society of Nephrology</em>, vol. 27, no. 8, pp. 2447–2455, Aug. 2016, doi: <a href="https://doi.org/10.1681/ASN.2015060687">10.1681/ASN.2015060687</a>.</p>
 </div>
 <div id="ref-naimark_past_2016">
-<p>[111] D. M. J. Naimark <em>et al.</em>, “Past Decline Versus Current eGFR and Subsequent Mortality Risk,” <em>Journal of the American Society of Nephrology</em>, vol. 27, no. 8, pp. 2456–2466, Aug. 2016, doi: <a href="https://doi.org/10.1681/ASN.2015060688">10.1681/ASN.2015060688</a>.</p>
+<p>[90] D. M. J. Naimark <em>et al.</em>, “Past Decline Versus Current eGFR and Subsequent Mortality Risk,” <em>Journal of the American Society of Nephrology</em>, vol. 27, no. 8, pp. 2456–2466, Aug. 2016, doi: <a href="https://doi.org/10.1681/ASN.2015060688">10.1681/ASN.2015060688</a>.</p>
 </div>
 <div id="ref-schomaker_bootstrap_2018">
-<p>[112] M. Schomaker and C. Heumann, “Bootstrap inference when using multiple imputation,” <em>Statistics in Medicine</em>, vol. 37, no. 14, pp. 2252–2266, 2018, doi: <a href="https://doi.org/10.1002/sim.7654">10.1002/sim.7654</a>.</p>
+<p>[91] M. Schomaker and C. Heumann, “Bootstrap inference when using multiple imputation,” <em>Statistics in Medicine</em>, vol. 37, no. 14, pp. 2252–2266, 2018, doi: <a href="https://doi.org/10.1002/sim.7654">10.1002/sim.7654</a>.</p>
 </div>
 <div id="ref-buuren_mice_2011-1">
-<p>[113] S. van Buuren and K. Groothuis-Oudshoorn, “Mice: Multivariate Imputation by Chained Equations in R,” <em>Journal of Statistical Software</em>, vol. 45, no. 1, pp. 1–67, Dec. 2011, doi: <a href="https://doi.org/10.18637/jss.v045.i03">10.18637/jss.v045.i03</a>.</p>
+<p>[92] S. van Buuren and K. Groothuis-Oudshoorn, “Mice: Multivariate Imputation by Chained Equations in R,” <em>Journal of Statistical Software</em>, vol. 45, no. 1, pp. 1–67, Dec. 2011, doi: <a href="https://doi.org/10.18637/jss.v045.i03">10.18637/jss.v045.i03</a>.</p>
 </div>
 <div id="ref-jackson_flexsurv_nodate">
-<p>[114] C. Jackson, “Flexsurv: A Platform for Parametric Survival Modelling in R,” p. 33.</p>
+<p>[93] C. Jackson, “Flexsurv: A Platform for Parametric Survival Modelling in R,” p. 33.</p>
 </div>
 <div id="ref-ripley_package_2016">
-<p>[115] B. Ripley and W. Venables, “Package ’nnet’,” Feb-2016.</p>
+<p>[94] B. Ripley and W. Venables, “Package ’nnet’,” Feb-2016.</p>
 </div>
 <div id="ref-vaughan_furrr_2018">
-<p>[116] D. Vaughan and M. Dancho, “Furrr: Apply Mapping Functions in Parallel using Futures.” May-2018.</p>
+<p>[95] D. Vaughan and M. Dancho, “Furrr: Apply Mapping Functions in Parallel using Futures.” May-2018.</p>
 </div>
 <div id="ref-royston_flexible_2002">
-<p>[117] P. Royston and M. K. B. Parmar, “Flexible parametric proportional-hazards and proportional-odds models for censored survival data, with application to prognostic modelling and estimation of treatment effects,” <em>Statistics in Medicine</em>, vol. 21, no. 15, pp. 2175–2197, Aug. 2002, doi: <a href="https://doi.org/10.1002/sim.1203">10.1002/sim.1203</a>.</p>
+<p>[96] P. Royston and M. K. B. Parmar, “Flexible parametric proportional-hazards and proportional-odds models for censored survival data, with application to prognostic modelling and estimation of treatment effects,” <em>Statistics in Medicine</em>, vol. 21, no. 15, pp. 2175–2197, Aug. 2002, doi: <a href="https://doi.org/10.1002/sim.1203">10.1002/sim.1203</a>.</p>
 </div>
 <div id="ref-moons_prognosis_2009-1">
-<p>[118] K. G. M. Moons, D. G. Altman, Y. Vergouwe, and P. Royston, “Prognosis and prognostic research: Application and impact of prognostic models in clinical practice,” <em>BMJ</em>, vol. 338, p. b606, Jun. 2009, doi: <a href="https://doi.org/10.1136/bmj.b606">10.1136/bmj.b606</a>.</p>
+<p>[97] K. G. M. Moons, D. G. Altman, Y. Vergouwe, and P. Royston, “Prognosis and prognostic research: Application and impact of prognostic models in clinical practice,” <em>BMJ</em>, vol. 338, p. b606, Jun. 2009, doi: <a href="https://doi.org/10.1136/bmj.b606">10.1136/bmj.b606</a>.</p>
 </div>
 </div>
             </section>

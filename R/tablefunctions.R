@@ -150,14 +150,8 @@ clear_ws <- function(.tbl,cols)
 {
   if(!is.null(cols))
   {
-    ws_sym <- fb("&emsp;"," ","\\\\quad")
-    suppressWarnings(.tbl %>%
-                       mutate_at(cols,
-                                 function(x) x %>% 
-                                   stri_reverse %>%
-                                   gsub("  "," #",.) %>%
-                                   stri_reverse %>%
-                                   gsub("#",ws_sym,.)))
+    ws_sym <- fb("&ensp;"," ","\\\\quad")
+    .tbl %>% mutate_at(cols,set_whitespace,symbol=ws_sym)
   } else .tbl
 }
 
@@ -272,19 +266,45 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
                   font_size=fb(9,7,7),
                   full_width=F) %>%
     if_fun(!is.null(col_headers),
-           add_header_above(col_headers)) %>%
+           . %>% add_header_above(col_headers)) %>%
     if_fun(lscape,
-           function(x) landscape(x,margin="2cm"),
-           function(x) kable_styling(x,latex_options="hold_position")) %>%
+           . %>% landscape(margin="2cm"),
+           . %>% kable_styling(latex_options="hold_position")) %>%
     if_fun(!is.null(group_col) && !is.na(group_col),
-           function(x) pack_rows(x,index=grp_index)) %>%
+           . %>% pack_rows(index=grp_index)) %>%
     do_colspace(numeric_cols,col_widths) %>%
-    if_fun(get_format("gitbook"),
-           function(x) scroll_box(x,width="100%")) %>%
     gsub("\\\\vphantom\\{.*?\\} ","",.)
   
+}
+
+#'@export
+format_table2 <- function(tbl,caption)
+{
+  ncols <- ncol(tbl)
+  
+  column_widths <- map_int(tbl,~max(nchar(.))) %>%
+    paste0("em")
+  
+  tbl %>%
+    mutate_all(justify) %>%
+    mutate_all(set_whitespace,symbol=fb("&emsp;","\\\\quad","\\\\quad")) %>%
+    kable(format=fb("html","latex","latex"),
+          booktabs=T,
+          col.names=colnames(tbl),
+          escape=F,
+          caption=paste0(fb("<font size=\"2\">","{\\small ","{\\small "),
+                         caption,
+                         fb("</font>","}","}"))) %>%
+    kable_styling(bootstrap_options="striped",
+                  latex_options="striped",
+                  font_size=fb(9,7,7),
+                  full_width=F) %>%
+    column_spec(column=1:ncols,monospace=T,width=column_widths) %>%
+    scroll_box(width="100%")
 }
 
 
 #' @export
 fm <- function(x) footnote_marker_alphabet(x,format=fb("html","latex","latex"))
+
+

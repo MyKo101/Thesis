@@ -181,7 +181,7 @@ Everything here is hosted in a \href{https://https://github.com/MyKo101/Thesis}{
 
 \chaptermark{Literaure Report}
 
-Last updated: 01 May
+Last updated: 25 May
 
 \hypertarget{introduction-1}{%
 \section{Introduction}\label{introduction-1}}
@@ -248,7 +248,7 @@ The first stage of having a useful model is to develop one. Clinical predictive 
 
 By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors {[}\protect\hyperlink{ref-riley_prognosis_2013}{7}{]}. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality {\textbf{???}}, or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables {\textbf{???}}. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost {[}\protect\hyperlink{ref-hanauer_exploring_2009}{19}{]}. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups {[}\protect\hyperlink{ref-hippisley-cox_predicting_2008}{20}{]}.
 
-When developing a predictive model, the size of the dataset being used in an important consideration. A typical ``rule of thumb'' is to have at least 10 events for every potential predictor {\textbf{???}}, {[}\protect\hyperlink{ref-peduzzi_simulation_1996}{21}{]}, know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size {[}\protect\hyperlink{ref-riley_minimum_2019}{22}{]}. If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) {[}\protect\hyperlink{ref-sauerbrei_selection_2007}{23}{]}. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) {\textbf{???}}, {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}, {[}\protect\hyperlink{ref-vergouwe_substantial_2005}{24}{]}. A systematic review by Counsell et al {[}\protect\hyperlink{ref-counsell_systematic_2001}{25}{]} found that out of eighty-three prognostic models for acute stroke, less than 50\% of them had more than 10 EPV, and the work by Riley et al {[}\protect\hyperlink{ref-riley_minimum_2019}{22}{]} showed that less that {[}\textbf{Pull example from Riley EPV}{]}. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless {[}\protect\hyperlink{ref-royston_prognosis_2009}{9}{]}. However, just because a dataset is large does not imply that it will be a \emph{good} dataset if the quality of the data is lacking {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
+When developing a predictive model, the size of the dataset being used in an important consideration. A typical ``rule of thumb'' is to have at least 10 events for every potential predictor {\textbf{???}}, {[}\protect\hyperlink{ref-peduzzi_simulation_1996}{21}{]}, know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size {[}\protect\hyperlink{ref-riley_minimum_2019}{22}{]} based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) {[}\protect\hyperlink{ref-sauerbrei_selection_2007}{23}{]}. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) {\textbf{???}}, {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}, {[}\protect\hyperlink{ref-vergouwe_substantial_2005}{24}{]}. A systematic review by Counsell et al {[}\protect\hyperlink{ref-counsell_systematic_2001}{25}{]} found that out of eighty-three prognostic models for acute stroke, less than 50\% of them had more than 10 EPV, and the work by Riley et al {[}\protect\hyperlink{ref-riley_minimum_2019}{22}{]} showed that less that {[}\textbf{Pull example from Riley EPV}{]}. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless {[}\protect\hyperlink{ref-royston_prognosis_2009}{9}{]}. However, just because a dataset is large does not imply that it will be a \emph{good} dataset if the quality of the data is lacking {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
 
 Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun {[}\protect\hyperlink{ref-riley_external_2016}{15}{]}. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation {[}\protect\hyperlink{ref-altman_prognosis_2009}{10}{]}, {[}\protect\hyperlink{ref-ivanov_predictive_2000}{26}{]}. Derivation of the QRISK2 Score {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{27}{]} (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset. This model was further externally validated {\textbf{???}}, and its most modern incarnation, QRISK3, performed the external validation in the same paper {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{2}{]} The Nottingham Prognostic Index (NPI) was trained on the first 500 patients admitted to Nottingham City Hospital after the study began {[}\protect\hyperlink{ref-haybittle_prognostic_1982}{28}{]} and later validated on the next 320 patients to be admitted {[}\protect\hyperlink{ref-todd_confirmation_1987}{29}{]}, this validation was not performed at the same time as the initial development and is thus an external validation.
 
@@ -262,6 +262,10 @@ When building a prediction model, we begin with a certain pool of potential pred
 
 Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5\%) one at a time untill all remaining variables are significant. Forward selection begins wth no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exxlucde more variables {[}\protect\hyperlink{ref-royston_prognosis_2009}{9}{]}. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima {\textbf{???}}. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models {[}\textbf{Cite: p-values be bad reference}{]}. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e.~make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
 
+It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g.~logarithms, sqauring) or using fractional polynomials {[}\textbf{Cite: LR - 7 or 76?}{]}. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly {[}\textbf{Cite: LR - 4}{]}. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by {[}\textbf{Cite: LR - 40}{]}. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care {[}\textbf{Cite: LR - 3}{]}. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements {[}\textbf{Cite: Rose's Work}{]}.
+
+Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria{[}\textbf{Cite: LR - 35}{]}. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk {[}\textbf{Cite: LR - 3}{]}.
+
 \hypertarget{model-validation}{%
 \subsubsection{Model Validation}\label{model-validation}}
 
@@ -274,6 +278,27 @@ Backwards elimination (BE) involves starting with all potential predictors in th
 \hypertarget{examples}{%
 \subsection{Examples}\label{examples}}
 
+\hypertarget{reviews}{%
+\subsubsection{Reviews}\label{reviews}}
+
+Along with the EPV assessment mentioned earlier, Counsell et al's systematic review {[}\textbf{Cite: LR - 62}{]} assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
+\begin{itemize}
+\tightlist
+\item
+  Adequate inception cohort
+\item
+  Less than 10\% loss to followup
+\item
+  Prospective data collection
+\item
+  Valid and reliable outcome
+\item
+  Age as a candidate predictor
+\item
+  Severity of condition as a candidate predictor
+\item
+  Use of stepwise regression
+\end{itemize}
 \hypertarget{competing-risks-multi-state-models}{%
 \section{Competing Risks \& Multi-State Models}\label{competing-risks-multi-state-models}}
 
@@ -619,7 +644,7 @@ This paper has demonstrated that unmeasured confounding in observational studies
 
 \emph{MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin}
 \chaptermark{IPCW Calibration-in-the-Large}
-Last updated: 03 May
+Last updated: 23 May
 
 \hypertarget{abstract-1}{%
 \section*{Abstract}\label{abstract-1}}
@@ -650,23 +675,19 @@ Supplementary Material is available in Appendix \ref{chap-dev-paper-supp}.
 \hypertarget{introduction-4}{%
 \section{Introduction}\label{introduction-4}}
 
-\sout{Clinical prediction models (CPMs)}Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a\sout{A} fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with \(p\%\) risk of an event, \(p\%\) of those have the event across the full risk range {[}\protect\hyperlink{ref-steyerberg_clinical_2008}{35}{]}. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) {[}\protect\hyperlink{ref-calster_calibration_2016-1}{36}{]}. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \ref{chap-IPCW-logistic-supp}). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g.~the Brier Score.
+Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with \(p\%\) risk of an event, \(p\%\) of those have the event across the full risk range {[}\protect\hyperlink{ref-steyerberg_clinical_2008}{35}{]}. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) {[}\protect\hyperlink{ref-calster_calibration_2016-1}{36}{]}. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \ref{chap-IPCW-logistic-supp}). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g.~the Brier Score.
 
-\sout{In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{37}{]}. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals {[}\protect\hyperlink{ref-crowson_assessing_2016}{38}{]}; however here we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case {[}\protect\hyperlink{ref-houwelingen_validation_2000}{39}{]}. Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{27}{]}, {[}\protect\hyperlink{ref-royston_external_2013}{37}{]}. However the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.}
+In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals {[}\protect\hyperlink{ref-crowson_assessing_2016}{37}{]}; however we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{38}{]}. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK {\textbf{???}}, ASCVD {[}\protect\hyperlink{ref-goff_2013_2014}{39}{]} and ASSIGN {[}\protect\hyperlink{ref-de_la_iglesia_performance_2011}{40}{]}. Once this is established, estimated survival probabilities are available.
 
-\sout{Royston {[}\protect\hyperlink{ref-royston_tools_2014}{40}{]} presents an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson {[}\protect\hyperlink{ref-perme_checking_2008}{41}{]} to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates. In this paper and another {[}\protect\hyperlink{ref-royston_tools_2015}{42}{]} he proposes the comparison of KM curves in risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided.}
+Third, censoring needs to be handled in an appropriate way. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{27}{]}, {[}\protect\hyperlink{ref-royston_external_2013}{38}{]}, but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston {[}\protect\hyperlink{ref-royston_tools_2014}{41}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{42}{]} has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
 
-In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals {[}\protect\hyperlink{ref-crowson_assessing_2016}{38}{]}; however we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{37}{]}. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK{[}\textbf{Cite: }{]}, ASCVD{[}\textbf{Cite: }{]} and ASSIGN{[}\textbf{Cite: }{]}. Once this is established, estimated survival probabilities are available.
+QRISK used the overall KM approach in the 2007 paper {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{27}{]} with good results (6.34\% predicted vs 6.25\% observed in women and 8.86\% predicted vs 8.88\% observed in men), but worse results in the QRISK3 update {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{2}{]} (4.7\% predicted v 5.8\% observed in women and 6.4\% predicted vs 7.5\% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18) and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice {[}\textbf{I remember discussing this with Alex \& Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?}{]}.
 
-Third, censoring needs to be handled in an appropriate way. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{27}{]}, {[}\protect\hyperlink{ref-royston_external_2013}{37}{]}, but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston {[}\protect\hyperlink{ref-royston_tools_2014}{40}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{42}{]} has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
-
-QRISK used the overall KM approach in the 2007 paper {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{27}{]} with good results (6.34\% predicted vs 6.25\% observed in women and 8.86\% predicted vs 8.88\% observed in men), but \sout{bad}worse results in the QRISK3 update {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{2}{]} (4.7\% predicted v 5.8\% observed in women and 6.4\% predicted vs 7.5\% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18) and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice {[}\textbf{I remember discussing this with Alex \& Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?}{]}.
-
-Royston {[}\protect\hyperlink{ref-royston_tools_2014}{40}{]} also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson {[}\protect\hyperlink{ref-perme_checking_2008}{41}{]} to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
+Royston {[}\protect\hyperlink{ref-royston_tools_2014}{41}{]} also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson {[}\protect\hyperlink{ref-perme_checking_2008}{43}{]} to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
 
 A solution to this problem is to apply a weighting to uncensored patients based on their probability of being censored according to a model that accounts for covariates. The Inverse Probability of Censoring Weighting (IPCW) relaxes the assumption that patients who were censored are identical to those that remain at risk and replaces it with the assumption that they are exchangeable conditional on the measured covariates. The weighting inflates the patients who were similar to the censored population to account for those patients who are no longer available at a given time.
 
-Gerds \& Schumacher {[}\protect\hyperlink{ref-gerds_consistent_2006}{43}{]} have thoroughly investigated the requirements and advantages of applying an IPCW to a performance measure for modelling using the Brier score as an example and demonstrating the efficacy of its use, which was augmented by Spitoni et al {[}\protect\hyperlink{ref-spitoni_prediction_2018}{44}{]} who demonstrated that any proper scoring rule can be improved by the use of the IPCW. This work has been \sout{added to}extended by Han et al {[}\protect\hyperlink{ref-han_comparing_2017}{45}{]} and Liu et al {[}\protect\hyperlink{ref-liu_comparing_2016}{46}{]} who demonstrated \sout{that the c-statistic is also suitable}one can also apply IPCW to the c-statistic (a measure of discrimination).
+Gerds \& Schumacher {[}\protect\hyperlink{ref-gerds_consistent_2006}{44}{]} have thoroughly investigated the requirements and advantages of applying an IPCW to a performance measure for modelling using the Brier score as an example and demonstrating the efficacy of its use, which was augmented by Spitoni et al {[}\protect\hyperlink{ref-spitoni_prediction_2018}{45}{]} who demonstrated that any proper scoring rule can be improved by the use of the IPCW. This work has been extended by Han et al {[}\protect\hyperlink{ref-han_comparing_2017}{46}{]} and Liu et al {[}\protect\hyperlink{ref-liu_comparing_2016}{47}{]} who demonstrated one can also apply IPCW to the c-statistic (a measure of discrimination).
 
 In this paper we present an approach to assessing the calibration intercept (calibration-in-the-large) and calibration slope in time-to-event models based on estimating the censoring distribution, and reweighting observations by the inverse of the censoring probability. We first show, theoretically, how this method can be used and evidence that the metrics for calibration are amenable to its use. We then compare simulation results from using this weighted estimate to an unweighted estimate within various commonly used methods of calibration assessment.
 
@@ -681,16 +702,14 @@ In this paper we present an approach to assessing the calibration intercept (cal
 \hypertarget{aims}{%
 \subsection{Aims}\label{aims}}
 
-The aim of this simulation study is to \sout{formalise}investigate the bias induced by applying different methods of assessing model calibration to data that is susceptible to censoring and to compare it to the bias when this data has been adjusted by the Inverse Probability of Censoring Weighting (IPCW).
+The aim of this simulation study is to investigate the bias induced by applying different methods of assessing model calibration to data that is susceptible to censoring and to compare it to the bias when this data has been adjusted by the Inverse Probability of Censoring Weighting (IPCW).
 
 \hypertarget{data-generating-method}{%
 \subsection{Data Generating Method}\label{data-generating-method}}
 
-We simulated populations of patients with survival and censoring times, and took the observed event time as the minimum of these two values along with an event indicator of whether this was the survival or censoring time {[}\protect\hyperlink{ref-burton_design_2006}{47}{]}. Each population was simulated with \sout{two}three parameters: \(\beta\), \(\gamma\) and \(\eta\), which defined the proportional hazards coefficients for the survival and censoring distributions and the baseline hazard function, respectively.
+We simulated populations of patients with survival and censoring times, and took the observed event time as the minimum of these two values along with an event indicator of whether this was the survival or censoring time {[}\protect\hyperlink{ref-burton_design_2006}{48}{]}. Each population was simulated with three parameters: \(\beta\), \(\gamma\) and \(\eta\), which defined the proportional hazards coefficients for the survival and censoring distributions and the baseline hazard function, respectively.
 
-\sout{We varied the parameters to take all the values,\(\gamma = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\), \(\beta = \{-2,-1.5,-1,-0.5,0.5,1,1.5,2\}\) and \(\eta = \{-\sfrac{1}{2},0,\sfrac{1}{2}\}\), that is the proportional hazard coefficients took the same values between -2 and 2, but \(\beta\) did not take the value of 0 because this would make a predictive model infeasible.}
-
-\sout{For each combination of parameters, we generated \(N = 100\) populations of \(n = 10,000\) patients (a high number of patients was chosen to avoid bias due to a small population sizeimprove precision of our estimates with}Patients were generated with a single covariate \(Z \sim N(0,1)\)\sout{. For each patient,} from which, we then generated a survival time, \(T\) and a censoring time, \(C\). Survival times were simulated with a baseline hazard \(\lambda_0(t) = t^{\eta}\) (i.e.~Weibull), and a proportional hazard of \(e^{\beta Z}\). This allows the simulation of a constant baseline hazard (\(\eta = 0\)) as well as an increasing (\(\eta = \sfrac{1}{2}\)) and decreasing (\(\eta = -\sfrac{1}{2}\)) hazard function Censoring times were simulated with a constant baseline hazard, \(\lambda_{C,0}(t) = 1\) and a proportional hazard of \(e^{\gamma Z}\). This combines to give a simulated survival function, \(S\) as
+Patients were generated with a single covariate \(Z \sim N(0,1)\) from which, we then generated a survival time, \(T\) and a censoring time, \(C\). Survival times were simulated with a baseline hazard \(\lambda_0(t) = t^{\eta}\) (i.e.~Weibull), and a proportional hazard of \(e^{\beta Z}\). This allows the simulation of a constant baseline hazard (\(\eta = 0\)) as well as an increasing (\(\eta = \sfrac{1}{2}\)) and decreasing (\(\eta = -\sfrac{1}{2}\)) hazard function Censoring times were simulated with a constant baseline hazard, \(\lambda_{C,0}(t) = 1\) and a proportional hazard of \(e^{\gamma Z}\). This combines to give a simulated survival function, \(S\) as
 \[
 S(t|Z=z) = \exp\left(-\frac{e^{\beta Z}t^{\eta+1}}{\eta+1}\right)
 \]
@@ -699,17 +718,7 @@ and a simulated censoring function, \(S_c\) as
 S_c(t|Z=z) = \exp\left(-e^{\gamma Z}t\right)
 \]
 
-Once the survival and censoring times were generated, the event time, \(X = \min(T,C)\), and the event indicator, \(\delta = I(T=X)\), were generated. In \sout{the real-world}practice, only \(Z\), \(X\) and \(\delta\) would be observed.
-
-\sout{For each population, a prediction model for survival, \(F_P\) was chosen to be identical to the Data Generating Mechanism (DGM) to emulate a perfectly calibrated model (\ldots)}
-
-\sout{This prediction model was used to generate an estimate of the Expected probability that a given patient, with covariate \(z\), will have an event at the given time. To test the ability of approaches to detect miscalibration, we also derived a prediction model that would systematically over-estimate the prediction model, \(F_O\) and one which would systematically under-estimate the prediction, \(F_U\). These are defined as such (\ldots)}
-
-\sout{The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, \(X\). At each time point, \(t\), we removed patients who had been censored (i.e.~\(T < X_i\) \& \(\delta_i = 0\)) and created an indicator variable for whether each patient had had the event yet or not: (\ldots)}
-
-\sout{Similarly, we calculate a censoring prediction model, \(G\), to be identical to the DGM: (\ldots)}
-
-\sout{This is used to calculate an IPCW for all non-censored patients at the last time they were observed (\(t\) for patients who have not had an event, and \(X_i\) for patients who have had the event), This is defined as:(\ldots)}
+Once the survival and censoring times were generated, the event time, \(X = \min(T,C)\), and the event indicator, \(\delta = I(T=X)\), were generated. In practice, only \(Z\), \(X\) and \(\delta\) would be observed.
 
 During each simulation, we varied the parameters to take all the values,\(\gamma = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\), \(\beta = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\) and \(\eta = \{-\sfrac{1}{2},0,\sfrac{1}{2}\}\). For each combination of parameters, we generated \(N = 100\) populations of \(n = 10,000\) patients (a high number of patients was chosen to improve precision of our estimates)
 
@@ -718,7 +727,7 @@ During each simulation, we varied the parameters to take all the values,\(\gamma
 
 {[}\textbf{New section, taken from previous snippets, highlighting/strikethroughs will show the new changes}{]}
 
-For each population, we used three distinct prediction models \sout{a prediction model} for survival. \(F_P\) was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly \sout{calibrated}specified model:
+For each population, we used three distinct prediction models for survival. \(F_P\) was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly specified model:
 
 \[
 \begin{array}{c}
@@ -738,12 +747,12 @@ F_O(t|Z=z) =& \logit^{-1}\left(\logit\left( F_P(t|z) + 0.2\right)\right)
 \end{array}
 \]
 
-\sout{This}These prediction models \sout{was}were used to generate an estimate of the Expected probability that a given patient, with covariate \(z\), will have an event at the given time.
+These prediction models were used to generate an estimate of the Expected probability that a given patient, with covariate \(z\), will have an event at the given time.
 
 \hypertarget{the-ipcw}{%
 \subsection{The IPCW}\label{the-ipcw}}
 
-In order to apply the IPCW, we need to\sout{Similarly, we} calculate a censoring prediction model. For our purposes, we will again use a perfectly specified censoring distribution, \(G\), to be derived directly from\sout{identical to} the DGM:
+In order to apply the IPCW, we need to calculate a censoring prediction model. For our purposes, we will again use a perfectly specified censoring distribution, \(G\), to be derived directly from the DGM:
 
 \[
 \begin{array}{c}
@@ -761,7 +770,7 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 \hypertarget{calibration-measurements}{%
 \subsection{Calibration Measurements}\label{calibration-measurements}}
 
-The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, \(X\). At each of these time points, we compare Observed outcomes (\(O\)) with the Expected outcomes (\(E\)) of the prediction models based on four choices of methodology {[}\protect\hyperlink{ref-riley_prognosis_2019}{6}{]}, {[}\protect\hyperlink{ref-royston_tools_2014}{40}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{42}{]}, {[}\protect\hyperlink{ref-andersen_pseudo-observations_2010}{48}{]} to produce measures for the calibration-in-the-large
+The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, \(X\). At each of these time points, we compare Observed outcomes (\(O\)) with the Expected outcomes (\(E\)) of the prediction models based on four choices of methodology {[}\protect\hyperlink{ref-riley_prognosis_2019}{6}{]}, {[}\protect\hyperlink{ref-royston_tools_2014}{41}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{42}{]}, {[}\protect\hyperlink{ref-andersen_pseudo-observations_2010}{49}{]} to produce measures for the calibration-in-the-large
 \begin{itemize}
 \tightlist
 \item
@@ -771,9 +780,9 @@ The prediction models were assessed at 100 time points, evenly distributed betwe
 \item
   Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
 \item
-  Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. \sout{Logistic r}Regression is performed \sout{using}with the complimentary log-log function as a link function and the log cumulative hazard as an offset \sout{and}with the Intercept \sout{of the result is the estimate}representing the estimate of calibration-in-the-large.
+  Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Regression is performed with the complimentary log-log function as a link function and the log cumulative hazard as an offset with the Intercept representing the estimate of calibration-in-the-large.
 \end{itemize}
-\sout{The weights within the LW method create a non-integer number of events within the regression. and the PO method can produce values that are not always 0 or 1 (as would be expected in an ordinary logistic regression). The values produced by PO will have to be artificially capped between 0 and 1, but otherwise these two methods do not cause any issues.}Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the ``number of events'' being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages {[}\protect\hyperlink{ref-wildscop_biostatistics_2013}{49}{]}. Secondly, the PO method produces outcomes that are outside of the (0,1) range {[}\protect\hyperlink{ref-perme_checking_2008}{41}{]} required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal.
+Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the ``number of events'' being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages {[}\protect\hyperlink{ref-wildscop_biostatistics_2013}{50}{]}. Secondly, the PO method produces outcomes that are outside of the (0,1) range {[}\protect\hyperlink{ref-perme_checking_2008}{43}{]} required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal.
 
 \hypertarget{estimands}{%
 \subsection{Estimands}\label{estimands}}
@@ -788,7 +797,7 @@ From this, we can also define our upper and lower bound for a 95\% confidence in
 \hypertarget{performance-measures}{%
 \subsection{Performance Measures}\label{performance-measures}}
 
-The measures we will take as performance measures as the Bias, the Empirical Standard Error \sout{as}and the Coverage at time, \(t\), along with relevant standard errors and confidence intervals as per current recommendations {[}\protect\hyperlink{ref-morris_using_2019}{50}{]}. These measures can be seen in table \ref{tab:PM-DGM-time}. For these estimates at each time point, Method and Model, the top and bottom 5\% of all simulation estimates will be omitted, leaving \(N=90\) to avoid biasing the results from singly large random effects.
+The measures we will take as performance measures as the Bias, the Empirical Standard Error and the Coverage at time, \(t\), along with relevant standard errors and confidence intervals as per current recommendations {[}\protect\hyperlink{ref-morris_using_2019}{51}{]}. These measures can be seen in table \ref{tab:PM-DGM-time}. For these estimates at each time point, Method and Model, the top and bottom 5\% of all simulation estimates will be omitted, leaving \(N=90\) to avoid biasing the results from singly large random effects.
 \begin{table}
 
 \caption{\label{tab:PM-DGM-time}{\small Performance Measures to be taken at each time point}}
@@ -806,12 +815,10 @@ EmpSE & $\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\t
 \end{table}
 The bias provides a measure of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are.
 
-\sout{For each estimand above, \(\hat{Q}(t) = \{\hat{\theta}(t),\hat{E}(t), \hat{C}(t)\}\) and associated SE, \(\hat{Q}_\textrm{SE}(t) = \{\hat{\theta}_\textrm{SE}(t),\hat{E}_\textrm{SE}(t), \hat{C}_\textrm{SE}(t)\}\), we average over time. As these measures will be taken at each of the 100 time points, \(t_j:j=1...100\), we summarise each of these measures as an average and as weighted average, as seen in table \ref{tab:PM-DGM}. The weight used for the measure at time \(t_j\) is the average number of non-censored patients remaining in the population at time \(t_j\), defined as \(n_j\) (note that this includes patients who have had the event).(\ldots)}
-
 \hypertarget{software}{%
 \subsection{Software}\label{software}}
 
-All analysis was done in \texttt{R\ 3.6.3} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{51}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{52}{]}, Kaplan-Meier estimates were found using the \texttt{survival} package {[}\protect\hyperlink{ref-therneau_package_2020}{53}{]}, Pseudo-Observations were evaluated with the \texttt{pseudo} package {[}\protect\hyperlink{ref-perme_pseudo_2017}{54}{]}, and the results app was developed using \texttt{shiny}{[}\protect\hyperlink{ref-chang_shiny_2020}{55}{]}. The code used for this simulation study is available \href{https://github.com/MyKo101/IPCW-Logistic}{on Github} and the results can be seen in a \href{https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320}{shiny app}
+All analysis was done in \texttt{R\ 3.6.3} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{52}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{53}{]}, Kaplan-Meier estimates were found using the \texttt{survival} package {[}\protect\hyperlink{ref-therneau_package_2020}{54}{]}, Pseudo-Observations were evaluated with the \texttt{pseudo} package {[}\protect\hyperlink{ref-perme_pseudo_2017}{55}{]}, and the results app was developed using \texttt{shiny}{[}\protect\hyperlink{ref-chang_shiny_2020}{56}{]}. The code used for this simulation study is available \href{https://github.com/MyKo101/IPCW-Logistic}{on Github} and the results can be seen in a \href{https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320}{shiny app}
 
 \hypertarget{results-3}{%
 \section{Results}\label{results-3}}
@@ -942,7 +949,7 @@ Throughout this paper, we will use consistent notation which is shown here for r
 
 \emph{MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin}
 \chaptermark{Development and Validation of MSCPM}
-Last updated: 08 May
+Last updated: 27 May
 
 \hypertarget{abstract-2}{%
 \section*{Abstract}\label{abstract-2}}
@@ -952,25 +959,25 @@ Last updated: 08 May
 \subsection*{Introduction}\label{introduction-6}}
 \addcontentsline{toc}{subsection}{Introduction}
 
-Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict multiple outcomes with a single model can be advantageous. Multi-State Models are a method to provide these kinds of predictions.
+Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict \sout{multiple outcomes}a multi-dimensional outcome with a single model can be advantageous. \sout{Multi-State Models are a method to provide these kinds of predictions.} Many CPMs have been developed to predict the risk of different outcomes in individuals following chronic kidney disease (CKD) onset, but few allow the ability to predict the risk of patients transitioning onto renal replacement therapy (RRT) as well as death. For example, the risk of having a transplant within 1 year following dialysis, or the risk of remaining on dialysis until death. Multi-state models provide the vehicle to make such predictions, but have not been used within the CKD context.
 
 \hypertarget{methods-5}{%
 \subsection*{Methods}\label{methods-5}}
 \addcontentsline{toc}{subsection}{Methods}
 
-We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our external validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead). We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients. Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
+We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our external validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead).\textasciitilde\textasciitilde{} We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients.\textasciitilde\textasciitilde{} Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
 
 \hypertarget{results-4}{%
 \subsection*{Results}\label{results-4}}
 \addcontentsline{toc}{subsection}{Results}
 
-Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall. The Three-State Model was used to develop the online Calculator.
+Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall with a Brier Score of 0.67/0.62 (internal/external, respectively), c-statistic of 0.83/0.81 and an averaged calibration intercept of 0.00/0.00 and slope diagonal of 1.34/1.53 (indicating under-prediction of all non-untreated CKD states for more extreme values). The Three-State Model was used to develop the online Calculator.
 
 \hypertarget{discusssion}{%
 \subsection*{Discusssion}\label{discusssion}}
 \addcontentsline{toc}{subsection}{Discusssion}
 
-Our CPMs provide clinicians and patients with \sout{multiple outcome predictions} multi-dimensional predictions across different outcome states and any time point. This implies that users of these models can get more information about their potential future without a loss to the quality of that prediction.
+Our CPMs provide clinicians and patients with multi-dimensional predictions across different outcome states and any time point. This implies that users of these models can get more information about their potential future without a loss to the \sout{quality of that prediction.}model's calibration nor its discriminative ability.
 
 \hypertarget{supplementary-material-2}{%
 \subsection*{Supplementary Material}\label{supplementary-material-2}}
@@ -981,23 +988,23 @@ Supplementary Material is available in Appendix \ref{chap-dev-paper-supp}.
 \hypertarget{introduction-7}{%
 \section{Introduction}\label{introduction-7}}
 
-A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical \sout{condition}event, more specifically, a prognostic model allows the prediction of future events {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models \sout{are}can be used in clinical practice to influence treatment decisions\textasciitilde\textasciitilde{} such as the prescribing of statins for cardiovascular disease via the application of the QRISK models {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{2}{]}\textasciitilde\textasciitilde.
+A clinical prediction model (CPM) is a tool which provides patients and clinicians with a measure of how likely a patient is to suffer a specific clinical event, more specifically, a prognostic model allows the prediction of future events {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}. CPMs use data from previous patients to estimate the outcomes of an individual patient. Prognostic models can be used in clinical practice to influence treatment decisions.
 
-Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality {[}\protect\hyperlink{ref-johnson_predicting_2007}{56}{]}--{[}\protect\hyperlink{ref-wick_clinical_2017}{60}{]}, \sout{ESRD}End-Stage Renal Disease {[}\protect\hyperlink{ref-landray_prediction_2010}{57}{]}, the commencements of Renal Replacement Therapy (RRT) {[}\protect\hyperlink{ref-marks_looking_2015}{59}{]}, {[}\protect\hyperlink{ref-johnson_predicting_2008}{61}{]}--{[}\protect\hyperlink{ref-kulkarni_transition_2017}{63}{]} or mortality after beginning dialysis {[}\protect\hyperlink{ref-floege_development_2015}{64}{]}--{[}\protect\hyperlink{ref-cao_predicting_2015}{66}{]}. Some previous models have used the commencement of RRT as a proxy for \sout{ESRD}CKD Stage V {[}\protect\hyperlink{ref-tangri_predictive_2011}{67}{]}--{[}\protect\hyperlink{ref-tangri_dynamic_2017}{69}{]}, while others have investigated the occurrence of cardiovascular events within CKD patients{[}\protect\hyperlink{ref-shlipak_cardiovascular_2005}{70}{]}--{[}\protect\hyperlink{ref-mcmurray_predictors_2011}{72}{]}. Reviews by Grams \& Coresh {[}\protect\hyperlink{ref-grams_assessing_2013}{73}{]}, Tangri et al {[}\protect\hyperlink{ref-tangri_risk_2013}{74}{]} and Ramspek et al {[}\protect\hyperlink{ref-ramspek_prediction_2017}{75}{]}, which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}, {[}\protect\hyperlink{ref-bouwmeester_reporting_2012-1}{76}{]}.
+Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality {[}\protect\hyperlink{ref-johnson_predicting_2007}{57}{]}--{[}\protect\hyperlink{ref-wick_clinical_2017}{61}{]}, End-Stage Renal Disease {[}\protect\hyperlink{ref-landray_prediction_2010}{58}{]}, the commencements of Renal Replacement Therapy (RRT) {[}\protect\hyperlink{ref-marks_looking_2015}{60}{]}, {[}\protect\hyperlink{ref-johnson_predicting_2008}{62}{]}--{[}\protect\hyperlink{ref-kulkarni_transition_2017}{64}{]} or mortality after beginning dialysis {[}\protect\hyperlink{ref-floege_development_2015}{65}{]}--{[}\protect\hyperlink{ref-cao_predicting_2015}{67}{]}. Some previous models have used the commencement of RRT as a proxy for CKD Stage V {[}\protect\hyperlink{ref-tangri_predictive_2011}{68}{]}--{[}\protect\hyperlink{ref-tangri_dynamic_2017}{70}{]}, while others have investigated the occurrence of cardiovascular events within CKD patients{[}\protect\hyperlink{ref-shlipak_cardiovascular_2005}{71}{]}--{[}\protect\hyperlink{ref-mcmurray_predictors_2011}{73}{]}. Reviews by Grams \& Coresh {[}\protect\hyperlink{ref-grams_assessing_2013}{74}{]}, Tangri et al {[}\protect\hyperlink{ref-tangri_risk_2013}{75}{]} and Ramspek et al {[}\protect\hyperlink{ref-ramspek_prediction_2017}{76}{]}, which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}, {[}\protect\hyperlink{ref-bouwmeester_reporting_2012-1}{77}{]}.
 
-Methodologically, the majority of existing CKD prediction models fail to account for competing events {[}\protect\hyperlink{ref-bansal_development_2015}{58}{]}, {[}\protect\hyperlink{ref-wick_clinical_2017}{60}{]}, {[}\protect\hyperlink{ref-perotte_risk_2015}{77}{]}, have high risks of bias {[}\protect\hyperlink{ref-johnson_predicting_2007}{56}{]}, {[}\protect\hyperlink{ref-landray_prediction_2010}{57}{]}, {[}\protect\hyperlink{ref-johnson_predicting_2008}{61}{]} or are otherwise flawed compared to modern clinical prediction standards {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}, {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}
+Methodologically, the majority of existing CKD prediction models fail to account for competing events {[}\protect\hyperlink{ref-bansal_development_2015}{59}{]}, {[}\protect\hyperlink{ref-wick_clinical_2017}{61}{]}, {[}\protect\hyperlink{ref-perotte_risk_2015}{78}{]}, have high risks of bias {[}\protect\hyperlink{ref-johnson_predicting_2007}{57}{]}, {[}\protect\hyperlink{ref-landray_prediction_2010}{58}{]}, {[}\protect\hyperlink{ref-johnson_predicting_2008}{62}{]} or are otherwise flawed compared to modern clinical prediction standards {[}\protect\hyperlink{ref-steyerberg_prognosis_2013}{8}{]}, {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}
 
-In 2013, Begun et al {[}\protect\hyperlink{ref-begun_identification_2013}{78}{]} developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al {[}\protect\hyperlink{ref-allen_chronic_2014}{79}{]} applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al {[}\protect\hyperlink{ref-kulkarni_transition_2017}{63}{]} developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies \sout{(CPRA)} and kidney transplant and/or death.
+In 2013, Begun et al {[}\protect\hyperlink{ref-begun_identification_2013}{79}{]} developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al {[}\protect\hyperlink{ref-allen_chronic_2014}{80}{]} applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al {[}\protect\hyperlink{ref-kulkarni_transition_2017}{64}{]} developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies and kidney transplant and/or death.
 
-Most recently, in 2018, Grams et al {[}\protect\hyperlink{ref-grams_predicting_2018}{80}{]} developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
+Most recently, in 2018, Grams et al {[}\protect\hyperlink{ref-grams_predicting_2018}{81}{]} developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
 
-However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling {[}\protect\hyperlink{ref-royston_dichotomizing_2006}{17}{]} \sout{{[}\protect\hyperlink{ref-royston_dichotomizing_2006}{17}{]}, {[}\protect\hyperlink{ref-altman_problems_1994-1}{81}{]}--{[}\protect\hyperlink{ref-weinberg_how_1995}{98}{]}. These kinds of cut-offs can be useful when informing patients and clinicians of a patient's diagnosis and to coincide with policy, but inherently cause a loss of information when done before the data analysis stage and so these models go against current statistical recommendations {[}\protect\hyperlink{ref-royston_dichotomizing_2006}{17}{]}, {[}\protect\hyperlink{ref-altman_problems_1994-1}{81}{]}--{[}\protect\hyperlink{ref-weinberg_how_1995}{98}{]}. These kinds of assumptions are also subject to measurement error {[}\protect\hyperlink{ref-van_smeden_reflection_2019}{99}{]} and interval censoring {[}\protect\hyperlink{ref-sun_interval_2005}{100}{]}, i.e.~we do not know when exactly when a patient moved from CKD Stage III to CKD Stage IV, or whether drop in estimated Glomerular Function Rate (eGFR) was temporary or inaccurate. For example, Kulkarni {[}\protect\hyperlink{ref-kulkarni_transition_2017}{63}{]} assumes that a patient with an CPRA of (5\%) is the same as a patient with an CPRA of (75\%) and that a patient with an CPRA of (89.9\%) is vastly different from a patient with an CPRA of (90\%). Moreover,}and none of these models have undergone any validation process, whether internal or external {[}\protect\hyperlink{ref-altman_prognosis_2009}{10}{]}.
+However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling {[}\protect\hyperlink{ref-royston_dichotomizing_2006}{17}{]} and none of these models have undergone any validation process, whether internal or external {[}\protect\hyperlink{ref-altman_prognosis_2009}{10}{]}.
 
 It is also important to note that although these models can be used to predict patient outcomes, they were not designed to produce individualised patient predictions as is a key aspect of a clinical prediction model; they were designed to assess the methodological advantages of MSMs in this medical field, to describe the prevalence of over time of different CKD stages and to produce population level predictions for patients with different levels of panel-reactive antibodies {[}\protect\hyperlink{ref-royston_prognosis_2009}{9}{]}.
 
-The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is \sout{a pair of}two multinomial logistic models analysed at 2 and 4 years, which assumes homogeneity of transition times. \sout{The major downside of this model is that it can only produce predictions at those predefined time points and it assumes homogeneity of transition times}Two downsides to the implementation of this model are that it can only produce predictions at those predefined time points and that it is unable to estimate duration of time on dialysis.\sout{For example, the first model assumes that a patient who began RRT 1 month after study entry is the same as one who began after 1 year \& 11 months into the study and then the second model assumes these patients are the same as one who begins RRT at 3 years and 11 months.}
+The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is two multinomial logistic models analysed at 2 and 4 years, which assumes homogeneity of transition times. Two downsides to the implementation of this model are that it can only produce predictions at those predefined time points and that it is unable to estimate duration of time on dialysis.
 
-Therefore, \sout{the aim of this study was to improve on previous efforts to model a}our aim is to develop a CPM - we do this by modelling patient\sout{'s} pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a \sout{drastic}clinical difference in patient characteristics. Our modeling techniques allow for individual predictions \sout{(using a proportional hazards model)} of multiple outcomes \sout{(using MSMs)} at any time point \sout{(using cubic splines)}. The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the \sout{(statistically robust)} clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}, {[}\protect\hyperlink{ref-moons_transparent_2015}{14}{]}.
+Therefore, our aim is to develop a CPM - we do this by modelling patient pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a clinical difference in patient characteristics. Our modeling techniques allow for individual predictions of \sout{multiple outcomes}multi-dimensional outcomes at any time point . The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models {[}\protect\hyperlink{ref-collins_transparent_2015}{13}{]}, {[}\protect\hyperlink{ref-moons_transparent_2015}{14}{]}.
 
 \hypertarget{methods-6}{%
 \section{Methods}\label{methods-6}}
@@ -1005,17 +1012,17 @@ Therefore, \sout{the aim of this study was to improve on previous efforts to mod
 \hypertarget{data-sources}{%
 \subsection{Data Sources}\label{data-sources}}
 
-The models were developed using data from the Salford Kidney Study (SKS) cohort of patients (previously named the CRISIS cohort), established in the Department of Renal Medicine, Salford Royal NHS Foundation Trust (SRFT). The SKS is a large longitudinal CKD cohort recruiting CKD patients since 2002. This cohort collects detailed annualised phenotypic and laboratory data, and plasma, serum and whole blood stored at -80\textdegree C for biomarker and genotypic analyses. Recruitment of patients into SKS has been described in multiple previous studies {[}\protect\hyperlink{ref-hoefield_factors_2010}{101}{]}, {[}\protect\hyperlink{ref-chinnadurai_increased_2019-1}{102}{]} and these have included a CKD progression prognostic factor study and to evidence the increased risk of cardiovascular events in diabetic kidney patients. In brief, any patient referred to Salford renal service (catchment population 1.5 million) who is 18 years or over and has an eGFR measurement of less than \(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\) (calculated using the CKD-EPI formula {[}\protect\hyperlink{ref-levey_new_2009}{103}{]}) was approached to be consented for the study participation.
+The models were developed using data from the Salford Kidney Study (SKS) cohort of patients (previously named the CRISIS cohort), established in the Department of Renal Medicine, Salford Royal NHS Foundation Trust (SRFT). The SKS is a large longitudinal CKD cohort recruiting CKD patients since 2002. This cohort collects detailed annualised phenotypic and laboratory data, and plasma, serum and whole blood stored at -80\textdegree C for biomarker and genotypic analyses. Recruitment of patients into SKS has been described in multiple previous studies {[}\protect\hyperlink{ref-hoefield_factors_2010}{82}{]}, {[}\protect\hyperlink{ref-chinnadurai_increased_2019-1}{83}{]} and these have included a CKD progression prognostic factor study and to evidence the increased risk of cardiovascular events in diabetic kidney patients. In brief, any patient referred to Salford renal service (catchment population 1.5 million) who is 18 years or over and has an eGFR measurement of less than \(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\) (calculated using the CKD-EPI formula {[}\protect\hyperlink{ref-levey_new_2009}{84}{]}) was approached to be consented for the study participation.
 
-At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford's Integrated Record \sout{(SIR)} {[}\protect\hyperlink{ref-new_obtaining_2014}{104}{]}. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient's time within the cohort.
+At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford's Integrated Record {[}\protect\hyperlink{ref-new_obtaining_2014}{85}{]}. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient's time within the cohort.
 
 Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient's start date for our model as their first date after consent at which their eGFR was recorded to be below \(60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2\). Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD (\(\textrm{eGFR} \lessapprox 60\)) \emph{and} those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient at any time during their CKD journey prior to commencement of RRT.
 
-All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was \sout{also available within SIR and so} also included in the SKS database.
+All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was also included in the SKS database.
 
-For external validation of the model, we extracted an independent cohort from the West of Scotland Electronic Renal Patient Record (SERPR). Our extract of SERPR contains all patients known to the Glasgow and Forth Valley renal service who had an eGFR measure of less than \(60\textrm{ml}/\textrm{min}/1.73m^2\) between January 2006 and January 2016. This cohort has been previously used in Chronic Kidney Disease Prognosis consortium studies investigating outcomes in patients with CKD {[}\protect\hyperlink{ref-matsushita_cohort_2013}{105}{]} and a similar cohort has been used for the analysis of skin tumours amongst renal transplant patients. Use of anonymised data from this database has been approved by the West of Scotland Ethics Committee for use of NHS Greater Glasgow and Clyde `Safe Haven' data for research.
+For external validation of the model, we extracted an independent cohort from the West of Scotland Electronic Renal Patient Record (SERPR). Our extract of SERPR contains all patients known to the Glasgow and Forth Valley renal service who had an eGFR measure of less than \(60\textrm{ml}/\textrm{min}/1.73m^2\) between January 2006 and January 2016. This cohort has been previously used in Chronic Kidney Disease Prognosis consortium studies investigating outcomes in patients with CKD {[}\protect\hyperlink{ref-matsushita_cohort_2013}{86}{]} and a similar cohort has been used for the analysis of skin tumours amongst renal transplant patients. Use of anonymised data from this database has been approved by the West of Scotland Ethics Committee for use of NHS Greater Glasgow and Clyde `Safe Haven' data for research.
 
-Both the internal and external validation cohort were used as part of the multinational validation cohort used by Grams et al in their multinomial CPM discussed above {[}\protect\hyperlink{ref-grams_predicting_2018}{80}{]}. In SERPR, start dates were calculated to be the first time point where the following conditions were met:
+Both the internal and external validation cohort were used as part of the multinational validation cohort used by Grams et al in their multinomial CPM discussed above {[}\protect\hyperlink{ref-grams_predicting_2018}{81}{]}. In SERPR, start dates were calculated to be the first time point where the following conditions were met:
 \begin{itemize}
 \tightlist
 \item
@@ -1024,10 +1031,8 @@ Both the internal and external validation cohort were used as part of the multin
   There is at least one prior eGFR measurement
 \item
   Patient is 18 or over
-\item
-  Patient is not enduring an AKI {[}\protect\hyperlink{ref-forni_renal_2017-1}{106}{]}, {[}\protect\hyperlink{ref-noauthor_kdigo_2012}{107}{]}.
 \end{itemize}
-The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an \(\textrm{eGFR} < 60\), their eGFR Rate would be unavailable (i.e.~missing). Otherwise, patient eGFRs would \emph{have} to drop to below 60 and thus eGFR Rate would be negative.
+The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an \(\textrm{eGFR} < 60\), their eGFR Rate would be unavailable (i.e.~missing). Otherwise, patient eGFRs would \emph{have} to drop to below 60 and thus eGFR Rate would be negative. In addition, to avoid Acute Kidney Incident events, we also filtered measurements of eGFR Rate that were more extreme than 1.5x those found in the SKS population.
 
 \hypertarget{model-design}{%
 \subsection{Model Design}\label{model-design}}
@@ -1041,21 +1046,21 @@ Three separate models were developed, so we could determine a clinically viable 
 
 \caption{Diagram of the three models, the states being modelled and relevant transitions}\label{fig:State-Diagram}
 \end{figure}
-Missing data was handled using multiple imputation {[}\protect\hyperlink{ref-white_imputing_2009}{108}{]} using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications {[}\protect\hyperlink{ref-venkat-raman_new_2012}{109}{]}). From these variables, uPCR and eGFR Rate of change were also derived {[}\protect\hyperlink{ref-kovesdy_past_2016}{110}{]}, {[}\protect\hyperlink{ref-naimark_past_2016}{111}{]} as well as their log transforms and log(Age) and Age\(^2\).
+Missing data was handled using multiple imputation {[}\protect\hyperlink{ref-white_imputing_2009}{87}{]} using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications {[}\protect\hyperlink{ref-venkat-raman_new_2012}{88}{]}). From these variables, uPCR and eGFR Rate of change were also derived {[}\protect\hyperlink{ref-kovesdy_past_2016}{89}{]}, {[}\protect\hyperlink{ref-naimark_past_2016}{90}{]} as well as their log transforms and log(Age) and Age\(^2\). For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition.
 
 \hypertarget{validation}{%
 \subsection{Validation}\label{validation}}
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR{[}\protect\hyperlink{ref-schomaker_bootstrap_2018}{112}{]}. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR \textless{} 30/ml/min/1.73m\textsuperscript{2}.
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR {[}\protect\hyperlink{ref-schomaker_bootstrap_2018}{91}{]}. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR \textless{} 30/ml/min/1.73m\textsuperscript{2}.
 
-Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \ref{chap-performance-metrics}.
+Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \ref{chap-performance-metrics}. These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
 
-Further details of how \sout{T}the models were developed and validated is discussed in the Supplementary materials in appendix \ref{chap-dev-paper-supp}.
+Further details of how the models were developed and validated is discussed in the Supplementary materials in appendix \ref{chap-dev-paper-supp}.
 
 \hypertarget{example}{%
 \subsection{Example}\label{example}}
 
-Once the models have been developed, we will apply them to \sout{two}three example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.
+Once the models have been developed, we will apply them to three example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.
 
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \ref{tab:Example-Patient}.
 \begin{table}[!h]
@@ -1091,252 +1096,83 @@ Out three example patients cover a broad range of ages and other covariates. A c
 \hypertarget{calculator}{%
 \subsection{Calculator}\label{calculator}}
 
-As part of this work, we have also \sout{intend to} produced an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
+As part of this work, we have also produced an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
 
-All analysis was done in \texttt{R\ 3.6.2} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{51}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{52}{]}, as well as the \texttt{mice} {[}\protect\hyperlink{ref-buuren_mice_2011-1}{113}{]}, \texttt{flexsurv} {[}\protect\hyperlink{ref-jackson_flexsurv_nodate}{114}{]}, \texttt{nnet} {[}\protect\hyperlink{ref-ripley_package_2016}{115}{]} and \texttt{furrr} {[}\protect\hyperlink{ref-vaughan_furrr_2018}{116}{]} packages. The calculator was produced using the \texttt{shiny} package {[}\protect\hyperlink{ref-chang_shiny_2020}{55}{]}.
+All analysis was done in \texttt{R\ 3.6.2} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{52}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{53}{]}, as well as the \texttt{mice} {[}\protect\hyperlink{ref-buuren_mice_2011-1}{92}{]}, \texttt{flexsurv} {[}\protect\hyperlink{ref-jackson_flexsurv_nodate}{93}{]}, \texttt{nnet} {[}\protect\hyperlink{ref-ripley_package_2016}{94}{]} and \texttt{furrr} {[}\protect\hyperlink{ref-vaughan_furrr_2018}{95}{]} packages. The calculator was produced using the \texttt{shiny} package {[}\protect\hyperlink{ref-chang_shiny_2020}{56}{]}.
 
 \hypertarget{results-5}{%
 \section{Results}\label{results-5}}
 
-\hypertarget{data-sources-separate-tables}{%
-\subsection{Data Sources (Separate Tables)}\label{data-sources-separate-tables}}
+\hypertarget{data-sources-1}{%
+\subsection{Data Sources}\label{data-sources-1}}
 
-Glen commented about combining the below tables into a single one. I'm still not sure the best way to do this (aesthetically). I've kept the old version of this section and added a copy of it below where I've re-written some bits to point to the right table.
-
-As seen in table \ref{tab:Continuous-Demo}, the Age of the\sout{both} populations \sout{were centred around 64-65}had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
-
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{\label{tab:Continuous-Demo}{\small Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedleft\arraybackslash}p{33em}>{\ttfamily\raggedleft\arraybackslash}p{36em}}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Age}}\\
-\hspace{1em}Age & 64.378 (19.000) [ 20.000,  94.000] <    0 ( 0.00\%)> & 65.880 (17.000) [    18.000,    98.000] <    0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR\textsuperscript{a} & 30.368 (22.386) [  3.577,  59.965] <    0 ( 0.00\%)> & 36.132 (21.444) [     1.651,    59.998] <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate\textsuperscript{a} & -0.015 ( 0.293) [-19.107,  33.781] <1,278 (42.87\%)> & -25.476 (44.229) [-8,755.272, 9,260.375] <    0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR\textsuperscript{f} & 0.112 ( 0.103) [  0.000,   2.025] <  245 ( 8.21\%)> & 0.184 ( 0.147) [     0.000,     6.390] <7,513 (96.76\%)>\\
-\rowcolor{gray!6}  \hspace{1em}uPCR Rate\textsuperscript{f} & -0.096 ( 0.188) [-70.727,  28.198] <1,777 (59.61\%)> & 73.177 ( 0.384) [    -2.255, 3,051.403] <7,721 (99.44\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP\textsuperscript{b} & 140.193 (29.000) [ 77.000, 220.000] <   50 ( 1.67\%)> & 147.746 (33.000) [    82.000,   258.000] <6,880 (88.61\%)>\\
-\rowcolor{gray!6}  \hspace{1em}DBP\textsuperscript{b} & 74.555 (14.000) [ 36.000, 159.000] <   52 ( 1.74\%)> & 76.263 (18.000) [    35.000,   128.000] <6,879 (88.60\%)>\\
-\hspace{1em}BMI\textsuperscript{c} & 28.848 ( 7.842) [ 13.182,  61.466] <  572 (19.18\%)> & 29.331 ( 7.851) [    15.343,    48.301] <7,681 (98.93\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Albumin\textsuperscript{d} & 42.152 ( 5.000) [ 12.000,  52.000] <   60 ( 2.01\%)> & 36.490 ( 6.000) [     7.000,    53.000] <3,455 (44.50\%)>\\
-\hspace{1em}Corrected Calcium\textsuperscript{e} & 2.302 ( 0.180) [  1.209,   3.660] <   68 ( 2.28\%)> & 2.408 ( 0.160) [     1.419,     3.610] <5,113 (65.85\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin\textsuperscript{d} & 122.977 (23.000) [ 61.000, 195.000] <   72 ( 2.41\%)> & 108.588 (30.000) [     6.250,   208.000] <3,968 (51.10\%)>\\
-\hspace{1em}Phosphate\textsuperscript{e} & 1.162 ( 0.320) [  0.430,   3.710] <   87 ( 2.91\%)> & 1.203 ( 0.320) [     0.370,     4.370] <5,127 (66.03\%)>\\
-\bottomrule
-\multicolumn{3}{l}{\textsuperscript{a} (ml/min/1.73m\textasciicircum{}2) or per year \textsuperscript{b} (mmHG) \textsuperscript{c} (kg/m\textasciicircum{}2) \textsuperscript{d} (g/l) \textsuperscript{e} (mmol/l) \textsuperscript{f} (g/mmol) or per year}\\
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry
-
-Table \ref{tab:Categorical-Demo} shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, whereas in the validation population the proportions are much more matched. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
+As seen in table \ref{tab:Table-One}, the Age of the populations had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Levels of missingness were much higher in the SERPR dataset in most continuous variables.
 \begin{table}[!h]
 
-\caption{\label{tab:Categorical-Demo}{\small Population demographics for the categorical variables presented as number (percent)}}
+\caption{\label{tab:Table-One}{\small Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{19em}}
 \toprule
-  & SKS (Development) & SERPR (Validation)\\
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{SKS} & \multicolumn{3}{c}{SERPR} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Variable & mean/n (IQR/p) & missing n (p) & range & mean/n (IQR/p) & missing n (p) & range\\
 \midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Gender}}\\
-\hspace{1em}Male & 1,865 (62.56 \%) & 3,915 (50.42 \%)\\
-\hspace{1em}Female & 1,116 (37.43 \%) & 3,849 (49.57 \%)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Ethnicity}}\\
-\hspace{1em}White & 2,875 (96.44 \%) & 683 ( 8.79 \%)\\
-\hspace{1em}Asian & 75 ( 2.51 \%) & 12 ( 0.15 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Black & 21 ( 0.70 \%) & 7 ( 0.09 \%)\\
-\hspace{1em}Other & 10 ( 0.33 \%) & 2 ( 0.02 \%)\\
-\rowcolor{gray!6}  \hspace{1em}<Ethnicity Missing> & 0 ( 0.00 \%) & 7,060 (90.93 \%)\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former & 1,535 (51.49 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & 979 (32.84 \%) & \\
-\hspace{1em}Smoker & 379 (12.71 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Former 3Y & 46 ( 1.54 \%) & \\
-\hspace{1em}<Smoking Status Missing> & 42 ( 1.40 \%) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Systemic diseases affecting the kidney & 1,304 (43.74 \%) & 299 ( 3.85 \%)\\
-\hspace{1em}Glomerular disease & 442 (14.82 \%) & 225 ( 2.89 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Tubulointerstitial disease & 268 ( 8.99 \%) & 164 ( 2.11 \%)\\
-\hspace{1em}Miscellaneous renal disorders & 227 ( 7.61 \%) & 188 ( 2.42 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Familial / hereditary nephropathies & 173 ( 5.80 \%) & 102 ( 1.31 \%)\\
-\hspace{1em}<Renal Diagnosis Missing> & 567 (19.02 \%) & 6,786 (87.40 \%)\\
-\bottomrule
-\end{tabular}
-\end{table}
-Overall, there were high levels of comorbidities within the SKS population as shown in table \ref{tab:Comorbidity-Demo}, but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80\% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33\% and over 97\% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40\% (3,122), followed by diabetes mellitus at 20\% (1,546) and cerebrovascular accident was the lowest prevalence at 2.36\% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
-\begin{table}[!h]
-
-\caption{\label{tab:Comorbidity-Demo}{\small Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  Diabetes (DM) & 992 (33.32\%) <  4 (0.13\%)> & 1,546 (19.91\%) <    0 ( 0.00\%)>\\
-Congestive Cardiac Failure (CCF) & 2,414 (81.08\%) <  4 (0.13\%)> & 406 ( 5.22\%) <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Prior Myocardial Infarction (MI) & 2,492 (83.70\%) <  4 (0.13\%)> & 556 ( 7.16\%) <    0 ( 0.00\%)>\\
-Ischemic Heart Disease (IHD) & 2,393 (80.38\%) <  4 (0.13\%)> & 867 (11.16\%) <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Peripheral Vascular Disease (PVD) & 2,485 (83.47\%) <  4 (0.13\%)> & 376 ( 4.84\%) <    0 ( 0.00\%)>\\
+\rowcolor{gray!6}  Age & 64.378 (19.000) & 0 ( 0.00\%) & [ 20.000,  94.000] & 66.064 (17.000) & 0 (  0.00\%) & [  11.000,  98.000]\\
+eGFR & 30.369 (22.387) & 0 ( 0.00\%) & [  3.578,  59.966] & 35.647 (20.565) & 0 (  0.00\%) & [   1.199,  59.994]\\
+\rowcolor{gray!6}  eGFR Rate & -0.016 ( 0.294) & 1,278 (42.87\%) & [-19.107,  33.782] & 1.319 (21.897) & 0 (  0.00\%) & [ -28.636,  50.653]\\
+SBP & 140.193 (29.000) & 50 ( 1.68\%) & [ 77.000, 220.000] & 145.981 (30.000) & 6,345 ( 82.31\%) & [  82.000, 258.000]\\
+\rowcolor{gray!6}  DBP & 74.556 (14.000) & 52 ( 1.74\%) & [ 36.000, 159.000] & 76.742 (17.000) & 6,345 ( 82.31\%) & [  35.000, 128.000]\\
 \addlinespace
-Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) <  4 (0.13\%)> & 184 ( 2.36\%) <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.98\%) <  4 (0.13\%)> & \\
-Chronic Liver Disease (LD) & 2,891 (97.11\%) <  4 (0.13\%)> & \\
-\rowcolor{gray!6}  Solid Tumour (ST) & 2,570 (86.32\%) <  4 (0.13\%)> & \\
-Hypertension (HT) & 2,546 (91.48\%) <198 (6.64\%)> & 3,122 (40.21\%) <    0 ( 0.00\%)>\\
-\bottomrule
-\end{tabular}
-\end{table}
-The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \ref{tab:Event-Median}.
-\begin{table}[!h]
-
-\caption{\label{tab:Event-Median}{\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Transition & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Two}}\\
-\hspace{1em}Alive to Dead & 1,427 ~ 3.9 y (4.3 y) [15.0 y] & 3,025 ~ 4.9 y (3.3 y) [10.1 y]\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Three}}\\
-\hspace{1em}CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to RRT & 680 ~ 2.5 y (3.3 y) [14.1 y] & 1,130 ~ 3.8 y (3.8 y) [10.1 y]\\
-\hspace{1em}RRT to Dead & 302 ~ 2.2 y (3.2 y) [13.5 y] & 446 ~ 1.5 y (2.4 y) [ 9.1 y]\\
-\rowcolor{gray!6}  CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\hspace{1em}CKD to HD & 344 ~ 2.5 y (3.5 y) [14.1 y] & 887 ~ 3.8 y (3.7 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to PD & 229 ~ 2.0 y (2.9 y) [12.9 y] & 149 ~ 3.5 y (4.1 y) [ 9.6 y]\\
-\hspace{1em}CKD to Tx & 107 ~ 3.2 y (2.7 y) [12.1 y] & 94 ~ 4.8 y (4.5 y) [ 9.7 y]\\
-\rowcolor{gray!6}  \hspace{1em}HD to Dead & 185 ~ 2.0 y (3.2 y) [11.8 y] & 398 ~ 1.5 y (2.5 y) [ 9.1 y]\\
-\hspace{1em}PD to Dead & 107 ~ 2.3 y (3.2 y) [11.7 y] & 47 ~ 2.1 y (2.3 y) [ 8.5 y]\\
-\bottomrule
-\end{tabular}
-\end{table}
-\hypertarget{data-sources-single-table-draft}{%
-\subsection{Data Sources (Single Table draft)}\label{data-sources-single-table-draft}}
-
-As seen in table \ref{tab:Table-One}, the Age of the\sout{both} populations \sout{were centred around 64-65}had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . \sout{Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17).} The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. \sout{Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0).} Levels of missingness were much higher in the SERPR dataset in most continuous variables.
-
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{\label{tab:Table-One}{\small Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedleft\arraybackslash}p{33em}>{\ttfamily\raggedleft\arraybackslash}p{36em}}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Age}}\\
-\hspace{1em}Age & 64.378 (19.000) [ 20.000,  94.000] <    0 ( 0.00\%)> & 65.880 (17.000) [    18.000,    98.000] <    0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR\textsuperscript{a} & 30.368 (22.386) [  3.577,  59.965] <    0 ( 0.00\%)> & 36.132 (21.444) [     1.651,    59.998] <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate\textsuperscript{a} & -0.015 ( 0.293) [-19.107,  33.781] <1,278 (42.87\%)> & -25.476 (44.229) [-8,755.272, 9,260.375] <    0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR\textsuperscript{f} & 0.112 ( 0.103) [  0.000,   2.025] <  245 ( 8.21\%)> & 0.184 ( 0.147) [     0.000,     6.390] <7,513 (96.76\%)>\\
-\rowcolor{gray!6}  \hspace{1em}uPCR Rate\textsuperscript{f} & -0.096 ( 0.188) [-70.727,  28.198] <1,777 (59.61\%)> & 73.177 ( 0.384) [    -2.255, 3,051.403] <7,721 (99.44\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP\textsuperscript{b} & 140.193 (29.000) [ 77.000, 220.000] <   50 ( 1.67\%)> & 147.746 (33.000) [    82.000,   258.000] <6,880 (88.61\%)>\\
-\rowcolor{gray!6}  \hspace{1em}DBP\textsuperscript{b} & 74.555 (14.000) [ 36.000, 159.000] <   52 ( 1.74\%)> & 76.263 (18.000) [    35.000,   128.000] <6,879 (88.60\%)>\\
-\hspace{1em}BMI\textsuperscript{c} & 28.848 ( 7.842) [ 13.182,  61.466] <  572 (19.18\%)> & 29.331 ( 7.851) [    15.343,    48.301] <7,681 (98.93\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Albumin\textsuperscript{d} & 42.152 ( 5.000) [ 12.000,  52.000] <   60 ( 2.01\%)> & 36.490 ( 6.000) [     7.000,    53.000] <3,455 (44.50\%)>\\
-\hspace{1em}Corrected Calcium\textsuperscript{e} & 2.302 ( 0.180) [  1.209,   3.660] <   68 ( 2.28\%)> & 2.408 ( 0.160) [     1.419,     3.610] <5,113 (65.85\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin\textsuperscript{d} & 122.977 (23.000) [ 61.000, 195.000] <   72 ( 2.41\%)> & 108.588 (30.000) [     6.250,   208.000] <3,968 (51.10\%)>\\
-\hspace{1em}Phosphate\textsuperscript{e} & 1.162 ( 0.320) [  0.430,   3.710] <   87 ( 2.91\%)> & 1.203 ( 0.320) [     0.370,     4.370] <5,127 (66.03\%)>\\
-\bottomrule
-\multicolumn{3}{l}{\textsuperscript{a} (ml/min/1.73m\textasciicircum{}2) or per year \textsuperscript{b} (mmHG) \textsuperscript{c} (kg/m\textasciicircum{}2) \textsuperscript{d} (g/l) \textsuperscript{e} (mmol/l) \textsuperscript{f} (g/mmol) or per year}\\
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry
-\begin{table}[!h]
-
-\caption{\label{tab:Table-One}{\small Population demographics for the categorical variables presented as number (percent)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Gender}}\\
-\hspace{1em}Male & 1,865 (62.56 \%) & 3,915 (50.42 \%)\\
-\hspace{1em}Female & 1,116 (37.43 \%) & 3,849 (49.57 \%)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Ethnicity}}\\
-\hspace{1em}White & 2,875 (96.44 \%) & 683 ( 8.79 \%)\\
-\hspace{1em}Asian & 75 ( 2.51 \%) & 12 ( 0.15 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Black & 21 ( 0.70 \%) & 7 ( 0.09 \%)\\
-\hspace{1em}Other & 10 ( 0.33 \%) & 2 ( 0.02 \%)\\
-\rowcolor{gray!6}  \hspace{1em}<Ethnicity Missing> & 0 ( 0.00 \%) & 7,060 (90.93 \%)\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former & 1,535 (51.49 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & 979 (32.84 \%) & \\
-\hspace{1em}Smoker & 379 (12.71 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Former 3Y & 46 ( 1.54 \%) & \\
-\hspace{1em}<Smoking Status Missing> & 42 ( 1.40 \%) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Systemic diseases affecting the kidney & 1,304 (43.74 \%) & 299 ( 3.85 \%)\\
-\hspace{1em}Glomerular disease & 442 (14.82 \%) & 225 ( 2.89 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Tubulointerstitial disease & 268 ( 8.99 \%) & 164 ( 2.11 \%)\\
-\hspace{1em}Miscellaneous renal disorders & 227 ( 7.61 \%) & 188 ( 2.42 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Familial / hereditary nephropathies & 173 ( 5.80 \%) & 102 ( 1.31 \%)\\
-\hspace{1em}<Renal Diagnosis Missing> & 567 (19.02 \%) & 6,786 (87.40 \%)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\begin{table}[!h]
-
-\caption{\label{tab:Table-One}{\small Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  Diabetes (DM) & 992 (33.32\%) <  4 (0.13\%)> & 1,546 (19.91\%) <    0 ( 0.00\%)>\\
-Congestive Cardiac Failure (CCF) & 2,414 (81.08\%) <  4 (0.13\%)> & 406 ( 5.22\%) <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Prior Myocardial Infarction (MI) & 2,492 (83.70\%) <  4 (0.13\%)> & 556 ( 7.16\%) <    0 ( 0.00\%)>\\
-Ischemic Heart Disease (IHD) & 2,393 (80.38\%) <  4 (0.13\%)> & 867 (11.16\%) <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Peripheral Vascular Disease (PVD) & 2,485 (83.47\%) <  4 (0.13\%)> & 376 ( 4.84\%) <    0 ( 0.00\%)>\\
+BMI & 28.848 ( 7.842) & 572 (19.19\%) & [ 13.182,  61.467] & 29.020 ( 6.811) & 7,491 ( 97.17\%) & [  17.073,  52.403]\\
+\rowcolor{gray!6}  Albumin & 42.152 ( 5.000) & 60 ( 2.01\%) & [ 12.000,  52.000] & 36.475 ( 6.000) & 3,134 ( 40.65\%) & [   7.000,  53.000]\\
+Calcium & 2.302 ( 0.180) & 68 ( 2.28\%) & [  1.210,   3.660] & 2.407 ( 0.160) & 4,513 ( 58.54\%) & [   1.455,   3.400]\\
+\rowcolor{gray!6}  Haemoglobin & 122.978 (23.000) & 72 ( 2.42\%) & [ 61.000, 195.000] & 109.269 (29.000) & 3,557 ( 46.14\%) & [   7.100, 208.000]\\
+Phosphate & 1.163 ( 0.320) & 87 ( 2.92\%) & [  0.430,   3.710] & 1.194 ( 0.320) & 4,510 ( 58.50\%) & [   0.320,   4.370]\\
 \addlinespace
-Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) <  4 (0.13\%)> & 184 ( 2.36\%) <    0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.98\%) <  4 (0.13\%)> & \\
-Chronic Liver Disease (LD) & 2,891 (97.11\%) <  4 (0.13\%)> & \\
-\rowcolor{gray!6}  Solid Tumour (ST) & 2,570 (86.32\%) <  4 (0.13\%)> & \\
-Hypertension (HT) & 2,546 (91.48\%) <198 (6.64\%)> & 3,122 (40.21\%) <    0 ( 0.00\%)>\\
+\rowcolor{gray!6}  uPCR & 0.112 ( 0.103) & 245 ( 8.22\%) & [  0.001,   2.025] & 0.178 ( 0.177) & 7,170 ( 93.01\%) & [   0.001,   1.943]\\
+uPCR Rate & -0.096 ( 0.188) & 1,777 (59.61\%) & [-70.727,  28.199] & 4.621 ( 0.905) & 7,495 ( 97.22\%) & [-176.200, 952.812]\\
+\rowcolor{gray!6}  Gender: &  & 0 ( 0.00\%) &  &  & 0 (  0.00\%) & \\
+Male & 1,865 (62.56\%) &  &  & 3,885 (50.40\%) &  & \\
+\rowcolor{gray!6}  Female & 1,116 (37.44\%) &  &  & 3,824 (49.60\%) &  & \\
+\addlinespace
+Ethnicity: &  & 0 ( 0.00\%) &  &  & 7,009 ( 90.92\%) & \\
+\rowcolor{gray!6}  White & 2,875 (96.44\%) &  &  & 679 ( 8.81\%) &  & \\
+Asian & 75 ( 2.52\%) &  &  & 12 ( 0.16\%) &  & \\
+\rowcolor{gray!6}  Black & 21 ( 0.70\%) &  &  & 7 ( 0.09\%) &  & \\
+Other & 10 ( 0.34\%) &  &  & 2 ( 0.03\%) &  & \\
+\addlinespace
+\rowcolor{gray!6}  SmokingStatus: &  & 42 ( 1.41\%) &  &  & 7,709 (100.00\%) & \\
+Former & 1,535 (51.49\%) &  &  & 0 ( 0.00\%) &  & \\
+\rowcolor{gray!6}  Non-Smoker & 979 (32.84\%) &  &  & 0 ( 0.00\%) &  & \\
+Smoker & 379 (12.71\%) &  &  & 0 ( 0.00\%) &  & \\
+\rowcolor{gray!6}  Former 3Y & 46 ( 1.54\%) &  &  & 0 ( 0.00\%) &  & \\
+\addlinespace
+DiagGroup: &  & 567 (19.02\%) &  &  & 6,640 ( 86.13\%) & \\
+\rowcolor{gray!6}  Systemic diseases affecting the kidney & 1,304 (43.74\%) &  &  & 316 ( 4.10\%) &  & \\
+Glomerular disease & 442 (14.83\%) &  &  & 278 ( 3.61\%) &  & \\
+\rowcolor{gray!6}  Tubulointerstitial disease & 268 ( 8.99\%) &  &  & 173 ( 2.24\%) &  & \\
+Miscellaneous renal disorders & 227 ( 7.61\%) &  &  & 198 ( 2.57\%) &  & \\
+\addlinespace
+\rowcolor{gray!6}  Familial / hereditary nephropathies & 173 ( 5.80\%) &  &  & 104 ( 1.35\%) &  & \\
+Diabetes (DM) & 992 (33.32\%) & 4 ( 0.13\%) &  & 1,535 (19.91\%) & 0 (   0.0\%) & \\
+\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & 2,414 (81.09\%) & 4 ( 0.13\%) &  & 408 ( 5.29\%) & 0 (   0.0\%) & \\
+Prior Myocardial Infarction (MI) & 2,492 (83.71\%) & 4 ( 0.13\%) &  & 556 ( 7.21\%) & 0 (   0.0\%) & \\
+\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & 2,393 (80.38\%) & 4 ( 0.13\%) &  & 863 (11.19\%) & 0 (   0.0\%) & \\
+\addlinespace
+Peripheral Vascular Disease (PVA) & 2,485 (83.47\%) & 4 ( 0.13\%) &  & 376 ( 4.88\%) & 0 (   0.0\%) & \\
+\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) & 4 ( 0.13\%) &  & 186 ( 2.41\%) & 0 (   0.0\%) & \\
+Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.99\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
+\rowcolor{gray!6}  Chronic Liver Disease (LD) & 2,891 (97.11\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
+Prior Solid Tumour (ST) & 2,570 (86.33\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
+\addlinespace
+\rowcolor{gray!6}  Hypertension (HT) & 2,546 (91.48\%) & 198 ( 6.64\%) &  & 3,114 (40.39\%) & 0 (   0.0\%) & \\
 \bottomrule
 \end{tabular}
 \end{table}
-Table \ref{tab:Table-One} also shows a breakdown of the categorical variables across the populations. In the development population, \sout{there are farmore males than females}crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched(62.6\% male vs 50.4\% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. \sout{The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).}
+Table \ref{tab:Table-One} also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6\% male vs 50.4\% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model.
 
-Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.\sout{, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80\% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33\% and over 97\% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40\% (3,122), followed by diabetes mellitus at 20\% (1,546) and cerebrovascular accident was the lowest prevalence at 2.36\% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.}
+Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.
 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \ref{tab:Event-Median2}.
 \begin{table}[!h]
@@ -1536,7 +1372,7 @@ We have used data provided by SKS to develop a Multi-State Clinical Prediction M
 
 Models performed well in model validation with the Three-State Model slightly out performing the other two models in calibration and overall predictive ability, however the Five-State model performed marginally better in terms of discriminative ability. Both Multi-State Models outperformed the Two-State (Traditional) Model.
 
-The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of \sout{multiple}different outcomes at a wide range of time points. The model can also be used to estimate an expected amount of time that a patient will be on RRT The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
+The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of different outcomes at a wide range of time points. The model can also be used to estimate an expected amount of time that a patient will be on RRT The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
 
 Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients from a wider catchment area, making the cohort of patients in the development population in worse condition than the general population of CKD patients.
 
@@ -1544,13 +1380,11 @@ There were also high levels of missingness in the eGFR and uPCR rates of changes
 
 In the Five-State Model, We omitted the analysis of the Tx to Dead state due to the anticipated low number of events within the SKS dataset. The lowest number of events for a transition was therefore PD to Dead, which had only 107. Altogether, we considered 26 covariates (with 4 categorical covariates) and so this equates to 36 predictor parameters and an events per predictor parameter (EPP) of 2.97. This is below the recommendations of Riley et al {[}\protect\hyperlink{ref-riley_minimum_2019}{22}{]}, whose calculations produce a requirement of 4.54 EPP. This requirement was also not satisfied by the CKD to PD transition (EPP = 6.36,required = 10.2) or the CKD to Tx transition (EPP = 2.97, required = 17.6). Fortunately, this limitation is confined to the Five-State Model.
 
-We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, (however this is a much weaker assumption {[}\protect\hyperlink{ref-royston_flexible_2002}{117}{]}), which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.
+We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, (however this is a much weaker assumption {[}\protect\hyperlink{ref-royston_flexible_2002}{96}{]}), which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable.
 
-Compared to the \sout{raw}apparent internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.
+Compared to the apparent internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.
 
-\sout{Although not directly assessing causality in regards to state-transitions, our Three-State model can be used by clinicians to either expedite or delay transition of a patient onto RRT, if it is believed that this would be beneficial. Alternatively, the Five-State Model can be interpreted to provide information regarding \emph{which} treatment might be benficial for a patient.}
-
-Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice {[}\protect\hyperlink{ref-moons_prognosis_2009-1}{118}{]} by comparing it to standard care and establishing whether the use of our model improves patient outcomes.
+Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice {[}\protect\hyperlink{ref-moons_prognosis_2009-1}{97}{]} by comparing it to standard care and establishing whether the use of our model improves patient outcomes.
 
 All three models produced for this work performed well in terms of accuracy, calibration and discrimination when applied internally and externally. This shows directly that the models are suitable for use in populations similar to both our development and our validation datasets. It can also be concluded that the models can be transported and applied to any population with a similar healthcare system to the UK.
 
@@ -1617,30 +1451,28 @@ Brief discussion, much briefer than the main points.
 \hypertarget{development-1}{%
 \subsection{Development}\label{development-1}}
 
-Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e.~future prediction of states and not covariates). \sout{Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications {[}\protect\hyperlink{ref-venkat-raman_new_2012}{109}{]}).} As well as those included in \ref{chap-dev-paper}, ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
+Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e.~future prediction of states and not covariates). As well as those included in \ref{chap-dev-paper}, ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models.
 
-\sout{uPCR and eGFR Rate of change were also calculated {[}\protect\hyperlink{ref-kovesdy_past_2016}{110}{]}, {[}\protect\hyperlink{ref-naimark_past_2016}{111}{]}}Rates of change were calculated as the difference between the two most recent measures divided by time difference in years. \sout{\(\textrm{Age}^2\), log(Age), log(eGFR Rate) and log(uPCR Rate) were considered as transformations within the model.} log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences {[}\protect\hyperlink{ref-bhatnagar_epidemiology_2015}{31}{]}. Calendar Time was defined as length of time between start date and 1st January 2019.
+log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences {[}\protect\hyperlink{ref-bhatnagar_epidemiology_2015}{31}{]}. Calendar Time was defined as length of time between start date and 1st January 2019.
 
-Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified {[}\protect\hyperlink{ref-meira-machado_multi-state_2009}{119}{]}. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique {[}\protect\hyperlink{ref-royston_flexible_2002}{117}{]} to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time {[}\protect\hyperlink{ref-putter_tutorial_2007}{120}{]}.
+Intermediate states (RRT or modality) were considered to be medically transformative, and so a semi-markov (clock reset) method for analysis was considered to be well justified {[}\protect\hyperlink{ref-meira-machado_multi-state_2009}{98}{]}. Each transition was modelled under a proportional hazards assumption using the Royston-Parmar technique {[}\protect\hyperlink{ref-royston_flexible_2002}{96}{]} to estimate coefficients for each covariate and a restricted cubic spline (on the log-time scale) for the baseline cumulative hazard. The cumulative hazards for each transition can be combined to produce estimates for the probability of a patient being in any state at any time {[}\protect\hyperlink{ref-putter_tutorial_2007}{99}{]}.
 
-For variable selection, we stacked the imputed datasets together to create a larger, pseudo-population {[}\protect\hyperlink{ref-wood_how_2008}{121}{]} and performed backwards-forwards selection based on minimising the AIC at each step. This was repeated for each transition and for different numbers of evenly spaced knots in modelling the form of the baseline hazard, K=\{0,1,2,3,4,5\}. This allowed for different transitions to use different sets of variables and numbers of knots in the final model. Some combinations of variables resulted in models that were intractable and so these models were excluded. Once a set of variables were chosen, the R-P model was applied to each imputed dataset individually and the resulting coefficients and cubic spline parameters were aggregated across imputations using Rubin's Rules {[}\protect\hyperlink{ref-rubin_multiple_1984}{122}{]}. This gave a model fully defined by smooth cubic splines representing the cumulative cause-specific hazard and individualised proportional hazards for each transition.
+For variable selection, we stacked the imputed datasets together to create a larger, pseudo-population {[}\protect\hyperlink{ref-wood_how_2008}{100}{]} and performed backwards-forwards selection based on minimising the AIC at each step. This was repeated for each transition and for different numbers of evenly spaced knots in modelling the form of the baseline hazard, K=\{0,1,2,3,4,5\}. This allowed for different transitions to use different sets of variables and numbers of knots in the final model. Some combinations of variables resulted in models that were intractable and so these models were excluded. Once a set of variables were chosen, the R-P model was applied to each imputed dataset individually and the resulting coefficients and cubic spline parameters were aggregated across imputations using Rubin's Rules {[}\protect\hyperlink{ref-rubin_multiple_1984}{101}{]}. This gave a model fully defined by smooth cubic splines representing the cumulative cause-specific hazard and individualised proportional hazards for each transition.
 
-All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors {[}\protect\hyperlink{ref-white_imputing_2009}{108}{]}. Some variables (smoking status and histories of COPD, LD and ST) were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset {[}\protect\hyperlink{ref-janssen_dealing_2009}{123}{]}.
+All missing data were assumed to be missing at random and so were multiply imputed using chained equations with the Nelson-Aalen estimators for each relevant transition as predictors {[}\protect\hyperlink{ref-white_imputing_2009}{87}{]}. Some variables (smoking status and histories of COPD, LD and ST) were present in the SKS (development) dataset, but were completely missing in the SERPR extract (validation) and so these were multiply imputed from the development dataset {[}\protect\hyperlink{ref-janssen_dealing_2009}{102}{]}.
 
 \hypertarget{validation-2}{%
 \subsection{Validation}\label{validation-2}}
-
-\sout{Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR{[}\protect\hyperlink{ref-schomaker_bootstrap_2018}{112}{]}. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR \textless{} 30/ml/min/1.73m\textsuperscript{2}.}
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have \(K=4\) pathways a patient can take and for the Five-State model, we have \(K=7\). To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
 
 The performance metrics were chosen from those defined in chapter \ref@(chap-performance-metrics)
 
-The overall accuracy of each model was assessed using the MSM adjusted Brier Score, which is a proper score function {[}\protect\hyperlink{ref-gneiting_strictly_2007}{124}{]} assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score, which is a proper score function {[}\protect\hyperlink{ref-gneiting_strictly_2007}{103}{]} assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
 
-The discrimination of each model was assessed using the MSM extension to the c-statistic {[}\protect\hyperlink{ref-calster_extending_2012-1}{125}{]}. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
+The discrimination of each model was assessed using the MSM extension to the c-statistic {[}\protect\hyperlink{ref-calster_extending_2012-1}{104}{]}. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
-The calibration of each model was assessed using MSM multinomial logistic regression (MLR) {[}\protect\hyperlink{ref-hoorde_assessing_2014}{126}{]} which extends the logistic regression to three or more mutually exclusive outcomes {[}\protect\hyperlink{ref-riley_prognosis_2019}{6}{]}. This produces an intercept vector of length \(K-1\) and a Slope-matrix of dimension \((K-1) \times (K-1)\). As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible. The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix (\(I\)) as possible.
+The calibration of each model was assessed using MSM multinomial logistic regression (MLR) {[}\protect\hyperlink{ref-hoorde_assessing_2014}{105}{]} which extends the logistic regression to three or more mutually exclusive outcomes {[}\protect\hyperlink{ref-riley_prognosis_2019}{6}{]}. This produces an intercept vector of length \(K-1\) and a Slope-matrix of dimension \((K-1) \times (K-1)\). As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible. The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix (\(I\)) as possible.
 
 \hypertarget{model-results}{%
 \section{Model Results}\label{model-results}}
@@ -1648,7 +1480,7 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 \hypertarget{two-state-model}{%
 \subsection{Two State Model}\label{two-state-model}}
 
-Table \ref{tab:PH-Two} shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA {[}\protect\hyperlink{ref-venkat-raman_new_2012}{109}{]} definition of Systemic diseases affecting the kidney had the highest likelihood of death.
+Table \ref{tab:PH-Two} shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA {[}\protect\hyperlink{ref-venkat-raman_new_2012}{88}{]} definition of Systemic diseases affecting the kidney had the highest likelihood of death.
 \begin{table}[!h]
 
 \caption{\label{tab:PH-Two}{\small Proportional Hazards for each transition in the Two-State Model}}
@@ -1776,10 +1608,6 @@ Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 \hypertarget{three-state-model}{%
 \subsection{Three State Model}\label{three-state-model}}
 
-\sout{In the Three-State Model, older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \ref{tab:PH-Three}.(\ldots)}
-
-\sout{Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.}
-
 The equations \eqref{eq:CH-Three-16}, \eqref{eq:CH-Three-15} and \eqref{eq:CH-Three-56} shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.
 \begin{equation}
 \Lambda_{0,16}(t)=\begin{cases} 1.19795\log(t)+17.68798 & 0 \le t < 3 \\ -9e-05\log(t)^3+3e-04\log(t)^2+1.19761\log(t)+17.68811 & 3 \le t < 443 \\ 0.15869\log(t)^3-2.9019\log(t)^2+18.88018\log(t)-18.22403 & 443 \le t < 873 \\ -0.30096\log(t)^3+6.43659\log(t)^2-44.36299\log(t)+124.54338 & 873 \le t < 1295 \\ -0.04158\log(t)^3+0.86028\log(t)^2-4.40166\log(t)+29.08554 & 1295 \le t < 1876 \\ 0.51263\log(t)^3-11.67048\log(t)^2+90.03919\log(t)-208.17245 & 1876 \le t < 2738 \\ -0.23992\log(t)^3+6.19863\log(t)^2-51.3924\log(t)+164.96467 & 2738 \le t < 5497 \\ 1.98997\log(t)+11.72244)) & 5497 \le t \label{eq:CH-Three-16}\end{cases}
@@ -1791,10 +1619,6 @@ The equations \eqref{eq:CH-Three-16}, \eqref{eq:CH-Three-15} and \eqref{eq:CH-Th
 \Lambda_{0,56}(t)=\begin{cases} 1.35522\log(t)-7.7618 & 0 \le t < 8 \\ -0.01704\log(t)^3+0.1063\log(t)^2+1.13417\log(t)-7.60859 & 8 \le t < 196 \\ 0.21761\log(t)^3-3.6103\log(t)^2+20.75671\log(t)-42.14228 & 196 \le t < 506 \\ -0.67558\log(t)^3+13.07415\log(t)^2-83.12956\log(t)+173.47479 & 506 \le t < 816 \\ 0.8043\log(t)^3-16.69103\log(t)^2+116.42771\log(t)-272.49495 & 816 \le t < 1388 \\ -1.26732\log(t)^3+28.27738\log(t)^2-208.94656\log(t)+512.26643 & 1388 \le t < 1927 \\ 0.17019\log(t)^3-4.34244\log(t)^2+37.78861\log(t)-109.83234 & 1927 \le t < 4940 \\ 0.85568\log(t)-5.12598)) & 4940 \le t \label{eq:CH-Three-56}\end{cases}
 \end{equation}
 Validation results for the Three-State Model can be found in Chapter \ref{chap-dev-paper}.
-
-\sout{Table \ref{tab:IV-Three} shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the \textless60 eGFR group than in the \textless30 eGFR group. All measures degraded over time, but the average scores remained strong.(\ldots)}
-
-\sout{Table \ref{tab:EV-Three} shows the results from the external validation in the Three-State Model.(\ldots)}
 
 \hypertarget{five-state-model}{%
 \subsection{Five State Model}\label{five-state-model}}
@@ -2115,275 +1939,212 @@ Average & \emph{1.28},  0.00, -0.00,  0.01,  0.00,  0.00\newline   0.00,  \emph{
 \leavevmode\hypertarget{ref-calster_calibration_2016-1}{}%
 {[}36{]} B. V. Calster, D. Nieboer, Y. Vergouwe, B. D. Cock, M. J. Pencina, and E. W. Steyerberg, ``A calibration hierarchy for risk models was defined: From utopia to empirical data,'' \emph{Journal of Clinical Epidemiology}, vol. 74, pp. 167--176, Jun. 2016, doi: \href{https://doi.org/10.1016/j.jclinepi.2015.12.005}{10.1016/j.jclinepi.2015.12.005}.
 
-\leavevmode\hypertarget{ref-royston_external_2013}{}%
-{[}37{]} P. Royston and D. G. Altman, ``External validation of a Cox prognostic model: Principles and methods,'' \emph{BMC Medical Research Methodology}, vol. 13, no. 1, p. 33, Mar. 2013, doi: \href{https://doi.org/10.1186/1471-2288-13-33}{10.1186/1471-2288-13-33}.
-
 \leavevmode\hypertarget{ref-crowson_assessing_2016}{}%
-{[}38{]} C. S. Crowson, E. J. Atkinson, and T. M. Therneau, ``Assessing Calibration of Prognostic Risk Scores,'' \emph{Statistical methods in medical research}, vol. 25, no. 4, pp. 1692--1706, Aug. 2016, doi: \href{https://doi.org/10.1177/0962280213497434}{10.1177/0962280213497434}.
+{[}37{]} C. S. Crowson, E. J. Atkinson, and T. M. Therneau, ``Assessing Calibration of Prognostic Risk Scores,'' \emph{Statistical methods in medical research}, vol. 25, no. 4, pp. 1692--1706, Aug. 2016, doi: \href{https://doi.org/10.1177/0962280213497434}{10.1177/0962280213497434}.
 
-\leavevmode\hypertarget{ref-houwelingen_validation_2000}{}%
-{[}39{]} H. C. van Houwelingen, ``Validation, calibration, revision and combination of prognostic survival models,'' \emph{Statistics in Medicine}, vol. 19, no. 24, pp. 3401--3415, 2000, doi: \href{https://doi.org/10.1002/1097-0258(20001230)19:24\%3C3401::AID-SIM554\%3E3.0.CO;2-2}{10.1002/1097-0258(20001230)19:24\textless3401::AID-SIM554\textgreater3.0.CO;2-2}.
+\leavevmode\hypertarget{ref-royston_external_2013}{}%
+{[}38{]} P. Royston and D. G. Altman, ``External validation of a Cox prognostic model: Principles and methods,'' \emph{BMC Medical Research Methodology}, vol. 13, no. 1, p. 33, Mar. 2013, doi: \href{https://doi.org/10.1186/1471-2288-13-33}{10.1186/1471-2288-13-33}.
+
+\leavevmode\hypertarget{ref-goff_2013_2014}{}%
+{[}39{]} D. C. Goff \emph{et al.}, ``2013 ACC/AHA Guideline on the Assessment of Cardiovascular Risk: A Report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines,'' \emph{Circulation}, vol. 129, no. 25 suppl 2, pp. S49--S73, Jun. 2014, doi: \href{https://doi.org/10.1161/01.cir.0000437741.48606.98}{10.1161/01.cir.0000437741.48606.98}.
+
+\leavevmode\hypertarget{ref-de_la_iglesia_performance_2011}{}%
+{[}40{]} B. de la Iglesia, J. F. Potter, N. R. Poulter, M. M. Robins, and J. Skinner, ``Performance of the ASSIGN cardiovascular disease risk score on a UK cohort of patients from general practice,'' \emph{Heart}, vol. 97, no. 6, pp. 491--499, Mar. 2011, doi: \href{https://doi.org/10.1136/hrt.2010.203364}{10.1136/hrt.2010.203364}.
 
 \leavevmode\hypertarget{ref-royston_tools_2014}{}%
-{[}40{]} P. Royston, ``Tools for Checking Calibration of a Cox Model in External Validation: Approach Based on Individual Event Probabilities:'' \emph{The Stata Journal}, Dec. 2014, doi: \href{https://doi.org/10.1177/1536867X1401400403}{10.1177/1536867X1401400403}.
-
-\leavevmode\hypertarget{ref-perme_checking_2008}{}%
-{[}41{]} M. P. Perme and P. K. Andersen, ``Checking hazard regression models using pseudo-observations,'' \emph{Statistics in medicine}, vol. 27, no. 25, pp. 5309--5328, Nov. 2008, doi: \href{https://doi.org/10.1002/sim.3401}{10.1002/sim.3401}.
+{[}41{]} P. Royston, ``Tools for Checking Calibration of a Cox Model in External Validation: Approach Based on Individual Event Probabilities:'' \emph{The Stata Journal}, Dec. 2014, doi: \href{https://doi.org/10.1177/1536867X1401400403}{10.1177/1536867X1401400403}.
 
 \leavevmode\hypertarget{ref-royston_tools_2015}{}%
 {[}42{]} P. Royston, ``Tools for Checking Calibration of a Cox Model in External Validation: Prediction of Population-Averaged Survival Curves Based on Risk Groups,'' \emph{The Stata Journal}, vol. 15, no. 1, pp. 275--291, Apr. 2015, doi: \href{https://doi.org/10.1177/1536867X1501500116}{10.1177/1536867X1501500116}.
 
+\leavevmode\hypertarget{ref-perme_checking_2008}{}%
+{[}43{]} M. P. Perme and P. K. Andersen, ``Checking hazard regression models using pseudo-observations,'' \emph{Statistics in medicine}, vol. 27, no. 25, pp. 5309--5328, Nov. 2008, doi: \href{https://doi.org/10.1002/sim.3401}{10.1002/sim.3401}.
+
 \leavevmode\hypertarget{ref-gerds_consistent_2006}{}%
-{[}43{]} T. A. Gerds and M. Schumacher, ``Consistent Estimation of the Expected Brier Score in General Survival Models with Right-Censored Event Times,'' \emph{Biometrical Journal}, vol. 48, no. 6, pp. 1029--1040, 2006, doi: \href{https://doi.org/10.1002/bimj.200610301}{10.1002/bimj.200610301}.
+{[}44{]} T. A. Gerds and M. Schumacher, ``Consistent Estimation of the Expected Brier Score in General Survival Models with Right-Censored Event Times,'' \emph{Biometrical Journal}, vol. 48, no. 6, pp. 1029--1040, 2006, doi: \href{https://doi.org/10.1002/bimj.200610301}{10.1002/bimj.200610301}.
 
 \leavevmode\hypertarget{ref-spitoni_prediction_2018}{}%
-{[}44{]} C. Spitoni, V. Lammens, and H. Putter, ``Prediction errors for state occupation and transition probabilities in multi-state models,'' \emph{Biometrical Journal. Biometrische Zeitschrift}, vol. 60, no. 1, pp. 34--48, Jan. 2018, doi: \href{https://doi.org/10.1002/bimj.201600191}{10.1002/bimj.201600191}.
+{[}45{]} C. Spitoni, V. Lammens, and H. Putter, ``Prediction errors for state occupation and transition probabilities in multi-state models,'' \emph{Biometrical Journal. Biometrische Zeitschrift}, vol. 60, no. 1, pp. 34--48, Jan. 2018, doi: \href{https://doi.org/10.1002/bimj.201600191}{10.1002/bimj.201600191}.
 
 \leavevmode\hypertarget{ref-han_comparing_2017}{}%
-{[}45{]} X. Han, Y. Zhang, and Y. Shao, ``On comparing two correlated C indices with censored survival data,'' \emph{Statistics in medicine}, vol. 36, no. 25, pp. 4041--4049, Nov. 2017, doi: \href{https://doi.org/10.1002/sim.7414}{10.1002/sim.7414}.
+{[}46{]} X. Han, Y. Zhang, and Y. Shao, ``On comparing two correlated C indices with censored survival data,'' \emph{Statistics in medicine}, vol. 36, no. 25, pp. 4041--4049, Nov. 2017, doi: \href{https://doi.org/10.1002/sim.7414}{10.1002/sim.7414}.
 
 \leavevmode\hypertarget{ref-liu_comparing_2016}{}%
-{[}46{]} X. Liu, Z. Jin, and J. H. Graziano, ``Comparing paired biomarkers in predicting quantitative health outcome subject to random censoring,'' \emph{Statistical methods in medical research}, vol. 25, no. 1, pp. 447--457, Feb. 2016, doi: \href{https://doi.org/10.1177/0962280212460434}{10.1177/0962280212460434}.
+{[}47{]} X. Liu, Z. Jin, and J. H. Graziano, ``Comparing paired biomarkers in predicting quantitative health outcome subject to random censoring,'' \emph{Statistical methods in medical research}, vol. 25, no. 1, pp. 447--457, Feb. 2016, doi: \href{https://doi.org/10.1177/0962280212460434}{10.1177/0962280212460434}.
 
 \leavevmode\hypertarget{ref-burton_design_2006}{}%
-{[}47{]} A. Burton, D. G. Altman, P. Royston, and R. L. Holder, ``The design of simulation studies in medical statistics,'' \emph{Statistics in Medicine}, vol. 25, no. 24, pp. 4279--4292, Dec. 2006, doi: \href{https://doi.org/10.1002/sim.2673}{10.1002/sim.2673}.
+{[}48{]} A. Burton, D. G. Altman, P. Royston, and R. L. Holder, ``The design of simulation studies in medical statistics,'' \emph{Statistics in Medicine}, vol. 25, no. 24, pp. 4279--4292, Dec. 2006, doi: \href{https://doi.org/10.1002/sim.2673}{10.1002/sim.2673}.
 
 \leavevmode\hypertarget{ref-andersen_pseudo-observations_2010}{}%
-{[}48{]} P. K. Andersen and M. Pohar Perme, ``Pseudo-observations in survival analysis,'' \emph{Statistical Methods in Medical Research}, vol. 19, no. 1, pp. 71--99, Feb. 2010, doi: \href{https://doi.org/10.1177/0962280209105020}{10.1177/0962280209105020}.
+{[}49{]} P. K. Andersen and M. Pohar Perme, ``Pseudo-observations in survival analysis,'' \emph{Statistical Methods in Medical Research}, vol. 19, no. 1, pp. 71--99, Feb. 2010, doi: \href{https://doi.org/10.1177/0962280209105020}{10.1177/0962280209105020}.
 
 \leavevmode\hypertarget{ref-wildscop_biostatistics_2013}{}%
-{[}49{]} Wildscop, ``Biostatistics and epidemiology with R: Weighted Logistic Regression in R, SPSS, Stata,'' \emph{biostatistics and epidemiology with R}. Feb-2013.
+{[}50{]} Wildscop, ``Biostatistics and epidemiology with R: Weighted Logistic Regression in R, SPSS, Stata,'' \emph{biostatistics and epidemiology with R}. Feb-2013.
 
 \leavevmode\hypertarget{ref-morris_using_2019}{}%
-{[}50{]} T. P. Morris, I. R. White, and M. J. Crowther, ``Using simulation studies to evaluate statistical methods,'' \emph{Statistics in Medicine}, vol. 38, no. 11, pp. 2074--2102, 2019, doi: \href{https://doi.org/10.1002/sim.8086}{10.1002/sim.8086}.
+{[}51{]} T. P. Morris, I. R. White, and M. J. Crowther, ``Using simulation studies to evaluate statistical methods,'' \emph{Statistics in Medicine}, vol. 38, no. 11, pp. 2074--2102, 2019, doi: \href{https://doi.org/10.1002/sim.8086}{10.1002/sim.8086}.
 
 \leavevmode\hypertarget{ref-r_core_team_r_nodate}{}%
-{[}51{]} R. C. Team, ``R: A Language and Environment for Statistical Computing.'' R Foundation for Statistical Computing, Vienna, Austria, Vienna,
+{[}52{]} R. C. Team, ``R: A Language and Environment for Statistical Computing.'' R Foundation for Statistical Computing, Vienna, Austria, Vienna,
 
 \leavevmode\hypertarget{ref-wickham_tidy_2017}{}%
-{[}52{]} H. Wickham, ``The tidy tools manifesto.'' https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.
+{[}53{]} H. Wickham, ``The tidy tools manifesto.'' https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.
 
 \leavevmode\hypertarget{ref-therneau_package_2020}{}%
-{[}53{]} T. Therneau, ``A package for survival analysis in R,'' p. 89, Mar. 2020.
+{[}54{]} T. Therneau, ``A package for survival analysis in R,'' p. 89, Mar. 2020.
 
 \leavevmode\hypertarget{ref-perme_pseudo_2017}{}%
-{[}54{]} M. P. Perme, M. Gerster, and K. Rodrigues, ``Pseudo: Computes Pseudo-Observations for Modeling.'' Jul-2017.
+{[}55{]} M. P. Perme, M. Gerster, and K. Rodrigues, ``Pseudo: Computes Pseudo-Observations for Modeling.'' Jul-2017.
 
 \leavevmode\hypertarget{ref-chang_shiny_2020}{}%
-{[}55{]} W. Chang \emph{et al.}, ``Shiny: Web Application Framework for R.'' Mar-2020.
+{[}56{]} W. Chang \emph{et al.}, ``Shiny: Web Application Framework for R.'' Mar-2020.
 
 \leavevmode\hypertarget{ref-johnson_predicting_2007}{}%
-{[}56{]} E. S. Johnson, M. L. Thorp, X. Yang, O. L. Charansonney, and D. H. Smith, ``Predicting renal replacement therapy and mortality in CKD,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 50, no. 4, pp. 559--565, Oct. 2007, doi: \href{https://doi.org/10.1053/j.ajkd.2007.07.006}{10.1053/j.ajkd.2007.07.006}.
+{[}57{]} E. S. Johnson, M. L. Thorp, X. Yang, O. L. Charansonney, and D. H. Smith, ``Predicting renal replacement therapy and mortality in CKD,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 50, no. 4, pp. 559--565, Oct. 2007, doi: \href{https://doi.org/10.1053/j.ajkd.2007.07.006}{10.1053/j.ajkd.2007.07.006}.
 
 \leavevmode\hypertarget{ref-landray_prediction_2010}{}%
-{[}57{]} M. J. Landray \emph{et al.}, ``Prediction of ESRD and death among people with CKD: The Chronic Renal Impairment in Birmingham (CRIB) prospective cohort study,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 56, no. 6, pp. 1082--1094, Dec. 2010, doi: \href{https://doi.org/10.1053/j.ajkd.2010.07.016}{10.1053/j.ajkd.2010.07.016}.
+{[}58{]} M. J. Landray \emph{et al.}, ``Prediction of ESRD and death among people with CKD: The Chronic Renal Impairment in Birmingham (CRIB) prospective cohort study,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 56, no. 6, pp. 1082--1094, Dec. 2010, doi: \href{https://doi.org/10.1053/j.ajkd.2010.07.016}{10.1053/j.ajkd.2010.07.016}.
 
 \leavevmode\hypertarget{ref-bansal_development_2015}{}%
-{[}58{]} N. Bansal \emph{et al.}, ``Development and validation of a model to predict 5-year risk of death without ESRD among older adults with CKD,'' \emph{Clinical journal of the American Society of Nephrology: CJASN}, vol. 10, no. 3, pp. 363--371, Mar. 2015, doi: \href{https://doi.org/10.2215/CJN.04650514}{10.2215/CJN.04650514}.
+{[}59{]} N. Bansal \emph{et al.}, ``Development and validation of a model to predict 5-year risk of death without ESRD among older adults with CKD,'' \emph{Clinical journal of the American Society of Nephrology: CJASN}, vol. 10, no. 3, pp. 363--371, Mar. 2015, doi: \href{https://doi.org/10.2215/CJN.04650514}{10.2215/CJN.04650514}.
 
 \leavevmode\hypertarget{ref-marks_looking_2015}{}%
-{[}59{]} A. Marks \emph{et al.}, ``Looking to the future: Predicting renal replacement outcomes in a large community cohort with chronic kidney disease,'' \emph{Nephrology, Dialysis, Transplantation: Official Publication of the European Dialysis and Transplant Association - European Renal Association}, vol. 30, no. 9, pp. 1507--1517, Sep. 2015, doi: \href{https://doi.org/10.1093/ndt/gfv089}{10.1093/ndt/gfv089}.
+{[}60{]} A. Marks \emph{et al.}, ``Looking to the future: Predicting renal replacement outcomes in a large community cohort with chronic kidney disease,'' \emph{Nephrology, Dialysis, Transplantation: Official Publication of the European Dialysis and Transplant Association - European Renal Association}, vol. 30, no. 9, pp. 1507--1517, Sep. 2015, doi: \href{https://doi.org/10.1093/ndt/gfv089}{10.1093/ndt/gfv089}.
 
 \leavevmode\hypertarget{ref-wick_clinical_2017}{}%
-{[}60{]} J. P. Wick \emph{et al.}, ``A Clinical Risk Prediction Tool for 6-Month Mortality After Dialysis Initiation Among Older Adults,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 69, no. 5, pp. 568--575, May 2017, doi: \href{https://doi.org/10.1053/j.ajkd.2016.08.035}{10.1053/j.ajkd.2016.08.035}.
+{[}61{]} J. P. Wick \emph{et al.}, ``A Clinical Risk Prediction Tool for 6-Month Mortality After Dialysis Initiation Among Older Adults,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 69, no. 5, pp. 568--575, May 2017, doi: \href{https://doi.org/10.1053/j.ajkd.2016.08.035}{10.1053/j.ajkd.2016.08.035}.
 
 \leavevmode\hypertarget{ref-johnson_predicting_2008}{}%
-{[}61{]} E. S. Johnson, M. L. Thorp, R. W. Platt, and D. H. Smith, ``Predicting the risk of dialysis and transplant among patients with CKD: A retrospective cohort study,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 52, no. 4, pp. 653--660, Oct. 2008, doi: \href{https://doi.org/10.1053/j.ajkd.2008.04.026}{10.1053/j.ajkd.2008.04.026}.
+{[}62{]} E. S. Johnson, M. L. Thorp, R. W. Platt, and D. H. Smith, ``Predicting the risk of dialysis and transplant among patients with CKD: A retrospective cohort study,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 52, no. 4, pp. 653--660, Oct. 2008, doi: \href{https://doi.org/10.1053/j.ajkd.2008.04.026}{10.1053/j.ajkd.2008.04.026}.
 
 \leavevmode\hypertarget{ref-schroeder_predicting_2017}{}%
-{[}62{]} E. B. Schroeder \emph{et al.}, ``Predicting 5-Year Risk of RRT in Stage 3 or 4 CKD: Development and External Validation,'' \emph{Clinical journal of the American Society of Nephrology: CJASN}, vol. 12, no. 1, pp. 87--94, Jun. 2017, doi: \href{https://doi.org/10.2215/CJN.01290216}{10.2215/CJN.01290216}.
+{[}63{]} E. B. Schroeder \emph{et al.}, ``Predicting 5-Year Risk of RRT in Stage 3 or 4 CKD: Development and External Validation,'' \emph{Clinical journal of the American Society of Nephrology: CJASN}, vol. 12, no. 1, pp. 87--94, Jun. 2017, doi: \href{https://doi.org/10.2215/CJN.01290216}{10.2215/CJN.01290216}.
 
 \leavevmode\hypertarget{ref-kulkarni_transition_2017}{}%
-{[}63{]} S. Kulkarni \emph{et al.}, ``Transition probabilities between changing sensitization levels, waitlist activity status and competing-risk kidney transplant outcomes using multi-state modeling,'' \emph{PLOS ONE}, vol. 12, no. 12, p. e0190277, Dec. 2017, doi: \href{https://doi.org/10.1371/journal.pone.0190277}{10.1371/journal.pone.0190277}.
+{[}64{]} S. Kulkarni \emph{et al.}, ``Transition probabilities between changing sensitization levels, waitlist activity status and competing-risk kidney transplant outcomes using multi-state modeling,'' \emph{PLOS ONE}, vol. 12, no. 12, p. e0190277, Dec. 2017, doi: \href{https://doi.org/10.1371/journal.pone.0190277}{10.1371/journal.pone.0190277}.
 
 \leavevmode\hypertarget{ref-floege_development_2015}{}%
-{[}64{]} J. Floege \emph{et al.}, ``Development and validation of a predictive mortality risk score from a European hemodialysis cohort,'' \emph{Kidney International}, vol. 87, no. 5, pp. 996--1008, May 2015, doi: \href{https://doi.org/10.1038/ki.2014.419}{10.1038/ki.2014.419}.
+{[}65{]} J. Floege \emph{et al.}, ``Development and validation of a predictive mortality risk score from a European hemodialysis cohort,'' \emph{Kidney International}, vol. 87, no. 5, pp. 996--1008, May 2015, doi: \href{https://doi.org/10.1038/ki.2014.419}{10.1038/ki.2014.419}.
 
 \leavevmode\hypertarget{ref-hemke_survival_2013}{}%
-{[}65{]} A. C. Hemke, M. B. Heemskerk, M. van Diepen, W. Weimar, F. W. Dekker, and A. J. Hoitsma, ``Survival prognosis after the start of a renal replacement therapy in the Netherlands: A retrospective cohort study,'' \emph{BMC Nephrology}, vol. 14, p. 258, Nov. 2013, doi: \href{https://doi.org/10.1186/1471-2369-14-258}{10.1186/1471-2369-14-258}.
+{[}66{]} A. C. Hemke, M. B. Heemskerk, M. van Diepen, W. Weimar, F. W. Dekker, and A. J. Hoitsma, ``Survival prognosis after the start of a renal replacement therapy in the Netherlands: A retrospective cohort study,'' \emph{BMC Nephrology}, vol. 14, p. 258, Nov. 2013, doi: \href{https://doi.org/10.1186/1471-2369-14-258}{10.1186/1471-2369-14-258}.
 
 \leavevmode\hypertarget{ref-cao_predicting_2015}{}%
-{[}66{]} X.-Y. Cao \emph{et al.}, ``Predicting one-year mortality in peritoneal dialysis patients: An analysis of the China Peritoneal Dialysis Registry,'' \emph{International Journal of Medical Sciences}, vol. 12, no. 4, pp. 354--361, 2015, doi: \href{https://doi.org/10.7150/ijms.11694}{10.7150/ijms.11694}.
+{[}67{]} X.-Y. Cao \emph{et al.}, ``Predicting one-year mortality in peritoneal dialysis patients: An analysis of the China Peritoneal Dialysis Registry,'' \emph{International Journal of Medical Sciences}, vol. 12, no. 4, pp. 354--361, 2015, doi: \href{https://doi.org/10.7150/ijms.11694}{10.7150/ijms.11694}.
 
 \leavevmode\hypertarget{ref-tangri_predictive_2011}{}%
-{[}67{]} N. Tangri \emph{et al.}, ``A predictive model for progression of chronic kidney disease to kidney failure,'' \emph{JAMA}, vol. 305, no. 15, pp. 1553--1559, Apr. 2011, doi: \href{https://doi.org/10.1001/jama.2011.451}{10.1001/jama.2011.451}.
+{[}68{]} N. Tangri \emph{et al.}, ``A predictive model for progression of chronic kidney disease to kidney failure,'' \emph{JAMA}, vol. 305, no. 15, pp. 1553--1559, Apr. 2011, doi: \href{https://doi.org/10.1001/jama.2011.451}{10.1001/jama.2011.451}.
 
 \leavevmode\hypertarget{ref-roy_statistical_2017}{}%
-{[}68{]} J. Roy \emph{et al.}, ``Statistical Methods for Cohort Studies of CKD: Prediction Modeling,'' \emph{Clinical journal of the American Society of Nephrology: CJASN}, vol. 12, no. 6, pp. 1010--1017, Jun. 2017, doi: \href{https://doi.org/10.2215/CJN.06210616}{10.2215/CJN.06210616}.
+{[}69{]} J. Roy \emph{et al.}, ``Statistical Methods for Cohort Studies of CKD: Prediction Modeling,'' \emph{Clinical journal of the American Society of Nephrology: CJASN}, vol. 12, no. 6, pp. 1010--1017, Jun. 2017, doi: \href{https://doi.org/10.2215/CJN.06210616}{10.2215/CJN.06210616}.
 
 \leavevmode\hypertarget{ref-tangri_dynamic_2017}{}%
-{[}69{]} N. Tangri \emph{et al.}, ``A Dynamic Predictive Model for Progression of CKD,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 69, no. 4, pp. 514--520, Apr. 2017, doi: \href{https://doi.org/10.1053/j.ajkd.2016.07.030}{10.1053/j.ajkd.2016.07.030}.
+{[}70{]} N. Tangri \emph{et al.}, ``A Dynamic Predictive Model for Progression of CKD,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 69, no. 4, pp. 514--520, Apr. 2017, doi: \href{https://doi.org/10.1053/j.ajkd.2016.07.030}{10.1053/j.ajkd.2016.07.030}.
 
 \leavevmode\hypertarget{ref-shlipak_cardiovascular_2005}{}%
-{[}70{]} M. G. Shlipak \emph{et al.}, ``Cardiovascular mortality risk in chronic kidney disease: Comparison of traditional and novel risk factors,'' \emph{JAMA}, vol. 293, no. 14, pp. 1737--1745, Apr. 2005, doi: \href{https://doi.org/10.1001/jama.293.14.1737}{10.1001/jama.293.14.1737}.
+{[}71{]} M. G. Shlipak \emph{et al.}, ``Cardiovascular mortality risk in chronic kidney disease: Comparison of traditional and novel risk factors,'' \emph{JAMA}, vol. 293, no. 14, pp. 1737--1745, Apr. 2005, doi: \href{https://doi.org/10.1001/jama.293.14.1737}{10.1001/jama.293.14.1737}.
 
 \leavevmode\hypertarget{ref-weiner_framingham_2007}{}%
-{[}71{]} D. E. Weiner \emph{et al.}, ``The Framingham predictive instrument in chronic kidney disease,'' \emph{Journal of the American College of Cardiology}, vol. 50, no. 3, pp. 217--224, Jul. 2007, doi: \href{https://doi.org/10.1016/j.jacc.2007.03.037}{10.1016/j.jacc.2007.03.037}.
+{[}72{]} D. E. Weiner \emph{et al.}, ``The Framingham predictive instrument in chronic kidney disease,'' \emph{Journal of the American College of Cardiology}, vol. 50, no. 3, pp. 217--224, Jul. 2007, doi: \href{https://doi.org/10.1016/j.jacc.2007.03.037}{10.1016/j.jacc.2007.03.037}.
 
 \leavevmode\hypertarget{ref-mcmurray_predictors_2011}{}%
-{[}72{]} J. J. V. McMurray \emph{et al.}, ``Predictors of fatal and nonfatal cardiovascular events in patients with type 2 diabetes mellitus, chronic kidney disease, and anemia: An analysis of the Trial to Reduce cardiovascular Events with Aranesp (darbepoetin-alfa) Therapy (TREAT),'' \emph{American Heart Journal}, vol. 162, no. 4, pp. 748--755.e3, Oct. 2011, doi: \href{https://doi.org/10.1016/j.ahj.2011.07.016}{10.1016/j.ahj.2011.07.016}.
+{[}73{]} J. J. V. McMurray \emph{et al.}, ``Predictors of fatal and nonfatal cardiovascular events in patients with type 2 diabetes mellitus, chronic kidney disease, and anemia: An analysis of the Trial to Reduce cardiovascular Events with Aranesp (darbepoetin-alfa) Therapy (TREAT),'' \emph{American Heart Journal}, vol. 162, no. 4, pp. 748--755.e3, Oct. 2011, doi: \href{https://doi.org/10.1016/j.ahj.2011.07.016}{10.1016/j.ahj.2011.07.016}.
 
 \leavevmode\hypertarget{ref-grams_assessing_2013}{}%
-{[}73{]} M. E. Grams and J. Coresh, ``Assessing risk in chronic kidney disease: A methodological review,'' \emph{Nature Reviews. Nephrology}, vol. 9, no. 1, pp. 18--25, Jan. 2013, doi: \href{https://doi.org/10.1038/nrneph.2012.248}{10.1038/nrneph.2012.248}.
+{[}74{]} M. E. Grams and J. Coresh, ``Assessing risk in chronic kidney disease: A methodological review,'' \emph{Nature Reviews. Nephrology}, vol. 9, no. 1, pp. 18--25, Jan. 2013, doi: \href{https://doi.org/10.1038/nrneph.2012.248}{10.1038/nrneph.2012.248}.
 
 \leavevmode\hypertarget{ref-tangri_risk_2013}{}%
-{[}74{]} N. Tangri \emph{et al.}, ``Risk prediction models for patients with chronic kidney disease: A systematic review,'' \emph{Annals of Internal Medicine}, vol. 158, no. 8, pp. 596--603, Apr. 2013, doi: \href{https://doi.org/10.7326/0003-4819-158-8-201304160-00004}{10.7326/0003-4819-158-8-201304160-00004}.
+{[}75{]} N. Tangri \emph{et al.}, ``Risk prediction models for patients with chronic kidney disease: A systematic review,'' \emph{Annals of Internal Medicine}, vol. 158, no. 8, pp. 596--603, Apr. 2013, doi: \href{https://doi.org/10.7326/0003-4819-158-8-201304160-00004}{10.7326/0003-4819-158-8-201304160-00004}.
 
 \leavevmode\hypertarget{ref-ramspek_prediction_2017}{}%
-{[}75{]} C. L. Ramspek, P. W. Voskamp, F. J. van Ittersum, R. T. Krediet, F. W. Dekker, and M. van Diepen, ``Prediction models for the mortality risk in chronic dialysis patients: A systematic review and independent external validation study,'' \emph{Clinical Epidemiology}, vol. 9, pp. 451--464, 2017, doi: \href{https://doi.org/10.2147/CLEP.S139748}{10.2147/CLEP.S139748}.
+{[}76{]} C. L. Ramspek, P. W. Voskamp, F. J. van Ittersum, R. T. Krediet, F. W. Dekker, and M. van Diepen, ``Prediction models for the mortality risk in chronic dialysis patients: A systematic review and independent external validation study,'' \emph{Clinical Epidemiology}, vol. 9, pp. 451--464, 2017, doi: \href{https://doi.org/10.2147/CLEP.S139748}{10.2147/CLEP.S139748}.
 
 \leavevmode\hypertarget{ref-bouwmeester_reporting_2012-1}{}%
-{[}76{]} W. Bouwmeester \emph{et al.}, ``Reporting and Methods in Clinical Prediction Research: A Systematic Review,'' \emph{PLOS Medicine}, vol. 9, no. 5, p. e1001221, May 2012, doi: \href{https://doi.org/10.1371/journal.pmed.1001221}{10.1371/journal.pmed.1001221}.
+{[}77{]} W. Bouwmeester \emph{et al.}, ``Reporting and Methods in Clinical Prediction Research: A Systematic Review,'' \emph{PLOS Medicine}, vol. 9, no. 5, p. e1001221, May 2012, doi: \href{https://doi.org/10.1371/journal.pmed.1001221}{10.1371/journal.pmed.1001221}.
 
 \leavevmode\hypertarget{ref-perotte_risk_2015}{}%
-{[}77{]} A. Perotte, R. Ranganath, J. S. Hirsch, D. Blei, and N. Elhadad, ``Risk prediction for chronic kidney disease progression using heterogeneous electronic health record data and time series analysis,'' \emph{Journal of the American Medical Informatics Association: JAMIA}, vol. 22, no. 4, pp. 872--880, Jul. 2015, doi: \href{https://doi.org/10.1093/jamia/ocv024}{10.1093/jamia/ocv024}.
+{[}78{]} A. Perotte, R. Ranganath, J. S. Hirsch, D. Blei, and N. Elhadad, ``Risk prediction for chronic kidney disease progression using heterogeneous electronic health record data and time series analysis,'' \emph{Journal of the American Medical Informatics Association: JAMIA}, vol. 22, no. 4, pp. 872--880, Jul. 2015, doi: \href{https://doi.org/10.1093/jamia/ocv024}{10.1093/jamia/ocv024}.
 
 \leavevmode\hypertarget{ref-begun_identification_2013}{}%
-{[}78{]} A. Begun, A. Icks, R. Waldeyer, S. Landwehr, M. Koch, and G. Giani, ``Identification of a multistate continuous-time nonhomogeneous Markov chain model for patients with decreased renal function.'' \emph{Medical decision making : an international journal of the Society for Medical Decision Making}, vol. 33, no. 2, pp. 298--306, Feb. 2013, doi: \href{https://doi.org/10.1177/0272989X12466731}{10.1177/0272989X12466731}.
+{[}79{]} A. Begun, A. Icks, R. Waldeyer, S. Landwehr, M. Koch, and G. Giani, ``Identification of a multistate continuous-time nonhomogeneous Markov chain model for patients with decreased renal function.'' \emph{Medical decision making : an international journal of the Society for Medical Decision Making}, vol. 33, no. 2, pp. 298--306, Feb. 2013, doi: \href{https://doi.org/10.1177/0272989X12466731}{10.1177/0272989X12466731}.
 
 \leavevmode\hypertarget{ref-allen_chronic_2014}{}%
-{[}79{]} A. M. Allen, W. R. Kim, T. M. Therneau, J. J. Larson, J. K. Heimbach, and A. D. Rule, ``Chronic kidney disease and associated mortality after liver transplantation--a time-dependent analysis using measured glomerular filtration rate,'' \emph{Journal of Hepatology}, vol. 61, no. 2, pp. 286--292, Aug. 2014, doi: \href{https://doi.org/10.1016/j.jhep.2014.03.034}{10.1016/j.jhep.2014.03.034}.
+{[}80{]} A. M. Allen, W. R. Kim, T. M. Therneau, J. J. Larson, J. K. Heimbach, and A. D. Rule, ``Chronic kidney disease and associated mortality after liver transplantation--a time-dependent analysis using measured glomerular filtration rate,'' \emph{Journal of Hepatology}, vol. 61, no. 2, pp. 286--292, Aug. 2014, doi: \href{https://doi.org/10.1016/j.jhep.2014.03.034}{10.1016/j.jhep.2014.03.034}.
 
 \leavevmode\hypertarget{ref-grams_predicting_2018}{}%
-{[}80{]} M. E. Grams \emph{et al.}, ``Predicting timing of clinical outcomes in patients~with chronic kidney disease and severely decreased glomerular filtration rate,'' \emph{Kidney International}, vol. 93, no. 6, pp. 1442--1451, Jun. 2018, doi: \href{https://doi.org/10.1016/j.kint.2018.01.009}{10.1016/j.kint.2018.01.009}.
-
-\leavevmode\hypertarget{ref-altman_problems_1994-1}{}%
-{[}81{]} D. G. Altman, ``Problems in dichotomizing continuous variables,'' \emph{American Journal of Epidemiology}, vol. 139, no. 4, pp. 442--445, Feb. 1994, doi: \href{https://doi.org/10.1093/oxfordjournals.aje.a117020}{10.1093/oxfordjournals.aje.a117020}.
-
-\leavevmode\hypertarget{ref-altman_dangers_1994-1}{}%
-{[}82{]} D. G. Altman, B. Lausen, W. Sauerbrei, and M. Schumacher, ``Dangers of Using `Optimal' Cutpoints in the Evaluation of Prognostic Factors,'' \emph{JNCI: Journal of the National Cancer Institute}, vol. 86, no. 11, pp. 829--835, Jun. 1994, doi: \href{https://doi.org/10.1093/jnci/86.11.829}{10.1093/jnci/86.11.829}.
-
-\leavevmode\hypertarget{ref-altman_cost_2006-1}{}%
-{[}83{]} D. G. Altman and P. Royston, ``The cost of dichotomising continuous variables,'' \emph{BMJ}, vol. 332, no. 7549, p. 1080, May 2006, doi: \href{https://doi.org/10.1136/bmj.332.7549.1080}{10.1136/bmj.332.7549.1080}.
-
-\leavevmode\hypertarget{ref-bennette_against_2012-1}{}%
-{[}84{]} C. Bennette and A. Vickers, ``Against quantiles: Categorization of continuous variables in epidemiologic research, and its discontents,'' \emph{BMC Medical Research Methodology}, vol. 12, no. 1, p. 21, Feb. 2012, doi: \href{https://doi.org/10.1186/1471-2288-12-21}{10.1186/1471-2288-12-21}.
-
-\leavevmode\hypertarget{ref-butts_chopped_2009-1}{}%
-{[}85{]} M. M. Butts and T. W. H. Ng, ``Chopped liver? OK. Chopped data? Not OK,'' in \emph{Statistical and methodological myths and urban legends: Doctrine, verity and fable in the organizational and social sciences}, New York, NY, US: Routledge/Taylor \& Francis Group, 2009, pp. 361--386.
-
-\leavevmode\hypertarget{ref-cumberland_ophthalmic_2014-1}{}%
-{[}86{]} P. M. Cumberland \emph{et al.}, ``Ophthalmic statistics note: The perils of dichotomising continuous variables,'' \emph{British Journal of Ophthalmology}, vol. 98, no. 6, pp. 841--843, Jun. 2014, doi: \href{https://doi.org/10.1136/bjophthalmol-2014-304930}{10.1136/bjophthalmol-2014-304930}.
-
-\leavevmode\hypertarget{ref-dawson_dichotomizing_2012-1}{}%
-{[}87{]} N. V. Dawson and R. Weiss, ``Dichotomizing continuous variables in statistical analysis: A practice to avoid,'' \emph{Medical Decision Making: An International Journal of the Society for Medical Decision Making}, vol. 32, no. 2, pp. 225--226, doi: \href{https://doi.org/10.1177/0272989X12437605}{10.1177/0272989X12437605}.
-
-\leavevmode\hypertarget{ref-dinero_seven_1996-1}{}%
-{[}88{]} T. E. Dinero, ``Seven reasons why you should not categorize continuous data,'' \emph{Journal of Health \& Social Policy}, vol. 8, no. 1, pp. 63--72, 1996, doi: \href{https://doi.org/10.1300/J045v08n01_06}{10.1300/J045v08n01\_06}.
-
-\leavevmode\hypertarget{ref-irwin_negative_2003}{}%
-{[}89{]} J. R. Irwin and G. H. McClelland, ``Negative Consequences of Dichotomizing Continuous Predictor Variables,'' \emph{Journal of Marketing Research}, vol. 40, no. 3, pp. 366--371, Aug. 2003, doi: \href{https://doi.org/10.1509/jmkr.40.3.366.19237}{10.1509/jmkr.40.3.366.19237}.
-
-\leavevmode\hypertarget{ref-kuss_danger_2013}{}%
-{[}90{]} O. Kuss, ``The danger of dichotomizing continuous variables: A visualization,'' \emph{Teaching Statistics}, vol. 35, no. 2, pp. 78--79, 2013, doi: \href{https://doi.org/10.1111/test.12006}{10.1111/test.12006}.
-
-\leavevmode\hypertarget{ref-metze_dichotomization_2008}{}%
-{[}91{]} K. Metze, ``Dichotomization of continuous data--a pitfall in prognostic factor studies,'' \emph{Pathology, Research and Practice}, vol. 204, no. 3, pp. 213--214, 2008, doi: \href{https://doi.org/10.1016/j.prp.2007.12.002}{10.1016/j.prp.2007.12.002}.
-
-\leavevmode\hypertarget{ref-naggara_analysis_2011}{}%
-{[}92{]} O. Naggara, J. Raymond, F. Guilbert, D. Roy, A. Weill, and D. G. Altman, ``Analysis by categorizing or dichotomizing continuous variables is inadvisable: An example from the natural history of unruptured aneurysms,'' \emph{AJNR. American journal of neuroradiology}, vol. 32, no. 3, pp. 437--440, Mar. 2011, doi: \href{https://doi.org/10.3174/ajnr.A2425}{10.3174/ajnr.A2425}.
-
-\leavevmode\hypertarget{ref-owen_why_2005}{}%
-{[}93{]} S. V. Owen and R. D. Froman, ``Why carve up your continuous data?'' \emph{Research in Nursing \& Health}, vol. 28, no. 6, pp. 496--503, 2005, doi: \href{https://doi.org/10.1002/nur.20107}{10.1002/nur.20107}.
-
-\leavevmode\hypertarget{ref-schellingerhout_categorizing_2009}{}%
-{[}94{]} J. M. Schellingerhout, M. W. Heymans, H. C. W. de Vet, B. W. Koes, and A. P. Verhagen, ``Categorizing continuous variables resulted in different predictors in a prognostic model for nonspecific neck pain,'' \emph{Journal of Clinical Epidemiology}, vol. 62, no. 8, pp. 868--874, Aug. 2009, doi: \href{https://doi.org/10.1016/j.jclinepi.2008.10.010}{10.1016/j.jclinepi.2008.10.010}.
-
-\leavevmode\hypertarget{ref-streiner_breaking_2002}{}%
-{[}95{]} D. L. Streiner, ``Breaking up is hard to do: The heartbreak of dichotomizing continuous data,'' \emph{Canadian Journal of Psychiatry. Revue Canadienne De Psychiatrie}, vol. 47, no. 3, pp. 262--266, Apr. 2002, doi: \href{https://doi.org/10.1177/070674370204700307}{10.1177/070674370204700307}.
-
-\leavevmode\hypertarget{ref-van_walraven_leave_2008}{}%
-{[}96{]} C. van Walraven and R. G. Hart, ``Leave 'em alone - why continuous variables should be analyzed as such,'' \emph{Neuroepidemiology}, vol. 30, no. 3, pp. 138--139, 2008, doi: \href{https://doi.org/10.1159/000126908}{10.1159/000126908}.
-
-\leavevmode\hypertarget{ref-vintzileos_anathema_2014}{}%
-{[}97{]} A. M. Vintzileos, Y. Oyelese, and C. V. Ananth, ``The "anathema" of arbitrary categorization of continuous predictors,'' \emph{American Journal of Obstetrics and Gynecology}, vol. 210, no. 3, pp. 200--203, Mar. 2014, doi: \href{https://doi.org/10.1016/j.ajog.2013.09.042}{10.1016/j.ajog.2013.09.042}.
-
-\leavevmode\hypertarget{ref-weinberg_how_1995}{}%
-{[}98{]} C. R. Weinberg, ``How Bad Is Categorization?'' \emph{Epidemiology}, vol. 6, no. 4, pp. 345--347, 1995.
-
-\leavevmode\hypertarget{ref-van_smeden_reflection_2019}{}%
-{[}99{]} M. van Smeden, T. L. Lash, and R. H. H. Groenwold, ``Reflection on modern methods: Five myths about measurement error in epidemiological research,'' \emph{International Journal of Epidemiology}, Oct. 19AD, doi: \href{https://doi.org/10.1093/ije/dyz251}{10.1093/ije/dyz251}.
-
-\leavevmode\hypertarget{ref-sun_interval_2005}{}%
-{[}100{]} J. Sun, ``Interval Censoring,'' in \emph{Encyclopedia of Biostatistics}, American Cancer Society, 2005.
+{[}81{]} M. E. Grams \emph{et al.}, ``Predicting timing of clinical outcomes in patients~with chronic kidney disease and severely decreased glomerular filtration rate,'' \emph{Kidney International}, vol. 93, no. 6, pp. 1442--1451, Jun. 2018, doi: \href{https://doi.org/10.1016/j.kint.2018.01.009}{10.1016/j.kint.2018.01.009}.
 
 \leavevmode\hypertarget{ref-hoefield_factors_2010}{}%
-{[}101{]} R. A. Hoefield \emph{et al.}, ``Factors associated with kidney disease progression and mortality in a referred CKD population,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 56, no. 6, pp. 1072--1081, Dec. 2010, doi: \href{https://doi.org/10.1053/j.ajkd.2010.06.010}{10.1053/j.ajkd.2010.06.010}.
+{[}82{]} R. A. Hoefield \emph{et al.}, ``Factors associated with kidney disease progression and mortality in a referred CKD population,'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation}, vol. 56, no. 6, pp. 1072--1081, Dec. 2010, doi: \href{https://doi.org/10.1053/j.ajkd.2010.06.010}{10.1053/j.ajkd.2010.06.010}.
 
 \leavevmode\hypertarget{ref-chinnadurai_increased_2019-1}{}%
-{[}102{]} R. Chinnadurai, C. Chrysochou, and P. A. Kalra, ``Increased Risk for Cardiovascular Events in Patients with Diabetic Kidney Disease and Non-Alcoholic Fatty Liver Disease,'' \emph{Nephron}, vol. 141, no. 1, pp. 24--30, 2019, doi: \href{https://doi.org/10.1159/000493472}{10.1159/000493472}.
+{[}83{]} R. Chinnadurai, C. Chrysochou, and P. A. Kalra, ``Increased Risk for Cardiovascular Events in Patients with Diabetic Kidney Disease and Non-Alcoholic Fatty Liver Disease,'' \emph{Nephron}, vol. 141, no. 1, pp. 24--30, 2019, doi: \href{https://doi.org/10.1159/000493472}{10.1159/000493472}.
 
 \leavevmode\hypertarget{ref-levey_new_2009}{}%
-{[}103{]} A. S. Levey \emph{et al.}, ``A new equation to estimate glomerular filtration rate,'' \emph{Annals of Internal Medicine}, vol. 150, no. 9, pp. 604--612, May 2009, doi: \href{https://doi.org/10.7326/0003-4819-150-9-200905050-00006}{10.7326/0003-4819-150-9-200905050-00006}.
+{[}84{]} A. S. Levey \emph{et al.}, ``A new equation to estimate glomerular filtration rate,'' \emph{Annals of Internal Medicine}, vol. 150, no. 9, pp. 604--612, May 2009, doi: \href{https://doi.org/10.7326/0003-4819-150-9-200905050-00006}{10.7326/0003-4819-150-9-200905050-00006}.
 
 \leavevmode\hypertarget{ref-new_obtaining_2014}{}%
-{[}104{]} J. P. New, N. D. Bakerly, D. Leather, and A. Woodcock, ``Obtaining real-world evidence: The Salford Lung Study,'' \emph{Thorax}, vol. 69, pp. 1152--1154, 2014, doi: \href{https://doi.org/http://dx.doi.org/10.1136/thoraxjnl-2014-205259}{http://dx.doi.org/10.1136/thoraxjnl-2014-205259}.
+{[}85{]} J. P. New, N. D. Bakerly, D. Leather, and A. Woodcock, ``Obtaining real-world evidence: The Salford Lung Study,'' \emph{Thorax}, vol. 69, pp. 1152--1154, 2014, doi: \href{https://doi.org/http://dx.doi.org/10.1136/thoraxjnl-2014-205259}{http://dx.doi.org/10.1136/thoraxjnl-2014-205259}.
 
 \leavevmode\hypertarget{ref-matsushita_cohort_2013}{}%
-{[}105{]} K. Matsushita \emph{et al.}, ``Cohort Profile: The Chronic Kidney Disease Prognosis Consortium,'' \emph{International Journal of Epidemiology}, vol. 42, no. 6, pp. 1660--1668, Dec. 2013, doi: \href{https://doi.org/10.1093/ije/dys173}{10.1093/ije/dys173}.
-
-\leavevmode\hypertarget{ref-forni_renal_2017-1}{}%
-{[}106{]} L. G. Forni \emph{et al.}, ``Renal recovery after acute kidney injury,'' \emph{Intensive Care Medicine}, vol. 43, no. 6, pp. 855--866, 2017, doi: \href{https://doi.org/10.1007/s00134-017-4809-x}{10.1007/s00134-017-4809-x}.
-
-\leavevmode\hypertarget{ref-noauthor_kdigo_2012}{}%
-{[}107{]} ``KDIGO Clinical Practice Guideline for Acute Kidney Injury,'' \emph{OFFICIAL JOURNAL OF THE INTERNATIONAL SOCIETY OF NEPHROLOGY}, p. 141, 2012.
+{[}86{]} K. Matsushita \emph{et al.}, ``Cohort Profile: The Chronic Kidney Disease Prognosis Consortium,'' \emph{International Journal of Epidemiology}, vol. 42, no. 6, pp. 1660--1668, Dec. 2013, doi: \href{https://doi.org/10.1093/ije/dys173}{10.1093/ije/dys173}.
 
 \leavevmode\hypertarget{ref-white_imputing_2009}{}%
-{[}108{]} I. R. White and P. Royston, ``Imputing missing covariate values for the Cox model,'' \emph{Statistics in Medicine}, vol. 28, no. 15, pp. 1982--1998, Jul. 2009, doi: \href{https://doi.org/10.1002/sim.3618}{10.1002/sim.3618}.
+{[}87{]} I. R. White and P. Royston, ``Imputing missing covariate values for the Cox model,'' \emph{Statistics in Medicine}, vol. 28, no. 15, pp. 1982--1998, Jul. 2009, doi: \href{https://doi.org/10.1002/sim.3618}{10.1002/sim.3618}.
 
 \leavevmode\hypertarget{ref-venkat-raman_new_2012}{}%
-{[}109{]} G. Venkat-Raman \emph{et al.}, ``New primary renal diagnosis codes for the ERA-EDTA,'' \emph{Nephrology Dialysis Transplantation}, vol. 27, no. 12, pp. 4414--4419, Dec. 2012, doi: \href{https://doi.org/10.1093/ndt/gfs461}{10.1093/ndt/gfs461}.
+{[}88{]} G. Venkat-Raman \emph{et al.}, ``New primary renal diagnosis codes for the ERA-EDTA,'' \emph{Nephrology Dialysis Transplantation}, vol. 27, no. 12, pp. 4414--4419, Dec. 2012, doi: \href{https://doi.org/10.1093/ndt/gfs461}{10.1093/ndt/gfs461}.
 
 \leavevmode\hypertarget{ref-kovesdy_past_2016}{}%
-{[}110{]} C. P. Kovesdy \emph{et al.}, ``Past Decline Versus Current eGFR and Subsequent ESRD Risk,'' \emph{Journal of the American Society of Nephrology}, vol. 27, no. 8, pp. 2447--2455, Aug. 2016, doi: \href{https://doi.org/10.1681/ASN.2015060687}{10.1681/ASN.2015060687}.
+{[}89{]} C. P. Kovesdy \emph{et al.}, ``Past Decline Versus Current eGFR and Subsequent ESRD Risk,'' \emph{Journal of the American Society of Nephrology}, vol. 27, no. 8, pp. 2447--2455, Aug. 2016, doi: \href{https://doi.org/10.1681/ASN.2015060687}{10.1681/ASN.2015060687}.
 
 \leavevmode\hypertarget{ref-naimark_past_2016}{}%
-{[}111{]} D. M. J. Naimark \emph{et al.}, ``Past Decline Versus Current eGFR and Subsequent Mortality Risk,'' \emph{Journal of the American Society of Nephrology}, vol. 27, no. 8, pp. 2456--2466, Aug. 2016, doi: \href{https://doi.org/10.1681/ASN.2015060688}{10.1681/ASN.2015060688}.
+{[}90{]} D. M. J. Naimark \emph{et al.}, ``Past Decline Versus Current eGFR and Subsequent Mortality Risk,'' \emph{Journal of the American Society of Nephrology}, vol. 27, no. 8, pp. 2456--2466, Aug. 2016, doi: \href{https://doi.org/10.1681/ASN.2015060688}{10.1681/ASN.2015060688}.
 
 \leavevmode\hypertarget{ref-schomaker_bootstrap_2018}{}%
-{[}112{]} M. Schomaker and C. Heumann, ``Bootstrap inference when using multiple imputation,'' \emph{Statistics in Medicine}, vol. 37, no. 14, pp. 2252--2266, 2018, doi: \href{https://doi.org/10.1002/sim.7654}{10.1002/sim.7654}.
+{[}91{]} M. Schomaker and C. Heumann, ``Bootstrap inference when using multiple imputation,'' \emph{Statistics in Medicine}, vol. 37, no. 14, pp. 2252--2266, 2018, doi: \href{https://doi.org/10.1002/sim.7654}{10.1002/sim.7654}.
 
 \leavevmode\hypertarget{ref-buuren_mice_2011-1}{}%
-{[}113{]} S. van Buuren and K. Groothuis-Oudshoorn, ``Mice: Multivariate Imputation by Chained Equations in R,'' \emph{Journal of Statistical Software}, vol. 45, no. 1, pp. 1--67, Dec. 2011, doi: \href{https://doi.org/10.18637/jss.v045.i03}{10.18637/jss.v045.i03}.
+{[}92{]} S. van Buuren and K. Groothuis-Oudshoorn, ``Mice: Multivariate Imputation by Chained Equations in R,'' \emph{Journal of Statistical Software}, vol. 45, no. 1, pp. 1--67, Dec. 2011, doi: \href{https://doi.org/10.18637/jss.v045.i03}{10.18637/jss.v045.i03}.
 
 \leavevmode\hypertarget{ref-jackson_flexsurv_nodate}{}%
-{[}114{]} C. Jackson, ``Flexsurv: A Platform for Parametric Survival Modelling in R,'' p. 33.
+{[}93{]} C. Jackson, ``Flexsurv: A Platform for Parametric Survival Modelling in R,'' p. 33.
 
 \leavevmode\hypertarget{ref-ripley_package_2016}{}%
-{[}115{]} B. Ripley and W. Venables, ``Package 'nnet','' Feb-2016.
+{[}94{]} B. Ripley and W. Venables, ``Package 'nnet','' Feb-2016.
 
 \leavevmode\hypertarget{ref-vaughan_furrr_2018}{}%
-{[}116{]} D. Vaughan and M. Dancho, ``Furrr: Apply Mapping Functions in Parallel using Futures.'' May-2018.
+{[}95{]} D. Vaughan and M. Dancho, ``Furrr: Apply Mapping Functions in Parallel using Futures.'' May-2018.
 
 \leavevmode\hypertarget{ref-royston_flexible_2002}{}%
-{[}117{]} P. Royston and M. K. B. Parmar, ``Flexible parametric proportional-hazards and proportional-odds models for censored survival data, with application to prognostic modelling and estimation of treatment effects,'' \emph{Statistics in Medicine}, vol. 21, no. 15, pp. 2175--2197, Aug. 2002, doi: \href{https://doi.org/10.1002/sim.1203}{10.1002/sim.1203}.
+{[}96{]} P. Royston and M. K. B. Parmar, ``Flexible parametric proportional-hazards and proportional-odds models for censored survival data, with application to prognostic modelling and estimation of treatment effects,'' \emph{Statistics in Medicine}, vol. 21, no. 15, pp. 2175--2197, Aug. 2002, doi: \href{https://doi.org/10.1002/sim.1203}{10.1002/sim.1203}.
 
 \leavevmode\hypertarget{ref-moons_prognosis_2009-1}{}%
-{[}118{]} K. G. M. Moons, D. G. Altman, Y. Vergouwe, and P. Royston, ``Prognosis and prognostic research: Application and impact of prognostic models in clinical practice,'' \emph{BMJ}, vol. 338, p. b606, Jun. 2009, doi: \href{https://doi.org/10.1136/bmj.b606}{10.1136/bmj.b606}.
+{[}97{]} K. G. M. Moons, D. G. Altman, Y. Vergouwe, and P. Royston, ``Prognosis and prognostic research: Application and impact of prognostic models in clinical practice,'' \emph{BMJ}, vol. 338, p. b606, Jun. 2009, doi: \href{https://doi.org/10.1136/bmj.b606}{10.1136/bmj.b606}.
 
 \leavevmode\hypertarget{ref-meira-machado_multi-state_2009}{}%
-{[}119{]} L. Meira-Machado, J. de Una-Alvarez, C. Cadarso-Suarez, and P. K. Andersen, ``Multi-state models for the analysis of time-to-event data,'' \emph{Statistical methods in medical research}, vol. 18, no. 2, pp. 195--222, Apr. 2009, doi: \href{https://doi.org/10.1177/0962280208092301}{10.1177/0962280208092301}.
+{[}98{]} L. Meira-Machado, J. de Una-Alvarez, C. Cadarso-Suarez, and P. K. Andersen, ``Multi-state models for the analysis of time-to-event data,'' \emph{Statistical methods in medical research}, vol. 18, no. 2, pp. 195--222, Apr. 2009, doi: \href{https://doi.org/10.1177/0962280208092301}{10.1177/0962280208092301}.
 
 \leavevmode\hypertarget{ref-putter_tutorial_2007}{}%
-{[}120{]} H. Putter, M. Fiocco, and R. B. Geskus, ``Tutorial in biostatistics: Competing risks and multi-state models,'' \emph{Statistics in Medicine}, vol. 26, no. 11, pp. 2389--2430, May 2007, doi: \href{https://doi.org/10.1002/sim.2712}{10.1002/sim.2712}.
+{[}99{]} H. Putter, M. Fiocco, and R. B. Geskus, ``Tutorial in biostatistics: Competing risks and multi-state models,'' \emph{Statistics in Medicine}, vol. 26, no. 11, pp. 2389--2430, May 2007, doi: \href{https://doi.org/10.1002/sim.2712}{10.1002/sim.2712}.
 
 \leavevmode\hypertarget{ref-wood_how_2008}{}%
-{[}121{]} A. M. Wood, I. R. White, and P. Royston, ``How should variable selection be performed with multiply imputed data?'' \emph{Statistics in Medicine}, vol. 27, no. 17, pp. 3227--3246, Jul. 2008, doi: \href{https://doi.org/10.1002/sim.3177}{10.1002/sim.3177}.
+{[}100{]} A. M. Wood, I. R. White, and P. Royston, ``How should variable selection be performed with multiply imputed data?'' \emph{Statistics in Medicine}, vol. 27, no. 17, pp. 3227--3246, Jul. 2008, doi: \href{https://doi.org/10.1002/sim.3177}{10.1002/sim.3177}.
 
 \leavevmode\hypertarget{ref-rubin_multiple_1984}{}%
-{[}122{]} D. B. Rubin, \emph{Multiple Imputation for Nonresponse in Surveys}. New York, NY: John Wiley \& Sons, Inc, 1984.
+{[}101{]} D. B. Rubin, \emph{Multiple Imputation for Nonresponse in Surveys}. New York, NY: John Wiley \& Sons, Inc, 1984.
 
 \leavevmode\hypertarget{ref-janssen_dealing_2009}{}%
-{[}123{]} K. J. M. Janssen \emph{et al.}, ``Dealing with missing predictor values when applying clinical prediction models,'' \emph{Clinical Chemistry}, vol. 55, no. 5, pp. 994--1001, May 2009, doi: \href{https://doi.org/10.1373/clinchem.2008.115345}{10.1373/clinchem.2008.115345}.
+{[}102{]} K. J. M. Janssen \emph{et al.}, ``Dealing with missing predictor values when applying clinical prediction models,'' \emph{Clinical Chemistry}, vol. 55, no. 5, pp. 994--1001, May 2009, doi: \href{https://doi.org/10.1373/clinchem.2008.115345}{10.1373/clinchem.2008.115345}.
 
 \leavevmode\hypertarget{ref-gneiting_strictly_2007}{}%
-{[}124{]} T. Gneiting and A. E. Raftery, ``Strictly Proper Scoring Rules, Prediction, and Estimation,'' \emph{Journal of the American Statistical Association}, vol. 102, no. 477, pp. 359--378, Mar. 2007, doi: \href{https://doi.org/10.1198/016214506000001437}{10.1198/016214506000001437}.
+{[}103{]} T. Gneiting and A. E. Raftery, ``Strictly Proper Scoring Rules, Prediction, and Estimation,'' \emph{Journal of the American Statistical Association}, vol. 102, no. 477, pp. 359--378, Mar. 2007, doi: \href{https://doi.org/10.1198/016214506000001437}{10.1198/016214506000001437}.
 
 \leavevmode\hypertarget{ref-calster_extending_2012-1}{}%
-{[}125{]} B. V. Calster, V. V. Belle, Y. Vergouwe, D. Timmerman, S. V. Huffel, and E. W. Steyerberg, ``Extending the c-statistic to nominal polytomous outcomes: The Polytomous Discrimination Index,'' \emph{Statistics in Medicine}, vol. 31, no. 23, pp. 2610--2626, 2012, doi: \href{https://doi.org/10.1002/sim.5321}{10.1002/sim.5321}.
+{[}104{]} B. V. Calster, V. V. Belle, Y. Vergouwe, D. Timmerman, S. V. Huffel, and E. W. Steyerberg, ``Extending the c-statistic to nominal polytomous outcomes: The Polytomous Discrimination Index,'' \emph{Statistics in Medicine}, vol. 31, no. 23, pp. 2610--2626, 2012, doi: \href{https://doi.org/10.1002/sim.5321}{10.1002/sim.5321}.
 
 \leavevmode\hypertarget{ref-hoorde_assessing_2014}{}%
-{[}126{]} K. V. Hoorde, Y. Vergouwe, D. Timmerman, S. V. Huffel, E. W. Steyerberg, and B. V. Calster, ``Assessing calibration of multinomial risk prediction models,'' \emph{Statistics in Medicine}, vol. 33, no. 15, pp. 2585--2596, Jul. 2014, doi: \href{https://doi.org/10.1002/sim.6114}{10.1002/sim.6114}.
+{[}105{]} K. V. Hoorde, Y. Vergouwe, D. Timmerman, S. V. Huffel, E. W. Steyerberg, and B. V. Calster, ``Assessing calibration of multinomial risk prediction models,'' \emph{Statistics in Medicine}, vol. 33, no. 15, pp. 2585--2596, Jul. 2014, doi: \href{https://doi.org/10.1002/sim.6114}{10.1002/sim.6114}.
 \end{cslreferences}
 
 \end{document}

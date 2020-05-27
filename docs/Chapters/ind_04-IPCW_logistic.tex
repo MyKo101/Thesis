@@ -64,9 +64,6 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-\usepackage[normalem]{ulem}
-% Avoid problems with \sout in headers with hyperref
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -99,7 +96,8 @@
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newenvironment{cslreferences}%
-  {}%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
   {\par}
 
 \title{Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large}
@@ -112,7 +110,7 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-Last updated: 03 May
+Last updated: 23 May
 
 \hypertarget{abstract}{%
 \section*{Abstract}\label{abstract}}
@@ -137,23 +135,19 @@ Last updated: 03 May
 \hypertarget{introduction-1}{%
 \section{Introduction}\label{introduction-1}}
 
-\sout{Clinical prediction models (CPMs)}Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a\sout{A} fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with \(p\%\) risk of an event, \(p\%\) of those have the event across the full risk range {[}\protect\hyperlink{ref-steyerberg_clinical_2008}{1}{]}. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) {[}\protect\hyperlink{ref-calster_calibration_2016-1}{2}{]}. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \ref{chap-IPCW-logistic-supp}). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g.~the Brier Score.
+Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with \(p\%\) risk of an event, \(p\%\) of those have the event across the full risk range (Steyerberg \protect\hyperlink{ref-steyerberg_clinical_2008}{2008}). The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) (Calster et al. \protect\hyperlink{ref-calster_calibration_2016-1}{2016}). With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \ref{chap-IPCW-logistic-supp}). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g.~the Brier Score.
 
-\sout{In the case of Cox regression, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}. Third, censoring needs to be handled in an appropriate way. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be looked at integrated over time using martingale residuals {[}\protect\hyperlink{ref-crowson_assessing_2016}{4}{]}; however here we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case {[}\protect\hyperlink{ref-houwelingen_validation_2000}{5}{]}. Once this is established, estimated survival probabilities are available. Censoring leads to problems in determining observed survival. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}, {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{6}{]}. However the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions.}
+In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals (Crowson, Atkinson, and Therneau \protect\hyperlink{ref-crowson_assessing_2016}{2016}); however we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function (Royston and Altman \protect\hyperlink{ref-royston_external_2013}{2013}). The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK ({\textbf{???}}), ASCVD (Goff et al. \protect\hyperlink{ref-goff_2013_2014}{2014}) and ASSIGN (de la Iglesia et al. \protect\hyperlink{ref-de_la_iglesia_performance_2011}{2011}). Once this is established, estimated survival probabilities are available.
 
-\sout{Royston {[}\protect\hyperlink{ref-royston_tools_2014}{7}{]} presents an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson {[}\protect\hyperlink{ref-perme_checking_2008}{8}{]} to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates. In this paper and another {[}\protect\hyperlink{ref-royston_tools_2015}{9}{]} he proposes the comparison of KM curves in risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided.}
+Third, censoring needs to be handled in an appropriate way. This is commonly overcome by using Kaplan-Meier estimates (Royston and Altman \protect\hyperlink{ref-royston_external_2013}{2013}; Hippisley-Cox et al. \protect\hyperlink{ref-hippisley-cox_derivation_2007}{2007}), but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston (Royston \protect\hyperlink{ref-royston_tools_2014}{2014}, \protect\hyperlink{ref-royston_tools_2015}{2015}) has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
 
-In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals {[}\protect\hyperlink{ref-crowson_assessing_2016}{4}{]}; however we focus on the case where calibration at a specific time point is of interest - e.g.~as is common in clinical decision support. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK{[}\textbf{Cite: }{]}, ASCVD{[}\textbf{Cite: }{]} and ASSIGN{[}\textbf{Cite: }{]}. Once this is established, estimated survival probabilities are available.
+QRISK used the overall KM approach in the 2007 paper (Hippisley-Cox et al. \protect\hyperlink{ref-hippisley-cox_derivation_2007}{2007}) with good results (6.34\% predicted vs 6.25\% observed in women and 8.86\% predicted vs 8.88\% observed in men), but worse results in the QRISK3 update (Hippisley-Cox, Coupland, and Brindle \protect\hyperlink{ref-hippisley-cox_development_2017}{2017}) (4.7\% predicted v 5.8\% observed in women and 6.4\% predicted vs 7.5\% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18) and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice {[}\textbf{I remember discussing this with Alex \& Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?}{]}.
 
-Third, censoring needs to be handled in an appropriate way. This is commonly overcome by using Kaplan-Meier estimates {[}\protect\hyperlink{ref-royston_external_2013}{3}{]}, {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{6}{]}, but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston {[}\protect\hyperlink{ref-royston_tools_2014}{7}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{9}{]} has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
-
-QRISK used the overall KM approach in the 2007 paper {[}\protect\hyperlink{ref-hippisley-cox_derivation_2007}{6}{]} with good results (6.34\% predicted vs 6.25\% observed in women and 8.86\% predicted vs 8.88\% observed in men), but \sout{bad}worse results in the QRISK3 update {[}\protect\hyperlink{ref-hippisley-cox_development_2017}{10}{]} (4.7\% predicted v 5.8\% observed in women and 6.4\% predicted vs 7.5\% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18) and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice {[}\textbf{I remember discussing this with Alex \& Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?}{]}.
-
-Royston {[}\protect\hyperlink{ref-royston_tools_2014}{7}{]} also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson {[}\protect\hyperlink{ref-perme_checking_2008}{8}{]} to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
+Royston (Royston \protect\hyperlink{ref-royston_tools_2014}{2014}) also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson (Perme and Andersen \protect\hyperlink{ref-perme_checking_2008}{2008}) to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
 
 A solution to this problem is to apply a weighting to uncensored patients based on their probability of being censored according to a model that accounts for covariates. The Inverse Probability of Censoring Weighting (IPCW) relaxes the assumption that patients who were censored are identical to those that remain at risk and replaces it with the assumption that they are exchangeable conditional on the measured covariates. The weighting inflates the patients who were similar to the censored population to account for those patients who are no longer available at a given time.
 
-Gerds \& Schumacher {[}\protect\hyperlink{ref-gerds_consistent_2006}{11}{]} have thoroughly investigated the requirements and advantages of applying an IPCW to a performance measure for modelling using the Brier score as an example and demonstrating the efficacy of its use, which was augmented by Spitoni et al {[}\protect\hyperlink{ref-spitoni_prediction_2018}{12}{]} who demonstrated that any proper scoring rule can be improved by the use of the IPCW. This work has been \sout{added to}extended by Han et al {[}\protect\hyperlink{ref-han_comparing_2017}{13}{]} and Liu et al {[}\protect\hyperlink{ref-liu_comparing_2016}{14}{]} who demonstrated \sout{that the c-statistic is also suitable}one can also apply IPCW to the c-statistic (a measure of discrimination).
+Gerds \& Schumacher (Gerds and Schumacher \protect\hyperlink{ref-gerds_consistent_2006}{2006}) have thoroughly investigated the requirements and advantages of applying an IPCW to a performance measure for modelling using the Brier score as an example and demonstrating the efficacy of its use, which was augmented by Spitoni et al (Spitoni, Lammens, and Putter \protect\hyperlink{ref-spitoni_prediction_2018}{2018}) who demonstrated that any proper scoring rule can be improved by the use of the IPCW. This work has been extended by Han et al (Han, Zhang, and Shao \protect\hyperlink{ref-han_comparing_2017}{2017}) and Liu et al (Liu, Jin, and Graziano \protect\hyperlink{ref-liu_comparing_2016}{2016}) who demonstrated one can also apply IPCW to the c-statistic (a measure of discrimination).
 
 In this paper we present an approach to assessing the calibration intercept (calibration-in-the-large) and calibration slope in time-to-event models based on estimating the censoring distribution, and reweighting observations by the inverse of the censoring probability. We first show, theoretically, how this method can be used and evidence that the metrics for calibration are amenable to its use. We then compare simulation results from using this weighted estimate to an unweighted estimate within various commonly used methods of calibration assessment.
 
@@ -168,16 +162,14 @@ In this paper we present an approach to assessing the calibration intercept (cal
 \hypertarget{aims}{%
 \subsection{Aims}\label{aims}}
 
-The aim of this simulation study is to \sout{formalise}investigate the bias induced by applying different methods of assessing model calibration to data that is susceptible to censoring and to compare it to the bias when this data has been adjusted by the Inverse Probability of Censoring Weighting (IPCW).
+The aim of this simulation study is to investigate the bias induced by applying different methods of assessing model calibration to data that is susceptible to censoring and to compare it to the bias when this data has been adjusted by the Inverse Probability of Censoring Weighting (IPCW).
 
 \hypertarget{data-generating-method}{%
 \subsection{Data Generating Method}\label{data-generating-method}}
 
-We simulated populations of patients with survival and censoring times, and took the observed event time as the minimum of these two values along with an event indicator of whether this was the survival or censoring time {[}\protect\hyperlink{ref-burton_design_2006}{15}{]}. Each population was simulated with \sout{two}three parameters: \(\beta\), \(\gamma\) and \(\eta\), which defined the proportional hazards coefficients for the survival and censoring distributions and the baseline hazard function, respectively.
+We simulated populations of patients with survival and censoring times, and took the observed event time as the minimum of these two values along with an event indicator of whether this was the survival or censoring time (Burton et al. \protect\hyperlink{ref-burton_design_2006}{2006}). Each population was simulated with three parameters: \(\beta\), \(\gamma\) and \(\eta\), which defined the proportional hazards coefficients for the survival and censoring distributions and the baseline hazard function, respectively.
 
-\sout{We varied the parameters to take all the values,\(\gamma = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\), \(\beta = \{-2,-1.5,-1,-0.5,0.5,1,1.5,2\}\) and \(\eta = \{-\sfrac{1}{2},0,\sfrac{1}{2}\}\), that is the proportional hazard coefficients took the same values between -2 and 2, but \(\beta\) did not take the value of 0 because this would make a predictive model infeasible.}
-
-\sout{For each combination of parameters, we generated \(N = 100\) populations of \(n = 10,000\) patients (a high number of patients was chosen to avoid bias due to a small population sizeimprove precision of our estimates with}Patients were generated with a single covariate \(Z \sim N(0,1)\)\sout{. For each patient,} from which, we then generated a survival time, \(T\) and a censoring time, \(C\). Survival times were simulated with a baseline hazard \(\lambda_0(t) = t^{\eta}\) (i.e.~Weibull), and a proportional hazard of \(e^{\beta Z}\). This allows the simulation of a constant baseline hazard (\(\eta = 0\)) as well as an increasing (\(\eta = \sfrac{1}{2}\)) and decreasing (\(\eta = -\sfrac{1}{2}\)) hazard function Censoring times were simulated with a constant baseline hazard, \(\lambda_{C,0}(t) = 1\) and a proportional hazard of \(e^{\gamma Z}\). This combines to give a simulated survival function, \(S\) as
+Patients were generated with a single covariate \(Z \sim N(0,1)\) from which, we then generated a survival time, \(T\) and a censoring time, \(C\). Survival times were simulated with a baseline hazard \(\lambda_0(t) = t^{\eta}\) (i.e.~Weibull), and a proportional hazard of \(e^{\beta Z}\). This allows the simulation of a constant baseline hazard (\(\eta = 0\)) as well as an increasing (\(\eta = \sfrac{1}{2}\)) and decreasing (\(\eta = -\sfrac{1}{2}\)) hazard function Censoring times were simulated with a constant baseline hazard, \(\lambda_{C,0}(t) = 1\) and a proportional hazard of \(e^{\gamma Z}\). This combines to give a simulated survival function, \(S\) as
 \[
 S(t|Z=z) = \exp\left(-\frac{e^{\beta Z}t^{\eta+1}}{\eta+1}\right)
 \]
@@ -186,17 +178,7 @@ and a simulated censoring function, \(S_c\) as
 S_c(t|Z=z) = \exp\left(-e^{\gamma Z}t\right)
 \]
 
-Once the survival and censoring times were generated, the event time, \(X = \min(T,C)\), and the event indicator, \(\delta = I(T=X)\), were generated. In \sout{the real-world}practice, only \(Z\), \(X\) and \(\delta\) would be observed.
-
-\sout{For each population, a prediction model for survival, \(F_P\) was chosen to be identical to the Data Generating Mechanism (DGM) to emulate a perfectly calibrated model (\ldots)}
-
-\sout{This prediction model was used to generate an estimate of the Expected probability that a given patient, with covariate \(z\), will have an event at the given time. To test the ability of approaches to detect miscalibration, we also derived a prediction model that would systematically over-estimate the prediction model, \(F_O\) and one which would systematically under-estimate the prediction, \(F_U\). These are defined as such (\ldots)}
-
-\sout{The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, \(X\). At each time point, \(t\), we removed patients who had been censored (i.e.~\(T < X_i\) \& \(\delta_i = 0\)) and created an indicator variable for whether each patient had had the event yet or not: (\ldots)}
-
-\sout{Similarly, we calculate a censoring prediction model, \(G\), to be identical to the DGM: (\ldots)}
-
-\sout{This is used to calculate an IPCW for all non-censored patients at the last time they were observed (\(t\) for patients who have not had an event, and \(X_i\) for patients who have had the event), This is defined as:(\ldots)}
+Once the survival and censoring times were generated, the event time, \(X = \min(T,C)\), and the event indicator, \(\delta = I(T=X)\), were generated. In practice, only \(Z\), \(X\) and \(\delta\) would be observed.
 
 During each simulation, we varied the parameters to take all the values,\(\gamma = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\), \(\beta = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}\) and \(\eta = \{-\sfrac{1}{2},0,\sfrac{1}{2}\}\). For each combination of parameters, we generated \(N = 100\) populations of \(n = 10,000\) patients (a high number of patients was chosen to improve precision of our estimates)
 
@@ -205,7 +187,7 @@ During each simulation, we varied the parameters to take all the values,\(\gamma
 
 {[}\textbf{New section, taken from previous snippets, highlighting/strikethroughs will show the new changes}{]}
 
-For each population, we used three distinct prediction models \sout{a prediction model} for survival. \(F_P\) was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly \sout{calibrated}specified model:
+For each population, we used three distinct prediction models for survival. \(F_P\) was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly specified model:
 
 \[
 \begin{array}{c}
@@ -225,12 +207,12 @@ F_O(t|Z=z) =& \logit^{-1}\left(\logit\left( F_P(t|z) + 0.2\right)\right)
 \end{array}
 \]
 
-\sout{This}These prediction models \sout{was}were used to generate an estimate of the Expected probability that a given patient, with covariate \(z\), will have an event at the given time.
+These prediction models were used to generate an estimate of the Expected probability that a given patient, with covariate \(z\), will have an event at the given time.
 
 \hypertarget{the-ipcw}{%
 \subsection{The IPCW}\label{the-ipcw}}
 
-In order to apply the IPCW, we need to\sout{Similarly, we} calculate a censoring prediction model. For our purposes, we will again use a perfectly specified censoring distribution, \(G\), to be derived directly from\sout{identical to} the DGM:
+In order to apply the IPCW, we need to calculate a censoring prediction model. For our purposes, we will again use a perfectly specified censoring distribution, \(G\), to be derived directly from the DGM:
 
 \[
 \begin{array}{c}
@@ -248,7 +230,7 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 \hypertarget{calibration-measurements}{%
 \subsection{Calibration Measurements}\label{calibration-measurements}}
 
-The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, \(X\). At each of these time points, we compare Observed outcomes (\(O\)) with the Expected outcomes (\(E\)) of the prediction models based on four choices of methodology {[}\protect\hyperlink{ref-royston_tools_2014}{7}{]}, {[}\protect\hyperlink{ref-royston_tools_2015}{9}{]}, {[}\protect\hyperlink{ref-riley_prognosis_2019}{16}{]}, {[}\protect\hyperlink{ref-andersen_pseudo-observations_2010}{17}{]} to produce measures for the calibration-in-the-large
+The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, \(X\). At each of these time points, we compare Observed outcomes (\(O\)) with the Expected outcomes (\(E\)) of the prediction models based on four choices of methodology (Royston \protect\hyperlink{ref-royston_tools_2014}{2014}, \protect\hyperlink{ref-royston_tools_2015}{2015}; Riley et al. \protect\hyperlink{ref-riley_prognosis_2019}{2019}; Andersen and Pohar Perme \protect\hyperlink{ref-andersen_pseudo-observations_2010}{2010}) to produce measures for the calibration-in-the-large
 \begin{itemize}
 \tightlist
 \item
@@ -258,9 +240,9 @@ The prediction models were assessed at 100 time points, evenly distributed betwe
 \item
   Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
 \item
-  Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. \sout{Logistic r}Regression is performed \sout{using}with the complimentary log-log function as a link function and the log cumulative hazard as an offset \sout{and}with the Intercept \sout{of the result is the estimate}representing the estimate of calibration-in-the-large.
+  Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Regression is performed with the complimentary log-log function as a link function and the log cumulative hazard as an offset with the Intercept representing the estimate of calibration-in-the-large.
 \end{itemize}
-\sout{The weights within the LW method create a non-integer number of events within the regression. and the PO method can produce values that are not always 0 or 1 (as would be expected in an ordinary logistic regression). The values produced by PO will have to be artificially capped between 0 and 1, but otherwise these two methods do not cause any issues.}Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the ``number of events'' being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages {[}\protect\hyperlink{ref-wildscop_biostatistics_2013}{18}{]}. Secondly, the PO method produces outcomes that are outside of the (0,1) range {[}\protect\hyperlink{ref-perme_checking_2008}{8}{]} required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal.
+Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the ``number of events'' being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages (Wildscop \protect\hyperlink{ref-wildscop_biostatistics_2013}{2013}). Secondly, the PO method produces outcomes that are outside of the (0,1) range (Perme and Andersen \protect\hyperlink{ref-perme_checking_2008}{2008}) required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal.
 
 \hypertarget{estimands}{%
 \subsection{Estimands}\label{estimands}}
@@ -275,7 +257,7 @@ From this, we can also define our upper and lower bound for a 95\% confidence in
 \hypertarget{performance-measures}{%
 \subsection{Performance Measures}\label{performance-measures}}
 
-The measures we will take as performance measures as the Bias, the Empirical Standard Error \sout{as}and the Coverage at time, \(t\), along with relevant standard errors and confidence intervals as per current recommendations {[}\protect\hyperlink{ref-morris_using_2019}{19}{]}. These measures can be seen in table \ref{tab:PM-DGM-time}. For these estimates at each time point, Method and Model, the top and bottom 5\% of all simulation estimates will be omitted, leaving \(N=90\) to avoid biasing the results from singly large random effects.
+The measures we will take as performance measures as the Bias, the Empirical Standard Error and the Coverage at time, \(t\), along with relevant standard errors and confidence intervals as per current recommendations (Morris, White, and Crowther \protect\hyperlink{ref-morris_using_2019}{2019}). These measures can be seen in table \ref{tab:PM-DGM-time}. For these estimates at each time point, Method and Model, the top and bottom 5\% of all simulation estimates will be omitted, leaving \(N=90\) to avoid biasing the results from singly large random effects.
 \begin{table}
 
 \caption{\label{tab:PM-DGM-time}{\small Performance Measures to be taken at each time point}}
@@ -293,12 +275,10 @@ EmpSE & $\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\t
 \end{table}
 The bias provides a measure of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are.
 
-\sout{For each estimand above, \(\hat{Q}(t) = \{\hat{\theta}(t),\hat{E}(t), \hat{C}(t)\}\) and associated SE, \(\hat{Q}_\textrm{SE}(t) = \{\hat{\theta}_\textrm{SE}(t),\hat{E}_\textrm{SE}(t), \hat{C}_\textrm{SE}(t)\}\), we average over time. As these measures will be taken at each of the 100 time points, \(t_j:j=1...100\), we summarise each of these measures as an average and as weighted average, as seen in table \ref{tab:PM-DGM}. The weight used for the measure at time \(t_j\) is the average number of non-censored patients remaining in the population at time \(t_j\), defined as \(n_j\) (note that this includes patients who have had the event).(\ldots)}
-
 \hypertarget{software}{%
 \subsection{Software}\label{software}}
 
-All analysis was done in \texttt{R\ 3.6.3} {[}\protect\hyperlink{ref-r_core_team_r_nodate}{20}{]} using the various \texttt{tidyverse} packages {[}\protect\hyperlink{ref-wickham_tidy_2017}{21}{]}, Kaplan-Meier estimates were found using the \texttt{survival} package {[}\protect\hyperlink{ref-therneau_package_2020}{22}{]}, Pseudo-Observations were evaluated with the \texttt{pseudo} package {[}\protect\hyperlink{ref-perme_pseudo_2017}{23}{]}, and the results app was developed using \texttt{shiny}{[}\protect\hyperlink{ref-chang_shiny_2020}{24}{]}. The code used for this simulation study is available \href{https://github.com/MyKo101/IPCW-Logistic}{on Github} and the results can be seen in a \href{https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320}{shiny app}
+All analysis was done in \texttt{R\ 3.6.3} (Team, \protect\hyperlink{ref-r_core_team_r_nodate}{n.d.}) using the various \texttt{tidyverse} packages (Wickham \protect\hyperlink{ref-wickham_tidy_2017}{2017}), Kaplan-Meier estimates were found using the \texttt{survival} package (Therneau \protect\hyperlink{ref-therneau_package_2020}{2020}), Pseudo-Observations were evaluated with the \texttt{pseudo} package (Perme, Gerster, and Rodrigues \protect\hyperlink{ref-perme_pseudo_2017}{2017}), and the results app was developed using \texttt{shiny}(Chang et al. \protect\hyperlink{ref-chang_shiny_2020}{2020}). The code used for this simulation study is available \href{https://github.com/MyKo101/IPCW-Logistic}{on Github} and the results can be seen in a \href{https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320}{shiny app}
 
 \hypertarget{results-1}{%
 \section{Results}\label{results-1}}
@@ -356,76 +336,79 @@ Brief discussion, much briefer than the main points.
 
 \hypertarget{refs}{}
 \begin{cslreferences}
-\leavevmode\hypertarget{ref-steyerberg_clinical_2008}{}%
-{[}1{]} E. W. Steyerberg, \emph{Clinical Prediction Models: A Practical Approach to Development, Validation, and Updating}. Springer Science \& Business Media, 2008.
-
-\leavevmode\hypertarget{ref-calster_calibration_2016-1}{}%
-{[}2{]} B. V. Calster, D. Nieboer, Y. Vergouwe, B. D. Cock, M. J. Pencina, and E. W. Steyerberg, ``A calibration hierarchy for risk models was defined: From utopia to empirical data,'' \emph{Journal of Clinical Epidemiology}, vol. 74, pp. 167--176, Jun. 2016, doi: \href{https://doi.org/10.1016/j.jclinepi.2015.12.005}{10.1016/j.jclinepi.2015.12.005}.
-
-\leavevmode\hypertarget{ref-royston_external_2013}{}%
-{[}3{]} P. Royston and D. G. Altman, ``External validation of a Cox prognostic model: Principles and methods,'' \emph{BMC Medical Research Methodology}, vol. 13, no. 1, p. 33, Mar. 2013, doi: \href{https://doi.org/10.1186/1471-2288-13-33}{10.1186/1471-2288-13-33}.
-
-\leavevmode\hypertarget{ref-crowson_assessing_2016}{}%
-{[}4{]} C. S. Crowson, E. J. Atkinson, and T. M. Therneau, ``Assessing Calibration of Prognostic Risk Scores,'' \emph{Statistical methods in medical research}, vol. 25, no. 4, pp. 1692--1706, Aug. 2016, doi: \href{https://doi.org/10.1177/0962280213497434}{10.1177/0962280213497434}.
-
-\leavevmode\hypertarget{ref-houwelingen_validation_2000}{}%
-{[}5{]} H. C. van Houwelingen, ``Validation, calibration, revision and combination of prognostic survival models,'' \emph{Statistics in Medicine}, vol. 19, no. 24, pp. 3401--3415, 2000, doi: \href{https://doi.org/10.1002/1097-0258(20001230)19:24\%3C3401::AID-SIM554\%3E3.0.CO;2-2}{10.1002/1097-0258(20001230)19:24\textless3401::AID-SIM554\textgreater3.0.CO;2-2}.
-
-\leavevmode\hypertarget{ref-hippisley-cox_derivation_2007}{}%
-{[}6{]} J. Hippisley-Cox, C. Coupland, Y. Vinogradova, J. Robson, M. May, and P. Brindle, ``Derivation and validation of QRISK, a new cardiovascular disease risk score for the United Kingdom: Prospective open cohort study,'' \emph{BMJ (Clinical research ed.)}, vol. 335, no. 7611, p. 136, Jul. 2007, doi: \href{https://doi.org/10.1136/bmj.39261.471806.55}{10.1136/bmj.39261.471806.55}.
-
-\leavevmode\hypertarget{ref-royston_tools_2014}{}%
-{[}7{]} P. Royston, ``Tools for Checking Calibration of a Cox Model in External Validation: Approach Based on Individual Event Probabilities:'' \emph{The Stata Journal}, Dec. 2014, doi: \href{https://doi.org/10.1177/1536867X1401400403}{10.1177/1536867X1401400403}.
-
-\leavevmode\hypertarget{ref-perme_checking_2008}{}%
-{[}8{]} M. P. Perme and P. K. Andersen, ``Checking hazard regression models using pseudo-observations,'' \emph{Statistics in medicine}, vol. 27, no. 25, pp. 5309--5328, Nov. 2008, doi: \href{https://doi.org/10.1002/sim.3401}{10.1002/sim.3401}.
-
-\leavevmode\hypertarget{ref-royston_tools_2015}{}%
-{[}9{]} P. Royston, ``Tools for Checking Calibration of a Cox Model in External Validation: Prediction of Population-Averaged Survival Curves Based on Risk Groups,'' \emph{The Stata Journal}, vol. 15, no. 1, pp. 275--291, Apr. 2015, doi: \href{https://doi.org/10.1177/1536867X1501500116}{10.1177/1536867X1501500116}.
-
-\leavevmode\hypertarget{ref-hippisley-cox_development_2017}{}%
-{[}10{]} J. Hippisley-Cox, C. Coupland, and P. Brindle, ``Development and validation of QRISK3 risk prediction algorithms to estimate future risk of cardiovascular disease: Prospective cohort study,'' \emph{BMJ}, vol. 357, May 2017, doi: \href{https://doi.org/10.1136/bmj.j2099}{10.1136/bmj.j2099}.
-
-\leavevmode\hypertarget{ref-gerds_consistent_2006}{}%
-{[}11{]} T. A. Gerds and M. Schumacher, ``Consistent Estimation of the Expected Brier Score in General Survival Models with Right-Censored Event Times,'' \emph{Biometrical Journal}, vol. 48, no. 6, pp. 1029--1040, 2006, doi: \href{https://doi.org/10.1002/bimj.200610301}{10.1002/bimj.200610301}.
-
-\leavevmode\hypertarget{ref-spitoni_prediction_2018}{}%
-{[}12{]} C. Spitoni, V. Lammens, and H. Putter, ``Prediction errors for state occupation and transition probabilities in multi-state models,'' \emph{Biometrical Journal. Biometrische Zeitschrift}, vol. 60, no. 1, pp. 34--48, Jan. 2018, doi: \href{https://doi.org/10.1002/bimj.201600191}{10.1002/bimj.201600191}.
-
-\leavevmode\hypertarget{ref-han_comparing_2017}{}%
-{[}13{]} X. Han, Y. Zhang, and Y. Shao, ``On comparing two correlated C indices with censored survival data,'' \emph{Statistics in medicine}, vol. 36, no. 25, pp. 4041--4049, Nov. 2017, doi: \href{https://doi.org/10.1002/sim.7414}{10.1002/sim.7414}.
-
-\leavevmode\hypertarget{ref-liu_comparing_2016}{}%
-{[}14{]} X. Liu, Z. Jin, and J. H. Graziano, ``Comparing paired biomarkers in predicting quantitative health outcome subject to random censoring,'' \emph{Statistical methods in medical research}, vol. 25, no. 1, pp. 447--457, Feb. 2016, doi: \href{https://doi.org/10.1177/0962280212460434}{10.1177/0962280212460434}.
+\leavevmode\hypertarget{ref-andersen_pseudo-observations_2010}{}%
+Andersen, Per Kragh, and Maja Pohar Perme. 2010. ``Pseudo-Observations in Survival Analysis.'' \emph{Statistical Methods in Medical Research} 19 (1): 71--99. \url{https://doi.org/10.1177/0962280209105020}.
 
 \leavevmode\hypertarget{ref-burton_design_2006}{}%
-{[}15{]} A. Burton, D. G. Altman, P. Royston, and R. L. Holder, ``The design of simulation studies in medical statistics,'' \emph{Statistics in Medicine}, vol. 25, no. 24, pp. 4279--4292, Dec. 2006, doi: \href{https://doi.org/10.1002/sim.2673}{10.1002/sim.2673}.
+Burton, Andrea, Douglas G. Altman, Patrick Royston, and Roger L. Holder. 2006. ``The Design of Simulation Studies in Medical Statistics.'' \emph{Statistics in Medicine} 25 (24): 4279--92. \url{https://doi.org/10.1002/sim.2673}.
 
-\leavevmode\hypertarget{ref-riley_prognosis_2019}{}%
-{[}16{]} R. D. Riley, D. van der Windt, P. Croft, and K. G. M. Moons, \emph{Prognosis Research in Healthcare: Concepts, Methods, and Impact}, First. Oxford University Press, 2019.
-
-\leavevmode\hypertarget{ref-andersen_pseudo-observations_2010}{}%
-{[}17{]} P. K. Andersen and M. Pohar Perme, ``Pseudo-observations in survival analysis,'' \emph{Statistical Methods in Medical Research}, vol. 19, no. 1, pp. 71--99, Feb. 2010, doi: \href{https://doi.org/10.1177/0962280209105020}{10.1177/0962280209105020}.
-
-\leavevmode\hypertarget{ref-wildscop_biostatistics_2013}{}%
-{[}18{]} Wildscop, ``Biostatistics and epidemiology with R: Weighted Logistic Regression in R, SPSS, Stata,'' \emph{biostatistics and epidemiology with R}. Feb-2013.
-
-\leavevmode\hypertarget{ref-morris_using_2019}{}%
-{[}19{]} T. P. Morris, I. R. White, and M. J. Crowther, ``Using simulation studies to evaluate statistical methods,'' \emph{Statistics in Medicine}, vol. 38, no. 11, pp. 2074--2102, 2019, doi: \href{https://doi.org/10.1002/sim.8086}{10.1002/sim.8086}.
-
-\leavevmode\hypertarget{ref-r_core_team_r_nodate}{}%
-{[}20{]} R. C. Team, ``R: A Language and Environment for Statistical Computing.'' R Foundation for Statistical Computing, Vienna, Austria, Vienna,
-
-\leavevmode\hypertarget{ref-wickham_tidy_2017}{}%
-{[}21{]} H. Wickham, ``The tidy tools manifesto.'' https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.
-
-\leavevmode\hypertarget{ref-therneau_package_2020}{}%
-{[}22{]} T. Therneau, ``A package for survival analysis in R,'' p. 89, Mar. 2020.
-
-\leavevmode\hypertarget{ref-perme_pseudo_2017}{}%
-{[}23{]} M. P. Perme, M. Gerster, and K. Rodrigues, ``Pseudo: Computes Pseudo-Observations for Modeling.'' Jul-2017.
+\leavevmode\hypertarget{ref-calster_calibration_2016-1}{}%
+Calster, Ben Van, Daan Nieboer, Yvonne Vergouwe, Bavo De Cock, Michael J. Pencina, and Ewout W. Steyerberg. 2016. ``A Calibration Hierarchy for Risk Models Was Defined: From Utopia to Empirical Data.'' \emph{Journal of Clinical Epidemiology} 74 (June): 167--76. \url{https://doi.org/10.1016/j.jclinepi.2015.12.005}.
 
 \leavevmode\hypertarget{ref-chang_shiny_2020}{}%
-{[}24{]} W. Chang \emph{et al.}, ``Shiny: Web Application Framework for R.'' Mar-2020.
+Chang, Winston, Joe Cheng, J. J. Allaire, Yihui Xie, Jonathan McPherson, RStudio, jQuery Foundation (jQuery library and jQuery UI library), et al. 2020. ``Shiny: Web Application Framework for R.''
+
+\leavevmode\hypertarget{ref-crowson_assessing_2016}{}%
+Crowson, Cynthia S., Elizabeth J. Atkinson, and Terry M. Therneau. 2016. ``Assessing Calibration of Prognostic Risk Scores.'' \emph{Statistical Methods in Medical Research} 25 (4): 1692--1706. \url{https://doi.org/10.1177/0962280213497434}.
+
+\leavevmode\hypertarget{ref-de_la_iglesia_performance_2011}{}%
+de la Iglesia, B., J. F. Potter, N. R. Poulter, M. M. Robins, and J. Skinner. 2011. ``Performance of the ASSIGN Cardiovascular Disease Risk Score on a UK Cohort of Patients from General Practice.'' \emph{Heart} 97 (6): 491--99. \url{https://doi.org/10.1136/hrt.2010.203364}.
+
+\leavevmode\hypertarget{ref-gerds_consistent_2006}{}%
+Gerds, Thomas A., and Martin Schumacher. 2006. ``Consistent Estimation of the Expected Brier Score in General Survival Models with Right-Censored Event Times.'' \emph{Biometrical Journal} 48 (6): 1029--40. \url{https://doi.org/10.1002/bimj.200610301}.
+
+\leavevmode\hypertarget{ref-goff_2013_2014}{}%
+Goff, David C., Donald M. Lloyd-Jones, Glen Bennett, Sean Coady, Ralph B. D'Agostino, Raymond Gibbons, Philip Greenland, et al. 2014. ``2013 ACC/AHA Guideline on the Assessment of Cardiovascular Risk: A Report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines.'' \emph{Circulation} 129 (25 suppl 2): S49--S73. \url{https://doi.org/10.1161/01.cir.0000437741.48606.98}.
+
+\leavevmode\hypertarget{ref-han_comparing_2017}{}%
+Han, Xiaoxia, Yilong Zhang, and Yongzhao Shao. 2017. ``On Comparing Two Correlated C Indices with Censored Survival Data.'' \emph{Statistics in Medicine} 36 (25): 4041--9. \url{https://doi.org/10.1002/sim.7414}.
+
+\leavevmode\hypertarget{ref-hippisley-cox_development_2017}{}%
+Hippisley-Cox, Julia, Carol Coupland, and Peter Brindle. 2017. ``Development and Validation of QRISK3 Risk Prediction Algorithms to Estimate Future Risk of Cardiovascular Disease: Prospective Cohort Study.'' \emph{BMJ} 357 (May). \url{https://doi.org/10.1136/bmj.j2099}.
+
+\leavevmode\hypertarget{ref-hippisley-cox_derivation_2007}{}%
+Hippisley-Cox, Julia, Carol Coupland, Yana Vinogradova, John Robson, Margaret May, and Peter Brindle. 2007. ``Derivation and Validation of QRISK, a New Cardiovascular Disease Risk Score for the United Kingdom: Prospective Open Cohort Study.'' \emph{BMJ (Clinical Research Ed.)} 335 (7611): 136. \url{https://doi.org/10.1136/bmj.39261.471806.55}.
+
+\leavevmode\hypertarget{ref-liu_comparing_2016}{}%
+Liu, Xinhua, Zhezhen Jin, and Joseph H. Graziano. 2016. ``Comparing Paired Biomarkers in Predicting Quantitative Health Outcome Subject to Random Censoring.'' \emph{Statistical Methods in Medical Research} 25 (1): 447--57. \url{https://doi.org/10.1177/0962280212460434}.
+
+\leavevmode\hypertarget{ref-morris_using_2019}{}%
+Morris, Tim P., Ian R. White, and Michael J. Crowther. 2019. ``Using Simulation Studies to Evaluate Statistical Methods.'' \emph{Statistics in Medicine} 38 (11): 2074--2102. \url{https://doi.org/10.1002/sim.8086}.
+
+\leavevmode\hypertarget{ref-perme_checking_2008}{}%
+Perme, Maja Pohar, and Per Kragh Andersen. 2008. ``Checking Hazard Regression Models Using Pseudo-Observations.'' \emph{Statistics in Medicine} 27 (25): 5309--28. \url{https://doi.org/10.1002/sim.3401}.
+
+\leavevmode\hypertarget{ref-perme_pseudo_2017}{}%
+Perme, Maja Pohar, Mette Gerster, and Kevin Rodrigues. 2017. ``Pseudo: Computes Pseudo-Observations for Modeling.''
+
+\leavevmode\hypertarget{ref-riley_prognosis_2019}{}%
+Riley, Richard D., Danielle van der Windt, Peter Croft, and Karel G. M. Moons. 2019. \emph{Prognosis Research in Healthcare: Concepts, Methods, and Impact}. First. Oxford University Press.
+
+\leavevmode\hypertarget{ref-royston_tools_2014}{}%
+Royston, Patrick. 2014. ``Tools for Checking Calibration of a Cox Model in External Validation: Approach Based on Individual Event Probabilities:'' \emph{The Stata Journal}, December. \url{https://doi.org/10.1177/1536867X1401400403}.
+
+\leavevmode\hypertarget{ref-royston_tools_2015}{}%
+---------. 2015. ``Tools for Checking Calibration of a Cox Model in External Validation: Prediction of Population-Averaged Survival Curves Based on Risk Groups.'' \emph{The Stata Journal} 15 (1): 275--91. \url{https://doi.org/10.1177/1536867X1501500116}.
+
+\leavevmode\hypertarget{ref-royston_external_2013}{}%
+Royston, Patrick, and Douglas G. Altman. 2013. ``External Validation of a Cox Prognostic Model: Principles and Methods.'' \emph{BMC Medical Research Methodology} 13 (1): 33. \url{https://doi.org/10.1186/1471-2288-13-33}.
+
+\leavevmode\hypertarget{ref-spitoni_prediction_2018}{}%
+Spitoni, Cristian, Violette Lammens, and Hein Putter. 2018. ``Prediction Errors for State Occupation and Transition Probabilities in Multi-State Models.'' \emph{Biometrical Journal. Biometrische Zeitschrift} 60 (1): 34--48. \url{https://doi.org/10.1002/bimj.201600191}.
+
+\leavevmode\hypertarget{ref-steyerberg_clinical_2008}{}%
+Steyerberg, Ewout W. 2008. \emph{Clinical Prediction Models: A Practical Approach to Development, Validation, and Updating}. Springer Science \& Business Media.
+
+\leavevmode\hypertarget{ref-r_core_team_r_nodate}{}%
+Team, R Core. n.d. ``R: A Language and Environment for Statistical Computing.'' Vienna, R Foundation for Statistical Computing, Vienna, Austria.
+
+\leavevmode\hypertarget{ref-therneau_package_2020}{}%
+Therneau, Terry. 2020. ``A Package for Survival Analysis in R,'' March, 89.
+
+\leavevmode\hypertarget{ref-wickham_tidy_2017}{}%
+Wickham, Hadley. 2017. ``The Tidy Tools Manifesto.'' https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html.
+
+\leavevmode\hypertarget{ref-wildscop_biostatistics_2013}{}%
+Wildscop. 2013. ``Biostatistics and Epidemiology with R: Weighted Logistic Regression in R, SPSS, Stata.'' \emph{Biostatistics and Epidemiology with R}.
 \end{cslreferences}
 \end{document}

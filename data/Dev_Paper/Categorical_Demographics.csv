@@ -1,0 +1,20 @@
+Variable,Factor,SKS_n,UoG_n,SKS_p,UoG_p,SKS_n.miss,UoG_n.miss,SKS_p.miss,UoG_p.miss
+Gender:,,     ,     ,      ,      ,  0,    0, 0.00%,  0.00%
+,Male,"1,865","3,885",62.56%,50.40%,   ,     ,      ,       
+,Female,"1,116","3,824",37.44%,49.60%,   ,     ,      ,       
+Ethnicity:,,     ,     ,      ,      ,  0,"7,009", 0.00%, 90.92%
+,White,"2,875",  679,96.44%, 8.81%,   ,     ,      ,       
+,Asian,   75,   12, 2.52%, 0.16%,   ,     ,      ,       
+,Black,   21,    7, 0.70%, 0.09%,   ,     ,      ,       
+,Other,   10,    2, 0.34%, 0.03%,   ,     ,      ,       
+SmokingStatus:,,     ,     ,      ,      , 42,"7,709", 1.41%,100.00%
+,Former,"1,535",    0,51.49%, 0.00%,   ,     ,      ,       
+,Non-Smoker,  979,    0,32.84%, 0.00%,   ,     ,      ,       
+,Smoker,  379,    0,12.71%, 0.00%,   ,     ,      ,       
+,Former 3Y,   46,    0, 1.54%, 0.00%,   ,     ,      ,       
+DiagGroup:,,     ,     ,      ,      ,567,"6,640",19.02%, 86.13%
+,Systemic diseases affecting the kidney,"1,304",  316,43.74%, 4.10%,   ,     ,      ,       
+,Glomerular disease,  442,  278,14.83%, 3.61%,   ,     ,      ,       
+,Tubulointerstitial disease,  268,  173, 8.99%, 2.24%,   ,     ,      ,       
+,Miscellaneous renal disorders,  227,  198, 7.61%, 2.57%,   ,     ,      ,       
+,Familial / hereditary nephropathies,  173,  104, 5.80%, 1.35%,   ,     ,      ,       

@@ -129,6 +129,8 @@ MyRender <- function(...)
                 "    includes:\n",
                 "      in_header: [header.tex, latex_packages.txt]\n",
                 "    keep_tex: TRUE\n",
+                "  bookdown::word_document2:\n",
+                "    default",
                 "csl: csl/ieee.csl\n",
                 "bibliography: [\"bib/thesis.bib\",\"bib/MyCites.bib\"]\n",
                 "biblio-style: \"ieee\"\n",

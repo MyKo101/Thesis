@@ -5,7 +5,7 @@
     "knitr","kableExtra",
     "dplyr","ggplot2","lubridate","stringi","stringr",
     "tibble","readr","tidyr","purrr","forcats",
-    "magrittr")
+    "magrittr","mutils")
   purrr::walk(pkgs,library,character.only=T)
   options(kableExtra.html.bsTable = T)
   options(output.format = "gitbook")
