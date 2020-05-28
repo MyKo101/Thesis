@@ -261,7 +261,7 @@ div.abstract{
 <div id="chap-dev-paper" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death</h1>
 <p><em>MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin</em></p>
-<p>Last updated: 27 May</p>
+<p>Last updated: 28 May</p>
 <p>Download as individual paper draft: <a href="Chapters/ind_06-Dev_Paper.pdf">pdf</a>, <a href="Chapters/ind_06-Dev_Paper.tex">tex</a></p>
 <div id="abstract-3" class="section level2 unnumbered" number="">
 <h2>Abstract</h2>
@@ -336,6 +336,7 @@ Figure 6.1: Diagram of the three models, the states being modelled and relevant 
 <h3><span class="header-section-number">6.2.4</span> Example</h3>
 <p>Once the models have been developed, we will apply them to three example patients to demonstrate their use and applicability to the general population. We will provide a direct clinical estimation of these patient outcomes based on years of nephrological experience and compare this with the results presented by our clinical prediction model.</p>
 <p>We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table <a href="chap-dev-paper.html#tab:Example-Patient">6.1</a>.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:Example-Patient">Table 6.1: </span><font size="2">Details of the Example Patients</font>
@@ -553,6 +554,7 @@ Diabetes<br>Chronic Obstructive Pulmonary Disease<br>Hypertension
 </tr>
 </tbody>
 </table>
+</div>
 <p>Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.</p>
 </div>
 <div id="calculator" class="section level3" number="6.2.5">
@@ -567,6 +569,7 @@ Diabetes<br>Chronic Obstructive Pulmonary Disease<br>Hypertension
 <h3><span class="header-section-number">6.3.1</span> Data Sources</h3>
 <p>As seen in table <a href="chap-dev-paper.html#tab:Table-One">6.2</a>, the Age of the populations had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Levels of missingness were much higher in the SERPR dataset in most continuous variables.</p>
 <br>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:Table-One">Table 6.2: </span><font size="2">Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)</font>
@@ -575,12 +578,12 @@ Diabetes<br>Chronic Obstructive Pulmonary Disease<br>Hypertension
 <tr>
 <th style="border-bottom:hidden" colspan="1">
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 SKS
 </div>
 </th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6">
 <div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 SERPR
 </div>
@@ -591,1027 +594,2138 @@ SERPR
 Variable
 </th>
 <th style="text-align:left;">
-mean/n (IQR/p)
+mean/n
 </th>
 <th style="text-align:left;">
-missing n (p)
+IQR/p
 </th>
 <th style="text-align:left;">
-range
+min
 </th>
 <th style="text-align:left;">
-mean/n (IQR/p)
+max
 </th>
 <th style="text-align:left;">
-missing n (p)
+n.miss
 </th>
 <th style="text-align:left;">
-range
+p.miss
+</th>
+<th style="text-align:left;">
+mean/n
+</th>
+<th style="text-align:left;">
+IQR/p
+</th>
+<th style="text-align:left;">
+min
+</th>
+<th style="text-align:left;">
+max
+</th>
+<th style="text-align:left;">
+n.miss
+</th>
+<th style="text-align:left;">
+p.miss
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Age
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-64.378 (19.000)
+64.378
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    0 ( 0.00%)
+19.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[ 20.000,  94.000]
+20.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-66.064 (17.000)
+94.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (  0.00%)
+    0
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[  11.000,  98.000]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+66.064
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+17.000
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  11.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+98.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 eGFR
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-30.369 (22.387)
+30.369
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    0 ( 0.00%)
+22.387
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[  3.578,  59.966]
+  3.578
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-35.647 (20.565)
+59.966
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (  0.00%)
+    0
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[   1.199,  59.994]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+35.647
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+20.565
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  1.199
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+59.994
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 eGFR Rate
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
--0.016 ( 0.294)
+-0.016
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-1,278 (42.87%)
+0.294
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[-19.107,  33.782]
+-19.107
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  1.319 (21.897)
+33.782
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (  0.00%)
+1,278
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[ -28.636,  50.653]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+42.87%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  1.319
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+21.897
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+-28.636
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+50.653
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 SBP
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-140.193 (29.000)
+140.193
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  50 ( 1.68%)
+29.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[ 77.000, 220.000]
+77.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-145.981 (30.000)
+220.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-6,345 ( 82.31%)
+  50
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[  82.000, 258.000]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+1.68%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+145.981
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+30.000
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  82.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+258.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+6,345
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+82.31%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 DBP
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-74.556 (14.000)
+74.556
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  52 ( 1.74%)
+14.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[ 36.000, 159.000]
+36.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-76.742 (17.000)
+159.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-6,345 ( 82.31%)
+  52
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[  35.000, 128.000]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+1.74%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+76.742
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+17.000
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  35.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+128.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+6,345
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+82.31%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 BMI
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-28.848 ( 7.842)
+28.848
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  572 (19.19%)
+7.842
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[ 13.182,  61.467]
+13.182
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-29.020 ( 6.811)
+61.467
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,491 ( 97.17%)
+  572
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[  17.073,  52.403]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+19.19%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+29.020
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+6.811
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  17.073
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+52.403
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,491
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+97.17%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Albumin
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-42.152 ( 5.000)
+42.152
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  60 ( 2.01%)
+5.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[ 12.000,  52.000]
+12.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-36.475 ( 6.000)
+52.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-3,134 ( 40.65%)
+  60
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[   7.000,  53.000]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+2.01%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+36.475
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+6.000
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  7.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+53.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+3,134
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+40.65%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Calcium
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2.302 ( 0.180)
+  2.302
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  68 ( 2.28%)
+0.180
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[  1.210,   3.660]
+  1.210
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  2.407 ( 0.160)
+  3.660
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-4,513 ( 58.54%)
+  68
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[   1.455,   3.400]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+2.28%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  2.407
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.160
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  1.455
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  3.400
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+4,513
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+58.54%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Haemoglobin
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-122.978 (23.000)
+122.978
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  72 ( 2.42%)
+23.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[ 61.000, 195.000]
+61.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-109.269 (29.000)
+195.000
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-3,557 ( 46.14%)
+  72
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[   7.100, 208.000]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+2.42%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+109.269
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+29.000
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  7.100
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+208.000
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+3,557
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+46.14%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Phosphate
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  1.163 ( 0.320)
+  1.163
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  87 ( 2.92%)
+0.320
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[  0.430,   3.710]
+  0.430
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  1.194 ( 0.320)
+  3.710
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-4,510 ( 58.50%)
+  87
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[   0.320,   4.370]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+2.92%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  1.194
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.320
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  0.320
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  4.370
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+4,510
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+58.50%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 uPCR
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  0.112 ( 0.103)
+  0.112
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  245 ( 8.22%)
+0.103
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[  0.001,   2.025]
+  0.001
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  0.178 ( 0.177)
+  2.025
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,170 ( 93.01%)
+  245
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[   0.001,   1.943]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+8.22%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  0.178
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.177
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+  0.001
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  1.943
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,170
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+93.01%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 uPCR Rate
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
--0.096 ( 0.188)
+-0.096
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-1,777 (59.61%)
+0.188
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-[-70.727,  28.199]
+-70.727
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  4.621 ( 0.905)
+28.199
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,495 ( 97.22%)
+1,777
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
-[-176.200, 952.812]
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+59.61%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  4.621
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.905
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+-176.200
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+952.812
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,495
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+97.22%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Gender:
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    0 ( 0.00%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (  0.00%)
+    0
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Male
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  1,865 (62.56%)
+  1,865
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+62.56%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  3,885 (50.40%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  3,885
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+50.40%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Female
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  1,116 (37.44%)
+  1,116
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+37.44%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  3,824 (49.60%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  3,824
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+49.60%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Ethnicity:
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    0 ( 0.00%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,009 ( 90.92%)
+    0
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,009
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+90.92%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 White
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,875 (96.44%)
+  2,875
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+96.44%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    679 ( 8.81%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    679
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+8.81%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Asian
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    75 ( 2.52%)
+    75
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+2.52%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    12 ( 0.16%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    12
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.16%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Black
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    21 ( 0.70%)
+    21
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+0.70%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      7 ( 0.09%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      7
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.09%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Other
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    10 ( 0.34%)
+    10
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+0.34%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      2 ( 0.03%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      2
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.03%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 SmokingStatus:
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  42 ( 1.41%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,709 (100.00%)
+  42
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+1.41%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+100.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Former
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  1,535 (51.49%)
+  1,535
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+51.49%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 ( 0.00%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Non-Smoker
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    979 (32.84%)
+    979
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+32.84%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 ( 0.00%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Smoker
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    379 (12.71%)
+    379
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+12.71%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 ( 0.00%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Former 3Y
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    46 ( 1.54%)
+    46
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+1.54%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 ( 0.00%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+0.00%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 DiagGroup:
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  567 (19.02%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-6,640 ( 86.13%)
+  567
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+19.02%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+6,640
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+86.13%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Systemic diseases affecting the kidney
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  1,304 (43.74%)
+  1,304
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+43.74%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    316 ( 4.10%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    316
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+4.10%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Glomerular disease
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    442 (14.83%)
+    442
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+14.83%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    278 ( 3.61%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    278
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+3.61%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Tubulointerstitial disease
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    268 ( 8.99%)
+    268
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+8.99%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    173 ( 2.24%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    173
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+2.24%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Miscellaneous renal disorders
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    227 ( 7.61%)
+    227
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+7.61%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    198 ( 2.57%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    198
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+2.57%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Familial / hereditary nephropathies
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    173 ( 5.80%)
+    173
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
+5.80%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    104 ( 1.35%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+   
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    104
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+1.35%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+   
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Diabetes (DM)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-    992 (33.32%)
+    992
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+33.32%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  1,535 (19.91%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  1,535
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+19.91%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Congestive Cardiac Failure (CCF)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,414 (81.09%)
+  2,414
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+81.09%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    408 ( 5.29%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    408
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+5.29%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Prior Myocardial Infarction (MI)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,492 (83.71%)
+  2,492
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+83.71%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    556 ( 7.21%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    556
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+7.21%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Ischemic Heart Disease (IHD)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,393 (80.38%)
+  2,393
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+80.38%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    863 (11.19%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    863
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+11.19%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Peripheral Vascular Disease (PVA)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,485 (83.47%)
+  2,485
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+83.47%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    376 ( 4.88%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    376
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+4.88%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Prior Cerebrovascular Accident (CVA)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,727 (91.60%)
+  2,727
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+91.60%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    186 ( 2.41%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+    186
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+2.41%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Chronic Obstructive Pulmonary Disease (COPD)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,411 (80.99%)
+  2,411
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+80.99%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 (     %)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,709 ( 100.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    %
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+100.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Chronic Liver Disease (LD)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,891 (97.11%)
+  2,891
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+97.11%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 (     %)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,709 ( 100.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    %
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+100.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Prior Solid Tumour (ST)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,570 (86.33%)
+  2,570
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-    4 ( 0.13%)
+86.33%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-      0 (     %)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-7,709 ( 100.0%)
+    4
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+0.13%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+      0
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+    %
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+7,709
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+100.00%
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 26em; ">
+<td style="text-align:left;border-right:2px solid lightgray;width: 26em; ">
 Hypertension (HT)
 </td>
 <td style="text-align:left;width: 13em; font-family: monospace;">
-  2,546 (91.48%)
+  2,546
 </td>
 <td style="text-align:left;width: 11em; font-family: monospace;">
-  198 ( 6.64%)
+91.48%
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-  3,114 (40.39%)
+     
 </td>
 <td style="text-align:left;width: 14em; font-family: monospace;">
-    0 (   0.0%)
+  198
 </td>
-<td style="text-align:left;width: 19em; font-family: monospace;">
+<td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">
+6.64%
+</td>
+<td style="text-align:left;width: 26em; font-family: monospace;">
+  3,114
+</td>
+<td style="text-align:left;width: 13em; font-family: monospace;">
+40.39%
+</td>
+<td style="text-align:left;width: 11em; font-family: monospace;">
+       
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+     
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+    0
+</td>
+<td style="text-align:left;width: 14em; font-family: monospace;">
+  0.00%
 </td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Table <a href="chap-dev-paper.html#tab:Table-One">6.2</a> also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6% male vs 50.4% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model.</p>
 <p>Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.</p>
 <p>The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table <a href="chap-dev-paper.html#tab:Event-Median2">6.3</a>.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:Event-Median2">Table 6.3: </span><font size="2">Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]</font>
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
 Transition
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+SKS
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+SERPR
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+Model
 </th>
 <th style="text-align:right;">
-SKS (Development)
+From
 </th>
 <th style="text-align:right;">
-SERPR (Validation)
+To
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+median
+</th>
+<th style="text-align:right;">
+IQR
+</th>
+<th style="text-align:right;">
+max
+</th>
+<th style="text-align:right;">
+n
+</th>
+<th style="text-align:right;">
+median
+</th>
+<th style="text-align:right;">
+IQR
+</th>
+<th style="text-align:right;">
+max
 </th>
 </tr>
 </thead>
 <tbody>
-<tr grouplength="1">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Two</strong>
+<tr>
+<td style="text-align:right;">
+Two
+</td>
+<td style="text-align:right;">
+Alive
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Dead
+</td>
+<td style="text-align:right;font-family: monospace;">
+1,427
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.0 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.3 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+15.0 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3,010
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.8 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.3 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+10.1 y
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-Alive to Dead
+<td style="text-align:right;">
+Three
+</td>
+<td style="text-align:right;">
+CKD
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Dead
 </td>
 <td style="text-align:right;font-family: monospace;">
-1,427 ~ 3.9 y (4.3 y) [15.0 y]
+1,125
 </td>
 <td style="text-align:right;font-family: monospace;">
-3,025 ~ 4.9 y (3.3 y) [10.1 y]
-</td>
-</tr>
-<tr grouplength="3">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Three</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to Dead
+3.5 y
 </td>
 <td style="text-align:right;font-family: monospace;">
-1,125 ~ 3.5 y (4.2 y) [15.0 y]
+4.2 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+15.0 y
 </td>
 <td style="text-align:right;font-family: monospace;">
-2,579 ~ 4.8 y (3.2 y) [10.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to RRT
+2,568
 </td>
 <td style="text-align:right;font-family: monospace;">
-680 ~ 2.5 y (3.3 y) [14.1 y]
+4.7 y
 </td>
 <td style="text-align:right;font-family: monospace;">
-1,130 ~ 3.8 y (3.8 y) [10.1 y]
+3.3 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+10.1 y
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-RRT to Dead
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+RRT
 </td>
 <td style="text-align:right;font-family: monospace;">
-302 ~ 2.2 y (3.2 y) [13.5 y]
+  680
 </td>
 <td style="text-align:right;font-family: monospace;">
-446 ~ 1.5 y (2.4 y) [ 9.1 y]
-</td>
-</tr>
-<tr grouplength="6">
-<td colspan="3" style="border-bottom: 1px solid;">
-<strong>Five</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to Dead
+2.5 y
 </td>
 <td style="text-align:right;font-family: monospace;">
-1,125 ~ 3.5 y (4.2 y) [15.0 y]
+3.4 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+14.2 y
 </td>
 <td style="text-align:right;font-family: monospace;">
-2,579 ~ 4.8 y (3.2 y) [10.1 y]
-</td>
-</tr>
-<tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to HD
+1,125
 </td>
 <td style="text-align:right;font-family: monospace;">
-344 ~ 2.5 y (3.5 y) [14.1 y]
+3.8 y
 </td>
 <td style="text-align:right;font-family: monospace;">
-887 ~ 3.8 y (3.7 y) [10.1 y]
+3.9 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+10.1 y
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to PD
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+RRT
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Dead
 </td>
 <td style="text-align:right;font-family: monospace;">
-229 ~ 2.0 y (2.9 y) [12.9 y]
+  302
 </td>
 <td style="text-align:right;font-family: monospace;">
-149 ~ 3.5 y (4.1 y) [ 9.6 y]
+2.2 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.3 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+13.5 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+  442
+</td>
+<td style="text-align:right;font-family: monospace;">
+1.6 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.5 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+9.2 y
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-CKD to Tx
+<td style="text-align:right;">
+Five
+</td>
+<td style="text-align:right;">
+CKD
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Dead
 </td>
 <td style="text-align:right;font-family: monospace;">
-107 ~ 3.2 y (2.7 y) [12.1 y]
+1,125
 </td>
 <td style="text-align:right;font-family: monospace;">
-94 ~ 4.8 y (4.5 y) [ 9.7 y]
+3.5 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.2 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+15.0 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+2,568
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.7 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.3 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+10.1 y
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-HD to Dead
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+HD
 </td>
 <td style="text-align:right;font-family: monospace;">
-185 ~ 2.0 y (3.2 y) [11.8 y]
+  344
 </td>
 <td style="text-align:right;font-family: monospace;">
-398 ~ 1.5 y (2.5 y) [ 9.1 y]
+2.6 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.5 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+14.2 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+  882
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.7 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.8 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+10.1 y
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left: 2em;" indentlevel="1">
-PD to Dead
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+PD
 </td>
 <td style="text-align:right;font-family: monospace;">
-107 ~ 2.3 y (3.2 y) [11.7 y]
+  229
 </td>
 <td style="text-align:right;font-family: monospace;">
-47 ~ 2.1 y (2.3 y) [ 8.5 y]
+2.0 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.9 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+12.9 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+  149
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.5 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.1 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+9.5 y
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Tx
+</td>
+<td style="text-align:right;font-family: monospace;">
+  107
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.2 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.7 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+12.1 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+  94
+</td>
+<td style="text-align:right;font-family: monospace;">
+5.0 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+4.4 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+9.8 y
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+HD
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Dead
+</td>
+<td style="text-align:right;font-family: monospace;">
+  185
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.1 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.3 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+11.8 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+  394
+</td>
+<td style="text-align:right;font-family: monospace;">
+1.6 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.5 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+9.2 y
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+PD
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;">
+Dead
+</td>
+<td style="text-align:right;font-family: monospace;">
+  107
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.4 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+3.2 y
+</td>
+<td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;">
+11.8 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+  47
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.1 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+2.3 y
+</td>
+<td style="text-align:right;font-family: monospace;">
+8.5 y
 </td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
 <div id="development" class="section level3" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> Development</h3>
 <p>Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix <a href="chap-dev-paper-supp.html#chap-dev-paper-supp">C</a>. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table <a href="chap-dev-paper.html#tab:PH-Three">6.4</a>.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:PH-Three">Table 6.4: </span><font size="2">Proportional Hazards for each transition in the Three-State Model</font>
@@ -1642,13 +2756,13 @@ RRT to Dead
 (Age-60)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.161 (  -0.051,   0.374)
+0.162 (  -0.051,   0.375)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.041 (  -0.051,  -0.031)
+-0.041 (  -0.051,  -0.032)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.063 (   0.050,   0.076)
+0.063 (   0.051,   0.076)
 </td>
 </tr>
 <tr>
@@ -1656,10 +2770,10 @@ RRT to Dead
 (Age-60)<sup>2</sup>
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.000 (  -0.002,   0.000)
+-0.001 (  -0.003,   0.001)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.000 (  -0.000,  -0.000)
+0.000 (  -0.001,   0.000)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1669,7 +2783,7 @@ RRT to Dead
 log(Age)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--5.725 ( -17.969,   6.518)
+-5.725 ( -17.969,   6.519)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1686,13 +2800,13 @@ log(Age)
 eGFR
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.013 (  -0.019,  -0.006)
+-0.013 (  -0.020,  -0.007)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.095 (  -0.108,  -0.082)
+-0.096 (  -0.109,  -0.083)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.011 (  -0.001,   0.025)
+0.012 (  -0.002,   0.026)
 </td>
 </tr>
 <tr>
@@ -1705,7 +2819,7 @@ eGFR Rate
 0.055 (  -0.021,   0.131)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.056 (  -0.363,   0.250)
+-0.056 (  -0.364,   0.251)
 </td>
 </tr>
 <tr>
@@ -1713,12 +2827,12 @@ eGFR Rate
 log(eGFR Rate)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.042 (  -0.125,   0.210)
+0.043 (  -0.125,   0.211)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.227 (  -0.770,   1.225)
+0.228 (  -0.770,   1.226)
 </td>
 </tr>
 <tr grouplength="3">
@@ -1734,7 +2848,7 @@ uPCR
 0.125 (  -0.318,   0.569)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.700 (   0.112,   1.288)
+0.700 (   0.113,   1.288)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 -0.108 (  -0.736,   0.519)
@@ -1747,10 +2861,10 @@ uPCR Rate
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.019 (  -0.045,   0.005)
+-0.020 (  -0.045,   0.005)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.036 (  -0.062,   0.136)
+0.037 (  -0.063,   0.136)
 </td>
 </tr>
 <tr>
@@ -1760,7 +2874,7 @@ log(uPCR Rate)
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.218 (  -0.310,   0.747)
+0.218 (  -0.311,   0.748)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 -0.198 (  -0.534,   0.137)
@@ -1776,10 +2890,10 @@ log(uPCR Rate)
 SBP
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.001 (  -0.004,   0.002)
+-0.001 (  -0.005,   0.002)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.005 (  -0.000,   0.011)
+0.005 (  -0.001,   0.011)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1789,10 +2903,10 @@ SBP
 DBP
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.006 (   0.000,   0.013)
+0.007 (   0.000,   0.013)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.006 (  -0.001,   0.015)
+0.007 (  -0.002,   0.016)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1813,13 +2927,13 @@ BMI
 Albumin
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.044 (  -0.064,  -0.024)
+-0.045 (  -0.065,  -0.024)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.032 (  -0.059,  -0.004)
+-0.032 (  -0.060,  -0.005)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.044 (  -0.079,  -0.009)
+-0.045 (  -0.080,  -0.010)
 </td>
 </tr>
 <tr>
@@ -1827,10 +2941,10 @@ Albumin
 Corrected Calcium
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.280 (  -0.192,   0.752)
+0.280 (  -0.192,   0.753)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.515 (  -1.207,   0.177)
+-0.515 (  -1.208,   0.177)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1840,13 +2954,13 @@ Corrected Calcium
 Haemoglobin
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.013 (  -0.017,  -0.008)
+-0.013 (  -0.018,  -0.008)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.005 (  -0.012,   0.001)
+-0.005 (  -0.012,   0.002)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.005 (  -0.014,   0.003)
+-0.006 (  -0.015,   0.004)
 </td>
 </tr>
 <tr>
@@ -1854,10 +2968,10 @@ Haemoglobin
 Phosphate
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.511 (   0.132,   0.890)
+0.512 (   0.133,   0.891)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.869 (  -0.059,   1.799)
+0.870 (  -0.060,   1.800)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1872,10 +2986,10 @@ Phosphate
 Female
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.235 (  -0.371,  -0.099)
+-0.236 (  -0.371,  -0.100)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.277 (  -0.455,  -0.099)
+-0.278 (  -0.456,  -0.100)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -1890,13 +3004,13 @@ Female
 Former (3 years+)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.212 (  -0.879,   0.453)
+-0.213 (  -0.879,   0.453)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.133 (  -0.757,   0.490)
+-0.134 (  -0.758,   0.490)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.282 (  -1.082,   0.518)
+-0.282 (  -1.083,   0.519)
 </td>
 </tr>
 <tr>
@@ -1907,10 +3021,10 @@ Non-Smoker
 -0.198 (  -0.345,  -0.051)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.162 (  -0.364,   0.039)
+-0.162 (  -0.364,   0.040)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.294 (  -0.598,   0.009)
+-0.295 (  -0.599,   0.010)
 </td>
 </tr>
 <tr>
@@ -1918,13 +3032,13 @@ Non-Smoker
 Smoker
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.356 (   0.160,   0.551)
+0.356 (   0.161,   0.552)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.175 (  -0.076,   0.428)
+0.176 (  -0.077,   0.428)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.387 (   0.068,   0.706)
+0.387 (   0.069,   0.706)
 </td>
 </tr>
 <tr grouplength="4">
@@ -1937,13 +3051,13 @@ Smoker
 Familial / hereditary nephropathies
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.424 (  -0.854,   0.006)
+-0.424 (  -0.855,   0.006)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-1.029 (   0.720,   1.338)
+1.029 (   0.721,   1.338)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.562 (  -1.084,  -0.040)
+-0.563 (  -1.085,  -0.040)
 </td>
 </tr>
 <tr>
@@ -1951,13 +3065,13 @@ Familial / hereditary nephropathies
 Glomerular disease
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.394 (  -0.635,  -0.154)
+-0.395 (  -0.636,  -0.154)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.165 (  -0.465,   0.134)
+-0.166 (  -0.465,   0.134)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.488 (  -0.883,  -0.094)
+-0.489 (  -0.884,  -0.094)
 </td>
 </tr>
 <tr>
@@ -1965,13 +3079,13 @@ Glomerular disease
 Miscellaneous renal disorders
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.263 (  -0.505,  -0.021)
+-0.263 (  -0.506,  -0.021)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 -0.649 (  -1.143,  -0.155)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.033 (  -0.553,   0.620)
+0.033 (  -0.554,   0.620)
 </td>
 </tr>
 <tr>
@@ -1979,13 +3093,13 @@ Miscellaneous renal disorders
 Tubulointerstitial disease
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.463 (  -0.741,  -0.184)
+-0.463 (  -0.742,  -0.185)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.265 (  -0.577,   0.046)
+-0.266 (  -0.577,   0.046)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.310 (  -0.803,   0.181)
+-0.311 (  -0.803,   0.182)
 </td>
 </tr>
 <tr grouplength="10">
@@ -2001,10 +3115,10 @@ DM
 0.122 (  -0.011,   0.255)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.141 (  -0.074,   0.358)
+0.142 (  -0.075,   0.359)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.200 (  -0.096,   0.496)
+0.200 (  -0.096,   0.497)
 </td>
 </tr>
 <tr>
@@ -2012,12 +3126,12 @@ DM
 CCF
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.394 (  -0.535,  -0.253)
+-0.395 (  -0.536,  -0.254)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.299 (  -0.597,  -0.002)
+-0.300 (  -0.597,  -0.003)
 </td>
 </tr>
 <tr>
@@ -2025,13 +3139,13 @@ CCF
 MI
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.246 (  -0.397,  -0.094)
+-0.246 (  -0.398,  -0.095)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.234 (  -0.061,   0.530)
+0.234 (  -0.062,   0.530)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.186 (  -0.199,   0.572)
+0.187 (  -0.199,   0.572)
 </td>
 </tr>
 <tr>
@@ -2039,13 +3153,13 @@ MI
 IHD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.102 (  -0.041,   0.245)
+0.102 (  -0.041,   0.246)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 -0.077 (  -0.334,   0.179)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.097 (  -0.424,   0.228)
+-0.098 (  -0.424,   0.228)
 </td>
 </tr>
 <tr>
@@ -2053,13 +3167,13 @@ IHD
 PVD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.248 (  -0.394,  -0.103)
+-0.249 (  -0.395,  -0.103)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.168 (  -0.405,   0.068)
+-0.169 (  -0.406,   0.068)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.183 (  -0.492,   0.126)
+-0.183 (  -0.493,   0.126)
 </td>
 </tr>
 <tr>
@@ -2067,12 +3181,12 @@ PVD
 CVA
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.070 (  -0.252,   0.111)
+-0.071 (  -0.253,   0.111)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.168 (  -0.577,   0.240)
+-0.168 (  -0.577,   0.241)
 </td>
 </tr>
 <tr>
@@ -2080,7 +3194,7 @@ CVA
 COPD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.289 (  -0.433,  -0.145)
+-0.290 (  -0.433,  -0.146)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
@@ -2092,13 +3206,13 @@ COPD
 LD
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.169 (  -0.578,   0.239)
+-0.170 (  -0.579,   0.239)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.316 (  -0.731,   0.097)
+-0.317 (  -0.732,   0.098)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.270 (  -0.858,   0.318)
+-0.270 (  -0.859,   0.318)
 </td>
 </tr>
 <tr>
@@ -2106,13 +3220,13 @@ LD
 ST
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.274 (  -0.431,  -0.117)
+-0.274 (  -0.431,  -0.118)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
 -0.181 (  -0.516,   0.153)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.278 (  -0.611,   0.055)
+-0.278 (  -0.612,   0.056)
 </td>
 </tr>
 <tr>
@@ -2122,19 +3236,21 @@ HT
 <td style="text-align:right;width: 43em; font-family: monospace;">
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
-0.274 (  -0.176,   0.726)
+0.275 (  -0.177,   0.726)
 </td>
 <td style="text-align:right;width: 43em; font-family: monospace;">
--0.416 (  -1.104,   0.271)
+-0.416 (  -1.105,   0.272)
 </td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.</p>
 </div>
 <div id="validation-1" class="section level3" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Validation</h3>
 <p>Table <a href="chap-dev-paper.html#tab:IV-Three">6.5</a> shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the &lt;60 eGFR group than in the &lt;30 eGFR group. All measures degraded over time, but the average scores remained strong.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:IV-Three">Table 6.5: </span><font size="2">Internal Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
@@ -2504,7 +3620,9 @@ Two
 </tr>
 </tbody>
 </table>
+</div>
 <p>Table <a href="chap-dev-paper.html#tab:EV-Three">6.6</a> shows the results from the external validation in the Three-State Model.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:EV-Three">Table 6.6: </span><font size="2">External Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
@@ -2874,6 +3992,7 @@ Two
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div id="example-1" class="section level3" number="6.3.4">
 <h3><span class="header-section-number">6.3.4</span> Example</h3>

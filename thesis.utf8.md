@@ -68,7 +68,7 @@ MathJax.Hub.Config({
 });
 </script>
 
-
+\newcommand{\txt}[1]{\textrm{#1}}, , \def\logit{\txt{logit}}, , \newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
 
 # Introduction {-}
 
@@ -79,7 +79,7 @@ Add Timeline
 
 -->
 
-Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The html version can be found [here](https://michaelbarrowman.co.uk/thesis).
+Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The pdf version can be downloaded via the menu at the top.
   
 I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Annotated text can be seen highlighted and to add your own, just highlight the text you want to comment on, and the annotate bubble pops up (try it now). Make sure you click Post to Public after writing the annotation and annotations can include Rich Text and Markdown. You can view Annotations by clicking the menu on the right and this will show all comments.
 
@@ -94,16 +94,16 @@ Importantly, I've also added in functionality to output each chapter individuall
 
 Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/Thesis). I originally used Github as my backup, but then decided to increase how I used it.
 
+## Abstract {-}
 
-
- 
+Insert Abstract Here...
 
 
 <!--chapter:end:index.Rmd-->
 
 
 # Literature Report {#chap-lit-report}
-\chaptermark{Literaure Report}
+
 Last updated: 25 May
 
 ## Introduction
@@ -221,12 +221,12 @@ Along with the EPV assessment mentioned earlier, Counsell et al's systematic rev
 
 # The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#chap-scoping-review}
 *MA Barrowman, D Jenkins, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Scoping Review}
+
 Last updated: 21 Apr
 
+Download as individual paper draft: [pdf](Chapters/ind_02-Scoping_Review_Paper.pdf), [tex](Chapters/ind_02-Scoping_Review_Paper.tex)
 
-
-
+Scoping Review Protcol Pre-Print  [here](https://doi.org/10.17605/OSF.IO/HR6QD)
 
 ## Introduction
 
@@ -356,7 +356,7 @@ A table of the extracted information will be included with the paper, depending 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#chap-Conf-CR}
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
-\chaptermark{Competing Risks and Unmeasured Confounding}
+
 Last updated: 21 Apr
 
 
@@ -416,13 +416,12 @@ The data-generating mechanism defined two cause-specific hazard functions (one f
 
 In the above equations, $\beta$ and $\gamma$ are the effects of the confounding covariate and the treatment effect respectively with the subscripts representing which event they are affecting. These two hazard functions entirely describe how a population will behave [18].
 
-\includegraphics[width=450px]{figure/CR_Conf/Transition_Diagram} 
+<img src="figure/CR_Conf/Transition_Diagram.png" width="450px" />
 
 We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [19]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Additional file 1. Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. \@ref(fig:Model_DAG), where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
 
 
-
-\begin{center}\includegraphics[width=450px]{figure/CR_Conf/DAG} \end{center}
+<img src="figure/CR_Conf/DAG.png" width="450px" style="display: block; margin: auto;" />
 
 From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, $\Gamma_1$ and $\Gamma_2$, to be in these conditions [20] (See Additional file 2). It's worth noting that the values of $\Gamma$ will depend on the current value of $\rho$ since they are calculated using the expected distribution of end-times. However, it has been shown [18, 21] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the "true" values of the $\Gamma$ will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [20].
 
@@ -547,10 +546,10 @@ This paper has demonstrated that unmeasured confounding in observational studies
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
-\chaptermark{IPCW Calibration-in-the-Large}
-Last updated: 23 May
 
+Last updated: 28 May
 
+Download as individual paper draft: [pdf](Chapters/ind_04-IPCW_logistic.pdf), [tex](Chapters/ind_04-IPCW_logistic.tex)
 
 ## Abstract {-}
 
@@ -574,16 +573,13 @@ Last updated: 23 May
 Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with $p\%$ risk of an event, $p\%$ of those have the event across the full risk range [@steyerberg_clinical_2008]. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) [@calster_calibration_2016-1]. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \@ref(chap-IPCW-logistic-supp)). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g. the Brier Score.
 
 
-
-
-
-
 In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals [@crowson_assessing_2016]; however we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK [@hippisley-cox_2007], ASCVD [@goff_2013_2014] and ASSIGN [@de_la_iglesia_performance_2011]. Once this is established, estimated survival probabilities are available.
 
-Third, censoring needs to be handled in an appropriate way. This is commonly overcome by using Kaplan-Meier estimates  [@royston_external_2013;@hippisley-cox_derivation_2007], but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston [@royston_tools_2014;@royston_tools_2015] has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
+Third, censoring needs to be handled in an appropriate way. <mark>This is the core message of this paper</mark>. Censoring is commonly overcome by using Kaplan-Meier estimates  [@royston_external_2013;@hippisley-cox_derivation_2007], but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston [@royston_tools_2014;@royston_tools_2015] has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
 
 
-QRISK used the overall KM approach in the 2007 paper [@hippisley-cox_derivation_2007] with good results (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), but worse results in the QRISK3 update [@hippisley-cox_development_2017] (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18) and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice [**I remember discussing this with Alex & Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?**].
+QRISK used the overall KM approach in the 2007 paper [@hippisley-cox_derivation_2007] ~~with good results~~ <mark>demonstrating adequate calibration</mark> (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), ~~but worse results~~ <mark>but miscalibration</mark> in the QRISK3 update [@hippisley-cox_development_2017] (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18). ~~and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice [**I remember discussing this with Alex & Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?**].~~
+
 
 Royston [@royston_tools_2014] also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson [@perme_checking_2008] to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
 
@@ -612,7 +608,12 @@ We simulated populations of patients with survival and censoring times, and took
 
 
 
-Patients were generated with a single covariate $Z \sim N(0,1)$ from which, we then generated a survival time, $T$ and a censoring time, $C$. Survival times were simulated with a baseline hazard $\lambda_0(t) = t^{\eta}$ (i.e. Weibull), and a proportional hazard of $e^{\beta Z}$. This allows the simulation of a constant baseline hazard ($\eta = 0$) as well as an increasing ($\eta = \sfrac{1}{2}$) and decreasing ($\eta = -\sfrac{1}{2}$) hazard function Censoring times were simulated with a constant baseline hazard, $\lambda_{C,0}(t) = 1$ and a proportional hazard of $e^{\gamma Z}$. <mark>This combines to give a simulated survival function, $S$ as
+Patients were generated with a single covariate $Z \sim N(0,1)$ from which, we then generated a survival time, $T$ and a censoring time, $C$. Survival times were simulated with a baseline hazard $\lambda_0(t) = t^{\eta}$ (i.e. Weibull), and a proportional hazard of $e^{\beta Z}$. This allows the simulation of a constant baseline hazard ($\eta = 0$) as well as an increasing ($\eta = \sfrac{1}{2}$) and decreasing ($\eta = -\sfrac{1}{2}$) hazard function Censoring times were simulated with a constant baseline hazard, $\lambda_{C,0}(t) = 1$ and a proportional hazard of $e^{\gamma Z}$. <mark>Therefore, the hazard functions can be expressed in full as:
+$$
+\lambda(t) = e^{\beta Z}t^{\eta}\qquad\qquad\lambda_C(t)=e^{\gamma Z}
+$$
+
+This combines to give a simulated survival function, $S$ as
 $$
 S(t|Z=z) = \exp\left(-\frac{e^{\beta Z}t^{\eta+1}}{\eta+1}\right)
 $$
@@ -646,21 +647,18 @@ During each simulation, we varied the parameters to take all the values,$\gamma 
 For each population, we used three distinct prediction models  for survival. $F_P$ was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly specified model:
 
 $$
-\begin{array}{c}
 F_P(t|Z = z) = 1 - \exp\left(-\frac{e^{\beta Z}t^{\eta+1}}{\eta+1}\right)
-\end{array}
 $$
+
+
 From this, we also derived a prediction model that would systematically over-estimate the prediction model, $F_O$, and one which would systematically under-estimate the prediction, $F_U$. These are defined as:
 
 $$
-\begin{array}{rl}
-F_U(t|Z=z) =& \logit^{-1}\left(\logit\left( F_P(t|z) - 0.2\right)\right)
-\end{array}
+F_U(t|Z=z) = \logit^{-1}\left(\logit\left( F_P(t|z) - 0.2\right)\right)
 $$
+
 $$
-\begin{array}{rl}
-F_O(t|Z=z) =& \logit^{-1}\left(\logit\left( F_P(t|z) + 0.2\right)\right)
-\end{array}
+F_O(t|Z=z) = \logit^{-1}\left(\logit\left( F_P(t|z) + 0.2\right)\right)
 $$
 
 These prediction models were used to generate an estimate of the Expected probability that a given patient, with covariate $z$, will have an event at the given time.
@@ -670,17 +668,13 @@ These prediction models were used to generate an estimate of the Expected probab
 In order to apply the IPCW, we need to calculate a censoring prediction model. For our purposes, we will again use a perfectly specified censoring distribution, $G$, to be derived directly from the DGM:
 
 $$
-\begin{array}{c}
 G(t|Z=z) = 1-\exp\left(-e^{\gamma Z}t\right)
-\end{array}
 $$
 This is used to calculate an IPCW for all non-censored patients at the last time they were observed ($t$ for patients who have not had an event, and $X_i$ for patients who have had the event), This is defined as:
 
 
 $$
-\begin{array}{c}
 \omega(t|z) = \frac{1}{1 - G(\min(t,X_i)|z)}
-\end{array}
 $$
 
 ### Calibration Measurements
@@ -699,9 +693,11 @@ Some of these methods produce unusual results for the regressions. Firstly, the 
 
 For each set of parameters and methodology, our estimand at time, $t$, measured in simulation $i = 1,...,N$ is $\theta_i(t)$, the set of estimates of the calibration-in-the-large for the $F_P$, $F_U$ and $F_O$ models in order. Therefore our underlying truth for all time points is
 
-$$\begin{array}{c}
+$$
+\begin{array}{c}
 \theta = \left(0,0.2,-0.2\right)
-\end{array}$$
+\end{array}
+$$
 
 From this, we can also define our upper and lower bound for a 95% confidence interval as the vectors $\theta_{i,L}(t)$ and $\theta_{i,U}(t)$.
 
@@ -710,21 +706,34 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 The measures we will take as performance measures as the Bias, the Empirical Standard Error and the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time). For these estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from singly large random effects.
 
 
-\begin{table}
-
-\caption{(\#tab:PM-DGM-time){\small Performance Measures to be taken at each time point}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{lll}
-\toprule
-Performance Measure & Estimation & SE\\
-\midrule
-\rowcolor{gray!6}  Bias & $\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$ & $\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$\\
-EmpSE & $\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$ & $\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$\\
-\rowcolor{gray!6}  Coverage & $\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$ & $\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PM-DGM-time)<font size="2">Performance Measures to be taken at each time point</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Performance Measure </th>
+   <th style="text-align:left;"> Estimation </th>
+   <th style="text-align:left;"> SE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Bias </td>
+   <td style="text-align:left;"> $$\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$$ </td>
+   <td style="text-align:left;"> $$\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> EmpSE </td>
+   <td style="text-align:left;"> $$\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$$ </td>
+   <td style="text-align:left;"> $$\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Coverage </td>
+   <td style="text-align:left;"> $$\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$$ </td>
+   <td style="text-align:left;"> $$\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$$ </td>
+  </tr>
+</tbody>
+</table></div>
 
 The bias provides a measure of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are.
 
@@ -736,30 +745,44 @@ All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `ti
 
 ## Results
 
-[**Results shown here are new and improved from the previous version. No highlighting is shown**]
-
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(0)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg0)
-\end{figure}
-
-Figure \@ref(fig:MainPlotg0) shows the results when censoring is independent of covariates ($\gamma=0$). The LW method provides strong coverage across the entire timeframe and miminal bias. The absolute bias for PO and LU increases over time with PO under-reporting the correct value and LO over-reporting. KM bias remains constant across the timeframe, but for the imperfect models, is constantly under- or over-reported. LU and PO also provide minimal coverage at all time points, whereas KM covers perfect in the early stages of the Perfect Model with coverage dropping off as time progresses. Empirical Standard Error is clse to 0 for all models.
+<mark>Here, we present a subset of results with the full set of outputs available in the Calculator App.</mark> The estimates are presented on the y-axis over time, x-axis with the values stratified by the three performance measures, over the plot rows, and the three models over the plot columns and the different methods are colour coded.
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(1)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg1)
-\end{figure}
+<div class="figure">
+<img src="figure/IPCW_Logistic/MainPlot_b(1)_g(0)_e(0.5).png" alt="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate" width="1968" />
+<p class="caption">(\#fig:MainPlotg0)Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate</p>
+</div>
 
-Figure \@ref(fig:MainPlotg1) shows the results when censoring and the event-of-interest have the same individual effects ($\beta=\gamma=1$). The LW method provides strong coverage across the entire timeframe and miminal bias, although this coverage is reduced compared to the previous set of results shown (approximately 75% throughout). Once again, the absolute bias for PO and LU increases over time, however the under-reporting for PO is much more strongly pronounced. KM bias behaves similarly but for coverage, it starts off at around 50% coverage reaches a peak of full coverage approximately 25% of the way through the timeframe.
+Figure \@ref(fig:MainPlotg0) shows the results when censoring is independent of covariates ($\gamma=0$). The LW method provides over-optimistic Coverage (above 95%, too high) and miminal bias. The absolute bias for PO and LU increases over time with PO under-reporting the correct value and LO over-reporting. KM bias remains constant across the timeframe, but for the imperfect models, is constantly under- or over-reported,respectively. For the Perfect model, Figure \@ref(fig:BiasPlotg0), we can see that the KM method produces virtuall no bias. LU and PO also provide minimal coverage at all time points, whereas KM covers ~~perfect~~ <mark>similar to LW in the early stages of the Perfect Model with coverage dropping off as time progresses. Empirical Standard Error is close to 0 for all models.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/Bias_b(1)_g(0)_e(0.5).png" alt="Bias in the Perfect model across the LW and KM methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. 95\% Confidence Intervals are shown around each estimate." width="1968" />
+<p class="caption">(\#fig:BiasPlotg0)Bias in the Perfect model across the LW and KM methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. 95\% Confidence Intervals are shown around each estimate.</p>
+</div>
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(-1)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=-1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg2)
-\end{figure}
 
-Figure \@ref(fig:MainPlotg2) shows the results when censoring and the event-of-interest have opposite individual effects ($\beta=1, \gamma=-1$). The bias results are similar to those when censoring is independent. A difference here is that coverage begins greater than zero for the KM, LU and PO methods, but quickly drops to 0 before the 25% time point. For LW, the coverage appears to reduce to around 80% by the end of the time point.
+<div class="figure">
+<img src="figure/IPCW_Logistic/MainPlot_b(1)_g(1)_e(0.5).png" alt="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate" width="1968" />
+<p class="caption">(\#fig:MainPlotg1)Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate</p>
+</div>
+
+Figure \@ref(fig:MainPlotg1) shows the results when censoring and the event-of-interest have the same individual effects ($\beta=\gamma=1$). The LW method provides strong (although still too low) coverage across the entire timeframe and miminal bias, although this coverage is reduced compared to the previous set of results shown (approximately 75% throughout). Once again, the absolute bias for PO and LU increases over time, however the under-reporting for PO is much more strongly pronounced. KM bias behaves similar to the previous results, but for coverage, it starts off at around 50% coverage reaches a peak of 100% coverage approximately 25% of the way through the timeframe and then quickly drops off to 0% coverage after 75% of the timeframe.
+
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/MainPlot_b(1)_g(-1)_e(0.5).png" alt="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=-1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate" width="1968" />
+<p class="caption">(\#fig:MainPlotg2)Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=-1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate</p>
+</div>
+
+Figure \@ref(fig:MainPlotg2) shows the results when censoring and the event-of-interest have opposite individual effects ($\beta=1, \gamma=-1$). The bias results are similar to those when censoring is independent. A difference here is that coverage begins greater than zero for the KM, LU and PO methods, but quickly drops to 0 before the 25% time point. For LW, the coverage appears to reduce to around 80% by the end of the time frame.
 
 
 ## Discussion
+
+**A few notes to flesh out:*
+
+For LW, the coverage seems to be above the 95% mark for quite a few scenarios, indicating that the confidence intervals might be wider than we would want, however since bias is still low in these scenarios, our point estimate is still good, we are just less confident in our results. This may be due to 
 
 Weighting = Good.
 
@@ -777,10 +800,10 @@ Not Weighting = Bad.
 
 # Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Development and Validation of MSCPM}
+
 Last updated: 30 Apr
 
-
+Download as individual paper draft: [pdf](Chapters/ind_05-Performance_Metrics.pdf), [tex](Chapters/ind_05-Performance_Metrics.tex)
 
 ## Introduction
 
@@ -859,10 +882,10 @@ Throughout this paper, we will use consistent notation which is shown here for r
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
-\chaptermark{Development and Validation of MSCPM}
-Last updated: 27 May
 
+Last updated: 28 May
 
+Download as individual paper draft: [pdf](Chapters/ind_06-Dev_Paper.pdf), [tex](Chapters/ind_06-Dev_Paper.tex)
 
 ## Abstract {-}
 
@@ -938,20 +961,16 @@ The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Ra
 
 Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth]{figure/Dev_Paper_State_Diagrams} 
-
-}
-
-\caption{Diagram of the three models, the states being modelled and relevant transitions}(\#fig:State-Diagram)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="figure/Dev_Paper_State_Diagrams.png" alt="Diagram of the three models, the states being modelled and relevant transitions" width="90%" />
+<p class="caption">(\#fig:State-Diagram)Diagram of the three models, the states being modelled and relevant transitions</p>
+</div>
 
 Missing data was handled using multiple imputation [@white_imputing_2009] using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). From these variables, uPCR and eGFR Rate of change were also derived [@kovesdy_past_2016; @naimark_past_2016] as well as their log transforms and log(Age) and Age$^2$. For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition.
 
 ### Validation
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR [@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m\textsuperscript{2}.
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR [@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m<sup>2</sup>.
 
 Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \@ref(chap-performance-metrics). <mark>These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
 
@@ -964,34 +983,104 @@ Once the models have been developed, we will apply them to three example patient
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \@ref(tab:Example-Patient).
 
 
-\begin{table}[!h]
-
-\caption{(\#tab:Example-Patient){\small Details of the Example Patients}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}}
-\toprule
-  & Patient 1 & Patient 2 & Patient 3\\
-\midrule
-\rowcolor{gray!6}  Age & 20 & 40 & 66\\
-Gender & Female & Male & Female\\
-\rowcolor{gray!6}  Smoking Status & Non-Smoker & Smoker & Non-Smoker\\
-BP & 144/101 & 160/90 & 140/80\\
-\rowcolor{gray!6}  Albumin & 39 & 40 & 40\\
-\addlinespace
-Correct Calcium & 2.3 & 3.0 & 2.6\\
-\rowcolor{gray!6}  Haemoglobin & 150 & 100 & 14\\
-Phosphate & 0.68 & 2.00 & 0.86\\
-\rowcolor{gray!6}  eGFR & 42 & 10 & 51\\
-eGFR Previous & 50 (one week ago) & 30 (one year ago) & 70 (one week ago)\\
-\addlinespace
-\rowcolor{gray!6}  uPCR & 0.30 & 0.20 & 0.01\\
-uPCR Previous & 0.80 (one month ago) & 1.20 (one year ago) & 0.06 (one week ago)\\
-\rowcolor{gray!6}  Primary Diagnosis & Glomerulonephritis & Tubular Necrosis & Diabetes\\
-Comorbities & Chronic Obstructive Pulmonary Disease\newline Liver Disease\newline Solid Tumour &  & Diabetes\newline Chronic Obstructive Pulmonary Disease\newline Hypertension\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Example-Patient)<font size="2">Details of the Example Patients</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> Patient 1 </th>
+   <th style="text-align:left;"> Patient 2 </th>
+   <th style="text-align:left;"> Patient 3 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Age </td>
+   <td style="text-align:left;width: 3.5cm; "> 20 </td>
+   <td style="text-align:left;width: 3.5cm; "> 40 </td>
+   <td style="text-align:left;width: 3.5cm; "> 66 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Gender </td>
+   <td style="text-align:left;width: 3.5cm; "> Female </td>
+   <td style="text-align:left;width: 3.5cm; "> Male </td>
+   <td style="text-align:left;width: 3.5cm; "> Female </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Smoking Status </td>
+   <td style="text-align:left;width: 3.5cm; "> Non-Smoker </td>
+   <td style="text-align:left;width: 3.5cm; "> Smoker </td>
+   <td style="text-align:left;width: 3.5cm; "> Non-Smoker </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> BP </td>
+   <td style="text-align:left;width: 3.5cm; "> 144/101 </td>
+   <td style="text-align:left;width: 3.5cm; "> 160/90 </td>
+   <td style="text-align:left;width: 3.5cm; "> 140/80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Albumin </td>
+   <td style="text-align:left;width: 3.5cm; "> 39 </td>
+   <td style="text-align:left;width: 3.5cm; "> 40 </td>
+   <td style="text-align:left;width: 3.5cm; "> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Correct Calcium </td>
+   <td style="text-align:left;width: 3.5cm; "> 2.3 </td>
+   <td style="text-align:left;width: 3.5cm; "> 3.0 </td>
+   <td style="text-align:left;width: 3.5cm; "> 2.6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Haemoglobin </td>
+   <td style="text-align:left;width: 3.5cm; "> 150 </td>
+   <td style="text-align:left;width: 3.5cm; "> 100 </td>
+   <td style="text-align:left;width: 3.5cm; "> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Phosphate </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.68 </td>
+   <td style="text-align:left;width: 3.5cm; "> 2.00 </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.86 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> eGFR </td>
+   <td style="text-align:left;width: 3.5cm; "> 42 </td>
+   <td style="text-align:left;width: 3.5cm; "> 10 </td>
+   <td style="text-align:left;width: 3.5cm; "> 51 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> eGFR Previous </td>
+   <td style="text-align:left;width: 3.5cm; "> 50 (one week ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 30 (one year ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 70 (one week ago) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> uPCR </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.30 </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.20 </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> uPCR Previous </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.80 (one month ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 1.20 (one year ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.06 (one week ago) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Primary Diagnosis </td>
+   <td style="text-align:left;width: 3.5cm; "> Glomerulonephritis </td>
+   <td style="text-align:left;width: 3.5cm; "> Tubular Necrosis </td>
+   <td style="text-align:left;width: 3.5cm; "> Diabetes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Comorbities </td>
+   <td style="text-align:left;width: 3.5cm; "> Chronic Obstructive Pulmonary Disease<br>Liver Disease<br>Solid Tumour </td>
+   <td style="text-align:left;width: 3.5cm; ">  </td>
+   <td style="text-align:left;width: 3.5cm; "> Diabetes<br>Chronic Obstructive Pulmonary Disease<br>Hypertension </td>
+  </tr>
+</tbody>
+</table></div>
 
 Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
 
@@ -1010,69 +1099,649 @@ As seen in table \@ref(tab:Table-One), the Age of the populations had a mean of 
 
 
 <br>
-\begin{table}[!h]
-
-\caption{(\#tab:Table-One){\small Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{19em}}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{3}{c}{SKS} & \multicolumn{3}{c}{SERPR} \\
-\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
-Variable & mean/n (IQR/p) & missing n (p) & range & mean/n (IQR/p) & missing n (p) & range\\
-\midrule
-\rowcolor{gray!6}  Age & 64.378 (19.000) & 0 ( 0.00\%) & [ 20.000,  94.000] & 66.064 (17.000) & 0 (  0.00\%) & [  11.000,  98.000]\\
-eGFR & 30.369 (22.387) & 0 ( 0.00\%) & [  3.578,  59.966] & 35.647 (20.565) & 0 (  0.00\%) & [   1.199,  59.994]\\
-\rowcolor{gray!6}  eGFR Rate & -0.016 ( 0.294) & 1,278 (42.87\%) & [-19.107,  33.782] & 1.319 (21.897) & 0 (  0.00\%) & [ -28.636,  50.653]\\
-SBP & 140.193 (29.000) & 50 ( 1.68\%) & [ 77.000, 220.000] & 145.981 (30.000) & 6,345 ( 82.31\%) & [  82.000, 258.000]\\
-\rowcolor{gray!6}  DBP & 74.556 (14.000) & 52 ( 1.74\%) & [ 36.000, 159.000] & 76.742 (17.000) & 6,345 ( 82.31\%) & [  35.000, 128.000]\\
-\addlinespace
-BMI & 28.848 ( 7.842) & 572 (19.19\%) & [ 13.182,  61.467] & 29.020 ( 6.811) & 7,491 ( 97.17\%) & [  17.073,  52.403]\\
-\rowcolor{gray!6}  Albumin & 42.152 ( 5.000) & 60 ( 2.01\%) & [ 12.000,  52.000] & 36.475 ( 6.000) & 3,134 ( 40.65\%) & [   7.000,  53.000]\\
-Calcium & 2.302 ( 0.180) & 68 ( 2.28\%) & [  1.210,   3.660] & 2.407 ( 0.160) & 4,513 ( 58.54\%) & [   1.455,   3.400]\\
-\rowcolor{gray!6}  Haemoglobin & 122.978 (23.000) & 72 ( 2.42\%) & [ 61.000, 195.000] & 109.269 (29.000) & 3,557 ( 46.14\%) & [   7.100, 208.000]\\
-Phosphate & 1.163 ( 0.320) & 87 ( 2.92\%) & [  0.430,   3.710] & 1.194 ( 0.320) & 4,510 ( 58.50\%) & [   0.320,   4.370]\\
-\addlinespace
-\rowcolor{gray!6}  uPCR & 0.112 ( 0.103) & 245 ( 8.22\%) & [  0.001,   2.025] & 0.178 ( 0.177) & 7,170 ( 93.01\%) & [   0.001,   1.943]\\
-uPCR Rate & -0.096 ( 0.188) & 1,777 (59.61\%) & [-70.727,  28.199] & 4.621 ( 0.905) & 7,495 ( 97.22\%) & [-176.200, 952.812]\\
-\rowcolor{gray!6}  Gender: &  & 0 ( 0.00\%) &  &  & 0 (  0.00\%) & \\
-Male & 1,865 (62.56\%) &  &  & 3,885 (50.40\%) &  & \\
-\rowcolor{gray!6}  Female & 1,116 (37.44\%) &  &  & 3,824 (49.60\%) &  & \\
-\addlinespace
-Ethnicity: &  & 0 ( 0.00\%) &  &  & 7,009 ( 90.92\%) & \\
-\rowcolor{gray!6}  White & 2,875 (96.44\%) &  &  & 679 ( 8.81\%) &  & \\
-Asian & 75 ( 2.52\%) &  &  & 12 ( 0.16\%) &  & \\
-\rowcolor{gray!6}  Black & 21 ( 0.70\%) &  &  & 7 ( 0.09\%) &  & \\
-Other & 10 ( 0.34\%) &  &  & 2 ( 0.03\%) &  & \\
-\addlinespace
-\rowcolor{gray!6}  SmokingStatus: &  & 42 ( 1.41\%) &  &  & 7,709 (100.00\%) & \\
-Former & 1,535 (51.49\%) &  &  & 0 ( 0.00\%) &  & \\
-\rowcolor{gray!6}  Non-Smoker & 979 (32.84\%) &  &  & 0 ( 0.00\%) &  & \\
-Smoker & 379 (12.71\%) &  &  & 0 ( 0.00\%) &  & \\
-\rowcolor{gray!6}  Former 3Y & 46 ( 1.54\%) &  &  & 0 ( 0.00\%) &  & \\
-\addlinespace
-DiagGroup: &  & 567 (19.02\%) &  &  & 6,640 ( 86.13\%) & \\
-\rowcolor{gray!6}  Systemic diseases affecting the kidney & 1,304 (43.74\%) &  &  & 316 ( 4.10\%) &  & \\
-Glomerular disease & 442 (14.83\%) &  &  & 278 ( 3.61\%) &  & \\
-\rowcolor{gray!6}  Tubulointerstitial disease & 268 ( 8.99\%) &  &  & 173 ( 2.24\%) &  & \\
-Miscellaneous renal disorders & 227 ( 7.61\%) &  &  & 198 ( 2.57\%) &  & \\
-\addlinespace
-\rowcolor{gray!6}  Familial / hereditary nephropathies & 173 ( 5.80\%) &  &  & 104 ( 1.35\%) &  & \\
-Diabetes (DM) & 992 (33.32\%) & 4 ( 0.13\%) &  & 1,535 (19.91\%) & 0 (   0.0\%) & \\
-\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & 2,414 (81.09\%) & 4 ( 0.13\%) &  & 408 ( 5.29\%) & 0 (   0.0\%) & \\
-Prior Myocardial Infarction (MI) & 2,492 (83.71\%) & 4 ( 0.13\%) &  & 556 ( 7.21\%) & 0 (   0.0\%) & \\
-\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & 2,393 (80.38\%) & 4 ( 0.13\%) &  & 863 (11.19\%) & 0 (   0.0\%) & \\
-\addlinespace
-Peripheral Vascular Disease (PVA) & 2,485 (83.47\%) & 4 ( 0.13\%) &  & 376 ( 4.88\%) & 0 (   0.0\%) & \\
-\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) & 4 ( 0.13\%) &  & 186 ( 2.41\%) & 0 (   0.0\%) & \\
-Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.99\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
-\rowcolor{gray!6}  Chronic Liver Disease (LD) & 2,891 (97.11\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
-Prior Solid Tumour (ST) & 2,570 (86.33\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
-\addlinespace
-\rowcolor{gray!6}  Hypertension (HT) & 2,546 (91.48\%) & 198 ( 6.64\%) &  & 3,114 (40.39\%) & 0 (   0.0\%) & \\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Table-One)<font size="2">Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)</font>
+</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SKS</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SERPR</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:left;"> mean/n </th>
+   <th style="text-align:left;"> IQR/p </th>
+   <th style="text-align:left;"> min </th>
+   <th style="text-align:left;"> max </th>
+   <th style="text-align:left;"> n.miss </th>
+   <th style="text-align:left;"> p.miss </th>
+   <th style="text-align:left;"> mean/n </th>
+   <th style="text-align:left;"> IQR/p </th>
+   <th style="text-align:left;"> min </th>
+   <th style="text-align:left;"> max </th>
+   <th style="text-align:left;"> n.miss </th>
+   <th style="text-align:left;"> p.miss </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Age </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 64.378 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 19.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 20.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 94.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 66.064 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 17.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   11.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 98.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> eGFR </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 30.369 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 22.387 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.578 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 59.966 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 35.647 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 20.565 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   1.199 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 59.994 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> eGFR Rate </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> -0.016 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.294 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> -19.107 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 33.782 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 1,278 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 42.87% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   1.319 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 21.897 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> -28.636 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 50.653 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> SBP </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 140.193 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 29.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 77.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 220.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   50 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 1.68% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 145.981 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 30.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   82.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 258.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 6,345 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 82.31% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> DBP </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 74.556 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 14.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 36.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 159.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   52 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 1.74% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 76.742 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 17.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   35.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 128.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 6,345 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 82.31% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> BMI </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 28.848 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 7.842 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 13.182 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 61.467 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   572 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 19.19% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 29.020 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 6.811 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   17.073 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 52.403 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,491 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 97.17% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Albumin </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 42.152 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 5.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 12.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 52.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   60 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.01% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 36.475 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 6.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   7.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 53.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 3,134 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 40.65% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Calcium </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2.302 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.180 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   1.210 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.660 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   68 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.28% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   2.407 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.160 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   1.455 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.400 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 4,513 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 58.54% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Haemoglobin </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 122.978 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 23.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 61.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 195.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   72 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.42% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 109.269 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 29.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   7.100 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 208.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 3,557 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 46.14% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Phosphate </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1.163 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.320 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.430 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.710 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   87 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.92% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   1.194 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.320 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   0.320 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   4.370 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 4,510 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 58.50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> uPCR </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   0.112 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.103 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.001 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   2.025 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   245 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 8.22% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   0.178 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.177 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   0.001 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   1.943 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,170 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 93.01% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> uPCR Rate </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> -0.096 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.188 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> -70.727 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 28.199 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 1,777 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 59.61% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   4.621 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.905 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> -176.200 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 952.812 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,495 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 97.22% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Gender: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Male </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,865 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 62.56% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   3,885 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 50.40% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Female </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,116 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 37.44% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   3,824 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 49.60% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Ethnicity: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,009 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 90.92% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> White </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,875 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 96.44% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     679 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 8.81% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Asian </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     75 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 2.52% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     12 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.16% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Black </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     21 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.70% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       7 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.09% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Other </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     10 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.34% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       2 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.03% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> SmokingStatus: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   42 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 1.41% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Former </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,535 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 51.49% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Non-Smoker </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     979 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 32.84% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Smoker </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     379 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 12.71% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Former 3Y </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     46 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 1.54% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> DiagGroup: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   567 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 19.02% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 6,640 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 86.13% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Systemic diseases affecting the kidney </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,304 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 43.74% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     316 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 4.10% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Glomerular disease </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     442 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 14.83% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     278 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 3.61% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Tubulointerstitial disease </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     268 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 8.99% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     173 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 2.24% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Miscellaneous renal disorders </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     227 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 7.61% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     198 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 2.57% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Familial / hereditary nephropathies </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     173 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 5.80% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     104 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 1.35% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Diabetes (DM) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     992 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 33.32% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   1,535 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 19.91% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Congestive Cardiac Failure (CCF) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,414 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 81.09% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     408 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 5.29% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Prior Myocardial Infarction (MI) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,492 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 83.71% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     556 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 7.21% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Ischemic Heart Disease (IHD) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,393 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 80.38% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     863 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 11.19% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Peripheral Vascular Disease (PVA) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,485 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 83.47% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     376 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 4.88% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Prior Cerebrovascular Accident (CVA) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,727 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 91.60% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     186 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 2.41% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Chronic Obstructive Pulmonary Disease (COPD) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,411 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 80.99% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     % </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Chronic Liver Disease (LD) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,891 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 97.11% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     % </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Prior Solid Tumour (ST) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,570 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 86.33% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     % </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Hypertension (HT) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,546 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 91.48% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   198 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 6.64% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   3,114 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 40.39% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 Table \@ref(tab:Table-One) also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6% male vs 50.4% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. 
@@ -1082,99 +1751,393 @@ Overall, there were high levels of comorbidities within the SKS population, but 
 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median2).
 
-\begin{table}[!h]
-
-\caption{(\#tab:Event-Median2){\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Transition & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Two}}\\
-\hspace{1em}Alive to Dead & 1,427 ~ 3.9 y (4.3 y) [15.0 y] & 3,025 ~ 4.9 y (3.3 y) [10.1 y]\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Three}}\\
-\hspace{1em}CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to RRT & 680 ~ 2.5 y (3.3 y) [14.1 y] & 1,130 ~ 3.8 y (3.8 y) [10.1 y]\\
-\hspace{1em}RRT to Dead & 302 ~ 2.2 y (3.2 y) [13.5 y] & 446 ~ 1.5 y (2.4 y) [ 9.1 y]\\
-\rowcolor{gray!6}  CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\hspace{1em}CKD to HD & 344 ~ 2.5 y (3.5 y) [14.1 y] & 887 ~ 3.8 y (3.7 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to PD & 229 ~ 2.0 y (2.9 y) [12.9 y] & 149 ~ 3.5 y (4.1 y) [ 9.6 y]\\
-\hspace{1em}CKD to Tx & 107 ~ 3.2 y (2.7 y) [12.1 y] & 94 ~ 4.8 y (4.5 y) [ 9.7 y]\\
-\rowcolor{gray!6}  \hspace{1em}HD to Dead & 185 ~ 2.0 y (3.2 y) [11.8 y] & 398 ~ 1.5 y (2.5 y) [ 9.1 y]\\
-\hspace{1em}PD to Dead & 107 ~ 2.3 y (3.2 y) [11.7 y] & 47 ~ 2.1 y (2.3 y) [ 8.5 y]\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Event-Median2)<font size="2">Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]</font>
+</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Transition</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SKS</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SERPR</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Model </th>
+   <th style="text-align:right;"> From </th>
+   <th style="text-align:right;"> To </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> median </th>
+   <th style="text-align:right;"> IQR </th>
+   <th style="text-align:right;"> max </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> median </th>
+   <th style="text-align:right;"> IQR </th>
+   <th style="text-align:right;"> max </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> Two </td>
+   <td style="text-align:right;"> Alive </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;"> 1,427 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.3 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 15.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3,010 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.8 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> Three </td>
+   <td style="text-align:right;"> CKD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;"> 1,125 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.2 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 15.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2,568 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.7 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> RRT </td>
+   <td style="text-align:right;font-family: monospace;">   680 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.4 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 14.2 y </td>
+   <td style="text-align:right;font-family: monospace;"> 1,125 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.8 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.9 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;"> RRT </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;">   302 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.2 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 13.5 y </td>
+   <td style="text-align:right;font-family: monospace;">   442 </td>
+   <td style="text-align:right;font-family: monospace;"> 1.6 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.2 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> Five </td>
+   <td style="text-align:right;"> CKD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;"> 1,125 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.2 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 15.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2,568 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.7 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> HD </td>
+   <td style="text-align:right;font-family: monospace;">   344 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.6 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 14.2 y </td>
+   <td style="text-align:right;font-family: monospace;">   882 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.7 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.8 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> PD </td>
+   <td style="text-align:right;font-family: monospace;">   229 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.9 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 12.9 y </td>
+   <td style="text-align:right;font-family: monospace;">   149 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.1 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.5 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Tx </td>
+   <td style="text-align:right;font-family: monospace;">   107 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.2 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.7 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 12.1 y </td>
+   <td style="text-align:right;font-family: monospace;">   94 </td>
+   <td style="text-align:right;font-family: monospace;"> 5.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.4 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.8 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;"> HD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;">   185 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.1 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 11.8 y </td>
+   <td style="text-align:right;font-family: monospace;">   394 </td>
+   <td style="text-align:right;font-family: monospace;"> 1.6 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.2 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;"> PD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;">   107 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.4 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.2 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 11.8 y </td>
+   <td style="text-align:right;font-family: monospace;">   47 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.1 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 8.5 y </td>
+  </tr>
+</tbody>
+</table></div>
 
 ### Development
 
 Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix \@ref(chap-dev-paper-supp). Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
 
-\begin{table}[!h]
-
-\caption{(\#tab:PH-Three){\small Proportional Hazards for each transition in the Three-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to RRT & RRT to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.041 (  -0.051,  -0.031) & 0.063 (   0.050,   0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.000,  -0.000) & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.095 (  -0.108,  -0.082) & 0.011 (  -0.001,   0.025)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.363,   0.250)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) &  & 0.227 (  -0.770,   1.225)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.112,   1.288) & -0.108 (  -0.736,   0.519)\\
-\hspace{1em}uPCR Rate &  & -0.019 (  -0.045,   0.005) & 0.036 (  -0.062,   0.136)\\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.310,   0.747) & -0.198 (  -0.534,   0.137)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.005 (  -0.000,   0.011) & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.006 (  -0.001,   0.015) & \\
-\hspace{1em}BMI &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.032 (  -0.059,  -0.004) & -0.044 (  -0.079,  -0.009)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) & -0.515 (  -1.207,   0.177) & \\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.005 (  -0.012,   0.001) & -0.005 (  -0.014,   0.003)\\
-\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.869 (  -0.059,   1.799) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.277 (  -0.455,  -0.099) & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.133 (  -0.757,   0.490) & -0.282 (  -1.082,   0.518)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.039) & -0.294 (  -0.598,   0.009)\\
-\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.175 (  -0.076,   0.428) & 0.387 (   0.068,   0.706)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 1.029 (   0.720,   1.338) & -0.562 (  -1.084,  -0.040)\\
-\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.165 (  -0.465,   0.134) & -0.488 (  -0.883,  -0.094)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.553,   0.620)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.265 (  -0.577,   0.046) & -0.310 (  -0.803,   0.181)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.141 (  -0.074,   0.358) & 0.200 (  -0.096,   0.496)\\
-\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) &  & -0.299 (  -0.597,  -0.002)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) & 0.234 (  -0.061,   0.530) & 0.186 (  -0.199,   0.572)\\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.245) & -0.077 (  -0.334,   0.179) & -0.097 (  -0.424,   0.228)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) & -0.168 (  -0.405,   0.068) & -0.183 (  -0.492,   0.126)\\
-\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  & -0.168 (  -0.577,   0.240)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & \\
-\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.316 (  -0.731,   0.097) & -0.270 (  -0.858,   0.318)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.611,   0.055)\\
-\hspace{1em}HT &  & 0.274 (  -0.176,   0.726) & -0.416 (  -1.104,   0.271)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PH-Three)<font size="2">Proportional Hazards for each transition in the Three-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> CKD to Dead </th>
+   <th style="text-align:right;"> CKD to RRT </th>
+   <th style="text-align:right;"> RRT to Dead </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>Age</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.162 (  -0.051,   0.375) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.041 (  -0.051,  -0.032) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.063 (   0.051,   0.076) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60)<sup>2</sup> </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.003,   0.001) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.000 (  -0.001,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(Age) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -5.725 ( -17.969,   6.519) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>eGFR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.020,  -0.007) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.096 (  -0.109,  -0.083) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.012 (  -0.002,   0.026) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.055 (  -0.021,   0.131) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.056 (  -0.364,   0.251) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(eGFR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.043 (  -0.125,   0.211) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.228 (  -0.770,   1.226) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>uPCR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.125 (  -0.318,   0.569) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.700 (   0.113,   1.288) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.108 (  -0.736,   0.519) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.020 (  -0.045,   0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.037 (  -0.063,   0.136) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(uPCR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.218 (  -0.311,   0.748) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.198 (  -0.534,   0.137) </td>
+  </tr>
+  <tr grouplength="7"><td colspan="4" style="border-bottom: 1px solid;"><strong>Measures</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> SBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.005,   0.002) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.005 (  -0.001,   0.011) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (   0.000,   0.013) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (  -0.002,   0.016) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> BMI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.045 (  -0.065,  -0.024) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.032 (  -0.060,  -0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.045 (  -0.080,  -0.010) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Corrected Calcium </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.280 (  -0.192,   0.753) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.515 (  -1.208,   0.177) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.018,  -0.008) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.005 (  -0.012,   0.002) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.015,   0.004) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Phosphate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.512 (   0.133,   0.891) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.870 (  -0.060,   1.800) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="1"><td colspan="4" style="border-bottom: 1px solid;"><strong>Gender</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Female </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.236 (  -0.371,  -0.100) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.278 (  -0.456,  -0.100) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>Smoking Status</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Former (3 years+) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.213 (  -0.879,   0.453) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.134 (  -0.758,   0.490) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.282 (  -1.083,   0.519) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Non-Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.198 (  -0.345,  -0.051) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.162 (  -0.364,   0.040) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.295 (  -0.599,   0.010) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.356 (   0.161,   0.552) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.176 (  -0.077,   0.428) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.387 (   0.069,   0.706) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="4" style="border-bottom: 1px solid;"><strong>Primary Renal Diagnosis</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Familial / hereditary nephropathies </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.424 (  -0.855,   0.006) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.029 (   0.721,   1.338) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.563 (  -1.085,  -0.040) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Glomerular disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.395 (  -0.636,  -0.154) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.166 (  -0.465,   0.134) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.489 (  -0.884,  -0.094) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Miscellaneous renal disorders </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.263 (  -0.506,  -0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.649 (  -1.143,  -0.155) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.033 (  -0.554,   0.620) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Tubulointerstitial disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.463 (  -0.742,  -0.185) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.266 (  -0.577,   0.046) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.311 (  -0.803,   0.182) </td>
+  </tr>
+  <tr grouplength="10"><td colspan="4" style="border-bottom: 1px solid;"><strong>Comorbidity</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DM </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.122 (  -0.011,   0.255) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.142 (  -0.075,   0.359) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.200 (  -0.096,   0.497) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CCF </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.395 (  -0.536,  -0.254) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.300 (  -0.597,  -0.003) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> MI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.246 (  -0.398,  -0.095) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.234 (  -0.062,   0.530) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.187 (  -0.199,   0.572) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.102 (  -0.041,   0.246) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.077 (  -0.334,   0.179) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.098 (  -0.424,   0.228) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> PVD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.249 (  -0.395,  -0.103) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.169 (  -0.406,   0.068) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.183 (  -0.493,   0.126) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CVA </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.071 (  -0.253,   0.111) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.168 (  -0.577,   0.241) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> COPD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.290 (  -0.433,  -0.146) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> LD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.170 (  -0.579,   0.239) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.317 (  -0.732,   0.098) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.270 (  -0.859,   0.318) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> ST </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.274 (  -0.431,  -0.118) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.181 (  -0.516,   0.153) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.278 (  -0.612,   0.056) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> HT </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.275 (  -0.177,   0.726) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.416 (  -1.105,   0.272) </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
@@ -1183,96 +2146,316 @@ Female patients are predicted to be more likely to remain in the CKD state than 
 
 Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
 
-\begin{table}[!h]
-
-\caption{(\#tab:IV-Three){\small Internal Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.74 ( 0.74,  0.75) & 0.68 ( 0.68,  0.69) & 0.64 ( 0.64,  0.65) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Three & < 30 & 0.75 ( 0.74,  0.75) & 0.73 ( 0.73,  0.73) & 0.68 ( 0.67,  0.68) & 0.68 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.75 ( 0.75,  0.75) & 0.75 ( 0.75,  0.76) & 0.67 ( 0.67,  0.67) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.72 ( 0.72,  0.73) & 0.65 ( 0.65,  0.66) & 0.67 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.86) & 0.83 ( 0.83,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.85,  0.86) & 0.86 ( 0.85,  0.86) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)\\  0.03 ( 0.02,  0.03)} & \makecell[r]{-0.02 (-0.02, -0.01)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.00 (-0.01, -0.00) & 0.02 ( 0.01,  0.02) & 0.00 (-0.00,  0.00) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.00 (-0.00,  0.00) & -0.04 (-0.04, -0.04) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.25},  0.00,  0.04\\ -0.03,  \emph{1.10}, -0.00\\ -0.00,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.17}, -0.06,  0.01\\  0.03,  \emph{1.25}, -0.01\\ -0.01,  0.01,  \emph{1.37}} & \makecell[r]{\emph{1.21}, -0.02, -0.01\\  0.01,  \emph{1.44}, -0.04\\ -0.02,  0.02,  \emph{1.27}} & \makecell[r]{\emph{1.32}, -0.01,  0.00\\ -0.00,  \emph{1.37}, -0.01\\ -0.00,  0.00,  \emph{1.33}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21},  0.02,  0.07\\ -0.04,  \emph{1.24},  0.07\\  0.01,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.36}, -0.00, -0.01\\  0.00,  \emph{1.31},  0.03\\ -0.02, -0.00,  \emph{1.26}} & \makecell[r]{\emph{1.35}, -0.04, -0.01\\  0.04,  \emph{1.33},  0.04\\  0.04, -0.02,  \emph{1.34}} & \makecell[r]{\emph{1.31},  0.00,  0.00\\ -0.01,  \emph{1.33},  0.01\\ -0.00,  0.00,  \emph{1.35}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.28} & \emph{1.27} & \emph{1.31}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.21} & \emph{1.21} & \emph{1.34}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:IV-Three)<font size="2">Internal Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.74,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.64,  0.65) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.75 ( 0.74,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.73 ( 0.73,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.67,  0.68) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.75 ( 0.75,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.75 ( 0.75,  0.76) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.65,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.86,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.83,  0.84) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01)<br> -0.01 (-0.02, -0.01)<br> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.01)<br> -0.00 (-0.00, -0.00)<br>  0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00)<br>  0.03 ( 0.02,  0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.04 (-0.04, -0.04) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25**,  0.00,  0.04<br> -0.03,  **1.10**, -0.00<br> -0.00,  0.01,  **1.16** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.17**, -0.06,  0.01<br>  0.03,  **1.25**, -0.01<br> -0.01,  0.01,  **1.37** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21**, -0.02, -0.01<br>  0.01,  **1.44**, -0.04<br> -0.02,  0.02,  **1.27** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.32**, -0.01,  0.00<br> -0.00,  **1.37**, -0.01<br> -0.00,  0.00,  **1.33** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21**,  0.02,  0.07<br> -0.04,  **1.24**,  0.07<br>  0.01,  0.01,  **1.16** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.36**, -0.00, -0.01<br>  0.00,  **1.31**,  0.03<br> -0.02, -0.00,  **1.26** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.35**, -0.04, -0.01<br>  0.04,  **1.33**,  0.04<br>  0.04, -0.02,  **1.34** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.31**,  0.00,  0.00<br> -0.01,  **1.33**,  0.01<br> -0.00,  0.00,  **1.35** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.28** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.27** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.31** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.05** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.34** </td>
+  </tr>
+</tbody>
+</table></div>
 
 Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
 
 
-\begin{table}[!h]
-
-\caption{(\#tab:EV-Three){\small External Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.70 ( 0.69,  0.70) & 0.61 ( 0.60,  0.61) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Three & < 30 & 0.68 ( 0.67,  0.68) & 0.72 ( 0.71,  0.72) & 0.65 ( 0.64,  0.65) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.67 ( 0.67,  0.67) & 0.70 ( 0.69,  0.70) & 0.63 ( 0.63,  0.63) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.66 ( 0.66,  0.67) & 0.70 ( 0.70,  0.70) & 0.65 ( 0.65,  0.66) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.82 ( 0.82,  0.82) & 0.83 ( 0.83,  0.83) & 0.79 ( 0.79,  0.79) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Three & < 30 & 0.85 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.85 ( 0.85,  0.86) & 0.84 ( 0.84,  0.85) & 0.80 ( 0.80,  0.80) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Two & < 30 & 0.83 ( 0.83,  0.83) & 0.82 ( 0.82,  0.82) & 0.80 ( 0.80,  0.81) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.05 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{0.04 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.00 (-0.00,  0.00)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 (-0.00,  0.00) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.01 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.35}, -0.04,  0.04\\  0.06,  \emph{1.49}, -0.03\\  0.01,  0.00,  \emph{1.25}} & \makecell[r]{\emph{1.13}, -0.00,  0.08\\ -0.02,  \emph{1.31},  0.01\\ -0.03,  0.01,  \emph{1.39}} & \makecell[r]{\emph{1.45}, -0.02,  0.03\\  0.03,  \emph{1.73},  0.03\\  0.04, -0.00,  \emph{1.47}} & \makecell[r]{\emph{1.54},  0.00, -0.00\\  0.01,  \emph{1.52},  0.00\\ -0.00,  0.00,  \emph{1.54}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.23},  0.03,  0.00\\ -0.05,  \emph{1.20}, -0.04\\ -0.00, -0.00,  \emph{1.37}} & \makecell[r]{\emph{0.99}, -0.01, -0.00\\  0.04,  \emph{1.34}, -0.03\\  0.00,  0.01,  \emph{1.46}} & \makecell[r]{\emph{1.56},  0.00,  0.00\\ -0.05,  \emph{1.49},  0.03\\  0.03,  0.01,  \emph{1.63}} & \makecell[r]{\emph{1.62}, -0.01,  0.01\\ -0.00,  \emph{1.53},  0.01\\  0.00, -0.00,  \emph{1.58}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.28} & \emph{1.26} & \emph{1.64} & \emph{1.51}\\
-\hspace{1em}Two & < 30 & \emph{1.18} & \emph{1.25} & \emph{1.57} & \emph{1.59}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:EV-Three)<font size="2">External Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.69,  0.70) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.61 ( 0.60,  0.61) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.62 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.64,  0.65) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.69,  0.70) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.63) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.62 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.70,  0.70) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.65,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.79 ( 0.79,  0.79) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.80,  0.81) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.80,  0.80) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.80,  0.81) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.80,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.00)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02)<br> -0.01 (-0.01, -0.00)<br>  0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.05 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.04 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02)<br> -0.00 (-0.00,  0.00)<br>  0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.01)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.05 (-0.05, -0.04) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.35**, -0.04,  0.04<br>  0.06,  **1.49**, -0.03<br>  0.01,  0.00,  **1.25** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.13**, -0.00,  0.08<br> -0.02,  **1.31**,  0.01<br> -0.03,  0.01,  **1.39** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.45**, -0.02,  0.03<br>  0.03,  **1.73**,  0.03<br>  0.04, -0.00,  **1.47** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.54**,  0.00, -0.00<br>  0.01,  **1.52**,  0.00<br> -0.00,  0.00,  **1.54** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.23**,  0.03,  0.00<br> -0.05,  **1.20**, -0.04<br> -0.00, -0.00,  **1.37** </td>
+   <td style="text-align:right;font-family: monospace;"> **0.99**, -0.01, -0.00<br>  0.04,  **1.34**, -0.03<br>  0.00,  0.01,  **1.46** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.56**,  0.00,  0.00<br> -0.05,  **1.49**,  0.03<br>  0.03,  0.01,  **1.63** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.62**, -0.01,  0.01<br> -0.00,  **1.53**,  0.01<br>  0.00, -0.00,  **1.58** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.28** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.26** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.64** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.51** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.18** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.57** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.59** </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 ### Example
 
 The example patients seen in Table \@ref(tab:Example-Patient) were passed through our Three-State prediction model and the results for all time-points are shown in figure \@ref(fig:Example-Predictions-trend). The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{figure/Dev_Paper_Example} 
-
-}
-
-\caption{Results of Example Patients}(\#fig:Example-Predictions-trend)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="figure/Dev_Paper_Example.png" alt="Results of Example Patients" width="100%" />
+<p class="caption">(\#fig:Example-Predictions-trend)Results of Example Patients</p>
+</div>
 
 ### Calculator
 
@@ -1313,7 +2496,7 @@ All three models produced for this work performed well in terms of accuracy, cal
 
 
 # Conclusion {#chap-conclusion}
-\chaptermark{Conclusion}
+
 Last updated: 21 Apr
 
 Here is where my concluding section will go.
@@ -1330,7 +2513,7 @@ The end.
 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
-\chaptermark{Competing Risks and Unmeasured Confounding - Supp}
+
 
 ## Simulation Details
 
@@ -1348,7 +2531,7 @@ Due to the relationship between the cause specific hazard functions and the subd
 
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material {#chap-IPCW-logistic-supp}
-\chaptermark{IPCW Calibration-in-the-Large - Supp}
+
 
 ## Calibration Slope
 
@@ -1358,8 +2541,7 @@ The main purpose of this paper was to assess the evaluation of calibration-in-th
 ### Results
 
 
-
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5)} 
+<img src="figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5).png" width="1968" />
 
 Results currently show bias/coverage/EmpsE away from 0, rather than 1. Needs fixing. Oops.
 
@@ -1375,7 +2557,7 @@ Brief discussion, much briefer than the main points.
 
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material{#chap-dev-paper-supp}
-\chaptermark{Development and Validation of MSCPM - Supp}
+
 
 ## Statistical Analysis
 
@@ -1414,68 +2596,162 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 
 Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA [@venkat-raman_new_2012] definition of Systemic diseases affecting the kidney had the highest likelihood of death.
 
-\begin{table}[!h]
-
-\caption{(\#tab:PH-Two){\small Proportional Hazards for each transition in the Two-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & Alive to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.110 (  -0.055,   0.275)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.001,   0.000)\\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -2.853 ( -12.306,   6.599)\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.018,  -0.008)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate & -0.007 (  -0.090,   0.075)\\
-\hspace{1em}log(eGFR Rate) & 0.090 (  -0.199,   0.380)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & \\
-\hspace{1em}uPCR Rate & \\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) & \\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.004 (  -0.000,   0.009)\\
-\hspace{1em}BMI & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.048 (  -0.061,  -0.034)\\
-\hspace{1em}Corrected Calcium & 0.222 (  -0.153,   0.599)\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.011 (  -0.015,  -0.007)\\
-\hspace{1em}Phosphate & 0.338 (   0.119,   0.557)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.172 (  -0.291,  -0.053)\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.403 (  -0.908,   0.101)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.226 (  -0.358,  -0.095)\\
-\hspace{1em}Smoker & 0.376 (   0.212,   0.539)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.399 (  -0.728,  -0.070)\\
-\hspace{1em}Glomerular disease & -0.406 (  -0.618,  -0.193)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.220 (  -0.434,  -0.005)\\
-\hspace{1em}Tubulointerstitial disease & -0.452 (  -0.696,  -0.208)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.144 (   0.022,   0.265)\\
-\hspace{1em}CCF & -0.378 (  -0.505,  -0.252)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.165 (  -0.304,  -0.026)\\
-\hspace{1em}IHD & 0.070 (  -0.059,   0.200)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.240 (  -0.371,  -0.109)\\
-\hspace{1em}CVA & -0.128 (  -0.293,   0.036)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.203 (  -0.330,  -0.076)\\
-\hspace{1em}LD & -0.241 (  -0.573,   0.091)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.299 (  -0.440,  -0.158)\\
-\hspace{1em}HT & -0.080 (  -0.339,   0.177)\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PH-Two)<font size="2">Proportional Hazards for each transition in the Two-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Alive to Dead </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>Age</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.110 (  -0.055,   0.275) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60)<sup>2</sup> </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.001,   0.000) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(Age) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -2.853 ( -12.306,   6.599) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>eGFR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.018,  -0.008) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.007 (  -0.090,   0.075) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(eGFR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.090 (  -0.199,   0.380) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>uPCR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(uPCR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="7"><td colspan="2" style="border-bottom: 1px solid;"><strong>Measures</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> SBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.004 (  -0.000,   0.009) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> BMI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.048 (  -0.061,  -0.034) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Corrected Calcium </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.222 (  -0.153,   0.599) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.011 (  -0.015,  -0.007) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Phosphate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.338 (   0.119,   0.557) </td>
+  </tr>
+  <tr grouplength="1"><td colspan="2" style="border-bottom: 1px solid;"><strong>Gender</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Female </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.172 (  -0.291,  -0.053) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>Smoking Status</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Former (3 years+) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.403 (  -0.908,   0.101) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Non-Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.226 (  -0.358,  -0.095) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.376 (   0.212,   0.539) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="2" style="border-bottom: 1px solid;"><strong>Primary Renal Diagnosis</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Familial / hereditary nephropathies </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.399 (  -0.728,  -0.070) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Glomerular disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.406 (  -0.618,  -0.193) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Miscellaneous renal disorders </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.220 (  -0.434,  -0.005) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Tubulointerstitial disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.452 (  -0.696,  -0.208) </td>
+  </tr>
+  <tr grouplength="10"><td colspan="2" style="border-bottom: 1px solid;"><strong>Comorbidity</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DM </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.144 (   0.022,   0.265) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CCF </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.378 (  -0.505,  -0.252) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> MI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.165 (  -0.304,  -0.026) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.070 (  -0.059,   0.200) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> PVD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.240 (  -0.371,  -0.109) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CVA </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.128 (  -0.293,   0.036) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> COPD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.203 (  -0.330,  -0.076) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> LD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.241 (  -0.573,   0.091) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> ST </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.299 (  -0.440,  -0.158) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> HT </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.080 (  -0.339,   0.177) </td>
+  </tr>
+</tbody>
+</table></div>
 
 Equation \@ref(eq:CH-Two-16) below shows the baseline cumulative hazard functions for the transition from Alive to Dead in the Two-State Model.
 
@@ -1486,66 +2762,178 @@ Equation \@ref(eq:CH-Two-16) below shows the baseline cumulative hazard function
 Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model. Calibration Intercept is close to 0, implying the model is well calibrated overall with a high c-statistic and Brier Score. Calibration Slope above 1 implies that the model under-estimates outcomes.
 
 
-\begin{table}[!h]
-
-\caption{(\#tab:IV-Two){\small Internal Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & < 60 & 0.63 ( 0.62,  0.63) & 0.69 ( 0.69,  0.69) & 0.66 ( 0.66,  0.67) & 0.63 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.68 ( 0.68,  0.69) & 0.66 ( 0.66,  0.66) & 0.63 ( 0.63,  0.64)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & < 60 & 0.82 ( 0.82,  0.82) & 0.85 ( 0.84,  0.85) & 0.81 ( 0.81,  0.81) & 0.81 ( 0.81,  0.82)\\
-\hspace{1em}Two & < 30 & 0.84 ( 0.84,  0.84) & 0.83 ( 0.82,  0.83) & 0.83 ( 0.82,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & < 60 & 0.01 ( 0.00,  0.01) & 0.01 ( 0.00,  0.01) & -0.02 (-0.02, -0.01) & -0.00 (-0.01, -0.00)\\
-\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.02) & 0.00 ( 0.00,  0.01) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00, -0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & < 60 & \emph{1.33} & \emph{1.46} & \emph{1.26} & \emph{1.48}\\
-\hspace{1em}Two & < 30 & \emph{1.23} & \emph{1.25} & \emph{1.30} & \emph{1.51}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:IV-Two)<font size="2">Internal Validation of the Two-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.69,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00, -0.00) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.33** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.46** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.26** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.48** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.23** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.30** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.51** </td>
+  </tr>
+</tbody>
+</table></div>
 
 Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model, which shows similar results to the internal validation with slightly impaired perfomance, which is to be expected in an external validation.
 
 
-\begin{table}[!h]
-
-\caption{(\#tab:EV-Two){\small External Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & < 60 & 0.64 ( 0.63,  0.64) & 0.57 ( 0.56,  0.57) & 0.57 ( 0.56,  0.58) & 0.56 ( 0.56,  0.57)\\
-\hspace{1em}Two & < 30 & 0.67 ( 0.66,  0.67) & 0.64 ( 0.63,  0.64) & 0.57 ( 0.56,  0.57) & 0.57 ( 0.56,  0.57)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & < 60 & 0.81 ( 0.81,  0.82) & 0.81 ( 0.80,  0.81) & 0.80 ( 0.79,  0.80) & 0.78 ( 0.78,  0.78)\\
-\hspace{1em}Two & < 30 & 0.81 ( 0.81,  0.81) & 0.80 ( 0.80,  0.81) & 0.78 ( 0.78,  0.79) & 0.78 ( 0.78,  0.78)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & < 60 & -0.00 (-0.00,  0.00) & 0.02 ( 0.01,  0.02) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & < 60 & \emph{1.29} & \emph{1.25} & \emph{1.72} & \emph{2.21}\\
-\hspace{1em}Two & < 30 & \emph{1.37} & \emph{1.37} & \emph{2.05} & \emph{1.88}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:EV-Two)<font size="2">External Validation of the Two-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.57) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.58) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.56 ( 0.56,  0.57) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.57) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.57) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.80,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.79,  0.80) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.78 ( 0.78,  0.78) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.80,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.78 ( 0.78,  0.79) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.78 ( 0.78,  0.78) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.05 (-0.05, -0.04) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.29** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.72** </td>
+   <td style="text-align:right;font-family: monospace;"> **2.21** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.37** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.37** </td>
+   <td style="text-align:right;font-family: monospace;"> **2.05** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.88** </td>
+  </tr>
+</tbody>
+</table></div>
 
 ### Three State Model
 
@@ -1576,72 +2964,337 @@ Validation results for the Three-State Model can be found in Chapter \@ref(chap-
 
 Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
 
-
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{(\#tab:PH-Five){\small Proportional Hazards for each transition in the Five-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to HD & CKD to PD & CKD to Tx & HD to Dead & PD to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.029 (  -0.047,  -0.011) & -0.037 (  -0.057,  -0.018) & -0.099 (  -0.127,  -0.072) & 0.069 (   0.051,   0.087) & 0.046 (   0.024,   0.068)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.001,   0.000) & -0.000 (  -0.000,   0.000) & -0.000 (  -0.001,  -0.000) &  & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  &  &  &  & \\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.088 (  -0.105,  -0.071) & -0.112 (  -0.135,  -0.090) & -0.097 (  -0.120,  -0.074) & 0.016 (   0.000,   0.032) & -0.006 (  -0.036,   0.023)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.085 (  -0.058,   0.229) &  & -0.169 (  -0.813,   0.474) & -0.053 (  -0.701,   0.593) & 0.000 (  -0.294,   0.294)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) & -0.261 (  -0.798,   0.276) & 0.445 (  -0.280,   1.171) & 0.440 (  -1.371,   2.252) & 0.366 (  -1.344,   2.077) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.738 (   0.024,   1.451) & 0.650 (  -0.906,   2.207) & 0.317 (  -0.606,   1.241) & -0.577 (  -1.317,   0.162) & 0.071 (  -1.109,   1.251)\\
-\hspace{1em}uPCR Rate &  &  & -0.042 (  -0.139,   0.055) & 0.020 (  -0.050,   0.091) & 0.030 (  -0.039,   0.099) & \\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & -0.097 (  -0.880,   0.685) & 0.740 (  -0.470,   1.950) & -0.244 (  -0.940,   0.450) &  & -0.080 (  -0.515,   0.354)\\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.003 (  -0.003,   0.010) & 0.009 (  -0.001,   0.020) &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.007 (  -0.005,   0.021) & 0.007 (  -0.010,   0.025) &  &  & \\
-\hspace{1em}BMI &  & 0.003 (  -0.063,   0.070) &  & -0.019 (  -0.060,   0.021) &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.040 (  -0.075,  -0.005) & -0.037 (  -0.100,   0.025) &  & -0.050 (  -0.096,  -0.003) & -0.021 (  -0.076,   0.032)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) &  & -1.291 (  -2.494,  -0.089) &  &  & 1.243 (  -0.187,   2.674)\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.009 (  -0.018,  -0.000) & -0.001 (  -0.016,   0.013) & -0.003 (  -0.016,   0.010) & -0.006 (  -0.017,   0.005) & -0.022 (  -0.037,  -0.006)\\
-\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.904 (   0.087,   1.721) & 1.042 (  -0.336,   2.421) & 0.578 (  -0.333,   1.491) &  & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.492 (  -0.754,  -0.230) & -0.156 (  -0.466,   0.154) &  &  & \\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.121 (  -1.020,   0.776) & -0.337 (  -1.527,   0.851) & 0.599 (  -0.501,   1.701) & -0.519 (  -1.745,   0.706) & -0.026 (  -1.302,   1.249)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.168 (  -0.567,   0.230) & -0.056 (  -0.405,   0.291) & -0.161 (  -0.623,   0.299) & -0.192 (  -0.641,   0.256) & -0.481 (  -1.013,   0.049)\\
-\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.259 (  -0.091,   0.611) & 0.374 (  -0.004,   0.753) & -0.532 (  -1.202,   0.136) & 0.686 (   0.252,   1.120) & 0.136 (  -0.400,   0.674)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 0.869 (   0.391,   1.348) & 0.982 (   0.466,   1.498) & 1.330 (   0.504,   2.156) & -0.775 (  -1.444,  -0.105) & -0.397 (  -1.214,   0.419)\\
-\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.313 (  -0.716,   0.090) & -0.263 (  -0.706,   0.178) & 0.224 (  -0.349,   0.797) & -0.683 (  -1.146,  -0.221) & -0.332 (  -0.994,   0.330)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.375 (  -0.927,   0.176) & -1.319 (  -2.390,  -0.247) & -1.377 (  -2.859,   0.103) & -0.364 (  -1.039,   0.310) & 0.999 (  -0.340,   2.338)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.307 (  -0.788,   0.173) & -0.311 (  -0.904,   0.281) & -0.232 (  -1.130,   0.666) & -0.599 (  -1.247,   0.048) & 0.428 (  -0.427,   1.284)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.123 (  -0.187,   0.434) &  &  &  & 0.570 (   0.017,   1.124)\\
-\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) & -0.144 (  -0.517,   0.228) & 0.378 (  -0.094,   0.852) & 0.341 (  -0.529,   1.213) & -0.174 (  -0.576,   0.228) & -0.389 (  -0.994,   0.216)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) &  & 0.274 (  -0.313,   0.862) & 1.602 (  -0.445,   3.650) & 0.304 (  -0.152,   0.761) & \\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.245) &  & -0.440 (  -0.869,  -0.010) & 0.864 (  -0.634,   2.362) &  & -0.236 (  -0.852,   0.378)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) &  & -0.203 (  -0.631,   0.224) & -0.600 (  -1.318,   0.118) & -0.315 (  -0.697,   0.067) & \\
-\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  &  & -0.287 (  -1.243,   0.668) &  & -0.833 (  -1.634,  -0.032)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & -0.204 (  -0.563,   0.153) & 0.625 (  -0.101,   1.351) & 0.208 (  -0.189,   0.606) & \\
-\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.659 (  -1.157,  -0.160) & -0.320 (  -1.015,   0.373) & 12.426 (-521.602, 546.454) &  & -0.751 (  -1.941,   0.438)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.335 (  -0.777,   0.106) &  &  & -0.184 (  -0.592,   0.223) & -0.419 (  -1.146,   0.306)\\
-\hspace{1em}HT &  & 0.139 (  -0.425,   0.705) & 0.447 (  -0.535,   1.429) & 0.458 (  -0.527,   1.443) &  & -0.920 (  -2.113,   0.271)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PH-Five)<font size="2">Proportional Hazards for each transition in the Five-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> CKD to Dead </th>
+   <th style="text-align:right;"> CKD to HD </th>
+   <th style="text-align:right;"> CKD to PD </th>
+   <th style="text-align:right;"> CKD to Tx </th>
+   <th style="text-align:right;"> HD to Dead </th>
+   <th style="text-align:right;"> PD to Dead </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>Age</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.161 (  -0.051,   0.374) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.029 (  -0.047,  -0.011) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.037 (  -0.057,  -0.018) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.099 (  -0.127,  -0.072) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.069 (   0.051,   0.087) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.046 (   0.024,   0.068) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60)<sup>2</sup> </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.002,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.001,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.000,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.001,  -0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(Age) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -5.725 ( -17.969,   6.518) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>eGFR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.019,  -0.006) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.088 (  -0.105,  -0.071) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.112 (  -0.135,  -0.090) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.097 (  -0.120,  -0.074) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.016 (   0.000,   0.032) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.036,   0.023) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.085 (  -0.058,   0.229) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.169 (  -0.813,   0.474) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.053 (  -0.701,   0.593) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.000 (  -0.294,   0.294) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(eGFR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.042 (  -0.125,   0.210) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.261 (  -0.798,   0.276) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.445 (  -0.280,   1.171) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.440 (  -1.371,   2.252) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.366 (  -1.344,   2.077) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>uPCR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.125 (  -0.318,   0.569) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.738 (   0.024,   1.451) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.650 (  -0.906,   2.207) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.317 (  -0.606,   1.241) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.577 (  -1.317,   0.162) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.071 (  -1.109,   1.251) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.042 (  -0.139,   0.055) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.020 (  -0.050,   0.091) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.030 (  -0.039,   0.099) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(uPCR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.097 (  -0.880,   0.685) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.740 (  -0.470,   1.950) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.244 (  -0.940,   0.450) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.080 (  -0.515,   0.354) </td>
+  </tr>
+  <tr grouplength="7"><td colspan="7" style="border-bottom: 1px solid;"><strong>Measures</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> SBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.004,   0.002) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.003 (  -0.003,   0.010) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.009 (  -0.001,   0.020) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.006 (   0.000,   0.013) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (  -0.005,   0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (  -0.010,   0.025) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> BMI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.003 (  -0.063,   0.070) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.019 (  -0.060,   0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.044 (  -0.064,  -0.024) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.040 (  -0.075,  -0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.037 (  -0.100,   0.025) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.050 (  -0.096,  -0.003) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.021 (  -0.076,   0.032) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Corrected Calcium </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.280 (  -0.192,   0.752) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -1.291 (  -2.494,  -0.089) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.243 (  -0.187,   2.674) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.017,  -0.008) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.009 (  -0.018,  -0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.016,   0.013) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.003 (  -0.016,   0.010) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.017,   0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.022 (  -0.037,  -0.006) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Phosphate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.511 (   0.132,   0.890) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.904 (   0.087,   1.721) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.042 (  -0.336,   2.421) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.578 (  -0.333,   1.491) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="1"><td colspan="7" style="border-bottom: 1px solid;"><strong>Gender</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Female </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.235 (  -0.371,  -0.099) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.492 (  -0.754,  -0.230) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.156 (  -0.466,   0.154) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>Smoking Status</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Former (3 years+) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.212 (  -0.879,   0.453) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.121 (  -1.020,   0.776) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.337 (  -1.527,   0.851) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.599 (  -0.501,   1.701) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.519 (  -1.745,   0.706) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.026 (  -1.302,   1.249) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Non-Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.198 (  -0.345,  -0.051) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.168 (  -0.567,   0.230) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.056 (  -0.405,   0.291) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.161 (  -0.623,   0.299) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.192 (  -0.641,   0.256) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.481 (  -1.013,   0.049) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.356 (   0.160,   0.551) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.259 (  -0.091,   0.611) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.374 (  -0.004,   0.753) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.532 (  -1.202,   0.136) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.686 (   0.252,   1.120) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.136 (  -0.400,   0.674) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="7" style="border-bottom: 1px solid;"><strong>Primary Renal Diagnosis</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Familial / hereditary nephropathies </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.424 (  -0.854,   0.006) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.869 (   0.391,   1.348) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.982 (   0.466,   1.498) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.330 (   0.504,   2.156) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.775 (  -1.444,  -0.105) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.397 (  -1.214,   0.419) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Glomerular disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.394 (  -0.635,  -0.154) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.313 (  -0.716,   0.090) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.263 (  -0.706,   0.178) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.224 (  -0.349,   0.797) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.683 (  -1.146,  -0.221) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.332 (  -0.994,   0.330) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Miscellaneous renal disorders </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.263 (  -0.505,  -0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.375 (  -0.927,   0.176) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -1.319 (  -2.390,  -0.247) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -1.377 (  -2.859,   0.103) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.364 (  -1.039,   0.310) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.999 (  -0.340,   2.338) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Tubulointerstitial disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.463 (  -0.741,  -0.184) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.307 (  -0.788,   0.173) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.311 (  -0.904,   0.281) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.232 (  -1.130,   0.666) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.599 (  -1.247,   0.048) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.428 (  -0.427,   1.284) </td>
+  </tr>
+  <tr grouplength="10"><td colspan="7" style="border-bottom: 1px solid;"><strong>Comorbidity</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DM </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.122 (  -0.011,   0.255) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.123 (  -0.187,   0.434) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.570 (   0.017,   1.124) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CCF </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.394 (  -0.535,  -0.253) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.144 (  -0.517,   0.228) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.378 (  -0.094,   0.852) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.341 (  -0.529,   1.213) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.174 (  -0.576,   0.228) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.389 (  -0.994,   0.216) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> MI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.246 (  -0.397,  -0.094) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.274 (  -0.313,   0.862) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.602 (  -0.445,   3.650) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.304 (  -0.152,   0.761) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.102 (  -0.041,   0.245) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.440 (  -0.869,  -0.010) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.864 (  -0.634,   2.362) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.236 (  -0.852,   0.378) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> PVD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.248 (  -0.394,  -0.103) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.203 (  -0.631,   0.224) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.600 (  -1.318,   0.118) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.315 (  -0.697,   0.067) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CVA </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.070 (  -0.252,   0.111) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.287 (  -1.243,   0.668) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.833 (  -1.634,  -0.032) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> COPD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.289 (  -0.433,  -0.145) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.204 (  -0.563,   0.153) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.625 (  -0.101,   1.351) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.208 (  -0.189,   0.606) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> LD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.169 (  -0.578,   0.239) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.659 (  -1.157,  -0.160) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.320 (  -1.015,   0.373) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 12.426 (-521.602, 546.454) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.751 (  -1.941,   0.438) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> ST </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.274 (  -0.431,  -0.117) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.335 (  -0.777,   0.106) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.184 (  -0.592,   0.223) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.419 (  -1.146,   0.306) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> HT </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.139 (  -0.425,   0.705) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.447 (  -0.535,   1.429) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.458 (  -0.527,   1.443) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.920 (  -2.113,   0.271) </td>
+  </tr>
+</tbody>
+</table></div>
 
 The equations \@ref(eq:CH-Five-12), \@ref(eq:CH-Five-13), \@ref(eq:CH-Five-14) and \@ref(eq:CH-Five-16) show the baseline cumulative hazard functions from the CKD state to HD, PD, Tx and Dead, respectively. Equation \@ref(eq:CH-Five-26) shows the baseline cumulative hazard function from HD to Dead and Equation \@ref(eq:CH-Five-36) shows the baseline cumulative hazard function from PD to Dead.
 
@@ -1667,114 +3320,449 @@ The equations \@ref(eq:CH-Five-12), \@ref(eq:CH-Five-13), \@ref(eq:CH-Five-14) a
 Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model. The calibration slope results are shown in a seperate table for both the internal and external validation.
 
 
-\begin{table}[!h]
-
-\caption{(\#tab:IV-Five){\small Internal Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & < 60 & 0.74 ( 0.74,  0.75) & 0.72 ( 0.72,  0.72) & 0.67 ( 0.66,  0.67) & 0.69 ( 0.69,  0.69)\\
-\hspace{1em}Five & < 30 & 0.76 ( 0.75,  0.76) & 0.71 ( 0.71,  0.72) & 0.65 ( 0.65,  0.66) & 0.68 ( 0.68,  0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.72 ( 0.72,  0.73) & 0.72 ( 0.72,  0.72) & 0.66 ( 0.66,  0.67) & 0.68 ( 0.68,  0.69)\\
-\hspace{1em}Three & < 30 & 0.72 ( 0.71,  0.72) & 0.74 ( 0.73,  0.74) & 0.67 ( 0.67,  0.68) & 0.69 ( 0.68,  0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.74 ( 0.74,  0.74) & 0.72 ( 0.72,  0.73) & 0.67 ( 0.67,  0.68) & 0.69 ( 0.68,  0.69)\\
-\hspace{1em}Two & < 30 & 0.74 ( 0.73,  0.74) & 0.72 ( 0.72,  0.73) & 0.72 ( 0.71,  0.72) & 0.69 ( 0.69,  0.69)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & < 60 & 0.88 ( 0.88,  0.88) & 0.86 ( 0.85,  0.86) & 0.83 ( 0.83,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Five & < 30 & 0.88 ( 0.87,  0.88) & 0.87 ( 0.87,  0.87) & 0.86 ( 0.86,  0.86) & 0.84 ( 0.84,  0.85)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Three & < 30 & 0.86 ( 0.86,  0.86) & 0.87 ( 0.87,  0.87) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.84,  0.85)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.86,  0.86) & 0.87 ( 0.87,  0.88) & 0.81 ( 0.81,  0.81) & 0.84 ( 0.84,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\  0.01 ( 0.00,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,  0.01)\\  0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.01 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\ -0.01 (-0.01, -0.00)\\ -0.04 (-0.05, -0.04)\\  0.01 ( 0.00,  0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Five & < 30 & \makecell[r]{-0.02 (-0.02, -0.02)\\  0.00 ( 0.00,  0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\  0.01 ( 0.01,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\  0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.02 ( 0.02,  0.02)\\ -0.02 (-0.02, -0.02)\\  0.02 ( 0.02,  0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\  0.01 ( 0.00,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.01 ( 0.00,  0.01)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.01 (-0.01, -0.00) & 0.01 ( 0.00,  0.01) & 0.00 (-0.00,  0.00) & -0.00 (-0.01, -0.00)\\
-\hspace{1em}Two & < 30 & -0.03 (-0.03, -0.03) & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.19},  0.01,  0.01\\ -0.01,  \emph{1.07}, -0.02\\ -0.07,  0.00,  \emph{1.11}} & \makecell[r]{\emph{1.16}, -0.01, -0.01\\ -0.00,  \emph{1.11}, -0.01\\  0.01, -0.00,  \emph{1.35}} & \makecell[r]{\emph{1.24}, -0.00,  0.00\\ -0.07,  \emph{1.28},  0.00\\ -0.03,  0.01,  \emph{1.18}} & \makecell[r]{\emph{1.30},  0.01, -0.00\\  0.00,  \emph{1.29}, -0.00\\ -0.00,  0.00,  \emph{1.32}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21}, -0.01,  0.01\\ -0.02,  \emph{1.18}, -0.01\\  0.02, -0.01,  \emph{1.15}} & \makecell[r]{\emph{1.12},  0.01,  0.00\\ -0.02,  \emph{1.27},  0.00\\  0.03,  0.04,  \emph{1.18}} & \makecell[r]{\emph{1.34},  0.12, -0.02\\  0.02,  \emph{1.43}, -0.05\\  0.00,  0.09,  \emph{1.19}} & \makecell[r]{\emph{1.27},  0.00, -0.00\\ -0.00,  \emph{1.28},  0.00\\ -0.00, -0.00,  \emph{1.29}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.03} & \emph{1.25} & \emph{1.25}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.16} & \emph{1.38} & \emph{1.28}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:IV-Five)<font size="2">Internal Validation of the Five-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.74,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.69,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.76 ( 0.75,  0.76) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.65,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.73,  0.74) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.74,  0.74) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.73,  0.74) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.69,  0.69) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.88 ( 0.88,  0.88) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.88 ( 0.87,  0.88) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.86,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.88) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.01)<br> -0.01 (-0.01, -0.01)<br>  0.01 ( 0.00,  0.01)<br> -0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01)<br>  0.01 ( 0.01,  0.01)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00)<br>  0.00 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.00)<br> -0.00 (-0.01, -0.00)<br> -0.01 (-0.01, -0.00)<br> -0.04 (-0.05, -0.04)<br>  0.01 ( 0.00,  0.01)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.02)<br>  0.00 ( 0.00,  0.01)<br> -0.00 (-0.01, -0.00)<br> -0.00 (-0.01, -0.00)<br>  0.01 ( 0.01,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br>  0.00 ( 0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br> -0.02 (-0.02, -0.01)<br> -0.00 (-0.00, -0.00)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)<br> -0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.01)<br> -0.01 (-0.01, -0.01)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br>  0.00 ( 0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02)<br>  0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.02)<br> -0.02 (-0.02, -0.02)<br>  0.02 ( 0.02,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00)<br>  0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br>  0.01 ( 0.00,  0.01)<br>  0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.03 (-0.03, -0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.19**,  0.01,  0.01<br> -0.01,  **1.07**, -0.02<br> -0.07,  0.00,  **1.11** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.16**, -0.01, -0.01<br> -0.00,  **1.11**, -0.01<br>  0.01, -0.00,  **1.35** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.24**, -0.00,  0.00<br> -0.07,  **1.28**,  0.00<br> -0.03,  0.01,  **1.18** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.30**,  0.01, -0.00<br>  0.00,  **1.29**, -0.00<br> -0.00,  0.00,  **1.32** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21**, -0.01,  0.01<br> -0.02,  **1.18**, -0.01<br>  0.02, -0.01,  **1.15** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.12**,  0.01,  0.00<br> -0.02,  **1.27**,  0.00<br>  0.03,  0.04,  **1.18** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.34**,  0.12, -0.02<br>  0.02,  **1.43**, -0.05<br>  0.00,  0.09,  **1.19** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.27**,  0.00, -0.00<br> -0.00,  **1.28**,  0.00<br> -0.00, -0.00,  **1.29** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.21** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.03** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.05** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.16** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.38** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.28** </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 Table \@ref(tab:EV-Five) shows the results from the external validation in the Five-State Model.
 
-\begin{table}[!h]
-
-\caption{(\#tab:EV-Five){\small External Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & < 60 & 0.70 ( 0.70,  0.71) & 0.72 ( 0.71,  0.72) & 0.64 ( 0.64,  0.65) & 0.63 ( 0.63,  0.64)\\
-\hspace{1em}Five & < 30 & 0.73 ( 0.72,  0.73) & 0.71 ( 0.70,  0.71) & 0.67 ( 0.67,  0.68) & 0.64 ( 0.64,  0.65)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.71 ( 0.71,  0.71) & 0.67 ( 0.66,  0.67) & 0.64 ( 0.63,  0.64)\\
-\hspace{1em}Three & < 30 & 0.69 ( 0.68,  0.69) & 0.68 ( 0.68,  0.69) & 0.63 ( 0.63,  0.64) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.69 ( 0.68,  0.69) & 0.68 ( 0.68,  0.69) & 0.60 ( 0.60,  0.60) & 0.64 ( 0.63,  0.64)\\
-\hspace{1em}Two & < 30 & 0.73 ( 0.72,  0.73) & 0.67 ( 0.67,  0.67) & 0.64 ( 0.63,  0.64) & 0.63 ( 0.63,  0.64)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & < 60 & 0.85 ( 0.85,  0.85) & 0.85 ( 0.84,  0.85) & 0.82 ( 0.82,  0.82) & 0.82 ( 0.81,  0.82)\\
-\hspace{1em}Five & < 30 & 0.85 ( 0.85,  0.85) & 0.83 ( 0.82,  0.83) & 0.82 ( 0.82,  0.82) & 0.81 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.83 ( 0.83,  0.84) & 0.83 ( 0.82,  0.83) & 0.81 ( 0.81,  0.82) & 0.81 ( 0.81,  0.82)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.84) & 0.82 ( 0.82,  0.82) & 0.82 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.84 ( 0.84,  0.85) & 0.85 ( 0.84,  0.85) & 0.81 ( 0.81,  0.81) & 0.82 ( 0.82,  0.82)\\
-\hspace{1em}Two & < 30 & 0.84 ( 0.83,  0.84) & 0.84 ( 0.84,  0.84) & 0.81 ( 0.81,  0.82) & 0.82 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & < 60 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\  0.04 ( 0.03,  0.04)\\  0.00 ( 0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,  0.01)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.03, -0.02)\\ -0.01 (-0.01, -0.00)\\  0.01 ( 0.00,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.01)\\ -0.00 (-0.01, -0.00)\\ -0.02 (-0.03, -0.02)\\  0.01 ( 0.01,  0.02)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Five & < 30 & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.02 ( 0.01,  0.02)\\ -0.02 (-0.03, -0.02)\\  0.03 ( 0.02,  0.03)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{0.02 ( 0.02,  0.03)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.02 ( 0.02,  0.02)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.03 ( 0.02,  0.03)\\  0.00 ( 0.00,  0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.00,  0.00)\\  0.02 ( 0.01,  0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.02)} & \makecell[r]{-0.01 (-0.01, -0.00)\\  0.02 ( 0.02,  0.03)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.00,  0.01)\\ -0.03 (-0.04, -0.03)\\ -0.02 (-0.03, -0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\ -0.02 (-0.02, -0.02)\\ -0.03 (-0.04, -0.03)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.02 ( 0.02,  0.02)\\ -0.05 (-0.05, -0.04)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 ( 0.00,  0.01) & -0.02 (-0.02, -0.02) & -0.00 (-0.00,  0.00) & 0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.01) & 0.02 ( 0.02,  0.03) & 0.01 ( 0.01,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.01}, -0.00, -0.00\\  0.01,  \emph{1.21}, -0.05\\  0.08, -0.05,  \emph{1.22}} & \makecell[r]{\emph{1.40},  0.02, -0.02\\ -0.03,  \emph{1.28}, -0.03\\ -0.07,  0.06,  \emph{1.12}} & \makecell[r]{\emph{1.61}, -0.03,  0.04\\  0.03,  \emph{1.76},  0.00\\  0.04, -0.00,  \emph{1.45}} & \makecell[r]{\emph{1.46}, -0.00, -0.00\\  0.00,  \emph{1.50}, -0.01\\ -0.00, -0.00,  \emph{1.45}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.24}, -0.00, -0.00\\ -0.02,  \emph{1.20}, -0.05\\ -0.01, -0.07,  \emph{1.34}} & \makecell[r]{\emph{1.39},  0.03,  0.00\\ -0.04,  \emph{1.24},  0.04\\ -0.03, -0.01,  \emph{1.18}} & \makecell[r]{\emph{1.28},  0.02,  0.03\\ -0.09,  \emph{1.38},  0.02\\ -0.07, -0.00,  \emph{1.44}} & \makecell[r]{\emph{1.51}, -0.00,  0.00\\  0.00,  \emph{1.41}, -0.00\\ -0.00, -0.00,  \emph{1.47}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.38} & \emph{1.12} & \emph{1.25} & \emph{1.46}\\
-\hspace{1em}Two & < 30 & \emph{1.26} & \emph{1.28} & \emph{1.35} & \emph{1.55}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:EV-Five)<font size="2">External Validation of the Five-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.70,  0.71) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.64,  0.65) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.73 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.70,  0.71) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.64,  0.65) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.71) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.60 ( 0.60,  0.60) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.73 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.81,  0.82) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.01)<br> -0.02 (-0.02, -0.01)<br> -0.02 (-0.02, -0.01)<br>  0.04 ( 0.03,  0.04)<br>  0.00 ( 0.00,  0.00)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01)<br> -0.01 (-0.02, -0.01)<br> -0.01 (-0.02, -0.01)<br> -0.02 (-0.03, -0.02)<br> -0.01 (-0.01, -0.00)<br>  0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01)<br> -0.00 (-0.01, -0.00)<br> -0.02 (-0.03, -0.02)<br>  0.01 ( 0.01,  0.02)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02)<br> -0.01 (-0.01, -0.00)<br>  0.02 ( 0.01,  0.02)<br> -0.02 (-0.03, -0.02)<br>  0.03 ( 0.02,  0.03)<br>  0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.03)<br> -0.02 (-0.02, -0.01)<br> -0.02 (-0.02, -0.01)<br> -0.00 (-0.00, -0.00)<br>  0.02 ( 0.02,  0.02)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.03 ( 0.02,  0.03)<br>  0.00 ( 0.00,  0.01)<br> -0.02 (-0.02, -0.01)<br> -0.00 (-0.01, -0.00)<br> -0.00 (-0.00,  0.00)<br>  0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br> -0.02 (-0.02, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.00)<br>  0.02 ( 0.02,  0.03)<br>  0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01)<br> -0.03 (-0.04, -0.03)<br> -0.02 (-0.03, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br> -0.02 (-0.02, -0.02)<br> -0.03 (-0.04, -0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02)<br> -0.00 (-0.01, -0.00)<br> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.02)<br> -0.05 (-0.05, -0.04)<br>  0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.01**, -0.00, -0.00<br>  0.01,  **1.21**, -0.05<br>  0.08, -0.05,  **1.22** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.40**,  0.02, -0.02<br> -0.03,  **1.28**, -0.03<br> -0.07,  0.06,  **1.12** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.61**, -0.03,  0.04<br>  0.03,  **1.76**,  0.00<br>  0.04, -0.00,  **1.45** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.46**, -0.00, -0.00<br>  0.00,  **1.50**, -0.01<br> -0.00, -0.00,  **1.45** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.24**, -0.00, -0.00<br> -0.02,  **1.20**, -0.05<br> -0.01, -0.07,  **1.34** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.39**,  0.03,  0.00<br> -0.04,  **1.24**,  0.04<br> -0.03, -0.01,  **1.18** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.28**,  0.02,  0.03<br> -0.09,  **1.38**,  0.02<br> -0.07, -0.00,  **1.44** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.51**, -0.00,  0.00<br>  0.00,  **1.41**, -0.00<br> -0.00, -0.00,  **1.47** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.38** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.12** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.25** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.46** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> **1.26** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.28** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.35** </td>
+   <td style="text-align:right;font-family: monospace;"> **1.55** </td>
+  </tr>
+</tbody>
+</table></div>
 
 Table \@ref(tab:Five-Valid-Slope) shows the calibration slopes for the model in the internal and external datasets in both the < 60 eGFR and <30 eGFR sub-populations.
 
 
-\begin{table}[!h]
-
-\caption{(\#tab:Five-Valid-Slope){\small Calibration Slope results for both the External and Internal Validation for the Five-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}}
-\toprule
-  & Internal < 60 & Internal < 30 & External < 60 & External < 30\\
-\midrule
-\rowcolor{gray!6}  One Year & \emph{1.14}, -0.01,  0.00,  0.02,  0.00,  0.01\newline  -0.00,  \emph{1.09}, -0.05, -0.01,  0.01,  0.00\newline  -0.04,  0.06,  \emph{1.22},  0.02,  0.03,  0.00\newline  -0.06,  0.02,  0.01,  \emph{1.25},  0.00, -0.02\newline  -0.02,  0.03,  0.02, -0.02,  \emph{1.13},  0.00\newline   0.05, -0.04, -0.06, -0.02, -0.00,  \emph{1.30} & \emph{1.07},  0.03,  0.02,  0.02,  0.01, -0.00\newline   0.00,  \emph{1.18},  0.01,  0.00, -0.06,  0.01\newline   0.01,  0.00,  \emph{1.03},  0.00, -0.05,  0.00\newline  -0.04, -0.03, -0.03,  \emph{1.11},  0.01, -0.03\newline   0.00, -0.03, -0.02, -0.02,  \emph{1.15},  0.01\newline   0.02, -0.01,  0.00, -0.00, -0.01,  \emph{1.11} & \emph{1.16},  0.02, -0.00, -0.01,  0.00,  0.06\newline  -0.03,  \emph{1.08}, -0.00, -0.00,  0.04, -0.04\newline  -0.05, -0.02,  \emph{1.18}, -0.04, -0.05,  0.02\newline  -0.01, -0.04, -0.06,  \emph{1.17},  0.00, -0.00\newline  -0.01, -0.02,  0.00, -0.01,  \emph{1.14}, -0.04\newline   0.03, -0.00, -0.03,  0.00,  0.01,  \emph{1.23} & \emph{1.31},  0.02,  0.05, -0.00, -0.01, -0.00\newline   0.02,  \emph{1.16},  0.04,  0.01,  0.04, -0.03\newline   0.04,  0.01,  \emph{1.08},  0.01,  0.01, -0.04\newline  -0.04, -0.04, -0.01,  \emph{1.08}, -0.00, -0.00\newline  -0.02,  0.04, -0.03, -0.03,  \emph{1.27}, -0.00\newline  -0.01,  0.02,  0.03, -0.02,  0.07,  \emph{1.16}\\
-Two Year & \emph{1.42}, -0.05,  0.03, -0.01, -0.05,  0.00\newline   0.02,  \emph{1.12},  0.03, -0.01,  0.03, -0.00\newline   0.01, -0.01,  \emph{1.22}, -0.00,  0.00,  0.04\newline  -0.03,  0.00, -0.05,  \emph{1.21}, -0.01,  0.00\newline  -0.02, -0.03, -0.00, -0.01,  \emph{1.39}, -0.00\newline  -0.03,  0.04,  0.04, -0.00,  0.03,  \emph{1.15} & \emph{1.14}, -0.02,  0.04,  0.02,  0.00, -0.09\newline  -0.01,  \emph{1.10},  0.00, -0.07, -0.01, -0.00\newline  -0.03,  0.02,  \emph{1.12},  0.03,  0.00, -0.04\newline   0.00,  0.02, -0.03,  \emph{1.11}, -0.02,  0.01\newline  -0.00, -0.06, -0.05,  0.02,  \emph{1.11}, -0.03\newline   0.07, -0.01, -0.03,  0.02,  0.04,  \emph{1.18} & \emph{1.25},  0.02,  0.01,  0.02, -0.07,  0.02\newline   0.00,  \emph{1.39},  0.08, -0.03,  0.02,  0.05\newline  -0.01, -0.01,  \emph{1.26},  0.04, -0.04,  0.03\newline  -0.00, -0.00, -0.10,  \emph{1.21}, -0.04,  0.02\newline  -0.02, -0.02,  0.02, -0.08,  \emph{1.20}, -0.00\newline  -0.04,  0.00, -0.05,  0.02, -0.06,  \emph{1.44} & \emph{1.39}, -0.04,  0.00, -0.00,  0.01, -0.01\newline  -0.06,  \emph{1.31},  0.03,  0.00,  0.02, -0.06\newline   0.00, -0.02,  \emph{1.14},  0.01, -0.04,  0.04\newline   0.01, -0.02,  0.00,  \emph{1.37}, -0.03,  0.00\newline   0.04, -0.02, -0.00, -0.01,  \emph{1.34},  0.02\newline  -0.02,  0.02, -0.03, -0.02, -0.01,  \emph{1.32}\\
-\rowcolor{gray!6}  Five Year & \emph{1.22}, -0.00,  0.05, -0.00, -0.05,  0.05\newline  -0.04,  \emph{1.11}, -0.01,  0.03,  0.04,  0.03\newline   0.02, -0.03,  \emph{1.24}, -0.03, -0.03,  0.01\newline   0.02, -0.03, -0.00,  \emph{1.20}, -0.05,  0.01\newline   0.00,  0.08, -0.00,  0.01,  \emph{1.25}, -0.06\newline   0.01, -0.00, -0.00,  0.03, -0.05,  \emph{1.14} & \emph{1.27},  0.02,  0.02, -0.03,  0.04, -0.06\newline  -0.00,  \emph{1.20}, -0.00,  0.00,  0.04, -0.00\newline  -0.03, -0.02,  \emph{1.22},  0.02,  0.05,  0.03\newline   0.00, -0.02, -0.01,  \emph{1.30}, -0.00,  0.04\newline   0.00, -0.05,  0.00, -0.05,  \emph{1.31},  0.01\newline  -0.01, -0.04, -0.05,  0.02, -0.00,  \emph{1.19} & \emph{1.45}, -0.04,  0.06, -0.07,  0.00,  0.04\newline  -0.01,  \emph{1.31},  0.04,  0.01, -0.01,  0.03\newline   0.01,  0.06,  \emph{1.50},  0.01,  0.02, -0.00\newline  -0.01,  0.00,  0.08,  \emph{1.56},  0.02,  0.01\newline  -0.09,  0.01, -0.02, -0.06,  \emph{1.47}, -0.00\newline  -0.03,  0.04,  0.07,  0.08,  0.01,  \emph{1.35} & \emph{1.32},  0.04, -0.04, -0.01, -0.02,  0.03\newline  -0.06,  \emph{1.21},  0.01,  0.00, -0.06, -0.01\newline   0.01, -0.08,  \emph{1.70},  0.04, -0.03, -0.05\newline  -0.01,  0.03, -0.02,  \emph{1.35}, -0.02,  0.02\newline  -0.05, -0.03,  0.03, -0.04,  \emph{1.43},  0.07\newline   0.01,  0.04, -0.04, -0.01, -0.00,  \emph{1.28}\\
-Average & \emph{1.28},  0.00, -0.00,  0.01,  0.00,  0.00\newline   0.00,  \emph{1.28},  0.00,  0.00, -0.00,  0.01\newline   0.00,  0.01,  \emph{1.25},  0.00, -0.00,  0.00\newline  -0.00,  0.00,  0.00,  \emph{1.28}, -0.00,  0.00\newline  -0.00,  0.00, -0.00,  0.01,  \emph{1.26}, -0.00\newline  -0.00,  0.01,  0.00, -0.00, -0.00,  \emph{1.31} & \emph{1.31},  0.01, -0.00,  0.00,  0.00,  0.00\newline  -0.00,  \emph{1.29}, -0.00,  0.00, -0.00,  0.00\newline  -0.00,  0.00,  \emph{1.30}, -0.00, -0.00, -0.00\newline   0.00, -0.00, -0.00,  \emph{1.28},  0.00, -0.01\newline   0.00,  0.00,  0.00,  0.00,  \emph{1.27}, -0.01\newline   0.01, -0.00, -0.00, -0.00,  0.00,  \emph{1.28} & \emph{1.46},  0.01, -0.00,  0.00, -0.01,  0.00\newline   0.01,  \emph{1.46},  0.01,  0.00, -0.00, -0.00\newline  -0.00,  0.00,  \emph{1.54}, -0.01,  0.00, -0.00\newline   0.00, -0.02,  0.00,  \emph{1.51}, -0.00,  0.01\newline  -0.01,  0.00,  0.00, -0.00,  \emph{1.47}, -0.00\newline   0.00, -0.00, -0.00, -0.00, -0.01,  \emph{1.47} & \emph{1.49}, -0.00, -0.00, -0.00, -0.01,  0.01\newline  -0.01,  \emph{1.45}, -0.00,  0.00,  0.00, -0.00\newline   0.00, -0.00,  \emph{1.44},  0.01, -0.00, -0.01\newline   0.00, -0.00,  0.01,  \emph{1.47}, -0.00,  0.00\newline  -0.00, -0.00, -0.00,  0.00,  \emph{1.47},  0.01\newline   0.00, -0.00, -0.00, -0.00,  0.00,  \emph{1.44}\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Five-Valid-Slope)<font size="2">Calibration Slope results for both the External and Internal Validation for the Five-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Internal &lt; 60 </th>
+   <th style="text-align:right;"> Internal &lt; 30 </th>
+   <th style="text-align:right;"> External &lt; 60 </th>
+   <th style="text-align:right;"> External &lt; 30 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;width: 20em; "> One Year </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.14**, -0.01,  0.00,  0.02,  0.00,  0.01<br> -0.00,  **1.09**, -0.05, -0.01,  0.01,  0.00<br> -0.04,  0.06,  **1.22**,  0.02,  0.03,  0.00<br> -0.06,  0.02,  0.01,  **1.25**,  0.00, -0.02<br> -0.02,  0.03,  0.02, -0.02,  **1.13**,  0.00<br>  0.05, -0.04, -0.06, -0.02, -0.00,  **1.30** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.07**,  0.03,  0.02,  0.02,  0.01, -0.00<br>  0.00,  **1.18**,  0.01,  0.00, -0.06,  0.01<br>  0.01,  0.00,  **1.03**,  0.00, -0.05,  0.00<br> -0.04, -0.03, -0.03,  **1.11**,  0.01, -0.03<br>  0.00, -0.03, -0.02, -0.02,  **1.15**,  0.01<br>  0.02, -0.01,  0.00, -0.00, -0.01,  **1.11** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.16**,  0.02, -0.00, -0.01,  0.00,  0.06<br> -0.03,  **1.08**, -0.00, -0.00,  0.04, -0.04<br> -0.05, -0.02,  **1.18**, -0.04, -0.05,  0.02<br> -0.01, -0.04, -0.06,  **1.17**,  0.00, -0.00<br> -0.01, -0.02,  0.00, -0.01,  **1.14**, -0.04<br>  0.03, -0.00, -0.03,  0.00,  0.01,  **1.23** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.31**,  0.02,  0.05, -0.00, -0.01, -0.00<br>  0.02,  **1.16**,  0.04,  0.01,  0.04, -0.03<br>  0.04,  0.01,  **1.08**,  0.01,  0.01, -0.04<br> -0.04, -0.04, -0.01,  **1.08**, -0.00, -0.00<br> -0.02,  0.04, -0.03, -0.03,  **1.27**, -0.00<br> -0.01,  0.02,  0.03, -0.02,  0.07,  **1.16** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 20em; "> Two Year </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.42**, -0.05,  0.03, -0.01, -0.05,  0.00<br>  0.02,  **1.12**,  0.03, -0.01,  0.03, -0.00<br>  0.01, -0.01,  **1.22**, -0.00,  0.00,  0.04<br> -0.03,  0.00, -0.05,  **1.21**, -0.01,  0.00<br> -0.02, -0.03, -0.00, -0.01,  **1.39**, -0.00<br> -0.03,  0.04,  0.04, -0.00,  0.03,  **1.15** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.14**, -0.02,  0.04,  0.02,  0.00, -0.09<br> -0.01,  **1.10**,  0.00, -0.07, -0.01, -0.00<br> -0.03,  0.02,  **1.12**,  0.03,  0.00, -0.04<br>  0.00,  0.02, -0.03,  **1.11**, -0.02,  0.01<br> -0.00, -0.06, -0.05,  0.02,  **1.11**, -0.03<br>  0.07, -0.01, -0.03,  0.02,  0.04,  **1.18** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.25**,  0.02,  0.01,  0.02, -0.07,  0.02<br>  0.00,  **1.39**,  0.08, -0.03,  0.02,  0.05<br> -0.01, -0.01,  **1.26**,  0.04, -0.04,  0.03<br> -0.00, -0.00, -0.10,  **1.21**, -0.04,  0.02<br> -0.02, -0.02,  0.02, -0.08,  **1.20**, -0.00<br> -0.04,  0.00, -0.05,  0.02, -0.06,  **1.44** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.39**, -0.04,  0.00, -0.00,  0.01, -0.01<br> -0.06,  **1.31**,  0.03,  0.00,  0.02, -0.06<br>  0.00, -0.02,  **1.14**,  0.01, -0.04,  0.04<br>  0.01, -0.02,  0.00,  **1.37**, -0.03,  0.00<br>  0.04, -0.02, -0.00, -0.01,  **1.34**,  0.02<br> -0.02,  0.02, -0.03, -0.02, -0.01,  **1.32** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 20em; "> Five Year </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.22**, -0.00,  0.05, -0.00, -0.05,  0.05<br> -0.04,  **1.11**, -0.01,  0.03,  0.04,  0.03<br>  0.02, -0.03,  **1.24**, -0.03, -0.03,  0.01<br>  0.02, -0.03, -0.00,  **1.20**, -0.05,  0.01<br>  0.00,  0.08, -0.00,  0.01,  **1.25**, -0.06<br>  0.01, -0.00, -0.00,  0.03, -0.05,  **1.14** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.27**,  0.02,  0.02, -0.03,  0.04, -0.06<br> -0.00,  **1.20**, -0.00,  0.00,  0.04, -0.00<br> -0.03, -0.02,  **1.22**,  0.02,  0.05,  0.03<br>  0.00, -0.02, -0.01,  **1.30**, -0.00,  0.04<br>  0.00, -0.05,  0.00, -0.05,  **1.31**,  0.01<br> -0.01, -0.04, -0.05,  0.02, -0.00,  **1.19** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.45**, -0.04,  0.06, -0.07,  0.00,  0.04<br> -0.01,  **1.31**,  0.04,  0.01, -0.01,  0.03<br>  0.01,  0.06,  **1.50**,  0.01,  0.02, -0.00<br> -0.01,  0.00,  0.08,  **1.56**,  0.02,  0.01<br> -0.09,  0.01, -0.02, -0.06,  **1.47**, -0.00<br> -0.03,  0.04,  0.07,  0.08,  0.01,  **1.35** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.32**,  0.04, -0.04, -0.01, -0.02,  0.03<br> -0.06,  **1.21**,  0.01,  0.00, -0.06, -0.01<br>  0.01, -0.08,  **1.70**,  0.04, -0.03, -0.05<br> -0.01,  0.03, -0.02,  **1.35**, -0.02,  0.02<br> -0.05, -0.03,  0.03, -0.04,  **1.43**,  0.07<br>  0.01,  0.04, -0.04, -0.01, -0.00,  **1.28** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 20em; "> Average </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.28**,  0.00, -0.00,  0.01,  0.00,  0.00<br>  0.00,  **1.28**,  0.00,  0.00, -0.00,  0.01<br>  0.00,  0.01,  **1.25**,  0.00, -0.00,  0.00<br> -0.00,  0.00,  0.00,  **1.28**, -0.00,  0.00<br> -0.00,  0.00, -0.00,  0.01,  **1.26**, -0.00<br> -0.00,  0.01,  0.00, -0.00, -0.00,  **1.31** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.31**,  0.01, -0.00,  0.00,  0.00,  0.00<br> -0.00,  **1.29**, -0.00,  0.00, -0.00,  0.00<br> -0.00,  0.00,  **1.30**, -0.00, -0.00, -0.00<br>  0.00, -0.00, -0.00,  **1.28**,  0.00, -0.01<br>  0.00,  0.00,  0.00,  0.00,  **1.27**, -0.01<br>  0.01, -0.00, -0.00, -0.00,  0.00,  **1.28** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.46**,  0.01, -0.00,  0.00, -0.01,  0.00<br>  0.01,  **1.46**,  0.01,  0.00, -0.00, -0.00<br> -0.00,  0.00,  **1.54**, -0.01,  0.00, -0.00<br>  0.00, -0.02,  0.00,  **1.51**, -0.00,  0.01<br> -0.01,  0.00,  0.00, -0.00,  **1.47**, -0.00<br>  0.00, -0.00, -0.00, -0.00, -0.01,  **1.47** </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> **1.49**, -0.00, -0.00, -0.00, -0.01,  0.01<br> -0.01,  **1.45**, -0.00,  0.00,  0.00, -0.00<br>  0.00, -0.00,  **1.44**,  0.01, -0.00, -0.01<br>  0.00, -0.00,  0.01,  **1.47**, -0.00,  0.00<br> -0.00, -0.00, -0.00,  0.00,  **1.47**,  0.01<br>  0.00, -0.00, -0.00, -0.00,  0.00,  **1.44** </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 
@@ -1794,7 +3782,7 @@ delete "References" and replace it.
 -->
 
 # References {-}
-\chaptermark{References}
+
 
 <!--
 This manually sets the header for this unnumbered chapter.

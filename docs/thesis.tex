@@ -1112,11 +1112,11 @@ As seen in table \ref{tab:Table-One}, the Age of the populations had a mean of 6
 \caption{\label{tab:Table-One}{\small Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{19em}}
+\begin{tabular}[t]{>{}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l}
 \toprule
 \multicolumn{1}{c}{ } & \multicolumn{3}{c}{SKS} & \multicolumn{3}{c}{SERPR} \\
 \cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
-Variable & mean/n (IQR/p) & missing n (p) & range & mean/n (IQR/p) & missing n (p) & range\\
+Variable & mean/n (IQR/p\%) & missing n (p\%) & range & mean/n (IQR/p\%) & missing n (p\%) & range\\
 \midrule
 \rowcolor{gray!6}  Age & 64.378 (19.000) & 0 ( 0.00\%) & [ 20.000,  94.000] & 66.064 (17.000) & 0 (  0.00\%) & [  11.000,  98.000]\\
 eGFR & 30.369 (22.387) & 0 ( 0.00\%) & [  3.578,  59.966] & 35.647 (20.565) & 0 (  0.00\%) & [   1.199,  59.994]\\
@@ -1155,18 +1155,18 @@ Glomerular disease & 442 (14.83\%) &  &  & 278 ( 3.61\%) &  & \\
 Miscellaneous renal disorders & 227 ( 7.61\%) &  &  & 198 ( 2.57\%) &  & \\
 \addlinespace
 \rowcolor{gray!6}  Familial / hereditary nephropathies & 173 ( 5.80\%) &  &  & 104 ( 1.35\%) &  & \\
-Diabetes (DM) & 992 (33.32\%) & 4 ( 0.13\%) &  & 1,535 (19.91\%) & 0 (   0.0\%) & \\
-\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & 2,414 (81.09\%) & 4 ( 0.13\%) &  & 408 ( 5.29\%) & 0 (   0.0\%) & \\
-Prior Myocardial Infarction (MI) & 2,492 (83.71\%) & 4 ( 0.13\%) &  & 556 ( 7.21\%) & 0 (   0.0\%) & \\
-\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & 2,393 (80.38\%) & 4 ( 0.13\%) &  & 863 (11.19\%) & 0 (   0.0\%) & \\
+Diabetes (DM) & 992 (33.32\%) & 4 ( 0.13\%) &  & 1,535 (19.91\%) & 0 (  0.00\%) & \\
+\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & 2,414 (81.09\%) & 4 ( 0.13\%) &  & 408 ( 5.29\%) & 0 (  0.00\%) & \\
+Prior Myocardial Infarction (MI) & 2,492 (83.71\%) & 4 ( 0.13\%) &  & 556 ( 7.21\%) & 0 (  0.00\%) & \\
+\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & 2,393 (80.38\%) & 4 ( 0.13\%) &  & 863 (11.19\%) & 0 (  0.00\%) & \\
 \addlinespace
-Peripheral Vascular Disease (PVA) & 2,485 (83.47\%) & 4 ( 0.13\%) &  & 376 ( 4.88\%) & 0 (   0.0\%) & \\
-\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) & 4 ( 0.13\%) &  & 186 ( 2.41\%) & 0 (   0.0\%) & \\
-Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.99\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
-\rowcolor{gray!6}  Chronic Liver Disease (LD) & 2,891 (97.11\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
-Prior Solid Tumour (ST) & 2,570 (86.33\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 ( 100.0\%) & \\
+Peripheral Vascular Disease (PVA) & 2,485 (83.47\%) & 4 ( 0.13\%) &  & 376 ( 4.88\%) & 0 (  0.00\%) & \\
+\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) & 4 ( 0.13\%) &  & 186 ( 2.41\%) & 0 (  0.00\%) & \\
+Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.99\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 (100.00\%) & \\
+\rowcolor{gray!6}  Chronic Liver Disease (LD) & 2,891 (97.11\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 (100.00\%) & \\
+Prior Solid Tumour (ST) & 2,570 (86.33\%) & 4 ( 0.13\%) &  & 0 (     \%) & 7,709 (100.00\%) & \\
 \addlinespace
-\rowcolor{gray!6}  Hypertension (HT) & 2,546 (91.48\%) & 198 ( 6.64\%) &  & 3,114 (40.39\%) & 0 (   0.0\%) & \\
+\rowcolor{gray!6}  Hypertension (HT) & 2,546 (91.48\%) & 198 ( 6.64\%) &  & 3,114 (40.39\%) & 0 (  0.00\%) & \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1180,24 +1180,23 @@ The median date for the date of death was 3.9 years in the SKS population and 4.
 \caption{\label{tab:Event-Median2}{\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}r>{}r>{}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Transition & SKS (Development) & SERPR (Validation)\\
+\multicolumn{3}{c}{Transition} & \multicolumn{4}{c}{SKS} & \multicolumn{4}{c}{SERPR} \\
+\cmidrule(l{3pt}r{3pt}){1-3} \cmidrule(l{3pt}r{3pt}){4-7} \cmidrule(l{3pt}r{3pt}){8-11}
+Model & From & To & n & median & IQR & max & n & median & IQR & max\\
 \midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Two}}\\
-\hspace{1em}Alive to Dead & 1,427 ~ 3.9 y (4.3 y) [15.0 y] & 3,025 ~ 4.9 y (3.3 y) [10.1 y]\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Three}}\\
-\hspace{1em}CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to RRT & 680 ~ 2.5 y (3.3 y) [14.1 y] & 1,130 ~ 3.8 y (3.8 y) [10.1 y]\\
-\hspace{1em}RRT to Dead & 302 ~ 2.2 y (3.2 y) [13.5 y] & 446 ~ 1.5 y (2.4 y) [ 9.1 y]\\
-\rowcolor{gray!6}  CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\hspace{1em}CKD to HD & 344 ~ 2.5 y (3.5 y) [14.1 y] & 887 ~ 3.8 y (3.7 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to PD & 229 ~ 2.0 y (2.9 y) [12.9 y] & 149 ~ 3.5 y (4.1 y) [ 9.6 y]\\
-\hspace{1em}CKD to Tx & 107 ~ 3.2 y (2.7 y) [12.1 y] & 94 ~ 4.8 y (4.5 y) [ 9.7 y]\\
-\rowcolor{gray!6}  \hspace{1em}HD to Dead & 185 ~ 2.0 y (3.2 y) [11.8 y] & 398 ~ 1.5 y (2.5 y) [ 9.1 y]\\
-\hspace{1em}PD to Dead & 107 ~ 2.3 y (3.2 y) [11.7 y] & 47 ~ 2.1 y (2.3 y) [ 8.5 y]\\
+\rowcolor{gray!6}  Two & Alive & Dead & 1,427 & 4.0 y & 4.3 y & 15.0 y & 3,010 & 4.8 y & 3.3 y & 10.1 y\\
+Three & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
+\rowcolor{gray!6}   &  & RRT & 680 & 2.5 y & 3.4 y & 14.2 y & 1,125 & 3.8 y & 3.9 y & 10.1 y\\
+ & RRT & Dead & 302 & 2.2 y & 3.3 y & 13.5 y & 442 & 1.6 y & 2.5 y & 9.2 y\\
+\rowcolor{gray!6}  Five & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
+\addlinespace
+ &  & HD & 344 & 2.6 y & 3.5 y & 14.2 y & 882 & 3.7 y & 3.8 y & 10.1 y\\
+\rowcolor{gray!6}   &  & PD & 229 & 2.0 y & 2.9 y & 12.9 y & 149 & 3.5 y & 4.1 y & 9.5 y\\
+ &  & Tx & 107 & 3.2 y & 2.7 y & 12.1 y & 94 & 5.0 y & 4.4 y & 9.8 y\\
+\rowcolor{gray!6}   & HD & Dead & 185 & 2.1 y & 3.3 y & 11.8 y & 394 & 1.6 y & 2.5 y & 9.2 y\\
+ & PD & Dead & 107 & 2.4 y & 3.2 y & 11.8 y & 47 & 2.1 y & 2.3 y & 8.5 y\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1216,54 +1215,54 @@ Here we present the proportional hazards results for the Three-State Model. The 
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.041 (  -0.051,  -0.031) & 0.063 (   0.050,   0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.000,  -0.000) & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  & \\
+\hspace{1em}(Age-60) & 0.162 (  -0.051,   0.375) & -0.041 (  -0.051,  -0.032) & 0.063 (   0.051,   0.076)\\
+\hspace{1em}(Age-60)\textsuperscript{} & -0.001 (  -0.003,   0.001) & 0.000 (  -0.001,   0.000) & \\
+\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.519) &  & \\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.095 (  -0.108,  -0.082) & 0.011 (  -0.001,   0.025)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.363,   0.250)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) &  & 0.227 (  -0.770,   1.225)\\
+\hspace{1em}eGFR & -0.013 (  -0.020,  -0.007) & -0.096 (  -0.109,  -0.083) & 0.012 (  -0.002,   0.026)\\
+\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.364,   0.251)\\
+\hspace{1em}log(eGFR Rate) & 0.043 (  -0.125,   0.211) &  & 0.228 (  -0.770,   1.226)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.112,   1.288) & -0.108 (  -0.736,   0.519)\\
-\hspace{1em}uPCR Rate &  & -0.019 (  -0.045,   0.005) & 0.036 (  -0.062,   0.136)\\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.310,   0.747) & -0.198 (  -0.534,   0.137)\\
+\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.113,   1.288) & -0.108 (  -0.736,   0.519)\\
+\hspace{1em}uPCR Rate &  & -0.020 (  -0.045,   0.005) & 0.037 (  -0.063,   0.136)\\
+\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.311,   0.748) & -0.198 (  -0.534,   0.137)\\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.005 (  -0.000,   0.011) & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.006 (  -0.001,   0.015) & \\
+\hspace{1em}SBP & -0.001 (  -0.005,   0.002) & 0.005 (  -0.001,   0.011) & \\
+\rowcolor{gray!6}  \hspace{1em}DBP & 0.007 (   0.000,   0.013) & 0.007 (  -0.002,   0.016) & \\
 \hspace{1em}BMI &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.032 (  -0.059,  -0.004) & -0.044 (  -0.079,  -0.009)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) & -0.515 (  -1.207,   0.177) & \\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.005 (  -0.012,   0.001) & -0.005 (  -0.014,   0.003)\\
-\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.869 (  -0.059,   1.799) & \\
+\rowcolor{gray!6}  \hspace{1em}Albumin & -0.045 (  -0.065,  -0.024) & -0.032 (  -0.060,  -0.005) & -0.045 (  -0.080,  -0.010)\\
+\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.753) & -0.515 (  -1.208,   0.177) & \\
+\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.018,  -0.008) & -0.005 (  -0.012,   0.002) & -0.006 (  -0.015,   0.004)\\
+\hspace{1em}Phosphate & 0.512 (   0.133,   0.891) & 0.870 (  -0.060,   1.800) & \\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.277 (  -0.455,  -0.099) & \\
+\hspace{1em}Female & -0.236 (  -0.371,  -0.100) & -0.278 (  -0.456,  -0.100) & \\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.133 (  -0.757,   0.490) & -0.282 (  -1.082,   0.518)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.039) & -0.294 (  -0.598,   0.009)\\
-\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.175 (  -0.076,   0.428) & 0.387 (   0.068,   0.706)\\
+\hspace{1em}Former (3 years+) & -0.213 (  -0.879,   0.453) & -0.134 (  -0.758,   0.490) & -0.282 (  -1.083,   0.519)\\
+\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.040) & -0.295 (  -0.599,   0.010)\\
+\hspace{1em}Smoker & 0.356 (   0.161,   0.552) & 0.176 (  -0.077,   0.428) & 0.387 (   0.069,   0.706)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 1.029 (   0.720,   1.338) & -0.562 (  -1.084,  -0.040)\\
-\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.165 (  -0.465,   0.134) & -0.488 (  -0.883,  -0.094)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.553,   0.620)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.265 (  -0.577,   0.046) & -0.310 (  -0.803,   0.181)\\
+\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.855,   0.006) & 1.029 (   0.721,   1.338) & -0.563 (  -1.085,  -0.040)\\
+\hspace{1em}Glomerular disease & -0.395 (  -0.636,  -0.154) & -0.166 (  -0.465,   0.134) & -0.489 (  -0.884,  -0.094)\\
+\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.506,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.554,   0.620)\\
+\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.742,  -0.185) & -0.266 (  -0.577,   0.046) & -0.311 (  -0.803,   0.182)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.141 (  -0.074,   0.358) & 0.200 (  -0.096,   0.496)\\
-\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) &  & -0.299 (  -0.597,  -0.002)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) & 0.234 (  -0.061,   0.530) & 0.186 (  -0.199,   0.572)\\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.245) & -0.077 (  -0.334,   0.179) & -0.097 (  -0.424,   0.228)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) & -0.168 (  -0.405,   0.068) & -0.183 (  -0.492,   0.126)\\
-\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  & -0.168 (  -0.577,   0.240)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & \\
-\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.316 (  -0.731,   0.097) & -0.270 (  -0.858,   0.318)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.611,   0.055)\\
-\hspace{1em}HT &  & 0.274 (  -0.176,   0.726) & -0.416 (  -1.104,   0.271)\\
+\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.142 (  -0.075,   0.359) & 0.200 (  -0.096,   0.497)\\
+\hspace{1em}CCF & -0.395 (  -0.536,  -0.254) &  & -0.300 (  -0.597,  -0.003)\\
+\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.398,  -0.095) & 0.234 (  -0.062,   0.530) & 0.187 (  -0.199,   0.572)\\
+\hspace{1em}IHD & 0.102 (  -0.041,   0.246) & -0.077 (  -0.334,   0.179) & -0.098 (  -0.424,   0.228)\\
+\rowcolor{gray!6}  \hspace{1em}PVD & -0.249 (  -0.395,  -0.103) & -0.169 (  -0.406,   0.068) & -0.183 (  -0.493,   0.126)\\
+\hspace{1em}CVA & -0.071 (  -0.253,   0.111) &  & -0.168 (  -0.577,   0.241)\\
+\rowcolor{gray!6}  \hspace{1em}COPD & -0.290 (  -0.433,  -0.146) &  & \\
+\hspace{1em}LD & -0.170 (  -0.579,   0.239) & -0.317 (  -0.732,   0.098) & -0.270 (  -0.859,   0.318)\\
+\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.118) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.612,   0.056)\\
+\hspace{1em}HT &  & 0.275 (  -0.177,   0.726) & -0.416 (  -1.105,   0.272)\\
 \bottomrule
 \end{tabular}
 \end{table}

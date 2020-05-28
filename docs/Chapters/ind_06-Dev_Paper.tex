@@ -113,7 +113,7 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
-Last updated: 24 May
+Last updated: 27 May
 
 \hypertarget{abstract}{%
 \section*{Abstract}\label{abstract}}
@@ -189,10 +189,8 @@ Both the internal and external validation cohort were used as part of the multin
   There is at least one prior eGFR measurement
 \item
   Patient is 18 or over
-\item
-  Patient is not enduring an AKI (Forni et al. \protect\hyperlink{ref-forni_renal_2017-1}{2017}; ``KDIGO Clinical Practice Guideline for Acute Kidney Injury'' \protect\hyperlink{ref-noauthor_kdigo_2012}{2012}).
 \end{itemize}
-The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an \(\textrm{eGFR} < 60\), their eGFR Rate would be unavailable (i.e.~missing). Otherwise, patient eGFRs would \emph{have} to drop to below 60 and thus eGFR Rate would be negative.
+The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Rate is a measure of the change in eGFR over time and is calculated as the difference between the most recent two eGFR measurements divided by the time between them. For patients who entered the system with an \(\textrm{eGFR} < 60\), their eGFR Rate would be unavailable (i.e.~missing). Otherwise, patient eGFRs would \emph{have} to drop to below 60 and thus eGFR Rate would be negative. In addition, to avoid Acute Kidney Incident events, we also filtered measurements of eGFR Rate that were more extreme than 1.5x those found in the SKS population.
 
 \hypertarget{model-design}{%
 \subsection{Model Design}\label{model-design}}
@@ -206,14 +204,14 @@ Three separate models were developed, so we could determine a clinically viable 
 
 \caption{Diagram of the three models, the states being modelled and relevant transitions}\label{fig:State-Diagram}
 \end{figure}
-Missing data was handled using multiple imputation (White and Royston \protect\hyperlink{ref-white_imputing_2009}{2009}) using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications (Venkat-Raman et al. \protect\hyperlink{ref-venkat-raman_new_2012}{2012})). From these variables, uPCR and eGFR Rate of change were also derived (Kovesdy et al. \protect\hyperlink{ref-kovesdy_past_2016}{2016}; Naimark et al. \protect\hyperlink{ref-naimark_past_2016}{2016}) as well as their log transforms and log(Age) and Age\(^2\).
+Missing data was handled using multiple imputation (White and Royston \protect\hyperlink{ref-white_imputing_2009}{2009}) using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications (Venkat-Raman et al. \protect\hyperlink{ref-venkat-raman_new_2012}{2012})). From these variables, uPCR and eGFR Rate of change were also derived (Kovesdy et al. \protect\hyperlink{ref-kovesdy_past_2016}{2016}; Naimark et al. \protect\hyperlink{ref-naimark_past_2016}{2016}) as well as their log transforms and log(Age) and Age\(^2\). For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition.
 
 \hypertarget{validation}{%
 \subsection{Validation}\label{validation}}
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR(Schomaker and Heumann \protect\hyperlink{ref-schomaker_bootstrap_2018}{2018}). The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR \textless{} 30/ml/min/1.73m\textsuperscript{2}.
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR (Schomaker and Heumann \protect\hyperlink{ref-schomaker_bootstrap_2018}{2018}). The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR \textless{} 30/ml/min/1.73m\textsuperscript{2}.
 
-Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix (MA Barrowman, \protect\hyperlink{ref-chap-performance-metrics}{n.d.}).
+Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix (MA Barrowman, \protect\hyperlink{ref-chap-performance-metrics}{n.d.}). These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
 
 Further details of how the models were developed and validated is discussed in the Supplementary materials.
 
@@ -263,243 +261,74 @@ All analysis was done in \texttt{R\ 3.6.2} (Team, \protect\hyperlink{ref-r_core_
 \hypertarget{results-1}{%
 \section{Results}\label{results-1}}
 
-\hypertarget{data-sources-separate-tables}{%
-\subsection{Data Sources (Separate Tables)}\label{data-sources-separate-tables}}
-
-Glen commented about combining the below tables into a single one. I'm still not sure the best way to do this (aesthetically). I've kept the old version of this section and added a copy of it below where I've re-written some bits to point to the right table.
-
-As seen in table \ref{tab:Continuous-Demo}, the Age of the populations had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . Blood pressure was also consistent across populations (140/75 vs 148/76 for development vs validation). The blood test results (Corrected Calcium, Albumin, Haemoglobin and Phosphate) was close together, with the further difference being Haemoglobin with an average of 123 in SKS and 109 in SERPR and a much larger standard deviation in SERPR compared to SKS (38 vs 17). The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Similar to the eGFR measures, the uPCR results were similar, but the rates of change were much broader in the validation dataset compared to the SKS and were generally increasing, whereas SKS remained stationary (73 vs 0). Levels of missingness were much higher in the SERPR dataset in most continuous variables.
-
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{\label{tab:Continuous-Demo}{\small Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedleft\arraybackslash}p{33em}>{\ttfamily\raggedleft\arraybackslash}p{36em}}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Age}}\\
-\hspace{1em}Age & 64.378 (19.000) [ 20.000,\quad 94.000] <\quad \quad 0 ( 0.00\%)> & 65.880 (17.000) [\quad \quad 18.000,\quad \quad 98.000] <\quad \quad 0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR\textsuperscript{a} & 30.368 (22.386) [\quad 3.577,\quad 59.965] <\quad \quad 0 ( 0.00\%)> & 36.132 (21.444) [ \quad \quad 1.651,\quad \quad 59.998] <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate\textsuperscript{a} & -0.015 ( 0.293) [-19.107,\quad 33.781] <1,278 (42.87\%)> & -25.476 (44.229) [-8,755.272, 9,260.375] <\quad \quad 0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR\textsuperscript{f} & 0.112 ( 0.103) [\quad 0.000, \quad 2.025] <\quad 245 ( 8.21\%)> & 0.184 ( 0.147) [ \quad \quad 0.000, \quad \quad 6.390] <7,513 (96.76\%)>\\
-\rowcolor{gray!6}  \hspace{1em}uPCR Rate\textsuperscript{f} & -0.096 ( 0.188) [-70.727,\quad 28.198] <1,777 (59.61\%)> & 73.177 ( 0.384) [\quad \quad -2.255, 3,051.403] <7,721 (99.44\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP\textsuperscript{b} & 140.193 (29.000) [ 77.000, 220.000] < \quad 50 ( 1.67\%)> & 147.746 (33.000) [\quad \quad 82.000, \quad 258.000] <6,880 (88.61\%)>\\
-\rowcolor{gray!6}  \hspace{1em}DBP\textsuperscript{b} & 74.555 (14.000) [ 36.000, 159.000] < \quad 52 ( 1.74\%)> & 76.263 (18.000) [\quad \quad 35.000, \quad 128.000] <6,879 (88.60\%)>\\
-\hspace{1em}BMI\textsuperscript{c} & 28.848 ( 7.842) [ 13.182,\quad 61.466] <\quad 572 (19.18\%)> & 29.331 ( 7.851) [\quad \quad 15.343,\quad \quad 48.301] <7,681 (98.93\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Albumin\textsuperscript{d} & 42.152 ( 5.000) [ 12.000,\quad 52.000] < \quad 60 ( 2.01\%)> & 36.490 ( 6.000) [ \quad \quad 7.000,\quad \quad 53.000] <3,455 (44.50\%)>\\
-\hspace{1em}Corrected Calcium\textsuperscript{e} & 2.302 ( 0.180) [\quad 1.209, \quad 3.660] < \quad 68 ( 2.28\%)> & 2.408 ( 0.160) [ \quad \quad 1.419, \quad \quad 3.610] <5,113 (65.85\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin\textsuperscript{d} & 122.977 (23.000) [ 61.000, 195.000] < \quad 72 ( 2.41\%)> & 108.588 (30.000) [ \quad \quad 6.250, \quad 208.000] <3,968 (51.10\%)>\\
-\hspace{1em}Phosphate\textsuperscript{e} & 1.162 ( 0.320) [\quad 0.430, \quad 3.710] < \quad 87 ( 2.91\%)> & 1.203 ( 0.320) [ \quad \quad 0.370, \quad \quad 4.370] <5,127 (66.03\%)>\\
-\bottomrule
-\multicolumn{3}{l}{\textsuperscript{a} (ml/min/1.73m\textasciicircum{}2) or per year \textsuperscript{b} (mmHG) \textsuperscript{c} (kg/m\textasciicircum{}2) \textsuperscript{d} (g/l) \textsuperscript{e} (mmol/l) \textsuperscript{f} (g/mmol) or per year}\\
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry
-
-Table \ref{tab:Categorical-Demo} shows a breakdown of the categorical variables across the populations. In the development population, there are far more males than females, whereas in the validation population the proportions are much more matched. Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. The majority of the SKS patients were former smokers, however this information was unavailable in the SERPR dataset. Primary Renal Diagnosis suffered from very high levels of missingness in the validation dataset, but was much better recorded in the development dataset (although still far from perfect).
-\begin{table}[!h]
-
-\caption{\label{tab:Categorical-Demo}{\small Population demographics for the categorical variables presented as number (percent)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Gender}}\\
-\hspace{1em}Male & 1,865 (62.56 \%) & 3,915 (50.42 \%)\\
-\hspace{1em}Female & 1,116 (37.43 \%) & 3,849 (49.57 \%)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Ethnicity}}\\
-\hspace{1em}White & 2,875 (96.44 \%) & 683 ( 8.79 \%)\\
-\hspace{1em}Asian & 75 ( 2.51 \%) & 12 ( 0.15 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Black & 21 ( 0.70 \%) & 7 ( 0.09 \%)\\
-\hspace{1em}Other & 10 ( 0.33 \%) & 2 ( 0.02 \%)\\
-\rowcolor{gray!6}  \hspace{1em}<Ethnicity Missing> & 0 ( 0.00 \%) & 7,060 (90.93 \%)\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former & 1,535 (51.49 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & 979 (32.84 \%) & \\
-\hspace{1em}Smoker & 379 (12.71 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Former 3Y & 46 ( 1.54 \%) & \\
-\hspace{1em}<Smoking Status Missing> & 42 ( 1.40 \%) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Systemic diseases affecting the kidney & 1,304 (43.74 \%) & 299 ( 3.85 \%)\\
-\hspace{1em}Glomerular disease & 442 (14.82 \%) & 225 ( 2.89 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Tubulointerstitial disease & 268 ( 8.99 \%) & 164 ( 2.11 \%)\\
-\hspace{1em}Miscellaneous renal disorders & 227 ( 7.61 \%) & 188 ( 2.42 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Familial / hereditary nephropathies & 173 ( 5.80 \%) & 102 ( 1.31 \%)\\
-\hspace{1em}<Renal Diagnosis Missing> & 567 (19.02 \%) & 6,786 (87.40 \%)\\
-\bottomrule
-\end{tabular}
-\end{table}
-Overall, there were high levels of comorbidities within the SKS population as shown in table \ref{tab:Comorbidity-Demo}, but these levels were much lower in the SERPR population, possibly due to the data extraction processed (where data is un-recorded, no history is assumed). In SKS, most comorbidities were at over 80\% prevalence, apart from diabetes mellitus, which had a lower prevalence of 33\% and over 97\% (2,891) patients had a history of liver disease. In SERPR, hypertension was the highest prevalence in SERPR at 40\% (3,122), followed by diabetes mellitus at 20\% (1,546) and cerebrovascular accident was the lowest prevalence at 2.36\% (184). Liver disease, chronic obstructive pulmonary disease and solid tumour data were unavailable in the SERPR data.
-\begin{table}[!h]
-
-\caption{\label{tab:Comorbidity-Demo}{\small Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  Diabetes (DM) & 992 (33.32\%) <\quad 4 (0.13\%)> & 1,546 (19.91\%) <\quad \quad 0 ( 0.00\%)>\\
-Congestive Cardiac Failure (CCF) & 2,414 (81.08\%) <\quad 4 (0.13\%)> & 406 ( 5.22\%) <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Prior Myocardial Infarction (MI) & 2,492 (83.70\%) <\quad 4 (0.13\%)> & 556 ( 7.16\%) <\quad \quad 0 ( 0.00\%)>\\
-Ischemic Heart Disease (IHD) & 2,393 (80.38\%) <\quad 4 (0.13\%)> & 867 (11.16\%) <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Peripheral Vascular Disease (PVD) & 2,485 (83.47\%) <\quad 4 (0.13\%)> & 376 ( 4.84\%) <\quad \quad 0 ( 0.00\%)>\\
-\addlinespace
-Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) <\quad 4 (0.13\%)> & 184 ( 2.36\%) <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.98\%) <\quad 4 (0.13\%)> & \\
-Chronic Liver Disease (LD) & 2,891 (97.11\%) <\quad 4 (0.13\%)> & \\
-\rowcolor{gray!6}  Solid Tumour (ST) & 2,570 (86.32\%) <\quad 4 (0.13\%)> & \\
-Hypertension (HT) & 2,546 (91.48\%) <198 (6.64\%)> & 3,122 (40.21\%) <\quad \quad 0 ( 0.00\%)>\\
-\bottomrule
-\end{tabular}
-\end{table}
-The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \ref{tab:Event-Median}.
-\begin{table}[!h]
-
-\caption{\label{tab:Event-Median}{\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Transition & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Two}}\\
-\hspace{1em}Alive to Dead & 1,427 ~ 3.9 y (4.3 y) [15.0 y] & 3,025 ~ 4.9 y (3.3 y) [10.1 y]\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Three}}\\
-\hspace{1em}CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to RRT & 680 ~ 2.5 y (3.3 y) [14.1 y] & 1,130 ~ 3.8 y (3.8 y) [10.1 y]\\
-\hspace{1em}RRT to Dead & 302 ~ 2.2 y (3.2 y) [13.5 y] & 446 ~ 1.5 y (2.4 y) [ 9.1 y]\\
-\rowcolor{gray!6}  CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\hspace{1em}CKD to HD & 344 ~ 2.5 y (3.5 y) [14.1 y] & 887 ~ 3.8 y (3.7 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to PD & 229 ~ 2.0 y (2.9 y) [12.9 y] & 149 ~ 3.5 y (4.1 y) [ 9.6 y]\\
-\hspace{1em}CKD to Tx & 107 ~ 3.2 y (2.7 y) [12.1 y] & 94 ~ 4.8 y (4.5 y) [ 9.7 y]\\
-\rowcolor{gray!6}  \hspace{1em}HD to Dead & 185 ~ 2.0 y (3.2 y) [11.8 y] & 398 ~ 1.5 y (2.5 y) [ 9.1 y]\\
-\hspace{1em}PD to Dead & 107 ~ 2.3 y (3.2 y) [11.7 y] & 47 ~ 2.1 y (2.3 y) [ 8.5 y]\\
-\bottomrule
-\end{tabular}
-\end{table}
-\hypertarget{data-sources-single-table-draft}{%
-\subsection{Data Sources (Single Table draft)}\label{data-sources-single-table-draft}}
+\hypertarget{data-sources-1}{%
+\subsection{Data Sources}\label{data-sources-1}}
 
 As seen in table \ref{tab:Table-One}, the Age of the populations had a mean of 64.4 and 65.9 respectively with a very broad range. Due to the inclusion criteria, eGFR were capped at a maximum of 60, and was consistent across populations; however, the rate of change for eGFR was much wider in the SERPR patients than in the SKS, and it was decreasing much faster, on average ( -25 vs 0) . The uPCR measures are presented in our results as g/mmol, rather than the more conventional g/mol, this is to better present results and coefficients of varying magnitudes. Levels of missingness were much higher in the SERPR dataset in most continuous variables.
-
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{\label{tab:Table-One}{\small Population demographics for the continuous variables presented as: mean (IQR) [min,max] <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedleft\arraybackslash}p{33em}>{\ttfamily\raggedleft\arraybackslash}p{36em}}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Age}}\\
-\hspace{1em}Age & 64.378 (19.000) [ 20.000,\quad 94.000] <\quad \quad 0 ( 0.00\%)> & 65.880 (17.000) [\quad \quad 18.000,\quad \quad 98.000] <\quad \quad 0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR\textsuperscript{a} & 30.368 (22.386) [\quad 3.577,\quad 59.965] <\quad \quad 0 ( 0.00\%)> & 36.132 (21.444) [ \quad \quad 1.651,\quad \quad 59.998] <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate\textsuperscript{a} & -0.015 ( 0.293) [-19.107,\quad 33.781] <1,278 (42.87\%)> & -25.476 (44.229) [-8,755.272, 9,260.375] <\quad \quad 0 ( 0.00\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR\textsuperscript{f} & 0.112 ( 0.103) [\quad 0.000, \quad 2.025] <\quad 245 ( 8.21\%)> & 0.184 ( 0.147) [ \quad \quad 0.000, \quad \quad 6.390] <7,513 (96.76\%)>\\
-\rowcolor{gray!6}  \hspace{1em}uPCR Rate\textsuperscript{f} & -0.096 ( 0.188) [-70.727,\quad 28.198] <1,777 (59.61\%)> & 73.177 ( 0.384) [\quad \quad -2.255, 3,051.403] <7,721 (99.44\%)>\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP\textsuperscript{b} & 140.193 (29.000) [ 77.000, 220.000] < \quad 50 ( 1.67\%)> & 147.746 (33.000) [\quad \quad 82.000, \quad 258.000] <6,880 (88.61\%)>\\
-\rowcolor{gray!6}  \hspace{1em}DBP\textsuperscript{b} & 74.555 (14.000) [ 36.000, 159.000] < \quad 52 ( 1.74\%)> & 76.263 (18.000) [\quad \quad 35.000, \quad 128.000] <6,879 (88.60\%)>\\
-\hspace{1em}BMI\textsuperscript{c} & 28.848 ( 7.842) [ 13.182,\quad 61.466] <\quad 572 (19.18\%)> & 29.331 ( 7.851) [\quad \quad 15.343,\quad \quad 48.301] <7,681 (98.93\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Albumin\textsuperscript{d} & 42.152 ( 5.000) [ 12.000,\quad 52.000] < \quad 60 ( 2.01\%)> & 36.490 ( 6.000) [ \quad \quad 7.000,\quad \quad 53.000] <3,455 (44.50\%)>\\
-\hspace{1em}Corrected Calcium\textsuperscript{e} & 2.302 ( 0.180) [\quad 1.209, \quad 3.660] < \quad 68 ( 2.28\%)> & 2.408 ( 0.160) [ \quad \quad 1.419, \quad \quad 3.610] <5,113 (65.85\%)>\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin\textsuperscript{d} & 122.977 (23.000) [ 61.000, 195.000] < \quad 72 ( 2.41\%)> & 108.588 (30.000) [ \quad \quad 6.250, \quad 208.000] <3,968 (51.10\%)>\\
-\hspace{1em}Phosphate\textsuperscript{e} & 1.162 ( 0.320) [\quad 0.430, \quad 3.710] < \quad 87 ( 2.91\%)> & 1.203 ( 0.320) [ \quad \quad 0.370, \quad \quad 4.370] <5,127 (66.03\%)>\\
-\bottomrule
-\multicolumn{3}{l}{\textsuperscript{a} (ml/min/1.73m\textasciicircum{}2) or per year \textsuperscript{b} (mmHG) \textsuperscript{c} (kg/m\textasciicircum{}2) \textsuperscript{d} (g/l) \textsuperscript{e} (mmol/l) \textsuperscript{f} (g/mmol) or per year}\\
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry
 \begin{table}[!h]
 
-\caption{\label{tab:Table-One}{\small Population demographics for the categorical variables presented as number (percent)}}
+\caption{\label{tab:Table-One}{\small Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l>{\ttfamily}l}
 \toprule
-  & SKS (Development) & SERPR (Validation)\\
+\multicolumn{1}{c}{ } & \multicolumn{3}{c}{SKS} & \multicolumn{3}{c}{SERPR} \\
+\cmidrule(l{3pt}r{3pt}){2-4} \cmidrule(l{3pt}r{3pt}){5-7}
+Variable & mean/n (IQR/p\%) & missing n (p\%) & range & mean/n (IQR/p\%) & missing n (p\%) & range\\
 \midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Gender}}\\
-\hspace{1em}Male & 1,865 (62.56 \%) & 3,915 (50.42 \%)\\
-\hspace{1em}Female & 1,116 (37.43 \%) & 3,849 (49.57 \%)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Ethnicity}}\\
-\hspace{1em}White & 2,875 (96.44 \%) & 683 ( 8.79 \%)\\
-\hspace{1em}Asian & 75 ( 2.51 \%) & 12 ( 0.15 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Black & 21 ( 0.70 \%) & 7 ( 0.09 \%)\\
-\hspace{1em}Other & 10 ( 0.33 \%) & 2 ( 0.02 \%)\\
-\rowcolor{gray!6}  \hspace{1em}<Ethnicity Missing> & 0 ( 0.00 \%) & 7,060 (90.93 \%)\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former & 1,535 (51.49 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & 979 (32.84 \%) & \\
-\hspace{1em}Smoker & 379 (12.71 \%) & \\
-\rowcolor{gray!6}  \hspace{1em}Former 3Y & 46 ( 1.54 \%) & \\
-\hspace{1em}<Smoking Status Missing> & 42 ( 1.40 \%) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Systemic diseases affecting the kidney & 1,304 (43.74 \%) & 299 ( 3.85 \%)\\
-\hspace{1em}Glomerular disease & 442 (14.82 \%) & 225 ( 2.89 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Tubulointerstitial disease & 268 ( 8.99 \%) & 164 ( 2.11 \%)\\
-\hspace{1em}Miscellaneous renal disorders & 227 ( 7.61 \%) & 188 ( 2.42 \%)\\
-\rowcolor{gray!6}  \hspace{1em}Familial / hereditary nephropathies & 173 ( 5.80 \%) & 102 ( 1.31 \%)\\
-\hspace{1em}<Renal Diagnosis Missing> & 567 (19.02 \%) & 6,786 (87.40 \%)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\begin{table}[!h]
-
-\caption{\label{tab:Table-One}{\small Population comorbidity prevalence for the two populations presented as number (percent) <number missing (percent missing)>}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
-\toprule
-  & SKS (Development) & SERPR (Validation)\\
-\midrule
-\rowcolor{gray!6}  Diabetes (DM) & 992 (33.32\%) <\quad 4 (0.13\%)> & 1,546 (19.91\%) <\quad \quad 0 ( 0.00\%)>\\
-Congestive Cardiac Failure (CCF) & 2,414 (81.08\%) <\quad 4 (0.13\%)> & 406 ( 5.22\%) <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Prior Myocardial Infarction (MI) & 2,492 (83.70\%) <\quad 4 (0.13\%)> & 556 ( 7.16\%) <\quad \quad 0 ( 0.00\%)>\\
-Ischemic Heart Disease (IHD) & 2,393 (80.38\%) <\quad 4 (0.13\%)> & 867 (11.16\%) <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Peripheral Vascular Disease (PVD) & 2,485 (83.47\%) <\quad 4 (0.13\%)> & 376 ( 4.84\%) <\quad \quad 0 ( 0.00\%)>\\
+\rowcolor{gray!6}  Age & 64.378 (19.000) & \quad \quad 0 ( 0.00\%) & [ 20.000,\quad 94.000] & 66.064 (17.000) & \quad \quad 0 (\quad 0.00\%) & [\quad 11.000,\quad 98.000]\\
+eGFR & 30.369 (22.387) & \quad \quad 0 ( 0.00\%) & [\quad 3.578,\quad 59.966] & 35.647 (20.565) & \quad \quad 0 (\quad 0.00\%) & [ \quad 1.199,\quad 59.994]\\
+\rowcolor{gray!6}  eGFR Rate & -0.016 ( 0.294) & 1,278 (42.87\%) & [-19.107,\quad 33.782] & \quad 1.319 (21.897) & \quad \quad 0 (\quad 0.00\%) & [ -28.636,\quad 50.653]\\
+SBP & 140.193 (29.000) & \quad 50 ( 1.68\%) & [ 77.000, 220.000] & 145.981 (30.000) & 6,345 ( 82.31\%) & [\quad 82.000, 258.000]\\
+\rowcolor{gray!6}  DBP & 74.556 (14.000) & \quad 52 ( 1.74\%) & [ 36.000, 159.000] & 76.742 (17.000) & 6,345 ( 82.31\%) & [\quad 35.000, 128.000]\\
 \addlinespace
-Prior Cerebrovascular Accident (CVA) & 2,727 (91.60\%) <\quad 4 (0.13\%)> & 184 ( 2.36\%) <\quad \quad 0 ( 0.00\%)>\\
-\rowcolor{gray!6}  Chronic Obstructive Pulmonary Disease (COPD) & 2,411 (80.98\%) <\quad 4 (0.13\%)> & \\
-Chronic Liver Disease (LD) & 2,891 (97.11\%) <\quad 4 (0.13\%)> & \\
-\rowcolor{gray!6}  Solid Tumour (ST) & 2,570 (86.32\%) <\quad 4 (0.13\%)> & \\
-Hypertension (HT) & 2,546 (91.48\%) <198 (6.64\%)> & 3,122 (40.21\%) <\quad \quad 0 ( 0.00\%)>\\
+BMI & 28.848 ( 7.842) & \quad 572 (19.19\%) & [ 13.182,\quad 61.467] & 29.020 ( 6.811) & 7,491 ( 97.17\%) & [\quad 17.073,\quad 52.403]\\
+\rowcolor{gray!6}  Albumin & 42.152 ( 5.000) & \quad 60 ( 2.01\%) & [ 12.000,\quad 52.000] & 36.475 ( 6.000) & 3,134 ( 40.65\%) & [ \quad 7.000,\quad 53.000]\\
+Calcium & \quad 2.302 ( 0.180) & \quad 68 ( 2.28\%) & [\quad 1.210, \quad 3.660] & \quad 2.407 ( 0.160) & 4,513 ( 58.54\%) & [ \quad 1.455, \quad 3.400]\\
+\rowcolor{gray!6}  Haemoglobin & 122.978 (23.000) & \quad 72 ( 2.42\%) & [ 61.000, 195.000] & 109.269 (29.000) & 3,557 ( 46.14\%) & [ \quad 7.100, 208.000]\\
+Phosphate & \quad 1.163 ( 0.320) & \quad 87 ( 2.92\%) & [\quad 0.430, \quad 3.710] & \quad 1.194 ( 0.320) & 4,510 ( 58.50\%) & [ \quad 0.320, \quad 4.370]\\
+\addlinespace
+\rowcolor{gray!6}  uPCR & \quad 0.112 ( 0.103) & \quad 245 ( 8.22\%) & [\quad 0.001, \quad 2.025] & \quad 0.178 ( 0.177) & 7,170 ( 93.01\%) & [ \quad 0.001, \quad 1.943]\\
+uPCR Rate & -0.096 ( 0.188) & 1,777 (59.61\%) & [-70.727,\quad 28.199] & \quad 4.621 ( 0.905) & 7,495 ( 97.22\%) & [-176.200, 952.812]\\
+\rowcolor{gray!6}  Gender: &  & \quad \quad 0 ( 0.00\%) &  &  & \quad \quad 0 (\quad 0.00\%) & \\
+Male & \quad 1,865 (62.56\%) &  &  & \quad 3,885 (50.40\%) &  & \\
+\rowcolor{gray!6}  Female & \quad 1,116 (37.44\%) &  &  & \quad 3,824 (49.60\%) &  & \\
+\addlinespace
+Ethnicity: &  & \quad \quad 0 ( 0.00\%) &  &  & 7,009 ( 90.92\%) & \\
+\rowcolor{gray!6}  White & \quad 2,875 (96.44\%) &  &  & \quad \quad 679 ( 8.81\%) &  & \\
+Asian & \quad \quad 75 ( 2.52\%) &  &  & \quad \quad 12 ( 0.16\%) &  & \\
+\rowcolor{gray!6}  Black & \quad \quad 21 ( 0.70\%) &  &  & \quad \quad \quad 7 ( 0.09\%) &  & \\
+Other & \quad \quad 10 ( 0.34\%) &  &  & \quad \quad \quad 2 ( 0.03\%) &  & \\
+\addlinespace
+\rowcolor{gray!6}  SmokingStatus: &  & \quad 42 ( 1.41\%) &  &  & 7,709 (100.00\%) & \\
+Former & \quad 1,535 (51.49\%) &  &  & \quad \quad \quad 0 ( 0.00\%) &  & \\
+\rowcolor{gray!6}  Non-Smoker & \quad \quad 979 (32.84\%) &  &  & \quad \quad \quad 0 ( 0.00\%) &  & \\
+Smoker & \quad \quad 379 (12.71\%) &  &  & \quad \quad \quad 0 ( 0.00\%) &  & \\
+\rowcolor{gray!6}  Former 3Y & \quad \quad 46 ( 1.54\%) &  &  & \quad \quad \quad 0 ( 0.00\%) &  & \\
+\addlinespace
+DiagGroup: &  & \quad 567 (19.02\%) &  &  & 6,640 ( 86.13\%) & \\
+\rowcolor{gray!6}  Systemic diseases affecting the kidney & \quad 1,304 (43.74\%) &  &  & \quad \quad 316 ( 4.10\%) &  & \\
+Glomerular disease & \quad \quad 442 (14.83\%) &  &  & \quad \quad 278 ( 3.61\%) &  & \\
+\rowcolor{gray!6}  Tubulointerstitial disease & \quad \quad 268 ( 8.99\%) &  &  & \quad \quad 173 ( 2.24\%) &  & \\
+Miscellaneous renal disorders & \quad \quad 227 ( 7.61\%) &  &  & \quad \quad 198 ( 2.57\%) &  & \\
+\addlinespace
+\rowcolor{gray!6}  Familial / hereditary nephropathies & \quad \quad 173 ( 5.80\%) &  &  & \quad \quad 104 ( 1.35\%) &  & \\
+Diabetes (DM) & \quad \quad 992 (33.32\%) & \quad \quad 4 ( 0.13\%) &  & \quad 1,535 (19.91\%) & \quad \quad 0 (\quad 0.00\%) & \\
+\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & \quad 2,414 (81.09\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad 408 ( 5.29\%) & \quad \quad 0 (\quad 0.00\%) & \\
+Prior Myocardial Infarction (MI) & \quad 2,492 (83.71\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad 556 ( 7.21\%) & \quad \quad 0 (\quad 0.00\%) & \\
+\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & \quad 2,393 (80.38\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad 863 (11.19\%) & \quad \quad 0 (\quad 0.00\%) & \\
+\addlinespace
+Peripheral Vascular Disease (PVA) & \quad 2,485 (83.47\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad 376 ( 4.88\%) & \quad \quad 0 (\quad 0.00\%) & \\
+\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & \quad 2,727 (91.60\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad 186 ( 2.41\%) & \quad \quad 0 (\quad 0.00\%) & \\
+Chronic Obstructive Pulmonary Disease (COPD) & \quad 2,411 (80.99\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad \quad 0 ( \quad \quad \%) & 7,709 (100.00\%) & \\
+\rowcolor{gray!6}  Chronic Liver Disease (LD) & \quad 2,891 (97.11\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad \quad 0 ( \quad \quad \%) & 7,709 (100.00\%) & \\
+Prior Solid Tumour (ST) & \quad 2,570 (86.33\%) & \quad \quad 4 ( 0.13\%) &  & \quad \quad \quad 0 ( \quad \quad \%) & 7,709 (100.00\%) & \\
+\addlinespace
+\rowcolor{gray!6}  Hypertension (HT) & \quad 2,546 (91.48\%) & \quad 198 ( 6.64\%) &  & \quad 3,114 (40.39\%) & \quad \quad 0 (\quad 0.00\%) & \\
 \bottomrule
 \end{tabular}
 \end{table}
-Table \ref{tab:Table-One} also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched(62.6\% male vs 50.4\% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model.
+Table \ref{tab:Table-One} also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6\% male vs 50.4\% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model.
 
 Overall, there were high levels of comorbidities within the SKS population, but these levels were much lower in the SERPR population.
 
@@ -509,24 +338,23 @@ The median date for the date of death was 3.9 years in the SKS population and 4.
 \caption{\label{tab:Event-Median2}{\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
 \centering
 \fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{\ttfamily}r>{\ttfamily}r}
+\begin{tabular}[t]{>{}r>{}r>{}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
 \toprule
-Transition & SKS (Development) & SERPR (Validation)\\
+\multicolumn{3}{c}{Transition} & \multicolumn{4}{c}{SKS} & \multicolumn{4}{c}{SERPR} \\
+\cmidrule(l{3pt}r{3pt}){1-3} \cmidrule(l{3pt}r{3pt}){4-7} \cmidrule(l{3pt}r{3pt}){8-11}
+Model & From & To & n & median & IQR & max & n & median & IQR & max\\
 \midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Two}}\\
-\hspace{1em}Alive to Dead & 1,427 ~ 3.9 y (4.3 y) [15.0 y] & 3,025 ~ 4.9 y (3.3 y) [10.1 y]\\
-\addlinespace[0.3em]
-\multicolumn{3}{l}{\textbf{Three}}\\
-\hspace{1em}CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to RRT & 680 ~ 2.5 y (3.3 y) [14.1 y] & 1,130 ~ 3.8 y (3.8 y) [10.1 y]\\
-\hspace{1em}RRT to Dead & 302 ~ 2.2 y (3.2 y) [13.5 y] & 446 ~ 1.5 y (2.4 y) [ 9.1 y]\\
-\rowcolor{gray!6}  CKD to Dead & 1,125 ~ 3.5 y (4.2 y) [15.0 y] & 2,579 ~ 4.8 y (3.2 y) [10.1 y]\\
-\hspace{1em}CKD to HD & 344 ~ 2.5 y (3.5 y) [14.1 y] & 887 ~ 3.8 y (3.7 y) [10.1 y]\\
-\rowcolor{gray!6}  \hspace{1em}CKD to PD & 229 ~ 2.0 y (2.9 y) [12.9 y] & 149 ~ 3.5 y (4.1 y) [ 9.6 y]\\
-\hspace{1em}CKD to Tx & 107 ~ 3.2 y (2.7 y) [12.1 y] & 94 ~ 4.8 y (4.5 y) [ 9.7 y]\\
-\rowcolor{gray!6}  \hspace{1em}HD to Dead & 185 ~ 2.0 y (3.2 y) [11.8 y] & 398 ~ 1.5 y (2.5 y) [ 9.1 y]\\
-\hspace{1em}PD to Dead & 107 ~ 2.3 y (3.2 y) [11.7 y] & 47 ~ 2.1 y (2.3 y) [ 8.5 y]\\
+\rowcolor{gray!6}  Two & Alive & Dead & 1,427 & 4.0 y & 4.3 y & 15.0 y & 3,010 & 4.8 y & 3.3 y & 10.1 y\\
+Three & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
+\rowcolor{gray!6}   &  & RRT & \quad 680 & 2.5 y & 3.4 y & 14.2 y & 1,125 & 3.8 y & 3.9 y & 10.1 y\\
+ & RRT & Dead & \quad 302 & 2.2 y & 3.3 y & 13.5 y & \quad 442 & 1.6 y & 2.5 y & 9.2 y\\
+\rowcolor{gray!6}  Five & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
+\addlinespace
+ &  & HD & \quad 344 & 2.6 y & 3.5 y & 14.2 y & \quad 882 & 3.7 y & 3.8 y & 10.1 y\\
+\rowcolor{gray!6}   &  & PD & \quad 229 & 2.0 y & 2.9 y & 12.9 y & \quad 149 & 3.5 y & 4.1 y & 9.5 y\\
+ &  & Tx & \quad 107 & 3.2 y & 2.7 y & 12.1 y & \quad 94 & 5.0 y & 4.4 y & 9.8 y\\
+\rowcolor{gray!6}   & HD & Dead & \quad 185 & 2.1 y & 3.3 y & 11.8 y & \quad 394 & 1.6 y & 2.5 y & 9.2 y\\
+ & PD & Dead & \quad 107 & 2.4 y & 3.2 y & 11.8 y & \quad 47 & 2.1 y & 2.3 y & 8.5 y\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -545,54 +373,54 @@ Here we present the proportional hazards results for the Three-State Model. The 
 \midrule
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (\quad -0.051, \quad 0.374) & -0.041 (\quad -0.051,\quad -0.031) & 0.063 ( \quad 0.050, \quad 0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (\quad -0.002, \quad 0.000) & -0.000 (\quad -0.000,\quad -0.000) & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969, \quad 6.518) &  & \\
+\hspace{1em}(Age-60) & 0.162 (\quad -0.051, \quad 0.375) & -0.041 (\quad -0.051,\quad -0.032) & 0.063 ( \quad 0.051, \quad 0.076)\\
+\hspace{1em}(Age-60)\textsuperscript{} & -0.001 (\quad -0.003, \quad 0.001) & 0.000 (\quad -0.001, \quad 0.000) & \\
+\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969, \quad 6.519) &  & \\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (\quad -0.019,\quad -0.006) & -0.095 (\quad -0.108,\quad -0.082) & 0.011 (\quad -0.001, \quad 0.025)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (\quad -0.021, \quad 0.131) & -0.056 (\quad -0.363, \quad 0.250)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (\quad -0.125, \quad 0.210) &  & 0.227 (\quad -0.770, \quad 1.225)\\
+\hspace{1em}eGFR & -0.013 (\quad -0.020,\quad -0.007) & -0.096 (\quad -0.109,\quad -0.083) & 0.012 (\quad -0.002, \quad 0.026)\\
+\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (\quad -0.021, \quad 0.131) & -0.056 (\quad -0.364, \quad 0.251)\\
+\hspace{1em}log(eGFR Rate) & 0.043 (\quad -0.125, \quad 0.211) &  & 0.228 (\quad -0.770, \quad 1.226)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (\quad -0.318, \quad 0.569) & 0.700 ( \quad 0.112, \quad 1.288) & -0.108 (\quad -0.736, \quad 0.519)\\
-\hspace{1em}uPCR Rate &  & -0.019 (\quad -0.045, \quad 0.005) & 0.036 (\quad -0.062, \quad 0.136)\\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (\quad -0.310, \quad 0.747) & -0.198 (\quad -0.534, \quad 0.137)\\
+\hspace{1em}uPCR & 0.125 (\quad -0.318, \quad 0.569) & 0.700 ( \quad 0.113, \quad 1.288) & -0.108 (\quad -0.736, \quad 0.519)\\
+\hspace{1em}uPCR Rate &  & -0.020 (\quad -0.045, \quad 0.005) & 0.037 (\quad -0.063, \quad 0.136)\\
+\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (\quad -0.311, \quad 0.748) & -0.198 (\quad -0.534, \quad 0.137)\\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (\quad -0.004, \quad 0.002) & 0.005 (\quad -0.000, \quad 0.011) & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 ( \quad 0.000, \quad 0.013) & 0.006 (\quad -0.001, \quad 0.015) & \\
+\hspace{1em}SBP & -0.001 (\quad -0.005, \quad 0.002) & 0.005 (\quad -0.001, \quad 0.011) & \\
+\rowcolor{gray!6}  \hspace{1em}DBP & 0.007 ( \quad 0.000, \quad 0.013) & 0.007 (\quad -0.002, \quad 0.016) & \\
 \hspace{1em}BMI &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (\quad -0.064,\quad -0.024) & -0.032 (\quad -0.059,\quad -0.004) & -0.044 (\quad -0.079,\quad -0.009)\\
-\hspace{1em}Corrected Calcium & 0.280 (\quad -0.192, \quad 0.752) & -0.515 (\quad -1.207, \quad 0.177) & \\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (\quad -0.017,\quad -0.008) & -0.005 (\quad -0.012, \quad 0.001) & -0.005 (\quad -0.014, \quad 0.003)\\
-\hspace{1em}Phosphate & 0.511 ( \quad 0.132, \quad 0.890) & 0.869 (\quad -0.059, \quad 1.799) & \\
+\rowcolor{gray!6}  \hspace{1em}Albumin & -0.045 (\quad -0.065,\quad -0.024) & -0.032 (\quad -0.060,\quad -0.005) & -0.045 (\quad -0.080,\quad -0.010)\\
+\hspace{1em}Corrected Calcium & 0.280 (\quad -0.192, \quad 0.753) & -0.515 (\quad -1.208, \quad 0.177) & \\
+\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (\quad -0.018,\quad -0.008) & -0.005 (\quad -0.012, \quad 0.002) & -0.006 (\quad -0.015, \quad 0.004)\\
+\hspace{1em}Phosphate & 0.512 ( \quad 0.133, \quad 0.891) & 0.870 (\quad -0.060, \quad 1.800) & \\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (\quad -0.371,\quad -0.099) & -0.277 (\quad -0.455,\quad -0.099) & \\
+\hspace{1em}Female & -0.236 (\quad -0.371,\quad -0.100) & -0.278 (\quad -0.456,\quad -0.100) & \\
 \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (\quad -0.879, \quad 0.453) & -0.133 (\quad -0.757, \quad 0.490) & -0.282 (\quad -1.082, \quad 0.518)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (\quad -0.345,\quad -0.051) & -0.162 (\quad -0.364, \quad 0.039) & -0.294 (\quad -0.598, \quad 0.009)\\
-\hspace{1em}Smoker & 0.356 ( \quad 0.160, \quad 0.551) & 0.175 (\quad -0.076, \quad 0.428) & 0.387 ( \quad 0.068, \quad 0.706)\\
+\hspace{1em}Former (3 years+) & -0.213 (\quad -0.879, \quad 0.453) & -0.134 (\quad -0.758, \quad 0.490) & -0.282 (\quad -1.083, \quad 0.519)\\
+\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (\quad -0.345,\quad -0.051) & -0.162 (\quad -0.364, \quad 0.040) & -0.295 (\quad -0.599, \quad 0.010)\\
+\hspace{1em}Smoker & 0.356 ( \quad 0.161, \quad 0.552) & 0.176 (\quad -0.077, \quad 0.428) & 0.387 ( \quad 0.069, \quad 0.706)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (\quad -0.854, \quad 0.006) & 1.029 ( \quad 0.720, \quad 1.338) & -0.562 (\quad -1.084,\quad -0.040)\\
-\hspace{1em}Glomerular disease & -0.394 (\quad -0.635,\quad -0.154) & -0.165 (\quad -0.465, \quad 0.134) & -0.488 (\quad -0.883,\quad -0.094)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (\quad -0.505,\quad -0.021) & -0.649 (\quad -1.143,\quad -0.155) & 0.033 (\quad -0.553, \quad 0.620)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (\quad -0.741,\quad -0.184) & -0.265 (\quad -0.577, \quad 0.046) & -0.310 (\quad -0.803, \quad 0.181)\\
+\hspace{1em}Familial / hereditary nephropathies & -0.424 (\quad -0.855, \quad 0.006) & 1.029 ( \quad 0.721, \quad 1.338) & -0.563 (\quad -1.085,\quad -0.040)\\
+\hspace{1em}Glomerular disease & -0.395 (\quad -0.636,\quad -0.154) & -0.166 (\quad -0.465, \quad 0.134) & -0.489 (\quad -0.884,\quad -0.094)\\
+\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (\quad -0.506,\quad -0.021) & -0.649 (\quad -1.143,\quad -0.155) & 0.033 (\quad -0.554, \quad 0.620)\\
+\hspace{1em}Tubulointerstitial disease & -0.463 (\quad -0.742,\quad -0.185) & -0.266 (\quad -0.577, \quad 0.046) & -0.311 (\quad -0.803, \quad 0.182)\\
 \rowcolor{gray!6}  \addlinespace[0.3em]
 \multicolumn{4}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (\quad -0.011, \quad 0.255) & 0.141 (\quad -0.074, \quad 0.358) & 0.200 (\quad -0.096, \quad 0.496)\\
-\hspace{1em}CCF & -0.394 (\quad -0.535,\quad -0.253) &  & -0.299 (\quad -0.597,\quad -0.002)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (\quad -0.397,\quad -0.094) & 0.234 (\quad -0.061, \quad 0.530) & 0.186 (\quad -0.199, \quad 0.572)\\
-\hspace{1em}IHD & 0.102 (\quad -0.041, \quad 0.245) & -0.077 (\quad -0.334, \quad 0.179) & -0.097 (\quad -0.424, \quad 0.228)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (\quad -0.394,\quad -0.103) & -0.168 (\quad -0.405, \quad 0.068) & -0.183 (\quad -0.492, \quad 0.126)\\
-\hspace{1em}CVA & -0.070 (\quad -0.252, \quad 0.111) &  & -0.168 (\quad -0.577, \quad 0.240)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (\quad -0.433,\quad -0.145) &  & \\
-\hspace{1em}LD & -0.169 (\quad -0.578, \quad 0.239) & -0.316 (\quad -0.731, \quad 0.097) & -0.270 (\quad -0.858, \quad 0.318)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (\quad -0.431,\quad -0.117) & -0.181 (\quad -0.516, \quad 0.153) & -0.278 (\quad -0.611, \quad 0.055)\\
-\hspace{1em}HT &  & 0.274 (\quad -0.176, \quad 0.726) & -0.416 (\quad -1.104, \quad 0.271)\\
+\hspace{1em}DM & 0.122 (\quad -0.011, \quad 0.255) & 0.142 (\quad -0.075, \quad 0.359) & 0.200 (\quad -0.096, \quad 0.497)\\
+\hspace{1em}CCF & -0.395 (\quad -0.536,\quad -0.254) &  & -0.300 (\quad -0.597,\quad -0.003)\\
+\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (\quad -0.398,\quad -0.095) & 0.234 (\quad -0.062, \quad 0.530) & 0.187 (\quad -0.199, \quad 0.572)\\
+\hspace{1em}IHD & 0.102 (\quad -0.041, \quad 0.246) & -0.077 (\quad -0.334, \quad 0.179) & -0.098 (\quad -0.424, \quad 0.228)\\
+\rowcolor{gray!6}  \hspace{1em}PVD & -0.249 (\quad -0.395,\quad -0.103) & -0.169 (\quad -0.406, \quad 0.068) & -0.183 (\quad -0.493, \quad 0.126)\\
+\hspace{1em}CVA & -0.071 (\quad -0.253, \quad 0.111) &  & -0.168 (\quad -0.577, \quad 0.241)\\
+\rowcolor{gray!6}  \hspace{1em}COPD & -0.290 (\quad -0.433,\quad -0.146) &  & \\
+\hspace{1em}LD & -0.170 (\quad -0.579, \quad 0.239) & -0.317 (\quad -0.732, \quad 0.098) & -0.270 (\quad -0.859, \quad 0.318)\\
+\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (\quad -0.431,\quad -0.118) & -0.181 (\quad -0.516, \quad 0.153) & -0.278 (\quad -0.612, \quad 0.056)\\
+\hspace{1em}HT &  & 0.275 (\quad -0.177, \quad 0.726) & -0.416 (\quad -1.105, \quad 0.272)\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1135,9 +963,6 @@ Collins, Gary S., Johannes B. Reitsma, Douglas G. Altman, and Karel GM Moons. 20
 \leavevmode\hypertarget{ref-floege_development_2015}{}%
 Floege, Jürgen, Iain A. Gillespie, Florian Kronenberg, Stefan D. Anker, Ioanna Gioni, Sharon Richards, Ronald L. Pisoni, et al. 2015. ``Development and Validation of a Predictive Mortality Risk Score from a European Hemodialysis Cohort.'' \emph{Kidney International} 87 (5): 996--1008. \url{https://doi.org/10.1038/ki.2014.419}.
 
-\leavevmode\hypertarget{ref-forni_renal_2017-1}{}%
-Forni, L. G., M. Darmon, M. Ostermann, H. M. Oudemans-van Straaten, V. Pettilä, J. R. Prowle, M. Schetz, and M. Joannidis. 2017. ``Renal Recovery After Acute Kidney Injury.'' \emph{Intensive Care Medicine} 43 (6): 855--66. \url{https://doi.org/10.1007/s00134-017-4809-x}.
-
 \leavevmode\hypertarget{ref-gneiting_strictly_2007}{}%
 Gneiting, Tilmann, and Adrian E. Raftery. 2007. ``Strictly Proper Scoring Rules, Prediction, and Estimation.'' \emph{Journal of the American Statistical Association} 102 (477): 359--78. \url{https://doi.org/10.1198/016214506000001437}.
 
@@ -1167,9 +992,6 @@ Johnson, Eric S., Micah L. Thorp, Robert W. Platt, and David H. Smith. 2008. ``P
 
 \leavevmode\hypertarget{ref-johnson_predicting_2007}{}%
 Johnson, Eric S., Micah L. Thorp, Xiuhai Yang, Olivier L. Charansonney, and David H. Smith. 2007. ``Predicting Renal Replacement Therapy and Mortality in CKD.'' \emph{American Journal of Kidney Diseases: The Official Journal of the National Kidney Foundation} 50 (4): 559--65. \url{https://doi.org/10.1053/j.ajkd.2007.07.006}.
-
-\leavevmode\hypertarget{ref-noauthor_kdigo_2012}{}%
-``KDIGO Clinical Practice Guideline for Acute Kidney Injury.'' 2012. \emph{OFFICIAL JOURNAL OF THE INTERNATIONAL SOCIETY OF NEPHROLOGY}, 141.
 
 \leavevmode\hypertarget{ref-kovesdy_past_2016}{}%
 Kovesdy, Csaba P., Josef Coresh, Shoshana H. Ballew, Mark Woodward, Adeera Levin, David M. J. Naimark, Joseph Nally, et al. 2016. ``Past Decline Versus Current eGFR and Subsequent ESRD Risk.'' \emph{Journal of the American Society of Nephrology} 27 (8): 2447--55. \url{https://doi.org/10.1681/ASN.2015060687}.

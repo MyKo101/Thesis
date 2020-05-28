@@ -138,19 +138,23 @@ As seen in table \@ref(tab:Table-One), the Age of the populations had a mean of 
 <br>
 ```{r Table-One,echo=F}
 "data/Dev_Paper/TableOne.csv" %>%
-  read_csv(col_types=cols(.default="c"),trim_ws=F) %>%
-  transmute(Variable,
-            `SKS_mean/n (IQR/p)` = if_else(!is_blank(SKS_mean.n),paste0(SKS_mean.n," (",SKS_IQR.p,")"),""),
-            `SKS_missing n (p)` = if_else(!is_blank(SKS_n.miss),paste0(SKS_n.miss," (",SKS_p.miss,")"),""),
-            `SKS_range` = if_else(!is_blank(SKS_min),paste0("[",SKS_min,", ",SKS_max,"]"),""),
-            `UoG_mean/n (IQR/p)` = if_else(!is_blank(UoG_mean.n),paste0(UoG_mean.n," (",UoG_IQR.p,")"),""),
-            `UoG_missing n (p)` = if_else(!is_blank(UoG_n.miss),paste0(UoG_n.miss," (",UoG_p.miss,")"),""),
-            `UoG_range` = if_else(!is_blank(UoG_min),paste0("[",UoG_min,", ",UoG_max,"]"),"")) %>%
+  read_csv(col_types=cols(.default="c"),trim_ws=F) %>% 
+  rename_at(vars(contains("mean.n")),~gsub("mean.n","mean/n",.)) %>%
+  rename_at(vars(contains("IQR.p")),~gsub("IQR.p","IQR/p",.)) %>%
+#  transmute(Variable,
+#            `SKS_mean/n (IQR/p\\%)` = if_else(!is_blank(SKS_mean.n),paste0(SKS_mean.n," (",SKS_IQR.p,")"),""),
+#            `SKS_missing n (p\\%)` = if_else(!is_blank(SKS_n.miss),paste0(SKS_n.miss," (",SKS_p.miss,")"),""),
+#            `SKS_range` = if_else(!is_blank(SKS_min),paste0("[",SKS_min,", ",SKS_max,"]"),""),
+#            `UoG_mean/n (IQR/p\\%)` = if_else(!is_blank(UoG_mean.n),paste0(UoG_mean.n," (",UoG_IQR.p,")"),""),
+#            `UoG_missing n (p\\%)` = if_else(!is_blank(UoG_n.miss),paste0(UoG_n.miss," (",UoG_p.miss,")"),""),
+#            `UoG_range` = if_else(!is_blank(UoG_min),paste0("[",UoG_min,", ",UoG_max,"]"),"")) %>%
+#  
   to_kable(caption="Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)",
            col_names = . %>%
              gsub("^SKS_","",.)%>% 
              gsub("^UoG_","",.),
-           col_groups = c("",rep("SKS",3),rep("SERPR",3)),
+           col_groups = c("",rep("SKS",6),rep("SERPR",6)),
+           col_groups_sep = T,
            numeric_cols=2:ncol(.),
            col_widths=c("26em","13em","11em","14em","14em","14em","19em"))
 
@@ -165,14 +169,16 @@ Overall, there were high levels of comorbidities within the SKS population, but 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median2).
 
 ```{r Event-Median2, echo=F}
-"data/Dev_Paper_Event_Median.csv" %>%
-  read_csv(col_types=cols()) %>%
-  rename(`SKS (Development)` = res_SKS,`SERPR (Validation)` = res_UoG)%>%
-  mutate(Transition = paste0(From, " to ",To)) %>%
-  select(-From,-To) %>%
-  select(Transition,everything()) %>%
+"data/Dev_Paper/Event_Median.csv" %>%
+  read_csv(col_types=cols(.default="c"),trim_ws=F) %>%
   to_kable(caption="Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]",
-           align="lrr",numeric_cols=2:3,group_col = "Model")
+           col_names = . %>%
+             gsub("^SKS_","",.)%>% 
+             gsub("^UoG_","",.),
+           align=strrep("r",ncol(.)),
+           col_groups = c(rep("Transition",3),rep("SKS",4),rep("SERPR",4)),
+           numeric_cols = 4:11,
+           col_groups_sep = T)
 
 ```
 
@@ -181,7 +187,7 @@ The median date for the date of death was 3.9 years in the SKS population and 4.
 Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials`r fb(" in appendix \\@ref(chap-dev-paper-supp)"," in appendix \\@ref(chap-dev-paper-supp)")`. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
 
 ```{r PH-Three,echo=F}
-print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",3)
+print_table_PH("data/Dev_Paper/Hazard_Ratios.csv",3)
 ```
 
 
@@ -192,7 +198,7 @@ Female patients are predicted to be more likely to remain in the CKD state than 
 Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
 
 ```{r IV-Three,echo=F}
-res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,F)
+res <- list_table_Valid("data/Dev_Paper/Validation.csv",3,F)
 res[[1]]
 ```
 
@@ -200,7 +206,7 @@ Table \@ref(tab:EV-Three) shows the results from the external validation in the 
 
 
 ```{r EV-Three,echo=F}
-res <- list_table_Valid("data/Dev_Paper_Validation.csv",3,T)
+res <- list_table_Valid("data/Dev_Paper/Validation.csv",3,T)
 res[[1]]
 ```
 

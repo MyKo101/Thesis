@@ -1,0 +1,11 @@
+Model,From,To,SKS_n,SKS_median,SKS_IQR,SKS_max,UoG_n,UoG_median,UoG_IQR,UoG_max
+Two,Alive,Dead,"1,427",4.0 y,4.3 y,15.0 y,"3,010",4.8 y,3.3 y,10.1 y
+Three,CKD,Dead,"1,125",3.5 y,4.2 y,15.0 y,"2,568",4.7 y,3.3 y,10.1 y
+     ,   ,RRT,  680,2.5 y,3.4 y,14.2 y,"1,125",3.8 y,3.9 y,10.1 y
+     ,RRT,Dead,  302,2.2 y,3.3 y,13.5 y,  442,1.6 y,2.5 y, 9.2 y
+Five,CKD,Dead,"1,125",3.5 y,4.2 y,15.0 y,"2,568",4.7 y,3.3 y,10.1 y
+    ,   ,HD,  344,2.6 y,3.5 y,14.2 y,  882,3.7 y,3.8 y,10.1 y
+    ,   ,PD,  229,2.0 y,2.9 y,12.9 y,  149,3.5 y,4.1 y, 9.5 y
+    ,   ,Tx,  107,3.2 y,2.7 y,12.1 y,   94,5.0 y,4.4 y, 9.8 y
+    ,HD,Dead,  185,2.1 y,3.3 y,11.8 y,  394,1.6 y,2.5 y, 9.2 y
+    ,PD,Dead,  107,2.4 y,3.2 y,11.8 y,   47,2.1 y,2.3 y, 8.5 y

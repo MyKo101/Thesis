@@ -196,7 +196,8 @@ do_colspace <- function(.tbl,numeric_cols,col_widths)
 #' @export
 to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
                      col_names=do_nothing,row_names=NULL,
-                     group_col=NULL,col_widths=NULL,col_groups=NULL)
+                     group_col=NULL,col_widths=NULL,
+                     col_groups=NULL,col_groups_sep=FALSE)
 {
   if(!is.null(group_col)&&!is.na(group_col))
   {
@@ -213,6 +214,14 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
       replace(.==""," ") %>%
       fct_inorder %>%
       table
+    
+    if(col_groups_sep)
+    {
+      header_borders <- cumsum(col_headers)[-length(col_headers)]
+      header_border_styles <- fb("2px solid lightgray",T,T)
+      
+    }
+    
   } else col_headers <- NULL
   
   
@@ -264,15 +273,19 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
     kable_styling(bootstrap_options="striped",
                   latex_options="striped",
                   font_size=fb(9,7,7),
-                  full_width=F) %>%
+                  full_width=F)  %>%
     if_fun(!is.null(col_headers),
            . %>% add_header_above(col_headers)) %>%
+    if_fun(!is.null(col_headers) & col_groups_sep,
+           . %>% column_spec(header_borders,border_right = header_border_styles)) %>%
     if_fun(lscape,
            . %>% landscape(margin="2cm"),
            . %>% kable_styling(latex_options="hold_position")) %>%
     if_fun(!is.null(group_col) && !is.na(group_col),
            . %>% pack_rows(index=grp_index)) %>%
-    do_colspace(numeric_cols,col_widths) %>%
+    do_colspace(numeric_cols,col_widths)%>%
+    if_fun(fb("gitbook"),
+           . %>% scroll_box(width="100%",fixed_thead = T)) %>%
     gsub("\\\\vphantom\\{.*?\\} ","",.)
   
 }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.23)  27 MAY 2020 01:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.23)  27 MAY 2020 22:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1120,7 +1120,7 @@ Overfull \hbox (28.08488pt too wide) in paragraph at lines 1071--1093
  []
 
 [71]
-Overfull \hbox (550.66374pt too wide) in paragraph at lines 1115--1172
+Overfull \hbox (202.85495pt too wide) in paragraph at lines 1115--1172
  [][] 
  []
 
@@ -1131,7 +1131,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (897.33073pt too wide) in paragraph at lines 1213--1269
+Overfull \hbox (897.33073pt too wide) in paragraph at lines 1212--1268
  [][] 
  []
 
@@ -1139,12 +1139,12 @@ Overfull \hbox (897.33073pt too wide) in paragraph at lines 1213--1269
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [72]
-Overfull \hbox (4.31927pt too wide) in paragraph at lines 1281--1311
+Overfull \hbox (4.31927pt too wide) in paragraph at lines 1280--1310
  [][] 
  []
 
 
-Overfull \hbox (0.60052pt too wide) in paragraph at lines 1318--1348
+Overfull \hbox (0.60052pt too wide) in paragraph at lines 1317--1347
  [][] 
  []
 
@@ -1158,7 +1158,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <figure/Dev_Paper_Example.png, id=1392, 1239.12938pt x 301.125pt>
 File: figure/Dev_Paper_Example.png Graphic file (type png)
 <use figure/Dev_Paper_Example.png>
-Package pdftex.def Info: figure/Dev_Paper_Example.png  used on input line 1355.
+Package pdftex.def Info: figure/Dev_Paper_Example.png  used on input line 1354.
 
 (pdftex.def)             Requested size: 418.25368pt x 101.63678pt.
 [74 <./figure/Dev_Paper_Example.png>]
@@ -1182,10 +1182,10 @@ File: figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5).png Graphic file (type pn
 g)
 <use figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5).png>
 Package pdftex.def Info: figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5).png  u
-sed on input line 1434.
+sed on input line 1433.
 (pdftex.def)             Requested size: 3951.72307pt x 1975.53963pt.
 
-Overfull \hbox (3533.46939pt too wide) in paragraph at lines 1434--1435
+Overfull \hbox (3533.46939pt too wide) in paragraph at lines 1433--1434
 [] 
  []
 
@@ -1204,10 +1204,10 @@ Appendix C.
 
 ]
 
-LaTeX Warning: Reference `@' on page 88 undefined on input line 1469.
+LaTeX Warning: Reference `@' on page 88 undefined on input line 1468.
 
 [88]
-Overfull \hbox (187.71904pt too wide) in paragraph at lines 1489--1545
+Overfull \hbox (187.71904pt too wide) in paragraph at lines 1488--1544
  [][] 
  []
 
@@ -1215,7 +1215,7 @@ Overfull \hbox (187.71904pt too wide) in paragraph at lines 1489--1545
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (0.60052pt too wide) in paragraph at lines 1556--1578
+Overfull \hbox (0.60052pt too wide) in paragraph at lines 1555--1577
  [][] 
  []
 
@@ -1268,7 +1268,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Overfull \hbox (1648.76611pt too wide) in paragraph at lines 1634--1690
+Overfull \hbox (1648.76611pt too wide) in paragraph at lines 1633--1689
  [][] 
  []
 
@@ -1281,17 +1281,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-Overfull \hbox (8.03802pt too wide) in paragraph at lines 1719--1755
+Overfull \hbox (8.03802pt too wide) in paragraph at lines 1718--1754
  [][] 
  []
 
 
-Overfull \hbox (8.03802pt too wide) in paragraph at lines 1762--1798
+Overfull \hbox (8.03802pt too wide) in paragraph at lines 1761--1797
  [][] 
  []
 
 
-Overfull \hbox (438.96922pt too wide) in paragraph at lines 1805--1815
+Overfull \hbox (438.96922pt too wide) in paragraph at lines 1804--1814
  [][] 
  []
 
@@ -1317,14 +1317,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [101]
-Overfull \hbox (94.13693pt too wide) in paragraph at lines 1954--1956
+Overfull \hbox (94.13693pt too wide) in paragraph at lines 1953--1955
  \T1/lmr/m/n/10 proach Based on In-di-vid-ual Event Prob-a-bil-i-ties:'' \T1/lm
 r/m/it/10 The Stata Jour-nal\T1/lmr/m/n/10 , Dec. 2014, doi: []10.1177/1536867X
 1401400403[]. 
  []
 
 
-Overfull \hbox (18.8248pt too wide) in paragraph at lines 1960--1962
+Overfull \hbox (18.8248pt too wide) in paragraph at lines 1959--1961
  [][]\T1/lmr/m/n/10 [43] M. P. Perme and P. K. An-der-sen, ``Check-ing haz-ard 
 re-gres-sion mod-els us-ing pseudo-observations,''
  []
@@ -1333,13 +1333,13 @@ re-gres-sion mod-els us-ing pseudo-observations,''
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [102]
-Overfull \hbox (23.64589pt too wide) in paragraph at lines 1978--1980
+Overfull \hbox (23.64589pt too wide) in paragraph at lines 1977--1979
  \T1/lmr/m/it/10 Meth-ods in Med-i-cal Re-search\T1/lmr/m/n/10 , vol. 19, no. 1
 , pp. 71--99, Feb. 2010, doi: []10.1177/0962280209105020[]. 
  []
 
 
-Overfull \hbox (116.01103pt too wide) in paragraph at lines 1990--1992
+Overfull \hbox (116.01103pt too wide) in paragraph at lines 1989--1991
  [][]\T1/lmr/m/n/10 [53] H. Wick-ham, ``The tidy tools man-i-festo.'' https://c
 ran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html,
  []
@@ -1354,7 +1354,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [105]
-Overfull \hbox (34.28992pt too wide) in paragraph at lines 2086--2088
+Overfull \hbox (34.28992pt too wide) in paragraph at lines 2085--2087
  \T1/lmr/m/n/10 Sal-ford Lung Study,'' \T1/lmr/m/it/10 Tho-rax\T1/lmr/m/n/10 , 
 vol. 69, pp. 1152--1154, 2014, doi: []http://dx.doi.org/10.1136/thoraxjnl-
  []
@@ -1363,13 +1363,13 @@ vol. 69, pp. 1152--1154, 2014, doi: []http://dx.doi.org/10.1136/thoraxjnl-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [106]
-Overfull \hbox (15.66684pt too wide) in paragraph at lines 2095--2097
+Overfull \hbox (15.66684pt too wide) in paragraph at lines 2094--2096
  \T1/lmr/m/it/10 ogy Dial-y-sis Trans-plan-ta-tion\T1/lmr/m/n/10 , vol. 27, no.
  12, pp. 4414--4419, Dec. 2012, doi: []10.1093/ndt/gfs461[]. 
  []
 
 
-Overfull \hbox (3.85468pt too wide) in paragraph at lines 2119--2121
+Overfull \hbox (3.85468pt too wide) in paragraph at lines 2118--2120
  [][]\T1/lmr/m/n/10 [96] P. Roys-ton and M. K. B. Par-mar, ``Flex-i-ble para-me
 t-ric proportional-hazards and proportional-
  []
@@ -1378,24 +1378,24 @@ t-ric proportional-hazards and proportional-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [107]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2150.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2149.
 [108]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2150.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2149.
 (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2150.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2150.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2149.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2149.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: A9E310D3E8151D479B8241F98A2C1176;8290.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2150.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2149.
  ) 
 Here is how much of TeX's memory you used:
  13109 strings out of 482424
  200175 string characters out of 5946283
- 550666 words of memory out of 5000000
+ 538666 words of memory out of 5000000
  28061 multiletter control sequences out of 15000+600000
  618886 words of font info for 90 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -1433,7 +1433,7 @@ type1/public/lm/lmsy7.pfb><c:/Users/mbrxsmbc/AppData/Roaming/TinyTeX/texmf-dist
 xmf-dist/fonts/type1/public/lm/lmtt8.pfb><c:/Users/mbrxsmbc/AppData/Roaming/Tin
 yTeX/texmf-dist/fonts/type1/public/lm/lmtti10.pfb><c:/Users/mbrxsmbc/AppData/Ro
 aming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on thesis.pdf (108 pages, 1443599 bytes).
+Output written on thesis.pdf (108 pages, 1443271 bytes).
 PDF statistics:
  1921 PDF objects out of 2073 (max. 8388607)
  1756 compressed objects within 18 object streams

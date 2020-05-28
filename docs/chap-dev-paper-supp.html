@@ -284,6 +284,7 @@ div.abstract{
 <div id="two-state-model" class="section level3" number="10.2.1">
 <h3><span class="header-section-number">C.2.1</span> Two State Model</h3>
 <p>Table <a href="chap-dev-paper-supp.html#tab:PH-Two">C.1</a> shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA <span class="citation">[<a href="#ref-venkat-raman_new_2012" role="doc-biblioref">88</a>]</span> definition of Systemic diseases affecting the kidney had the highest likelihood of death.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:PH-Two">Table C.1: </span><font size="2">Proportional Hazards for each transition in the Two-State Model</font>
@@ -607,11 +608,13 @@ HT
 </tr>
 </tbody>
 </table>
+</div>
 <p>Equation <a href="chap-dev-paper-supp.html#eq:CH-Two-16">(C.1)</a> below shows the baseline cumulative hazard functions for the transition from Alive to Dead in the Two-State Model.</p>
 <p><span class="math display" id="eq:CH-Two-16">\[\begin{equation}
 \Lambda_{0,16}(t)=\begin{cases} 1.15764\log(t)+6.17808 &amp; 0 \le t &lt; 3 \\ 0.00075\log(t)^3-0.00247\log(t)^2+1.16036\log(t)+6.17708 &amp; 3 \le t &lt; 520 \\ 0.13983\log(t)^3-2.61165\log(t)^2+17.47602\log(t)-27.83122 &amp; 520 \le t &lt; 984 \\ -0.19361\log(t)^3+4.28227\log(t)^2-30.03426\log(t)+81.30981 &amp; 984 \le t &lt; 1454 \\ -0.15458\log(t)^3+3.42966\log(t)^2-23.82553\log(t)+66.23901 &amp; 1454 \le t &lt; 2009 \\ 0.37097\log(t)^3-8.56171\log(t)^2+67.37553\log(t)-164.97265 &amp; 2009 \le t &lt; 2900 \\ -0.16209\log(t)^3+4.18769\log(t)^2-34.26862\log(t)+105.14551 &amp; 2900 \le t &lt; 5497 \\ 1.79561\log(t)+1.61764)) &amp; 5497 \le t \tag{C.1}\end{cases}
 \end{equation}\]</span></p>
 <p>Table <a href="chap-dev-paper-supp.html#tab:IV-Two">C.2</a> shows the results from the internal validation in the Two-State Model. Calibration Intercept is close to 0, implying the model is well calibrated overall with a high c-statistic and Brier Score. Calibration Slope above 1 implies that the model under-estimates outcomes.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:IV-Two">Table C.2: </span><font size="2">Internal Validation of the Two-State Model, results presented as Estimate (95% CI, where possible)</font>
@@ -821,7 +824,9 @@ Two
 </tr>
 </tbody>
 </table>
+</div>
 <p>Table <a href="chap-dev-paper-supp.html#tab:EV-Two">C.3</a> shows the results from the external validation in the Two-State Model, which shows similar results to the internal validation with slightly impaired perfomance, which is to be expected in an external validation.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:EV-Two">Table C.3: </span><font size="2">External Validation of the Two-State Model, results presented as Estimate (95% CI, where possible)</font>
@@ -1032,6 +1037,7 @@ Two
 </tbody>
 </table>
 </div>
+</div>
 <div id="three-state-model" class="section level3" number="10.2.2">
 <h3><span class="header-section-number">C.2.2</span> Three State Model</h3>
 <p>The equations <a href="chap-dev-paper-supp.html#eq:CH-Three-16">(C.2)</a>, <a href="chap-dev-paper-supp.html#eq:CH-Three-15">(C.3)</a> and <a href="chap-dev-paper-supp.html#eq:CH-Three-56">(C.4)</a> shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.</p>
@@ -1049,6 +1055,7 @@ Two
 <div id="five-state-model" class="section level3" number="10.2.3">
 <h3><span class="header-section-number">C.2.3</span> Five State Model</h3>
 <p>Table <a href="chap-dev-paper-supp.html#tab:PH-Five">C.4</a> shows the proportional hazard ratios for the transitions in the Five-State Model.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:PH-Five">Table C.4: </span><font size="2">Proportional Hazards for each transition in the Five-State Model</font>
@@ -1849,6 +1856,7 @@ HT
 </tr>
 </tbody>
 </table>
+</div>
 <p>The equations <a href="chap-dev-paper-supp.html#eq:CH-Five-12">(C.6)</a>, <a href="chap-dev-paper-supp.html#eq:CH-Five-13">(C.7)</a>, <a href="chap-dev-paper-supp.html#eq:CH-Five-14">(C.8)</a> and <a href="chap-dev-paper-supp.html#eq:CH-Five-16">(C.5)</a> show the baseline cumulative hazard functions from the CKD state to HD, PD, Tx and Dead, respectively. Equation <a href="chap-dev-paper-supp.html#eq:CH-Five-26">(C.9)</a> shows the baseline cumulative hazard function from HD to Dead and Equation <a href="chap-dev-paper-supp.html#eq:CH-Five-36">(C.10)</a> shows the baseline cumulative hazard function from PD to Dead.</p>
 <p><span class="math display" id="eq:CH-Five-16">\[\begin{equation}
 \Lambda_{0,16}(t)=\begin{cases} 1.19795\log(t)+17.68798 &amp; 0 \le t &lt; 3 \\ -9e-05\log(t)^3+3e-04\log(t)^2+1.19761\log(t)+17.68811 &amp; 3 \le t &lt; 443 \\ 0.15869\log(t)^3-2.9019\log(t)^2+18.88018\log(t)-18.22403 &amp; 443 \le t &lt; 873 \\ -0.30096\log(t)^3+6.43659\log(t)^2-44.36299\log(t)+124.54338 &amp; 873 \le t &lt; 1295 \\ -0.04158\log(t)^3+0.86028\log(t)^2-4.40166\log(t)+29.08554 &amp; 1295 \le t &lt; 1876 \\ 0.51263\log(t)^3-11.67048\log(t)^2+90.03919\log(t)-208.17245 &amp; 1876 \le t &lt; 2738 \\ -0.23992\log(t)^3+6.19863\log(t)^2-51.3924\log(t)+164.96467 &amp; 2738 \le t &lt; 5497 \\ 1.98997\log(t)+11.72244)) &amp; 5497 \le t \tag{C.5}\end{cases}
@@ -1869,6 +1877,7 @@ HT
 \Lambda_{0,36}(t)=\begin{cases} 1.55188\log(t)-8.40785 &amp; 0 \le t &lt; 9 \\ -0.02867\log(t)^3+0.18901\log(t)^2+1.13657\log(t)-8.10367 &amp; 9 \le t &lt; 167 \\ 0.24473\log(t)^3-4.00711\log(t)^2+22.60308\log(t)-44.70978 &amp; 167 \le t &lt; 553 \\ -0.99362\log(t)^3+19.45322\log(t)^2-125.54725\log(t)+267.14313 &amp; 553 \le t &lt; 875 \\ 1.22972\log(t)^3-25.73085\log(t)^2+180.53981\log(t)-424.02428 &amp; 875 \le t &lt; 1410 \\ -1.86859\log(t)^3+41.67205\log(t)^2-308.23775\log(t)+757.44556 &amp; 1410 \le t &lt; 1937 \\ 0.31596\log(t)^3-7.93077\log(t)^2+67.19201\log(t)-189.72839 &amp; 1937 \le t &lt; 4302 \\ 0.83657\log(t)-4.66673)) &amp; 4302 \le t \tag{C.10}\end{cases}
 \end{equation}\]</span></p>
 <p>Table <a href="chap-dev-paper-supp.html#tab:IV-Five">C.5</a> shows the results from the internal validation in the Five-State Model. The calibration slope results are shown in a seperate table for both the internal and external validation.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:IV-Five">Table C.5: </span><font size="2">Internal Validation of the Five-State Model, results presented as Estimate (95% CI, where possible)</font>
@@ -2358,7 +2367,9 @@ Two
 </tr>
 </tbody>
 </table>
+</div>
 <p>Table <a href="chap-dev-paper-supp.html#tab:EV-Five">C.6</a> shows the results from the external validation in the Five-State Model.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:EV-Five">Table C.6: </span><font size="2">External Validation of the Five-State Model, results presented as Estimate (95% CI, where possible)</font>
@@ -2848,7 +2859,9 @@ Two
 </tr>
 </tbody>
 </table>
+</div>
 <p>Table <a href="chap-dev-paper-supp.html#tab:Five-Valid-Slope">C.7</a> shows the calibration slopes for the model in the internal and external datasets in both the &lt; 60 eGFR and &lt;30 eGFR sub-populations.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:Five-Valid-Slope">Table C.7: </span><font size="2">Calibration Slope results for both the External and Internal Validation for the Five-State Model</font>
@@ -2942,6 +2955,7 @@ Average
 </tr>
 </tbody>
 </table>
+</div>
 
 <!--
 The bib chunk below must go last in this document according to how R Markdown renders.  More info is at http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html

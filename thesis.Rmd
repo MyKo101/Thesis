@@ -1,6 +1,6 @@
 ---
 author: 'Michael Andrew Barrowman'
-date: 'May 2020'
+date: '`r format(Sys.time(), "%B %Y")`'
 institution: 'University of Manchester'
 division: 'Division of Informatics, Imaging and Data Science'
 advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambie'
@@ -28,24 +28,12 @@ output:
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
 # use code similar to line 22-23 for the .RMD files. If you are NOT producing a PDF, you can delete or silence lines 21-32 in this YAML header.
 abstract: |
-  Insert Abstract Here...
+  `r prelim_Subsection("all","abstract")`
 # If you'd rather include the preliminary content in files instead of inline
 # like below, use a command like that for the abstract above.  Note that a tab is 
 # needed on the line after the `|`.
 acknowledgements: |
-  Insert Ackowledgements Here...  \par
-  
-  <!--  \par
-  
-  I would like to thank my wife, Rachel, for her constant support throughout my studies. She acted as sounding board for my most boring of thoughts and allowed me to rant and rave about statistical models in every way possible. She endured my frustrations when something wasn't working and encouraged me when my optimism turned to pesimism.  \par
-  
-  My thanks also go to my children, Matilda and Theodore, who were an everlasting source of happiness and reprieve from my work. Acting as a distraction (in the best and worst ways) and an incentive.  \par
-  
-  My everlasting gratitude will always lie with my parents, Brenda and Andy, who have allowed me to be myself and to find my own path. They never pushed me into something that I didn't want to do, but also guided me towards what I would be good at.  \par
-  
-  My final thanks go to my PhD supervisors, Matt, Niels, Glen and Mark, who have provided advice and feedback for over four years.  \par
-  
-  -->
+  `r prelim_Subsection("all","acknowledgements")`
 # Specify the location of the bibliography below 
 bibliography: ["bib/thesis.bib","bib/MyCites.bib"]
 biblio-style: "ieee"
@@ -55,11 +43,17 @@ csl: csl/ieee.csl #https://github.com/citation-style-language/styles
 lot: true
 lof: true
 #header-includes: |
-#  
+#  `r cat(readLines("latex_packages.txt"))`
 ---
 
 
+```{r include_packages, include = FALSE}
+if(knitr:::is_latex_output())
+  options(output.format = "thesis") else 
+    options(output.format = "gitbook")
+library(MyThesis)
 
+```
 
   
 <script type="text/x-mathjax-config">
@@ -68,7 +62,7 @@ MathJax.Hub.Config({
 });
 </script>
 
-
+`r fb(gitbook=readLines("header.tex"))`
 
 # Introduction {-}
 
@@ -79,7 +73,7 @@ Add Timeline
 
 -->
 
-Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The html version can be found [here](https://michaelbarrowman.co.uk/thesis).
+Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). `r fb(gitbook="The pdf version can be downloaded via the menu at the top.", thesis="The html version can be found [here](https://michaelbarrowman.co.uk/thesis).")`
   
 I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Annotated text can be seen highlighted and to add your own, just highlight the text you want to comment on, and the annotate bubble pops up (try it now). Make sure you click Post to Public after writing the annotation and annotations can include Rich Text and Markdown. You can view Annotations by clicking the menu on the right and this will show all comments.
 
@@ -94,17 +88,17 @@ Importantly, I've also added in functionality to output each chapter individuall
 
 Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/Thesis). I originally used Github as my backup, but then decided to increase how I used it.
 
+`r fb(gitbook="## Abstract {-}")`
 
-
- 
+`r prelim_Subsection("html","abstract")`
 
 
 <!--chapter:end:index.Rmd-->
 
 
 # Literature Report {#chap-lit-report}
-\chaptermark{Literaure Report}
-Last updated: 25 May
+`r fb(thesis="\\chaptermark{Literaure Report}")`
+`r Updated(1)`
 
 ## Introduction
 
@@ -127,17 +121,17 @@ In general, prognosis research can be broken down into four main categories, wit
 
 For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
 
-The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [**Cite: Something**].
+The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting `r cc()`.
 
 ### Fundamental Prognosis Research
 
-[**What is it? Old definition is incorrect, so will need to write this fresh**]
+`r xx("What is it? Old definition is incorrect, so will need to write this fresh")`
 
 ### Prognostic Factor Research
 
 The aim of prognostic factor research (Type II) is to discover which factors are associated with disease progression. This allows for the general attribution of relationships between predictors and clinical outcomes.
 
-Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, [**xxxx**] demonstrated that [**xxxx**] is correlated with [**xxxx**], which subsequently used as a covariate in the development of the [**xxxx**] model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones [**Cite: Something**]. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting [**xxxx**], we can demonstrate that [**xxxx**] is a prognostic factor, [however since the arrow of causation is [**xxxx**]] [**OR**] [however since [**xxxx**] causes both [**xxxx**] and [**xxxx**]], the relationship is prognostic, but not causal. [**Previously used Apgar score here, reference 40**]
+Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones `r cc()`. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting `r xx()`, we can demonstrate that `r xx()` is a prognostic factor, [however since the arrow of causation is `r xx()`] `r xx("OR")` [however since `r xx()` causes both `r xx()` and `r xx()`], the relationship is prognostic, but not causal. `r xx("Previously used Apgar score here, reference 40")`
 
 Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
 
@@ -147,7 +141,7 @@ It is unfortunate, however, that Riley at al [@riley_systematic_2003-1] found th
 
 Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome [@steyerberg_prognosis_2013] and they are deigned to augment the job of a clinician; and not to completely replace them [@moons_prognosis_2009]. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease [@collins_transparent_2015;~moons_transparent_2015]. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratied medicine approach [@collins_transparent_2015;@moons_transparent_2015]. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is [@moons_prognosis_2009]. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician [@kurella_optimizing_2012]. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
 
-Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe [**Cite: Something**]. To quote Steyerberg et al [@steyerberg_prognosis_2013]. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
+Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe `r cc()`. To quote Steyerberg et al [@steyerberg_prognosis_2013]. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
 
 #### Model Development
 
@@ -156,7 +150,7 @@ The first stage of having a useful model is to develop one. Clinical predictive 
 By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors [@riley_prognosis_2013]. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality [@haybittle_prognosis_1982], or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables [@zaman_social_2008]. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost [@hanauer_exploring_2009]. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups [@hippisley-cox_predicting_2008].
 
 
-When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [@peduzzi_importance_1995;@peduzzi_simulation_1996], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [@riley_minimum_2019] based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [@sauerbrei_selection_2007]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [@riley_external_2016; @vergouwe_substantial_2005; @collins_sample_2016]. A systematic review by Counsell et al [@counsell_systematic_2001] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [@riley_minimum_2019] showed that less that [**Pull example from Riley EPV**]. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless [@royston_prognosis_2009]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [@riley_external_2016]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [@riley_external_2016]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
+When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [@peduzzi_importance_1995;@peduzzi_simulation_1996], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [@riley_minimum_2019] based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [@sauerbrei_selection_2007]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [@riley_external_2016; @vergouwe_substantial_2005; @collins_sample_2016]. A systematic review by Counsell et al [@counsell_systematic_2001] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [@riley_minimum_2019] showed that less that `r xx("Pull example from Riley EPV")`. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless [@royston_prognosis_2009]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [@riley_external_2016]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [@riley_external_2016]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
 
 
 Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun [@riley_external_2016]. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation [@altman_prognosis_2009; @ivanov_predictive_2000]. Derivation of the QRISK2 Score [@hippisley-cox_derivation_2007] (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset. This model was further externally validated [@collins_independent_2012], and its most modern incarnation, QRISK3, performed the external validation in the same paper [@hippisley-cox_development_2017] The Nottingham Prognostic Index (NPI) was trained on the first 500 patients admitted to Nottingham City Hospital after the study began [@haybittle_prognostic_1982] and later validated on the next 320 patients to be admitted [@todd_confirmation_1987], this validation was not performed at the same time as the initial development and is thus an external validation.
@@ -168,18 +162,18 @@ If a sufficient amount of data is available and it has been taken from multiple 
 
 <!-- Removed paragraph on missing data --->
 
-A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [@royston_prognosis_2009]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail [@collins_transparent_2015;@moons_transparent_2015]. Potential predictors with high levels of missingness should be excludes as this missingness can introduce bias [@royston_prognosis_2009]. One key fact that many experts agree on is that categoriation of continuous predictors should be avoided [**Cite: LOADS**] as it retains much more predictive information. The cut-points of these categorisations lead to artificial jumps in the outcome risk [@sauerbrei_selection_2007]. It is also worth noting that cut-points are often either arbitrarily decided or data-driven with the latter leading to overfitting [@sauerbrei_selection_2007]. If categorisation is performed, clear rationale should be provided with an ackowledgement that this wil reduce performance [@lagakos_effects_1988;@collins_systematic_2013]. When applying a model to a new population, extrapolation of a model should be avoided [@eberhart_applicability_1988] and so to aid in this, the ranges of continuous variables, and the considered values of categorical variables should be reported [@collins_systematic_2013]. this is especially true for age. QRISK2 was derived in a population ranging from 35 to 74 years of ages and so should not have been applied to patients out of this range [@hippisley-cox_predicting_2008]. This ranges was later extended with the updated version [@hippisley-cox_advantages_2011] and currently can be applied to patients aged 25-84 [**Update with QRISK3**].
+A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [@royston_prognosis_2009]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail [@collins_transparent_2015;@moons_transparent_2015]. Potential predictors with high levels of missingness should be excludes as this missingness can introduce bias [@royston_prognosis_2009]. One key fact that many experts agree on is that categoriation of continuous predictors should be avoided `r cc("LOADS")` as it retains much more predictive information. The cut-points of these categorisations lead to artificial jumps in the outcome risk [@sauerbrei_selection_2007]. It is also worth noting that cut-points are often either arbitrarily decided or data-driven with the latter leading to overfitting [@sauerbrei_selection_2007]. If categorisation is performed, clear rationale should be provided with an ackowledgement that this wil reduce performance [@lagakos_effects_1988;@collins_systematic_2013]. When applying a model to a new population, extrapolation of a model should be avoided [@eberhart_applicability_1988] and so to aid in this, the ranges of continuous variables, and the considered values of categorical variables should be reported [@collins_systematic_2013]. this is especially true for age. QRISK2 was derived in a population ranging from 35 to 74 years of ages and so should not have been applied to patients out of this range [@hippisley-cox_predicting_2008]. This ranges was later extended with the updated version [@hippisley-cox_advantages_2011] and currently can be applied to patients aged 25-84 `r xx("Update with QRISK3")`.
 
 When building a prediction model, we begin with a certain pool of potential predictors and try to establish which to include in the final model [@sauerbrei_selection_2007]. With $k$ candidate variables, we have $2^k$ possible choices which can get unwieldy even for low values of $k$, with only 10 predictors (a very reasonable number), there are over 1,000 combinations. This doesn't include interactions or non-linear components which increases this number even more. Therefore, model-building techniques are important for anybody attempting to build an accurate prediction model. It is currently undecided what the "best" way to select predictors in a multivariable model is or even if it exists [@sauerbrei_selection_2007]. One method that researchers use to decide on which predictors to include is to analyse each potential predictor individually for a correlation with the outcome in a univariable analysis and keeping those which are considered to have a statistically significant correlation. The general consensus amongst researchers is that predictors should not be excluded in this way [@royston_prognosis_2009]. Univariables analysis does not account for any dependencies between potential predictors and so any cross correlations that exists between them can cause a bias in the results. Despite its clear weaknesses, any prognostic studies still use univariable analysis to build their models [@riley_reporting_2003].
 
 <!-- Removed paragraph of NPI -->
 
-Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5%) one at a time untill all remaining variables are significant. Forward selection begins wth no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exxlucde more variables [@royston_prognosis_2009]. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima [@mantel_why_1970]. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models [**Cite: p-values be bad reference**]. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e. make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
+Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5%) one at a time untill all remaining variables are significant. Forward selection begins wth no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exxlucde more variables [@royston_prognosis_2009]. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima [@mantel_why_1970]. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models `r cc("p-values be bad reference")`. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e. make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
 
-It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g. logarithms, sqauring) or using fractional polynomials [**Cite: LR - 7 or 76?**]. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly [**Cite: LR - 4**]. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by [**Cite: LR - 40**]. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care [**Cite: LR - 3**]. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements [**Cite: Rose's Work**].
+It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g. logarithms, sqauring) or using fractional polynomials `r LR("7 or 76?")`. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly `r LR(4)`. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by `r LR(40)`. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care `r LR(3)`. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements `r cc("Rose's Work")`.
 
 
-Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria[**Cite: LR - 35**]. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk [**Cite: LR - 3**].
+Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria`r LR(35)`. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk `r LR(3)`.
 
 <!-- Paragraph regarding groupings in NPI, followed by intergation of QRISK in computer systems-->
 
@@ -195,7 +189,7 @@ Once developed, prognostic models can be used to create risk groups for a popula
 
 #### Reviews
 
-Along with the EPV assessment mentioned earlier, Counsell et al's systematic review [**Cite: LR - 62**] assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
+Along with the EPV assessment mentioned earlier, Counsell et al's systematic review `r LR(62)` assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
 
 * Adequate inception cohort
 * Less than 10% loss to followup
@@ -221,12 +215,12 @@ Along with the EPV assessment mentioned earlier, Counsell et al's systematic rev
 
 # The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#chap-scoping-review}
 *MA Barrowman, D Jenkins, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Scoping Review}
-Last updated: 21 Apr
+`r fb(thesis="\\chaptermark{Scoping Review}")`
+`r Updated(2)`
 
+`r add_downloads(2)`
 
-
-
+`r fb(gitbook="Scoping Review Protcol Pre-Print  [here](https://doi.org/10.17605/OSF.IO/HR6QD)")`
 
 ## Introduction
 
@@ -273,7 +267,7 @@ These novel MSM/CR terms include "fine adj2 gray" to include papers which use th
 
 We believe that the broadness of our search terms allows for high sensitivity in our results and will therefore provide a larger and more comprehensive  pool of papers than using a more specific set of search terms.
 
-[**Insert Table from paper**]
+`r xx("Insert Table from paper")`
 
 #### Validation set of articles
 
@@ -345,7 +339,7 @@ The data extracted at this stage will be checked by DJ in 20% of the papers to c
 
 The search and filtering strategy will be depicted with a modified PRISMA flow diagram [30], which includes papers found by Snowballing and how they are included in the filtration process, see figure 1. 
 
-[**Add in PRISMA**]
+`r xx("Add in PRISMA")`
 
 A table of the extracted information will be included with the paper, depending on the number of results, this may be supplementary material. This information will also be summarised and analysed both quantitatively and qualitatively. For example, as the Illness-Death model [8] is simple and common amongst multi-state models, we will count how many of the MSCPMs use this structure as well as the other most common structures used. Any direct comparisons that can be made between predictions of this type (i.e. from the same field with the same outcomes) will be described.
 
@@ -356,8 +350,8 @@ A table of the extracted information will be included with the paper, depending 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#chap-Conf-CR}
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
-\chaptermark{Competing Risks and Unmeasured Confounding}
-Last updated: 21 Apr
+`r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding}")`
+`r Updated(3)`
 
 
 Published as: **MA Barrowman**, N Peek, M Lambie et al, How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies, BMC Medical Research Methodology (2019) doi: [10.1186/s12874-019-0808-7](https://doi.org/10.1186/s12874-019-0808-7)
@@ -376,9 +370,7 @@ In both the Cox and Fine & Gray models, correlation between the unmeasured confo
 ### Conclusion {-}
 The effect of unmeasured confounding on an event-of-interest or a competing event should not be overlooked in observational studies as strong correlations can lead to bias in treatment effect estimates and therefore cause inaccurate results to lead to false conclusions. This is true for cause specific perspective, but moreso for a subdistribution perspective. This can have ramifications if real-world treatment decisions rely on conclusions from these biased results. Graphical visualisation to aid in understanding the systems involved and potential confounders/events leading to sensitivity analyses that assumes unmeasured confounders exists should be performed to assess the robustness of results.
 
-### Supplementary Material {-}
-
-Supplementary Material is in Appendix \@ref(chap-Conf-CR-supp)
+`r fb(gitbook="### Supplementary Material {-}\n\nSupplementary Material is in Appendix \\@ref(chap-Conf-CR-supp)",thesis="### Supplementary Material {-}\n\nSupplementary Material is in Appendix \\@ref(chap-Conf-CR-supp)")`
 
 
 ## Background
@@ -416,13 +408,16 @@ The data-generating mechanism defined two cause-specific hazard functions (one f
 
 In the above equations, $\beta$ and $\gamma$ are the effects of the confounding covariate and the treatment effect respectively with the subscripts representing which event they are affecting. These two hazard functions entirely describe how a population will behave [18].
 
-\includegraphics[width=450px]{figure/CR_Conf/Transition_Diagram} 
+```{r Transition_Diagram,echo=F, fig.align="centre", fig.caption="Transition State Diagram showing potential patient pathways", out.width="450px"}
+knitr::include_graphics("figure/CR_Conf/Transition_Diagram.png")
+```
 
 We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [19]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Additional file 1. Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. \@ref(fig:Model_DAG), where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
 
 
-
-\begin{center}\includegraphics[width=450px]{figure/CR_Conf/DAG} \end{center}
+```{r Model_DAG,echo=F, fig.align="center", fig.caption="Directed Acyclic Graph showing the relationship between some of the parameters", out.width="450px"}
+knitr::include_graphics("figure/CR_Conf/DAG.png")
+```
 
 From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, $\Gamma_1$ and $\Gamma_2$, to be in these conditions [20] (See Additional file 2). It's worth noting that the values of $\Gamma$ will depend on the current value of $\rho$ since they are calculated using the expected distribution of end-times. However, it has been shown [18, 21] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the "true" values of the $\Gamma$ will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [20].
 
@@ -466,52 +461,68 @@ Eight Scenarios were simulated based on real-world situations. In each scenario,
 
 8. Plausible Distribution. To investigate whether a biologically plausible baseline hazard function affects the results found in Scenario 1. $\beta_1$ varied between -1, 0 and 1.
 
-[**Insert Table 1**]
+`r xx("Insert Table 1")`
 
 ## Results
 
 The first row of Fig. 3 shows the results for Scenario 1 (No Effect). When $\beta_1=\beta_2=0$ (the green line), correlation between $U$ and $Z$ doesn't imbue any bias on the treatment effect estimate for either event under any of the three measures, since all of the subdistribution treatment effects (estimated, calculated and hypothetical RCT) are approximately zero. When $\beta_1>0$, there is a strong positive association between correlation ($\rho$) and the RCT and CSH biases for the event-of-interest and a negative association for the RCT bias for the competing event. Similarly, these associations are reversed when $\beta_1<0$.
 
 
-
+```{r  , echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 3.png")
+```
 
 
 There was no effect on $\theta_{\textrm{CSH}}$ for the competing event in this Scenario regardless of $\rho$ or $\beta_1$. These results are similar to those found in Scenario 2 (Positive Effect) and Scenario 3 (Negative Effect) shown in Figs. 4 and 5. However, in both of these Scenarios, there is an overall positive shift in $\theta_{\textrm{CSH}}$ when $\beta_1\neq0$.
 
 
-
+```{r, echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 4.png")
+```
 
 The magnitude of $\theta_{\textrm{Exp}}$ is greatly reduced and is the reverse of the other associations when $\beta_1\neq0$ in Scenario 1 for the event-of-interest and when $\beta_1>0$ it stays extremely small for low values of $\rho$, and becomes negative for large $\rho$ for the competing event. In Scenario 2, $\theta_{\textrm{Exp}}$ behaves similarly to Scenario 1 for both events when $\beta_1<0$ and the event-of-interest, but for the competing event, when $\beta_1>0$, the $\theta_{\textrm{Exp}}$ is much tighter to 0. The competing event data for $\theta_{\textrm{Exp}}$ in Scenario 3 is similar to Scenario 2 with $\beta_1>0$ shifted downwards, but the event-of-interest has a near constant level of bias regardless of $\rho$, apart from in the case when $\beta_1<0$, the bias switches direction.
 
 
-
+```{r  ,echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 5.png")
+```
 
 In Scenario 4 (Competing Confounder), as would be expected, the results for the event-of-interest and the results for the competing event are swapped from those of Scenario 1 as shown in Fig. 6. Scenario 5 (Uneven Arms) portrays a bias similar to Scenario 1 where $\beta_1=1$, however, the magnitude of the RCT and CSH bias is increased when $\pi\neq0.5$ as shown in Fig. 7.
 
 
-
+```{r  ,echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 6.png")
+```
 
 
 The parameters for Scenario 6 (Uneven Events) were similar to the parameters for Scenario 1 (No Effect), when $\beta_1=1$. This also reflects in the results in Fig. 8 which look similar to the results for this set of parameters in Scenario 1. This bias is largely unaffected by the value of $k$. The results of Scenario 7 (Weibull Distribution) and Scenario 8 (Plausible Distribution) were nearly identical to those of Scenario 1 as shown in Figs. 9 and 10.
 
 
-
+```{r  ,echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 7.png")
+```
 
 
 As per our original hypotheses, Scenario 1 demonstrated that it is possible to induce a treatment effect when one isn't present through confounding effects on all biases, apart from the competing event CSH. In Scenario 2, with high enough correlation, the CSH event-of-interest bias could be greater than 1, meaning that the raw CSH treatment effect was close to 0, despite an actual treatment effect of -1, similarly large positive biases in the SH imply a treatment with no benefit and/or detrimental effect, despite the true treatment being beneficial for both events. This finding is similar for Scenario 3 with large biases changing the direction of the treatment effect (beneficial vs detrimental).
 
 
-
+```{r  ,echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 8.png")
+```
 
 Scenario 4 demonstrated that even without a treatment effect and with no confounding effect on the event-of-interest, a treatment effect can be induced on the SH methodology, which can imply a beneficial/detrimental treatment, depending on whether the confounder was detrimental/beneficial. Fortunately, it does not induce an effect on the CSH treatment effect for the event-of-interest.
 
 
-
+```{r  ,echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 9.png")
+```
 
 Scenarios 5 and 6 investigated other population level effects; differences in the size of the treatment arms and differences in the magnitude of the hazards of the events. Scenario 5 demonstrated that having uneven treatment arms can exacerbate the bias induced on both the $\theta_{\textrm{RCT}}$ and $\theta_{\textrm{CSH}}$ for both events and Scenario 6 showed that the different baseline hazards had little effect on the levels of bias in the results. This finding was supported by the additional findings of Scenarios 7 and 8, which showed that the underlying hazard functions did not affect the treatment effect biases compared to a constant hazard.
 
 
-
+```{r  ,echo=F}
+#knitr::include_graphics("figure/CR_Conf/Fig 10.png")
+```
 
 
 ## Discussion
@@ -547,10 +558,10 @@ This paper has demonstrated that unmeasured confounding in observational studies
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
-\chaptermark{IPCW Calibration-in-the-Large}
-Last updated: 28 May
+`r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large}")`
+`r Updated(4)`
 
-
+`r add_downloads(4)`
 
 ## Abstract {-}
 
@@ -563,9 +574,7 @@ Last updated: 28 May
 ### Discussion {-}
 
 
-### Supplementary Material {-}
-
- Supplementary Material is available in Appendix \@ref(chap-dev-paper-supp).
+`r fb("### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","")`
 
 
 
@@ -579,7 +588,7 @@ In the case of time to event models, however, estimation of calibration is compl
 Third, censoring needs to be handled in an appropriate way. <mark>This is the core message of this paper</mark>. Censoring is commonly overcome by using Kaplan-Meier estimates  [@royston_external_2013;@hippisley-cox_derivation_2007], but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston [@royston_tools_2014;@royston_tools_2015] has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
 
 
-QRISK used the overall KM approach in the 2007 paper [@hippisley-cox_derivation_2007] ~~with good results~~ <mark>demonstrating adequate calibration</mark> (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), ~~but worse results~~ <mark>but miscalibration</mark> in the QRISK3 update [@hippisley-cox_development_2017] (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18). ~~and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice [**I remember discussing this with Alex & Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?**].~~
+QRISK used the overall KM approach in the 2007 paper [@hippisley-cox_derivation_2007] ~~with good results~~ <mark>demonstrating adequate calibration</mark> (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), ~~but worse results~~ <mark>but miscalibration</mark> in the QRISK3 update [@hippisley-cox_development_2017] (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18). ~~and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice `r xx("I remember discussing this with Alex & Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?")`.~~
 
 
 Royston [@royston_tools_2014] also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson [@perme_checking_2008] to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
@@ -597,7 +606,7 @@ In this paper we present an approach to assessing the calibration intercept (cal
 
 ### Theory
 
-[**Lots of Theory work on the probabilities. May need to drop this if we're unable to do it between us.**]
+`r xx("Lots of Theory work on the probabilities. May need to drop this if we're unable to do it between us.")`
 
 ### Aims
 
@@ -643,7 +652,7 @@ During each simulation, we varied the parameters to take all the values,$\gamma 
  
 ### Prediction Models
 
-[**New section, taken from previous snippets, highlighting/strikethroughs will show the new changes**]
+`r xx("New section, taken from previous snippets, highlighting/strikethroughs will show the new changes")`
 
 For each population, we used three distinct prediction models  for survival. $F_P$ was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly specified model:
 
@@ -707,21 +716,30 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 The measures we will take as performance measures as the Bias, the Empirical Standard Error and the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time). For these estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from singly large random effects.
 
 
-\begin{table}
+```{r PM-DGM-time,echo=F}
 
-\caption{(\#tab:PM-DGM-time){\small Performance Measures to be taken at each time point}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{lll}
-\toprule
-Performance Measure & Estimation & SE\\
-\midrule
-\rowcolor{gray!6}  Bias & $\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$ & $\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$\\
-EmpSE & $\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$ & $\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$\\
-\rowcolor{gray!6}  Coverage & $\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$ & $\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$\\
-\bottomrule
-\end{tabular}
-\end{table}
+tribble(~"Performance Measure",~"Estimation",~"SE",
+        "Bias","$\\hat{\\theta}(t) = \\frac{1}{N} \\sum_{i=1}^N\\theta_i(t) - \\theta$","$\\hat{\\theta}_{SE}(t) = \\sqrt{\\frac{1}{N(N-1)} \\sum_{i=1}^N \\left(\\theta_i(t) - \\hat{\\theta}(t)\\right)^2}$",
+        "EmpSE","$\\hat{E}(t) = \\sqrt{\\frac{1}{N-1}\\sum_{i=1}^N\\left(\\theta_i(t) - \\hat{\\theta}(t)\\right)^2}$","$\\hat{E}_{SE}(t)=\\frac{\\hat{E}(t)}{\\sqrt{2(N-1)}}$",
+        "Coverage","$\\hat{C}(t)=\\frac{1}{N}\\sum_{i=1}^NI\\left(\\theta_{i,L}(t) \\le \\theta \\le \\theta_{i,U}(t)\\right)$","$\\hat{C}_{SE}(t) = \\frac{\\hat{C}(t)\\left(1-\\hat{C}(t)\\right)}{N}$")%>%
+  if_fun(get_format("gitbook"),
+         function(x) mutate(x,
+                            Estimation = gsub("$","$$",Estimation,fixed=T),
+                            SE = gsub("$","$$",SE,fixed=T))) %>%
+  kable(format=fb("html","latex","latex"),
+        caption=paste0(fb("<font size=\"2\">","{\\small ","{\\small "),
+                       "Performance Measures to be taken at each time point",
+                       fb("</font>","}","}")),
+        booktabs=T,escape=F) %>%
+  kable_styling(bootstrap_options="striped",
+                latex_options="striped",
+                font_size=fb(9,7,7),
+                full_width=F) %>%
+  #column_spec() %>%
+    if_fun(get_format("gitbook"),
+           function(x) scroll_box(x,width="100%"))
+
+```
 
 The bias provides a measure of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are.
 
@@ -736,28 +754,28 @@ All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `ti
 <mark>Here, we present a subset of results with the full set of outputs available in the Calculator App.</mark> The estimates are presented on the y-axis over time, x-axis with the values stratified by the three performance measures, over the plot rows, and the three models over the plot columns and the different methods are colour coded.
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(0)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg0)
-\end{figure}
+```{r MainPlotg0, echo=F, fig.cap="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\\beta=1$, $\\gamma=0$ and $\\eta=\\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate"}
+knitr::include_graphics("figure/IPCW_Logistic/MainPlot_b(1)_g(0)_e(0.5).png")
+```
 
 Figure \@ref(fig:MainPlotg0) shows the results when censoring is independent of covariates ($\gamma=0$). The LW method provides over-optimistic Coverage (above 95%, too high) and miminal bias. The absolute bias for PO and LU increases over time with PO under-reporting the correct value and LO over-reporting. KM bias remains constant across the timeframe, but for the imperfect models, is constantly under- or over-reported,respectively. For the Perfect model, Figure \@ref(fig:BiasPlotg0), we can see that the KM method produces virtuall no bias. LU and PO also provide minimal coverage at all time points, whereas KM covers ~~perfect~~ <mark>similar to LW in the early stages of the Perfect Model with coverage dropping off as time progresses. Empirical Standard Error is close to 0 for all models.
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/Bias_b(1)_g(0)_e(0.5)} \caption{Bias in the Perfect model across the LW and KM methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. 95\% Confidence Intervals are shown around each estimate.}(\#fig:BiasPlotg0)
-\end{figure}
+```{r BiasPlotg0, echo=F, fig.cap="Bias in the Perfect model across the LW and KM methods when $\\beta=1$, $\\gamma=0$ and $\\eta=\\sfrac{1}{2}$. 95\\% Confidence Intervals are shown around each estimate."}
+knitr::include_graphics("figure/IPCW_Logistic/Bias_b(1)_g(0)_e(0.5).png")
+```
 
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(1)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg1)
-\end{figure}
+```{r MainPlotg1, echo=F, fig.cap="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\\beta=1$, $\\gamma=1$ and $\\eta=\\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate"}
+knitr::include_graphics("figure/IPCW_Logistic/MainPlot_b(1)_g(1)_e(0.5).png")
+```
 
 Figure \@ref(fig:MainPlotg1) shows the results when censoring and the event-of-interest have the same individual effects ($\beta=\gamma=1$). The LW method provides strong (although still too low) coverage across the entire timeframe and miminal bias, although this coverage is reduced compared to the previous set of results shown (approximately 75% throughout). Once again, the absolute bias for PO and LU increases over time, however the under-reporting for PO is much more strongly pronounced. KM bias behaves similar to the previous results, but for coverage, it starts off at around 50% coverage reaches a peak of 100% coverage approximately 25% of the way through the timeframe and then quickly drops off to 0% coverage after 75% of the timeframe.
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(-1)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=-1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg2)
-\end{figure}
+```{r MainPlotg2, echo=F, fig.cap="Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\\beta=1$, $\\gamma=-1$ and $\\eta=\\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate"}
+knitr::include_graphics("figure/IPCW_Logistic/MainPlot_b(1)_g(-1)_e(0.5).png")
+```
 
 Figure \@ref(fig:MainPlotg2) shows the results when censoring and the event-of-interest have opposite individual effects ($\beta=1, \gamma=-1$). The bias results are similar to those when censoring is independent. A difference here is that coverage begins greater than zero for the KM, LU and PO methods, but quickly drops to 0 before the 25% time point. For LW, the coverage appears to reduce to around 80% by the end of the time frame.
 
@@ -784,10 +802,10 @@ Not Weighting = Bad.
 
 # Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Development and Validation of MSCPM}
-Last updated: 30 Apr
+`r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
+`r Updated(5)`
 
-
+`r add_downloads(5)`
 
 ## Introduction
 
@@ -800,14 +818,14 @@ Currently, the most common way to validate an MS-CPMs is by applying traditional
 
 ## Motivating Data Set
 
-[**Table One for The Glasgow Data**]
+`r xx("Table One for The Glasgow Data")`
 
 Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table 2) [1]. The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m2, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a "snapshot" of the predictions at the 5 year time point.
 The Three-State model used in our example is designed as an Illness-Death Model [2], this is one of the simplest MSM designs and has the key advantage over a traditional model that they can predict whether a patient is in or has visited the transient state before reaching the absorbing state (i.e. patient who became ill before dying or who started RRT before dying) (see figure 1). 
 
-[**Figure of the MSM**]
+`r xx("Figure of the MSM")`
 
-[**Describe Glasgow Data**]
+`r xx("Describe Glasgow Data")`
 
 ## Current Approaches
 
@@ -827,11 +845,11 @@ In order to allow for simplicity and understanding of these measures, they will 
 
 Throughout this paper, we will use consistent notation which is shown here for reference and to avoid repetition in definitions, etc...
 
-[**Notation Table**]
+`r xx("Notation Table")`
 
 ### Patient Weighting
 
-[**Lots of formula, so will leave for now**]
+`r xx("Lots of formula, so will leave for now")`
 
 ### Accuracy - Brier Score
 
@@ -866,10 +884,10 @@ Throughout this paper, we will use consistent notation which is shown here for r
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
-\chaptermark{Development and Validation of MSCPM}
-Last updated: 28 May
+`r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
+`r Updated(6)`
 
-
+`r add_downloads(6)`
 
 ## Abstract {-}
 
@@ -889,9 +907,7 @@ Of the three models produced, Age was a strong predictor of mortality in all cas
 
 Our CPMs provide clinicians and patients with multi-dimensional predictions across different outcome states and any time point. This implies that users of these models can get more information about their potential future without a loss to the ~~quality of that prediction.~~<mark>model's calibration nor its discriminative ability.</mark>
 
-### Supplementary Material {-}
-
- Supplementary Material is available in Appendix \@ref(chap-dev-paper-supp).
+`r fb("### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","### Supplementary Material {-}\n\n Supplementary Material is available in Appendix \\@ref(chap-dev-paper-supp).","")`
 
 
 ## Introduction
@@ -945,24 +961,19 @@ The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Ra
 
 Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.9\linewidth]{figure/Dev_Paper_State_Diagrams} 
-
-}
-
-\caption{Diagram of the three models, the states being modelled and relevant transitions}(\#fig:State-Diagram)
-\end{figure}
+```{r State-Diagram, echo=F, fig.align="center",out.width="90%", fig.cap="Diagram of the three models, the states being modelled and relevant transitions"}
+knitr::include_graphics("figure/Dev_Paper_State_Diagrams.png")
+```
 
 Missing data was handled using multiple imputation [@white_imputing_2009] using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). From these variables, uPCR and eGFR Rate of change were also derived [@kovesdy_past_2016; @naimark_past_2016] as well as their log transforms and log(Age) and Age$^2$. For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition.
 
 ### Validation
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR [@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m\textsuperscript{2}.
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR [@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m`r fb("<sup>2</sup>","\\textsuperscript{2}","\\textsuperscript{2}")`.
 
-Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \@ref(chap-performance-metrics). <mark>These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
+Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix`r fb(single=" [@chap-performance-metrics]",gitbook=", as described in Chapter \\@ref(chap-performance-metrics)", thesis=", as described in Chapter \\@ref(chap-performance-metrics)")`. <mark>These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
 
-Further details of how the models were developed and validated is discussed in the Supplementary materials in appendix \@ref(chap-dev-paper-supp).
+Further details of how the models were developed and validated is discussed in the Supplementary materials`r fb(" in appendix \\@ref(chap-dev-paper-supp)"," in appendix \\@ref(chap-dev-paper-supp)")`.
 
 ### Example
 
@@ -971,34 +982,25 @@ Once the models have been developed, we will apply them to three example patient
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \@ref(tab:Example-Patient).
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:Example-Patient){\small Details of the Example Patients}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}}
-\toprule
-  & Patient 1 & Patient 2 & Patient 3\\
-\midrule
-\rowcolor{gray!6}  Age & 20 & 40 & 66\\
-Gender & Female & Male & Female\\
-\rowcolor{gray!6}  Smoking Status & Non-Smoker & Smoker & Non-Smoker\\
-BP & 144/101 & 160/90 & 140/80\\
-\rowcolor{gray!6}  Albumin & 39 & 40 & 40\\
-\addlinespace
-Correct Calcium & 2.3 & 3.0 & 2.6\\
-\rowcolor{gray!6}  Haemoglobin & 150 & 100 & 14\\
-Phosphate & 0.68 & 2.00 & 0.86\\
-\rowcolor{gray!6}  eGFR & 42 & 10 & 51\\
-eGFR Previous & 50 (one week ago) & 30 (one year ago) & 70 (one week ago)\\
-\addlinespace
-\rowcolor{gray!6}  uPCR & 0.30 & 0.20 & 0.01\\
-uPCR Previous & 0.80 (one month ago) & 1.20 (one year ago) & 0.06 (one week ago)\\
-\rowcolor{gray!6}  Primary Diagnosis & Glomerulonephritis & Tubular Necrosis & Diabetes\\
-Comorbities & Chronic Obstructive Pulmonary Disease\newline Liver Disease\newline Solid Tumour &  & Diabetes\newline Chronic Obstructive Pulmonary Disease\newline Hypertension\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r Example-Patient, echo=F}
+tibble(id = 1:3,Age=c("20","40","66"),Gender=c("Female","Male","Female"),
+       `Smoking Status`=c("Non-Smoker","Smoker","Non-Smoker"),
+       BP=c("144/101","160/90","140/80"),
+       Albumin=c("39","40","40"),`Correct Calcium`=c("2.3","3.0","2.6"),
+       Haemoglobin=c("150","100"," 14"), Phosphate=c("0.68","2.00","0.86"),
+       eGFR=c("42","10","51"),
+       `eGFR Previous`=c("50 (one week ago)","30 (one year ago)","70 (one week ago)"),
+       uPCR=c("0.30","0.20","0.01"),
+       `uPCR Previous`=c("0.80 (one month ago)","1.20 (one year ago)","0.06 (one week ago)"),
+       `Primary Diagnosis`=c("Glomerulonephritis","Tubular Necrosis","Diabetes"),
+       Comorbities=c("Chronic Obstructive Pulmonary Disease\nLiver Disease\nSolid Tumour","",
+                     "Diabetes\nChronic Obstructive Pulmonary Disease\nHypertension")) %>%
+  pivot_longer(-id,names_to="Vars",values_to="Vals") %>% 
+  pivot_wider(names_from=id,values_from=Vals,names_prefix="Patient ") %>%
+  to_kable(caption="Details of the Example Patients",
+           row_names="Vars",
+           col_widths=rep("3.5cm",4))
+```
 
 Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
 
@@ -1017,69 +1019,29 @@ As seen in table \@ref(tab:Table-One), the Age of the populations had a mean of 
 
 
 <br>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
+```{r Table-One,echo=F}
+"data/Dev_Paper/TableOne.csv" %>%
+  read_csv(col_types=cols(.default="c"),trim_ws=F) %>% 
+  rename_at(vars(contains("mean.n")),~gsub("mean.n","mean/n",.)) %>%
+  rename_at(vars(contains("IQR.p")),~gsub("IQR.p","IQR/p",.)) %>%
+#  transmute(Variable,
+#            `SKS_mean/n (IQR/p\\%)` = if_else(!is_blank(SKS_mean.n),paste0(SKS_mean.n," (",SKS_IQR.p,")"),""),
+#            `SKS_missing n (p\\%)` = if_else(!is_blank(SKS_n.miss),paste0(SKS_n.miss," (",SKS_p.miss,")"),""),
+#            `SKS_range` = if_else(!is_blank(SKS_min),paste0("[",SKS_min,", ",SKS_max,"]"),""),
+#            `UoG_mean/n (IQR/p\\%)` = if_else(!is_blank(UoG_mean.n),paste0(UoG_mean.n," (",UoG_IQR.p,")"),""),
+#            `UoG_missing n (p\\%)` = if_else(!is_blank(UoG_n.miss),paste0(UoG_n.miss," (",UoG_p.miss,")"),""),
+#            `UoG_range` = if_else(!is_blank(UoG_min),paste0("[",UoG_min,", ",UoG_max,"]"),"")) %>%
+#  
+  to_kable(caption="Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)",
+           col_names = . %>%
+             gsub("^SKS_","",.)%>% 
+             gsub("^UoG_","",.),
+           col_groups = c("",rep("SKS",6),rep("SERPR",6)),
+           col_groups_sep = T,
+           numeric_cols=2:ncol(.),
+           col_widths=c("26em","13em","11em","14em","14em","14em","19em"))
 
-\caption{(\#tab:Table-One){\small Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{19em}>{\ttfamily\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{6}{c}{SKS} & \multicolumn{6}{c}{SERPR} \\
-\cmidrule(l{3pt}r{3pt}){2-7} \cmidrule(l{3pt}r{3pt}){8-13}
-Variable & mean/n & IQR/p & min & max & n.miss & p.miss & mean/n & IQR/p & min & max & n.miss & p.miss\\
-\midrule
-\rowcolor{gray!6}  Age & 64.378 & 19.000 & 20.000 & 94.000 & 0 & 0.00\% & 66.064 & 17.000 & 11.000 & 98.000 & 0 & 0.00\%\\
-eGFR & 30.369 & 22.387 & 3.578 & 59.966 & 0 & 0.00\% & 35.647 & 20.565 & 1.199 & 59.994 & 0 & 0.00\%\\
-\rowcolor{gray!6}  eGFR Rate & -0.016 & 0.294 & -19.107 & 33.782 & 1,278 & 42.87\% & 1.319 & 21.897 & -28.636 & 50.653 & 0 & 0.00\%\\
-SBP & 140.193 & 29.000 & 77.000 & 220.000 & 50 & 1.68\% & 145.981 & 30.000 & 82.000 & 258.000 & 6,345 & 82.31\%\\
-\rowcolor{gray!6}  DBP & 74.556 & 14.000 & 36.000 & 159.000 & 52 & 1.74\% & 76.742 & 17.000 & 35.000 & 128.000 & 6,345 & 82.31\%\\
-\addlinespace
-BMI & 28.848 & 7.842 & 13.182 & 61.467 & 572 & 19.19\% & 29.020 & 6.811 & 17.073 & 52.403 & 7,491 & 97.17\%\\
-\rowcolor{gray!6}  Albumin & 42.152 & 5.000 & 12.000 & 52.000 & 60 & 2.01\% & 36.475 & 6.000 & 7.000 & 53.000 & 3,134 & 40.65\%\\
-Calcium & 2.302 & 0.180 & 1.210 & 3.660 & 68 & 2.28\% & 2.407 & 0.160 & 1.455 & 3.400 & 4,513 & 58.54\%\\
-\rowcolor{gray!6}  Haemoglobin & 122.978 & 23.000 & 61.000 & 195.000 & 72 & 2.42\% & 109.269 & 29.000 & 7.100 & 208.000 & 3,557 & 46.14\%\\
-Phosphate & 1.163 & 0.320 & 0.430 & 3.710 & 87 & 2.92\% & 1.194 & 0.320 & 0.320 & 4.370 & 4,510 & 58.50\%\\
-\addlinespace
-\rowcolor{gray!6}  uPCR & 0.112 & 0.103 & 0.001 & 2.025 & 245 & 8.22\% & 0.178 & 0.177 & 0.001 & 1.943 & 7,170 & 93.01\%\\
-uPCR Rate & -0.096 & 0.188 & -70.727 & 28.199 & 1,777 & 59.61\% & 4.621 & 0.905 & -176.200 & 952.812 & 7,495 & 97.22\%\\
-\rowcolor{gray!6}  Gender: &  &  &  &  & 0 & 0.00\% &  &  &  &  & 0 & 0.00\%\\
-Male & 1,865 & 62.56\% &  &  &  &  & 3,885 & 50.40\% &  &  &  & \\
-\rowcolor{gray!6}  Female & 1,116 & 37.44\% &  &  &  &  & 3,824 & 49.60\% &  &  &  & \\
-\addlinespace
-Ethnicity: &  &  &  &  & 0 & 0.00\% &  &  &  &  & 7,009 & 90.92\%\\
-\rowcolor{gray!6}  White & 2,875 & 96.44\% &  &  &  &  & 679 & 8.81\% &  &  &  & \\
-Asian & 75 & 2.52\% &  &  &  &  & 12 & 0.16\% &  &  &  & \\
-\rowcolor{gray!6}  Black & 21 & 0.70\% &  &  &  &  & 7 & 0.09\% &  &  &  & \\
-Other & 10 & 0.34\% &  &  &  &  & 2 & 0.03\% &  &  &  & \\
-\addlinespace
-\rowcolor{gray!6}  SmokingStatus: &  &  &  &  & 42 & 1.41\% &  &  &  &  & 7,709 & 100.00\%\\
-Former & 1,535 & 51.49\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-\rowcolor{gray!6}  Non-Smoker & 979 & 32.84\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-Smoker & 379 & 12.71\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-\rowcolor{gray!6}  Former 3Y & 46 & 1.54\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-\addlinespace
-DiagGroup: &  &  &  &  & 567 & 19.02\% &  &  &  &  & 6,640 & 86.13\%\\
-\rowcolor{gray!6}  Systemic diseases affecting the kidney & 1,304 & 43.74\% &  &  &  &  & 316 & 4.10\% &  &  &  & \\
-Glomerular disease & 442 & 14.83\% &  &  &  &  & 278 & 3.61\% &  &  &  & \\
-\rowcolor{gray!6}  Tubulointerstitial disease & 268 & 8.99\% &  &  &  &  & 173 & 2.24\% &  &  &  & \\
-Miscellaneous renal disorders & 227 & 7.61\% &  &  &  &  & 198 & 2.57\% &  &  &  & \\
-\addlinespace
-\rowcolor{gray!6}  Familial / hereditary nephropathies & 173 & 5.80\% &  &  &  &  & 104 & 1.35\% &  &  &  & \\
-Diabetes (DM) & 992 & 33.32\% &  &  & 4 & 0.13\% & 1,535 & 19.91\% &  &  & 0 & 0.00\%\\
-\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & 2,414 & 81.09\% &  &  & 4 & 0.13\% & 408 & 5.29\% &  &  & 0 & 0.00\%\\
-Prior Myocardial Infarction (MI) & 2,492 & 83.71\% &  &  & 4 & 0.13\% & 556 & 7.21\% &  &  & 0 & 0.00\%\\
-\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & 2,393 & 80.38\% &  &  & 4 & 0.13\% & 863 & 11.19\% &  &  & 0 & 0.00\%\\
-\addlinespace
-Peripheral Vascular Disease (PVA) & 2,485 & 83.47\% &  &  & 4 & 0.13\% & 376 & 4.88\% &  &  & 0 & 0.00\%\\
-\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & 2,727 & 91.60\% &  &  & 4 & 0.13\% & 186 & 2.41\% &  &  & 0 & 0.00\%\\
-Chronic Obstructive Pulmonary Disease (COPD) & 2,411 & 80.99\% &  &  & 4 & 0.13\% & 0 & \% &  &  & 7,709 & 100.00\%\\
-\rowcolor{gray!6}  Chronic Liver Disease (LD) & 2,891 & 97.11\% &  &  & 4 & 0.13\% & 0 & \% &  &  & 7,709 & 100.00\%\\
-Prior Solid Tumour (ST) & 2,570 & 86.33\% &  &  & 4 & 0.13\% & 0 & \% &  &  & 7,709 & 100.00\%\\
-\addlinespace
-\rowcolor{gray!6}  Hypertension (HT) & 2,546 & 91.48\% &  &  & 198 & 6.64\% & 3,114 & 40.39\% &  &  & 0 & 0.00\%\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```
 
 
 Table \@ref(tab:Table-One) also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6% male vs 50.4% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. 
@@ -1089,98 +1051,27 @@ Overall, there were high levels of comorbidities within the SKS population, but 
 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median2).
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
+```{r Event-Median2, echo=F}
+"data/Dev_Paper/Event_Median.csv" %>%
+  read_csv(col_types=cols(.default="c"),trim_ws=F) %>%
+  to_kable(caption="Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]",
+           col_names = . %>%
+             gsub("^SKS_","",.)%>% 
+             gsub("^UoG_","",.),
+           align=strrep("r",ncol(.)),
+           col_groups = c(rep("Transition",3),rep("SKS",4),rep("SERPR",4)),
+           numeric_cols = 4:11,
+           col_groups_sep = T)
 
-\caption{(\#tab:Event-Median2){\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}r>{}r>{}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-\multicolumn{3}{c}{Transition} & \multicolumn{4}{c}{SKS} & \multicolumn{4}{c}{SERPR} \\
-\cmidrule(l{3pt}r{3pt}){1-3} \cmidrule(l{3pt}r{3pt}){4-7} \cmidrule(l{3pt}r{3pt}){8-11}
-Model & From & To & n & median & IQR & max & n & median & IQR & max\\
-\midrule
-\rowcolor{gray!6}  Two & Alive & Dead & 1,427 & 4.0 y & 4.3 y & 15.0 y & 3,010 & 4.8 y & 3.3 y & 10.1 y\\
-Three & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
-\rowcolor{gray!6}   &  & RRT & 680 & 2.5 y & 3.4 y & 14.2 y & 1,125 & 3.8 y & 3.9 y & 10.1 y\\
- & RRT & Dead & 302 & 2.2 y & 3.3 y & 13.5 y & 442 & 1.6 y & 2.5 y & 9.2 y\\
-\rowcolor{gray!6}  Five & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
-\addlinespace
- &  & HD & 344 & 2.6 y & 3.5 y & 14.2 y & 882 & 3.7 y & 3.8 y & 10.1 y\\
-\rowcolor{gray!6}   &  & PD & 229 & 2.0 y & 2.9 y & 12.9 y & 149 & 3.5 y & 4.1 y & 9.5 y\\
- &  & Tx & 107 & 3.2 y & 2.7 y & 12.1 y & 94 & 5.0 y & 4.4 y & 9.8 y\\
-\rowcolor{gray!6}   & HD & Dead & 185 & 2.1 y & 3.3 y & 11.8 y & 394 & 1.6 y & 2.5 y & 9.2 y\\
- & PD & Dead & 107 & 2.4 y & 3.2 y & 11.8 y & 47 & 2.1 y & 2.3 y & 8.5 y\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```
 
 ### Development
 
-Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix \@ref(chap-dev-paper-supp). Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
+Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials`r fb(" in appendix \\@ref(chap-dev-paper-supp)"," in appendix \\@ref(chap-dev-paper-supp)")`. Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:PH-Three){\small Proportional Hazards for each transition in the Three-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to RRT & RRT to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.162 (  -0.051,   0.375) & -0.041 (  -0.051,  -0.032) & 0.063 (   0.051,   0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.001 (  -0.003,   0.001) & 0.000 (  -0.001,   0.000) & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.519) &  & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.020,  -0.007) & -0.096 (  -0.109,  -0.083) & 0.012 (  -0.002,   0.026)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.364,   0.251)\\
-\hspace{1em}log(eGFR Rate) & 0.043 (  -0.125,   0.211) &  & 0.228 (  -0.770,   1.226)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.113,   1.288) & -0.108 (  -0.736,   0.519)\\
-\hspace{1em}uPCR Rate &  & -0.020 (  -0.045,   0.005) & 0.037 (  -0.063,   0.136)\\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.311,   0.748) & -0.198 (  -0.534,   0.137)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.005,   0.002) & 0.005 (  -0.001,   0.011) & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.007 (   0.000,   0.013) & 0.007 (  -0.002,   0.016) & \\
-\hspace{1em}BMI &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.045 (  -0.065,  -0.024) & -0.032 (  -0.060,  -0.005) & -0.045 (  -0.080,  -0.010)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.753) & -0.515 (  -1.208,   0.177) & \\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.018,  -0.008) & -0.005 (  -0.012,   0.002) & -0.006 (  -0.015,   0.004)\\
-\hspace{1em}Phosphate & 0.512 (   0.133,   0.891) & 0.870 (  -0.060,   1.800) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.236 (  -0.371,  -0.100) & -0.278 (  -0.456,  -0.100) & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.213 (  -0.879,   0.453) & -0.134 (  -0.758,   0.490) & -0.282 (  -1.083,   0.519)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.040) & -0.295 (  -0.599,   0.010)\\
-\hspace{1em}Smoker & 0.356 (   0.161,   0.552) & 0.176 (  -0.077,   0.428) & 0.387 (   0.069,   0.706)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.855,   0.006) & 1.029 (   0.721,   1.338) & -0.563 (  -1.085,  -0.040)\\
-\hspace{1em}Glomerular disease & -0.395 (  -0.636,  -0.154) & -0.166 (  -0.465,   0.134) & -0.489 (  -0.884,  -0.094)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.506,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.554,   0.620)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.742,  -0.185) & -0.266 (  -0.577,   0.046) & -0.311 (  -0.803,   0.182)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.142 (  -0.075,   0.359) & 0.200 (  -0.096,   0.497)\\
-\hspace{1em}CCF & -0.395 (  -0.536,  -0.254) &  & -0.300 (  -0.597,  -0.003)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.398,  -0.095) & 0.234 (  -0.062,   0.530) & 0.187 (  -0.199,   0.572)\\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.246) & -0.077 (  -0.334,   0.179) & -0.098 (  -0.424,   0.228)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.249 (  -0.395,  -0.103) & -0.169 (  -0.406,   0.068) & -0.183 (  -0.493,   0.126)\\
-\hspace{1em}CVA & -0.071 (  -0.253,   0.111) &  & -0.168 (  -0.577,   0.241)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.290 (  -0.433,  -0.146) &  & \\
-\hspace{1em}LD & -0.170 (  -0.579,   0.239) & -0.317 (  -0.732,   0.098) & -0.270 (  -0.859,   0.318)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.118) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.612,   0.056)\\
-\hspace{1em}HT &  & 0.275 (  -0.177,   0.726) & -0.416 (  -1.105,   0.272)\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r PH-Three,echo=F}
+print_table_PH("data/Dev_Paper/Hazard_Ratios.csv",3)
+```
 
 
 Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
@@ -1189,96 +1080,27 @@ Female patients are predicted to be more likely to remain in the CKD state than 
 
 Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:IV-Three){\small Internal Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.74 ( 0.74,  0.75) & 0.68 ( 0.68,  0.69) & 0.64 ( 0.64,  0.65) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Three & < 30 & 0.75 ( 0.74,  0.75) & 0.73 ( 0.73,  0.73) & 0.68 ( 0.67,  0.68) & 0.68 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.75 ( 0.75,  0.75) & 0.75 ( 0.75,  0.76) & 0.67 ( 0.67,  0.67) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.72 ( 0.72,  0.73) & 0.65 ( 0.65,  0.66) & 0.67 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.86) & 0.83 ( 0.83,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.85,  0.86) & 0.86 ( 0.85,  0.86) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)\\  0.03 ( 0.02,  0.03)} & \makecell[r]{-0.02 (-0.02, -0.01)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.00 (-0.01, -0.00) & 0.02 ( 0.01,  0.02) & 0.00 (-0.00,  0.00) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.00 (-0.00,  0.00) & -0.04 (-0.04, -0.04) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.25},  0.00,  0.04\\ -0.03,  \emph{1.10}, -0.00\\ -0.00,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.17}, -0.06,  0.01\\  0.03,  \emph{1.25}, -0.01\\ -0.01,  0.01,  \emph{1.37}} & \makecell[r]{\emph{1.21}, -0.02, -0.01\\  0.01,  \emph{1.44}, -0.04\\ -0.02,  0.02,  \emph{1.27}} & \makecell[r]{\emph{1.32}, -0.01,  0.00\\ -0.00,  \emph{1.37}, -0.01\\ -0.00,  0.00,  \emph{1.33}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21},  0.02,  0.07\\ -0.04,  \emph{1.24},  0.07\\  0.01,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.36}, -0.00, -0.01\\  0.00,  \emph{1.31},  0.03\\ -0.02, -0.00,  \emph{1.26}} & \makecell[r]{\emph{1.35}, -0.04, -0.01\\  0.04,  \emph{1.33},  0.04\\  0.04, -0.02,  \emph{1.34}} & \makecell[r]{\emph{1.31},  0.00,  0.00\\ -0.01,  \emph{1.33},  0.01\\ -0.00,  0.00,  \emph{1.35}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.28} & \emph{1.27} & \emph{1.31}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.21} & \emph{1.21} & \emph{1.34}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r IV-Three,echo=F}
+res <- list_table_Valid("data/Dev_Paper/Validation.csv",3,F)
+res[[1]]
+```
 
 Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:EV-Three){\small External Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.70 ( 0.69,  0.70) & 0.61 ( 0.60,  0.61) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Three & < 30 & 0.68 ( 0.67,  0.68) & 0.72 ( 0.71,  0.72) & 0.65 ( 0.64,  0.65) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.67 ( 0.67,  0.67) & 0.70 ( 0.69,  0.70) & 0.63 ( 0.63,  0.63) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.66 ( 0.66,  0.67) & 0.70 ( 0.70,  0.70) & 0.65 ( 0.65,  0.66) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.82 ( 0.82,  0.82) & 0.83 ( 0.83,  0.83) & 0.79 ( 0.79,  0.79) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Three & < 30 & 0.85 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.85 ( 0.85,  0.86) & 0.84 ( 0.84,  0.85) & 0.80 ( 0.80,  0.80) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Two & < 30 & 0.83 ( 0.83,  0.83) & 0.82 ( 0.82,  0.82) & 0.80 ( 0.80,  0.81) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.05 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{0.04 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.00 (-0.00,  0.00)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 (-0.00,  0.00) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.01 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.35}, -0.04,  0.04\\  0.06,  \emph{1.49}, -0.03\\  0.01,  0.00,  \emph{1.25}} & \makecell[r]{\emph{1.13}, -0.00,  0.08\\ -0.02,  \emph{1.31},  0.01\\ -0.03,  0.01,  \emph{1.39}} & \makecell[r]{\emph{1.45}, -0.02,  0.03\\  0.03,  \emph{1.73},  0.03\\  0.04, -0.00,  \emph{1.47}} & \makecell[r]{\emph{1.54},  0.00, -0.00\\  0.01,  \emph{1.52},  0.00\\ -0.00,  0.00,  \emph{1.54}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.23},  0.03,  0.00\\ -0.05,  \emph{1.20}, -0.04\\ -0.00, -0.00,  \emph{1.37}} & \makecell[r]{\emph{0.99}, -0.01, -0.00\\  0.04,  \emph{1.34}, -0.03\\  0.00,  0.01,  \emph{1.46}} & \makecell[r]{\emph{1.56},  0.00,  0.00\\ -0.05,  \emph{1.49},  0.03\\  0.03,  0.01,  \emph{1.63}} & \makecell[r]{\emph{1.62}, -0.01,  0.01\\ -0.00,  \emph{1.53},  0.01\\  0.00, -0.00,  \emph{1.58}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.28} & \emph{1.26} & \emph{1.64} & \emph{1.51}\\
-\hspace{1em}Two & < 30 & \emph{1.18} & \emph{1.25} & \emph{1.57} & \emph{1.59}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r EV-Three,echo=F}
+res <- list_table_Valid("data/Dev_Paper/Validation.csv",3,T)
+res[[1]]
+```
 
 
 ### Example
 
 The example patients seen in Table \@ref(tab:Example-Patient) were passed through our Three-State prediction model and the results for all time-points are shown in figure \@ref(fig:Example-Predictions-trend). The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{figure/Dev_Paper_Example} 
-
-}
-
-\caption{Results of Example Patients}(\#fig:Example-Predictions-trend)
-\end{figure}
+```{r Example-Predictions-trend, out.width="100%", fig.align="center", fig.cap="Results of Example Patients", echo=F, fig.hold="hold"}
+knitr::include_graphics("figure/Dev_Paper_Example.png")
+```
 
 ### Calculator
 
@@ -1319,8 +1141,8 @@ All three models produced for this work performed well in terms of accuracy, cal
 
 
 # Conclusion {#chap-conclusion}
-\chaptermark{Conclusion}
-Last updated: 21 Apr
+`r fb(thesis="\\chaptermark{Conclusion}")`
+`r Updated(10)`
 
 Here is where my concluding section will go.
 
@@ -1336,7 +1158,7 @@ The end.
 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
-\chaptermark{Competing Risks and Unmeasured Confounding - Supp}
+`r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding - Supp}")`
 
 ## Simulation Details
 
@@ -1354,7 +1176,7 @@ Due to the relationship between the cause specific hazard functions and the subd
 
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material {#chap-IPCW-logistic-supp}
-\chaptermark{IPCW Calibration-in-the-Large - Supp}
+`r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large - Supp}")`
 
 ## Calibration Slope
 
@@ -1364,8 +1186,9 @@ The main purpose of this paper was to assess the evaluation of calibration-in-th
 ### Results
 
 
-
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5)} 
+```{r SlopePlotg0,echo=F}
+knitr:::include_graphics("figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5).png")
+```
 
 Results currently show bias/coverage/EmpsE away from 0, rather than 1. Needs fixing. Oops.
 
@@ -1381,13 +1204,13 @@ Brief discussion, much briefer than the main points.
 
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material{#chap-dev-paper-supp}
-\chaptermark{Development and Validation of MSCPM - Supp}
+`r fb(thesis="\\chaptermark{Development and Validation of MSCPM - Supp}")`
 
 ## Statistical Analysis
 
 ### Development
 
-Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates).  As well as those included in \@ref(chap-dev-paper), ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models. 
+Data was recorded in a time-updated manner, however all variables were measured at baseline to emulate the real-world application of the model (i.e. future prediction of states and not covariates).  As well as those included in `r fb(gitbook="\\@ref(chap-dev-paper)", thesis="\\@ref(chap-dev-paper)", single="the main text")`, ethnicity was assessed in the populations, but as most patients were white, it was omitted as a potential predictor from the models. 
 
  log(Calendar Time) was included as a covariate to adjust for secular trends in treatment preferences [@bhatnagar_epidemiology_2015]. Calendar Time was defined as length of time between start date and  1st January 2019.
 
@@ -1405,13 +1228,13 @@ All missing data were assumed to be missing at random and so were multiply imput
 
 For validation purposes, we consider Death and Death after RRT/HD/PD to be distinct states meaning that for the Three-State model, we have $K=4$ pathways a patient can take and for the Five-State model, we have $K=7$. To compare across models, we combined states together to collapse down to simpler versions. We collapsed the Three-State model to a two-state structure by combining the CKD and RRT states into an Alive state. We collapsed the Five-State model to a three-state structure by combining the HD, PD and Tx into an RRT state and then further down to a two-state structure as with the Three-State model. We will report performance measures at 360 days (approx. 1-year), 720 days (approx. 2-years) and 1800 days (approx. 5-years). As well as presenting the performance measures over time.
 
-The performance metrics were chosen from those defined in chapter \ref@(chap-performance-metrics)
+`r fb("The performance metrics were chosen from those defined in chapter \\ref@(chap-performance-metrics)","The performance metrics were chosen from those defined in chapter \\ref@(chap-performance-metrics)","")`
 
-The overall accuracy of each model was assessed using the MSM adjusted Brier Score, which is a proper score function [@gneiting_strictly_2007] assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
+The overall accuracy of each model was assessed using the MSM adjusted Brier Score`r fb(single=" [@chap-performance-metrics]")`, which is a proper score function [@gneiting_strictly_2007] assigning 0 to a non-informative model and 1 to a perfect model, with negative numbers implying the model performs worse than assuming every patient's state predictions are the same as the overall prevalence within the population.
 
-The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1]. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
+The discrimination of each model was assessed using the MSM extension to the c-statistic [@calster_extending_2012-1`r fb(single=";@chap-performance-metrics")`]. The c-statistic is a score between 0 and 1 with higher scores suggesting a better model and a c-statistic of 0.5 suggesting the model performs no better than a non-informative model.
 
-The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014] which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
+The calibration of each model was assessed using MSM multinomial logistic regression (MLR)  [@hoorde_assessing_2014`r fb(single=";@chap-performance-metrics")`] which extends the logistic regression to three or more mutually exclusive outcomes [@riley_prognosis_2019]. This produces an intercept vector of length $K-1$ and a Slope-matrix of dimension $(K-1) \times (K-1)$. As with the traditional calibration intercept for a well performing model, the MLR intercept values should all be as close to 0 as possible.  The traditional calibration slope should be as close to 1 as possible and so the multi-state extension of the slope, the Slope-matrix should be as close to the identity matrix ($I$) as possible.
 
 ## Model Results
 
@@ -1420,138 +1243,29 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 
 Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA [@venkat-raman_new_2012] definition of Systemic diseases affecting the kidney had the highest likelihood of death.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:PH-Two){\small Proportional Hazards for each transition in the Two-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & Alive to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.110 (  -0.055,   0.275)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.001,   0.000)\\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -2.853 ( -12.306,   6.599)\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.018,  -0.008)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate & -0.007 (  -0.090,   0.075)\\
-\hspace{1em}log(eGFR Rate) & 0.090 (  -0.199,   0.380)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & \\
-\hspace{1em}uPCR Rate & \\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) & \\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.004 (  -0.000,   0.009)\\
-\hspace{1em}BMI & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.048 (  -0.061,  -0.034)\\
-\hspace{1em}Corrected Calcium & 0.222 (  -0.153,   0.599)\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.011 (  -0.015,  -0.007)\\
-\hspace{1em}Phosphate & 0.338 (   0.119,   0.557)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.172 (  -0.291,  -0.053)\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.403 (  -0.908,   0.101)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.226 (  -0.358,  -0.095)\\
-\hspace{1em}Smoker & 0.376 (   0.212,   0.539)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.399 (  -0.728,  -0.070)\\
-\hspace{1em}Glomerular disease & -0.406 (  -0.618,  -0.193)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.220 (  -0.434,  -0.005)\\
-\hspace{1em}Tubulointerstitial disease & -0.452 (  -0.696,  -0.208)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.144 (   0.022,   0.265)\\
-\hspace{1em}CCF & -0.378 (  -0.505,  -0.252)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.165 (  -0.304,  -0.026)\\
-\hspace{1em}IHD & 0.070 (  -0.059,   0.200)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.240 (  -0.371,  -0.109)\\
-\hspace{1em}CVA & -0.128 (  -0.293,   0.036)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.203 (  -0.330,  -0.076)\\
-\hspace{1em}LD & -0.241 (  -0.573,   0.091)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.299 (  -0.440,  -0.158)\\
-\hspace{1em}HT & -0.080 (  -0.339,   0.177)\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r PH-Two,echo=F}
+print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",2,lscape=F)
+```
 
 Equation \@ref(eq:CH-Two-16) below shows the baseline cumulative hazard functions for the transition from Alive to Dead in the Two-State Model.
 
-\begin{equation}
-\Lambda_{0,16}(t)=\begin{cases} 1.15764\log(t)+6.17808 & 0 \le t < 3 \\ 0.00075\log(t)^3-0.00247\log(t)^2+1.16036\log(t)+6.17708 & 3 \le t < 520 \\ 0.13983\log(t)^3-2.61165\log(t)^2+17.47602\log(t)-27.83122 & 520 \le t < 984 \\ -0.19361\log(t)^3+4.28227\log(t)^2-30.03426\log(t)+81.30981 & 984 \le t < 1454 \\ -0.15458\log(t)^3+3.42966\log(t)^2-23.82553\log(t)+66.23901 & 1454 \le t < 2009 \\ 0.37097\log(t)^3-8.56171\log(t)^2+67.37553\log(t)-164.97265 & 2009 \le t < 2900 \\ -0.16209\log(t)^3+4.18769\log(t)^2-34.26862\log(t)+105.14551 & 2900 \le t < 5497 \\ 1.79561\log(t)+1.61764)) & 5497 \le t (\#eq:CH-Two-16)\end{cases}
-\end{equation}
+`r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",2)`
 
 Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model. Calibration Intercept is close to 0, implying the model is well calibrated overall with a high c-statistic and Brier Score. Calibration Slope above 1 implies that the model under-estimates outcomes.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:IV-Two){\small Internal Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & < 60 & 0.63 ( 0.62,  0.63) & 0.69 ( 0.69,  0.69) & 0.66 ( 0.66,  0.67) & 0.63 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.68 ( 0.68,  0.69) & 0.66 ( 0.66,  0.66) & 0.63 ( 0.63,  0.64)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & < 60 & 0.82 ( 0.82,  0.82) & 0.85 ( 0.84,  0.85) & 0.81 ( 0.81,  0.81) & 0.81 ( 0.81,  0.82)\\
-\hspace{1em}Two & < 30 & 0.84 ( 0.84,  0.84) & 0.83 ( 0.82,  0.83) & 0.83 ( 0.82,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & < 60 & 0.01 ( 0.00,  0.01) & 0.01 ( 0.00,  0.01) & -0.02 (-0.02, -0.01) & -0.00 (-0.01, -0.00)\\
-\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.02) & 0.00 ( 0.00,  0.01) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00, -0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & < 60 & \emph{1.33} & \emph{1.46} & \emph{1.26} & \emph{1.48}\\
-\hspace{1em}Two & < 30 & \emph{1.23} & \emph{1.25} & \emph{1.30} & \emph{1.51}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r IV-Two,echo=F}
+res <- list_table_Valid("data/Dev_Paper_Validation.csv",2,F)
+res[[1]]
+```
 
 Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model, which shows similar results to the internal validation with slightly impaired perfomance, which is to be expected in an external validation.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:EV-Two){\small External Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & < 60 & 0.64 ( 0.63,  0.64) & 0.57 ( 0.56,  0.57) & 0.57 ( 0.56,  0.58) & 0.56 ( 0.56,  0.57)\\
-\hspace{1em}Two & < 30 & 0.67 ( 0.66,  0.67) & 0.64 ( 0.63,  0.64) & 0.57 ( 0.56,  0.57) & 0.57 ( 0.56,  0.57)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & < 60 & 0.81 ( 0.81,  0.82) & 0.81 ( 0.80,  0.81) & 0.80 ( 0.79,  0.80) & 0.78 ( 0.78,  0.78)\\
-\hspace{1em}Two & < 30 & 0.81 ( 0.81,  0.81) & 0.80 ( 0.80,  0.81) & 0.78 ( 0.78,  0.79) & 0.78 ( 0.78,  0.78)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & < 60 & -0.00 (-0.00,  0.00) & 0.02 ( 0.01,  0.02) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & < 60 & \emph{1.29} & \emph{1.25} & \emph{1.72} & \emph{2.21}\\
-\hspace{1em}Two & < 30 & \emph{1.37} & \emph{1.37} & \emph{2.05} & \emph{1.88}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r EV-Two,echo=F}
+res <- list_table_Valid("data/Dev_Paper_Validation.csv",2,T)
+res[[1]]
+```
 
 ### Three State Model
 
@@ -1562,17 +1276,9 @@ Predicting & eGFR & One Year & Two Year & Five Year & Average\\
 
 The equations \@ref(eq:CH-Three-16), \@ref(eq:CH-Three-15) and \@ref(eq:CH-Three-56) shows the baseline cumulative hazard functions for the transition from CKD to Dead, CKD to RRT and RRT to Dead, respectively in the Three-State Model.
 
-\begin{equation}
-\Lambda_{0,16}(t)=\begin{cases} 1.19795\log(t)+17.68798 & 0 \le t < 3 \\ -9e-05\log(t)^3+3e-04\log(t)^2+1.19761\log(t)+17.68811 & 3 \le t < 443 \\ 0.15869\log(t)^3-2.9019\log(t)^2+18.88018\log(t)-18.22403 & 443 \le t < 873 \\ -0.30096\log(t)^3+6.43659\log(t)^2-44.36299\log(t)+124.54338 & 873 \le t < 1295 \\ -0.04158\log(t)^3+0.86028\log(t)^2-4.40166\log(t)+29.08554 & 1295 \le t < 1876 \\ 0.51263\log(t)^3-11.67048\log(t)^2+90.03919\log(t)-208.17245 & 1876 \le t < 2738 \\ -0.23992\log(t)^3+6.19863\log(t)^2-51.3924\log(t)+164.96467 & 2738 \le t < 5497 \\ 1.98997\log(t)+11.72244)) & 5497 \le t (\#eq:CH-Three-16)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,15}(t)=\begin{cases} 1.55753\log(t)-5.44635 & 0 \le t < 18 \\ -0.00279\log(t)^3+0.0242\log(t)^2+1.48757\log(t)-5.37894 & 18 \le t < 270 \\ -0.13576\log(t)^3+2.25776\log(t)^2-11.01817\log(t)+17.96111 & 270 \le t < 538 \\ 0.49133\log(t)^3-9.57146\log(t)^2+63.36209\log(t)-137.93609 & 538 \le t < 919 \\ -0.76978\log(t)^3+16.24541\log(t)^2-112.80782\log(t)+262.78176 & 919 \le t < 1316 \\ 0.30039\log(t)^3-6.81452\log(t)^2+52.82254\log(t)-133.77073 & 1316 \le t < 2000 \\ -0.0123\log(t)^3+0.31552\log(t)^2-1.37092\log(t)+3.53243 & 2000 \le t < 5173 \\ 1.32717\log(t)-4.15818)) & 5173 \le t (\#eq:CH-Three-15)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,56}(t)=\begin{cases} 1.35522\log(t)-7.7618 & 0 \le t < 8 \\ -0.01704\log(t)^3+0.1063\log(t)^2+1.13417\log(t)-7.60859 & 8 \le t < 196 \\ 0.21761\log(t)^3-3.6103\log(t)^2+20.75671\log(t)-42.14228 & 196 \le t < 506 \\ -0.67558\log(t)^3+13.07415\log(t)^2-83.12956\log(t)+173.47479 & 506 \le t < 816 \\ 0.8043\log(t)^3-16.69103\log(t)^2+116.42771\log(t)-272.49495 & 816 \le t < 1388 \\ -1.26732\log(t)^3+28.27738\log(t)^2-208.94656\log(t)+512.26643 & 1388 \le t < 1927 \\ 0.17019\log(t)^3-4.34244\log(t)^2+37.78861\log(t)-109.83234 & 1927 \le t < 4940 \\ 0.85568\log(t)-5.12598)) & 4940 \le t (\#eq:CH-Three-56)\end{cases}
-\end{equation}
+`r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",3)`
 
-Validation results for the Three-State Model can be found in Chapter \@ref(chap-dev-paper).
+Validation results for the Three-State Model can be found in `r fb(gitbook="Chapter \\@ref(chap-dev-paper)", thesis="Chapter \\@ref(chap-dev-paper)", single="the main text")`.
 
 
 
@@ -1582,205 +1288,38 @@ Validation results for the Three-State Model can be found in Chapter \@ref(chap-
 
 Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{(\#tab:PH-Five){\small Proportional Hazards for each transition in the Five-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to HD & CKD to PD & CKD to Tx & HD to Dead & PD to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.029 (  -0.047,  -0.011) & -0.037 (  -0.057,  -0.018) & -0.099 (  -0.127,  -0.072) & 0.069 (   0.051,   0.087) & 0.046 (   0.024,   0.068)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.001,   0.000) & -0.000 (  -0.000,   0.000) & -0.000 (  -0.001,  -0.000) &  & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  &  &  &  & \\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.088 (  -0.105,  -0.071) & -0.112 (  -0.135,  -0.090) & -0.097 (  -0.120,  -0.074) & 0.016 (   0.000,   0.032) & -0.006 (  -0.036,   0.023)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.085 (  -0.058,   0.229) &  & -0.169 (  -0.813,   0.474) & -0.053 (  -0.701,   0.593) & 0.000 (  -0.294,   0.294)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) & -0.261 (  -0.798,   0.276) & 0.445 (  -0.280,   1.171) & 0.440 (  -1.371,   2.252) & 0.366 (  -1.344,   2.077) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.738 (   0.024,   1.451) & 0.650 (  -0.906,   2.207) & 0.317 (  -0.606,   1.241) & -0.577 (  -1.317,   0.162) & 0.071 (  -1.109,   1.251)\\
-\hspace{1em}uPCR Rate &  &  & -0.042 (  -0.139,   0.055) & 0.020 (  -0.050,   0.091) & 0.030 (  -0.039,   0.099) & \\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & -0.097 (  -0.880,   0.685) & 0.740 (  -0.470,   1.950) & -0.244 (  -0.940,   0.450) &  & -0.080 (  -0.515,   0.354)\\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.003 (  -0.003,   0.010) & 0.009 (  -0.001,   0.020) &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.007 (  -0.005,   0.021) & 0.007 (  -0.010,   0.025) &  &  & \\
-\hspace{1em}BMI &  & 0.003 (  -0.063,   0.070) &  & -0.019 (  -0.060,   0.021) &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.040 (  -0.075,  -0.005) & -0.037 (  -0.100,   0.025) &  & -0.050 (  -0.096,  -0.003) & -0.021 (  -0.076,   0.032)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) &  & -1.291 (  -2.494,  -0.089) &  &  & 1.243 (  -0.187,   2.674)\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.009 (  -0.018,  -0.000) & -0.001 (  -0.016,   0.013) & -0.003 (  -0.016,   0.010) & -0.006 (  -0.017,   0.005) & -0.022 (  -0.037,  -0.006)\\
-\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.904 (   0.087,   1.721) & 1.042 (  -0.336,   2.421) & 0.578 (  -0.333,   1.491) &  & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.492 (  -0.754,  -0.230) & -0.156 (  -0.466,   0.154) &  &  & \\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.121 (  -1.020,   0.776) & -0.337 (  -1.527,   0.851) & 0.599 (  -0.501,   1.701) & -0.519 (  -1.745,   0.706) & -0.026 (  -1.302,   1.249)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.168 (  -0.567,   0.230) & -0.056 (  -0.405,   0.291) & -0.161 (  -0.623,   0.299) & -0.192 (  -0.641,   0.256) & -0.481 (  -1.013,   0.049)\\
-\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.259 (  -0.091,   0.611) & 0.374 (  -0.004,   0.753) & -0.532 (  -1.202,   0.136) & 0.686 (   0.252,   1.120) & 0.136 (  -0.400,   0.674)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 0.869 (   0.391,   1.348) & 0.982 (   0.466,   1.498) & 1.330 (   0.504,   2.156) & -0.775 (  -1.444,  -0.105) & -0.397 (  -1.214,   0.419)\\
-\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.313 (  -0.716,   0.090) & -0.263 (  -0.706,   0.178) & 0.224 (  -0.349,   0.797) & -0.683 (  -1.146,  -0.221) & -0.332 (  -0.994,   0.330)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.375 (  -0.927,   0.176) & -1.319 (  -2.390,  -0.247) & -1.377 (  -2.859,   0.103) & -0.364 (  -1.039,   0.310) & 0.999 (  -0.340,   2.338)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.307 (  -0.788,   0.173) & -0.311 (  -0.904,   0.281) & -0.232 (  -1.130,   0.666) & -0.599 (  -1.247,   0.048) & 0.428 (  -0.427,   1.284)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.123 (  -0.187,   0.434) &  &  &  & 0.570 (   0.017,   1.124)\\
-\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) & -0.144 (  -0.517,   0.228) & 0.378 (  -0.094,   0.852) & 0.341 (  -0.529,   1.213) & -0.174 (  -0.576,   0.228) & -0.389 (  -0.994,   0.216)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) &  & 0.274 (  -0.313,   0.862) & 1.602 (  -0.445,   3.650) & 0.304 (  -0.152,   0.761) & \\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.245) &  & -0.440 (  -0.869,  -0.010) & 0.864 (  -0.634,   2.362) &  & -0.236 (  -0.852,   0.378)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) &  & -0.203 (  -0.631,   0.224) & -0.600 (  -1.318,   0.118) & -0.315 (  -0.697,   0.067) & \\
-\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  &  & -0.287 (  -1.243,   0.668) &  & -0.833 (  -1.634,  -0.032)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & -0.204 (  -0.563,   0.153) & 0.625 (  -0.101,   1.351) & 0.208 (  -0.189,   0.606) & \\
-\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.659 (  -1.157,  -0.160) & -0.320 (  -1.015,   0.373) & 12.426 (-521.602, 546.454) &  & -0.751 (  -1.941,   0.438)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.335 (  -0.777,   0.106) &  &  & -0.184 (  -0.592,   0.223) & -0.419 (  -1.146,   0.306)\\
-\hspace{1em}HT &  & 0.139 (  -0.425,   0.705) & 0.447 (  -0.535,   1.429) & 0.458 (  -0.527,   1.443) &  & -0.920 (  -2.113,   0.271)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry</div>
+```{r PH-Five,echo=F}
+print_table_PH("data/Dev_Paper_Hazard_Ratios.csv",5,lscape=T)
+```
 
 The equations \@ref(eq:CH-Five-12), \@ref(eq:CH-Five-13), \@ref(eq:CH-Five-14) and \@ref(eq:CH-Five-16) show the baseline cumulative hazard functions from the CKD state to HD, PD, Tx and Dead, respectively. Equation \@ref(eq:CH-Five-26) shows the baseline cumulative hazard function from HD to Dead and Equation \@ref(eq:CH-Five-36) shows the baseline cumulative hazard function from PD to Dead.
 
-\begin{equation}
-\Lambda_{0,16}(t)=\begin{cases} 1.19795\log(t)+17.68798 & 0 \le t < 3 \\ -9e-05\log(t)^3+3e-04\log(t)^2+1.19761\log(t)+17.68811 & 3 \le t < 443 \\ 0.15869\log(t)^3-2.9019\log(t)^2+18.88018\log(t)-18.22403 & 443 \le t < 873 \\ -0.30096\log(t)^3+6.43659\log(t)^2-44.36299\log(t)+124.54338 & 873 \le t < 1295 \\ -0.04158\log(t)^3+0.86028\log(t)^2-4.40166\log(t)+29.08554 & 1295 \le t < 1876 \\ 0.51263\log(t)^3-11.67048\log(t)^2+90.03919\log(t)-208.17245 & 1876 \le t < 2738 \\ -0.23992\log(t)^3+6.19863\log(t)^2-51.3924\log(t)+164.96467 & 2738 \le t < 5497 \\ 1.98997\log(t)+11.72244)) & 5497 \le t (\#eq:CH-Five-16)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,12}(t)=\begin{cases} 2.10248\log(t)-8.40415 & 0 \le t < 22 \\ -0.02708\log(t)^3+0.25114\log(t)^2+1.3262\log(t)-7.60432 & 22 \le t < 398 \\ 0.1382\log(t)^3-2.71684\log(t)^2+19.09196\log(t)-43.05188 & 398 \le t < 939 \\ -0.08093\log(t)^3+1.78288\log(t)^2-11.70775\log(t)+27.2208 & 939 \le t < 1680 \\ 0.00603\log(t)^3-0.15477\log(t)^2+2.68263\log(t)-8.40353 & 1680 \le t < 5173 \\ 1.35914\log(t)-4.63106)) & 5173 \le t (\#eq:CH-Five-12)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,13}(t)=\begin{cases} 1.54717\log(t)-2.95572 & 0 \le t < 18 \\ -0.0099\log(t)^3+0.08586\log(t)^2+1.29901\log(t)-2.71663 & 18 \le t < 399 \\ 0.06206\log(t)^3-1.20706\log(t)^2+9.04226\log(t)-18.17463 & 399 \le t < 1143 \\ -0.02442\log(t)^3+0.61979\log(t)^2-3.82137\log(t)+12.01805 & 1143 \le t < 4720 \\ 1.42179\log(t)-2.7669)) & 4720 \le t (\#eq:CH-Five-13)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,14}(t)=\begin{cases} 1.2532\log(t)-26.76925 & 0 \le t < 57 \\ 0.05585\log(t)^3-0.67736\log(t)^2+3.99179\log(t)-30.46001 & 57 \le t < 673 \\ -1.53678\log(t)^3+30.432\log(t)^2-198.5656\log(t)+409.16648 & 673 \le t < 968 \\ 1.6017\log(t)^3-34.30313\log(t)^2+246.5168\log(t)-610.87894 & 968 \le t < 1408 \\ -1.63794\log(t)^3+36.16075\log(t)^2-264.35866\log(t)+623.7665 & 1408 \le t < 1874 \\ 0.33702\log(t)^3-8.48952\log(t)^2+72.12758\log(t)-221.49141 & 1874 \le t < 4432 \\ 0.84439\log(t)-21.97914)) & 4432 \le t (\#eq:CH-Five-14)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,26}(t)=\begin{cases} 1.29244\log(t)-8.98979 & 0 \le t < 8 \\ -0.01397\log(t)^3+0.08716\log(t)^2+1.1112\log(t)-8.86417 & 8 \le t < 204 \\ 0.26151\log(t)^3-4.30937\log(t)^2+24.49956\log(t)-50.33752 & 204 \le t < 479 \\ -0.93294\log(t)^3+17.80365\log(t)^2-111.9599\log(t)+230.35972 & 479 \le t < 764 \\ 1.30576\log(t)^3-26.7818\log(t)^2+184.02359\log(t)-424.6091 & 764 \le t < 1217 \\ -1.24908\log(t)^3+27.66815\log(t)^2-202.79666\log(t)+491.39983 & 1217 \le t < 1828 \\ 0.18579\log(t)^3-4.66437\log(t)^2+40.05781\log(t)-116.63908 & 1828 \le t < 4310 \\ 1.02311\log(t)-7.74927)) & 4310 \le t (\#eq:CH-Five-26)\end{cases}
-\end{equation}
-\begin{equation}
-\Lambda_{0,36}(t)=\begin{cases} 1.55188\log(t)-8.40785 & 0 \le t < 9 \\ -0.02867\log(t)^3+0.18901\log(t)^2+1.13657\log(t)-8.10367 & 9 \le t < 167 \\ 0.24473\log(t)^3-4.00711\log(t)^2+22.60308\log(t)-44.70978 & 167 \le t < 553 \\ -0.99362\log(t)^3+19.45322\log(t)^2-125.54725\log(t)+267.14313 & 553 \le t < 875 \\ 1.22972\log(t)^3-25.73085\log(t)^2+180.53981\log(t)-424.02428 & 875 \le t < 1410 \\ -1.86859\log(t)^3+41.67205\log(t)^2-308.23775\log(t)+757.44556 & 1410 \le t < 1937 \\ 0.31596\log(t)^3-7.93077\log(t)^2+67.19201\log(t)-189.72839 & 1937 \le t < 4302 \\ 0.83657\log(t)-4.66673)) & 4302 \le t (\#eq:CH-Five-36)\end{cases}
-\end{equation}
+`r print_Cum_Haz_eq("data/Dev_Paper_Baseline_Cumulative_Hazard.csv",5)`
 
 Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model. The calibration slope results are shown in a seperate table for both the internal and external validation.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:IV-Five){\small Internal Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & < 60 & 0.74 ( 0.74,  0.75) & 0.72 ( 0.72,  0.72) & 0.67 ( 0.66,  0.67) & 0.69 ( 0.69,  0.69)\\
-\hspace{1em}Five & < 30 & 0.76 ( 0.75,  0.76) & 0.71 ( 0.71,  0.72) & 0.65 ( 0.65,  0.66) & 0.68 ( 0.68,  0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.72 ( 0.72,  0.73) & 0.72 ( 0.72,  0.72) & 0.66 ( 0.66,  0.67) & 0.68 ( 0.68,  0.69)\\
-\hspace{1em}Three & < 30 & 0.72 ( 0.71,  0.72) & 0.74 ( 0.73,  0.74) & 0.67 ( 0.67,  0.68) & 0.69 ( 0.68,  0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.74 ( 0.74,  0.74) & 0.72 ( 0.72,  0.73) & 0.67 ( 0.67,  0.68) & 0.69 ( 0.68,  0.69)\\
-\hspace{1em}Two & < 30 & 0.74 ( 0.73,  0.74) & 0.72 ( 0.72,  0.73) & 0.72 ( 0.71,  0.72) & 0.69 ( 0.69,  0.69)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & < 60 & 0.88 ( 0.88,  0.88) & 0.86 ( 0.85,  0.86) & 0.83 ( 0.83,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Five & < 30 & 0.88 ( 0.87,  0.88) & 0.87 ( 0.87,  0.87) & 0.86 ( 0.86,  0.86) & 0.84 ( 0.84,  0.85)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Three & < 30 & 0.86 ( 0.86,  0.86) & 0.87 ( 0.87,  0.87) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.84,  0.85)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.86,  0.86) & 0.87 ( 0.87,  0.88) & 0.81 ( 0.81,  0.81) & 0.84 ( 0.84,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\  0.01 ( 0.00,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,  0.01)\\  0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.01 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\ -0.01 (-0.01, -0.00)\\ -0.04 (-0.05, -0.04)\\  0.01 ( 0.00,  0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Five & < 30 & \makecell[r]{-0.02 (-0.02, -0.02)\\  0.00 ( 0.00,  0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\  0.01 ( 0.01,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\  0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.02 ( 0.02,  0.02)\\ -0.02 (-0.02, -0.02)\\  0.02 ( 0.02,  0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\  0.01 ( 0.00,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.01 ( 0.00,  0.01)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.01 (-0.01, -0.00) & 0.01 ( 0.00,  0.01) & 0.00 (-0.00,  0.00) & -0.00 (-0.01, -0.00)\\
-\hspace{1em}Two & < 30 & -0.03 (-0.03, -0.03) & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.19},  0.01,  0.01\\ -0.01,  \emph{1.07}, -0.02\\ -0.07,  0.00,  \emph{1.11}} & \makecell[r]{\emph{1.16}, -0.01, -0.01\\ -0.00,  \emph{1.11}, -0.01\\  0.01, -0.00,  \emph{1.35}} & \makecell[r]{\emph{1.24}, -0.00,  0.00\\ -0.07,  \emph{1.28},  0.00\\ -0.03,  0.01,  \emph{1.18}} & \makecell[r]{\emph{1.30},  0.01, -0.00\\  0.00,  \emph{1.29}, -0.00\\ -0.00,  0.00,  \emph{1.32}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21}, -0.01,  0.01\\ -0.02,  \emph{1.18}, -0.01\\  0.02, -0.01,  \emph{1.15}} & \makecell[r]{\emph{1.12},  0.01,  0.00\\ -0.02,  \emph{1.27},  0.00\\  0.03,  0.04,  \emph{1.18}} & \makecell[r]{\emph{1.34},  0.12, -0.02\\  0.02,  \emph{1.43}, -0.05\\  0.00,  0.09,  \emph{1.19}} & \makecell[r]{\emph{1.27},  0.00, -0.00\\ -0.00,  \emph{1.28},  0.00\\ -0.00, -0.00,  \emph{1.29}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.03} & \emph{1.25} & \emph{1.25}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.16} & \emph{1.38} & \emph{1.28}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r IV-Five,echo=F}
+res_IV <- list_table_Valid("data/Dev_Paper_Validation.csv",5,F)
+res_IV[[1]]
+```
 
 
 Table \@ref(tab:EV-Five) shows the results from the external validation in the Five-State Model.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:EV-Five){\small External Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & < 60 & 0.70 ( 0.70,  0.71) & 0.72 ( 0.71,  0.72) & 0.64 ( 0.64,  0.65) & 0.63 ( 0.63,  0.64)\\
-\hspace{1em}Five & < 30 & 0.73 ( 0.72,  0.73) & 0.71 ( 0.70,  0.71) & 0.67 ( 0.67,  0.68) & 0.64 ( 0.64,  0.65)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.71 ( 0.71,  0.71) & 0.67 ( 0.66,  0.67) & 0.64 ( 0.63,  0.64)\\
-\hspace{1em}Three & < 30 & 0.69 ( 0.68,  0.69) & 0.68 ( 0.68,  0.69) & 0.63 ( 0.63,  0.64) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.69 ( 0.68,  0.69) & 0.68 ( 0.68,  0.69) & 0.60 ( 0.60,  0.60) & 0.64 ( 0.63,  0.64)\\
-\hspace{1em}Two & < 30 & 0.73 ( 0.72,  0.73) & 0.67 ( 0.67,  0.67) & 0.64 ( 0.63,  0.64) & 0.63 ( 0.63,  0.64)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & < 60 & 0.85 ( 0.85,  0.85) & 0.85 ( 0.84,  0.85) & 0.82 ( 0.82,  0.82) & 0.82 ( 0.81,  0.82)\\
-\hspace{1em}Five & < 30 & 0.85 ( 0.85,  0.85) & 0.83 ( 0.82,  0.83) & 0.82 ( 0.82,  0.82) & 0.81 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.83 ( 0.83,  0.84) & 0.83 ( 0.82,  0.83) & 0.81 ( 0.81,  0.82) & 0.81 ( 0.81,  0.82)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.84) & 0.82 ( 0.82,  0.82) & 0.82 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.84 ( 0.84,  0.85) & 0.85 ( 0.84,  0.85) & 0.81 ( 0.81,  0.81) & 0.82 ( 0.82,  0.82)\\
-\hspace{1em}Two & < 30 & 0.84 ( 0.83,  0.84) & 0.84 ( 0.84,  0.84) & 0.81 ( 0.81,  0.82) & 0.82 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & < 60 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\  0.04 ( 0.03,  0.04)\\  0.00 ( 0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,  0.01)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.03, -0.02)\\ -0.01 (-0.01, -0.00)\\  0.01 ( 0.00,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.01)\\ -0.00 (-0.01, -0.00)\\ -0.02 (-0.03, -0.02)\\  0.01 ( 0.01,  0.02)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Five & < 30 & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.02 ( 0.01,  0.02)\\ -0.02 (-0.03, -0.02)\\  0.03 ( 0.02,  0.03)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{0.02 ( 0.02,  0.03)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.02 ( 0.02,  0.02)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.03 ( 0.02,  0.03)\\  0.00 ( 0.00,  0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.00,  0.00)\\  0.02 ( 0.01,  0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.02)} & \makecell[r]{-0.01 (-0.01, -0.00)\\  0.02 ( 0.02,  0.03)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.00,  0.01)\\ -0.03 (-0.04, -0.03)\\ -0.02 (-0.03, -0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\ -0.02 (-0.02, -0.02)\\ -0.03 (-0.04, -0.03)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.02 ( 0.02,  0.02)\\ -0.05 (-0.05, -0.04)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 ( 0.00,  0.01) & -0.02 (-0.02, -0.02) & -0.00 (-0.00,  0.00) & 0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.01) & 0.02 ( 0.02,  0.03) & 0.01 ( 0.01,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.01}, -0.00, -0.00\\  0.01,  \emph{1.21}, -0.05\\  0.08, -0.05,  \emph{1.22}} & \makecell[r]{\emph{1.40},  0.02, -0.02\\ -0.03,  \emph{1.28}, -0.03\\ -0.07,  0.06,  \emph{1.12}} & \makecell[r]{\emph{1.61}, -0.03,  0.04\\  0.03,  \emph{1.76},  0.00\\  0.04, -0.00,  \emph{1.45}} & \makecell[r]{\emph{1.46}, -0.00, -0.00\\  0.00,  \emph{1.50}, -0.01\\ -0.00, -0.00,  \emph{1.45}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.24}, -0.00, -0.00\\ -0.02,  \emph{1.20}, -0.05\\ -0.01, -0.07,  \emph{1.34}} & \makecell[r]{\emph{1.39},  0.03,  0.00\\ -0.04,  \emph{1.24},  0.04\\ -0.03, -0.01,  \emph{1.18}} & \makecell[r]{\emph{1.28},  0.02,  0.03\\ -0.09,  \emph{1.38},  0.02\\ -0.07, -0.00,  \emph{1.44}} & \makecell[r]{\emph{1.51}, -0.00,  0.00\\  0.00,  \emph{1.41}, -0.00\\ -0.00, -0.00,  \emph{1.47}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.38} & \emph{1.12} & \emph{1.25} & \emph{1.46}\\
-\hspace{1em}Two & < 30 & \emph{1.26} & \emph{1.28} & \emph{1.35} & \emph{1.55}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r EV-Five,echo=F}
+res_EV <- list_table_Valid("data/Dev_Paper_Validation.csv",5,T)
+res_EV[[1]]
+```
 
 Table \@ref(tab:Five-Valid-Slope) shows the calibration slopes for the model in the internal and external datasets in both the < 60 eGFR and <30 eGFR sub-populations.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:Five-Valid-Slope){\small Calibration Slope results for both the External and Internal Validation for the Five-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}}
-\toprule
-  & Internal < 60 & Internal < 30 & External < 60 & External < 30\\
-\midrule
-\rowcolor{gray!6}  One Year & \emph{1.14}, -0.01,  0.00,  0.02,  0.00,  0.01\newline  -0.00,  \emph{1.09}, -0.05, -0.01,  0.01,  0.00\newline  -0.04,  0.06,  \emph{1.22},  0.02,  0.03,  0.00\newline  -0.06,  0.02,  0.01,  \emph{1.25},  0.00, -0.02\newline  -0.02,  0.03,  0.02, -0.02,  \emph{1.13},  0.00\newline   0.05, -0.04, -0.06, -0.02, -0.00,  \emph{1.30} & \emph{1.07},  0.03,  0.02,  0.02,  0.01, -0.00\newline   0.00,  \emph{1.18},  0.01,  0.00, -0.06,  0.01\newline   0.01,  0.00,  \emph{1.03},  0.00, -0.05,  0.00\newline  -0.04, -0.03, -0.03,  \emph{1.11},  0.01, -0.03\newline   0.00, -0.03, -0.02, -0.02,  \emph{1.15},  0.01\newline   0.02, -0.01,  0.00, -0.00, -0.01,  \emph{1.11} & \emph{1.16},  0.02, -0.00, -0.01,  0.00,  0.06\newline  -0.03,  \emph{1.08}, -0.00, -0.00,  0.04, -0.04\newline  -0.05, -0.02,  \emph{1.18}, -0.04, -0.05,  0.02\newline  -0.01, -0.04, -0.06,  \emph{1.17},  0.00, -0.00\newline  -0.01, -0.02,  0.00, -0.01,  \emph{1.14}, -0.04\newline   0.03, -0.00, -0.03,  0.00,  0.01,  \emph{1.23} & \emph{1.31},  0.02,  0.05, -0.00, -0.01, -0.00\newline   0.02,  \emph{1.16},  0.04,  0.01,  0.04, -0.03\newline   0.04,  0.01,  \emph{1.08},  0.01,  0.01, -0.04\newline  -0.04, -0.04, -0.01,  \emph{1.08}, -0.00, -0.00\newline  -0.02,  0.04, -0.03, -0.03,  \emph{1.27}, -0.00\newline  -0.01,  0.02,  0.03, -0.02,  0.07,  \emph{1.16}\\
-Two Year & \emph{1.42}, -0.05,  0.03, -0.01, -0.05,  0.00\newline   0.02,  \emph{1.12},  0.03, -0.01,  0.03, -0.00\newline   0.01, -0.01,  \emph{1.22}, -0.00,  0.00,  0.04\newline  -0.03,  0.00, -0.05,  \emph{1.21}, -0.01,  0.00\newline  -0.02, -0.03, -0.00, -0.01,  \emph{1.39}, -0.00\newline  -0.03,  0.04,  0.04, -0.00,  0.03,  \emph{1.15} & \emph{1.14}, -0.02,  0.04,  0.02,  0.00, -0.09\newline  -0.01,  \emph{1.10},  0.00, -0.07, -0.01, -0.00\newline  -0.03,  0.02,  \emph{1.12},  0.03,  0.00, -0.04\newline   0.00,  0.02, -0.03,  \emph{1.11}, -0.02,  0.01\newline  -0.00, -0.06, -0.05,  0.02,  \emph{1.11}, -0.03\newline   0.07, -0.01, -0.03,  0.02,  0.04,  \emph{1.18} & \emph{1.25},  0.02,  0.01,  0.02, -0.07,  0.02\newline   0.00,  \emph{1.39},  0.08, -0.03,  0.02,  0.05\newline  -0.01, -0.01,  \emph{1.26},  0.04, -0.04,  0.03\newline  -0.00, -0.00, -0.10,  \emph{1.21}, -0.04,  0.02\newline  -0.02, -0.02,  0.02, -0.08,  \emph{1.20}, -0.00\newline  -0.04,  0.00, -0.05,  0.02, -0.06,  \emph{1.44} & \emph{1.39}, -0.04,  0.00, -0.00,  0.01, -0.01\newline  -0.06,  \emph{1.31},  0.03,  0.00,  0.02, -0.06\newline   0.00, -0.02,  \emph{1.14},  0.01, -0.04,  0.04\newline   0.01, -0.02,  0.00,  \emph{1.37}, -0.03,  0.00\newline   0.04, -0.02, -0.00, -0.01,  \emph{1.34},  0.02\newline  -0.02,  0.02, -0.03, -0.02, -0.01,  \emph{1.32}\\
-\rowcolor{gray!6}  Five Year & \emph{1.22}, -0.00,  0.05, -0.00, -0.05,  0.05\newline  -0.04,  \emph{1.11}, -0.01,  0.03,  0.04,  0.03\newline   0.02, -0.03,  \emph{1.24}, -0.03, -0.03,  0.01\newline   0.02, -0.03, -0.00,  \emph{1.20}, -0.05,  0.01\newline   0.00,  0.08, -0.00,  0.01,  \emph{1.25}, -0.06\newline   0.01, -0.00, -0.00,  0.03, -0.05,  \emph{1.14} & \emph{1.27},  0.02,  0.02, -0.03,  0.04, -0.06\newline  -0.00,  \emph{1.20}, -0.00,  0.00,  0.04, -0.00\newline  -0.03, -0.02,  \emph{1.22},  0.02,  0.05,  0.03\newline   0.00, -0.02, -0.01,  \emph{1.30}, -0.00,  0.04\newline   0.00, -0.05,  0.00, -0.05,  \emph{1.31},  0.01\newline  -0.01, -0.04, -0.05,  0.02, -0.00,  \emph{1.19} & \emph{1.45}, -0.04,  0.06, -0.07,  0.00,  0.04\newline  -0.01,  \emph{1.31},  0.04,  0.01, -0.01,  0.03\newline   0.01,  0.06,  \emph{1.50},  0.01,  0.02, -0.00\newline  -0.01,  0.00,  0.08,  \emph{1.56},  0.02,  0.01\newline  -0.09,  0.01, -0.02, -0.06,  \emph{1.47}, -0.00\newline  -0.03,  0.04,  0.07,  0.08,  0.01,  \emph{1.35} & \emph{1.32},  0.04, -0.04, -0.01, -0.02,  0.03\newline  -0.06,  \emph{1.21},  0.01,  0.00, -0.06, -0.01\newline   0.01, -0.08,  \emph{1.70},  0.04, -0.03, -0.05\newline  -0.01,  0.03, -0.02,  \emph{1.35}, -0.02,  0.02\newline  -0.05, -0.03,  0.03, -0.04,  \emph{1.43},  0.07\newline   0.01,  0.04, -0.04, -0.01, -0.00,  \emph{1.28}\\
-Average & \emph{1.28},  0.00, -0.00,  0.01,  0.00,  0.00\newline   0.00,  \emph{1.28},  0.00,  0.00, -0.00,  0.01\newline   0.00,  0.01,  \emph{1.25},  0.00, -0.00,  0.00\newline  -0.00,  0.00,  0.00,  \emph{1.28}, -0.00,  0.00\newline  -0.00,  0.00, -0.00,  0.01,  \emph{1.26}, -0.00\newline  -0.00,  0.01,  0.00, -0.00, -0.00,  \emph{1.31} & \emph{1.31},  0.01, -0.00,  0.00,  0.00,  0.00\newline  -0.00,  \emph{1.29}, -0.00,  0.00, -0.00,  0.00\newline  -0.00,  0.00,  \emph{1.30}, -0.00, -0.00, -0.00\newline   0.00, -0.00, -0.00,  \emph{1.28},  0.00, -0.01\newline   0.00,  0.00,  0.00,  0.00,  \emph{1.27}, -0.01\newline   0.01, -0.00, -0.00, -0.00,  0.00,  \emph{1.28} & \emph{1.46},  0.01, -0.00,  0.00, -0.01,  0.00\newline   0.01,  \emph{1.46},  0.01,  0.00, -0.00, -0.00\newline  -0.00,  0.00,  \emph{1.54}, -0.01,  0.00, -0.00\newline   0.00, -0.02,  0.00,  \emph{1.51}, -0.00,  0.01\newline  -0.01,  0.00,  0.00, -0.00,  \emph{1.47}, -0.00\newline   0.00, -0.00, -0.00, -0.00, -0.01,  \emph{1.47} & \emph{1.49}, -0.00, -0.00, -0.00, -0.01,  0.01\newline  -0.01,  \emph{1.45}, -0.00,  0.00,  0.00, -0.00\newline   0.00, -0.00,  \emph{1.44},  0.01, -0.00, -0.01\newline   0.00, -0.00,  0.01,  \emph{1.47}, -0.00,  0.00\newline  -0.00, -0.00, -0.00,  0.00,  \emph{1.47},  0.01\newline   0.00, -0.00, -0.00, -0.00,  0.00,  \emph{1.44}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+```{r Five-Valid-Slope, echo=F}
+full_join(res_IV[[2]],res_EV[[2]],
+          by="Time") %>%
+  to_kable(caption="Calibration Slope results for both the External and Internal Validation for the Five-State Model",align="rr",row_names="Time",numeric_cols=2:5,col_widths=rep("20em",5))
+```
 
 
 
@@ -1800,7 +1339,7 @@ delete "References" and replace it.
 -->
 
 # References {-}
-\chaptermark{References}
+`r fb(thesis="\\chaptermark{References}")`
 
 <!--
 This manually sets the header for this unnumbered chapter.
