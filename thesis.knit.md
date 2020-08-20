@@ -1,6 +1,6 @@
 ---
 author: 'Michael Andrew Barrowman'
-date: 'May 2020'
+date: 'August 2020'
 institution: 'University of Manchester'
 division: 'Division of Informatics, Imaging and Data Science'
 advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambie'
@@ -9,8 +9,8 @@ advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambi
 department: 'School of Health Sciences'
 degree: 'PhD Medicine'
 title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
-knit: MyThesis::MyRender
-#knit: MyThesis::simple_render
+#knit: MyThesis::MyRender
+knit: MyThesis::Gitbook_Render
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -26,14 +26,14 @@ output:
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
-# use code similar to line 22-23 for the .RMD files. If you are NOT producing a PDF, you can delete or silence lines 21-32 in this YAML header.
+# use code similar to line 22-23 for the .RMD files. If you are NO T producing a PDF, you can delete or silence lines 21-32 in this YAML header.
 abstract: |
-  Insert Abstract Here...
+  Blah...
 # If you'd rather include the preliminary content in files instead of inline
 # like below, use a command like that for the abstract above.  Note that a tab is 
 # needed on the line after the `|`.
 acknowledgements: |
-  Insert Ackowledgements Here...  \par
+  Insert Acknowledgements Here...  \par
   
   <!--  \par
   
@@ -77,9 +77,41 @@ To Do List:
 Write up current draft of other papers
 Add Timeline
 
+MyRender is now outputting 4 different things:
+- Gitbook style html group of files
+- Thesis formatted pdf
+- individual papers as pdf
+- individual papers as Word
+
+Table format:
+
+           |   Combined    | Individual |
+----------------------------------------|
+html       | Yes (gitbook) |            |
+pdf        | Yes (thesis)  |    Yes     |
+word(docx) |               |    Yes     |
+----------------------------------------|
+
+
+
+
+
+\newcommand{\txt}[1]{\textrm{#1}}
+
+\def\logit{\txt{logit}}
+\def\d{\;\txt{d}}
+
+\newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
+
+
+$$
+F(x) = \int f(x) \d x
+$$
 -->
 
-Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The html version can be found [here](https://michaelbarrowman.co.uk/thesis).
+
+
+Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). The pdf version can be downloaded via the menu at the top.
   
 I sent an email with details of how you can log in to the [hypothes.is](https://hypothes.is/) system. This will let you add comments to the gitbook pages. This is actually a really useful tool and has the ability to add annotations to any webpage. Annotated text can be seen highlighted and to add your own, just highlight the text you want to comment on, and the annotate bubble pops up (try it now). Make sure you click Post to Public after writing the annotation and annotations can include Rich Text and Markdown. You can view Annotations by clicking the menu on the right and this will show all comments.
 
@@ -94,40 +126,45 @@ Importantly, I've also added in functionality to output each chapter individuall
 
 Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/Thesis). I originally used Github as my backup, but then decided to increase how I used it.
 
+## Abstract {-}
 
-
- 
-
+Blah...
 
 <!--chapter:end:index.Rmd-->
 
 
 # Literature Report {#chap-lit-report}
-\chaptermark{Literaure Report}
-Last updated: 25 May
+ Last updated: 20 Aug
+\newcommand{\txt}[1]{\textrm{#1}}
+
+\def\logit{\txt{logit}}
+\def\d{\;\txt{d}}
+
+\newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
+
+
 
 ## Introduction
 
-
 ## Clinical Prediction Models
 
-The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is definde as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is uaully given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modelling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
+The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is defined as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is usually given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modeling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
 
-Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the ffect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to th definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown subtype of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
+Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the effect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to the definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown sub-type of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
 
 In general, prognosis research can be broken down into four main categories, with three subcategories [@riley_prognosis_2019]:
 
-* Type I: Fundamental prognosis research [@hemingway_prognosis_2013] 
+* Type I: Fundamental prognosis research [@hemingway_prognosis_2013]
 * Type II: Prognostic factor research [@riley_prognosis_2013]
-* Type III: Prognostic model research [@steyerberg_prognosis_2013]
-  * Model development [@royston_prognosis_2009]
-  * Model validation [@altman_prognosis_2009]
-  * Model impact evaluation [@moons_prognosis_2009]
+* Type III: Prognostic model research [@steyerberg_prognosis_2013]  
+* Model development [@royston_prognosis_2009]   
+* Model validation [@altman_prognosis_2009]   
+* Model impact evaluation [@moons_prognosis_2009] 
 * Type IV: Stratified Medicine [@hingorani_prognosis_2013]
 
 For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
 
-The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [**Cite: Something**].
+The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual derivation of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [@steyerberg_overfitting_2009].
 
 ### Fundamental Prognosis Research
 
@@ -139,15 +176,15 @@ The aim of prognostic factor research (Type II) is to discover which factors are
 
 Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, [**xxxx**] demonstrated that [**xxxx**] is correlated with [**xxxx**], which subsequently used as a covariate in the development of the [**xxxx**] model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones [**Cite: Something**]. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting [**xxxx**], we can demonstrate that [**xxxx**] is a prognostic factor, [however since the arrow of causation is [**xxxx**]] [**OR**] [however since [**xxxx**] causes both [**xxxx**] and [**xxxx**]], the relationship is prognostic, but not causal. [**Previously used Apgar score here, reference 40**]
 
-Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
+Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thus prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
 
 It is unfortunate, however, that Riley at al [@riley_systematic_2003-1] found that only 35.5% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions [@riley_prognosis_2013].
 
 ### Prognostic Model Research
 
-Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome [@steyerberg_prognosis_2013] and they are deigned to augment the job of a clinician; and not to completely replace them [@moons_prognosis_2009]. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease [@collins_transparent_2015;~moons_transparent_2015]. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratied medicine approach [@collins_transparent_2015;@moons_transparent_2015]. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is [@moons_prognosis_2009]. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician [@kurella_optimizing_2012]. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
+Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome [@steyerberg_prognosis_2013] and they are deigned to augment the job of a clinician; and not to completely replace them [@moons_prognosis_2009]. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease [@collins_transparent_2015;~moons_transparent_2015]. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratified medicine approach [@collins_transparent_2015;@moons_transparent_2015]. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is [@moons_prognosis_2009]. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician [@kurella_optimizing_2012]. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
 
-Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe [**Cite: Something**]. To quote Steyerberg et al [@steyerberg_prognosis_2013]. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
+Creating a clinically useful model is not as simple as just using some available data to develop a model, despite what a lot of researchers seem to believe [@chen_overview_2020]. To quote Steyerberg et al [@steyerberg_prognosis_2013]: "To be useful for clinicians a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a model might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that it would be unwise to apply it to a new population.
 
 #### Model Development
 
@@ -155,33 +192,29 @@ The first stage of having a useful model is to develop one. Clinical predictive 
 
 By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors [@riley_prognosis_2013]. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality [@haybittle_prognosis_1982], or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables [@zaman_social_2008]. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost [@hanauer_exploring_2009]. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups [@hippisley-cox_predicting_2008].
 
+ When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [@peduzzi_importance_1995;@peduzzi_simulation_1996], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [@riley_minimum_2019] based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [@sauerbrei_selection_2007]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [@riley_external_2016; @vergouwe_substantial_2005; @collins_sample_2016]. A systematic review by Counsell et al [@counsell_systematic_2001] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [@riley_minimum_2019] showed that less that [**Pull example from Riley EPV**]. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless [@royston_prognosis_2009]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [@riley_external_2016]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [@riley_external_2016]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
 
-When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [@peduzzi_importance_1995;@peduzzi_simulation_1996], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [@riley_minimum_2019] based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [@sauerbrei_selection_2007]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [@riley_external_2016; @vergouwe_substantial_2005; @collins_sample_2016]. A systematic review by Counsell et al [@counsell_systematic_2001] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [@riley_minimum_2019] showed that less that [**Pull example from Riley EPV**]. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless [@royston_prognosis_2009]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [@riley_external_2016]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [@riley_external_2016]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
-
-
-Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun [@riley_external_2016]. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation [@altman_prognosis_2009; @ivanov_predictive_2000]. Derivation of the QRISK2 Score [@hippisley-cox_derivation_2007] (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset. This model was further externally validated [@collins_independent_2012], and its most modern incarnation, QRISK3, performed the external validation in the same paper [@hippisley-cox_development_2017] The Nottingham Prognostic Index (NPI) was trained on the first 500 patients admitted to Nottingham City Hospital after the study began [@haybittle_prognostic_1982] and later validated on the next 320 patients to be admitted [@todd_confirmation_1987], this validation was not performed at the same time as the initial development and is thus an external validation.
+ Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun [@riley_external_2016]. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation [@altman_prognosis_2009; @ivanov_predictive_2000]. Derivation of the QRISK2 Score [@hippisley-cox_derivation_2007] (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset. This model was further externally validated [@collins_independent_2012], and its most modern incarnation, QRISK3, performed the external validation in the same paper [@hippisley-cox_development_2017] The Nottingham Prognostic Index (NPI) was trained on the first 500 patients admitted to Nottingham City Hospital after the study began [@haybittle_prognostic_1982] and later validated on the next 320 patients to be admitted [@todd_confirmation_1987], this validation was not performed at the same time as the initial development and is thus an external validation.
 
 As with any technology, clinicians and researchers should be wary of models becoming outdated [@pate_uncertainty_2019]. Healthcare systems and lifestyles change over time, and so models developed and externally validated in an outdated population will drift [@bhatnagar_epidemiology_2015] and so should be updated regularly, as with QRISK [@hippisley-cox_development_2017] or automatically with a dynamic model [@jenkins_dynamic_2018]
 
+ If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources [@liquet_investigating_2012]. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis [@hemingway_prognosis_2013;@riley_external_2016]. Heterogeneity is particularly high when using multiple countries as a source of data [@snell_multivariate_2016] or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors [@hougaard_frailty]. Overlooking of this clustering can lead to incorrect inferences [@liquet_investigating_2012]. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source [@moons_prognosis_2009].
 
-If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources [@liquet_investigating_2012]. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis [@hemingway_prognosis_2013;@riley_external_2016]. Heterogeneity is particularly high when using multiple countries as a source of data [@snell_multivariate_2016] or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors [@hougaard_frailty]. Overlooking of this clustering can lead to incorrect inferences [@liquet_investigating_2012]. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source [@moons_prognosis_2009].
+During development of any model, using only patients for whom all data is available
 
 <!-- Removed paragraph on missing data --->
 
-A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [@royston_prognosis_2009]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail [@collins_transparent_2015;@moons_transparent_2015]. Potential predictors with high levels of missingness should be excludes as this missingness can introduce bias [@royston_prognosis_2009]. One key fact that many experts agree on is that categoriation of continuous predictors should be avoided [**Cite: LOADS**] as it retains much more predictive information. The cut-points of these categorisations lead to artificial jumps in the outcome risk [@sauerbrei_selection_2007]. It is also worth noting that cut-points are often either arbitrarily decided or data-driven with the latter leading to overfitting [@sauerbrei_selection_2007]. If categorisation is performed, clear rationale should be provided with an ackowledgement that this wil reduce performance [@lagakos_effects_1988;@collins_systematic_2013]. When applying a model to a new population, extrapolation of a model should be avoided [@eberhart_applicability_1988] and so to aid in this, the ranges of continuous variables, and the considered values of categorical variables should be reported [@collins_systematic_2013]. this is especially true for age. QRISK2 was derived in a population ranging from 35 to 74 years of ages and so should not have been applied to patients out of this range [@hippisley-cox_predicting_2008]. This ranges was later extended with the updated version [@hippisley-cox_advantages_2011] and currently can be applied to patients aged 25-84 [**Update with QRISK3**].
+A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [@royston_prognosis_2009]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail [@collins_transparent_2015;@moons_transparent_2015]. Potential predictors with high levels of missingness should be excludes as this missingness can introduce bias [@royston_prognosis_2009]. One key fact that many experts agree on is that categoriation of continuous predictors should be avoided [@@royston_dichotomizing_2006] as it retains much more predictive information. The cut-points of these categorisations lead to artificial jumps in the outcome risk [@sauerbrei_selection_2007]. It is also worth noting that cut-points are often either arbitrarily decided or data-driven with the latter leading to overfitting [@sauerbrei_selection_2007]. If categorisation is performed, clear rationale should be provided with an ackowledgement that this wil reduce performance [@lagakos_effects_1988;@collins_systematic_2013]. When applying a model to a new population, extrapolation of a model should be avoided [@eberhart_applicability_1988] and so to aid in this, the ranges of continuous variables, and the considered values of categorical variables should be reported [@collins_systematic_2013]. this is especially true for age. QRISK2 was derived in a population ranging from 35 to 74 years of ages and so should not have been applied to patients out of this range [@hippisley-cox_predicting_2008]. This ranges was later extended with the updated version [@hippisley-cox_advantages_2011] and currently can be applied to patients aged 25-84 [**Update with QRISK3**].
 
 When building a prediction model, we begin with a certain pool of potential predictors and try to establish which to include in the final model [@sauerbrei_selection_2007]. With $k$ candidate variables, we have $2^k$ possible choices which can get unwieldy even for low values of $k$, with only 10 predictors (a very reasonable number), there are over 1,000 combinations. This doesn't include interactions or non-linear components which increases this number even more. Therefore, model-building techniques are important for anybody attempting to build an accurate prediction model. It is currently undecided what the "best" way to select predictors in a multivariable model is or even if it exists [@sauerbrei_selection_2007]. One method that researchers use to decide on which predictors to include is to analyse each potential predictor individually for a correlation with the outcome in a univariable analysis and keeping those which are considered to have a statistically significant correlation. The general consensus amongst researchers is that predictors should not be excluded in this way [@royston_prognosis_2009]. Univariables analysis does not account for any dependencies between potential predictors and so any cross correlations that exists between them can cause a bias in the results. Despite its clear weaknesses, any prognostic studies still use univariable analysis to build their models [@riley_reporting_2003].
 
-<!-- Removed paragraph of NPI -->
+The NPI predictive model includes lymph-node stage, tumour size and pathological grade to identify patients with a poor prognosis with much better discrimination that would be possible if only one of these factors were used in isolation [**Cite: LR - 5**]. The development of the model began with nine potenial predictors, of which three were considered to be statistically significant in a Cox model [**Cite: LR - 73**] and so were included in the final model which was simplified to $I = 0.2\times\textrm{size (in cm)} + \textrm{stage} + \textrm{grade}$.
 
-Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5%) one at a time untill all remaining variables are significant. Forward selection begins wth no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exxlucde more variables [@royston_prognosis_2009]. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima [@mantel_why_1970]. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models [**Cite: p-values be bad reference**]. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e. make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
+Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5%) one at a time until all remaining variables are significant. Forward selection begins with no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exlucde more variables [@royston_prognosis_2009]. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima [@mantel_why_1970]. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models [@hubbarb_why_2008]. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e. make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
 
-It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g. logarithms, sqauring) or using fractional polynomials [**Cite: LR - 7 or 76?**]. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly [**Cite: LR - 4**]. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by [**Cite: LR - 40**]. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care [**Cite: LR - 3**]. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements [**Cite: Rose's Work**].
+It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g. logarithms, squaring) or using fractional polynomials [@royston_use_1999]. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly [@aroon_prognosis_2013]. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by [@moons_prognosis_2009]. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care [@steyerberg_prognosis_2013]. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements [**Cite: Rose's Work**].
 
-
-Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria[**Cite: LR - 35**]. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk [**Cite: LR - 3**].
-
-<!-- Paragraph regarding groupings in NPI, followed by intergation of QRISK in computer systems-->
+ Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria [@altman_prognosis_2009]. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk [@steyerberg_prognosis_2013].
 
 
 
@@ -191,172 +224,164 @@ Once developed, prognostic models can be used to create risk groups for a popula
 
 ### Stratified Medicine
 
-### Examples
-
 #### Reviews
 
-Along with the EPV assessment mentioned earlier, Counsell et al's systematic review [**Cite: LR - 62**] assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
+Along with the EPV assessment mentioned earlier, Counsell et al's systematic review [@counsell_systematic_2001] assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
 
-* Adequate inception cohort
-* Less than 10% loss to followup
-* Prospective data collection
-* Valid and reliable outcome
-* Age as a candidate predictor
-* Severity of condition as a candidate predictor
-* Use of stepwise regression
+* Adequate inception cohort * Less than 10% loss to followup * Prospective data collection * Valid and reliable outcome * Age as a candidate predictor * Severity of condition as a candidate predictor * Use of stepwise regression
 
 <!-- Taken from page 8, continue with the other reviews mentioned there --->
 
 ## Competing Risks & Multi-State Models
 
+Many diseases are measured in stages of progression or as types or variants. Often, patients can switch from one of these stages to another whilst they are being studied. If being in a different stage of the disease is believed to affect the way that the patient's condition behaves then it is important to account for this when modeling a disease. The simplest way is to have the disease stage/type as a covariate and ensure that it is updated accurately. However, if it is believed that a disease behaves wildly differently when at different stages, then this might not be feasible, especially if the stage can interact with other covariates. The solution to this is to use MSMs to map patients progression through the different stages of the disease**???**, where each stage is modelled as a state in the MSM.
+
+### Traditional Survival Analysis
+
+From survival analysis, a hazard function is a measure of the intensity of moving from one state to another (whether that is from alive to death, functioning to non-functioning or something more complicated as in an MSM). If we have T be the random variable defining the time of the event (or transition), then a hazard function is usually defined as**???** 
+
+$$
+h(t) = \frac{-\d \log S(t)}{\d t} = \lim_{\Delta t \to 0}\frac{\textrm{Prob}\left(T \le t + \Delta T\,|\,T\ge t\right)}{\Delta t}
+$$
+where $S$ is th survival function, or cumulative probability of having remained in the current state from time $t = 0$. An alternative way of writing this is
+$$
+S(t) = \exp\left(-\int_0^t h(u) \d u\right)
+$$
+We can simplify this equation to $S(t) = \exp\left(H(t)\right)$ if we defined the cumulative hazard function, $H(t)$, to be
+$$
+H(t) = \int_0^t h(u) \d u
+$$
+Two other useful definitions from survival analysis are the probability density function, $f$, and the cumultive distribution function, $F$ which are much more familiar to statisticians and are related to the previously defined functions by:
+$$
+f(t) = \frac{h(t)}{S(t)}\qquad\qquad F(t)=1-S(t)
+$$
+A function that is useful in estimating the survival of a population is the Kaplan-Meier estimate, it is a non-parametrics, empirical estimate of survival and is defined as:
+$$
+\hat{S}(t) = \prod_{j:\;t_j \le t}\left(1 - \frac{d_j}{n_j}\right)
+$$
+In this definition, $t_j$ is the $j$th event time, $n_j$ is the number of patients still at risk at time $t_j$ (i.e those event-free at time this time) and $d_j$ is the number of patients who had an event at time $t_j$. Kaplan-Meier estimates assume independence between the event we are modelling and censoring**???**. See figure \@ref(fig:KM-example) for a typical K-M plot for two populations:
+<div class="figure">
+<img src="thesis_files/figure-html/KM-example-1.png" alt="Example plot of Kaplan-Meier estimator for two populations" width="672" />
+<p class="caption">(\#fig:KM-example)Example plot of Kaplan-Meier estimator for two populations</p>
+</div>
+
+There are many different kinds of statistical models that can be used to produce clinical prediction models based on the type of data and the shape of the desired output. Many models rely on regression techniques to produce their estimates and these can usually be rearranged into a linear relations of the form:
+$$
+Y = \beta_0 + \beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m = \beta^T Z + \epsilon
+$$
+
+where the $\beta$s are the coefficients found from the data and the $Z$s are the covariates of predictors. The first coefficient, $\beta_0$ is known as the intercept term and gives an idea of the average amongst the population (if the other covariates have been standardised). The final term here, $\epsilon$ is the error term or the residual, when measured across every patient, this error term should follow a Normal distribution and have its standard deviation be as small as possible, $\epsilon \sim N(0,\sigma)$. The $\epsilon$ term will be omitted from further equations, unless required.
+
+The predictors above do not have to be directly from the raw data and can be derived in some way from the data (including via other regression models), and the predicted value here can be transformed by a link functions, usually called $g$ to the actual expected outcome. By choosing the correct transformations and link functions and repeatedly applying these regression, we can form a simple machine learning model [@breiman_statistical_2001]. For example, a logistic model uses the logit function as a link function as seen below:
+$$
+\textrm{logit}(p|Z) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m 
+$$
+The logit function can then be undone to provide a probability that an outcome occurs, such as the probability of a specific prognosis.
+
+Within the realm of survival analysis, we have an extra dimension to include in our calculations, time, and this includes the fact that some patients are not observed after certain dates (i.e censoring). To combat this additional dimension, the most common form of regression in survival analysis, the Cox model[@cox_regression_1972] avoids estimating the intercept altogether and produces proportional hazard estimates for each covariate. The predicted values from the model are positioned within the hazard function, described above and give an idea of how a covariate increases or decreases the hazard of an event:
+$$
+h(t|Z) = h_0(t)\exp\left(\beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m \right)
+$$
+Notice that the intercept has, essentially been swallowed up by the $h_0(t)$ term, which is known as the baseline hazard. This baseline hazard function is not estimated within the Cox modelling regression method and is assumed to be the same for all patients (subject to stratification). This means that estimated values are relative to one another and therefore absolute estimates are not possible with the Cox Model. These relative estimates, written in their expontiated form, $\exp(\beta_j Z_j)$ are known as hazard ratios and are used extensively in clinical trials to compare two groups [@therneau_cox_2000].
+
+To provide any absolute estimates of hazard functions, we need to extend the Cox model and a reliavle method to do this is with the Royston-Parmar Regression technique [@royston_flexible_2002]. This method estimates the hazard ratios in much the same way as the Cox model does, but in the same process, also uses restricted cubic splines on $x=log(t)$ [@mckinley_cubic_nodate] to estimate the log of the cumulative baseline hazard function, or the log-log of the baseline Survival function;
+$$
+\log(-\log(S_0(t|Z))) = \log(H_0(t|Z)) = \gamma_0 + \gamma_1 x + \gamma_2 \nu_1(x) + ... + \gamma_{m+1}\nu_m(x)
+$$
+where the pieces of the the cubic spline are defined as
+$$
+\nu_j(x) = (x-k_j)_+^3 - \lambda_j(x-k_\textrm{min})_+^3 - (1-\lambda_j)(x-k_\textrm{max})_+^3
+$$
+Each of the $k_j$ are the knots used to define the ranges where each cubic piece operates, the models are designed to be cubic between each of these knots and the $\lambda_j$ are defined to restrict the function to be linear outside of the range (below the first knot and above the final knot).
+$$
+\lambda_j = \frac{k_\textrm{max} - k_j}{k_\textrm{max} - k_\textrm{min}}
+$$
+We can also deviate from the proportional hazard requirement by defining the $\gamma$ terms to be dependendent on covariates; this is, of course, done via a linear model and demonstrates an extra layer of regression required to form such models:
+$$
+\gamma_j(Z) = \gamma_{j1}Z_1 + \gamma_{j2}Z_2 + ... +\gamma_{jm}Z_m
+$$
+
+### Competing Risks
+
+A Competing Risk (CR) can be thought of simply as survival analysis where a cause of death, $D \in {1, ..., K}$ is also observed**???**. When patients are recovering from a disease, more than one event can play a role, but often one event is of more interest than the other**???**. This competing event can also prevent the event-of-interest from occurring. For example, if we are modeling discharge from hospital after surgery (event-of-interest), patients can also die whilst in hospital (competing event) which prevents the former from happening. Depending on clinical context, non-administrative right censoring can be modeled as a competing risk**???** because censoring times are not always independent of event times**???**. If healthier patients are less likely to use medical services, then they are more likely to be lost to followup meaning a negative correlation with event time and vice versa if a less healthy person is more likely to leave a study (e.g. they become too ill to continue in the study). If the competing event and event-of-interest are not independent, then this can cause bias in the Kaplan-Meier estimator**???**. Issues can arise with the naive Kaplain-Meier approach in CR, wherein the probability of having the events sum to more than 100%, even though the events can not occur together**???**.
+
+We can adjust the previous definitely for a hazard function to become a cause-specific hazard function as:
+$$
+h_k(t) \lim_{\Delta t \to 0}\frac{\textrm{Prob}\left(T \le t + \Delta T,\,D=k\,|\,T\ge t\right)}{\Delta t}
+$$
+where $k$ is the event we are assessing. Cause specific hazard (CSH) estimates may be found by treating the data as simple survival data and the competing events as a censoring event**???**. In order to translate these into an event-free Survival probability (or marginal survival probability), we need to sum these hazard functions together;
+$$
+S(t) = \textrm{Prob}(T>t) = \exp\left(-\int_0^t \sum_{k=1}^K h_k(u) \d u\right)
+$$
+In traditional survival analysis, the probability of having the event, is simply $F(t) = 1-S(t)$, however since failures can occur from different events, we now have to take this into account by utilising an event specific failure:
+$$
+\mathcal{P}_k(t) = \int_0^t S(u-)h_k(u) \d u
+$$
+This can be broken down as the probabilty of surviving until time $u$, $S(u-)$ and then the instantaneous probability of the event occurring at that time, $\lambda_h(u)$. We integrate this over all the possible event times on the range $(0,t]$. This $\mathcal{P}$ is usually referred to as the cumulative incidence function, CIF. The CIF for a transition depends on all the other transition intensties through the $S(u-)$ component of the integrand**???**. 
+
+The cumulative distribution function, $F$, grows from 0 to 1 as the probability of having had an event increases over time. This assumes that eventually all patients will have the event (and thus $\lim_{t \to \infty}F(t) = 1$). In regards to the cumulative incidence function, patients who have a competing event are precluded from having the event-of-interest and therefore the assumption that all patients will have the event does not hold. For this reason, the CIF is bounded within the range $[0,1)$ and never reaches 1 and is thus known as a subdistribution**???**.
+
+Where we defined the hazard function earlier as the derivative of the log survival, we can define the subdistribution hazard similarly:
+$$
+h(t) = \frac{-\d\log\left(1-F(t)\right)}{\d t} \qquad \qquad \lambda_h(t) = \frac{-\d\log\left(1-\mathcal{P}_h(t)\right)}{\d t} 
+$$
+
+Fine & Gray **???** developed a method analogous to the Cox proportional hazards model for these subdistributions. The Proportional Subdistribution Hazards method (PSHM) calculates the hazard ratios for events occurring based on the CIF, $\mathcal{P}$**???**, and subdistribution hazard where the Cox model uses the cumulative distribution function, $F$**???** and the cause-specific hazard.
+$$
+\tilde{\lambda}_k(t) = \tilde{lambda}_{k0}(t)\exp\left(\beta_k^TZ\right)
+$$
+
+In this context, patients who have the competing event remain in the risk set for having the event-of-interest, however they will never have it, whereas in the CSH, they do not.
+
+
+### Multi-State Models
+
+
 ## Chronic Kidney Disease
+
+ Chronic diseases, especially non-communicable ones, have now become the major cause of morbidity and mortality around the world[@atkins_epidemiology_2005]. In particular, Chronic Kidney Disease (CKD) is a global health concern[@collins_systematic_2013] and is thus a major burden on healthcare utilisation worldwide[@mills_systematic_2015]. This is unsurprising given that, in the UK, 7,411 patients commenced RRT in 2004 alone which equates to a rate of 115 per million people[@gilg_uk_2016]. Part of this prevalence is believed to be increasing due to increased incidences of diabetes[@collins_systematic_2013] which contribute 26.9% of new RRT diagnosis in the UK in 2014[@gilg_uk_2016]. In 2013, the NHS spent 2% of its budget on kidney replacement therapy[@collins_systematic_2013;@ansell_9th_2007] and in 2008, 5.9% of the Medicare expenditure was spent on managing patients with End-Stage Renal Disease (ESRD)[@collins_systematic_2013;@collins_us_2011]. The progression of CKD amongst sufferers is believed to be homogeneous with respect to time**???**, meaning that it increases continuously at steady rate.
+
+CKD treatment typically consists of either palliative care or a type of RRT. In the real world, it is difficult to make decisions on RRT for patients suffering from ESRD since, as with any disease, there is a lot of variability in the individuals[@tamura_optimizing_2012]. This variability is particularly prominent amongst older patients, which leads to variation in treatment methods from different physicians[@ohare_regional_2010]. Because of this, it is important to identify, as early as possible, patients who are likely to progress from CKD to ESRD[@collins_systematic_2013]. Tamura et al[@tamura_optimizing_2012] provides a framework for deciding which RRT patients should receive based on three factors: life expectancy, risks and benefits of competing treatment strategies and patient preference. This framework does not require precision, but rather a general idea of whether a patient is above or below average (median). These three factors allows for three key choices to be made for the patient: choice of dialysis modality (i.e. HD vs PD), choice of vascular access for HD, and whether or not to be referred for kidney transplantation.
+
+Transferring from one dialysis modality to the other initially increases burden on patients and, for the first few weeks, has a higher mortality rate[@tina_shih_impact_2005]. Before beginning HD, patients and physicians must decide on the vascular access method which is basically how the HD will be administered. There are three main methods of vascular access: CVCs, AVFs and AVGs[@tamura_optimizing_2012]. In the US, 80% of patients who are given HD, begin it with a CVC[@foley_hemodialysis_2009]. CVCs are usually used as a temporary placement until a more permanent fistula or graft can be given to the patient[@tamura_optimizing_2012]. However, it can take time for AVF and AVG patency to occur and so their effects are not immediate. Current guidelines recommend using AVFs over AVGs as the method of permanent access which are both preferred over the temporary access provided by CVC, unless HD is predicted to be only a short-term treatment (i.e. because of expected kidney transplant or extremely high expected mortality)[@vascular_access_work_group_clinical_2006]. It is clear that these mortality estimates of patients are currently wildly incorrect as it has been found that two-thirds of deceased patients who had undergone AVF placement had died before it was even used[@richardson_should_2009].
+
+It is suggested that PD gives an early benefit over HD using CVC due to the high infection rates caused by CVC. However, this benefit might be balanced out by the higher risk of modality failure and a common need to transfer to HD later, which merely pushes the higher CVC risk back[@perl_hemodialysis_2011]. In recent years, It has been observed that survival amongst patients given PD has increased to levels similar to HD[@mehrotra_similar_2011], although this is likely biased due to the difference in patient's selected for the each modality[@tamura_optimizing_2012].
+
+Kidney Transplants are often hard to come by as there can be dificulties in finding compatible donors**???**. Living donors provide a better prognosis for recipients than deceased ones, but even deceased-donor transplantation implies a 48-82% decrease in mortality compared to remaining on dialysis**???**. For each patient, donors can be classified as being from a Standard Criteria Donor (SCD) or an Expanded Criteria Donor (ECD) list**???**. An ECD is, as the name implies, a much broader list of patients than appear on an SCD. Using an ECD comes with a shorter time on the waiting list for a transplant, but a higher risk of allograft loss and so a decision must be made about a patient of whether they are at higher risk of mortality if they remain on the waiting list for a longer period of time, or whether the risk of an unsuccessful transplant is worth it[@tamura_optimizing_2012]. As with transfering between dialysis modalities, there is an extremely high increase in risk for the first two weeks after transplantation (compared with staying on dialysis), this risk reduces until 7-8 months after transplantation, where the cumulative mortality of both options becomes equivalent, and afterwards is lower for the transplanted patients[@tamura_optimizing_2012]. It is worth noting that there is no upper age limit on kidney transplantation[@tamura_optimizing_2012] and it has actually been found that kidney transplantation was cost-effective amongst patients over 6530. This makes sense as, for patient's over 65, the average time spent on the waiting list for a new kidney is 7-8 months[@tamura_optimizing_2012].
+
+In the UK in 2014, 71.8% of RRT patients had begun with HD, 20.0% were given PD, 8.2% were lined up to receive a kidney transplant[@gilg_uk_2016]. Of the patients who were initially assigned to received HD in 2009, 54.4% had died by 2014 and 34.4% of those still alive had been transfered to a different modality, PD had a lower mortality rate, 35.1%, but a higher transfer rate, 75.3%[@gilg_uk_2016]. These transitions are demonstrated graphically in Figure 1. Although these numbers do not account for the differences between the patients these two modalities were given to, it shows that there are major differences between modalities and that transitioning between treatments is common. These differences between modalities and the prevalence of transitions line up quite well with the idea of using an MSM as a representation for this process.
 
 ### Clinical Prediction Models
 
-### Multi-State Models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!--chapter:end:01-Lit_Report.Rmd-->
 
 
-# The Application of Multi-State Methods to Develop Clinical Prediction Models Designed for Clinical Use - A Scoping Review {#chap-scoping-review}
-*MA Barrowman, D Jenkins, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Scoping Review}
-Last updated: 21 Apr
-
-
-
-
-
-## Introduction
-
-eHealthcare is moving towards a more data-driven approach to decision making, exploiting the variety of data sources collected as part of routine care [1]. This increases efficiency, which is becoming increasingly vital as patients are living longer and requiring more care, while budgets are being reduced [2], [3]. Correspondingly, there has been a shift towards primary prevention, rather than purely treating disease as it arises [4] therefore clinical prediction models (CPMs) are more relevant than ever before [5].
-
-Prognostic CPMs (those that predict the future) allow end-users to estimate an individual's probability/risk of experiencing an outcome of interest within a certain timeframe. CPMs are algorithms that relate a set of prognostic factors to the risk of a chosen outcome [6], often using multivariable regression. They can provide predictions of the future course of an illness and provide evidence for the commencement of medical  interventions [7].
-
-Along with this overall increase in importance, different methods of producing CPMs are also being used, and each makes different assumptions, and models at different levels of granularity. One of these methods is the Multi-State Model (MSM), an extension to traditional survival analysis wherein patients exist in one of many distinct states at any given time and can transition between them (these individual transitions are akin to that of traditional survival analysis) [8]. A subset of MSMs is that of a Competing Risks model, where patients can only move from a single initial state to many absorbing states without any intermediate or transient states. A huge advantage of Multi-State CPMs, and indeed, Competing Risks CPMs, is that they can provide predictions for multiple outcomes with MSMs going further by allowing the prediction of multiple pathways to that outcome, whereas traditionally developed models only provide predictions for a single end-point.
-
-However, little is known about how widely these types of models are implemented in clinically relevant prognostic research. Therefore, we here aim to document a scoping review protocol that will intend to uncover any  prediction models using MSMs that have been developed for clinical use. As part of the process of this investigation, we will also document how many CPMs account for Competing Risks alone. We define a scoping review as described by Arksey and O'Malley [9] , which is similar to a systematic review, but with less formal outline for the analysis and synthesis of literature [10]. By assessing how MSMs have currently  been applied in this field, we aim to describe the landscape of their current use, the context in which they are being used and discuss ways in which their use, application and uptake can be improved. To the best of our knowledge, a review such as this for Multi-State Models has never been performed.
-
-
-## Methods
-
-### Scope of Review
-
-This review will cover articles related to the development of Multi-State Clinical Prediction models designed for clinical use. It will not include models that were developed solely for demonstrations of novel methodological improvements in the field of clinical prediction modelling and/or multi-state modelling. Article inclusion will be based on the screening of the article text and interpretation of its aims, primary distinction will be made on whether an existing dataset is used as a core part of the article or as a subsidiary example. It will include articles that validate previously developed models and those that review existing models, only so far as to use them to find the original development article (a method known as Snowballing).  
-
-As this analysis will follow the style of a scoping review; the final paper will adhere to the PRISMA-ScR guidelines [11], which were set out to extend the traditional PRISMA guidelines to a Scoping Review setting.
-
-Models which focus only on a competing risks scenario (whether directly or simply adjusting for competing risks) will not be analysed in detail, however to avoid missing possible Multi-State Models, we will only omit these at the final stage of screening (See below). This will also allow for a brief description of how many CR models exist compared to the MSM models to be analysed in detail in this review.
-
-As per the definitions set out by the PROGRESS research group, prognostic research is split into four overarching themes/types:
-
-* Type I - Fundamental Prognosis Research [12]
-* Type II - Prognostic Factor Research [13]
-* Type III - Prognostic Model Research [14]
-* Type IV - Stratified Medicine Research [15]
-
-As such, we will be focusing on papers of Type III [14]. Articles related to the other types of prognostic research often develop a model within their work, but since the intent of these papers is to investigate overall outcomes, effects of an individual factor or interactive effects of treatments in individuals, they are considered disjoint from CPM development and so they will not be included in our analysis.
-
-### Initial Search Strategy
-
-#### Search Terms
-
-To ensure we cover as much of the medical literature as possible, we will use the Ovid search engine to search two databases:
-
-* EMBASE (1974 to 2018 December 31)
-* Ovid MEDLINE and Epub Ahead of Print, In-Process & Other Non-Indexed Citations, Daily and Versions 1946 to December 31, 2018
-
-We will use a standard set of terms designed by Ingui & Rogers [16] and added to by Geersing et al [17] used for searching for clinical prediction related literature. We will also extend this by including search terms relating to time-to-event outcomes and/or survival analysis that were defined by the authors, and which aim to broaden our search (see table 1). This will be combined by a set of search terms designed to filter for MSMs and/or CRs.
-
-These novel MSM/CR terms include "fine adj2 gray" to include papers which use the Fine & Gray subdistribution proportional hazard method [18]. It will also include"semimarkov or semi markov" to include articles which specify that the model adopts a semi-Markov perspective, which is common amongst MSMs [8]. However, we chose not to include the term "markov" alone as  it is considered to be too unspecific to be of use (a la search for "model" alone when finding clinical prediction models). The full search details can be found in table 2.
-
-We believe that the broadness of our search terms allows for high sensitivity in our results and will therefore provide a larger and more comprehensive  pool of papers than using a more specific set of search terms.
-
-[**Insert Table from paper**]
-
-#### Validation set of articles
-
-To ensure that our search strategy is satisfactory, we will compare our results to a set of Validation papers. These are papers that we are already aware of that satisfy our inclusion/exclusion criteria and which therefore should be included in our analysis. We will compare the results of our initial search with this set of papers to ensure that all of the Validation set appear in our results. If they do not, then we will adjust our search strategy iteratively increasing sensitivity and improving the reach of our search until all Validation papers are included. The set of Validation papers is as follows:
-
-* *Estimation and Prediction in a Multi-State Model for Breast Cancer*, Putter et al, 2006 [20]
-* *A Multi-State Model to Predict Heart Failure Hospitalizations and All-Cause Mortality in Outpatients With Heart Failure With Reduced Ejection Fraction: Model Derivation and External Validation*, Upshaw et al, 2016 [21]
-* *Predicting timing of clinical outcomes in patients with chronic kidney disease and severely decreased glomerular filtration rate*, Grams et al, 2018 [22]
-* *Estimating transition probability of different states of type 2 diabetes and its associated factors using Markov model*, Nazari et al, 2018 [23]
-* *Advantages of a multi-state approach in surgical research: how intermediate events and risk factor profile affect the prognosis of a patient with locally advanced rectal cancer*, Manzini et al, 2018 [24]
-
-### Filtering
-
-Once the initial set of articles has been found, these will be filtered at various degrees of granularity to focus on papers which are included in the scope of our review as per our inclusion/exclusion criteria. We will also define which papers will be used only for the snowballing process, but will not be used as part of our analysis.
-
-#### Inclusion/Exclusion Criteria
-
-Inclusion
-
-* Type III Prognostic Study Papers (i.e. those developing a clinical prediction model) [14]
-* Papers which use a Multi-State Model framework to provide individual level patient predictions
-
-Exclusion
-
-* Papers that develop overall population level predictions (Type I)
-* Papers focused on identification of prognostic factors (Type II)
-* Papers that investigate stratified medicine (Type IV)
-* Papers that only develop Competing Risks models
-* Papers designed to describe methodological models with or without clinical application used only for an example
-
-#### Stages
-
-The filtering of the results will be performed in three stages:
-1. Title (MB)
-2. Abstract (MB with 20% replication by DJ)
-3. Full Paper (MB with 20% replication by DJ)
-
-Filtering will begin with an initial check through all titles to assess whether it is believed that the paper may be relevant to the review. This will help to omit a large amount of papers that were incorrectly returned by the broad search strategy. To ensure the review remains as sensitive as possible, only papers where it is abundantly clear that they violate an inclusion/exclusion criteria will be removed at this stage.
-
-A second filter will be performed on the abstracts of the remaining articles and removed papers will be classified by the reason for their omission. To allow for faster data extraction, a final glancing filter will also be performed over the full papers to again reduce the numbers of collated papers in the final review and reduce the likelihood of removing papers at the analysis stage. To ensure robustness of this filtering, both of these stages will be replicated by a second reviewer (DJ) in a randomly selected 20% of the abstracts and papers and differences will be discussed internally. At this point, models focusing solely on competing risks (i.e. those without a transient state) will be filtered out.
-
-### Data Extraction
-
-To study the use of Multi-State Clinical Prediction Models from a quantitative perspective, certain vital data points will be extracted from the extant models. These measurements can be grouped as to what element of the prediction model they are evaluating:
-* Clinically Relevant points
-   * Number of patients
-   * Clinical setting (i.e. primary vs secondary care, geographic setting)
-   * Field of study (e.g. cardiovascular, renal, etc.)
-   * Summary of patient demographics (i.e. inclusion/exclusion criteria)
-   * Outcomes being predicted
-* Multi-State Model details
-   * Number of States and what they are
-   * Shape/Structure of the model (i.e. how patients can transition between states)
-   * How were relevant variables chosen?
-   * Transition assumptions (e.g. parametric vs non-parametric, PH assumption, etc...)
-   * Stated justification for, and reported benefits of an MSM versus traditional methods.
-* Predictive Ability
-   * Timeframe (e.g. single time point(s), continuous time prediction, dynamic prediction, etc...)
-   * What validation was performed (None vs. Internal (bootstrap, CV, etc.) vs. External)
-* Comparisons to current guidelines
-   * Assessment of Bias of their model (using PROBAST)
-   * Utilisation of the TRIPOD Guidelines (e.g. Was it referenced? Was it adhered to?)
-* Prominence information
-   * Number of citations (although not clinically relevant, it is relevant to understanding the model's utilisation)
-   * Year of publication (again, not clinically relevant, but useful to spot any time trends in prominence and/or quality)
-The data extracted at this stage will be checked by DJ in 20% of the papers to confirm results for the analysis
-
-### Reporting
-
-The search and filtering strategy will be depicted with a modified PRISMA flow diagram [30], which includes papers found by Snowballing and how they are included in the filtration process, see figure 1. 
-
-[**Add in PRISMA**]
-
-A table of the extracted information will be included with the paper, depending on the number of results, this may be supplementary material. This information will also be summarised and analysed both quantitatively and qualitatively. For example, as the Illness-Death model [8] is simple and common amongst multi-state models, we will count how many of the MSCPMs use this structure as well as the other most common structures used. Any direct comparisons that can be made between predictions of this type (i.e. from the same field with the same outcomes) will be described.
-
-
-
-<!--chapter:end:02-Scoping_Review_Paper.Rmd-->
-
-
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#chap-Conf-CR}
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
-\chaptermark{Competing Risks and Unmeasured Confounding}
+
 Last updated: 21 Apr
 
 
@@ -416,13 +441,12 @@ The data-generating mechanism defined two cause-specific hazard functions (one f
 
 In the above equations, $\beta$ and $\gamma$ are the effects of the confounding covariate and the treatment effect respectively with the subscripts representing which event they are affecting. These two hazard functions entirely describe how a population will behave [18].
 
-\includegraphics[width=450px]{figure/CR_Conf/Transition_Diagram} 
+<img src="figure/CR_Conf/Transition_Diagram.png" width="450px" />
 
 We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [19]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Additional file 1. Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. \@ref(fig:Model_DAG), where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
 
 
-
-\begin{center}\includegraphics[width=450px]{figure/CR_Conf/DAG} \end{center}
+<img src="figure/CR_Conf/DAG.png" width="450px" style="display: block; margin: auto;" />
 
 From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, $\Gamma_1$ and $\Gamma_2$, to be in these conditions [20] (See Additional file 2). It's worth noting that the values of $\Gamma$ will depend on the current value of $\rho$ since they are calculated using the expected distribution of end-times. However, it has been shown [18, 21] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the "true" values of the $\Gamma$ will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [20].
 
@@ -547,18 +571,37 @@ This paper has demonstrated that unmeasured confounding in observational studies
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
-\chaptermark{IPCW Calibration-in-the-Large}
-Last updated: 28 May
+
+Last updated: 19 Aug
+\newcommand{\txt}[1]{\textrm{#1}}
+
+\def\logit{\txt{logit}}
+\def\d{\;\txt{d}}
+
+\newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
 
 
+Download as individual paper draft: [pdf](Chapters/ind_04-IPCW_logistic.pdf), [tex](Chapters/ind_04-IPCW_logistic.tex), [word](Chapters/ind_04-IPCW_logistic.docx)
 
 ## Abstract {-}
 
 ### Introduction {-}
+A key component of the development of a prediction model/algorithm is the assessment of its calibration through means of validation (internal and external). For time-to-event models, this assessment is complicated in three ways:
+* Calibration can be assessed at multiple time points,
+* When Cox Modeling has been used, there exists no "intercept" for a model to be assessed on
+* Censoring occurs within the data, and this may or may not be correlated with the event-of-interest
+We choose to focus on analysing methods of overcoming the third of these problems using Inverse Probability of Censoring Weighting (IPCW), which can also combat the other two problems.
 
 ### Methods {-}
+We used simulations to generate time-to-event data with censoring, where censoring can be correlated or not with the event-of-interest. We then applied a pre-calibrated prediction models (including flawed ones) to the data and assessed the calibrations of these models under four methods:
+* Kaplan-Meier Method (KM), the KM curve is used as a comparitor to the model predictions
+* Logistic Regression with IPCW Weighting (LW) and without it (LU)
+* Pseudo-Observations (PO), where the calibration is assessed using the pseuo-observation of the model data.
+These simulations were aggregating and analysed to compare Bias and Coverage of each of these methods.
 
 ### Results {-}
+The LU and PO Methods had increasing absolute Bias over time, regardless of whether the model was perfectly calibrated or not. However, the LW Method consistently provided almost no Bias, and high coverage in all scenarios.
+
 
 ### Discussion {-}
 
@@ -574,12 +617,12 @@ Last updated: 28 May
 Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with $p\%$ risk of an event, $p\%$ of those have the event across the full risk range [@steyerberg_clinical_2008]. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) [@calster_calibration_2016-1]. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \@ref(chap-IPCW-logistic-supp)). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g. the Brier Score.
 
 
-In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals [@crowson_assessing_2016]; however we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. Second, there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK [@hippisley-cox_2007], ASCVD [@goff_2013_2014] and ASSIGN [@de_la_iglesia_performance_2011]. Once this is established, estimated survival probabilities are available.
+In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals [@crowson_assessing_2016]; however we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. Second, <mark>when a Cox Model is used</mark> there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK [@hippisley-cox_derivation_2007], ASCVD [@goff_2013_2014] and ASSIGN [@de_la_iglesia_performance_2011]. Once this is established, estimated survival probabilities are available.
 
-Third, censoring needs to be handled in an appropriate way. <mark>This is the core message of this paper</mark>. Censoring is commonly overcome by using Kaplan-Meier estimates  [@royston_external_2013;@hippisley-cox_derivation_2007], but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston [@royston_tools_2014;@royston_tools_2015] has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
+Third, censoring needs to be handled in an appropriate way and this is the core message of this paper. Censoring is commonly overcome by using Kaplan-Meier estimates  [@royston_external_2013;@hippisley-cox_derivation_2007], but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston [@royston_tools_2014;@royston_tools_2015] has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
 
 
-QRISK used the overall KM approach in the 2007 paper [@hippisley-cox_derivation_2007] ~~with good results~~ <mark>demonstrating adequate calibration</mark> (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), ~~but worse results~~ <mark>but miscalibration</mark> in the QRISK3 update [@hippisley-cox_development_2017] (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18). ~~and an important change between the update was the lower age limit moved from 35 to 25, as well as the implementation of QRISK in clinical practice [**I remember discussing this with Alex & Matt a while ago as to whether the use of QRISK had a feedback loop when updated after it's own implementation. Did this go any further?**].~~
+QRISK used the overall KM approach in the 2007 paper [@hippisley-cox_derivation_2007] demonstrating adequate calibration (6.34% predicted vs 6.25% observed in women and 8.86% predicted vs 8.88% observed in men), but miscalibration in the QRISK3 update [@hippisley-cox_development_2017] (4.7% predicted v 5.8% observed in women and 6.4% predicted vs 7.5% observed in men ). This may be because, as follow-up extends, the dependence of censoring on the covariates increases (QRISK had 12 years follow-up, QRISK3 had 18).
 
 
 Royston [@royston_tools_2014] also presented an alternative approach for calibration at external validation. He uses the approach of pseudo-observations, as described by Perme and Anderson [@perme_checking_2008] to overcome the censoring issue and produce observed probabilities at individual level; however, this assumes that censoring is independent of covariates.
@@ -595,10 +638,6 @@ In this paper we present an approach to assessing the calibration intercept (cal
 
 ## Methods
 
-### Theory
-
-[**Lots of Theory work on the probabilities. May need to drop this if we're unable to do it between us.**]
-
 ### Aims
 
 The aim of this simulation study is to investigate the bias induced by applying different methods of assessing model calibration to data that is susceptible to censoring and to compare it to the bias when this data has been adjusted by the Inverse Probability of Censoring Weighting (IPCW). 
@@ -609,7 +648,7 @@ We simulated populations of patients with survival and censoring times, and took
 
 
 
-Patients were generated with a single covariate $Z \sim N(0,1)$ from which, we then generated a survival time, $T$ and a censoring time, $C$. Survival times were simulated with a baseline hazard $\lambda_0(t) = t^{\eta}$ (i.e. Weibull), and a proportional hazard of $e^{\beta Z}$. This allows the simulation of a constant baseline hazard ($\eta = 0$) as well as an increasing ($\eta = \sfrac{1}{2}$) and decreasing ($\eta = -\sfrac{1}{2}$) hazard function Censoring times were simulated with a constant baseline hazard, $\lambda_{C,0}(t) = 1$ and a proportional hazard of $e^{\gamma Z}$. <mark>Therefore, the hazard functions can be expressed in full as:
+Patients were generated with a single covariate $Z \sim N(0,1)$ from which, we then generated a survival time, $T$ and a censoring time, $C$. Survival times were simulated with a baseline hazard $\lambda_0(t) = t^{\eta}$ (i.e. Weibull), and a proportional hazard of $e^{\beta Z}$. This allows the simulation of a constant baseline hazard ($\eta = 0$) as well as an increasing ($\eta = \sfrac{1}{2}$) and decreasing ($\eta = -\sfrac{1}{2}$) hazard function Censoring times were simulated with a constant baseline hazard, $\lambda_{C,0}(t) = 1$ and a proportional hazard of $e^{\gamma Z}$. Therefore, the hazard functions can be expressed in full as:
 $$
 \lambda(t) = e^{\beta Z}t^{\eta}\qquad\qquad\lambda_C(t)=e^{\gamma Z}
 $$
@@ -622,28 +661,13 @@ and a simulated censoring function, $S_c$ as
 $$
 S_c(t|Z=z) = \exp\left(-e^{\gamma Z}t\right)
 $$
-
-</mark>
-
 Once the survival and censoring times were generated, the event time, $X = \min(T,C)$, and the event indicator, $\delta = I(T=X)$, were generated. In practice, only $Z$, $X$ and $\delta$ would be observed.
-
-
-
-
-
-
-
-
-
-
 
 
 During each simulation, we varied the parameters to take all the values,$\gamma = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}$, $\beta = \{-2,-1.5,-1,-0.5,0,0.5,1,1.5,2\}$ and $\eta = \{-\sfrac{1}{2},0,\sfrac{1}{2}\}$. For each combination of parameters, we generated $N = 100$ populations of $n = 10,000$ patients (a high number of patients was chosen to improve precision of our estimates)
  
  
 ### Prediction Models
-
-[**New section, taken from previous snippets, highlighting/strikethroughs will show the new changes**]
 
 For each population, we used three distinct prediction models  for survival. $F_P$ was chosen to exactly model the Data Generating Mechanism (DGM) to emulate a perfectly specified model:
 
@@ -680,14 +704,14 @@ $$
 
 ### Calibration Measurements
 
-The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, $X$. At each of these time points, we compare Observed outcomes ($O$) with the Expected outcomes ($E$) of the prediction models based on four choices of methodology [@royston_tools_2014;@royston_tools_2015;@riley_prognosis_2019;@andersen_pseudo-observations_2010] to produce measures for the calibration-in-the-large
+The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, $X$. At each of these time points, we compare Observed outcomes ($O$) with the Expected outcomes ($E$) of the prediction models based on four choices of methodology [@hippisley-cox_derivation_2007;@royston_tools_2014;@royston_tools_2015;@riley_prognosis_2019;@andersen_pseudo-observations_2010] to produce measures for the calibration-in-the-large
 
-* Kaplan-Meier (KM) - A Kaplan-Meier estimate of survival is estimated from the data and the value of the KM curve at the current time is taken to be the average Observed number of events within the population and this is compared with the average Expected value.
+* Kaplan-Meier (KM) - A Kaplan-Meier estimate of survival is estimated from the data and the value of the KM curve at the current time is taken to be the average Observed number of events within the population. The measure is the ratio of the Observed to the mean Expected number of events.
 * Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the logit(Expected) value as an offset and the Intercept of the regression is the estimate of calibration-in-the-large.
 * Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
 * Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Regression is performed with the complimentary log-log function as a link function and the log cumulative hazard as an offset with the Intercept representing the estimate of calibration-in-the-large.
 
-Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the "number of events" being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages [@wildscop_biostatistics_2013]. Secondly, the PO method produces outcomes that are outside of the (0,1) range [@perme_checking_2008] required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal.
+Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the "number of events" being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages [@wildscop_biostatistics_2013]. Secondly, the PO method produces outcomes that are outside of the (0,1) range [@perme_checking_2008] required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal. Finally, the KM method is centred around 1 for well performing models, whereas the others are centered around 0, so we subtract 1 from the results of the KM method to bring results to the same scale.
 
 
 ### Estimands
@@ -704,26 +728,45 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 
 ### Performance Measures
 
-The measures we will take as performance measures as the Bias, the Empirical Standard Error and the Coverage at time, $t$, along with relevant standard errors and confidence intervals as per current recommendations [@morris_using_2019]. These measures can be seen in table \@ref(tab:PM-DGM-time). For these estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from singly large random effects.
+The measures we will take as performance measures as the Bias, the Empirical Standard Error, <mark>the Median-Bias</mark> and the Coverage at time, $t$, along with relevant standard errors and/or confidence intervals [@morris_using_2019]. <mark>For most measures, the standard error is easily calculable, but for the Median, it is more appropriate to calculate the confidence interval directly from the sorted values, $\theta_{(1)},\theta_{(2)},...,\theta_{(100)}$, where $\theta_{(50)}$ is the median, the 95\% confidence interval is the interval $\left(\theta_{(40)}, \theta_{(61)}\right)$. To turn this into a Median-Bias, we subtract the true value, $\theta$. These measures can be seen in table \@ref(tab:PM-DGM-time). For the <mark>Bias and EmpSE</mark> estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from <mark>large outlier effects</mark>. We will also perform a Shapiro-Wilk test for each of the combination of parameters.
 
 
-\begin{table}
 
-\caption{(\#tab:PM-DGM-time){\small Performance Measures to be taken at each time point}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{lll}
-\toprule
-Performance Measure & Estimation & SE\\
-\midrule
-\rowcolor{gray!6}  Bias & $\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$ & $\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$\\
-EmpSE & $\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$ & $\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$\\
-\rowcolor{gray!6}  Coverage & $\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$ & $\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$\\
-\bottomrule
-\end{tabular}
-\end{table}
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PM-DGM-time)<font size="2">Performance Measures to be taken at each time point</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Performance Measure </th>
+   <th style="text-align:left;"> Estimation </th>
+   <th style="text-align:left;"> SE/CI </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Bias </td>
+   <td style="text-align:left;"> $$\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$$ </td>
+   <td style="text-align:left;"> $$\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> EmpSE </td>
+   <td style="text-align:left;"> $$\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$$ </td>
+   <td style="text-align:left;"> $$\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Median </td>
+   <td style="text-align:left;"> $$\hat{M}(t) = \theta_{(50)} - \theta$$ </td>
+   <td style="text-align:left;"> $$\hat{M}_{CI}(t) =  \left(\theta_{(40)}-\theta,\;\theta_{(60)}-\theta\right)$$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Coverage </td>
+   <td style="text-align:left;"> $$\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$$ </td>
+   <td style="text-align:left;"> $$\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$$ </td>
+  </tr>
+</tbody>
+</table></div>
 
-The bias provides a measure of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are.
+The bias <mark>and median-bias</marK> provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are. <mark>The shapiro-wilk result will allow us to determine whether the bias or median-bias is more appropriate overall when analysing our data</mark>.
 
 
 
@@ -733,70 +776,109 @@ All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `ti
 
 ## Results
 
-<mark>Here, we present a subset of results with the full set of outputs available in the Calculator App.</mark> The estimates are presented on the y-axis over time, x-axis with the values stratified by the three performance measures, over the plot rows, and the three models over the plot columns and the different methods are colour coded.
+Here, we present a subset of results with the full set of outputs available in the Calculator App. The estimates are presented with time on the x-axis and the y-axis showing the performance measure, stratified by model across facets and method of analysis by colour. We will investigate the Bias, EmpSE and Coverage for the scenarios where $\beta=1$ and $\eta=\sfrac{1}{2}$ are fixed and $\gamma$ varies through -1, 0 and 1. These represent when the event and censoring are positively correlated ($\gamma = \beta = 1$), negatively correlated ($\gamma = - \beta = -1$) and when the covariate has no effect on the censoring distribution ($\gamma=0$)
+
+### No correlation
+
+When $\gamma = 0$, we can see in figure \@ref(fig:BiasPlotg0) that the Bias is moving away from 0 for both the LU and PO, in opposing directions over time. These time-based biases are consistent across models indicating that this is due to the censoring of the population and not the underlying model. The KM measure is biased downwards for the Over-Predicting model and upwards for the Under-Predicting model, however it is relatively unbiased when a model is defined perfectly. The LW Method consistently provides an unbiased measurement of the model calibration regardless of the underlying accuracy of the model.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(0)_e(0.5)_M(Bias).png" alt="Bias for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 0$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:BiasPlotg0)Bias for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 0$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
+
+The small confidence intervals surrounding the Bias estimates above demonstrate that these results are consistent, which is exemplified by the small values found in figure \@ref(fig:EmpSEPlotg0), with the KM Method providing consistent (if biased) results.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(0)_e(0.5)_M(EmpSE).png" alt="EmpSE for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 0$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:EmpSEPlotg0)EmpSE for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 0$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
+
+The large biases above, also lead to inaccurate estimations at the simulation level with very low coverage of the true value, as demonstrated in figure \@ref(fig:CoveragePlotg0). The LW Method once again is extremely close to the expected coverage of 95\%.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(0)_e(0.5)_M(Coverage).png" alt="Coverage for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 0$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:CoveragePlotg0)Coverage for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 0$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
+
+### Positive correlation
+
+When $\gamma = 1$, we can in figure \@ref(fig:BiasPlotg1) see that the Biases for PO and LU, are once again become more innacurate over time, whereas the LW Method is consistently unbiased.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(1)_e(0.5)_M(Bias).png" alt="Bias for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:BiasPlotg1)Bias for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(0)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg0)
-\end{figure}
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(1)_e(0.5)_M(EmpSE).png" alt="EmpSE for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:EmpSEPlotg1)EmpSE for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
 
-Figure \@ref(fig:MainPlotg0) shows the results when censoring is independent of covariates ($\gamma=0$). The LW method provides over-optimistic Coverage (above 95%, too high) and miminal bias. The absolute bias for PO and LU increases over time with PO under-reporting the correct value and LO over-reporting. KM bias remains constant across the timeframe, but for the imperfect models, is constantly under- or over-reported,respectively. For the Perfect model, Figure \@ref(fig:BiasPlotg0), we can see that the KM method produces virtuall no bias. LU and PO also provide minimal coverage at all time points, whereas KM covers ~~perfect~~ <mark>similar to LW in the early stages of the Perfect Model with coverage dropping off as time progresses. Empirical Standard Error is close to 0 for all models.
+However, there is an reduced level of coverage, even for the LW Method as shown shown in figure \@ref(fig:CoveragePlotg1).
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/Bias_b(1)_g(0)_e(0.5)} \caption{Bias in the Perfect model across the LW and KM methods when $\beta=1$, $\gamma=0$ and $\eta=\sfrac{1}{2}$. 95\% Confidence Intervals are shown around each estimate.}(\#fig:BiasPlotg0)
-\end{figure}
-
-
-
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(1)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg1)
-\end{figure}
-
-Figure \@ref(fig:MainPlotg1) shows the results when censoring and the event-of-interest have the same individual effects ($\beta=\gamma=1$). The LW method provides strong (although still too low) coverage across the entire timeframe and miminal bias, although this coverage is reduced compared to the previous set of results shown (approximately 75% throughout). Once again, the absolute bias for PO and LU increases over time, however the under-reporting for PO is much more strongly pronounced. KM bias behaves similar to the previous results, but for coverage, it starts off at around 50% coverage reaches a peak of 100% coverage approximately 25% of the way through the timeframe and then quickly drops off to 0% coverage after 75% of the timeframe.
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(1)_e(0.5)_M(Coverage).png" alt="Coverage for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:CoveragePlotg1)Coverage for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
 
 
-\begin{figure}
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/MainPlot_b(1)_g(-1)_e(0.5)} \caption{Bias, Coverage and Empirical Standard Error for the Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta=1$, $\gamma=-1$ and $\eta=\sfrac{1}{2}$. Confidence Intervals are included in the plot, but are tight around the estimate}(\#fig:MainPlotg2)
-\end{figure}
+### Negative correlation
 
-Figure \@ref(fig:MainPlotg2) shows the results when censoring and the event-of-interest have opposite individual effects ($\beta=1, \gamma=-1$). The bias results are similar to those when censoring is independent. A difference here is that coverage begins greater than zero for the KM, LU and PO methods, but quickly drops to 0 before the 25% time point. For LW, the coverage appears to reduce to around 80% by the end of the time frame.
+When $\gamma = -1$, we see can in figures \@ref(fig:BiasPlotgn1) and  \@ref(fig:EmpSEPlotgn1), the similar results to the above figures, with the LU and PO biases becoming more pronounced over time, and LW remainining consistently low.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(-1)_e(0.5)_M(Bias).png" alt="Bias for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:BiasPlotgn1)Bias for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
+
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(-1)_e(0.5)_M(EmpSE).png" alt="EmpSE for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:EmpSEPlotgn1)EmpSE for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
+
+
+The data shown in figure \@ref(fig:CoveragePlotgn1) demonstrates that the LW Method is achieving higher Coverage than when there is a positive correlation between the event-of-interest and the censoring rate, however the intervals are still under-performing.
+
+<div class="figure">
+<img src="figure/IPCW_Logistic/No Slope/Plot_b(1)_g(-1)_e(0.5)_M(Coverage).png" alt="Coverage for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot." width="1200" />
+<p class="caption">(\#fig:CoveragePlotgn1)Coverage for Over-estimating, Perfect and Under-Estimating models across all four methods when $\beta = 1$, $\gamma = 1$ and $\eta = \sfrac{1}{2}$. 95% Confidence Intervals are included in the plot.</p>
+</div>
+
+
 
 
 ## Discussion
 
-**A few notes to flesh out:*
-
-For LW, the coverage seems to be above the 95% mark for quite a few scenarios, indicating that the confidence intervals might be wider than we would want, however since bias is still low in these scenarios, our point estimate is still good, we are just less confident in our results. This may be due to 
-
-Weighting = Good.
-
-Not Weighting = Bad.
-
-**limitation**: Maybe the "True" $\theta$ for the under and over predictions were wrong and that would explain the low Coverage.
-
-
-
+**To Be Done**
 
 
 
 
 <!--chapter:end:04-IPCW_logistic.Rmd-->
 
+
 # Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
-\chaptermark{Development and Validation of MSCPM}
-Last updated: 30 Apr
 
+Last updated: 16 Jun
 
+Download as individual paper draft: [pdf](Chapters/ind_05-Performance_Metrics.pdf), [tex](Chapters/ind_05-Performance_Metrics.tex), [word](Chapters/ind_05-Performance_Metrics.docx)
 
 ## Introduction
 
 Clinical Prediction Models (CPMs) provide individualised risk of a patient's outcome (cite), based on that patient's predictors. These predictions will usually be in the form of a risk score or probability. However, using traditional modelling techniques, these CPMs will only predict a single outcome. Multi-State Clinical Prediction Models (MS-CPMs) combine the multi-state modelling framework to the prognostic field to provide predictions for multiple outcomes in a single model.
+
 Once a CPM has been developed, it is important to assess how well the model actually performs (cite). This process is called Model Validation and involves comparing the predictions produced by the model to the actual outcomes experienced by patients (cite). It  is expected that the development of a CPM will be accompanied by the validation of the model on the same dataset it was developed in (internal validation), using either bootstrapping or cross-validation to account for optimism in the developed model (cite). Models can also be validated on a novel dataset (external validation), which is used to assess the generalisability and transportability of the model (cite).
+
  During validation, there are different aspects of model performance that we can assess and these are measured using specific metrics. For example, to assess the overall Accuracy of a model, we may use the Brier Score (cite) or to analyse how well a model discriminates between patients, we could use the c-statistic (cite).  The current metrics that are commonly used have been designed and extended to work in a variety of model development frameworks. However, these extensions are limited to either a single outcome (as in traditionally developed models) or do not adequately account for the censoring of patients (as commonly occurs in longitudinal data).
 This paper aims to provide use-able extensions to current performance metrics to be used when validating MS-CPMs. It is essential that these extensions are directly comparable with current metrics (to allow for quicker adoption), that they are collapsible to the current metrics and that they adjust for the bias induced by the censoring of patients.
+
 Currently, the most common way to validate an MS-CPMs is by applying traditional methods to compare across two states at a given time and then aggregating the results in an arbitrary manner [cite something]. Other methodologists have extended existing metrics to multinomial outcomes [cite van Calster], which do not contain a time-based component; to simple competing risks scenarios [cite CR c-statistic], which do not contain transient states; or to [... insert third relevant example]. Spitoni et al [cite Spitoni 2018]] developed methods to apply the Brier Score (or any proper score functions) to a multi-state setting and so a simplified and specific version of their work is described in this paper.
- It is the hope of the authors that this work will increase the uptake of multi-state models and the sub-field of MS-CPMs will grow appropriately.
+
+It is the hope of the authors that this work will increase the uptake of multi-state models and the sub-field of MS-CPMs will grow appropriately.
 
 ## Motivating Data Set
 
@@ -811,49 +893,289 @@ The Three-State model used in our example is designed as an Illness-Death Model 
 
 ## Current Approaches
 
-Here we describe three commonly used performance metrics  for assessing the performance of a traditional survival  clinical prediction model. These metrics assess the Accuracy, Discrimination and Calibration of the models being validated. Accuracy is an overall measurement of how well the model predicts the outcomes in the patients. Discrimination assesses how well the model discerns between patients; in a two-state model this is a comparison of patients with and without the outcome, and should assign a higher value to those that experience the outcome. Calibration is the agreement between the observed outcomes and the predicted risks across the full risk-range. 
+Here we describe three commonly used performance metrics for assessing the performance of a traditional survival  clinical prediction model. These metrics assess the Accuracy, Discrimination and Calibration of the models being validated. Accuracy is an overall measurement of how well the model predicts the outcomes in the patients. Discrimination assesses how well the model discerns between patients; in a two-state model this is a comparison of patients with and without the outcome, and should assign a higher value to those that experience the outcome. Calibration is the agreement between the observed outcomes and the predicted risks across the full risk-range. 
+
 We are applying cross-sectional metrics at a set time point within the setting of a longitudinal model and so we need to account for the censoring of patients and therefore, each uncensored patient at a given time t will be weighted as per the Inverse Probability of Censoring Weighting (IPCW) [3]. This allows the uncensored patient population to be representative of the entire patient population.
 
 
 ### Baseline Models
 
-To assess the performance of a model, we must compare the values produced by the performance metrics to those of two baseline models; a random or noninformative model and a perfect model.
-A Non-Informative (NI-)model assigns the same probability to all patients to be in any state regardless of covariates and is akin to using the average prevalence in the entire population to define your model. For example, in a Two-State model and an event that occurs in 10% of patients, all patients are predicted to have a 10% chance of having the event. For many metrics, models can be compared to a Non-Informative model to assess whether the model is in fact "better than random".
-A Perfect (P-)model is one which successfully assigns a 100% probability to all patients, and the predictions are correct; this is the ideal case, which many models can also be compared to as models as close to this display excellent predictive abilities. Although models may perform worse than a non-informative one, we will not consider these in detail here as they are considered to be without worth in terms of predictive ability.
-The  metrics produced by these baseline models will often depend on the prevalence of each state and/or the number of states. These values can be used as comparators to provide contextual information regarding the strength of model performance. These baselines metrics for the NI-model and the P-model will be referred to as the NI-level and P-level for the metric.
-In order to allow for simplicity and understanding of these measures, they will be standardised to the same scales.
+To assess the performance of a model, we must compare the values produced by the performance metrics to those of two baseline models; a random or non-informative model and a perfect model.
+
+A Non-Informative (NI-)model assigns the same probability to all patients to be in any state regardless of covariates and is akin to using the average prevalence in the entire population to define your model. For example, in a Two-State model with an event that occurs in 10% of patients, all patients are predicted to have a 10% chance of having the event. For many metrics, models can be compared to an NI-model to assess whether the model is in fact "better than random".
+
+A Perfect (P-)model is one which successfully assigns a 100% probability to all patients, and the predictions are correct; this is the ideal case and is therefore the standard that most models aim for.
+
+It may also be the case that a model performs worse than a non-informative one, however we will not consider these in detail here as they are considered to be without worth in terms of predictive ability without a well-informed adjustment.
+
+The metrics produced by these baseline models will often depend on the prevalence of each state and/or the number of states. These values can be used as comparators to provide contextual information regarding the strength of model performance. These baselines metrics for the NI-model and the P-model will be referred to as the NI-level and P-level for the metric.
+
 
 ### Notation
 
-Throughout this paper, we will use consistent notation which is shown here for reference and to avoid repetition in definitions, etc...
+Throughout this paper, we will use consistent notation which is shown here for reference and to avoid repetition in definitions. The common notations are defined below:
 
-[**Notation Table**]
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Notation </th>
+   <th style="text-align:left;"> Meaning </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> $N(t)$ or $N$ </td>
+   <td style="text-align:left;"> Number of (non-censored) patients in a population at time $t$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $K$ </td>
+   <td style="text-align:left;"> Number of states predicte by the model </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $P_i^k(t)$ or $P_i^k$ </td>
+   <td style="text-align:left;"> Predicted probability of whether patient $i$ was in state $k$ at time $t$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $P_i^{!k}(t)$ or $P_i^{!k}$ </td>
+   <td style="text-align:left;"> Predicted probability of whether patient $i$ was not in state $k$ at time $t$, i.e. $P_i^k + P_i^{!k} = 1$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $P_i(t)$ or $P_i$ </td>
+   <td style="text-align:left;"> If $K \neq 2$, vector of predicted probabilities for patient $i$ at time $t$, $P_i = (P_i^1,P_i^2,...,P_i^K)$
+If $K=2$, then $P_i = P_i^2$ (i.e. predicted probability of the second state at time $t$) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $P^k(t)$ or $P^k$ </td>
+   <td style="text-align:left;"> The vector of the predicted probabilities of being in state $k$ for the whole population at time $t$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $P(t)$ or $P$ </td>
+   <td style="text-align:left;"> If $K \neq 2$, a $N \times K$ matrix of predicted probabilities for each state &amp; individual at time $t$
+If $K=2$, a vector of the predicted probabilities of being in state 2 for the whole population at time $t$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $O_i^k(t)$ or $O_i^k$ </td>
+   <td style="text-align:left;"> Binary indicator for whether patient $i$ was in state $k$ at time $t$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $O_i^{!k}(t)$ or $O_i^{!k}$ </td>
+   <td style="text-align:left;"> Binary indicator for whether patient $i$ was not in state $k$ at time $t$, i.e $O_i^k + O_i^{!k} = 1$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> $O_i(t)$ or $O_i$ </td>
+   <td style="text-align:left;"> If $K \neq 2$, vector of outcomes for patient $i$ at time $t$, $O_i = (O_i^1,O_i^2,...,O_i^K)$
+If $K=2$, then $O_i = O_i^2$ (i.e. observation of patient in the second state at time $t$) </td>
+  </tr>
+</tbody>
+</table>
+
+
+[**Notation Table to be finished**]
 
 ### Patient Weighting
 
-[**Lots of formula, so will leave for now**]
+At a given time after the index date, some patients in our validation data set will be censored and so our performance metrics must adjust for this. Therefore, all patients will be subject to IPCW, which applies a higher weighting to patients who are more likely to be censored. This process is assumed to be independent of the Multi-State process, given a patient's covariates [@spitoni_prediction_2018].
+
+To calculate this weight, first we need to estimate an individual patient's probability of not being censored at the current time point, $G(t|Z)$, where $Z$ is the patient's covariate characteristics and $t$ is the current time point. This is done in our validation cohort using a Cox regression which provides estimated hazard ratios for each of the covariates $\hat{\beta}$ taking the time of censoring as the event-of-interest. Absolute predictions are then calculated using the Breslow estimate of the cumulative baseline hazard function, $\hat{\Lambda}_0$. The estimate, $\hat{G}$, is then given by 
+$$
+\hat{G}(t|Z) = \exp\left(-e^{\beta Z}\hat{\Lambda}_0(t)\right)
+$$
+For a given patient, $i$, with a maximum observed time of $T_i$, we will define $\delta_i = 0$ if the patient was censored and $\delta_i=1$ if the patient moved to an absorbing state (e.g. died) and $z_i$ to be that patient's set of covariates.
+
+We can therefore define the IPCW for patient $i$ at time $t$ to be:
+
+$$
+\omega_i(t) = \frac{I(T_i \le t_i,\delta_i=1)}{\hat{G}(T_i|z_i)} + \frac{I(T_i > t_i)}{\hat{G}(t_i|Z_i)}
+$$
+
+
+By applying this weighted to all patients included at each time point under analysis, we can be confident that our measurements are robust to right-censored data, subject to the assumptions made in their definition.
+
+The metrics defined below (including those traditionally defined elsewhere) have been corrected for the effect of censoring by applying the IPCW, $\omega_i(t)$ to each patient as a multiplicative weight.
+
 
 ### Accuracy - Brier Score
 
+For these metrics, we will be taking the measurements of the models at specific time point of $t=5$ years, and so we simplify notation by removing the references to time given above, for example $\omega_i = \omega_i(5\;\textrm{years})$.
+
+the Brier Score is used to assess the overall accuracy of predictions, it assigns a score to each observation dependent on the predicted probability and the outcome. It then averages these scores across the entire population. The Brier Score, adjusted for IPCW, for a single outcome model for a single patient is given by:
+$$
+\textrm{BS}_i = \omega_i\left(P_i - O_i\right)^2
+$$
+
+And for the entire population, we take the weighted average given by the following [@brier_verification_1950-1]
+$$
+\textrm{BS} = \frac{1}{N_\omega}\sum_{i=1}^N\textrm{BS}_i = \frac{1}{N_\omega}\sum_{i=1}^N\omega_i\left(P_i - O_i\right)^2
+$$
+
+A lower Brier score implies a more accurate model (since the Predictions and the Observations will be closer to one another). The P-level of the BS measure is 0 and the NI-level is $Q(1-Q)$.
+
+In order to standardise the Brier Score, we can rescale it by dividing by the NI-level and subtracting it from 1 to give the adjusted Brier Score (aBS):
+
+$$
+\textrm{aBS} = 1-\frac{BS}{Q(1-Q)}
+$$
+The aBS brings the NI-level to 0 and the P-level to 1 and so a higher value for the aBS implies a model accurate model. One thing to note is that it is possible to get negative values for the aBS if a model performs worse than a non-informative model; however in practice this model would essentially be unusable as it is (although still useful if predictions were reversed).
+
+We can use the values of $\textrm{BS}_i$ to calculate a standard deviation and thus build a confidence interval surrounding our overall BS estimate. This population-based BS confidence interval can be converted into a confidence interval for the aBS using the above formula. We will also use bootstrapping to construct a confidence interval around our estimate to compare the two methods of CI-building.
+
 ### Discrimination - c-statistic
 
+The c-statistic [@austin_interpreting_2012] is the most common method to assess the disciminative ability of a prediction model. In a traditional model, this cna be interpreted as the probability that two patients, chosen at random from the two outcome groups, will be correctly discriminated. Here, correct discrimination means that the patient who had the event was predicted to have a high probability of having the event than the patient who did not have the event.
+
+$$
+c = \textrm{Prob}\left(P_i < P_j \;|\; O_i = 0 \;\&\; O_j = 1\right)
+$$
+
+This can be estimated empirically by averaging over all pairs of patients where one is selected from each state:
+
+$$
+\hat{c} = \frac{1}{N_1N_2}\sum_{i \in A_1}\sum_{j \in A_2} \omega_i\omega_jC_2(P_i,P_j)
+$$
+where
+
+$$
+C_2(a,b) = \begin{cases} 1 & a < b\\0 & a > b\\\frac{1}{2}& a = b \end{cases}
+$$
+
+In practice, it will be very rare for two predicted probabilities to be exactly equal, but this case is needed to account for the NI-model and produce the NI-level of 0.5, we also have a P-level of 1 regardless of the prevalence of the two states.
+
+Since the occurence of equal predicted probabilities is rare, the vast majority of the values for the $C_2(a,b)$ will be either 0 or 1. This means we can model the distribution of $C_2$ as a Bernoulli distribution and use this modelling assumption to construct a population-based confidence interval accordingly by taking our standard error as:
+$$
+\sqrt{\frac{\hat{c}(1-\hat{c})}{N_1N_2}}
+$$
+As with the aBS, this population-based confidence interval will be compared to one constructed via bootstrapping.
+
 ### Calibration - Intercept and Slope
+
+In a traditional model, the Calibration Intercept is a measure of Calibration-in-the-Large, or overall calibration across the entire population [@altman_prognosis_2009]. Calibration slope indictes how well the model predicts across different prediction values. These metrics can be measured using logistic regression on the probability of the outcome using the logit of the prediction as the predictor in the regression:
+
+$$
+\textrm{E}\left[\textrm{logit}\left(O\right)\right] = \alpha + \beta\textrm{logit}\left(P\right)
+$$
+The estimates of these coefficients, $\hat{\alpha}$ and $\hat{\beta}$ are found using a weighted binomial logistic regression, with weights $\omega_i$. The intercept, $\hat{\alpha}$, can provide a measure of any systemic over- or under-prediction of the outcome within the model. The slope, $\hat{\beta}$, provides a measure of how well the model performs across the population, rather than simply an average of the population (as $\hat{alpha}$ is). It is advised that the intercept is calculated on its own first using $\textrm{logit}(P)$ as an offset (without a predictor, i.e. fixing $\beta = 1$) and then the slope is calculated using $\hat{\alpha}$ as an offset [@riley_prognosis_2019]; however, for simplicity we have chosen to model them both together.
+
+As the predicted values of an NI-Model would be the same for all patients, a directly calculated NI-model would not converge, however the limit of such a model (as the individual predictions tend to equality) would give NI-levels for the Intercept equal to prevalence ($Q$) and slope equal to 0 (since every subgroup has the same predicted value). For a P-model, the Intercept would be 0 and the slope would be 1.
+
+Most software which can produce these kinds of logistic regression models will have functionality to calculate confidence intervals built-in and so we will use these measures as out population-based confidence interval to compare to the one found via bootstrapping.
+
+These metrics, intercept and slope, are usually described with an interpretation depending on the fit and whether the P-level (0 and 1, respectively) is within the confidence interval and, if not, which direction the miscalibration lies. If the calibration intercept is considered to be above or below the P-Level, then it indicates that the model is systemically under- or over-predicting the results, respectively. Similarly, a calibration slope that is below or above the P-Level is interpreted to mean that the model had predictions that were too extreme or too moderate across the prediction spectrum [@steyerberg_towards_2014].
 
 ## Extension to Multi-State Models
 
 ### Trivial Extensions
 
+As well as the extension methods described in this paper, each of the traditional performance metrics described above can be applied to a MS-CPM with trivial extension. These require the predictions and outcomes to be reduced toa model with only two states which allows the traditional performance metrics to be directly applied.
+
+The first method, One-Vs-All, is based on whether a patient is in each state or not at a given time. For each state, we take the current state as the outcome state and collapse all other states into a single "not-" state. For example, when analysing the CKD state, we collapse RRT and Death into a single "not-CKD" state. This gives us a metric for each state in the model.
+
+The second method, Pair-wise, compares across pairs of states by ignoring predictions unrelated to them at a given time. For each pair of states, we exclude patients not in one of the two states and normalise the two predicted probabilities so that they sum to 1. for example, when assessing CKD vs RRT, we exclude all patients in the Death state, take our outcome states as RRT and divide the predicted probability of being in RRT by the predicted probability of being in either CKD or RRT (i.e. probability of being in RRT given that they are in either RRT or CKD). This gives us a metric for each pair of states in the model.
+
+The third method, Transition-wise, compares patients undergoing a specific transition. We take the subset of patients who were eligible for a transition and classify those who underwent the transition as being in the outcome state and compare them to those that didn't undergo the transition (by the given time). In our example, whne looking at the RRT to Death transition, we would take the subset of all patients who underwent the CKD to RRT transition (i.e. those eligible for the RRT to Death transition) and compare those who transitioned to Death with those who remained in the RRT state.
+
+Note that the subset of patients in the second and third methods are ot always equivalent. When analysing RRT to Death or RRT vs Death, the patients in the RRT state are the same, but the patients in the Death state are different (RRT vs Death includes those that went directly from CKD to Death). The predicted probabilities are similarly different.
+
+When applying each of the trivial extension methods above, we would be provided with a set of metric values, e.g. in the One-Vs-All methods, we would have a value for each state in the MS-CPM. there are then two ways to summarise this information, either through a direct average of the results or through a weighted average. The weights for the Pair-wise and Transition-wise extensions would be the inverse of the size of the population being considered, for the One-Vs-All, it would be the inverse of the size of the state being compared.
+
 ### Accuracy  - Multiple Outcome Brier Score
+
+Brier's original definition of the Brier Score [@brier_verification_1950-1] permits multiple outcomes and for an individual can be calculated as:
+
+$$
+\textrm{BS}_{i,K} = \omega_i\left(\sum_{k=1}^K\left(P_i^k - O_i^k\right)^2\right)
+$$
+We then take an average to find the overall $\textrm{BS}$:
+
+$$
+\textrm{BS}_K=\frac{1}{N_\omega}\sum_{i=1}^N\textrm{BS}_{i,K}=\frac{1}{N_\omega}\sum_{i=1}^N\sum_{k=1}^K\omega_i\left(P_i^k - O_i^k\right)^2
+$$
+The formula for the traditional Brier Score is actually a simplified version of the original Brier Score defined here. Similarly, a lower score implies a more accurate model. If the two Brier Score measures are applied to a Two-State Model, then the multi-state BS above is twice that of the traditional BS, ($\textrm{BS}_K=2\textrm{BS}$), this is because the traditional metric looks at only the outcome state, but the extended method sums over both states.
+
+For this metric, the P-level is 0 and, similar to the traditional metric, the NI-Level is $\sum_{k=1}^kQ_k(1-Q_k)$; because of this, we would need to apply an adjustment similar to the traditional Brier Score:
+
+$$
+\textrm{aBS} = 1-\frac{\textrm{BS}_K}{\sum_{k=1}^kQ_k(1-Q_k)}
+$$
+Note that due to the relationship between $\textrm{BS}$ and $\textrm{BS}_2$, the doubling that occurs cancels out between the numerator and denominator and so this adjustment works on the same scale as the previously defined $\textrm{aBS}$ (and thus is given the same name).
+
+As with the traditional $\textrm{BS}$ metric, each patient will have their own $\textrm{BS}_K$ measurement and so we can find the population-based confidence interval for the $\textrm{BS}_K$ by using the standard deviation of these values. This can once again be converted into a confidence interval for the $\textrm{aBS}$ and compared to the one found via bootstrapping.
 
 ### Discrimination - Polytomous Discriminatory Index
 
+Intuitively, the extension of the c-statistic would be the probability that $K$ patients, chosen randomly from each of the outcome groups, will be correctly discriminated. In this case, what it is to be correctly discriminated needs to be defined. The Polytomous Discriminitory Index (PDI) provides a definition for this discrimination [@clster_extending_2012]. We define a $K$-uple of patients as an ordered set of $K$ patients where one patients is from each of the outcomes. A $K$-tuple of patients s well discriminated for a state $k$ if the patient in state $k$ was predicted to have the highest probability of being in state $k$ compared to the others in the $K$-tuple. If we let patients $i_j$ be a patient in state $j$, then the PDI for state $k$ in that $K$-tuple can be given as:
+
+$$
+C_K^k(i_1,i_2,...,i_k,...,i_K)=\begin{cases}1 & P_{i_k}^k > \max\left(P_{i_j}\;:\;j\neq k\right)\\0 & P_{i_k}^k < \max\left(P_{i_j}\;:\;j\neq k\right)\\\frac{1}{m} & P_{i_k}^k  =\max\left(P_{i_j}\;:\;j\neq k\right),\;m=\left|\left\{j\;:\;P_{i_j}^k=P_{i_k}^k\right\}\right|\\\end{cases}
+$$
+
+This definition also includes the caveat that if there are ties for the maximum predicted probability by assigning $\sfrac{1}{m}$ when that occurs, where $m$ is the number of patient (including $i_k$ tying for highest probability).
+
+For a $K$-tuple of patients, we also define their combined IPCW as the product of their individual IPCWs. This allows us to define a PDI for a $K$-tuple in a given state.
+
+$$
+\textrm{PDI}_K^k(i_1,i_2,...,i_K)=\left(\prod_{j=1}^K\omega_{i_j}\right)C_K^k(i_1,i_2,...,i_K)
+$$
+This allows us to define average weighted PDI for a $K$-tuple of patients as:
+
+$$
+\textrm{PDI}_K(i_1,i_2,...,i_K)=\frac{1}{K}\sum_{k=1}^K\textrm{PDI}_K^k(i_1,i_2,...,i_K)
+$$
+
+Or, we can summarise by finding the average PDI for a given state across the whole population:
+
+$$
+\textrm{PDI}_K^k = \left(\frac{1}{\prod_{k=1}^KN_k}\right)\sum_{i_1 \in A_1}\sum_{i_2 \in A_2}...\sum_{i_K \in A_K}\textrm{PDI}_K^k(i_1,i_2,...,i_K)
+$$
+
+These averages can be averaged again to get an overall measure of PDI:
+
+$$
+\begin{align*}
+\textrm{PDI}_K&=\frac{1}{K}\sum_{k=1}^K\textrm{PDI}_K^k \\&= \left(\frac{1}{\prod_{k=1}^KN_k}\right)\sum_{i_1 \in A_1}\sum_{i_2 \in A_2}...\sum_{i_K \in A_K}\textrm{PDI}_K(i_1,i_2,...,i_K)
+\end{align*}
+$$
+Similar to the c-statistic, the P-model would score a PDI of 1, however the NI-model would achieve a PDI of $\sfrac{1}{K}$. Therefore, we need to adjust this PDI to correct the scaling to be that of he common c-statistic:
+
+$$
+c = \left(\textrm{PDI}_K\right)^{log_K(2)}
+$$
+
+Since this new measure is on the same scale as the c-statistic, we can just refer to it as such.
+
+As with the c-statistic, values of the $C_k^K$ which are neither 0 nor 1 will be rare and so we can once again model this as a Bernoulli distribution. For calculation of confidence intervals, we take our $n$ as the number of possible $K$-tuples. We can then compare this population-based confidence interval with a bootstrapped estimate.
+
+
 #### Computational Limitations
 
+One major drawback of the PDI is that for large datasets and/or with many states, it can be computationally intensive. Therefore, an estimated PDI can be found by taking a sample of the $K$-tuples. To ensure robustness against censoring, each $K$-tuple should be drawn into th sample with probability inverse to the IPCW of that sample, where the IPCW of a $K$-tuple is calculated above as the probability of its elements. This is equivalent to drawing patients from each outcome with probability $\sfrac{\omega_j}{N_\omega}$. In this case, the calculations of the PDI remain similar, but each patient would be reset with a $\omega_j=1$ (as the weighting has already been applied during sampling).
+
 ### Calibration - Multinomial Intercept, Matched and Unmatched Slopes
+
+Since the traditional calibration metrics described above use a binomial logistic regression, it seems logical that the multi-dimensional extension for a multi-state models uses a multinomial logistic regression to provide parallel interpretation [@hoorde_assessing_2014]. Unlike the other measures, we must choose a state to be our base-state, $k=1$, this is usually the most populous initial state; however this choice is arbitrary and clinical reasoning may lead to a more logical choice. We then estimate the following series of regressions for all $k>1$:
+
+$$
+\textrm{E}\left[\textrm{log}\left(\frac{O^k}{O^1}\right)\right] = \alpha_k+\beta_{2,k}\textrm{log}\left(\frac{P^2}{P^1}\right) + ... +\beta_{K,k}\textrm{log}\left(\frac{P^K}{P^1}\right)
+$$
+Once again, using $\omega_i$ as weights for each patient during the regression process. This process estimates the $\alpha$ and $\beta$ to provide a $(K-1)$ length vector of intercept terms, $\hat{\alpha} = \left\{\hat{\alpha_2},\hat{\alpha_3},...,\hat{\alpha_K}\right\}$ and a $(K-1)\times(K-1)$ dimension matrix of slope terms, $\hat{\beta}$ with subscripts running from 2 to $K$ in both dimensions.
+
+The baseline models produce values similar to those found in the traditional calibration intercept and slope metrics, but directly extended to a multi-dimensional space. The P-Level for the Intercept would therefore be the zero-vector of length $(K-1)$ and the Slope would be the Identity matrix for $(K-1)$ dimensions. The NI-Level for the Intercept would be the prevalence (without the first state), $\left\{Q_2,Q_3,...,Q_K\right\}$, and the Slope would be the zero-matrix for $(K-1)$ dimensions.
+
+Once again, software packages that can produce multinomial logistic regression [@ripley_nnet_2016] can also automatically produce confidence intervals surrounding these estimates, which can be arranged as a CI-vector and CI-matrix and can be compared to bootstrapped estimates.
+
+as discussed earlier, traditional calibration measures are often associated with an interpretation depending on whether the model over- or under-predicts or has predictions that are too extreme or too moderate. Because of this, the multinomial extensions of these metrics cannot be aggregated to a single value (as with the other performance metric extensions), since doing so would lose a lot of information, instead we simplify in such a way to allow for a similar interpretation (or set of interpretations).
+
+We count the number of values in the $\hat{\alpha}$ and $\hat{\beta}$ that are considered statistically greater than, less than or close to the P-Level (based on the confidence interval). We further stratify by the $\hat{\beta}$ counts by whether the counts are along the main diagonal or not. This gives an interpretation of how many states are over- or under-predicted (based on $\hat{\alpha}$) and whether or not predictions are too extreme or too moderate (based on the main diagonal of $\hat{\beta}$).
+
+A new interpretation can be applied to those counts supplied by the off-diagnoal $\hat{\beta}$ values. This is how strong or weak the assumption of independence of irrelevant alternatives holds in our model [@arrow_social_2012]. If we have a lot of 0 values in the off-diagonal, $\hat{\beta}$, then the assumption is strong, whereas a lot of (statistically) non-zero values implies that the assumption is weak. If this assumption is weak, it means that there is an interactive effect between states and that if one were removed from the model, the relative probabilities of the remaining states would be effected. Whereas, if the assumption holds strongly, the removal of one state would imply that the other states are more stable and their relative probabilities would remain the same.
+
 
 ## Application to Real-World Data
 
 ### Accuracy
+
+Due to the prevelance of the different states in our population, a traditionally developed model would have to achieve a Brier Score better than [**xxxx**] to be better than a non-informative model, which translates to an adjsted Brier Score of [**xxxx**]. Our Three-State Model would therefore also have to score better than [**xxxx**].
+
+Amongst the Pair-wise, One-Vs-All and Transition-wise based Brier Scores, the best score is the RRT One-Vs-All score of 0.04 and the 
 
 ### Discrimination
 
@@ -861,33 +1183,56 @@ Throughout this paper, we will use consistent notation which is shown here for r
 
 ## Discussion
 
+In this paper, we have extended the current methods of model validation to a Multi-State framework, applied them to a previously developed MS-CPM and then directly compared them to traditional methods.
+
+some of the methods demonstrated here were developed by others in categorical outcome data [@brier_verification_1950-1; @calster_extending_2012];however, we are the first to apply them to a Multi-State scenario and, by providing suitable adjustments to the original work, we have provided versions of these metrics which can be comparable regardless of the number of states involved. Clearly, a model with more states provides more information to the prognosticator. Before this work, it was previously un-assessable whether the additional information came at a cost to model performance. For example, we can assess whether adding more states to a model has a negative effect on the predictive ability of a model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--chapter:end:05-Performance_Metrics.Rmd-->
 
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
-\chaptermark{Development and Validation of MSCPM}
-Last updated: 28 May
 
+Last updated: 04 Aug
 
+Download as individual paper draft: [pdf](Chapters/ind_06-Dev_Paper.pdf), [tex](Chapters/ind_06-Dev_Paper.tex), [word](Chapters/ind_06-Dev_Paper.docx)
 
 ## Abstract {-}
 
-### Introduction {-}
+### Objectives {-}
 
-Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict ~~multiple outcomes~~<mark>a multi-dimensional outcome</mark> with a single model can be advantageous. ~~Multi-State Models are a method to provide these kinds of predictions.~~ <mark>Many CPMs have been developed to predict the risk of different outcomes in individuals following chronic kidney disease (CKD) onset, but few allow the ability to predict the risk of patients transitioning onto renal replacement therapy (RRT) as well as death. For example, the risk of having a transplant within 1 year following dialysis, or the risk of remaining on dialysis until death. Multi-state models provide the vehicle to make such predictions, but have not been used within the CKD context.</mark>
+### Background {-}
+
+Clinical Prediction Models (CPMs) provide individualised predictions for patient outcomes. Traditionally, these models provide predictions for single outcomes, however in many circumstances, the ability to predict a multi-dimensional outcome with a single model can be advantageous. Many CPMs have been developed to predict the risk of different outcomes in individuals following chronic kidney disease (CKD) onset, but few allow the ability to predict the risk of patients transitioning onto renal replacement therapy (RRT) as well as death. For example, the risk of having a transplant within 1 year following dialysis, or the risk of remaining on dialysis until death. Multi-state models provide the vehicle to make such predictions, but have not been used within the CKD context.
+
+### Objective {-}
+<mark>Our objective was to develop a Multi-State Clinical Prediction Model (MSCPM), which can be used to predict patient progression through three states, untreated CKD (CKD), Renal Replacement Therapy (RRT) and Death (Dead).
 
 ### Methods {-}
 
-We developed a Multi-State Clinical Prediction Model (MSCPM) using tertiary care data from the Salford Kidney Study as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our external validation set. We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead).~~ We used Royston-Parmer regression techniques to allow us to provide individualised predictions for patients.~~ Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. The best performing model was used to produce a CPM Calculator for clinical use.
+We developed ~~a Multi-State Clinical Prediction Model (MSCPM)~~<mark> our model</mark> using tertiary care data from the Salford Kidney Study (SKS) as our development data set and secondary care data from the West of Scotland (SERPR) dataset as our external validation set. ~~We developed three models of different levels of complexity; a Two-State Model (Alive and Dead), a Three-State Model (Untreated CKD, Renal Replacement Therapy and Dead) and a Five-State model (Untreated CKD, Haemodialysis, Peritoneal Dialysis, Transplant and Dead)~~.<mark> State transition were modelled using the Royston-Parmer regression technique and combined to create a single model.</mark> Model performance was assessed for accuracy, discrimination and calibration using methods both internally and externally. <mark>The model was then used to create an online calculator.</mark>
 
 ### Results {-}
 
-Of the three models produced, Age was a strong predictor of mortality in all cases and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with the Three-State Model out performing overall <mark>with a Brier Score of 0.67/0.62 (internal/external, respectively), c-statistic of 0.83/0.81 and an averaged calibration intercept of 0.00/0.00 and slope diagonal of 1.34/1.53 (indicating under-prediction of all non-untreated CKD states for more extreme values)</mark>. The Three-State Model was used to develop the online Calculator.
+~~Of the three models produced,~~Age was a strong predictor of mortality ~~in all cases~~ and outcomes were highly dependent on primary renal diagnosis. Models performed well in both the internal and external validation with ~~the Three-State Model out performing overall with~~ a Brier Score of 0.67/0.62 (internal/external, respectively), c-statistic of 0.83/0.81 and an averaged calibration intercept of 0.00/0.00 and slope diagonal of 1.34/1.53 (indicating under-prediction of all non-untreated CKD states for more extreme values).
 
 ### Discusssion {-}
 
-Our CPMs provide clinicians and patients with multi-dimensional predictions across different outcome states and any time point. This implies that users of these models can get more information about their potential future without a loss to the ~~quality of that prediction.~~<mark>model's calibration nor its discriminative ability.</mark>
+Our CPM~~s~~ provide<mark>s</mark> clinicians and patients with multi-dimensional predictions across different outcome states and any time point. This implies that users of these models can get more information about their potential future without a loss to the model's calibration nor its discriminative ability.
 
 ### Supplementary Material {-}
 
@@ -902,13 +1247,12 @@ A clinical prediction model (CPM) is a tool which provides patients and clinicia
 Within Chronic Kidney Disease (CKD), prognostic models have been developed to predict mortality [@johnson_predicting_2007; @landray_prediction_2010; @bansal_development_2015; @marks_looking_2015; @wick_clinical_2017], End-Stage Renal Disease [@landray_prediction_2010], the commencements of Renal Replacement Therapy (RRT) [@marks_looking_2015; @johnson_predicting_2008; @schroeder_predicting_2017; @kulkarni_transition_2017] or mortality after beginning dialysis [@floege_development_2015; @hemke_survival_2013; @cao_predicting_2015]. Some previous models have used the commencement of RRT as a proxy for CKD Stage V [@tangri_predictive_2011; @roy_statistical_2017; @tangri_dynamic_2017], while others have investigated the occurrence of cardiovascular events within CKD patients[@shlipak_cardiovascular_2005; @weiner_framingham_2007; @mcmurray_predictors_2011]. Reviews by Grams & Coresh [@grams_assessing_2013], Tangri et al [@tangri_risk_2013] and Ramspek et al [@ramspek_prediction_2017], which explored the different aspects of assessing risk amongst CKD or RRT patients, found that the current landscape of CKD prediction models is lacking from both a methodological and clinical perspective [@collins_transparent_2015; @bouwmeester_reporting_2012-1]. 
 
 
-Methodologically, the majority of existing CKD prediction models fail to account for competing events [@bansal_development_2015; @wick_clinical_2017; @perotte_risk_2015], have high risks of bias [@johnson_predicting_2007; @landray_prediction_2010; @johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015; @steyerberg_prognosis_2013]
+Methodologically, the majority of existing CKD prediction models fail to account for competing events [@bansal_development_2015; @wick_clinical_2017; @perotte_risk_2015], have high risks of bias [@johnson_predicting_2007; @landray_prediction_2010; @johnson_predicting_2008] or are otherwise flawed compared to modern clinical prediction standards [@collins_transparent_2015; @steyerberg_prognosis_2013].<mark> These can have large implications if these models were to be used in clinical practice as, for example, patients could be given a predicted probabilty of RRT, which has not been adjusted for the probability of death and is thus, in fact a probability of RRT, assuming you don't die (a very different value if you have a high risk of death)</mark>.
 
 
 In 2013, Begun et al [@begun_identification_2013] developed a multi-State model for assessing population-level progression through the severity stages of CKD (III-V), RRT and/or death, which can be used to provide a broad statement regarding a patient's future. In 2014, Allen et al [@allen_chronic_2014] applied a similar model to liver transplant recipients and their progression through the stages of CKD with a focus on the predictions of measured vs estimated glomerular filtration rate (mGFR vs eGFR). In 2017, Kulkarni et al [@kulkarni_transition_2017] developed an MSM focusing on the categories of Calculated Panel Reactive Antibodies and kidney transplant and/or death. 
 
 Most recently, in 2018, Grams et al [@grams_predicting_2018] developed a multinomial clinical prediction model for CKD patients which focused on the occurrence of RRT and/or cardiovascular events. As of the publication of this paper, this is the only currently existing CPMs of this kind for CKD patients.
-
 
 However, the first three of these existing models (Begun, Allen and Kulkarni) categorise continuous variables to define their states at specific cut-offs and this has been shown to be inefficient when modelling [@royston_dichotomizing_2006] and none of these models have undergone any validation process, whether internal or external [@altman_prognosis_2009].
 
@@ -916,9 +1260,11 @@ It is also important to note that although these models can be used to predict p
 
 The fourth model (Grams), is presented as a Multi-State Model and the transitions involved were studied and defined, however the underlying statistical model is two multinomial logistic models analysed at 2 and 4 years, which assumes homogeneity of transition times. Two downsides to the implementation of this model are that it can only produce predictions at those predefined time points and that it is unable to estimate duration of time on dialysis.
 
-Therefore, our aim is to develop a CPM - we do this by modelling patient pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a clinical difference in patient characteristics. Our modeling techniques allow for individual predictions of ~~multiple outcomes~~<mark>multi-dimensional outcomes</mark> at any time point . The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the  clinical prediction models. We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models [@collins_transparent_2015; @moons_transparent_2015].
+Therefore, our aim is to develop a MSCPM - we do this by modeling patient pathways through a Multi-State Model by choosing transition points which can be exactly identified and include states which produce a clinical difference in patient characteristics. Our modeling techniques allow for individual predictions of multi-dimensional outcomes at any time point . The models produced by this process will then be validated, both internally and externally, to compare their results and demonstrate the transportability of the  clinical prediction models. ~~We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models [@collins_transparent_2015; @moons_transparent_2015].~~
 
 ## Methods
+
+We report our work in line with the TRIPOD guidelines for development and validation of clinical prediction models [@collins_transparent_2015; @moons_transparent_2015].
 
 ### Data Sources
 
@@ -927,9 +1273,9 @@ The models were developed using data from the Salford Kidney Study (SKS) cohort 
 
 At baseline, the data, including demographics, comorbidities, physical parameters, lab results and primary renal diagnosis are recorded in the database. Patients undergo an annual study visit and any changes to these parameters are captured. All data except blood results are collected via questionnaire by a dedicated team of research nurses. Blood results (baseline and annualised), first RRT modality and mortality outcome data are directly transferred to the database from Salford's Integrated Record  [@new_obtaining_2014]. eGFR, uPCR, comorbidity and blood results were measured longitudinally throughout a patient's time within the cohort. 
 
-Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient's start date for our model as their first date after consent at which their eGFR was recorded to be below $60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$. Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD ($\textrm{eGFR} \lessapprox 60$) *and* those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient at any time during their CKD journey prior to commencement of RRT.
+Due to limitations in our data, we were agnostic to how long since patients were diagnosed with CKD. Therefore, we defined a patient's start date for our model as their first date after consent at which their eGFR was recorded to be below $60\textrm{ml}/\textrm{min}/1.73\textrm{m}^2$. Some patients consented with an eGFR that was already below 60, and some entered our study later when their eGFR was measured to be below 60. This implies that our models includes both patient who have recently been diagnosed with CKD ($\textrm{eGFR} \lessapprox 60$) *and* those that have been suffering with CKD for an arbitrary amount of time. This timelessness of the model means it can be applied to any patient <mark>prior to commencement of RRT</mark> at any time<mark> after their initial CKD diagnosis, be that immediately or 10 years later</mark> ~~during their CKD journey prior to commencement of RRT.~~
 
-All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was  also included in the SKS database.
+All patients registered in the database between October 2002 and December 2016 with available data were included in this study. As this is a retrospective convenience sample, no sample size calculations were performed prior to recruitment.<mark>However, we were able use the given sample size to calculate the maximum number of predictors for each transition as per Riley, et al [@riley_minimum_2019], which permitted us to use over 150 predictors for each transition</mark>. All patients were followed-up within SKS until the end-points of RRT, death or loss to follow-up or were censored at their last interaction with the healthcare system prior to December 2017. Date of death for patients who commenced RRT was  also included in the SKS database.
 
 For external validation of the model, we extracted an independent cohort from the West of Scotland Electronic Renal Patient Record (SERPR). Our extract of SERPR contains all patients known to the Glasgow and Forth Valley renal service who had an eGFR measure of less than $60\textrm{ml}/\textrm{min}/1.73m^2$ between January 2006 and January 2016. This cohort has been previously used in Chronic Kidney Disease Prognosis consortium studies investigating outcomes in patients with CKD [@matsushita_cohort_2013] and a similar cohort has been used for the analysis of skin tumours amongst renal transplant patients. Use of anonymised data from this database has been approved by the West of Scotland Ethics Committee for use of NHS Greater Glasgow and Clyde 'Safe Haven' data for research.
 
@@ -945,22 +1291,18 @@ The second requirement was implemented to avoid a bias in the eGFR Rate. eGFR Ra
 
 Three separate models were developed, so we could determine a clinically viable model while maintaining model parsimony as much as possible: a Two-State, Three-State and Five-State model, each building on the previous models' complexity (see figure \@ref(fig:State-Diagram)). The Two-State model was a traditional survival analysis where a single event (death) is considered. The Three-State model expanded on this, by splitting the Alive state into transient states of (untreated) CKD and (first) RRT; patients can therefore transition from CKD to Death or CKD to RRT, and then onto RRT to Death. The Five-State model stratifies the RRT state into HD, PD and Tx and allows similar transitions into and out of the RRT states; however, the transition from Tx to Death was not considered as it was anticipated a priori that there would be insufficient patients undergoing this transition and that the process of undergoing a transplant would be medically transformative and so it would be inappropriate to assume shared parameters before and after the transition (i.e. Tx was modelled as a second absorbing state).
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="figure/Dev_Paper_State_Diagrams.png" alt="Diagram of the three models, the states being modelled and relevant transitions" width="90%" />
+<p class="caption">(\#fig:State-Diagram)Diagram of the three models, the states being modelled and relevant transitions</p>
+</div>
 
-{\centering \includegraphics[width=0.9\linewidth]{figure/Dev_Paper_State_Diagrams} 
-
-}
-
-\caption{Diagram of the three models, the states being modelled and relevant transitions}(\#fig:State-Diagram)
-\end{figure}
-
-Missing data was handled using multiple imputation [@white_imputing_2009] using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). From these variables, uPCR and eGFR Rate of change were also derived [@kovesdy_past_2016; @naimark_past_2016] as well as their log transforms and log(Age) and Age$^2$. For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition.
+Missing data was handled using multiple imputation [@white_imputing_2009] using times for all events as imputation covariates. Variables considered as covariates were demographics (sex, age, smoking status and alcohol consumption), comorbidities (congestive cardiac failure (CCF), chronic obstructive pulmonary disease (COPD), prior  cerebrovascular accident (CVA), hypertension (HT), diabetes mellitus (DM), ischemic heart disease (IHD), chronic liver disease (LD), prior myocardial infarction (MI), peripheral vascular disease (PVD) and slid tumour (ST)), physical parameters (BMI, blood pressure), blood results (haemoglobin, albumin, corrected calcium and phosphate measures), urine protein creatinine ratio (uPCR) and primary renal diagnosis (grouped as per ERA-EDTA classifications [@venkat-raman_new_2012]). From these variables, uPCR and eGFR Rate of change were also derived [@kovesdy_past_2016; @naimark_past_2016] as well as their log transforms and log(Age) and Age$^2$. For each transition, Backwards-forwards stepwise methods were used to minimise the AIC, allowing different variables to be used for each transition. <mark>Variables were also assessed for their adherence to the proportional hazards assumption by calculating their Schoenfeld residual [@grambsch_proportional_1994; @schoenfeld_partial_1982], for those that fail the test of proportionality, we include a time trend in their hazard estimate</mark>.
 
 ### Validation
 
-Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR [@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m\textsuperscript{2}.
+Each of the three models were internally validated in the development dataset using bootstrapping to adjust for optimism and then further externally validated in the validation dataset extracted from SERPR [@schomaker_bootstrap_2018]. The bootstrapping method was also used for both validations to produce confidence intervals around the performance metric estimates. To assess the performance in low eGFR patients, the models were also validated in subsets of the SKS and SERPR where patients had an eGFR < 30/ml/min/1.73m<sup>2</sup>.
 
-Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \@ref(chap-performance-metrics). <mark>These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
+Model accuracy was assessed using the Brier Score, discrimination was assessed using the c-statistic and the calibration was assessed using the multi-dimensional intercept and slope-matrix, as described in Chapter \@ref(chap-performance-metrics). These measures were taken at One-Year, Two-Years and Five-Years after the patient's start dates, and therefore are equivalent to validation measures at that point in time after a prediction has been applied.
 
 Further details of how the models were developed and validated is discussed in the Supplementary materials in appendix \@ref(chap-dev-paper-supp).
 
@@ -971,43 +1313,112 @@ Once the models have been developed, we will apply them to three example patient
 We have chosen three (synthetic) patients to use as examples of the use of our model. Their details can be seen in table \@ref(tab:Example-Patient).
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Example-Patient)<font size="2">Details of the Example Patients</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> Patient 1 </th>
+   <th style="text-align:left;"> Patient 2 </th>
+   <th style="text-align:left;"> Patient 3 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Age </td>
+   <td style="text-align:left;width: 3.5cm; "> 20 </td>
+   <td style="text-align:left;width: 3.5cm; "> 40 </td>
+   <td style="text-align:left;width: 3.5cm; "> 66 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Gender </td>
+   <td style="text-align:left;width: 3.5cm; "> Female </td>
+   <td style="text-align:left;width: 3.5cm; "> Male </td>
+   <td style="text-align:left;width: 3.5cm; "> Female </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Smoking Status </td>
+   <td style="text-align:left;width: 3.5cm; "> Non-Smoker </td>
+   <td style="text-align:left;width: 3.5cm; "> Smoker </td>
+   <td style="text-align:left;width: 3.5cm; "> Non-Smoker </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> BP </td>
+   <td style="text-align:left;width: 3.5cm; "> 144/101 </td>
+   <td style="text-align:left;width: 3.5cm; "> 160/90 </td>
+   <td style="text-align:left;width: 3.5cm; "> 140/80 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Albumin </td>
+   <td style="text-align:left;width: 3.5cm; "> 39 </td>
+   <td style="text-align:left;width: 3.5cm; "> 40 </td>
+   <td style="text-align:left;width: 3.5cm; "> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Correct Calcium </td>
+   <td style="text-align:left;width: 3.5cm; "> 2.3 </td>
+   <td style="text-align:left;width: 3.5cm; "> 3.0 </td>
+   <td style="text-align:left;width: 3.5cm; "> 2.6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Haemoglobin </td>
+   <td style="text-align:left;width: 3.5cm; "> 150 </td>
+   <td style="text-align:left;width: 3.5cm; "> 100 </td>
+   <td style="text-align:left;width: 3.5cm; "> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Phosphate </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.68 </td>
+   <td style="text-align:left;width: 3.5cm; "> 2.00 </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.86 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> eGFR </td>
+   <td style="text-align:left;width: 3.5cm; "> 42 </td>
+   <td style="text-align:left;width: 3.5cm; "> 10 </td>
+   <td style="text-align:left;width: 3.5cm; "> 51 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> eGFR Previous </td>
+   <td style="text-align:left;width: 3.5cm; "> 50 (one week ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 30 (one year ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 70 (one week ago) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> uPCR </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.30 </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.20 </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> uPCR Previous </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.80 (one month ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 1.20 (one year ago) </td>
+   <td style="text-align:left;width: 3.5cm; "> 0.06 (one week ago) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Primary Diagnosis </td>
+   <td style="text-align:left;width: 3.5cm; "> Glomerulonephritis </td>
+   <td style="text-align:left;width: 3.5cm; "> Tubular Necrosis </td>
+   <td style="text-align:left;width: 3.5cm; "> Diabetes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 3.5cm; "> Comorbities </td>
+   <td style="text-align:left;width: 3.5cm; "> Chronic Obstructive Pulmonary Disease<br>Liver Disease<br>Solid Tumour </td>
+   <td style="text-align:left;width: 3.5cm; ">  </td>
+   <td style="text-align:left;width: 3.5cm; "> Diabetes<br>Chronic Obstructive Pulmonary Disease<br>Hypertension </td>
+  </tr>
+</tbody>
+</table></div>
 
-\caption{(\#tab:Example-Patient){\small Details of the Example Patients}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.5cm}}
-\toprule
-  & Patient 1 & Patient 2 & Patient 3\\
-\midrule
-\rowcolor{gray!6}  Age & 20 & 40 & 66\\
-Gender & Female & Male & Female\\
-\rowcolor{gray!6}  Smoking Status & Non-Smoker & Smoker & Non-Smoker\\
-BP & 144/101 & 160/90 & 140/80\\
-\rowcolor{gray!6}  Albumin & 39 & 40 & 40\\
-\addlinespace
-Correct Calcium & 2.3 & 3.0 & 2.6\\
-\rowcolor{gray!6}  Haemoglobin & 150 & 100 & 14\\
-Phosphate & 0.68 & 2.00 & 0.86\\
-\rowcolor{gray!6}  eGFR & 42 & 10 & 51\\
-eGFR Previous & 50 (one week ago) & 30 (one year ago) & 70 (one week ago)\\
-\addlinespace
-\rowcolor{gray!6}  uPCR & 0.30 & 0.20 & 0.01\\
-uPCR Previous & 0.80 (one month ago) & 1.20 (one year ago) & 0.06 (one week ago)\\
-\rowcolor{gray!6}  Primary Diagnosis & Glomerulonephritis & Tubular Necrosis & Diabetes\\
-Comorbities & Chronic Obstructive Pulmonary Disease\newline Liver Disease\newline Solid Tumour &  & Diabetes\newline Chronic Obstructive Pulmonary Disease\newline Hypertension\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
-
-Out three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
-
+Our three example patients cover a broad range of ages and other covariates. A clinically guided prediction for these patients would assume that Patient 1 has a high chance of proceeding as normal (with little need for RRT), Patient 2 would be recommended to start RRT soon and Patient 3 would be predicted to have a high risk of mortality with or without RRT.
 
 ### Calculator
 
 As part of this work, we have also  produced an online calculator to allow patients and clinicians to easily estimate outcomes without worrying about the mathematics involved.
 
-All analysis was done in `R 3.6.2` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], as well as the `mice` [@buuren_mice_2011-1], `flexsurv` [@jackson_flexsurv_nodate], `nnet` [@ripley_package_2016] and `furrr` [@vaughan_furrr_2018] packages. The calculator was produced using the `shiny` package [@chang_shiny_2020].
+All analysis was done in `R 3.6.2` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], as well as the `mice` [@buuren_mice_2011-1], `flexsurv` [@jackson_flexsurv:_nodate], `nnet` [@ripley_package_2016] and `furrr` [@vaughan_furrr_2018] packages. The calculator was produced using the `shiny` package [@chang_shiny_2020].
 
 ## Results
 
@@ -1017,69 +1428,649 @@ As seen in table \@ref(tab:Table-One), the Age of the populations had a mean of 
 
 
 <br>
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:Table-One){\small Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{19em}>{\ttfamily\raggedright\arraybackslash}p{26em}>{\ttfamily\raggedright\arraybackslash}p{13em}>{\ttfamily\raggedright\arraybackslash}p{11em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}>{\ttfamily\raggedright\arraybackslash}p{14em}}
-\toprule
-\multicolumn{1}{c}{ } & \multicolumn{6}{c}{SKS} & \multicolumn{6}{c}{SERPR} \\
-\cmidrule(l{3pt}r{3pt}){2-7} \cmidrule(l{3pt}r{3pt}){8-13}
-Variable & mean/n & IQR/p & min & max & n.miss & p.miss & mean/n & IQR/p & min & max & n.miss & p.miss\\
-\midrule
-\rowcolor{gray!6}  Age & 64.378 & 19.000 & 20.000 & 94.000 & 0 & 0.00\% & 66.064 & 17.000 & 11.000 & 98.000 & 0 & 0.00\%\\
-eGFR & 30.369 & 22.387 & 3.578 & 59.966 & 0 & 0.00\% & 35.647 & 20.565 & 1.199 & 59.994 & 0 & 0.00\%\\
-\rowcolor{gray!6}  eGFR Rate & -0.016 & 0.294 & -19.107 & 33.782 & 1,278 & 42.87\% & 1.319 & 21.897 & -28.636 & 50.653 & 0 & 0.00\%\\
-SBP & 140.193 & 29.000 & 77.000 & 220.000 & 50 & 1.68\% & 145.981 & 30.000 & 82.000 & 258.000 & 6,345 & 82.31\%\\
-\rowcolor{gray!6}  DBP & 74.556 & 14.000 & 36.000 & 159.000 & 52 & 1.74\% & 76.742 & 17.000 & 35.000 & 128.000 & 6,345 & 82.31\%\\
-\addlinespace
-BMI & 28.848 & 7.842 & 13.182 & 61.467 & 572 & 19.19\% & 29.020 & 6.811 & 17.073 & 52.403 & 7,491 & 97.17\%\\
-\rowcolor{gray!6}  Albumin & 42.152 & 5.000 & 12.000 & 52.000 & 60 & 2.01\% & 36.475 & 6.000 & 7.000 & 53.000 & 3,134 & 40.65\%\\
-Calcium & 2.302 & 0.180 & 1.210 & 3.660 & 68 & 2.28\% & 2.407 & 0.160 & 1.455 & 3.400 & 4,513 & 58.54\%\\
-\rowcolor{gray!6}  Haemoglobin & 122.978 & 23.000 & 61.000 & 195.000 & 72 & 2.42\% & 109.269 & 29.000 & 7.100 & 208.000 & 3,557 & 46.14\%\\
-Phosphate & 1.163 & 0.320 & 0.430 & 3.710 & 87 & 2.92\% & 1.194 & 0.320 & 0.320 & 4.370 & 4,510 & 58.50\%\\
-\addlinespace
-\rowcolor{gray!6}  uPCR & 0.112 & 0.103 & 0.001 & 2.025 & 245 & 8.22\% & 0.178 & 0.177 & 0.001 & 1.943 & 7,170 & 93.01\%\\
-uPCR Rate & -0.096 & 0.188 & -70.727 & 28.199 & 1,777 & 59.61\% & 4.621 & 0.905 & -176.200 & 952.812 & 7,495 & 97.22\%\\
-\rowcolor{gray!6}  Gender: &  &  &  &  & 0 & 0.00\% &  &  &  &  & 0 & 0.00\%\\
-Male & 1,865 & 62.56\% &  &  &  &  & 3,885 & 50.40\% &  &  &  & \\
-\rowcolor{gray!6}  Female & 1,116 & 37.44\% &  &  &  &  & 3,824 & 49.60\% &  &  &  & \\
-\addlinespace
-Ethnicity: &  &  &  &  & 0 & 0.00\% &  &  &  &  & 7,009 & 90.92\%\\
-\rowcolor{gray!6}  White & 2,875 & 96.44\% &  &  &  &  & 679 & 8.81\% &  &  &  & \\
-Asian & 75 & 2.52\% &  &  &  &  & 12 & 0.16\% &  &  &  & \\
-\rowcolor{gray!6}  Black & 21 & 0.70\% &  &  &  &  & 7 & 0.09\% &  &  &  & \\
-Other & 10 & 0.34\% &  &  &  &  & 2 & 0.03\% &  &  &  & \\
-\addlinespace
-\rowcolor{gray!6}  SmokingStatus: &  &  &  &  & 42 & 1.41\% &  &  &  &  & 7,709 & 100.00\%\\
-Former & 1,535 & 51.49\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-\rowcolor{gray!6}  Non-Smoker & 979 & 32.84\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-Smoker & 379 & 12.71\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-\rowcolor{gray!6}  Former 3Y & 46 & 1.54\% &  &  &  &  & 0 & 0.00\% &  &  &  & \\
-\addlinespace
-DiagGroup: &  &  &  &  & 567 & 19.02\% &  &  &  &  & 6,640 & 86.13\%\\
-\rowcolor{gray!6}  Systemic diseases affecting the kidney & 1,304 & 43.74\% &  &  &  &  & 316 & 4.10\% &  &  &  & \\
-Glomerular disease & 442 & 14.83\% &  &  &  &  & 278 & 3.61\% &  &  &  & \\
-\rowcolor{gray!6}  Tubulointerstitial disease & 268 & 8.99\% &  &  &  &  & 173 & 2.24\% &  &  &  & \\
-Miscellaneous renal disorders & 227 & 7.61\% &  &  &  &  & 198 & 2.57\% &  &  &  & \\
-\addlinespace
-\rowcolor{gray!6}  Familial / hereditary nephropathies & 173 & 5.80\% &  &  &  &  & 104 & 1.35\% &  &  &  & \\
-Diabetes (DM) & 992 & 33.32\% &  &  & 4 & 0.13\% & 1,535 & 19.91\% &  &  & 0 & 0.00\%\\
-\rowcolor{gray!6}  Congestive Cardiac Failure (CCF) & 2,414 & 81.09\% &  &  & 4 & 0.13\% & 408 & 5.29\% &  &  & 0 & 0.00\%\\
-Prior Myocardial Infarction (MI) & 2,492 & 83.71\% &  &  & 4 & 0.13\% & 556 & 7.21\% &  &  & 0 & 0.00\%\\
-\rowcolor{gray!6}  Ischemic Heart Disease (IHD) & 2,393 & 80.38\% &  &  & 4 & 0.13\% & 863 & 11.19\% &  &  & 0 & 0.00\%\\
-\addlinespace
-Peripheral Vascular Disease (PVA) & 2,485 & 83.47\% &  &  & 4 & 0.13\% & 376 & 4.88\% &  &  & 0 & 0.00\%\\
-\rowcolor{gray!6}  Prior Cerebrovascular Accident (CVA) & 2,727 & 91.60\% &  &  & 4 & 0.13\% & 186 & 2.41\% &  &  & 0 & 0.00\%\\
-Chronic Obstructive Pulmonary Disease (COPD) & 2,411 & 80.99\% &  &  & 4 & 0.13\% & 0 & \% &  &  & 7,709 & 100.00\%\\
-\rowcolor{gray!6}  Chronic Liver Disease (LD) & 2,891 & 97.11\% &  &  & 4 & 0.13\% & 0 & \% &  &  & 7,709 & 100.00\%\\
-Prior Solid Tumour (ST) & 2,570 & 86.33\% &  &  & 4 & 0.13\% & 0 & \% &  &  & 7,709 & 100.00\%\\
-\addlinespace
-\rowcolor{gray!6}  Hypertension (HT) & 2,546 & 91.48\% &  &  & 198 & 6.64\% & 3,114 & 40.39\% &  &  & 0 & 0.00\%\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Table-One)<font size="2">Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)</font>
+</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SKS</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SERPR</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:left;"> mean/n </th>
+   <th style="text-align:left;"> IQR/p </th>
+   <th style="text-align:left;"> min </th>
+   <th style="text-align:left;"> max </th>
+   <th style="text-align:left;"> n.miss </th>
+   <th style="text-align:left;"> p.miss </th>
+   <th style="text-align:left;"> mean/n </th>
+   <th style="text-align:left;"> IQR/p </th>
+   <th style="text-align:left;"> min </th>
+   <th style="text-align:left;"> max </th>
+   <th style="text-align:left;"> n.miss </th>
+   <th style="text-align:left;"> p.miss </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Age </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 64.378 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 19.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 20.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 94.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 66.064 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 17.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   11.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 98.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> eGFR </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 30.369 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 22.387 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.578 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 59.966 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 35.647 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 20.565 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   1.199 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 59.994 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> eGFR Rate </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> -0.016 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.294 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> -19.107 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 33.782 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 1,278 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 42.87% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   1.319 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 21.897 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> -28.636 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 50.653 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> SBP </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 140.193 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 29.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 77.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 220.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   50 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 1.68% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 145.981 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 30.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   82.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 258.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 6,345 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 82.31% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> DBP </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 74.556 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 14.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 36.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 159.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   52 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 1.74% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 76.742 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 17.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   35.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 128.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 6,345 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 82.31% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> BMI </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 28.848 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 7.842 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 13.182 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 61.467 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   572 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 19.19% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 29.020 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 6.811 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   17.073 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 52.403 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,491 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 97.17% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Albumin </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 42.152 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 5.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 12.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 52.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   60 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.01% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 36.475 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 6.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   7.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 53.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 3,134 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 40.65% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Calcium </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2.302 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.180 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   1.210 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.660 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   68 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.28% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   2.407 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.160 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   1.455 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.400 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 4,513 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 58.54% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Haemoglobin </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 122.978 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 23.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 61.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 195.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   72 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.42% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;"> 109.269 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 29.000 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   7.100 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 208.000 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 3,557 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 46.14% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Phosphate </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1.163 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.320 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.430 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   3.710 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   87 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 2.92% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   1.194 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.320 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   0.320 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   4.370 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 4,510 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 58.50% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> uPCR </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   0.112 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.103 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.001 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   2.025 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   245 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 8.22% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   0.178 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.177 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">   0.001 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   1.943 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,170 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 93.01% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> uPCR Rate </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> -0.096 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.188 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> -70.727 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 28.199 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 1,777 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 59.61% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   4.621 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.905 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> -176.200 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 952.812 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,495 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 97.22% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Gender: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Male </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,865 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 62.56% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   3,885 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 50.40% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Female </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,116 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 37.44% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   3,824 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 49.60% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Ethnicity: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,009 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 90.92% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> White </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,875 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 96.44% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     679 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 8.81% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Asian </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     75 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 2.52% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     12 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.16% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Black </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     21 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.70% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       7 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.09% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Other </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     10 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 0.34% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       2 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.03% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> SmokingStatus: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   42 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 1.41% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Former </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,535 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 51.49% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Non-Smoker </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     979 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 32.84% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Smoker </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     379 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 12.71% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Former 3Y </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     46 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 1.54% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> DiagGroup: </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   567 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 19.02% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 6,640 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 86.13% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Systemic diseases affecting the kidney </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   1,304 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 43.74% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     316 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 4.10% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Glomerular disease </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     442 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 14.83% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     278 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 3.61% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Tubulointerstitial disease </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     268 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 8.99% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     173 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 2.24% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Miscellaneous renal disorders </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     227 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 7.61% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     198 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 2.57% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Familial / hereditary nephropathies </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     173 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 5.80% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     104 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 1.35% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Diabetes (DM) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">     992 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 33.32% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   1,535 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 19.91% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Congestive Cardiac Failure (CCF) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,414 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 81.09% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     408 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 5.29% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Prior Myocardial Infarction (MI) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,492 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 83.71% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     556 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 7.21% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Ischemic Heart Disease (IHD) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,393 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 80.38% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     863 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 11.19% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Peripheral Vascular Disease (PVA) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,485 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 83.47% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     376 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 4.88% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Prior Cerebrovascular Accident (CVA) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,727 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 91.60% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">     186 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 2.41% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Chronic Obstructive Pulmonary Disease (COPD) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,411 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 80.99% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Chronic Liver Disease (LD) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,891 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 97.11% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Prior Solid Tumour (ST) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,570 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 86.33% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     4 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 0.13% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">       0 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 0.00% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 7,709 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;"> 100.00% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 26em; "> Hypertension (HT) </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;">   2,546 </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;"> 91.48% </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   198 </td>
+   <td style="text-align:left;border-right:2px solid lightgray;width: 19em; font-family: monospace;"> 6.64% </td>
+   <td style="text-align:left;width: 26em; font-family: monospace;">   3,114 </td>
+   <td style="text-align:left;width: 13em; font-family: monospace;"> 40.39% </td>
+   <td style="text-align:left;width: 11em; font-family: monospace;">         </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">       </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">     0 </td>
+   <td style="text-align:left;width: 14em; font-family: monospace;">   0.00% </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 Table \@ref(tab:Table-One) also shows a breakdown of the categorical variables across the populations. In the development population, crude proportions of males were numerically higher than females whereas in the validation population the proportions are much more matched (62.6% male vs 50.4% male). Most patients were white in the SKS dataset, and ethnicity has extremely high missingness in SERPR, which also contributed to its omission from the model. 
@@ -1089,98 +2080,429 @@ Overall, there were high levels of comorbidities within the SKS population, but 
 
 The median date for the date of death was 3.9 years in the SKS population and 4.9 years in the SERPR population. The median date for transition to RRT was 2.2 years and 1.5 years (in SKS and SERPR respectively). In SKS, transitions to HD happened 6 months later than PD, and in SERPR it was 3.6 months. The Maximum followup time in SKS was 15.0 years and in SERPR it was 10.1 years. This information can be seen in table \@ref(tab:Event-Median2).
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:Event-Median2){\small Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}r>{}r>{}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-\multicolumn{3}{c}{Transition} & \multicolumn{4}{c}{SKS} & \multicolumn{4}{c}{SERPR} \\
-\cmidrule(l{3pt}r{3pt}){1-3} \cmidrule(l{3pt}r{3pt}){4-7} \cmidrule(l{3pt}r{3pt}){8-11}
-Model & From & To & n & median & IQR & max & n & median & IQR & max\\
-\midrule
-\rowcolor{gray!6}  Two & Alive & Dead & 1,427 & 4.0 y & 4.3 y & 15.0 y & 3,010 & 4.8 y & 3.3 y & 10.1 y\\
-Three & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
-\rowcolor{gray!6}   &  & RRT & 680 & 2.5 y & 3.4 y & 14.2 y & 1,125 & 3.8 y & 3.9 y & 10.1 y\\
- & RRT & Dead & 302 & 2.2 y & 3.3 y & 13.5 y & 442 & 1.6 y & 2.5 y & 9.2 y\\
-\rowcolor{gray!6}  Five & CKD & Dead & 1,125 & 3.5 y & 4.2 y & 15.0 y & 2,568 & 4.7 y & 3.3 y & 10.1 y\\
-\addlinespace
- &  & HD & 344 & 2.6 y & 3.5 y & 14.2 y & 882 & 3.7 y & 3.8 y & 10.1 y\\
-\rowcolor{gray!6}   &  & PD & 229 & 2.0 y & 2.9 y & 12.9 y & 149 & 3.5 y & 4.1 y & 9.5 y\\
- &  & Tx & 107 & 3.2 y & 2.7 y & 12.1 y & 94 & 5.0 y & 4.4 y & 9.8 y\\
-\rowcolor{gray!6}   & HD & Dead & 185 & 2.1 y & 3.3 y & 11.8 y & 394 & 1.6 y & 2.5 y & 9.2 y\\
- & PD & Dead & 107 & 2.4 y & 3.2 y & 11.8 y & 47 & 2.1 y & 2.3 y & 8.5 y\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Event-Median2)<font size="2">Event times for the two populations presented as Number of Events ~ Median (Inter-Quartile Range) [Max]</font>
+</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Transition</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SKS</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">SERPR</div></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Model </th>
+   <th style="text-align:right;"> From </th>
+   <th style="text-align:right;"> To </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> median </th>
+   <th style="text-align:right;"> IQR </th>
+   <th style="text-align:right;"> max </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> median </th>
+   <th style="text-align:right;"> IQR </th>
+   <th style="text-align:right;"> max </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> Two </td>
+   <td style="text-align:right;"> Alive </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;"> 1,427 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.3 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 15.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3,010 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.8 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> Three </td>
+   <td style="text-align:right;"> CKD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;"> 1,125 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.2 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 15.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2,568 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.7 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> RRT </td>
+   <td style="text-align:right;font-family: monospace;">   680 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.4 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 14.2 y </td>
+   <td style="text-align:right;font-family: monospace;"> 1,125 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.8 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.9 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;"> RRT </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;">   302 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.2 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 13.5 y </td>
+   <td style="text-align:right;font-family: monospace;">   442 </td>
+   <td style="text-align:right;font-family: monospace;"> 1.6 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.2 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> Five </td>
+   <td style="text-align:right;"> CKD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;"> 1,125 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.2 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 15.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2,568 </td>
+   <td style="text-align:right;font-family: monospace;"> 4.7 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> HD </td>
+   <td style="text-align:right;font-family: monospace;">   344 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.6 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 14.2 y </td>
+   <td style="text-align:right;font-family: monospace;">   882 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.7 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.8 y </td>
+   <td style="text-align:right;font-family: monospace;"> 10.1 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> PD </td>
+   <td style="text-align:right;font-family: monospace;">   229 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.9 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 12.9 y </td>
+   <td style="text-align:right;font-family: monospace;">   149 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.1 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.5 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Tx </td>
+   <td style="text-align:right;font-family: monospace;">   107 </td>
+   <td style="text-align:right;font-family: monospace;"> 3.2 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.7 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 12.1 y </td>
+   <td style="text-align:right;font-family: monospace;">   94 </td>
+   <td style="text-align:right;font-family: monospace;"> 5.0 y </td>
+   <td style="text-align:right;font-family: monospace;"> 4.4 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.8 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;"> HD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;">   185 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.1 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.3 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 11.8 y </td>
+   <td style="text-align:right;font-family: monospace;">   394 </td>
+   <td style="text-align:right;font-family: monospace;"> 1.6 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.5 y </td>
+   <td style="text-align:right;font-family: monospace;"> 9.2 y </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;">  </td>
+   <td style="text-align:right;"> PD </td>
+   <td style="text-align:right;border-right:2px solid lightgray;"> Dead </td>
+   <td style="text-align:right;font-family: monospace;">   107 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.4 y </td>
+   <td style="text-align:right;font-family: monospace;"> 3.2 y </td>
+   <td style="text-align:right;border-right:2px solid lightgray;font-family: monospace;"> 11.8 y </td>
+   <td style="text-align:right;font-family: monospace;">   47 </td>
+   <td style="text-align:right;font-family: monospace;"> 2.1 y </td>
+   <td style="text-align:right;font-family: monospace;"> 2.3 y </td>
+   <td style="text-align:right;font-family: monospace;"> 8.5 y </td>
+  </tr>
+</tbody>
+</table></div>
 
 ### Development
 
-Here we present the proportional hazards results for the Three-State Model. The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix \@ref(chap-dev-paper-supp). Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The full results are shown in table \@ref(tab:PH-Three).
+Here we present the proportional hazards and covariate time trends for the Three-State Model in \@ref(tab:PH-Three). The full model description, including proportional and baseline hazards can be found in the Supplementary Materials in appendix \@ref(chap-dev-paper-supp). Older patients are predicted to be likely to transition to RRT. Increased rates of decline of eGFR were associated with the transition from CKD to RRT. The effect of older Age decreased over time for higher values of Age (as seen by the time trend).
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:PH-Three){\small Proportional Hazards for each transition in the Three-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to RRT & RRT to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.162 (  -0.051,   0.375) & -0.041 (  -0.051,  -0.032) & 0.063 (   0.051,   0.076)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.001 (  -0.003,   0.001) & 0.000 (  -0.001,   0.000) & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.519) &  & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.020,  -0.007) & -0.096 (  -0.109,  -0.083) & 0.012 (  -0.002,   0.026)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.055 (  -0.021,   0.131) & -0.056 (  -0.364,   0.251)\\
-\hspace{1em}log(eGFR Rate) & 0.043 (  -0.125,   0.211) &  & 0.228 (  -0.770,   1.226)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.700 (   0.113,   1.288) & -0.108 (  -0.736,   0.519)\\
-\hspace{1em}uPCR Rate &  & -0.020 (  -0.045,   0.005) & 0.037 (  -0.063,   0.136)\\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & 0.218 (  -0.311,   0.748) & -0.198 (  -0.534,   0.137)\\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.005,   0.002) & 0.005 (  -0.001,   0.011) & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.007 (   0.000,   0.013) & 0.007 (  -0.002,   0.016) & \\
-\hspace{1em}BMI &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.045 (  -0.065,  -0.024) & -0.032 (  -0.060,  -0.005) & -0.045 (  -0.080,  -0.010)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.753) & -0.515 (  -1.208,   0.177) & \\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.018,  -0.008) & -0.005 (  -0.012,   0.002) & -0.006 (  -0.015,   0.004)\\
-\hspace{1em}Phosphate & 0.512 (   0.133,   0.891) & 0.870 (  -0.060,   1.800) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.236 (  -0.371,  -0.100) & -0.278 (  -0.456,  -0.100) & \\
-\addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.213 (  -0.879,   0.453) & -0.134 (  -0.758,   0.490) & -0.282 (  -1.083,   0.519)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.162 (  -0.364,   0.040) & -0.295 (  -0.599,   0.010)\\
-\hspace{1em}Smoker & 0.356 (   0.161,   0.552) & 0.176 (  -0.077,   0.428) & 0.387 (   0.069,   0.706)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.855,   0.006) & 1.029 (   0.721,   1.338) & -0.563 (  -1.085,  -0.040)\\
-\hspace{1em}Glomerular disease & -0.395 (  -0.636,  -0.154) & -0.166 (  -0.465,   0.134) & -0.489 (  -0.884,  -0.094)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.506,  -0.021) & -0.649 (  -1.143,  -0.155) & 0.033 (  -0.554,   0.620)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.742,  -0.185) & -0.266 (  -0.577,   0.046) & -0.311 (  -0.803,   0.182)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{4}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.142 (  -0.075,   0.359) & 0.200 (  -0.096,   0.497)\\
-\hspace{1em}CCF & -0.395 (  -0.536,  -0.254) &  & -0.300 (  -0.597,  -0.003)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.398,  -0.095) & 0.234 (  -0.062,   0.530) & 0.187 (  -0.199,   0.572)\\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.246) & -0.077 (  -0.334,   0.179) & -0.098 (  -0.424,   0.228)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.249 (  -0.395,  -0.103) & -0.169 (  -0.406,   0.068) & -0.183 (  -0.493,   0.126)\\
-\hspace{1em}CVA & -0.071 (  -0.253,   0.111) &  & -0.168 (  -0.577,   0.241)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.290 (  -0.433,  -0.146) &  & \\
-\hspace{1em}LD & -0.170 (  -0.579,   0.239) & -0.317 (  -0.732,   0.098) & -0.270 (  -0.859,   0.318)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.118) & -0.181 (  -0.516,   0.153) & -0.278 (  -0.612,   0.056)\\
-\hspace{1em}HT &  & 0.275 (  -0.177,   0.726) & -0.416 (  -1.105,   0.272)\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PH-Three)<font size="2">Proportional Hazards for each transition in the Three-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> CKD to Dead </th>
+   <th style="text-align:right;"> CKD to RRT </th>
+   <th style="text-align:right;"> RRT to Dead </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="4"><td colspan="4" style="border-bottom: 1px solid;"><strong>Age</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Age </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.162 (  -0.051,   0.375) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.041 (  -0.051,  -0.032) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.063 (   0.051,   0.076) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Age<sup>2</sup> </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.003,   0.001) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.000 (  -0.001,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Age trend </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.140 (  -0.000,   0.405) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(Age) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -5.725 ( -17.969,   6.519) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="4"><td colspan="4" style="border-bottom: 1px solid;"><strong>eGFR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.020,  -0.007) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.096 (  -0.109,  -0.083) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.012 (  -0.002,   0.026) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR trend </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.003,   0.003) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.003,   0.003) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.055 (  -0.021,   0.131) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.056 (  -0.364,   0.251) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(eGFR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.043 (  -0.125,   0.211) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.228 (  -0.770,   1.226) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>uPCR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.125 (  -0.318,   0.569) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.700 (   0.113,   1.288) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.108 (  -0.736,   0.519) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.020 (  -0.045,   0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.037 (  -0.063,   0.136) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(uPCR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.218 (  -0.311,   0.748) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.198 (  -0.534,   0.137) </td>
+  </tr>
+  <tr grouplength="11"><td colspan="4" style="border-bottom: 1px solid;"><strong>Measures</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> SBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.005,   0.002) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.005 (  -0.001,   0.011) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (   0.000,   0.013) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (  -0.002,   0.016) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> BMI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.045 (  -0.065,  -0.024) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.032 (  -0.060,  -0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.045 (  -0.080,  -0.010) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin trend </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.085,  -0.012) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.040,   0.040) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Corrected Calcium </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.280 (  -0.192,   0.753) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.515 (  -1.208,   0.177) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Calcium trend </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.010 (  -0.100,   0.432) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.018,  -0.008) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.005 (  -0.012,   0.002) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.015,   0.004) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin trend </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.003,   0.003) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.003,   0.003) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Phosphate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.512 (   0.133,   0.891) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.870 (  -0.060,   1.800) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD trend </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.011 (  -0.023,   0.007) </td>
+  </tr>
+  <tr grouplength="1"><td colspan="4" style="border-bottom: 1px solid;"><strong>Gender</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Female </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.236 (  -0.371,  -0.100) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.278 (  -0.456,  -0.100) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="4" style="border-bottom: 1px solid;"><strong>Smoking Status</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Former (3 years+) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.213 (  -0.879,   0.453) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.134 (  -0.758,   0.490) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.282 (  -1.083,   0.519) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Non-Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.198 (  -0.345,  -0.051) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.162 (  -0.364,   0.040) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.295 (  -0.599,   0.010) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.356 (   0.161,   0.552) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.176 (  -0.077,   0.428) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.387 (   0.069,   0.706) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="4" style="border-bottom: 1px solid;"><strong>Primary Renal Diagnosis</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Familial / hereditary nephropathies </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.424 (  -0.855,   0.006) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.029 (   0.721,   1.338) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.563 (  -1.085,  -0.040) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Glomerular disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.395 (  -0.636,  -0.154) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.166 (  -0.465,   0.134) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.489 (  -0.884,  -0.094) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Miscellaneous renal disorders </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.263 (  -0.506,  -0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.649 (  -1.143,  -0.155) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.033 (  -0.554,   0.620) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Tubulointerstitial disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.463 (  -0.742,  -0.185) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.266 (  -0.577,   0.046) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.311 (  -0.803,   0.182) </td>
+  </tr>
+  <tr grouplength="10"><td colspan="4" style="border-bottom: 1px solid;"><strong>Comorbidity</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DM </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.122 (  -0.011,   0.255) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.142 (  -0.075,   0.359) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.200 (  -0.096,   0.497) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CCF </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.395 (  -0.536,  -0.254) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.300 (  -0.597,  -0.003) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> MI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.246 (  -0.398,  -0.095) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.234 (  -0.062,   0.530) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.187 (  -0.199,   0.572) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.102 (  -0.041,   0.246) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.077 (  -0.334,   0.179) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.098 (  -0.424,   0.228) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> PVD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.249 (  -0.395,  -0.103) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.169 (  -0.406,   0.068) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.183 (  -0.493,   0.126) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CVA </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.071 (  -0.253,   0.111) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.168 (  -0.577,   0.241) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> COPD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.290 (  -0.433,  -0.146) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> LD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.170 (  -0.579,   0.239) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.317 (  -0.732,   0.098) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.270 (  -0.859,   0.318) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> ST </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.274 (  -0.431,  -0.118) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.181 (  -0.516,   0.153) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.278 (  -0.612,   0.056) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> HT </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.275 (  -0.177,   0.726) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.416 (  -1.105,   0.272) </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 Female patients are predicted to be more likely to remain in the CKD state than Males, or to remain in the RRT state once there. Smokers were predicted as more likely than Non-/Former Smokers to undergo any transition, apart from CKD to Tx. Blood results had associations with all transitions in some way, and disease etiology were strongly associated with the transitions giving a wide range of predictions.
@@ -1189,96 +2511,316 @@ Female patients are predicted to be more likely to remain in the CKD state than 
 
 Table \@ref(tab:IV-Three) shows the results from the internal validation in the Three-State Model. Performance was overall slightly better in patients in the <60 eGFR group than in the <30 eGFR group. All measures degraded over time, but the average scores remained strong.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:IV-Three){\small Internal Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.74 ( 0.74,  0.75) & 0.68 ( 0.68,  0.69) & 0.64 ( 0.64,  0.65) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Three & < 30 & 0.75 ( 0.74,  0.75) & 0.73 ( 0.73,  0.73) & 0.68 ( 0.67,  0.68) & 0.68 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.75 ( 0.75,  0.75) & 0.75 ( 0.75,  0.76) & 0.67 ( 0.67,  0.67) & 0.67 ( 0.67,  0.68)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.72 ( 0.72,  0.73) & 0.65 ( 0.65,  0.66) & 0.67 ( 0.67,  0.68)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.86) & 0.83 ( 0.83,  0.84) & 0.83 ( 0.83,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.85,  0.86) & 0.86 ( 0.85,  0.86) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.83,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.02 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)\\  0.03 ( 0.02,  0.03)} & \makecell[r]{-0.02 (-0.02, -0.01)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.00 (-0.01, -0.00) & 0.02 ( 0.01,  0.02) & 0.00 (-0.00,  0.00) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.00 (-0.00,  0.00) & -0.04 (-0.04, -0.04) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.25},  0.00,  0.04\\ -0.03,  \emph{1.10}, -0.00\\ -0.00,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.17}, -0.06,  0.01\\  0.03,  \emph{1.25}, -0.01\\ -0.01,  0.01,  \emph{1.37}} & \makecell[r]{\emph{1.21}, -0.02, -0.01\\  0.01,  \emph{1.44}, -0.04\\ -0.02,  0.02,  \emph{1.27}} & \makecell[r]{\emph{1.32}, -0.01,  0.00\\ -0.00,  \emph{1.37}, -0.01\\ -0.00,  0.00,  \emph{1.33}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21},  0.02,  0.07\\ -0.04,  \emph{1.24},  0.07\\  0.01,  0.01,  \emph{1.16}} & \makecell[r]{\emph{1.36}, -0.00, -0.01\\  0.00,  \emph{1.31},  0.03\\ -0.02, -0.00,  \emph{1.26}} & \makecell[r]{\emph{1.35}, -0.04, -0.01\\  0.04,  \emph{1.33},  0.04\\  0.04, -0.02,  \emph{1.34}} & \makecell[r]{\emph{1.31},  0.00,  0.00\\ -0.01,  \emph{1.33},  0.01\\ -0.00,  0.00,  \emph{1.35}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.28} & \emph{1.27} & \emph{1.31}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.21} & \emph{1.21} & \emph{1.34}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:IV-Three)<font size="2">Internal Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.74,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.64,  0.65) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.75 ( 0.74,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.73 ( 0.73,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.67,  0.68) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.75 ( 0.75,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.75 ( 0.75,  0.76) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.65,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.86,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.83,  0.84) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01)<br> -0.01 (-0.02, -0.01)<br> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.01)<br> -0.00 (-0.00, -0.00)<br>  0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00)<br>  0.03 ( 0.02,  0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.04 (-0.04, -0.04) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt;,  0.00,  0.04<br> -0.03,  &lt;strong&gt;1.10&lt;/strong&gt;, -0.00<br> -0.00,  0.01,  &lt;strong&gt;1.16&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.17&lt;/strong&gt;, -0.06,  0.01<br>  0.03,  &lt;strong&gt;1.25&lt;/strong&gt;, -0.01<br> -0.01,  0.01,  &lt;strong&gt;1.37&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt;, -0.02, -0.01<br>  0.01,  &lt;strong&gt;1.44&lt;/strong&gt;, -0.04<br> -0.02,  0.02,  &lt;strong&gt;1.27&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.32&lt;/strong&gt;, -0.01,  0.00<br> -0.00,  &lt;strong&gt;1.37&lt;/strong&gt;, -0.01<br> -0.00,  0.00,  &lt;strong&gt;1.33&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt;,  0.02,  0.07<br> -0.04,  &lt;strong&gt;1.24&lt;/strong&gt;,  0.07<br>  0.01,  0.01,  &lt;strong&gt;1.16&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.36&lt;/strong&gt;, -0.00, -0.01<br>  0.00,  &lt;strong&gt;1.31&lt;/strong&gt;,  0.03<br> -0.02, -0.00,  &lt;strong&gt;1.26&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.35&lt;/strong&gt;, -0.04, -0.01<br>  0.04,  &lt;strong&gt;1.33&lt;/strong&gt;,  0.04<br>  0.04, -0.02,  &lt;strong&gt;1.34&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.31&lt;/strong&gt;,  0.00,  0.00<br> -0.01,  &lt;strong&gt;1.33&lt;/strong&gt;,  0.01<br> -0.00,  0.00,  &lt;strong&gt;1.35&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.28&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.27&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.31&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.05&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.34&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 Table \@ref(tab:EV-Three) shows the results from the external validation in the Three-State Model.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:EV-Three){\small External Validation of the Three-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.70 ( 0.69,  0.70) & 0.61 ( 0.60,  0.61) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Three & < 30 & 0.68 ( 0.67,  0.68) & 0.72 ( 0.71,  0.72) & 0.65 ( 0.64,  0.65) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.67 ( 0.67,  0.67) & 0.70 ( 0.69,  0.70) & 0.63 ( 0.63,  0.63) & 0.62 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.66 ( 0.66,  0.67) & 0.70 ( 0.70,  0.70) & 0.65 ( 0.65,  0.66) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Three & < 60 & 0.82 ( 0.82,  0.82) & 0.83 ( 0.83,  0.83) & 0.79 ( 0.79,  0.79) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Three & < 30 & 0.85 ( 0.84,  0.85) & 0.84 ( 0.84,  0.84) & 0.83 ( 0.83,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.85 ( 0.85,  0.86) & 0.84 ( 0.84,  0.85) & 0.80 ( 0.80,  0.80) & 0.81 ( 0.80,  0.81)\\
-\hspace{1em}Two & < 30 & 0.83 ( 0.83,  0.83) & 0.82 ( 0.82,  0.82) & 0.80 ( 0.80,  0.81) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.05 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{0.04 ( 0.04,  0.05)\\  0.01 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.00 (-0.00,  0.00)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 (-0.00,  0.00) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.01 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.35}, -0.04,  0.04\\  0.06,  \emph{1.49}, -0.03\\  0.01,  0.00,  \emph{1.25}} & \makecell[r]{\emph{1.13}, -0.00,  0.08\\ -0.02,  \emph{1.31},  0.01\\ -0.03,  0.01,  \emph{1.39}} & \makecell[r]{\emph{1.45}, -0.02,  0.03\\  0.03,  \emph{1.73},  0.03\\  0.04, -0.00,  \emph{1.47}} & \makecell[r]{\emph{1.54},  0.00, -0.00\\  0.01,  \emph{1.52},  0.00\\ -0.00,  0.00,  \emph{1.54}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.23},  0.03,  0.00\\ -0.05,  \emph{1.20}, -0.04\\ -0.00, -0.00,  \emph{1.37}} & \makecell[r]{\emph{0.99}, -0.01, -0.00\\  0.04,  \emph{1.34}, -0.03\\  0.00,  0.01,  \emph{1.46}} & \makecell[r]{\emph{1.56},  0.00,  0.00\\ -0.05,  \emph{1.49},  0.03\\  0.03,  0.01,  \emph{1.63}} & \makecell[r]{\emph{1.62}, -0.01,  0.01\\ -0.00,  \emph{1.53},  0.01\\  0.00, -0.00,  \emph{1.58}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.28} & \emph{1.26} & \emph{1.64} & \emph{1.51}\\
-\hspace{1em}Two & < 30 & \emph{1.18} & \emph{1.25} & \emph{1.57} & \emph{1.59}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:EV-Three)<font size="2">External Validation of the Three-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.69,  0.70) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.61 ( 0.60,  0.61) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.62 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.64,  0.65) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.69,  0.70) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.63) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.62 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.70,  0.70) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.65,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.79 ( 0.79,  0.79) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.80,  0.81) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.80,  0.80) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.80,  0.81) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.80,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.00)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02)<br> -0.01 (-0.01, -0.00)<br>  0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.05 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.04 ( 0.04,  0.05)<br>  0.01 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02)<br> -0.00 (-0.00,  0.00)<br>  0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.01)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.05 (-0.05, -0.04) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.35&lt;/strong&gt;, -0.04,  0.04<br>  0.06,  &lt;strong&gt;1.49&lt;/strong&gt;, -0.03<br>  0.01,  0.00,  &lt;strong&gt;1.25&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.13&lt;/strong&gt;, -0.00,  0.08<br> -0.02,  &lt;strong&gt;1.31&lt;/strong&gt;,  0.01<br> -0.03,  0.01,  &lt;strong&gt;1.39&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.45&lt;/strong&gt;, -0.02,  0.03<br>  0.03,  &lt;strong&gt;1.73&lt;/strong&gt;,  0.03<br>  0.04, -0.00,  &lt;strong&gt;1.47&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.54&lt;/strong&gt;,  0.00, -0.00<br>  0.01,  &lt;strong&gt;1.52&lt;/strong&gt;,  0.00<br> -0.00,  0.00,  &lt;strong&gt;1.54&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.23&lt;/strong&gt;,  0.03,  0.00<br> -0.05,  &lt;strong&gt;1.20&lt;/strong&gt;, -0.04<br> -0.00, -0.00,  &lt;strong&gt;1.37&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;0.99&lt;/strong&gt;, -0.01, -0.00<br>  0.04,  &lt;strong&gt;1.34&lt;/strong&gt;, -0.03<br>  0.00,  0.01,  &lt;strong&gt;1.46&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.56&lt;/strong&gt;,  0.00,  0.00<br> -0.05,  &lt;strong&gt;1.49&lt;/strong&gt;,  0.03<br>  0.03,  0.01,  &lt;strong&gt;1.63&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.62&lt;/strong&gt;, -0.01,  0.01<br> -0.00,  &lt;strong&gt;1.53&lt;/strong&gt;,  0.01<br>  0.00, -0.00,  &lt;strong&gt;1.58&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.28&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.26&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.64&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.51&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.18&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.57&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.59&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 ### Example
 
 The example patients seen in Table \@ref(tab:Example-Patient) were passed through our Three-State prediction model and the results for all time-points are shown in figure \@ref(fig:Example-Predictions-trend). The prognosis for all three patients were very different. Patient 1 (20 year old) had a very high probability of survival, with only an 16% chance of mortality by year 10 and 0% chance of commencing RRT. Patient 2 (40 year old) was predicted almost 90% chance of starting RRT, and over 70% chance of dying overall (either with or without RR). Patient 3 (66 year old) had a fast acceleration towards high mortality, after 1 year from the recorded measurements, they had more than 50% chance of dying, and after 2 years that probability rises to over 85% with no chance of RRT.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{figure/Dev_Paper_Example} 
-
-}
-
-\caption{Results of Example Patients}(\#fig:Example-Predictions-trend)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="figure/Dev_Paper_Example.png" alt="Results of Example Patients" width="100%" />
+<p class="caption">(\#fig:Example-Predictions-trend)Results of Example Patients</p>
+</div>
 
 ### Calculator
 
@@ -1290,21 +2832,15 @@ The calculator is available online here:
 
 We have used data provided by SKS to develop a Multi-State Clinical Prediction Model and then validated this model within the SKS and SERPR datasets. Within our Models, the cause of a patient's renal disease had the widest effect on patient outcomes meaning that outcomes are highly dependent on ERA-EDTA classification of the diagnosis. Most groupings resulted in a lowered hazard of death and an increased hazard of RRT compared to the baseline of Systemic diseases.
 
-Models performed well in model validation with the Three-State Model slightly out performing the other two models in calibration and overall predictive ability, however the Five-State model performed marginally better in terms of discriminative ability. Both Multi-State Models outperformed the Two-State (Traditional) Model.
+The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of different outcomes at a wide range of time points. <mark>The model performed well under the scrutiny of validation and thus it can be considered to be reliable to predict state probabilities for patient's futures.</mark> ~~The model~~ It can also be used to estimate an expected amount of time that a patient will be on RRT The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
 
-The application of a Multi-state clinical prediction model to this field is novel and gives a powerful tool for providing individualised predictions of different outcomes at a wide range of time points. The model can also be used to estimate an expected amount of time that a patient will be on RRT The general inclusion criteria for the development dataset, and the wide range of patient ages and measurements allows for the model to be applied to a broad spectrum of patients.
-
-Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients from a wider catchment area, making the cohort of patients in the development population in worse condition than the general population of CKD patients. 
+Although the inclusion criteria for SKS were broad, the demographics of the local area resulted in homogeneity of ethnicity, which may create a limitation to the applicability of our model to non-white patients, <mark>however the contribution of ethnicity to health is intertwined with deprivation level[@jivraj_ethnicity_2013] and the high levels of deprivation in the catchment area of this cohort should account for this[@public_health_england_salford_2017]. The Renal Department at SRFT is a tertiary care facility for CKD sufferers and is well renowned for its capabilities of care meaning that it is likely to attract less-healthy patients from a wider catchment area, making the cohort of patients in the development population in worse condition than the general population of CKD patients. 
 
 There were also high levels of missingness in the eGFR and uPCR rates of changes would also produce a bias, due to these measures likely being missing not at random. The derivation of the validation dataset ensured that all patients had an eGFR Rate measurement; this was done to avoid data missing not at random (only negative or missing data would be available as patient's eGFR dropped to less than 60), however deriving data in this way could itself induce a survivor bias in the start date used for patients.
 
-In the Five-State Model, We omitted the analysis of the Tx to Dead state due to the anticipated low number of events within the SKS dataset. The lowest number of events for a transition was therefore PD to Dead, which had only 107. Altogether, we considered 26 covariates (with 4 categorical covariates) and so this equates to 36 predictor parameters and an events per predictor parameter (EPP) of 2.97. This is below the recommendations of Riley et al [@riley_minimum_2019], whose calculations produce a requirement of 4.54 EPP. This requirement was also not satisfied by the CKD to PD transition (EPP = 6.36,required = 10.2) or the CKD to Tx transition (EPP = 2.97, required = 17.6). Fortunately, this limitation is confined to the Five-State Model.
-
-We have assumed a proportional hazards relationship between the predictors and probability of survival, which is considered by some to be a strong assumption to make, however we acknowledge this limitation, and the authors believe that it is mitigated by the flexibility that the assumption permits. In addition to the general PH assumption, the R-P model requires the assumption that the log cumulative hazard function follows a cubic spline, (however this is a much weaker assumption [@royston_flexible_2002]), which is modelled as part of the regression. We did not assess the viability of these models as it was believed this assumption to make our results more understandable. 
+The R-P models used require the assumption that the log cumulative hazard function follow a cubic spline, however this is a very weak assumption and is assumed to be reasonable in most situations [@royston_flexible_2002] and therefore we did not assess the viability of the cubic spline model. We have avoided the need for the requirements of the proportional hazards assumption by introducing time trends in the estimation of the hazard functions. <mark>This adds complexity to the model, but permits more dynamic and accurate predictions</mark>
 
 Compared to the apparent internal validation, the model performance during the external validation was worse for all metrics. However, once adjusted for optimism, the results were much more cohesive which implies that the model is highly transportable to a new population without much alterations being required. Due to the differences in the healthcare systems of England and Scotland, it can be appreciated that despite the populations being similar, their care would be different enough to emphasise a larger difference between our populations than that shown in our (relatively homogeneous) populations.
-
-
 
 Our paper has clearly demonstrated the accuracy of such a model. However, further research would be needed to establish the effectiveness and efficacy of its use in clinical practice [@moons_prognosis_2009-1] by comparing it to standard care and establishing whether the use of our model improves patient outcomes.
 
@@ -1319,7 +2855,7 @@ All three models produced for this work performed well in terms of accuracy, cal
 
 
 # Conclusion {#chap-conclusion}
-\chaptermark{Conclusion}
+
 Last updated: 21 Apr
 
 Here is where my concluding section will go.
@@ -1336,7 +2872,7 @@ The end.
 
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
-\chaptermark{Competing Risks and Unmeasured Confounding - Supp}
+
 
 ## Simulation Details
 
@@ -1354,7 +2890,7 @@ Due to the relationship between the cause specific hazard functions and the subd
 
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material {#chap-IPCW-logistic-supp}
-\chaptermark{IPCW Calibration-in-the-Large - Supp}
+
 
 ## Calibration Slope
 
@@ -1364,8 +2900,7 @@ The main purpose of this paper was to assess the evaluation of calibration-in-th
 ### Results
 
 
-
-\includegraphics[width=54.68in]{figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5)} 
+<img src="figure/IPCW_Logistic/Slope Only/Plot_b(1)_g(0)_e(0.5)_M(Bias).png" width="1200" />
 
 Results currently show bias/coverage/EmpsE away from 0, rather than 1. Needs fixing. Oops.
 
@@ -1381,7 +2916,7 @@ Brief discussion, much briefer than the main points.
 
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material{#chap-dev-paper-supp}
-\chaptermark{Development and Validation of MSCPM - Supp}
+
 
 ## Statistical Analysis
 
@@ -1420,68 +2955,162 @@ The calibration of each model was assessed using MSM multinomial logistic regres
 
 Table \@ref(tab:PH-Two) shows the proportional hazard ratios for the transitions in the Two-State Model. Older patients have a higher hazard towards death, low adn decreasing eGFR increased hazard as did a history of diabetes. Patients with a primary renal diagnosis included in the ERA-EDTA [@venkat-raman_new_2012] definition of Systemic diseases affecting the kidney had the highest likelihood of death.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:PH-Two){\small Proportional Hazards for each transition in the Two-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & Alive to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.110 (  -0.055,   0.275)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.001,   0.000)\\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -2.853 ( -12.306,   6.599)\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.018,  -0.008)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate & -0.007 (  -0.090,   0.075)\\
-\hspace{1em}log(eGFR Rate) & 0.090 (  -0.199,   0.380)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & \\
-\hspace{1em}uPCR Rate & \\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) & \\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.004 (  -0.000,   0.009)\\
-\hspace{1em}BMI & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.048 (  -0.061,  -0.034)\\
-\hspace{1em}Corrected Calcium & 0.222 (  -0.153,   0.599)\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.011 (  -0.015,  -0.007)\\
-\hspace{1em}Phosphate & 0.338 (   0.119,   0.557)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.172 (  -0.291,  -0.053)\\
-\addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.403 (  -0.908,   0.101)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.226 (  -0.358,  -0.095)\\
-\hspace{1em}Smoker & 0.376 (   0.212,   0.539)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.399 (  -0.728,  -0.070)\\
-\hspace{1em}Glomerular disease & -0.406 (  -0.618,  -0.193)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.220 (  -0.434,  -0.005)\\
-\hspace{1em}Tubulointerstitial disease & -0.452 (  -0.696,  -0.208)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{2}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.144 (   0.022,   0.265)\\
-\hspace{1em}CCF & -0.378 (  -0.505,  -0.252)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.165 (  -0.304,  -0.026)\\
-\hspace{1em}IHD & 0.070 (  -0.059,   0.200)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.240 (  -0.371,  -0.109)\\
-\hspace{1em}CVA & -0.128 (  -0.293,   0.036)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.203 (  -0.330,  -0.076)\\
-\hspace{1em}LD & -0.241 (  -0.573,   0.091)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.299 (  -0.440,  -0.158)\\
-\hspace{1em}HT & -0.080 (  -0.339,   0.177)\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PH-Two)<font size="2">Proportional Hazards for each transition in the Two-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Alive to Dead </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>Age</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.110 (  -0.055,   0.275) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60)<sup>2</sup> </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.001,   0.000) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(Age) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -2.853 ( -12.306,   6.599) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>eGFR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.018,  -0.008) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.007 (  -0.090,   0.075) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(eGFR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.090 (  -0.199,   0.380) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>uPCR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(uPCR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="7"><td colspan="2" style="border-bottom: 1px solid;"><strong>Measures</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> SBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.004 (  -0.000,   0.009) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> BMI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.048 (  -0.061,  -0.034) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Corrected Calcium </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.222 (  -0.153,   0.599) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.011 (  -0.015,  -0.007) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Phosphate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.338 (   0.119,   0.557) </td>
+  </tr>
+  <tr grouplength="1"><td colspan="2" style="border-bottom: 1px solid;"><strong>Gender</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Female </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.172 (  -0.291,  -0.053) </td>
+  </tr>
+  <tr grouplength="3"><td colspan="2" style="border-bottom: 1px solid;"><strong>Smoking Status</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Former (3 years+) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.403 (  -0.908,   0.101) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Non-Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.226 (  -0.358,  -0.095) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.376 (   0.212,   0.539) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="2" style="border-bottom: 1px solid;"><strong>Primary Renal Diagnosis</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Familial / hereditary nephropathies </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.399 (  -0.728,  -0.070) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Glomerular disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.406 (  -0.618,  -0.193) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Miscellaneous renal disorders </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.220 (  -0.434,  -0.005) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Tubulointerstitial disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.452 (  -0.696,  -0.208) </td>
+  </tr>
+  <tr grouplength="10"><td colspan="2" style="border-bottom: 1px solid;"><strong>Comorbidity</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DM </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.144 (   0.022,   0.265) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CCF </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.378 (  -0.505,  -0.252) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> MI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.165 (  -0.304,  -0.026) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.070 (  -0.059,   0.200) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> PVD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.240 (  -0.371,  -0.109) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CVA </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.128 (  -0.293,   0.036) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> COPD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.203 (  -0.330,  -0.076) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> LD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.241 (  -0.573,   0.091) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> ST </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.299 (  -0.440,  -0.158) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> HT </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.080 (  -0.339,   0.177) </td>
+  </tr>
+</tbody>
+</table></div>
 
 Equation \@ref(eq:CH-Two-16) below shows the baseline cumulative hazard functions for the transition from Alive to Dead in the Two-State Model.
 
@@ -1492,66 +3121,178 @@ Equation \@ref(eq:CH-Two-16) below shows the baseline cumulative hazard function
 Table \@ref(tab:IV-Two) shows the results from the internal validation in the Two-State Model. Calibration Intercept is close to 0, implying the model is well calibrated overall with a high c-statistic and Brier Score. Calibration Slope above 1 implies that the model under-estimates outcomes.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:IV-Two){\small Internal Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & < 60 & 0.63 ( 0.62,  0.63) & 0.69 ( 0.69,  0.69) & 0.66 ( 0.66,  0.67) & 0.63 ( 0.62,  0.63)\\
-\hspace{1em}Two & < 30 & 0.71 ( 0.71,  0.72) & 0.68 ( 0.68,  0.69) & 0.66 ( 0.66,  0.66) & 0.63 ( 0.63,  0.64)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & < 60 & 0.82 ( 0.82,  0.82) & 0.85 ( 0.84,  0.85) & 0.81 ( 0.81,  0.81) & 0.81 ( 0.81,  0.82)\\
-\hspace{1em}Two & < 30 & 0.84 ( 0.84,  0.84) & 0.83 ( 0.82,  0.83) & 0.83 ( 0.82,  0.83) & 0.81 ( 0.81,  0.81)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & < 60 & 0.01 ( 0.00,  0.01) & 0.01 ( 0.00,  0.01) & -0.02 (-0.02, -0.01) & -0.00 (-0.01, -0.00)\\
-\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.02) & 0.00 ( 0.00,  0.01) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00, -0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & < 60 & \emph{1.33} & \emph{1.46} & \emph{1.26} & \emph{1.48}\\
-\hspace{1em}Two & < 30 & \emph{1.23} & \emph{1.25} & \emph{1.30} & \emph{1.51}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:IV-Two)<font size="2">Internal Validation of the Two-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.69,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00, -0.00) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.33&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.46&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.26&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.48&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.23&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.30&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.51&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 Table \@ref(tab:EV-Two) shows the results from the external validation in the Two-State Model, which shows similar results to the internal validation with slightly impaired perfomance, which is to be expected in an external validation.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:EV-Two){\small External Validation of the Two-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Two & < 60 & 0.64 ( 0.63,  0.64) & 0.57 ( 0.56,  0.57) & 0.57 ( 0.56,  0.58) & 0.56 ( 0.56,  0.57)\\
-\hspace{1em}Two & < 30 & 0.67 ( 0.66,  0.67) & 0.64 ( 0.63,  0.64) & 0.57 ( 0.56,  0.57) & 0.57 ( 0.56,  0.57)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Two & < 60 & 0.81 ( 0.81,  0.82) & 0.81 ( 0.80,  0.81) & 0.80 ( 0.79,  0.80) & 0.78 ( 0.78,  0.78)\\
-\hspace{1em}Two & < 30 & 0.81 ( 0.81,  0.81) & 0.80 ( 0.80,  0.81) & 0.78 ( 0.78,  0.79) & 0.78 ( 0.78,  0.78)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Two & < 60 & -0.00 (-0.00,  0.00) & 0.02 ( 0.01,  0.02) & 0.00 ( 0.00,  0.01) & -0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & 0.02 ( 0.01,  0.02) & -0.05 (-0.05, -0.04) & 0.01 ( 0.01,  0.02) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Two & < 60 & \emph{1.29} & \emph{1.25} & \emph{1.72} & \emph{2.21}\\
-\hspace{1em}Two & < 30 & \emph{1.37} & \emph{1.37} & \emph{2.05} & \emph{1.88}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:EV-Two)<font size="2">External Validation of the Two-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.57) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.58) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.56 ( 0.56,  0.57) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.57) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.57 ( 0.56,  0.57) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.80,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.79,  0.80) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.78 ( 0.78,  0.78) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.80 ( 0.80,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.78 ( 0.78,  0.79) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.78 ( 0.78,  0.78) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.05 (-0.05, -0.04) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="2"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.29&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.72&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;2.21&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.37&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.37&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;2.05&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.88&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 ### Three State Model
 
@@ -1582,72 +3323,337 @@ Validation results for the Three-State Model can be found in Chapter \@ref(chap-
 
 Table \@ref(tab:PH-Five) shows the proportional hazard ratios for the transitions in the Five-State Model.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
-\newgeometry{margin=2cm}
-\begin{landscape}\begin{table}
-
-\caption{(\#tab:PH-Five){\small Proportional Hazards for each transition in the Five-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{30em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}>{\ttfamily\raggedleft\arraybackslash}p{43em}}
-\toprule
-  & CKD to Dead & CKD to HD & CKD to PD & CKD to Tx & HD to Dead & PD to Dead\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Age}}\\
-\hspace{1em}(Age-60) & 0.161 (  -0.051,   0.374) & -0.029 (  -0.047,  -0.011) & -0.037 (  -0.057,  -0.018) & -0.099 (  -0.127,  -0.072) & 0.069 (   0.051,   0.087) & 0.046 (   0.024,   0.068)\\
-\hspace{1em}(Age-60)\textsuperscript{} & -0.000 (  -0.002,   0.000) & -0.000 (  -0.001,   0.000) & -0.000 (  -0.000,   0.000) & -0.000 (  -0.001,  -0.000) &  & \\
-\rowcolor{gray!6}  \hspace{1em}log(Age) & -5.725 ( -17.969,   6.518) &  &  &  &  & \\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{eGFR}}\\
-\hspace{1em}eGFR & -0.013 (  -0.019,  -0.006) & -0.088 (  -0.105,  -0.071) & -0.112 (  -0.135,  -0.090) & -0.097 (  -0.120,  -0.074) & 0.016 (   0.000,   0.032) & -0.006 (  -0.036,   0.023)\\
-\rowcolor{gray!6}  \hspace{1em}eGFR Rate &  & 0.085 (  -0.058,   0.229) &  & -0.169 (  -0.813,   0.474) & -0.053 (  -0.701,   0.593) & 0.000 (  -0.294,   0.294)\\
-\hspace{1em}log(eGFR Rate) & 0.042 (  -0.125,   0.210) & -0.261 (  -0.798,   0.276) & 0.445 (  -0.280,   1.171) & 0.440 (  -1.371,   2.252) & 0.366 (  -1.344,   2.077) & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{uPCR}}\\
-\hspace{1em}uPCR & 0.125 (  -0.318,   0.569) & 0.738 (   0.024,   1.451) & 0.650 (  -0.906,   2.207) & 0.317 (  -0.606,   1.241) & -0.577 (  -1.317,   0.162) & 0.071 (  -1.109,   1.251)\\
-\hspace{1em}uPCR Rate &  &  & -0.042 (  -0.139,   0.055) & 0.020 (  -0.050,   0.091) & 0.030 (  -0.039,   0.099) & \\
-\rowcolor{gray!6}  \hspace{1em}log(uPCR Rate) &  & -0.097 (  -0.880,   0.685) & 0.740 (  -0.470,   1.950) & -0.244 (  -0.940,   0.450) &  & -0.080 (  -0.515,   0.354)\\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Measures}}\\
-\hspace{1em}SBP & -0.001 (  -0.004,   0.002) & 0.003 (  -0.003,   0.010) & 0.009 (  -0.001,   0.020) &  &  & \\
-\rowcolor{gray!6}  \hspace{1em}DBP & 0.006 (   0.000,   0.013) & 0.007 (  -0.005,   0.021) & 0.007 (  -0.010,   0.025) &  &  & \\
-\hspace{1em}BMI &  & 0.003 (  -0.063,   0.070) &  & -0.019 (  -0.060,   0.021) &  & \\
-\rowcolor{gray!6}  \hspace{1em}Albumin & -0.044 (  -0.064,  -0.024) & -0.040 (  -0.075,  -0.005) & -0.037 (  -0.100,   0.025) &  & -0.050 (  -0.096,  -0.003) & -0.021 (  -0.076,   0.032)\\
-\hspace{1em}Corrected Calcium & 0.280 (  -0.192,   0.752) &  & -1.291 (  -2.494,  -0.089) &  &  & 1.243 (  -0.187,   2.674)\\
-\rowcolor{gray!6}  \hspace{1em}Haemoglobin & -0.013 (  -0.017,  -0.008) & -0.009 (  -0.018,  -0.000) & -0.001 (  -0.016,   0.013) & -0.003 (  -0.016,   0.010) & -0.006 (  -0.017,   0.005) & -0.022 (  -0.037,  -0.006)\\
-\hspace{1em}Phosphate & 0.511 (   0.132,   0.890) & 0.904 (   0.087,   1.721) & 1.042 (  -0.336,   2.421) & 0.578 (  -0.333,   1.491) &  & \\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Gender}}\\
-\hspace{1em}Female & -0.235 (  -0.371,  -0.099) & -0.492 (  -0.754,  -0.230) & -0.156 (  -0.466,   0.154) &  &  & \\
-\addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Smoking Status}}\\
-\hspace{1em}Former (3 years+) & -0.212 (  -0.879,   0.453) & -0.121 (  -1.020,   0.776) & -0.337 (  -1.527,   0.851) & 0.599 (  -0.501,   1.701) & -0.519 (  -1.745,   0.706) & -0.026 (  -1.302,   1.249)\\
-\rowcolor{gray!6}  \hspace{1em}Non-Smoker & -0.198 (  -0.345,  -0.051) & -0.168 (  -0.567,   0.230) & -0.056 (  -0.405,   0.291) & -0.161 (  -0.623,   0.299) & -0.192 (  -0.641,   0.256) & -0.481 (  -1.013,   0.049)\\
-\hspace{1em}Smoker & 0.356 (   0.160,   0.551) & 0.259 (  -0.091,   0.611) & 0.374 (  -0.004,   0.753) & -0.532 (  -1.202,   0.136) & 0.686 (   0.252,   1.120) & 0.136 (  -0.400,   0.674)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Primary Renal Diagnosis}}\\
-\hspace{1em}Familial / hereditary nephropathies & -0.424 (  -0.854,   0.006) & 0.869 (   0.391,   1.348) & 0.982 (   0.466,   1.498) & 1.330 (   0.504,   2.156) & -0.775 (  -1.444,  -0.105) & -0.397 (  -1.214,   0.419)\\
-\hspace{1em}Glomerular disease & -0.394 (  -0.635,  -0.154) & -0.313 (  -0.716,   0.090) & -0.263 (  -0.706,   0.178) & 0.224 (  -0.349,   0.797) & -0.683 (  -1.146,  -0.221) & -0.332 (  -0.994,   0.330)\\
-\rowcolor{gray!6}  \hspace{1em}Miscellaneous renal disorders & -0.263 (  -0.505,  -0.021) & -0.375 (  -0.927,   0.176) & -1.319 (  -2.390,  -0.247) & -1.377 (  -2.859,   0.103) & -0.364 (  -1.039,   0.310) & 0.999 (  -0.340,   2.338)\\
-\hspace{1em}Tubulointerstitial disease & -0.463 (  -0.741,  -0.184) & -0.307 (  -0.788,   0.173) & -0.311 (  -0.904,   0.281) & -0.232 (  -1.130,   0.666) & -0.599 (  -1.247,   0.048) & 0.428 (  -0.427,   1.284)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{7}{l}{\textbf{Comorbidity}}\\
-\hspace{1em}DM & 0.122 (  -0.011,   0.255) & 0.123 (  -0.187,   0.434) &  &  &  & 0.570 (   0.017,   1.124)\\
-\hspace{1em}CCF & -0.394 (  -0.535,  -0.253) & -0.144 (  -0.517,   0.228) & 0.378 (  -0.094,   0.852) & 0.341 (  -0.529,   1.213) & -0.174 (  -0.576,   0.228) & -0.389 (  -0.994,   0.216)\\
-\rowcolor{gray!6}  \hspace{1em}MI & -0.246 (  -0.397,  -0.094) &  & 0.274 (  -0.313,   0.862) & 1.602 (  -0.445,   3.650) & 0.304 (  -0.152,   0.761) & \\
-\hspace{1em}IHD & 0.102 (  -0.041,   0.245) &  & -0.440 (  -0.869,  -0.010) & 0.864 (  -0.634,   2.362) &  & -0.236 (  -0.852,   0.378)\\
-\rowcolor{gray!6}  \hspace{1em}PVD & -0.248 (  -0.394,  -0.103) &  & -0.203 (  -0.631,   0.224) & -0.600 (  -1.318,   0.118) & -0.315 (  -0.697,   0.067) & \\
-\hspace{1em}CVA & -0.070 (  -0.252,   0.111) &  &  & -0.287 (  -1.243,   0.668) &  & -0.833 (  -1.634,  -0.032)\\
-\rowcolor{gray!6}  \hspace{1em}COPD & -0.289 (  -0.433,  -0.145) &  & -0.204 (  -0.563,   0.153) & 0.625 (  -0.101,   1.351) & 0.208 (  -0.189,   0.606) & \\
-\hspace{1em}LD & -0.169 (  -0.578,   0.239) & -0.659 (  -1.157,  -0.160) & -0.320 (  -1.015,   0.373) & 12.426 (-521.602, 546.454) &  & -0.751 (  -1.941,   0.438)\\
-\rowcolor{gray!6}  \hspace{1em}ST & -0.274 (  -0.431,  -0.117) & -0.335 (  -0.777,   0.106) &  &  & -0.184 (  -0.592,   0.223) & -0.419 (  -1.146,   0.306)\\
-\hspace{1em}HT &  & 0.139 (  -0.425,   0.705) & 0.447 (  -0.535,   1.429) & 0.458 (  -0.527,   1.443) &  & -0.920 (  -2.113,   0.271)\\
-\bottomrule
-\end{tabular}
-\end{table}
-\end{landscape}
-\restoregeometry</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:PH-Five)<font size="2">Proportional Hazards for each transition in the Five-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> CKD to Dead </th>
+   <th style="text-align:right;"> CKD to HD </th>
+   <th style="text-align:right;"> CKD to PD </th>
+   <th style="text-align:right;"> CKD to Tx </th>
+   <th style="text-align:right;"> HD to Dead </th>
+   <th style="text-align:right;"> PD to Dead </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>Age</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.161 (  -0.051,   0.374) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.029 (  -0.047,  -0.011) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.037 (  -0.057,  -0.018) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.099 (  -0.127,  -0.072) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.069 (   0.051,   0.087) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.046 (   0.024,   0.068) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> (Age-60)<sup>2</sup> </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.002,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.001,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.000,   0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.000 (  -0.001,  -0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(Age) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -5.725 ( -17.969,   6.518) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>eGFR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.019,  -0.006) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.088 (  -0.105,  -0.071) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.112 (  -0.135,  -0.090) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.097 (  -0.120,  -0.074) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.016 (   0.000,   0.032) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.036,   0.023) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> eGFR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.085 (  -0.058,   0.229) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.169 (  -0.813,   0.474) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.053 (  -0.701,   0.593) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.000 (  -0.294,   0.294) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(eGFR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.042 (  -0.125,   0.210) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.261 (  -0.798,   0.276) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.445 (  -0.280,   1.171) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.440 (  -1.371,   2.252) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.366 (  -1.344,   2.077) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>uPCR</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.125 (  -0.318,   0.569) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.738 (   0.024,   1.451) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.650 (  -0.906,   2.207) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.317 (  -0.606,   1.241) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.577 (  -1.317,   0.162) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.071 (  -1.109,   1.251) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> uPCR Rate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.042 (  -0.139,   0.055) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.020 (  -0.050,   0.091) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.030 (  -0.039,   0.099) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> log(uPCR Rate) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.097 (  -0.880,   0.685) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.740 (  -0.470,   1.950) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.244 (  -0.940,   0.450) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.080 (  -0.515,   0.354) </td>
+  </tr>
+  <tr grouplength="7"><td colspan="7" style="border-bottom: 1px solid;"><strong>Measures</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> SBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.004,   0.002) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.003 (  -0.003,   0.010) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.009 (  -0.001,   0.020) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DBP </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.006 (   0.000,   0.013) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (  -0.005,   0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.007 (  -0.010,   0.025) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> BMI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.003 (  -0.063,   0.070) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.019 (  -0.060,   0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Albumin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.044 (  -0.064,  -0.024) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.040 (  -0.075,  -0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.037 (  -0.100,   0.025) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.050 (  -0.096,  -0.003) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.021 (  -0.076,   0.032) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Corrected Calcium </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.280 (  -0.192,   0.752) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -1.291 (  -2.494,  -0.089) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.243 (  -0.187,   2.674) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Haemoglobin </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.013 (  -0.017,  -0.008) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.009 (  -0.018,  -0.000) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.001 (  -0.016,   0.013) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.003 (  -0.016,   0.010) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.006 (  -0.017,   0.005) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.022 (  -0.037,  -0.006) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Phosphate </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.511 (   0.132,   0.890) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.904 (   0.087,   1.721) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.042 (  -0.336,   2.421) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.578 (  -0.333,   1.491) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="1"><td colspan="7" style="border-bottom: 1px solid;"><strong>Gender</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Female </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.235 (  -0.371,  -0.099) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.492 (  -0.754,  -0.230) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.156 (  -0.466,   0.154) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr grouplength="3"><td colspan="7" style="border-bottom: 1px solid;"><strong>Smoking Status</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Former (3 years+) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.212 (  -0.879,   0.453) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.121 (  -1.020,   0.776) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.337 (  -1.527,   0.851) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.599 (  -0.501,   1.701) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.519 (  -1.745,   0.706) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.026 (  -1.302,   1.249) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Non-Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.198 (  -0.345,  -0.051) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.168 (  -0.567,   0.230) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.056 (  -0.405,   0.291) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.161 (  -0.623,   0.299) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.192 (  -0.641,   0.256) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.481 (  -1.013,   0.049) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Smoker </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.356 (   0.160,   0.551) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.259 (  -0.091,   0.611) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.374 (  -0.004,   0.753) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.532 (  -1.202,   0.136) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.686 (   0.252,   1.120) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.136 (  -0.400,   0.674) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="7" style="border-bottom: 1px solid;"><strong>Primary Renal Diagnosis</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Familial / hereditary nephropathies </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.424 (  -0.854,   0.006) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.869 (   0.391,   1.348) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.982 (   0.466,   1.498) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.330 (   0.504,   2.156) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.775 (  -1.444,  -0.105) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.397 (  -1.214,   0.419) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Glomerular disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.394 (  -0.635,  -0.154) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.313 (  -0.716,   0.090) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.263 (  -0.706,   0.178) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.224 (  -0.349,   0.797) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.683 (  -1.146,  -0.221) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.332 (  -0.994,   0.330) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Miscellaneous renal disorders </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.263 (  -0.505,  -0.021) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.375 (  -0.927,   0.176) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -1.319 (  -2.390,  -0.247) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -1.377 (  -2.859,   0.103) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.364 (  -1.039,   0.310) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.999 (  -0.340,   2.338) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> Tubulointerstitial disease </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.463 (  -0.741,  -0.184) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.307 (  -0.788,   0.173) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.311 (  -0.904,   0.281) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.232 (  -1.130,   0.666) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.599 (  -1.247,   0.048) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.428 (  -0.427,   1.284) </td>
+  </tr>
+  <tr grouplength="10"><td colspan="7" style="border-bottom: 1px solid;"><strong>Comorbidity</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> DM </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.122 (  -0.011,   0.255) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.123 (  -0.187,   0.434) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.570 (   0.017,   1.124) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CCF </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.394 (  -0.535,  -0.253) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.144 (  -0.517,   0.228) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.378 (  -0.094,   0.852) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.341 (  -0.529,   1.213) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.174 (  -0.576,   0.228) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.389 (  -0.994,   0.216) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> MI </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.246 (  -0.397,  -0.094) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.274 (  -0.313,   0.862) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 1.602 (  -0.445,   3.650) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.304 (  -0.152,   0.761) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> IHD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.102 (  -0.041,   0.245) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.440 (  -0.869,  -0.010) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.864 (  -0.634,   2.362) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.236 (  -0.852,   0.378) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> PVD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.248 (  -0.394,  -0.103) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.203 (  -0.631,   0.224) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.600 (  -1.318,   0.118) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.315 (  -0.697,   0.067) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> CVA </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.070 (  -0.252,   0.111) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.287 (  -1.243,   0.668) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.833 (  -1.634,  -0.032) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> COPD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.289 (  -0.433,  -0.145) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.204 (  -0.563,   0.153) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.625 (  -0.101,   1.351) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.208 (  -0.189,   0.606) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> LD </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.169 (  -0.578,   0.239) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.659 (  -1.157,  -0.160) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.320 (  -1.015,   0.373) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 12.426 (-521.602, 546.454) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.751 (  -1.941,   0.438) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> ST </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.274 (  -0.431,  -0.117) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.335 (  -0.777,   0.106) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.184 (  -0.592,   0.223) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.419 (  -1.146,   0.306) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;width: 30em; " indentlevel="1"> HT </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.139 (  -0.425,   0.705) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.447 (  -0.535,   1.429) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> 0.458 (  -0.527,   1.443) </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;">  </td>
+   <td style="text-align:right;width: 43em; font-family: monospace;"> -0.920 (  -2.113,   0.271) </td>
+  </tr>
+</tbody>
+</table></div>
 
 The equations \@ref(eq:CH-Five-12), \@ref(eq:CH-Five-13), \@ref(eq:CH-Five-14) and \@ref(eq:CH-Five-16) show the baseline cumulative hazard functions from the CKD state to HD, PD, Tx and Dead, respectively. Equation \@ref(eq:CH-Five-26) shows the baseline cumulative hazard function from HD to Dead and Equation \@ref(eq:CH-Five-36) shows the baseline cumulative hazard function from PD to Dead.
 
@@ -1673,114 +3679,449 @@ The equations \@ref(eq:CH-Five-12), \@ref(eq:CH-Five-13), \@ref(eq:CH-Five-14) a
 Table \@ref(tab:IV-Five) shows the results from the internal validation in the Five-State Model. The calibration slope results are shown in a seperate table for both the internal and external validation.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:IV-Five){\small Internal Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & < 60 & 0.74 ( 0.74,  0.75) & 0.72 ( 0.72,  0.72) & 0.67 ( 0.66,  0.67) & 0.69 ( 0.69,  0.69)\\
-\hspace{1em}Five & < 30 & 0.76 ( 0.75,  0.76) & 0.71 ( 0.71,  0.72) & 0.65 ( 0.65,  0.66) & 0.68 ( 0.68,  0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.72 ( 0.72,  0.73) & 0.72 ( 0.72,  0.72) & 0.66 ( 0.66,  0.67) & 0.68 ( 0.68,  0.69)\\
-\hspace{1em}Three & < 30 & 0.72 ( 0.71,  0.72) & 0.74 ( 0.73,  0.74) & 0.67 ( 0.67,  0.68) & 0.69 ( 0.68,  0.69)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.74 ( 0.74,  0.74) & 0.72 ( 0.72,  0.73) & 0.67 ( 0.67,  0.68) & 0.69 ( 0.68,  0.69)\\
-\hspace{1em}Two & < 30 & 0.74 ( 0.73,  0.74) & 0.72 ( 0.72,  0.73) & 0.72 ( 0.71,  0.72) & 0.69 ( 0.69,  0.69)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & < 60 & 0.88 ( 0.88,  0.88) & 0.86 ( 0.85,  0.86) & 0.83 ( 0.83,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Five & < 30 & 0.88 ( 0.87,  0.88) & 0.87 ( 0.87,  0.87) & 0.86 ( 0.86,  0.86) & 0.84 ( 0.84,  0.85)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.87 ( 0.87,  0.87) & 0.87 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Three & < 30 & 0.86 ( 0.86,  0.86) & 0.87 ( 0.87,  0.87) & 0.85 ( 0.85,  0.85) & 0.84 ( 0.84,  0.85)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.86 ( 0.86,  0.86) & 0.86 ( 0.86,  0.87) & 0.84 ( 0.84,  0.84) & 0.84 ( 0.84,  0.84)\\
-\hspace{1em}Two & < 30 & 0.86 ( 0.86,  0.86) & 0.87 ( 0.87,  0.88) & 0.81 ( 0.81,  0.81) & 0.84 ( 0.84,  0.84)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & < 60 & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\  0.01 ( 0.00,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,  0.01)\\  0.01 ( 0.01,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\  0.00 ( 0.00,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{-0.01 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\ -0.01 (-0.01, -0.00)\\ -0.04 (-0.05, -0.04)\\  0.01 ( 0.00,  0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)}\\
-\hspace{1em}Five & < 30 & \makecell[r]{-0.02 (-0.02, -0.02)\\  0.00 ( 0.00,  0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)\\  0.01 ( 0.01,  0.01)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.01)\\ -0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.01)\\ -0.01 (-0.01, -0.01)\\ -0.00 (-0.00, -0.00)} & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 ( 0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.01,  0.02)\\  0.00 (-0.00,  0.00)\\  0.00 ( 0.00,  0.00)} & \makecell[r]{0.02 ( 0.02,  0.02)\\ -0.02 (-0.02, -0.02)\\  0.02 ( 0.02,  0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\  0.01 ( 0.00,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.00)\\  0.01 ( 0.00,  0.01)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & -0.01 (-0.01, -0.00) & 0.01 ( 0.00,  0.01) & 0.00 (-0.00,  0.00) & -0.00 (-0.01, -0.00)\\
-\hspace{1em}Two & < 30 & -0.03 (-0.03, -0.03) & 0.02 ( 0.01,  0.02) & -0.00 (-0.00,  0.00) & 0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.19},  0.01,  0.01\\ -0.01,  \emph{1.07}, -0.02\\ -0.07,  0.00,  \emph{1.11}} & \makecell[r]{\emph{1.16}, -0.01, -0.01\\ -0.00,  \emph{1.11}, -0.01\\  0.01, -0.00,  \emph{1.35}} & \makecell[r]{\emph{1.24}, -0.00,  0.00\\ -0.07,  \emph{1.28},  0.00\\ -0.03,  0.01,  \emph{1.18}} & \makecell[r]{\emph{1.30},  0.01, -0.00\\  0.00,  \emph{1.29}, -0.00\\ -0.00,  0.00,  \emph{1.32}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.21}, -0.01,  0.01\\ -0.02,  \emph{1.18}, -0.01\\  0.02, -0.01,  \emph{1.15}} & \makecell[r]{\emph{1.12},  0.01,  0.00\\ -0.02,  \emph{1.27},  0.00\\  0.03,  0.04,  \emph{1.18}} & \makecell[r]{\emph{1.34},  0.12, -0.02\\  0.02,  \emph{1.43}, -0.05\\  0.00,  0.09,  \emph{1.19}} & \makecell[r]{\emph{1.27},  0.00, -0.00\\ -0.00,  \emph{1.28},  0.00\\ -0.00, -0.00,  \emph{1.29}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.21} & \emph{1.03} & \emph{1.25} & \emph{1.25}\\
-\hspace{1em}Two & < 30 & \emph{1.05} & \emph{1.16} & \emph{1.38} & \emph{1.28}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:IV-Five)<font size="2">Internal Validation of the Five-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.74,  0.75) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.69,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.76 ( 0.75,  0.76) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.65 ( 0.65,  0.66) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.66 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.73,  0.74) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.74,  0.74) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.74 ( 0.73,  0.74) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.69,  0.69) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.88 ( 0.88,  0.88) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.85,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.88 ( 0.87,  0.88) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.86,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.86 ( 0.86,  0.86) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.88) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.01)<br> -0.01 (-0.01, -0.01)<br>  0.01 ( 0.00,  0.01)<br> -0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01)<br>  0.01 ( 0.01,  0.01)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00)<br>  0.00 ( 0.00,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.00)<br> -0.00 (-0.01, -0.00)<br> -0.01 (-0.01, -0.00)<br> -0.04 (-0.05, -0.04)<br>  0.01 ( 0.00,  0.01)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.02)<br>  0.00 ( 0.00,  0.01)<br> -0.00 (-0.01, -0.00)<br> -0.00 (-0.01, -0.00)<br>  0.01 ( 0.01,  0.01)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br>  0.00 ( 0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br> -0.02 (-0.02, -0.01)<br> -0.00 (-0.00, -0.00)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.01)<br> -0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.01)<br> -0.01 (-0.01, -0.01)<br> -0.00 (-0.00, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br>  0.00 ( 0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02)<br>  0.00 (-0.00,  0.00)<br>  0.00 ( 0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.02)<br> -0.02 (-0.02, -0.02)<br>  0.02 ( 0.02,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00)<br>  0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br>  0.01 ( 0.00,  0.01)<br>  0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.03 (-0.03, -0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.19&lt;/strong&gt;,  0.01,  0.01<br> -0.01,  &lt;strong&gt;1.07&lt;/strong&gt;, -0.02<br> -0.07,  0.00,  &lt;strong&gt;1.11&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.16&lt;/strong&gt;, -0.01, -0.01<br> -0.00,  &lt;strong&gt;1.11&lt;/strong&gt;, -0.01<br>  0.01, -0.00,  &lt;strong&gt;1.35&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.24&lt;/strong&gt;, -0.00,  0.00<br> -0.07,  &lt;strong&gt;1.28&lt;/strong&gt;,  0.00<br> -0.03,  0.01,  &lt;strong&gt;1.18&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.30&lt;/strong&gt;,  0.01, -0.00<br>  0.00,  &lt;strong&gt;1.29&lt;/strong&gt;, -0.00<br> -0.00,  0.00,  &lt;strong&gt;1.32&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt;, -0.01,  0.01<br> -0.02,  &lt;strong&gt;1.18&lt;/strong&gt;, -0.01<br>  0.02, -0.01,  &lt;strong&gt;1.15&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.12&lt;/strong&gt;,  0.01,  0.00<br> -0.02,  &lt;strong&gt;1.27&lt;/strong&gt;,  0.00<br>  0.03,  0.04,  &lt;strong&gt;1.18&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.34&lt;/strong&gt;,  0.12, -0.02<br>  0.02,  &lt;strong&gt;1.43&lt;/strong&gt;, -0.05<br>  0.00,  0.09,  &lt;strong&gt;1.19&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.27&lt;/strong&gt;,  0.00, -0.00<br> -0.00,  &lt;strong&gt;1.28&lt;/strong&gt;,  0.00<br> -0.00, -0.00,  &lt;strong&gt;1.29&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.21&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.03&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.05&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.16&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.38&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.28&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 Table \@ref(tab:EV-Five) shows the results from the external validation in the Five-State Model.
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:EV-Five){\small External Validation of the Five-State Model, results presented as Estimate (95\% CI, where possible)}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{}l>{}l>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r>{\ttfamily}r}
-\toprule
-Predicting & eGFR & One Year & Two Year & Five Year & Average\\
-\midrule
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Brier}}\\
-\hspace{1em}Five & < 60 & 0.70 ( 0.70,  0.71) & 0.72 ( 0.71,  0.72) & 0.64 ( 0.64,  0.65) & 0.63 ( 0.63,  0.64)\\
-\hspace{1em}Five & < 30 & 0.73 ( 0.72,  0.73) & 0.71 ( 0.70,  0.71) & 0.67 ( 0.67,  0.68) & 0.64 ( 0.64,  0.65)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.69 ( 0.68,  0.69) & 0.71 ( 0.71,  0.71) & 0.67 ( 0.66,  0.67) & 0.64 ( 0.63,  0.64)\\
-\hspace{1em}Three & < 30 & 0.69 ( 0.68,  0.69) & 0.68 ( 0.68,  0.69) & 0.63 ( 0.63,  0.64) & 0.63 ( 0.62,  0.63)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.69 ( 0.68,  0.69) & 0.68 ( 0.68,  0.69) & 0.60 ( 0.60,  0.60) & 0.64 ( 0.63,  0.64)\\
-\hspace{1em}Two & < 30 & 0.73 ( 0.72,  0.73) & 0.67 ( 0.67,  0.67) & 0.64 ( 0.63,  0.64) & 0.63 ( 0.63,  0.64)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{c-statistic}}\\
-\hspace{1em}Five & < 60 & 0.85 ( 0.85,  0.85) & 0.85 ( 0.84,  0.85) & 0.82 ( 0.82,  0.82) & 0.82 ( 0.81,  0.82)\\
-\hspace{1em}Five & < 30 & 0.85 ( 0.85,  0.85) & 0.83 ( 0.82,  0.83) & 0.82 ( 0.82,  0.82) & 0.81 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & 0.83 ( 0.83,  0.84) & 0.83 ( 0.82,  0.83) & 0.81 ( 0.81,  0.82) & 0.81 ( 0.81,  0.82)\\
-\hspace{1em}Three & < 30 & 0.87 ( 0.87,  0.87) & 0.84 ( 0.84,  0.84) & 0.82 ( 0.82,  0.82) & 0.82 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.84 ( 0.84,  0.85) & 0.85 ( 0.84,  0.85) & 0.81 ( 0.81,  0.81) & 0.82 ( 0.82,  0.82)\\
-\hspace{1em}Two & < 30 & 0.84 ( 0.83,  0.84) & 0.84 ( 0.84,  0.84) & 0.81 ( 0.81,  0.82) & 0.82 ( 0.81,  0.82)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Intercept}}\\
-\hspace{1em}Five & < 60 & \makecell[r]{-0.01 (-0.01, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\  0.04 ( 0.03,  0.04)\\  0.00 ( 0.00,  0.00)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.01 ( 0.00,  0.01)\\ -0.01 (-0.02, -0.01)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.03, -0.02)\\ -0.01 (-0.01, -0.00)\\  0.01 ( 0.00,  0.01)} & \makecell[r]{0.00 ( 0.00,  0.01)\\ -0.00 (-0.01, -0.00)\\ -0.02 (-0.03, -0.02)\\  0.01 ( 0.01,  0.02)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.01, -0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Five & < 30 & \makecell[r]{0.02 ( 0.01,  0.02)\\ -0.01 (-0.01, -0.00)\\  0.02 ( 0.01,  0.02)\\ -0.02 (-0.03, -0.02)\\  0.03 ( 0.02,  0.03)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{0.02 ( 0.02,  0.03)\\ -0.02 (-0.02, -0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.00, -0.00)\\  0.02 ( 0.02,  0.02)\\ -0.01 (-0.01, -0.00)} & \makecell[r]{0.03 ( 0.02,  0.03)\\  0.00 ( 0.00,  0.01)\\ -0.02 (-0.02, -0.01)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.00,  0.00)\\  0.02 ( 0.01,  0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\  0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)\\ -0.00 (-0.00, -0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Three & < 60 & \makecell[r]{0.00 ( 0.00,  0.00)\\ -0.01 (-0.02, -0.01)\\ -0.02 (-0.02, -0.02)} & \makecell[r]{-0.01 (-0.01, -0.00)\\  0.02 ( 0.02,  0.03)\\  0.01 ( 0.01,  0.02)} & \makecell[r]{0.01 ( 0.00,  0.01)\\ -0.03 (-0.04, -0.03)\\ -0.02 (-0.03, -0.02)} & \makecell[r]{0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\  0.00 (-0.00,  0.00)}\\
-\hspace{1em}Three & < 30 & \makecell[r]{-0.00 (-0.01, -0.00)\\ -0.02 (-0.02, -0.02)\\ -0.03 (-0.04, -0.03)} & \makecell[r]{0.01 ( 0.01,  0.02)\\ -0.00 (-0.01, -0.00)\\ -0.00 (-0.01, -0.00)} & \makecell[r]{0.02 ( 0.02,  0.02)\\ -0.05 (-0.05, -0.04)\\  0.01 ( 0.01,  0.01)} & \makecell[r]{-0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)\\ -0.00 (-0.00,  0.00)}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & 0.00 ( 0.00,  0.01) & -0.02 (-0.02, -0.02) & -0.00 (-0.00,  0.00) & 0.00 (-0.00,  0.00)\\
-\hspace{1em}Two & < 30 & -0.02 (-0.02, -0.01) & 0.02 ( 0.02,  0.03) & 0.01 ( 0.01,  0.01) & -0.00 (-0.00,  0.00)\\
-\rowcolor{gray!6}  \addlinespace[0.3em]
-\multicolumn{6}{l}{\textbf{Slope}}\\
-\hspace{1em}Three & < 60 & \makecell[r]{\emph{1.01}, -0.00, -0.00\\  0.01,  \emph{1.21}, -0.05\\  0.08, -0.05,  \emph{1.22}} & \makecell[r]{\emph{1.40},  0.02, -0.02\\ -0.03,  \emph{1.28}, -0.03\\ -0.07,  0.06,  \emph{1.12}} & \makecell[r]{\emph{1.61}, -0.03,  0.04\\  0.03,  \emph{1.76},  0.00\\  0.04, -0.00,  \emph{1.45}} & \makecell[r]{\emph{1.46}, -0.00, -0.00\\  0.00,  \emph{1.50}, -0.01\\ -0.00, -0.00,  \emph{1.45}}\\
-\hspace{1em}Three & < 30 & \makecell[r]{\emph{1.24}, -0.00, -0.00\\ -0.02,  \emph{1.20}, -0.05\\ -0.01, -0.07,  \emph{1.34}} & \makecell[r]{\emph{1.39},  0.03,  0.00\\ -0.04,  \emph{1.24},  0.04\\ -0.03, -0.01,  \emph{1.18}} & \makecell[r]{\emph{1.28},  0.02,  0.03\\ -0.09,  \emph{1.38},  0.02\\ -0.07, -0.00,  \emph{1.44}} & \makecell[r]{\emph{1.51}, -0.00,  0.00\\  0.00,  \emph{1.41}, -0.00\\ -0.00, -0.00,  \emph{1.47}}\\
-\rowcolor{gray!6}  \hspace{1em}Two & < 60 & \emph{1.38} & \emph{1.12} & \emph{1.25} & \emph{1.46}\\
-\hspace{1em}Two & < 30 & \emph{1.26} & \emph{1.28} & \emph{1.35} & \emph{1.55}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:EV-Five)<font size="2">External Validation of the Five-State Model, results presented as Estimate (95% CI, where possible)</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Predicting </th>
+   <th style="text-align:left;"> eGFR </th>
+   <th style="text-align:right;"> One Year </th>
+   <th style="text-align:right;"> Two Year </th>
+   <th style="text-align:right;"> Five Year </th>
+   <th style="text-align:right;"> Average </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Brier</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.70 ( 0.70,  0.71) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.72 ( 0.71,  0.72) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.64,  0.65) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.73 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.70,  0.71) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.68) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.64,  0.65) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.71 ( 0.71,  0.71) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.66,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.62,  0.63) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.69 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.68 ( 0.68,  0.69) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.60 ( 0.60,  0.60) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.73 ( 0.72,  0.73) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.67 ( 0.67,  0.67) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.64 ( 0.63,  0.64) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.63 ( 0.63,  0.64) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>c-statistic</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.85,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.83 ( 0.82,  0.83) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.87 ( 0.87,  0.87) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.81,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.85 ( 0.84,  0.85) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.81) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.82,  0.82) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.83,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.84 ( 0.84,  0.84) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.81 ( 0.81,  0.82) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.82 ( 0.81,  0.82) </td>
+  </tr>
+  <tr grouplength="6"><td colspan="6" style="border-bottom: 1px solid;"><strong>Intercept</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.01)<br> -0.02 (-0.02, -0.01)<br> -0.02 (-0.02, -0.01)<br>  0.04 ( 0.03,  0.04)<br>  0.00 ( 0.00,  0.00)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01)<br> -0.01 (-0.02, -0.01)<br> -0.01 (-0.02, -0.01)<br> -0.02 (-0.03, -0.02)<br> -0.01 (-0.01, -0.00)<br>  0.01 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01)<br> -0.00 (-0.01, -0.00)<br> -0.02 (-0.03, -0.02)<br>  0.01 ( 0.01,  0.02)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.01, -0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Five </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.01,  0.02)<br> -0.01 (-0.01, -0.00)<br>  0.02 ( 0.01,  0.02)<br> -0.02 (-0.03, -0.02)<br>  0.03 ( 0.02,  0.03)<br>  0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.03)<br> -0.02 (-0.02, -0.01)<br> -0.02 (-0.02, -0.01)<br> -0.00 (-0.00, -0.00)<br>  0.02 ( 0.02,  0.02)<br> -0.01 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.03 ( 0.02,  0.03)<br>  0.00 ( 0.00,  0.01)<br> -0.02 (-0.02, -0.01)<br> -0.00 (-0.01, -0.00)<br> -0.00 (-0.00,  0.00)<br>  0.02 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00)<br>  0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00)<br> -0.00 (-0.00, -0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.00)<br> -0.01 (-0.02, -0.01)<br> -0.02 (-0.02, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.01 (-0.01, -0.00)<br>  0.02 ( 0.02,  0.03)<br>  0.01 ( 0.01,  0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.00,  0.01)<br> -0.03 (-0.04, -0.03)<br> -0.02 (-0.03, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br>  0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.01, -0.00)<br> -0.02 (-0.02, -0.02)<br> -0.03 (-0.04, -0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.02)<br> -0.00 (-0.01, -0.00)<br> -0.00 (-0.01, -0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.02)<br> -0.05 (-0.05, -0.04)<br>  0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00)<br> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 ( 0.00,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.02) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> -0.02 (-0.02, -0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.02 ( 0.02,  0.03) </td>
+   <td style="text-align:right;font-family: monospace;"> 0.01 ( 0.01,  0.01) </td>
+   <td style="text-align:right;font-family: monospace;"> -0.00 (-0.00,  0.00) </td>
+  </tr>
+  <tr grouplength="4"><td colspan="6" style="border-bottom: 1px solid;"><strong>Slope</strong></td></tr>
+<tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.01&lt;/strong&gt;, -0.00, -0.00<br>  0.01,  &lt;strong&gt;1.21&lt;/strong&gt;, -0.05<br>  0.08, -0.05,  &lt;strong&gt;1.22&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.40&lt;/strong&gt;,  0.02, -0.02<br> -0.03,  &lt;strong&gt;1.28&lt;/strong&gt;, -0.03<br> -0.07,  0.06,  &lt;strong&gt;1.12&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.61&lt;/strong&gt;, -0.03,  0.04<br>  0.03,  &lt;strong&gt;1.76&lt;/strong&gt;,  0.00<br>  0.04, -0.00,  &lt;strong&gt;1.45&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.46&lt;/strong&gt;, -0.00, -0.00<br>  0.00,  &lt;strong&gt;1.50&lt;/strong&gt;, -0.01<br> -0.00, -0.00,  &lt;strong&gt;1.45&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Three </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.24&lt;/strong&gt;, -0.00, -0.00<br> -0.02,  &lt;strong&gt;1.20&lt;/strong&gt;, -0.05<br> -0.01, -0.07,  &lt;strong&gt;1.34&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.39&lt;/strong&gt;,  0.03,  0.00<br> -0.04,  &lt;strong&gt;1.24&lt;/strong&gt;,  0.04<br> -0.03, -0.01,  &lt;strong&gt;1.18&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.28&lt;/strong&gt;,  0.02,  0.03<br> -0.09,  &lt;strong&gt;1.38&lt;/strong&gt;,  0.02<br> -0.07, -0.00,  &lt;strong&gt;1.44&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.51&lt;/strong&gt;, -0.00,  0.00<br>  0.00,  &lt;strong&gt;1.41&lt;/strong&gt;, -0.00<br> -0.00, -0.00,  &lt;strong&gt;1.47&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 60 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.38&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.12&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.46&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left; padding-left: 2em;" indentlevel="1"> Two </td>
+   <td style="text-align:left;"> &lt; 30 </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.26&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.28&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.35&lt;/strong&gt; </td>
+   <td style="text-align:right;font-family: monospace;"> &lt;strong&gt;1.55&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 Table \@ref(tab:Five-Valid-Slope) shows the calibration slopes for the model in the internal and external datasets in both the < 60 eGFR and <30 eGFR sub-populations.
 
 
-<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">\begin{table}[!h]
-
-\caption{(\#tab:Five-Valid-Slope){\small Calibration Slope results for both the External and Internal Validation for the Five-State Model}}
-\centering
-\fontsize{7}{9}\selectfont
-\begin{tabular}[t]{>{\raggedright\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}>{\ttfamily\raggedleft\arraybackslash}p{20em}}
-\toprule
-  & Internal < 60 & Internal < 30 & External < 60 & External < 30\\
-\midrule
-\rowcolor{gray!6}  One Year & \emph{1.14}, -0.01,  0.00,  0.02,  0.00,  0.01\newline  -0.00,  \emph{1.09}, -0.05, -0.01,  0.01,  0.00\newline  -0.04,  0.06,  \emph{1.22},  0.02,  0.03,  0.00\newline  -0.06,  0.02,  0.01,  \emph{1.25},  0.00, -0.02\newline  -0.02,  0.03,  0.02, -0.02,  \emph{1.13},  0.00\newline   0.05, -0.04, -0.06, -0.02, -0.00,  \emph{1.30} & \emph{1.07},  0.03,  0.02,  0.02,  0.01, -0.00\newline   0.00,  \emph{1.18},  0.01,  0.00, -0.06,  0.01\newline   0.01,  0.00,  \emph{1.03},  0.00, -0.05,  0.00\newline  -0.04, -0.03, -0.03,  \emph{1.11},  0.01, -0.03\newline   0.00, -0.03, -0.02, -0.02,  \emph{1.15},  0.01\newline   0.02, -0.01,  0.00, -0.00, -0.01,  \emph{1.11} & \emph{1.16},  0.02, -0.00, -0.01,  0.00,  0.06\newline  -0.03,  \emph{1.08}, -0.00, -0.00,  0.04, -0.04\newline  -0.05, -0.02,  \emph{1.18}, -0.04, -0.05,  0.02\newline  -0.01, -0.04, -0.06,  \emph{1.17},  0.00, -0.00\newline  -0.01, -0.02,  0.00, -0.01,  \emph{1.14}, -0.04\newline   0.03, -0.00, -0.03,  0.00,  0.01,  \emph{1.23} & \emph{1.31},  0.02,  0.05, -0.00, -0.01, -0.00\newline   0.02,  \emph{1.16},  0.04,  0.01,  0.04, -0.03\newline   0.04,  0.01,  \emph{1.08},  0.01,  0.01, -0.04\newline  -0.04, -0.04, -0.01,  \emph{1.08}, -0.00, -0.00\newline  -0.02,  0.04, -0.03, -0.03,  \emph{1.27}, -0.00\newline  -0.01,  0.02,  0.03, -0.02,  0.07,  \emph{1.16}\\
-Two Year & \emph{1.42}, -0.05,  0.03, -0.01, -0.05,  0.00\newline   0.02,  \emph{1.12},  0.03, -0.01,  0.03, -0.00\newline   0.01, -0.01,  \emph{1.22}, -0.00,  0.00,  0.04\newline  -0.03,  0.00, -0.05,  \emph{1.21}, -0.01,  0.00\newline  -0.02, -0.03, -0.00, -0.01,  \emph{1.39}, -0.00\newline  -0.03,  0.04,  0.04, -0.00,  0.03,  \emph{1.15} & \emph{1.14}, -0.02,  0.04,  0.02,  0.00, -0.09\newline  -0.01,  \emph{1.10},  0.00, -0.07, -0.01, -0.00\newline  -0.03,  0.02,  \emph{1.12},  0.03,  0.00, -0.04\newline   0.00,  0.02, -0.03,  \emph{1.11}, -0.02,  0.01\newline  -0.00, -0.06, -0.05,  0.02,  \emph{1.11}, -0.03\newline   0.07, -0.01, -0.03,  0.02,  0.04,  \emph{1.18} & \emph{1.25},  0.02,  0.01,  0.02, -0.07,  0.02\newline   0.00,  \emph{1.39},  0.08, -0.03,  0.02,  0.05\newline  -0.01, -0.01,  \emph{1.26},  0.04, -0.04,  0.03\newline  -0.00, -0.00, -0.10,  \emph{1.21}, -0.04,  0.02\newline  -0.02, -0.02,  0.02, -0.08,  \emph{1.20}, -0.00\newline  -0.04,  0.00, -0.05,  0.02, -0.06,  \emph{1.44} & \emph{1.39}, -0.04,  0.00, -0.00,  0.01, -0.01\newline  -0.06,  \emph{1.31},  0.03,  0.00,  0.02, -0.06\newline   0.00, -0.02,  \emph{1.14},  0.01, -0.04,  0.04\newline   0.01, -0.02,  0.00,  \emph{1.37}, -0.03,  0.00\newline   0.04, -0.02, -0.00, -0.01,  \emph{1.34},  0.02\newline  -0.02,  0.02, -0.03, -0.02, -0.01,  \emph{1.32}\\
-\rowcolor{gray!6}  Five Year & \emph{1.22}, -0.00,  0.05, -0.00, -0.05,  0.05\newline  -0.04,  \emph{1.11}, -0.01,  0.03,  0.04,  0.03\newline   0.02, -0.03,  \emph{1.24}, -0.03, -0.03,  0.01\newline   0.02, -0.03, -0.00,  \emph{1.20}, -0.05,  0.01\newline   0.00,  0.08, -0.00,  0.01,  \emph{1.25}, -0.06\newline   0.01, -0.00, -0.00,  0.03, -0.05,  \emph{1.14} & \emph{1.27},  0.02,  0.02, -0.03,  0.04, -0.06\newline  -0.00,  \emph{1.20}, -0.00,  0.00,  0.04, -0.00\newline  -0.03, -0.02,  \emph{1.22},  0.02,  0.05,  0.03\newline   0.00, -0.02, -0.01,  \emph{1.30}, -0.00,  0.04\newline   0.00, -0.05,  0.00, -0.05,  \emph{1.31},  0.01\newline  -0.01, -0.04, -0.05,  0.02, -0.00,  \emph{1.19} & \emph{1.45}, -0.04,  0.06, -0.07,  0.00,  0.04\newline  -0.01,  \emph{1.31},  0.04,  0.01, -0.01,  0.03\newline   0.01,  0.06,  \emph{1.50},  0.01,  0.02, -0.00\newline  -0.01,  0.00,  0.08,  \emph{1.56},  0.02,  0.01\newline  -0.09,  0.01, -0.02, -0.06,  \emph{1.47}, -0.00\newline  -0.03,  0.04,  0.07,  0.08,  0.01,  \emph{1.35} & \emph{1.32},  0.04, -0.04, -0.01, -0.02,  0.03\newline  -0.06,  \emph{1.21},  0.01,  0.00, -0.06, -0.01\newline   0.01, -0.08,  \emph{1.70},  0.04, -0.03, -0.05\newline  -0.01,  0.03, -0.02,  \emph{1.35}, -0.02,  0.02\newline  -0.05, -0.03,  0.03, -0.04,  \emph{1.43},  0.07\newline   0.01,  0.04, -0.04, -0.01, -0.00,  \emph{1.28}\\
-Average & \emph{1.28},  0.00, -0.00,  0.01,  0.00,  0.00\newline   0.00,  \emph{1.28},  0.00,  0.00, -0.00,  0.01\newline   0.00,  0.01,  \emph{1.25},  0.00, -0.00,  0.00\newline  -0.00,  0.00,  0.00,  \emph{1.28}, -0.00,  0.00\newline  -0.00,  0.00, -0.00,  0.01,  \emph{1.26}, -0.00\newline  -0.00,  0.01,  0.00, -0.00, -0.00,  \emph{1.31} & \emph{1.31},  0.01, -0.00,  0.00,  0.00,  0.00\newline  -0.00,  \emph{1.29}, -0.00,  0.00, -0.00,  0.00\newline  -0.00,  0.00,  \emph{1.30}, -0.00, -0.00, -0.00\newline   0.00, -0.00, -0.00,  \emph{1.28},  0.00, -0.01\newline   0.00,  0.00,  0.00,  0.00,  \emph{1.27}, -0.01\newline   0.01, -0.00, -0.00, -0.00,  0.00,  \emph{1.28} & \emph{1.46},  0.01, -0.00,  0.00, -0.01,  0.00\newline   0.01,  \emph{1.46},  0.01,  0.00, -0.00, -0.00\newline  -0.00,  0.00,  \emph{1.54}, -0.01,  0.00, -0.00\newline   0.00, -0.02,  0.00,  \emph{1.51}, -0.00,  0.01\newline  -0.01,  0.00,  0.00, -0.00,  \emph{1.47}, -0.00\newline   0.00, -0.00, -0.00, -0.00, -0.01,  \emph{1.47} & \emph{1.49}, -0.00, -0.00, -0.00, -0.01,  0.01\newline  -0.01,  \emph{1.45}, -0.00,  0.00,  0.00, -0.00\newline   0.00, -0.00,  \emph{1.44},  0.01, -0.00, -0.01\newline   0.00, -0.00,  0.01,  \emph{1.47}, -0.00,  0.00\newline  -0.00, -0.00, -0.00,  0.00,  \emph{1.47},  0.01\newline   0.00, -0.00, -0.00, -0.00,  0.00,  \emph{1.44}\\
-\bottomrule
-\end{tabular}
-\end{table}</div>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; "><table class="table table-striped table" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">(\#tab:Five-Valid-Slope)<font size="2">Calibration Slope results for both the External and Internal Validation for the Five-State Model</font>
+</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Internal &lt; 60 </th>
+   <th style="text-align:right;"> Internal &lt; 30 </th>
+   <th style="text-align:right;"> External &lt; 60 </th>
+   <th style="text-align:right;"> External &lt; 30 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;width: 20em; "> One Year </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.14&lt;/strong&gt;, -0.01,  0.00,  0.02,  0.00,  0.01<br> -0.00,  &lt;strong&gt;1.09&lt;/strong&gt;, -0.05, -0.01,  0.01,  0.00<br> -0.04,  0.06,  &lt;strong&gt;1.22&lt;/strong&gt;,  0.02,  0.03,  0.00<br> -0.06,  0.02,  0.01,  &lt;strong&gt;1.25&lt;/strong&gt;,  0.00, -0.02<br> -0.02,  0.03,  0.02, -0.02,  &lt;strong&gt;1.13&lt;/strong&gt;,  0.00<br>  0.05, -0.04, -0.06, -0.02, -0.00,  &lt;strong&gt;1.30&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.07&lt;/strong&gt;,  0.03,  0.02,  0.02,  0.01, -0.00<br>  0.00,  &lt;strong&gt;1.18&lt;/strong&gt;,  0.01,  0.00, -0.06,  0.01<br>  0.01,  0.00,  &lt;strong&gt;1.03&lt;/strong&gt;,  0.00, -0.05,  0.00<br> -0.04, -0.03, -0.03,  &lt;strong&gt;1.11&lt;/strong&gt;,  0.01, -0.03<br>  0.00, -0.03, -0.02, -0.02,  &lt;strong&gt;1.15&lt;/strong&gt;,  0.01<br>  0.02, -0.01,  0.00, -0.00, -0.01,  &lt;strong&gt;1.11&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.16&lt;/strong&gt;,  0.02, -0.00, -0.01,  0.00,  0.06<br> -0.03,  &lt;strong&gt;1.08&lt;/strong&gt;, -0.00, -0.00,  0.04, -0.04<br> -0.05, -0.02,  &lt;strong&gt;1.18&lt;/strong&gt;, -0.04, -0.05,  0.02<br> -0.01, -0.04, -0.06,  &lt;strong&gt;1.17&lt;/strong&gt;,  0.00, -0.00<br> -0.01, -0.02,  0.00, -0.01,  &lt;strong&gt;1.14&lt;/strong&gt;, -0.04<br>  0.03, -0.00, -0.03,  0.00,  0.01,  &lt;strong&gt;1.23&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.31&lt;/strong&gt;,  0.02,  0.05, -0.00, -0.01, -0.00<br>  0.02,  &lt;strong&gt;1.16&lt;/strong&gt;,  0.04,  0.01,  0.04, -0.03<br>  0.04,  0.01,  &lt;strong&gt;1.08&lt;/strong&gt;,  0.01,  0.01, -0.04<br> -0.04, -0.04, -0.01,  &lt;strong&gt;1.08&lt;/strong&gt;, -0.00, -0.00<br> -0.02,  0.04, -0.03, -0.03,  &lt;strong&gt;1.27&lt;/strong&gt;, -0.00<br> -0.01,  0.02,  0.03, -0.02,  0.07,  &lt;strong&gt;1.16&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 20em; "> Two Year </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.42&lt;/strong&gt;, -0.05,  0.03, -0.01, -0.05,  0.00<br>  0.02,  &lt;strong&gt;1.12&lt;/strong&gt;,  0.03, -0.01,  0.03, -0.00<br>  0.01, -0.01,  &lt;strong&gt;1.22&lt;/strong&gt;, -0.00,  0.00,  0.04<br> -0.03,  0.00, -0.05,  &lt;strong&gt;1.21&lt;/strong&gt;, -0.01,  0.00<br> -0.02, -0.03, -0.00, -0.01,  &lt;strong&gt;1.39&lt;/strong&gt;, -0.00<br> -0.03,  0.04,  0.04, -0.00,  0.03,  &lt;strong&gt;1.15&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.14&lt;/strong&gt;, -0.02,  0.04,  0.02,  0.00, -0.09<br> -0.01,  &lt;strong&gt;1.10&lt;/strong&gt;,  0.00, -0.07, -0.01, -0.00<br> -0.03,  0.02,  &lt;strong&gt;1.12&lt;/strong&gt;,  0.03,  0.00, -0.04<br>  0.00,  0.02, -0.03,  &lt;strong&gt;1.11&lt;/strong&gt;, -0.02,  0.01<br> -0.00, -0.06, -0.05,  0.02,  &lt;strong&gt;1.11&lt;/strong&gt;, -0.03<br>  0.07, -0.01, -0.03,  0.02,  0.04,  &lt;strong&gt;1.18&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.25&lt;/strong&gt;,  0.02,  0.01,  0.02, -0.07,  0.02<br>  0.00,  &lt;strong&gt;1.39&lt;/strong&gt;,  0.08, -0.03,  0.02,  0.05<br> -0.01, -0.01,  &lt;strong&gt;1.26&lt;/strong&gt;,  0.04, -0.04,  0.03<br> -0.00, -0.00, -0.10,  &lt;strong&gt;1.21&lt;/strong&gt;, -0.04,  0.02<br> -0.02, -0.02,  0.02, -0.08,  &lt;strong&gt;1.20&lt;/strong&gt;, -0.00<br> -0.04,  0.00, -0.05,  0.02, -0.06,  &lt;strong&gt;1.44&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.39&lt;/strong&gt;, -0.04,  0.00, -0.00,  0.01, -0.01<br> -0.06,  &lt;strong&gt;1.31&lt;/strong&gt;,  0.03,  0.00,  0.02, -0.06<br>  0.00, -0.02,  &lt;strong&gt;1.14&lt;/strong&gt;,  0.01, -0.04,  0.04<br>  0.01, -0.02,  0.00,  &lt;strong&gt;1.37&lt;/strong&gt;, -0.03,  0.00<br>  0.04, -0.02, -0.00, -0.01,  &lt;strong&gt;1.34&lt;/strong&gt;,  0.02<br> -0.02,  0.02, -0.03, -0.02, -0.01,  &lt;strong&gt;1.32&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 20em; "> Five Year </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.22&lt;/strong&gt;, -0.00,  0.05, -0.00, -0.05,  0.05<br> -0.04,  &lt;strong&gt;1.11&lt;/strong&gt;, -0.01,  0.03,  0.04,  0.03<br>  0.02, -0.03,  &lt;strong&gt;1.24&lt;/strong&gt;, -0.03, -0.03,  0.01<br>  0.02, -0.03, -0.00,  &lt;strong&gt;1.20&lt;/strong&gt;, -0.05,  0.01<br>  0.00,  0.08, -0.00,  0.01,  &lt;strong&gt;1.25&lt;/strong&gt;, -0.06<br>  0.01, -0.00, -0.00,  0.03, -0.05,  &lt;strong&gt;1.14&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.27&lt;/strong&gt;,  0.02,  0.02, -0.03,  0.04, -0.06<br> -0.00,  &lt;strong&gt;1.20&lt;/strong&gt;, -0.00,  0.00,  0.04, -0.00<br> -0.03, -0.02,  &lt;strong&gt;1.22&lt;/strong&gt;,  0.02,  0.05,  0.03<br>  0.00, -0.02, -0.01,  &lt;strong&gt;1.30&lt;/strong&gt;, -0.00,  0.04<br>  0.00, -0.05,  0.00, -0.05,  &lt;strong&gt;1.31&lt;/strong&gt;,  0.01<br> -0.01, -0.04, -0.05,  0.02, -0.00,  &lt;strong&gt;1.19&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.45&lt;/strong&gt;, -0.04,  0.06, -0.07,  0.00,  0.04<br> -0.01,  &lt;strong&gt;1.31&lt;/strong&gt;,  0.04,  0.01, -0.01,  0.03<br>  0.01,  0.06,  &lt;strong&gt;1.50&lt;/strong&gt;,  0.01,  0.02, -0.00<br> -0.01,  0.00,  0.08,  &lt;strong&gt;1.56&lt;/strong&gt;,  0.02,  0.01<br> -0.09,  0.01, -0.02, -0.06,  &lt;strong&gt;1.47&lt;/strong&gt;, -0.00<br> -0.03,  0.04,  0.07,  0.08,  0.01,  &lt;strong&gt;1.35&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.32&lt;/strong&gt;,  0.04, -0.04, -0.01, -0.02,  0.03<br> -0.06,  &lt;strong&gt;1.21&lt;/strong&gt;,  0.01,  0.00, -0.06, -0.01<br>  0.01, -0.08,  &lt;strong&gt;1.70&lt;/strong&gt;,  0.04, -0.03, -0.05<br> -0.01,  0.03, -0.02,  &lt;strong&gt;1.35&lt;/strong&gt;, -0.02,  0.02<br> -0.05, -0.03,  0.03, -0.04,  &lt;strong&gt;1.43&lt;/strong&gt;,  0.07<br>  0.01,  0.04, -0.04, -0.01, -0.00,  &lt;strong&gt;1.28&lt;/strong&gt; </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;width: 20em; "> Average </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.28&lt;/strong&gt;,  0.00, -0.00,  0.01,  0.00,  0.00<br>  0.00,  &lt;strong&gt;1.28&lt;/strong&gt;,  0.00,  0.00, -0.00,  0.01<br>  0.00,  0.01,  &lt;strong&gt;1.25&lt;/strong&gt;,  0.00, -0.00,  0.00<br> -0.00,  0.00,  0.00,  &lt;strong&gt;1.28&lt;/strong&gt;, -0.00,  0.00<br> -0.00,  0.00, -0.00,  0.01,  &lt;strong&gt;1.26&lt;/strong&gt;, -0.00<br> -0.00,  0.01,  0.00, -0.00, -0.00,  &lt;strong&gt;1.31&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.31&lt;/strong&gt;,  0.01, -0.00,  0.00,  0.00,  0.00<br> -0.00,  &lt;strong&gt;1.29&lt;/strong&gt;, -0.00,  0.00, -0.00,  0.00<br> -0.00,  0.00,  &lt;strong&gt;1.30&lt;/strong&gt;, -0.00, -0.00, -0.00<br>  0.00, -0.00, -0.00,  &lt;strong&gt;1.28&lt;/strong&gt;,  0.00, -0.01<br>  0.00,  0.00,  0.00,  0.00,  &lt;strong&gt;1.27&lt;/strong&gt;, -0.01<br>  0.01, -0.00, -0.00, -0.00,  0.00,  &lt;strong&gt;1.28&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.46&lt;/strong&gt;,  0.01, -0.00,  0.00, -0.01,  0.00<br>  0.01,  &lt;strong&gt;1.46&lt;/strong&gt;,  0.01,  0.00, -0.00, -0.00<br> -0.00,  0.00,  &lt;strong&gt;1.54&lt;/strong&gt;, -0.01,  0.00, -0.00<br>  0.00, -0.02,  0.00,  &lt;strong&gt;1.51&lt;/strong&gt;, -0.00,  0.01<br> -0.01,  0.00,  0.00, -0.00,  &lt;strong&gt;1.47&lt;/strong&gt;, -0.00<br>  0.00, -0.00, -0.00, -0.00, -0.01,  &lt;strong&gt;1.47&lt;/strong&gt; </td>
+   <td style="text-align:right;width: 20em; font-family: monospace;"> &lt;strong&gt;1.49&lt;/strong&gt;, -0.00, -0.00, -0.00, -0.01,  0.01<br> -0.01,  &lt;strong&gt;1.45&lt;/strong&gt;, -0.00,  0.00,  0.00, -0.00<br>  0.00, -0.00,  &lt;strong&gt;1.44&lt;/strong&gt;,  0.01, -0.00, -0.01<br>  0.00, -0.00,  0.01,  &lt;strong&gt;1.47&lt;/strong&gt;, -0.00,  0.00<br> -0.00, -0.00, -0.00,  0.00,  &lt;strong&gt;1.47&lt;/strong&gt;,  0.01<br>  0.00, -0.00, -0.00, -0.00,  0.00,  &lt;strong&gt;1.44&lt;/strong&gt; </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 
@@ -1800,7 +4141,7 @@ delete "References" and replace it.
 -->
 
 # References {-}
-\chaptermark{References}
+
 
 <!--
 This manually sets the header for this unnumbered chapter.

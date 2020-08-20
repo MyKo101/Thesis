@@ -9,8 +9,8 @@ advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambi
 department: 'School of Health Sciences'
 degree: 'PhD Medicine'
 title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
-knit: MyThesis::MyRender
-#knit: MyThesis::simple_render
+#knit: MyThesis::MyRender
+knit: MyThesis::Gitbook_Render
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
@@ -26,14 +26,14 @@ output:
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
-# use code similar to line 22-23 for the .RMD files. If you are NOT producing a PDF, you can delete or silence lines 21-32 in this YAML header.
+# use code similar to line 22-23 for the .RMD files. If you are NO T producing a PDF, you can delete or silence lines 21-32 in this YAML header.
 abstract: |
-  `r prelim_Subsection("all","abstract")`
+  `r MyThesis::prelim_Subsection("all","abstract")`
 # If you'd rather include the preliminary content in files instead of inline
 # like below, use a command like that for the abstract above.  Note that a tab is 
 # needed on the line after the `|`.
 acknowledgements: |
-  `r prelim_Subsection("all","acknowledgements")`
+  `r MyThesis::prelim_Subsection("all","acknowledgements")`
 # Specify the location of the bibliography below 
 bibliography: ["bib/thesis.bib","bib/MyCites.bib"]
 biblio-style: "ieee"
@@ -62,7 +62,7 @@ MathJax.Hub.Config({
 });
 </script>
 
-`r fb(gitbook=readLines("header.tex"))`
+
 
 # Introduction {-}
 
@@ -71,7 +71,33 @@ To Do List:
 Write up current draft of other papers
 Add Timeline
 
+MyRender is now outputting 4 different things:
+- Gitbook style html group of files
+- Thesis formatted pdf
+- individual papers as pdf
+- individual papers as Word
+
+Table format:
+
+           |   Combined    | Individual |
+----------------------------------------|
+html       | Yes (gitbook) |            |
+pdf        | Yes (thesis)  |    Yes     |
+word(docx) |               |    Yes     |
+----------------------------------------|
+
+
+
+
+
+`r fb(gitbook=paste0(readLines("header.tex"),collapse="\n"))`
+
+$$
+F(x) = \int f(x) \d x
+$$
 -->
+
+
 
 Welcome to my Thesis. I've used R Markdown to create a gitbook style thesis, as well as a traditional pdf (following the UoM Thesis template). `r fb(gitbook="The pdf version can be downloaded via the menu at the top.", thesis="The html version can be found [here](https://michaelbarrowman.co.uk/thesis).")`
   
@@ -91,4 +117,3 @@ Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/
 `r fb(gitbook="## Abstract {-}")`
 
 `r prelim_Subsection("html","abstract")`
-

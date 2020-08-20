@@ -2,10 +2,10 @@
 % Please edit documentation in R/MyRender.R
 \name{Rendering Functions}
 \alias{Rendering Functions}
-\alias{simple_render}
+\alias{go}
 \title{Temporary knitting functions}
 \usage{
-simple_render(...)
+go(x = NULL, get.comments = F)
 }
 \description{
 functions to render my thesis

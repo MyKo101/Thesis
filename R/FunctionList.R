@@ -121,9 +121,12 @@ add_downloads <- function(filenum)
   
   .files.pdf <- .files[grep("(.)\\.pdf$",.files)]
   .files.tex <- .files[grep("(.)\\.tex$",.files)]
+  .files.docx <- .files[grep("(.)\\.docx$",.files)]
   
-  .res <- paste0("Download as individual paper draft: [pdf](Chapters/",
-                 .files.pdf,"), [tex](Chapters/",.files.tex,")")
+  .res <- paste0("Download as individual paper draft: ",
+                 "[pdf](Chapters/",.files.pdf,"), ",
+                 "[tex](Chapters/",.files.tex,"), ",
+                 "[word](Chapters/",.files.docx,")")
   fb(gitbook=.res)
 }
 

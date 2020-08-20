@@ -1,30 +1,30 @@
 
 # Literature Report {#chap-lit-report}
-`r fb(thesis="\\chaptermark{Literaure Report}")`
-`r Updated(1)`
+`r fb(thesis="\\chaptermark{Literaure Report}")` `r Updated(1)`
+`r html_latex_header()`
+
 
 ## Introduction
 
-
 ## Clinical Prediction Models
 
-The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is definde as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is uaully given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modelling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
+The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is defined as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is usually given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modeling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
 
-Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the ffect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to th definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown subtype of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
+Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the effect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to the definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown sub-type of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
 
 In general, prognosis research can be broken down into four main categories, with three subcategories [@riley_prognosis_2019]:
 
-* Type I: Fundamental prognosis research [@hemingway_prognosis_2013] 
+* Type I: Fundamental prognosis research [@hemingway_prognosis_2013]
 * Type II: Prognostic factor research [@riley_prognosis_2013]
-* Type III: Prognostic model research [@steyerberg_prognosis_2013]
-  * Model development [@royston_prognosis_2009]
-  * Model validation [@altman_prognosis_2009]
-  * Model impact evaluation [@moons_prognosis_2009]
+* Type III: Prognostic model research [@steyerberg_prognosis_2013]  
+* Model development [@royston_prognosis_2009]   
+* Model validation [@altman_prognosis_2009]   
+* Model impact evaluation [@moons_prognosis_2009] 
 * Type IV: Stratified Medicine [@hingorani_prognosis_2013]
 
 For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
 
-The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual deviration of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting `r cc()`.
+The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual derivation of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [@steyerberg_overfitting_2009].
 
 ### Fundamental Prognosis Research
 
@@ -36,15 +36,15 @@ The aim of prognostic factor research (Type II) is to discover which factors are
 
 Predictive factor research can give researchers and clinicians an idea of which patient factors are important when assessing a disease. It is vital to the development of clinical predictive models as without an idea of what covariates *can* affect an outcome, we cannot figure out which variables *will* affect the outcome. For example, `r xx()` demonstrated that `r xx()` is correlated with `r xx()`, which subsequently used as a covariate in the development of the `r xx()` model. Note the use of the word correlate here as prognostic relationships do not have to be causal ones `r cc()`. These factors may indeed represent an underlying causal pathway, but this is not a requirement and it would require aetiological methods to discern whether it were causal or not. For example, when predicting `r xx()`, we can demonstrate that `r xx()` is a prognostic factor, [however since the arrow of causation is `r xx()`] `r xx("OR")` [however since `r xx()` causes both `r xx()` and `r xx()`], the relationship is prognostic, but not causal. `r xx("Previously used Apgar score here, reference 40")`
 
-Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thue prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
+Counter to the idea that prognostic factors aren't always causal, they are *always* confounding factors for the event they predict. Thus prognostic factors should be taken into account when planning clinical trials as if they are wildly misbalanced across the arms (or not accounted for in some other manner), they can cause biases in the results [@riley_prognosis_2013]. Sometimes these factors are so strong that adjusting the results of a clinical trial by the factor can affect, or even reverse the interpretation of the results [@royston_dichotomizing_2006]. If a prognostic factor is causal, then by directly affecting the factor, it can causally affect the outcome. By discovering new prognostic factors, and investigating their causality, we can potentially open the door to new directions of attack for treatments.
 
 It is unfortunate, however, that Riley at al [@riley_systematic_2003-1] found that only 35.5% of prognostic factor studies in paediatric oncology actually reported the size of the effect of the prognostic factor they reported on. This means that very little information can be drawn from these studies. It is also important that prognostic factor research papers consider and report on the implications of the factor they assess such as healthcare costs. These kinds of implications are rarely assessed, especially when compared to drugs or interventions [@riley_prognosis_2013].
 
 ### Prognostic Model Research
 
-Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome [@steyerberg_prognosis_2013] and they are deigned to augment the job of a clinician; and not to completely replace them [@moons_prognosis_2009]. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease [@collins_transparent_2015;~moons_transparent_2015]. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratied medicine approach [@collins_transparent_2015;@moons_transparent_2015]. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is [@moons_prognosis_2009]. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician [@kurella_optimizing_2012]. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
+Predictive factors can be combined into a predictive model, which is a much more specific measurement of the effect of a factor on an outcome [@steyerberg_prognosis_2013] and they are deigned to augment the job of a clinician; and not to completely replace them [@moons_prognosis_2009]. Diagnostic prediction model can be used to indicate whether a patient is likely to need further testing to establish the presence of a disease [@collins_transparent_2015;~moons_transparent_2015]. Prognostic prediction models can be used to decide on further treatment for that patient, whether as a member of a certain risk group, or under a stratified medicine approach [@collins_transparent_2015;@moons_transparent_2015]. Outcomes being assessed in a prediction model should be directly relevant to the patient (such as mortality) or have a direct causal relationship with something that is [@moons_prognosis_2009]. There is a trend of researchers focusing on areas of improvement that are of less significance to the patient than it is to a physician [@kurella_optimizing_2012]. For example, older patient's might prefer to have an improved quality of life than an increase in life expectancy, and thus models should be developed to account for this.
 
-Creating a clinicaly useful model is not as simple as just using some availble data to develop a model, despite what a lot of researchers seem to believe `r cc()`. To quote Steyerberg et al [@steyerberg_prognosis_2013]. " To be useful for clinicia,s a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a mdel might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that, though it worked well in the development population, it would be unwise to apply it to a new population.
+Creating a clinically useful model is not as simple as just using some available data to develop a model, despite what a lot of researchers seem to believe [@chen_overview_2020]. To quote Steyerberg et al [@steyerberg_prognosis_2013]: "To be useful for clinicians a prognostic model needs to provide validated and accurate predictions and to improve patient outcomes and cost-effectiveness of care". This means that, although a model might appear to be useful, its effectiveness is only relevant to the population it was developed in. If your population is different, then the model will behave differently. Bleeker [@bleeker_external_2003] developed a model to predict bacterial infections in febrile children with an unknown source. The model scored well when assessed for the predictive value in the development dataset, however it scored much worse in an external dataset implying that it would be unwise to apply it to a new population.
 
 #### Model Development
 
@@ -52,33 +52,29 @@ The first stage of having a useful model is to develop one. Clinical predictive 
 
 By considering a multivariable approach to prediction models (as opposed to a univariable one), researchers can consider different combinations of predictive factors, usually refered to as potential predictors [@riley_prognosis_2013]. These can include factors where a direct relationship with the disease can be clearly seen, such as tumour size in the prediction of cancer mortality [@haybittle_prognosis_1982], or ones which could have a more general effect on overall health, such as socioeconomic and ethnicity variables [@zaman_social_2008]. By ignoring any previous assumptions about a correlation between these potential predictors and the outcome of interest, we can cast a wider net in our analysis allowing us to catch relationships that might have otherwise been lost [@hanauer_exploring_2009]. Prediction models should take into account as many predictive factors as possible. Demographic data should also be included as these are often found to be confounding factors, variables such as ethnicity and social deprivation risk exacerbating the existing inequality between groups [@hippisley-cox_predicting_2008].
 
+ When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [@peduzzi_importance_1995;@peduzzi_simulation_1996], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [@riley_minimum_2019] based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [@sauerbrei_selection_2007]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [@riley_external_2016; @vergouwe_substantial_2005; @collins_sample_2016]. A systematic review by Counsell et al [@counsell_systematic_2001] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [@riley_minimum_2019] showed that less that `r xx("Pull example from Riley EPV")`. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless [@royston_prognosis_2009]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [@riley_external_2016]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [@riley_external_2016]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
 
-When developing a predictive model, the size of the dataset being used in an important consideration. A typical "rule of thumb" is to have at least 10 events for every potential predictor [@peduzzi_importance_1995;@peduzzi_simulation_1996], know as the Events-per-Variable (EPV). Recently, this number has been superseded by a methods to evaluate a specific required sample size [@riley_minimum_2019] based on Events-per-Predictor (EPP), where categorical variables are transformed into dummy variables prior to calculation (therefore number of predictors is higher than the number of variables). If there aren't enough events to satisfy this criteria, then some potential predictors should be eliminated before any formal analysis takes place (for example using clinical knowledge) [@sauerbrei_selection_2007]. In general, it is also recommended that this development dataset contain at least 100 events (regardless of number of potential predictors) [@riley_external_2016; @vergouwe_substantial_2005; @collins_sample_2016]. A systematic review by Counsell et al [@counsell_systematic_2001] found that out of eighty-three prognostic models for acute stroke, less than 50% of them had more than 10 EPV, and the work by Riley et al [@riley_minimum_2019] showed that less that `r xx("Pull example from Riley EPV")`. Having a low EPV can lead to overfitting of the model which is a concern associated with having a small data set. Overfitting leads to a worse prediction when the model is used on a new population which essentially makes the model useless [@royston_prognosis_2009]. However, just because a dataset is large does not imply that it will be a *good* dataset if the quality of the data is lacking [@riley_external_2016]. Having a large amount of data can lead to predictors being considered statistically significant when in reality they only add a small amount of information to the model [@riley_external_2016]. The size of the effect of a predictor should therefore be taken into account in the final model and, if beneficial, some predictors can be dropped at the final stage.
-
-
-Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun [@riley_external_2016]. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation [@altman_prognosis_2009; @ivanov_predictive_2000]. Derivation of the QRISK2 Score [@hippisley-cox_derivation_2007] (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset. This model was further externally validated [@collins_independent_2012], and its most modern incarnation, QRISK3, performed the external validation in the same paper [@hippisley-cox_development_2017] The Nottingham Prognostic Index (NPI) was trained on the first 500 patients admitted to Nottingham City Hospital after the study began [@haybittle_prognostic_1982] and later validated on the next 320 patients to be admitted [@todd_confirmation_1987], this validation was not performed at the same time as the initial development and is thus an external validation.
+ Large datasets can be used for both development and validation if an effective subset is chosen. This subset should not be random or data driven and should be decided before data analysis is begun [@riley_external_2016]. Randomly splitting a dataset set into a training set (for development) and a testing set (for internal validation) can result in optimistic results in the validation process in the testing set. This is due to the random nature of the splitting causing the two populations to be too exchangeable, which is similar to the logic behind the splitting of patients in a Randomised Control Trial (RCT). Splitting the population by a specific characteristic (such as geographic location or time period) can result in a better internal validation [@altman_prognosis_2009; @ivanov_predictive_2000]. Derivation of the QRISK2 Score [@hippisley-cox_derivation_2007] (known later as QRISK2-2008) randomly assigned two thirds of practices to the derivation dataset and the remainder to the validation dataset. This model was further externally validated [@collins_independent_2012], and its most modern incarnation, QRISK3, performed the external validation in the same paper [@hippisley-cox_development_2017] The Nottingham Prognostic Index (NPI) was trained on the first 500 patients admitted to Nottingham City Hospital after the study began [@haybittle_prognostic_1982] and later validated on the next 320 patients to be admitted [@todd_confirmation_1987], this validation was not performed at the same time as the initial development and is thus an external validation.
 
 As with any technology, clinicians and researchers should be wary of models becoming outdated [@pate_uncertainty_2019]. Healthcare systems and lifestyles change over time, and so models developed and externally validated in an outdated population will drift [@bhatnagar_epidemiology_2015] and so should be updated regularly, as with QRISK [@hippisley-cox_development_2017] or automatically with a dynamic model [@jenkins_dynamic_2018]
 
+ If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources [@liquet_investigating_2012]. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis [@hemingway_prognosis_2013;@riley_external_2016]. Heterogeneity is particularly high when using multiple countries as a source of data [@snell_multivariate_2016] or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors [@hougaard_frailty]. Overlooking of this clustering can lead to incorrect inferences [@liquet_investigating_2012]. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source [@moons_prognosis_2009].
 
-If a sufficient amount of data is available and it has been taken from multiple sources (practices, clinics or studies), then it should be clustered to account for heterogeneity across sources [@liquet_investigating_2012]. It is important that any sources of potential variability are identified (such as heterogeneity between centres) as this can have an impact on the results of any analysis [@hemingway_prognosis_2013;@riley_external_2016]. Heterogeneity is particularly high when using multiple countries as a source of data [@snell_multivariate_2016] or if a potential predictor is of a subjective nature, which leads to discrepancies between assessors [@hougaard_frailty]. Overlooking of this clustering can lead to incorrect inferences [@liquet_investigating_2012]. The generalisability of the sources of data should also be considered in the development of a model. For example, the inclusion and exclusion criteria of an RCT can greatly reduce generalisability if used as a data source [@moons_prognosis_2009].
+During development of any model, using only patients for whom all data is available
 
 <!-- Removed paragraph on missing data --->
 
-A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [@royston_prognosis_2009]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail [@collins_transparent_2015;@moons_transparent_2015]. Potential predictors with high levels of missingness should be excludes as this missingness can introduce bias [@royston_prognosis_2009]. One key fact that many experts agree on is that categoriation of continuous predictors should be avoided `r cc("LOADS")` as it retains much more predictive information. The cut-points of these categorisations lead to artificial jumps in the outcome risk [@sauerbrei_selection_2007]. It is also worth noting that cut-points are often either arbitrarily decided or data-driven with the latter leading to overfitting [@sauerbrei_selection_2007]. If categorisation is performed, clear rationale should be provided with an ackowledgement that this wil reduce performance [@lagakos_effects_1988;@collins_systematic_2013]. When applying a model to a new population, extrapolation of a model should be avoided [@eberhart_applicability_1988] and so to aid in this, the ranges of continuous variables, and the considered values of categorical variables should be reported [@collins_systematic_2013]. this is especially true for age. QRISK2 was derived in a population ranging from 35 to 74 years of ages and so should not have been applied to patients out of this range [@hippisley-cox_predicting_2008]. This ranges was later extended with the updated version [@hippisley-cox_advantages_2011] and currently can be applied to patients aged 25-84 `r xx("Update with QRISK3")`.
+A prediction model researcher needs to select clinically relevant potential predictors for use in the development of the model [@royston_prognosis_2009]. Once chosen, researchers need to be very specific about how these variables are treated. Any adjustments from the raw data should be reported in detail [@collins_transparent_2015;@moons_transparent_2015]. Potential predictors with high levels of missingness should be excludes as this missingness can introduce bias [@royston_prognosis_2009]. One key fact that many experts agree on is that categoriation of continuous predictors should be avoided [@@royston_dichotomizing_2006] as it retains much more predictive information. The cut-points of these categorisations lead to artificial jumps in the outcome risk [@sauerbrei_selection_2007]. It is also worth noting that cut-points are often either arbitrarily decided or data-driven with the latter leading to overfitting [@sauerbrei_selection_2007]. If categorisation is performed, clear rationale should be provided with an ackowledgement that this wil reduce performance [@lagakos_effects_1988;@collins_systematic_2013]. When applying a model to a new population, extrapolation of a model should be avoided [@eberhart_applicability_1988] and so to aid in this, the ranges of continuous variables, and the considered values of categorical variables should be reported [@collins_systematic_2013]. this is especially true for age. QRISK2 was derived in a population ranging from 35 to 74 years of ages and so should not have been applied to patients out of this range [@hippisley-cox_predicting_2008]. This ranges was later extended with the updated version [@hippisley-cox_advantages_2011] and currently can be applied to patients aged 25-84 `r xx("Update with QRISK3")`.
 
 When building a prediction model, we begin with a certain pool of potential predictors and try to establish which to include in the final model [@sauerbrei_selection_2007]. With $k$ candidate variables, we have $2^k$ possible choices which can get unwieldy even for low values of $k$, with only 10 predictors (a very reasonable number), there are over 1,000 combinations. This doesn't include interactions or non-linear components which increases this number even more. Therefore, model-building techniques are important for anybody attempting to build an accurate prediction model. It is currently undecided what the "best" way to select predictors in a multivariable model is or even if it exists [@sauerbrei_selection_2007]. One method that researchers use to decide on which predictors to include is to analyse each potential predictor individually for a correlation with the outcome in a univariable analysis and keeping those which are considered to have a statistically significant correlation. The general consensus amongst researchers is that predictors should not be excluded in this way [@royston_prognosis_2009]. Univariables analysis does not account for any dependencies between potential predictors and so any cross correlations that exists between them can cause a bias in the results. Despite its clear weaknesses, any prognostic studies still use univariable analysis to build their models [@riley_reporting_2003].
 
-<!-- Removed paragraph of NPI -->
+The NPI predictive model includes lymph-node stage, tumour size and pathological grade to identify patients with a poor prognosis with much better discrimination that would be possible if only one of these factors were used in isolation `r LR(5)`. The development of the model began with nine potenial predictors, of which three were considered to be statistically significant in a Cox model `r LR(73)` and so were included in the final model which was simplified to $I = 0.2\times\textrm{size (in cm)} + \textrm{stage} + \textrm{grade}$.
 
-Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5%) one at a time untill all remaining variables are significant. Forward selection begins wth no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exxlucde more variables [@royston_prognosis_2009]. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima [@mantel_why_1970]. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models `r cc("p-values be bad reference")`. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e. make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
+Backwards elimination (BE) involves starting with all potential predictors in the model and removing ones which do not reach a certain level of statistical significant (for example, 5%) one at a time until all remaining variables are significant. Forward selection begins with no variables and adds one a a time based on similar criteria. Under either of these methods, a lower significance level will exlucde more variables [@royston_prognosis_2009]. Backward elimination of variables is preferable over forward selection as users are less likely to end up in local minima [@mantel_why_1970]. A variant of these techniques is to use the Akaike Information Criteria (AIC) rather than statistical significance. This method avoids the comparison to p-values and so is often preferable to build robust models [@hubbarb_why_2008]. For this method, to establish which predictors should be removed at each step, the model is re-built with each of the predictors individually removed, and the AIC is calculated. The model with the lowest AIC is chosen to be the new model and the process is repeated. This process is repeated until the removal of a predictor would increase the AIC (i.e. make the model's fit worse). This same technique can be applied to a forward selection style model or, if the computing power is available, a backward-forward elimination technique were predictors are added or removed at each stage. The advantage of this method is that it avoids local minima better by trying more combinations.
 
-It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g. logarithms, sqauring) or using fractional polynomials `r LR("7 or 76?")`. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly `r LR(4)`. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by `r LR(40)`. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care `r LR(3)`. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements `r cc("Rose's Work")`.
+It is also important to assess non-linearity relationships between variables and outcomes to ensure the relationship is accurately modeled. This can be done using standard transformations (e.g. logarithms, squaring) or using fractional polynomials [@royston_use_1999]. Interactions between terms also need to be checked for the same reasons, and when interactions are strong, it may be useful to completely stratify by a factor, rather than including as a covariate in the model. Strong interactions can be an indicator for a differential response amongst populations and so should be investigated directly [@aroon_prognosis_2013]. If a predictor is expensive or invasive, it may be better to include a less significant predictor which is easier to come by [@moons_prognosis_2009]. A limiting factor for some prognostic models is that the prognostic factors they measure are not readily available or are not used in routine care [@steyerberg_prognosis_2013]. The measurement (or lack thereof) can also be an indicator of patient health and so researchers need to be aware of these causal links when analysing measurements `r cc("Rose's Work")`.
 
-
-Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria`r LR(35)`. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk `r LR(3)`.
-
-<!-- Paragraph regarding groupings in NPI, followed by intergation of QRISK in computer systems-->
+ Once developed, prognostic models can be used to create risk groups for a population. Risk groups should be defined by clinical knowledge rather than statistical criteria [@altman_prognosis_2009]. Grouping patients into risk groups is not as accurate as using the specific model to provide an estimated risk [@steyerberg_prognosis_2013].
 
 
 
@@ -88,27 +84,188 @@ Once developed, prognostic models can be used to create risk groups for a popula
 
 ### Stratified Medicine
 
-### Examples
-
 #### Reviews
 
-Along with the EPV assessment mentioned earlier, Counsell et al's systematic review `r LR(62)` assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
+Along with the EPV assessment mentioned earlier, Counsell et al's systematic review [@counsell_systematic_2001] assessed other criteria related to validity, evaluation and practicality. Of those eighty-three models, only four met their requirements, none of which had been externally validated. The other seven criteria were:
 
-* Adequate inception cohort
-* Less than 10% loss to followup
-* Prospective data collection
-* Valid and reliable outcome
-* Age as a candidate predictor
-* Severity of condition as a candidate predictor
-* Use of stepwise regression
+* Adequate inception cohort * Less than 10% loss to followup * Prospective data collection * Valid and reliable outcome * Age as a candidate predictor * Severity of condition as a candidate predictor * Use of stepwise regression
 
 <!-- Taken from page 8, continue with the other reviews mentioned there --->
 
 ## Competing Risks & Multi-State Models
 
+Many diseases are measured in stages of progression or as types or variants. Often, patients can switch from one of these stages to another whilst they are being studied. If being in a different stage of the disease is believed to affect the way that the patient's condition behaves then it is important to account for this when modeling a disease. The simplest way is to have the disease stage/type as a covariate and ensure that it is updated accurately. However, if it is believed that a disease behaves wildly differently when at different stages, then this might not be feasible, especially if the stage can interact with other covariates. The solution to this is to use MSMs to map patients progression through the different stages of the disease**???**, where each stage is modelled as a state in the MSM.
+
+### Traditional Survival Analysis
+
+From survival analysis, a hazard function is a measure of the intensity of moving from one state to another (whether that is from alive to death, functioning to non-functioning or something more complicated as in an MSM). If we have T be the random variable defining the time of the event (or transition), then a hazard function is usually defined as**???** 
+
+$$
+h(t) = \frac{-\d \log S(t)}{\d t} = \lim_{\Delta t \to 0}\frac{\textrm{Prob}\left(T \le t + \Delta T\,|\,T\ge t\right)}{\Delta t}
+$$
+where $S$ is th survival function, or cumulative probability of having remained in the current state from time $t = 0$. An alternative way of writing this is
+$$
+S(t) = \exp\left(-\int_0^t h(u) \d u\right)
+$$
+We can simplify this equation to $S(t) = \exp\left(H(t)\right)$ if we defined the cumulative hazard function, $H(t)$, to be
+$$
+H(t) = \int_0^t h(u) \d u
+$$
+Two other useful definitions from survival analysis are the probability density function, $f$, and the cumultive distribution function, $F$ which are much more familiar to statisticians and are related to the previously defined functions by:
+$$
+f(t) = \frac{h(t)}{S(t)}\qquad\qquad F(t)=1-S(t)
+$$
+A function that is useful in estimating the survival of a population is the Kaplan-Meier estimate, it is a non-parametrics, empirical estimate of survival and is defined as:
+$$
+\hat{S}(t) = \prod_{j:\;t_j \le t}\left(1 - \frac{d_j}{n_j}\right)
+$$
+In this definition, $t_j$ is the $j$th event time, $n_j$ is the number of patients still at risk at time $t_j$ (i.e those event-free at time this time) and $d_j$ is the number of patients who had an event at time $t_j$. Kaplan-Meier estimates assume independence between the event we are modelling and censoring**???**. See figure \@ref(fig:KM-example) for a typical K-M plot for two populations:
+```{r KM-example, echo=F, fig.cap="Example plot of Kaplan-Meier estimator for two populations"}
+set.seed(10001)
+n <- 100
+beta <- -2
+df <- tibble(id = 1:n,
+             grp = sample(2,n,replace=T)-1,
+             t = 100*rexp(n,exp(-beta*grp))+1) %>%
+        group_by(grp,t) %>%
+        summarise(d=n(),.groups="drop") %>%
+        add_row(grp=0,t=0,d=0,.before=1) %>%
+        add_row(grp=1,t=0,d=0,.before=1) %>%
+        group_by(grp) %>%
+        mutate(n = 1000-cumsum(d) + d,
+               factor = 1-d/n,
+               S_b = cumprod(factor),
+               S_a = lag(S_b)) %>%
+        select(grp,t,S_a,S_b) %>%
+        pivot_longer(c(S_a,S_b),names_to="pre_post",values_to="S") %>%
+        filter(!is.na(S)) %>%
+        arrange(grp,t,pre_post)
+
+ggplot(df,aes(t,S,group=grp)) +
+        geom_line() +
+        #xlim(0,100) +
+        #scale_x_continuous(lim=c(0,100)) +
+        coord_cartesian(xlim=c(0,50),ylim=c(0.945,1)) +
+        scale_color_gradient(low="red",high="blue") +
+        xlab("Time") +
+        ylab("Survival") +
+        theme_minimal() +
+        theme(legend.position = "none",
+              axis.text=element_blank(),
+              axis.line = element_line(arrow=arrow(type="closed",
+                                                   length=unit(0.2,"cm"))),
+              panel.grid=element_blank(),
+              )
+
+```
+
+There are many different kinds of statistical models that can be used to produce clinical prediction models based on the type of data and the shape of the desired output. Many models rely on regression techniques to produce their estimates and these can usually be rearranged into a linear relations of the form:
+$$
+Y = \beta_0 + \beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m = \beta^T Z + \epsilon
+$$
+
+where the $\beta$s are the coefficients found from the data and the $Z$s are the covariates of predictors. The first coefficient, $\beta_0$ is known as the intercept term and gives an idea of the average amongst the population (if the other covariates have been standardised). The final term here, $\epsilon$ is the error term or the residual, when measured across every patient, this error term should follow a Normal distribution and have its standard deviation be as small as possible, $\epsilon \sim N(0,\sigma)$. The $\epsilon$ term will be omitted from further equations, unless required.
+
+The predictors above do not have to be directly from the raw data and can be derived in some way from the data (including via other regression models), and the predicted value here can be transformed by a link functions, usually called $g$ to the actual expected outcome. By choosing the correct transformations and link functions and repeatedly applying these regression, we can form a simple machine learning model [@breiman_statistical_2001]. For example, a logistic model uses the logit function as a link function as seen below:
+$$
+\textrm{logit}(p|Z) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m 
+$$
+The logit function can then be undone to provide a probability that an outcome occurs, such as the probability of a specific prognosis.
+
+Within the realm of survival analysis, we have an extra dimension to include in our calculations, time, and this includes the fact that some patients are not observed after certain dates (i.e censoring). To combat this additional dimension, the most common form of regression in survival analysis, the Cox model[@cox_regression_1972] avoids estimating the intercept altogether and produces proportional hazard estimates for each covariate. The predicted values from the model are positioned within the hazard function, described above and give an idea of how a covariate increases or decreases the hazard of an event:
+$$
+h(t|Z) = h_0(t)\exp\left(\beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m \right)
+$$
+Notice that the intercept has, essentially been swallowed up by the $h_0(t)$ term, which is known as the baseline hazard. This baseline hazard function is not estimated within the Cox modelling regression method and is assumed to be the same for all patients (subject to stratification). This means that estimated values are relative to one another and therefore absolute estimates are not possible with the Cox Model. These relative estimates, written in their expontiated form, $\exp(\beta_j Z_j)$ are known as hazard ratios and are used extensively in clinical trials to compare two groups [@therneau_cox_2000].
+
+To provide any absolute estimates of hazard functions, we need to extend the Cox model and a reliavle method to do this is with the Royston-Parmar Regression technique [@royston_flexible_2002]. This method estimates the hazard ratios in much the same way as the Cox model does, but in the same process, also uses restricted cubic splines on $x=log(t)$ [@mckinley_cubic_nodate] to estimate the log of the cumulative baseline hazard function, or the log-log of the baseline Survival function;
+$$
+\log(-\log(S_0(t|Z))) = \log(H_0(t|Z)) = \gamma_0 + \gamma_1 x + \gamma_2 \nu_1(x) + ... + \gamma_{m+1}\nu_m(x)
+$$
+where the pieces of the the cubic spline are defined as
+$$
+\nu_j(x) = (x-k_j)_+^3 - \lambda_j(x-k_\textrm{min})_+^3 - (1-\lambda_j)(x-k_\textrm{max})_+^3
+$$
+Each of the $k_j$ are the knots used to define the ranges where each cubic piece operates, the models are designed to be cubic between each of these knots and the $\lambda_j$ are defined to restrict the function to be linear outside of the range (below the first knot and above the final knot).
+$$
+\lambda_j = \frac{k_\textrm{max} - k_j}{k_\textrm{max} - k_\textrm{min}}
+$$
+We can also deviate from the proportional hazard requirement by defining the $\gamma$ terms to be dependendent on covariates; this is, of course, done via a linear model and demonstrates an extra layer of regression required to form such models:
+$$
+\gamma_j(Z) = \gamma_{j1}Z_1 + \gamma_{j2}Z_2 + ... +\gamma_{jm}Z_m
+$$
+
+### Competing Risks
+
+A Competing Risk (CR) can be thought of simply as survival analysis where a cause of death, $D \in {1, ..., K}$ is also observed**???**. When patients are recovering from a disease, more than one event can play a role, but often one event is of more interest than the other**???**. This competing event can also prevent the event-of-interest from occurring. For example, if we are modeling discharge from hospital after surgery (event-of-interest), patients can also die whilst in hospital (competing event) which prevents the former from happening. Depending on clinical context, non-administrative right censoring can be modeled as a competing risk**???** because censoring times are not always independent of event times**???**. If healthier patients are less likely to use medical services, then they are more likely to be lost to followup meaning a negative correlation with event time and vice versa if a less healthy person is more likely to leave a study (e.g. they become too ill to continue in the study). If the competing event and event-of-interest are not independent, then this can cause bias in the Kaplan-Meier estimator**???**. Issues can arise with the naive Kaplain-Meier approach in CR, wherein the probability of having the events sum to more than 100%, even though the events can not occur together**???**.
+
+We can adjust the previous definitely for a hazard function to become a cause-specific hazard function as:
+$$
+h_k(t) \lim_{\Delta t \to 0}\frac{\textrm{Prob}\left(T \le t + \Delta T,\,D=k\,|\,T\ge t\right)}{\Delta t}
+$$
+where $k$ is the event we are assessing. Cause specific hazard (CSH) estimates may be found by treating the data as simple survival data and the competing events as a censoring event**???**. In order to translate these into an event-free Survival probability (or marginal survival probability), we need to sum these hazard functions together;
+$$
+S(t) = \textrm{Prob}(T>t) = \exp\left(-\int_0^t \sum_{k=1}^K h_k(u) \d u\right)
+$$
+In traditional survival analysis, the probability of having the event, is simply $F(t) = 1-S(t)$, however since failures can occur from different events, we now have to take this into account by utilising an event specific failure:
+$$
+\mathcal{P}_k(t) = \int_0^t S(u-)h_k(u) \d u
+$$
+This can be broken down as the probabilty of surviving until time $u$, $S(u-)$ and then the instantaneous probability of the event occurring at that time, $\lambda_h(u)$. We integrate this over all the possible event times on the range $(0,t]$. This $\mathcal{P}$ is usually referred to as the cumulative incidence function, CIF. The CIF for a transition depends on all the other transition intensties through the $S(u-)$ component of the integrand**???**. 
+
+The cumulative distribution function, $F$, grows from 0 to 1 as the probability of having had an event increases over time. This assumes that eventually all patients will have the event (and thus $\lim_{t \to \infty}F(t) = 1$). In regards to the cumulative incidence function, patients who have a competing event are precluded from having the event-of-interest and therefore the assumption that all patients will have the event does not hold. For this reason, the CIF is bounded within the range $[0,1)$ and never reaches 1 and is thus known as a subdistribution**???**.
+
+Where we defined the hazard function earlier as the derivative of the log survival, we can define the subdistribution hazard similarly:
+$$
+h(t) = \frac{-\d\log\left(1-F(t)\right)}{\d t} \qquad \qquad \lambda_h(t) = \frac{-\d\log\left(1-\mathcal{P}_h(t)\right)}{\d t} 
+$$
+
+Fine & Gray **???** developed a method analogous to the Cox proportional hazards model for these subdistributions. The Proportional Subdistribution Hazards method (PSHM) calculates the hazard ratios for events occurring based on the CIF, $\mathcal{P}$**???**, and subdistribution hazard where the Cox model uses the cumulative distribution function, $F$**???** and the cause-specific hazard.
+$$
+\tilde{\lambda}_k(t) = \tilde{lambda}_{k0}(t)\exp\left(\beta_k^TZ\right)
+$$
+
+In this context, patients who have the competing event remain in the risk set for having the event-of-interest, however they will never have it, whereas in the CSH, they do not.
+
+
+### Multi-State Models
+
+
 ## Chronic Kidney Disease
+
+ Chronic diseases, especially non-communicable ones, have now become the major cause of morbidity and mortality around the world[@atkins_epidemiology_2005]. In particular, Chronic Kidney Disease (CKD) is a global health concern[@collins_systematic_2013] and is thus a major burden on healthcare utilisation worldwide[@mills_systematic_2015]. This is unsurprising given that, in the UK, 7,411 patients commenced RRT in 2004 alone which equates to a rate of 115 per million people[@gilg_uk_2016]. Part of this prevalence is believed to be increasing due to increased incidences of diabetes[@collins_systematic_2013] which contribute 26.9% of new RRT diagnosis in the UK in 2014[@gilg_uk_2016]. In 2013, the NHS spent 2% of its budget on kidney replacement therapy[@collins_systematic_2013;@ansell_9th_2007] and in 2008, 5.9% of the Medicare expenditure was spent on managing patients with End-Stage Renal Disease (ESRD)[@collins_systematic_2013;@collins_us_2011]. The progression of CKD amongst sufferers is believed to be homogeneous with respect to time**???**, meaning that it increases continuously at steady rate.
+
+CKD treatment typically consists of either palliative care or a type of RRT. In the real world, it is difficult to make decisions on RRT for patients suffering from ESRD since, as with any disease, there is a lot of variability in the individuals[@tamura_optimizing_2012]. This variability is particularly prominent amongst older patients, which leads to variation in treatment methods from different physicians[@ohare_regional_2010]. Because of this, it is important to identify, as early as possible, patients who are likely to progress from CKD to ESRD[@collins_systematic_2013]. Tamura et al[@tamura_optimizing_2012] provides a framework for deciding which RRT patients should receive based on three factors: life expectancy, risks and benefits of competing treatment strategies and patient preference. This framework does not require precision, but rather a general idea of whether a patient is above or below average (median). These three factors allows for three key choices to be made for the patient: choice of dialysis modality (i.e. HD vs PD), choice of vascular access for HD, and whether or not to be referred for kidney transplantation.
+
+Transferring from one dialysis modality to the other initially increases burden on patients and, for the first few weeks, has a higher mortality rate[@tina_shih_impact_2005]. Before beginning HD, patients and physicians must decide on the vascular access method which is basically how the HD will be administered. There are three main methods of vascular access: CVCs, AVFs and AVGs[@tamura_optimizing_2012]. In the US, 80% of patients who are given HD, begin it with a CVC[@foley_hemodialysis_2009]. CVCs are usually used as a temporary placement until a more permanent fistula or graft can be given to the patient[@tamura_optimizing_2012]. However, it can take time for AVF and AVG patency to occur and so their effects are not immediate. Current guidelines recommend using AVFs over AVGs as the method of permanent access which are both preferred over the temporary access provided by CVC, unless HD is predicted to be only a short-term treatment (i.e. because of expected kidney transplant or extremely high expected mortality)[@vascular_access_work_group_clinical_2006]. It is clear that these mortality estimates of patients are currently wildly incorrect as it has been found that two-thirds of deceased patients who had undergone AVF placement had died before it was even used[@richardson_should_2009].
+
+It is suggested that PD gives an early benefit over HD using CVC due to the high infection rates caused by CVC. However, this benefit might be balanced out by the higher risk of modality failure and a common need to transfer to HD later, which merely pushes the higher CVC risk back[@perl_hemodialysis_2011]. In recent years, It has been observed that survival amongst patients given PD has increased to levels similar to HD[@mehrotra_similar_2011], although this is likely biased due to the difference in patient's selected for the each modality[@tamura_optimizing_2012].
+
+Kidney Transplants are often hard to come by as there can be dificulties in finding compatible donors**???**. Living donors provide a better prognosis for recipients than deceased ones, but even deceased-donor transplantation implies a 48-82% decrease in mortality compared to remaining on dialysis**???**. For each patient, donors can be classified as being from a Standard Criteria Donor (SCD) or an Expanded Criteria Donor (ECD) list**???**. An ECD is, as the name implies, a much broader list of patients than appear on an SCD. Using an ECD comes with a shorter time on the waiting list for a transplant, but a higher risk of allograft loss and so a decision must be made about a patient of whether they are at higher risk of mortality if they remain on the waiting list for a longer period of time, or whether the risk of an unsuccessful transplant is worth it[@tamura_optimizing_2012]. As with transfering between dialysis modalities, there is an extremely high increase in risk for the first two weeks after transplantation (compared with staying on dialysis), this risk reduces until 7-8 months after transplantation, where the cumulative mortality of both options becomes equivalent, and afterwards is lower for the transplanted patients[@tamura_optimizing_2012]. It is worth noting that there is no upper age limit on kidney transplantation[@tamura_optimizing_2012] and it has actually been found that kidney transplantation was cost-effective amongst patients over 6530. This makes sense as, for patient's over 65, the average time spent on the waiting list for a new kidney is 7-8 months[@tamura_optimizing_2012].
+
+In the UK in 2014, 71.8% of RRT patients had begun with HD, 20.0% were given PD, 8.2% were lined up to receive a kidney transplant[@gilg_uk_2016]. Of the patients who were initially assigned to received HD in 2009, 54.4% had died by 2014 and 34.4% of those still alive had been transfered to a different modality, PD had a lower mortality rate, 35.1%, but a higher transfer rate, 75.3%[@gilg_uk_2016]. These transitions are demonstrated graphically in Figure 1. Although these numbers do not account for the differences between the patients these two modalities were given to, it shows that there are major differences between modalities and that transitioning between treatments is common. These differences between modalities and the prevalence of transitions line up quite well with the idea of using an MSM as a representation for this process.
 
 ### Clinical Prediction Models
 
-### Multi-State Models
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

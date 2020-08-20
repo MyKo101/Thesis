@@ -11,7 +11,7 @@ The main purpose of this paper was to assess the evaluation of calibration-in-th
 
 
 ```{r SlopePlotg0,echo=F}
-knitr:::include_graphics("figure/IPCW_Logistic/SlopePlot_b(1)_g(0)_e(0.5).png")
+knitr:::include_graphics("figure/IPCW_Logistic/Slope Only/Plot_b(1)_g(0)_e(0.5)_M(Bias).png")
 ```
 
 Results currently show bias/coverage/EmpsE away from 0, rather than 1. Needs fixing. Oops.

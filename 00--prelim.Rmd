@@ -3,12 +3,11 @@
 
 ## Abstract {-}
 
-Insert Abstract Here...
-
+Blah...
 
 ## Acknowledgements {-}
 
-Insert Ackowledgements Here...
+Insert Acknowledgements Here...
 
 <!--
 

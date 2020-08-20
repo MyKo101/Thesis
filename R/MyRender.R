@@ -9,13 +9,6 @@
 #'
 #'
 #' @export
-simple_render <- function(...)
-{
-  requireNamespace("MyThesis",quietly = T)
-  bookdown::render_book(...)
-}
-
-#' @export
 go<- function(x=NULL,get.comments=F)
 {
   devtools::document()
@@ -36,34 +29,46 @@ go<- function(x=NULL,get.comments=F)
 }
 
 #' @export
-MyRender <- function(...)
+Gitbook_Render <- function(...,output_format=bookdown::gitbook())
 {
+  
   requireNamespace("bookdown",quietly=T)
-
-  ff <- list.files()
-  ff <- c(ff[grep("^[0-9]",ff)],"index.Rmd")
-
+  
   if(file.exists("thesis.Rmd"))
   {
     cat("thesis.Rmd found in directory\n")
-
-
+    
+    
     cat("Files have been updated since last render\n")
     file.remove("thesis.Rmd")
     cat("thesis.Rmd has been deleted to continue with render\n")
     Sys.sleep(1)
-
-
+    
+    
   }
-
-
+  
   cat("Starting Render\n")
-  bookdown::render_book(...,output_format = "all",clean=F)
+  bookdown::render_book(...,output_format = output_format,clean=F)
+  
   cat("Full Thesis Rendered\n")
   cat("\n")
+  
+}
+
+#' @export
+MyRender <- function(...)
+{
+  
+  requireNamespace("bookdown",quietly=T)
+  
+  cat("Running GitRender")
+  Gitbook_Render(...,output_format="all")
+  cat("\nGitRender Done. Rendering individual files\n")
+  
 
   ff <- list.files()
   ff <- ff[grep("^[0-9]",ff)]
+  
 
   numlist <- setdiff(unique(substring(ff,1,2)),
                      c("00","99"))
@@ -107,46 +112,62 @@ MyRender <- function(...)
       authors <- gsub("*","",authors,fixed=T)
       authors <- strsplit(authors,",",fixed=T)[[1]]
       authors <- trimws(authors)
-      authors <- paste0(paste0("  - ",authors),collapse="\n")
-      authors <- paste0("author:\n",authors,"\n")
-      cat(authors)
+      
+      authors_pdf <- paste0(paste0("  - ",authors),collapse="\n")
+      authors_pdf <- paste0("author:\n",authors_pdf,"\n")
+      
+      authors_word <- paste0(authors,collapse=", ")
+      authors_word <- paste0("author: '",authors_word,"'\n")
+      
+      cat("\n",authors_pdf,"\n")
+      cat("\n",authors_word,"\n")
     } else
     {
       cat("Authors not found\n")
-      authors <- "author: 'MA Barrowman'\n"
+      authors_pdf <- "author: 'MA Barrowman'\n"
+      authors_word <- "author: 'MA Barrowman\'\n"
       authors.row <- NULL
-      cat(authors)
+      cat(authors_pdf,"\n")
+      cat(authors_word)
     }
 
+    pdf_output <- c("  bookdown::pdf_book:\n",
+                    "    includes:\n",
+                    "      in_header: [header.tex, latex_packages.txt]\n",
+                    "    keep_tex: TRUE\n",
+                    authors_pdf)
+    word_output <- c("  bookdown::word_document2:\n",
+                     "    reference_docx: reference_doc.docx\n",
+                     authors_word)
 
 
-    header <- c("---\n",
-                "title: '",title,"'\n",
-                authors,
-                "knit: bookdown::render_book\n",
-                "output:\n",
-                "  bookdown::pdf_book:\n",
-                "    includes:\n",
-                "      in_header: [header.tex, latex_packages.txt]\n",
-                "    keep_tex: TRUE\n",
-                "  bookdown::word_document2:\n",
-                "    default",
-                "csl: csl/ieee.csl\n",
-                "bibliography: [\"bib/thesis.bib\",\"bib/MyCites.bib\"]\n",
-                "biblio-style: \"ieee\"\n",
-                "link-citations: true\n",
-                "---\n",
-                "```{r include_packages, include = FALSE}\n",
-                "options(output.format = \"single\")\n",
-                "library(MyThesis)\n",
-                "```\n","\n",
-                "<script type=\"text/x-mathjax-config\">\n",
-                "MathJax.Hub.Config({\n",
-                "TeX: { equationNumbers: { autoNumber: \"AMS\" } }\n",
-                "});\n",
-                "</script>\n")
-    header <- paste0(header,collapse="")
-    cat("Header set\n")
+    header_pre<- c("---\n",
+                    "title: '",title,"'\n",
+                    "knit: bookdown::render_book\n",
+                    "output:\n")
+    
+    header_post <- c("csl: csl/ieee.csl\n",
+                    "bibliography: [\"bib/thesis.bib\",\"bib/MyCites.bib\"]\n",
+                    "biblio-style: \"ieee\"\n",
+                    "link-citations: true\n",
+                    "---\n",
+                    "```{r include_packages, include = FALSE}\n",
+                    "options(output.format = \"single\")\n",
+                    "library(MyThesis)\n",
+                    "```\n","\n",
+                    "<script type=\"text/x-mathjax-config\">\n",
+                    "MathJax.Hub.Config({\n",
+                    "TeX: { equationNumbers: { autoNumber: \"AMS\" } }\n",
+                    "});\n",
+                    "</script>\n")
+    header_pre <- paste0(header_pre,collapse="")
+    header_post <- paste0(header_post,collapse="")
+    header <- list(
+      pdf = paste0(header_pre,paste0(pdf_output,collapse=""),header_post),
+      docx = paste0(header_pre,paste0(word_output,collapse=""),header_post)
+    )
+    
+    cat("Headers set\n")
 
     Section.Rows <- grep("^#",rmd)
     cat("# Rows extracted\n")
@@ -207,48 +228,57 @@ MyRender <- function(...)
     rmd.out <- paste0(rmd.out,collapse="\n")
     cat("rmd compressed to single string (length = ",length(rmd.out), "nchar = ",nchar(rmd.out),")\n")
 
-    rmd.out <- paste0(header,rmd.out,"\n# References {-}")
+    rmd.out <- lapply(header,function(x) paste0(x,rmd.out,"\n# References {-}"))
     cat("Header added to rmd\n")
 
-    out.name <- paste0("docs/Chapters/",
-                       gsub("Rmd","pdf",basename(cff)[1]))
+    out.name <- sapply(1:length(header),
+                       function(i)
+                         paste0("docs/Chapters/",
+                                gsub("Rmd",names(header)[i],basename(cff)[1])))
     cat("out.name created = ",out.name,"\n")
 
-    temp_file <- paste0("knitting_",basename(cff)[1])
-    cat("temp_file created = ",temp_file,"\n")
 
     ind_file <- paste0("ind_",gsub(".Rmd","",basename(cff)[1]))
     cat("ind_file created = ",ind_file,"\n")
 
-    writeLines(rmd.out,temp_file)
-    cat("rmd.out written to temp_file\n")
+    for(j in 1:length(header))
+    {
+      
+      temp_file <- paste0("knitting_",j,"_",basename(cff)[1])
+      cat("temp_file created = ",temp_file,"\n")
+      
+      
+      writeLines(rmd.out[[j]],temp_file)
+      cat("rmd.out written to temp_file\n")
+  
+      current_bookdown <- c("output_dir: \"docs/Chapters\"\n",
+                        "book_filename: \"",ind_file,"\"\n",
+                        "rmd_files: \"",temp_file,"\"\n",
+                        "delete_merged_file: true\n")
+      current_bookdown <- paste0(current_bookdown,collapse="")
+      cat("Current bookdown:\n\n")
+      cat(current_bookdown,"\n\n")
+  
+      bookdown_file <- paste0("_bookdown_",i,j,".yml")
+      cat("bookdown_file created = ",bookdown_file,"\n")
+      writeLines(current_bookdown,bookdown_file)
+      cat("current_bookdown written to bookdown_file\n")
+  
+      cat("Trying render_book for file number ",i," in format ",names(header)[j],"\n")
+      try(bookdown::render_book(temp_file,
+                                clean_envir=F,
+                                config_file = bookdown_file,
+                                new_session=F))
+      cat("Completed render_book. Did it work?\n\n")
+      if(file.exists(temp_file)) file.remove(temp_file)
+      if(file.exists(gsub(".Rmd",".md",temp_file)))
+        file.remove(gsub(".Rmd",".md",temp_file))
+      if(file.exists(bookdown_file))
+        file.remove(bookdown_file)
+    }
 
-    current_bookdown <- c("output_dir: \"docs/Chapters\"\n",
-                      "book_filename: \"",ind_file,"\"\n",
-                      "rmd_files: \"",temp_file,"\"\n",
-                      "delete_merged_file: true\n")
-    current_bookdown <- paste0(current_bookdown,collapse="")
-    cat("Current bookdown:\n\n")
-    cat(current_bookdown,"\n\n")
 
-    bookdown_file <- paste0("_bookdown_",i,".yml")
-    cat("bookdown_file created = ",bookdown_file,"\n")
-    writeLines(current_bookdown,bookdown_file)
-    cat("current_bookdown written to bookdown_file\n")
-
-    cat("Trying render_book for file number ",i,"\n")
-    try(bookdown::render_book(temp_file,
-                              clean_envir=F,
-                              config_file = bookdown_file,
-                              new_session=F))
-    cat("Completed render_book. Did it work?\n\n")
-
-
-    if(file.exists(temp_file)) file.remove(temp_file)
-    if(file.exists(gsub(".Rmd",".md",temp_file)))
-      file.remove(gsub(".Rmd",".md",temp_file))
-    if(file.exists(bookdown_file))
-      file.remove(bookdown_file)
+    
     if("i" %in% ls())
       cat("Ending Render for file ",i,"\n\n\n\n") else
         cat("Ending Render for current file. i does not exist\n\n\n\n")
@@ -260,8 +290,17 @@ MyRender <- function(...)
   ff <- list.files()
   ff <- ff[grep("ind_",ff,fixed=T)]
   file.remove(ff)
+  
+  ff <- list.files()
+  ff <- ff[grep("^thesis\\.",ff)]
+  file.remove(ff)
 
 
 }
 
-
+#' @export
+html_latex_header <- function(){
+  fb(
+    gitbook=paste0(readLines("header.tex"),collapse="\n")
+  )
+}

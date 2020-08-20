@@ -231,13 +231,13 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
            function(x) mutate_at(x,numeric_cols,
                                  ~gsub("<","&lt;",.,fixed=T) %>%
                                    gsub(">","&gt;",.,fixed=T)) %>%
-             mutate_if(is.character,
+             mutate_at(vars(-numeric_cols),
                        ~gsub("\\^([a-zA-Z0-9])","<sup>\\1</sup>",.) %>%
                          gsub("<strong>","**",.,fixed=T) %>%
                          gsub("</strong>","**",.,fixed=T) %>%
                          gsub("&lt;strong&gt;","**",.,fixed=T) %>%
                          gsub("&lt;/strong&gt;","**",.,fixed=T)),
-           function(x) mutate_if(x,is.character,
+           function(x) mutate_at(x,vars(-numeric_cols),
                                  ~gsub("\\^[a-zA-Z0-9]",
                                        "\\\\textsuperscript{\\1}",.) %>%
                                    gsub("%","\\%",.,fixed=T) %>%
@@ -284,7 +284,7 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
     if_fun(!is.null(group_col) && !is.na(group_col),
            . %>% pack_rows(index=grp_index)) %>%
     do_colspace(numeric_cols,col_widths)%>%
-    if_fun(fb("gitbook"),
+    if_fun(get_format("gitbook"),
            . %>% scroll_box(width="100%",fixed_thead = T)) %>%
     gsub("\\\\vphantom\\{.*?\\} ","",.)
   
