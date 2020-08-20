@@ -572,7 +572,7 @@ This paper has demonstrated that unmeasured confounding in observational studies
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
 
-Last updated: 19 Aug
+Last updated: 20 Aug
 \newcommand{\txt}[1]{\textrm{#1}}
 
 \def\logit{\txt{logit}}
@@ -587,16 +587,20 @@ Download as individual paper draft: [pdf](Chapters/ind_04-IPCW_logistic.pdf), [t
 
 ### Introduction {-}
 A key component of the development of a prediction model/algorithm is the assessment of its calibration through means of validation (internal and external). For time-to-event models, this assessment is complicated in three ways:
+
 * Calibration can be assessed at multiple time points,
 * When Cox Modeling has been used, there exists no "intercept" for a model to be assessed on
 * Censoring occurs within the data, and this may or may not be correlated with the event-of-interest
+
 We choose to focus on analysing methods of overcoming the third of these problems using Inverse Probability of Censoring Weighting (IPCW), which can also combat the other two problems.
 
 ### Methods {-}
-We used simulations to generate time-to-event data with censoring, where censoring can be correlated or not with the event-of-interest. We then applied a pre-calibrated prediction models (including flawed ones) to the data and assessed the calibrations of these models under four methods:
+We used simulations to generate time-to-event data with censoring, where censoring can be correlated or not with the event-of-interest. We then applied a pre-calibrated prediction models (including flawed ones) to the data and assessed the calibrations of these models under different methods:
+
 * Kaplan-Meier Method (KM), the KM curve is used as a comparitor to the model predictions
 * Logistic Regression with IPCW Weighting (LW) and without it (LU)
 * Pseudo-Observations (PO), where the calibration is assessed using the pseuo-observation of the model data.
+
 These simulations were aggregating and analysed to compare Bias and Coverage of each of these methods.
 
 ### Results {-}

@@ -258,25 +258,29 @@ div.abstract{
 <div id="chap-IPCW-logistic" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</h1>
 <p><em>MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin</em></p>
-Last updated: 19 Aug
+Last updated: 20 Aug
 <p>Download as individual paper draft: <a href="Chapters/ind_04-IPCW_logistic.pdf">pdf</a>, <a href="Chapters/ind_04-IPCW_logistic.tex">tex</a>, <a href="Chapters/ind_04-IPCW_logistic.docx">word</a></p>
 <div id="abstract" class="section level2 unnumbered" number="">
 <h2>Abstract</h2>
 <div id="introduction" class="section level3 unnumbered" number="">
 <h3>Introduction</h3>
-<p>A key component of the development of a prediction model/algorithm is the assessment of its calibration through means of validation (internal and external). For time-to-event models, this assessment is complicated in three ways:
-* Calibration can be assessed at multiple time points,
-* When Cox Modeling has been used, there exists no “intercept” for a model to be assessed on
-* Censoring occurs within the data, and this may or may not be correlated with the event-of-interest
-We choose to focus on analysing methods of overcoming the third of these problems using Inverse Probability of Censoring Weighting (IPCW), which can also combat the other two problems.</p>
+<p>A key component of the development of a prediction model/algorithm is the assessment of its calibration through means of validation (internal and external). For time-to-event models, this assessment is complicated in three ways:</p>
+<ul>
+<li>Calibration can be assessed at multiple time points,</li>
+<li>When Cox Modeling has been used, there exists no “intercept” for a model to be assessed on</li>
+<li>Censoring occurs within the data, and this may or may not be correlated with the event-of-interest</li>
+</ul>
+<p>We choose to focus on analysing methods of overcoming the third of these problems using Inverse Probability of Censoring Weighting (IPCW), which can also combat the other two problems.</p>
 </div>
 <div id="methods" class="section level3 unnumbered" number="">
 <h3>Methods</h3>
-<p>We used simulations to generate time-to-event data with censoring, where censoring can be correlated or not with the event-of-interest. We then applied a pre-calibrated prediction models (including flawed ones) to the data and assessed the calibrations of these models under four methods:
-* Kaplan-Meier Method (KM), the KM curve is used as a comparitor to the model predictions
-* Logistic Regression with IPCW Weighting (LW) and without it (LU)
-* Pseudo-Observations (PO), where the calibration is assessed using the pseuo-observation of the model data.
-These simulations were aggregating and analysed to compare Bias and Coverage of each of these methods.</p>
+<p>We used simulations to generate time-to-event data with censoring, where censoring can be correlated or not with the event-of-interest. We then applied a pre-calibrated prediction models (including flawed ones) to the data and assessed the calibrations of these models under different methods:</p>
+<ul>
+<li>Kaplan-Meier Method (KM), the KM curve is used as a comparitor to the model predictions</li>
+<li>Logistic Regression with IPCW Weighting (LW) and without it (LU)</li>
+<li>Pseudo-Observations (PO), where the calibration is assessed using the pseuo-observation of the model data.</li>
+</ul>
+<p>These simulations were aggregating and analysed to compare Bias and Coverage of each of these methods.</p>
 </div>
 <div id="results" class="section level3 unnumbered" number="">
 <h3>Results</h3>
