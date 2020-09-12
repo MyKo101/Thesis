@@ -4,7 +4,6 @@
 `r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
 `r Updated(5)`
 
-`r add_downloads(5)`
 
 ## Introduction
 

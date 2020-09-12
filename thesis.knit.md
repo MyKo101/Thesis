@@ -1,6 +1,6 @@
 ---
 author: 'Michael Andrew Barrowman'
-date: 'August 2020'
+date: 'September 2020'
 institution: 'University of Manchester'
 division: 'Division of Informatics, Imaging and Data Science'
 advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambie'
@@ -15,7 +15,7 @@ site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
     includes:
-      in_header: "hypothesis.html"
+      in_header: "header.html"
       css: style.css  
     config:
       toc:
@@ -60,13 +60,6 @@ lof: true
 
 
 
-
-  
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
 
 
 
@@ -569,10 +562,10 @@ This paper has demonstrated that unmeasured confounding in observational studies
 <!--chapter:end:03-CR_Conf.Rmd-->
 
 
-# Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large {#chap-IPCW-logistic}
+# Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
 
-Last updated: 20 Aug
+Last updated: 12 Sep
 \newcommand{\txt}[1]{\textrm{#1}}
 
 \def\logit{\txt{logit}}
@@ -581,7 +574,6 @@ Last updated: 20 Aug
 \newcommand{\sfrac}[2]{\;^{#1}/_{#2}}
 
 
-Download as individual paper draft: [pdf](Chapters/ind_04-IPCW_logistic.pdf), [tex](Chapters/ind_04-IPCW_logistic.tex), [word](Chapters/ind_04-IPCW_logistic.docx)
 
 ## Abstract {-}
 
@@ -705,17 +697,20 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 $$
 \omega(t|z) = \frac{1}{1 - G(\min(t,X_i)|z)}
 $$
+<mark>Due to the sensitive nature of this propensity weighting over time, the IPCW is capped at a value of 10 [@shu_methods_2017], this capping should only effect around 2\% of simulated patients.</mark>
 
 ### Calibration Measurements
 
 The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, $X$. At each of these time points, we compare Observed outcomes ($O$) with the Expected outcomes ($E$) of the prediction models based on four choices of methodology [@hippisley-cox_derivation_2007;@royston_tools_2014;@royston_tools_2015;@riley_prognosis_2019;@andersen_pseudo-observations_2010] to produce measures for the calibration-in-the-large
 
 * Kaplan-Meier (KM) - A Kaplan-Meier estimate of survival is estimated from the data and the value of the KM curve at the current time is taken to be the average Observed number of events within the population. The measure is the ratio of the Observed to the mean Expected number of events.
-* Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the logit(Expected) value as an offset and the Intercept of the regression is the estimate of calibration-in-the-large.
+* Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the $\textrm{logit}(E)$ value as an offset and the Intercept of the regression is the estimate of calibration-in-the-large.
 * Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
 * Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Regression is performed with the complimentary log-log function as a link function and the log cumulative hazard as an offset with the Intercept representing the estimate of calibration-in-the-large.
 
-Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the "number of events" being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages [@wildscop_biostatistics_2013]. Secondly, the PO method produces outcomes that are outside of the (0,1) range [@perme_checking_2008] required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal. Finally, the KM method is centred around 1 for well performing models, whereas the others are centered around 0, so we subtract 1 from the results of the KM method to bring results to the same scale.
+~~Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the "number of events" being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages [@wildscop_biostatistics_2013]. Secondly, the PO method produces outcomes that are outside of the (0,1) range [@perme_checking_2008] required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal. Finally,~~
+
+The KM method is centred around 1 for well performing models, whereas the others are centered around 0, so we subtract 1 from the results of the KM method to bring results to the same scale.
 
 
 ### Estimands
@@ -732,7 +727,9 @@ From this, we can also define our upper and lower bound for a 95% confidence int
 
 ### Performance Measures
 
-The measures we will take as performance measures as the Bias, the Empirical Standard Error, <mark>the Median-Bias</mark> and the Coverage at time, $t$, along with relevant standard errors and/or confidence intervals [@morris_using_2019]. <mark>For most measures, the standard error is easily calculable, but for the Median, it is more appropriate to calculate the confidence interval directly from the sorted values, $\theta_{(1)},\theta_{(2)},...,\theta_{(100)}$, where $\theta_{(50)}$ is the median, the 95\% confidence interval is the interval $\left(\theta_{(40)}, \theta_{(61)}\right)$. To turn this into a Median-Bias, we subtract the true value, $\theta$. These measures can be seen in table \@ref(tab:PM-DGM-time). For the <mark>Bias and EmpSE</mark> estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from <mark>large outlier effects</mark>. We will also perform a Shapiro-Wilk test for each of the combination of parameters.
+~~The measures we will take as performance measures as the Bias, the Empirical Standard Error, the Median-Bias and the Coverage at time, $t$, along with relevant standard errors and/or confidence intervals [@morris_using_2019]. For most measures, the standard error is easily calculable, but for the Median, it is more appropriate to calculate the confidence interval directly from the sorted values, $\theta_{(1)},\theta_{(2)},...,\theta_{(100)}$, where $\theta_{(50)}$ is the median, the 95\% confidence interval is the interval $\left(\theta_{(40)}, \theta_{(61)}\right)$. To turn this into a Median-Bias, we subtract the true value, $\theta$. These measures can be seen in table \@ref(tab:PM-DGM-time). For the Bias and EmpSE estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from large outlier effects. We will also perform a Shapiro-Wilk test for each of the combination of parameters.~~
+
+The measures we will take as performance measures are the Bias, the Empirical Standard Error (EmpSE) and the Coverage (Cov). We will also estimate the MCMC Standard Error of each of these estimates in order to calculate a 95\% confidence interval
 
 
 
@@ -743,6 +740,7 @@ The measures we will take as performance measures as the Bias, the Empirical Sta
   <tr>
    <th style="text-align:left;"> Performance Measure </th>
    <th style="text-align:left;"> Estimation </th>
+   <th style="text-align:left;"> SE </th>
    <th style="text-align:left;"> SE/CI </th>
   </tr>
  </thead>
@@ -750,33 +748,29 @@ The measures we will take as performance measures as the Bias, the Empirical Sta
   <tr>
    <td style="text-align:left;"> Bias </td>
    <td style="text-align:left;"> $$\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta$$ </td>
+   <td style="text-align:left;"> $\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$ </td>
    <td style="text-align:left;"> $$\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}$$ </td>
   </tr>
   <tr>
    <td style="text-align:left;"> EmpSE </td>
    <td style="text-align:left;"> $$\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}$$ </td>
+   <td style="text-align:left;"> $\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$ </td>
    <td style="text-align:left;"> $$\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}$$ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Median </td>
-   <td style="text-align:left;"> $$\hat{M}(t) = \theta_{(50)} - \theta$$ </td>
-   <td style="text-align:left;"> $$\hat{M}_{CI}(t) =  \left(\theta_{(40)}-\theta,\;\theta_{(60)}-\theta\right)$$ </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Coverage </td>
    <td style="text-align:left;"> $$\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)$$ </td>
+   <td style="text-align:left;"> $\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$ </td>
    <td style="text-align:left;"> $$\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}$$ </td>
   </tr>
 </tbody>
 </table></div>
 
-The bias <mark>and median-bias</marK> provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are. <mark>The shapiro-wilk result will allow us to determine whether the bias or median-bias is more appropriate overall when analysing our data</mark>.
-
-
+The bias ~~and median-bias~~ provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are. ~~The shapiro-wilk result will allow us to determine whether the bias or median-bias is more appropriate overall when analysing our data.~~
 
 ### Software
 
-All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], Kaplan-Meier estimates were found using the `survival` package [@therneau_package_2020], Pseudo-Observations were evaluated with the `pseudo` package [@perme_pseudo_2017], and the results app was developed using `shiny`[@chang_shiny_2020]. The code used for this simulation study is available [on Github](https://github.com/MyKo101/IPCW-Logistic) and the results can be seen in a [shiny app](https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320)
+All analysis was done in `R 3.6.3` [@r_core_team_r_nodate] using the various `tidyverse` packages [@wickham_tidy_2017], Kaplan-Meier estimates were found using the `survival` package [@therneau_package_2020], Pseudo-Observations were optimised with the `Rcpp` package [@eddelbuettel_rcpp_2011] and influenced by the `pseudo` package [@perme_pseudo_2017]. The results app was developed using `shiny`[@chang_shiny_2020]. The code used for this simulation study is available [on Github](https://github.com/MyKo101/IPCW-Logistic) and the results can be seen [here](https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320)
 
 ## Results
 
@@ -867,9 +861,8 @@ The data shown in figure \@ref(fig:CoveragePlotgn1) demonstrates that the LW Met
 # Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
 
-Last updated: 16 Jun
+Last updated: 21 Aug
 
-Download as individual paper draft: [pdf](Chapters/ind_05-Performance_Metrics.pdf), [tex](Chapters/ind_05-Performance_Metrics.tex), [word](Chapters/ind_05-Performance_Metrics.docx)
 
 ## Introduction
 
@@ -1211,9 +1204,8 @@ some of the methods demonstrated here were developed by others in categorical ou
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
 
-Last updated: 04 Aug
+Last updated: 21 Aug
 
-Download as individual paper draft: [pdf](Chapters/ind_06-Dev_Paper.pdf), [tex](Chapters/ind_06-Dev_Paper.tex), [word](Chapters/ind_06-Dev_Paper.docx)
 
 ## Abstract {-}
 
@@ -2897,7 +2889,6 @@ Due to the relationship between the cause specific hazard functions and the subd
 
 
 ## Calibration Slope
-
 
 The main purpose of this paper was to assess the evaluation of calibration-in-the-large at different time points in a time-to-event clinical prediction model. Along with calibration-in-the-large, various methods of calibration can also produce measures of calibration slope. Calibration slope provides an insight into how well the model predicts outcomes across the range of predictions. In an ideal model, the calibration slope would be 1. The Logistic Weighted, Logistic Unweighted and Pseudo-Observation methods described above can provide estimates of the calibration slope. For each of these methods, we first estimate the calibration-in-the-large as above, using a predictor as an offset, then we use this estimate as an offset to predict the calibration slope (without an intercept term).
 

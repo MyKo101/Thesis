@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
-  <meta name="description" content="Chapter 3 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <title>Chapter 3 Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
+  <meta name="description" content="Chapter 3 Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta property="og:title" content="Chapter 3 Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta name="twitter:title" content="Chapter 3 Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   
   
   
@@ -119,7 +119,7 @@ div.abstract{
 <li class="chapter" data-level="2.4" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#discussion"><i class="fa fa-check"></i><b>2.4</b> Discussion</a></li>
 <li class="chapter" data-level="2.5" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#conclusion-1"><i class="fa fa-check"></i><b>2.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html"><i class="fa fa-check"></i><b>3</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</a>
+<li class="chapter" data-level="3" data-path="chap-IPCW-logistic.html"><a href="chap-IPCW-logistic.html"><i class="fa fa-check"></i><b>3</b> Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#abstract"><i class="fa fa-check"></i>Abstract</a>
 <ul>
@@ -256,10 +256,9 @@ div.abstract{
 
             <section class="normal" id="section-">
 <div id="chap-IPCW-logistic" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large</h1>
+<h1><span class="header-section-number">Chapter 3</span> Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models</h1>
 <p><em>MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin</em></p>
-Last updated: 20 Aug
-<p>Download as individual paper draft: <a href="Chapters/ind_04-IPCW_logistic.pdf">pdf</a>, <a href="Chapters/ind_04-IPCW_logistic.tex">tex</a>, <a href="Chapters/ind_04-IPCW_logistic.docx">word</a></p>
+Last updated: 12 Sep
 <div id="abstract" class="section level2 unnumbered" number="">
 <h2>Abstract</h2>
 <div id="introduction" class="section level3 unnumbered" number="">
@@ -353,18 +352,20 @@ G(t|Z=z) = 1-\exp\left(-e^{\gamma Z}t\right)
 This is used to calculate an IPCW for all non-censored patients at the last time they were observed (<span class="math inline">\(t\)</span> for patients who have not had an event, and <span class="math inline">\(X_i\)</span> for patients who have had the event), This is defined as:</p>
 <p><span class="math display">\[
 \omega(t|z) = \frac{1}{1 - G(\min(t,X_i)|z)}
-\]</span></p>
+\]</span>
+<mark>Due to the sensitive nature of this propensity weighting over time, the IPCW is capped at a value of 10 <span class="citation">[<a href="#ref-shu_methods_2017" role="doc-biblioref">70</a>]</span>, this capping should only effect around 2% of simulated patients.</mark></p>
 </div>
 <div id="calibration-measurements" class="section level3" number="3.2.5">
 <h3><span class="header-section-number">3.2.5</span> Calibration Measurements</h3>
-<p>The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, <span class="math inline">\(X\)</span>. At each of these time points, we compare Observed outcomes (<span class="math inline">\(O\)</span>) with the Expected outcomes (<span class="math inline">\(E\)</span>) of the prediction models based on four choices of methodology <span class="citation">[<a href="#ref-riley_prognosis_2019" role="doc-biblioref">6</a>], [<a href="#ref-hippisley-cox_derivation_2007" role="doc-biblioref">29</a>], [<a href="#ref-royston_tools_2014" role="doc-biblioref">62</a>], [<a href="#ref-royston_tools_2015" role="doc-biblioref">63</a>], [<a href="#ref-andersen_pseudo-observations_2010" role="doc-biblioref">70</a>]</span> to produce measures for the calibration-in-the-large</p>
+<p>The prediction models were assessed at 100 time points, evenly distributed between the 25th and 75th percentile of observed event times, <span class="math inline">\(X\)</span>. At each of these time points, we compare Observed outcomes (<span class="math inline">\(O\)</span>) with the Expected outcomes (<span class="math inline">\(E\)</span>) of the prediction models based on four choices of methodology <span class="citation">[<a href="#ref-riley_prognosis_2019" role="doc-biblioref">6</a>], [<a href="#ref-hippisley-cox_derivation_2007" role="doc-biblioref">29</a>], [<a href="#ref-royston_tools_2014" role="doc-biblioref">62</a>], [<a href="#ref-royston_tools_2015" role="doc-biblioref">63</a>], [<a href="#ref-andersen_pseudo-observations_2010" role="doc-biblioref">71</a>]</span> to produce measures for the calibration-in-the-large</p>
 <ul>
 <li>Kaplan-Meier (KM) - A Kaplan-Meier estimate of survival is estimated from the data and the value of the KM curve at the current time is taken to be the average Observed number of events within the population. The measure is the ratio of the Observed to the mean Expected number of events.</li>
-<li>Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the logit(Expected) value as an offset and the Intercept of the regression is the estimate of calibration-in-the-large.</li>
+<li>Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the <span class="math inline">\(\textrm{logit}(E)\)</span> value as an offset and the Intercept of the regression is the estimate of calibration-in-the-large.</li>
 <li>Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.</li>
 <li>Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Regression is performed with the complimentary log-log function as a link function and the log cumulative hazard as an offset with the Intercept representing the estimate of calibration-in-the-large.</li>
 </ul>
-<p>Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the “number of events” being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages <span class="citation">[<a href="#ref-wildscop_biostatistics_2013" role="doc-biblioref">71</a>]</span>. Secondly, the PO method produces outcomes that are outside of the (0,1) range <span class="citation">[<a href="#ref-perme_checking_2008" role="doc-biblioref">64</a>]</span> required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal. Finally, the KM method is centred around 1 for well performing models, whereas the others are centered around 0, so we subtract 1 from the results of the KM method to bring results to the same scale.</p>
+<p><del>Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the “number of events” being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages <span class="citation">[<a href="#ref-wildscop_biostatistics_2013" role="doc-biblioref">72</a>]</span>. Secondly, the PO method produces outcomes that are outside of the (0,1) range <span class="citation">[<a href="#ref-perme_checking_2008" role="doc-biblioref">64</a>]</span> required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal. Finally,</del></p>
+<p>The KM method is centred around 1 for well performing models, whereas the others are centered around 0, so we subtract 1 from the results of the KM method to bring results to the same scale.</p>
 </div>
 <div id="estimands" class="section level3" number="3.2.6">
 <h3><span class="header-section-number">3.2.6</span> Estimands</h3>
@@ -378,7 +379,8 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 </div>
 <div id="performance-measures" class="section level3" number="3.2.7">
 <h3><span class="header-section-number">3.2.7</span> Performance Measures</h3>
-<p>The measures we will take as performance measures as the Bias, the Empirical Standard Error, <mark>the Median-Bias</mark> and the Coverage at time, <span class="math inline">\(t\)</span>, along with relevant standard errors and/or confidence intervals <span class="citation">[<a href="#ref-morris_using_2019" role="doc-biblioref">72</a>]</span>. <mark>For most measures, the standard error is easily calculable, but for the Median, it is more appropriate to calculate the confidence interval directly from the sorted values, <span class="math inline">\(\theta_{(1)},\theta_{(2)},...,\theta_{(100)}\)</span>, where <span class="math inline">\(\theta_{(50)}\)</span> is the median, the 95% confidence interval is the interval <span class="math inline">\(\left(\theta_{(40)}, \theta_{(61)}\right)\)</span>. To turn this into a Median-Bias, we subtract the true value, <span class="math inline">\(\theta\)</span>. These measures can be seen in table <a href="chap-IPCW-logistic.html#tab:PM-DGM-time">3.1</a>. For the <mark>Bias and EmpSE</mark> estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving <span class="math inline">\(N=90\)</span> to avoid biasing the results from <mark>large outlier effects</mark>. We will also perform a Shapiro-Wilk test for each of the combination of parameters.</p>
+<p><del>The measures we will take as performance measures as the Bias, the Empirical Standard Error, the Median-Bias and the Coverage at time, <span class="math inline">\(t\)</span>, along with relevant standard errors and/or confidence intervals <span class="citation">[<a href="#ref-morris_using_2019" role="doc-biblioref">73</a>]</span>. For most measures, the standard error is easily calculable, but for the Median, it is more appropriate to calculate the confidence interval directly from the sorted values, <span class="math inline">\(\theta_{(1)},\theta_{(2)},...,\theta_{(100)}\)</span>, where <span class="math inline">\(\theta_{(50)}\)</span> is the median, the 95% confidence interval is the interval <span class="math inline">\(\left(\theta_{(40)}, \theta_{(61)}\right)\)</span>. To turn this into a Median-Bias, we subtract the true value, <span class="math inline">\(\theta\)</span>. These measures can be seen in table <a href="chap-IPCW-logistic.html#tab:PM-DGM-time">3.1</a>. For the Bias and EmpSE estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving <span class="math inline">\(N=90\)</span> to avoid biasing the results from large outlier effects. We will also perform a Shapiro-Wilk test for each of the combination of parameters.</del></p>
+<p>The measures we will take as performance measures are the Bias, the Empirical Standard Error (EmpSE) and the Coverage (Cov). We will also estimate the MCMC Standard Error of each of these estimates in order to calculate a 95% confidence interval</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="font-size: 9px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -391,6 +393,9 @@ Performance Measure
 </th>
 <th style="text-align:left;">
 Estimation
+</th>
+<th style="text-align:left;">
+SE
 </th>
 <th style="text-align:left;">
 SE/CI
@@ -406,6 +411,9 @@ Bias
 <span class="math display">\[\hat{\theta}(t) = \frac{1}{N} \sum_{i=1}^N\theta_i(t) - \theta\]</span>
 </td>
 <td style="text-align:left;">
+<span class="math inline">\(\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}\)</span>
+</td>
+<td style="text-align:left;">
 <span class="math display">\[\hat{\theta}_{SE}(t) = \sqrt{\frac{1}{N(N-1)} \sum_{i=1}^N \left(\theta_i(t) - \hat{\theta}(t)\right)^2}\]</span>
 </td>
 </tr>
@@ -417,18 +425,10 @@ EmpSE
 <span class="math display">\[\hat{E}(t) = \sqrt{\frac{1}{N-1}\sum_{i=1}^N\left(\theta_i(t) - \hat{\theta}(t)\right)^2}\]</span>
 </td>
 <td style="text-align:left;">
+<span class="math inline">\(\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}\)</span>
+</td>
+<td style="text-align:left;">
 <span class="math display">\[\hat{E}_{SE}(t)=\frac{\hat{E}(t)}{\sqrt{2(N-1)}}\]</span>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Median
-</td>
-<td style="text-align:left;">
-<span class="math display">\[\hat{M}(t) = \theta_{(50)} - \theta\]</span>
-</td>
-<td style="text-align:left;">
-<span class="math display">\[\hat{M}_{CI}(t) =  \left(\theta_{(40)}-\theta,\;\theta_{(60)}-\theta\right)\]</span>
 </td>
 </tr>
 <tr>
@@ -439,17 +439,20 @@ Coverage
 <span class="math display">\[\hat{C}(t)=\frac{1}{N}\sum_{i=1}^NI\left(\theta_{i,L}(t) \le \theta \le \theta_{i,U}(t)\right)\]</span>
 </td>
 <td style="text-align:left;">
+<span class="math inline">\(\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}\)</span>
+</td>
+<td style="text-align:left;">
 <span class="math display">\[\hat{C}_{SE}(t) = \frac{\hat{C}(t)\left(1-\hat{C}(t)\right)}{N}\]</span>
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The bias <mark>and median-bias</marK> provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are. <mark>The shapiro-wilk result will allow us to determine whether the bias or median-bias is more appropriate overall when analysing our data</mark>.</p>
+<p>The bias <del>and median-bias</del> provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are. <del>The shapiro-wilk result will allow us to determine whether the bias or median-bias is more appropriate overall when analysing our data.</del></p>
 </div>
 <div id="software" class="section level3" number="3.2.8">
 <h3><span class="header-section-number">3.2.8</span> Software</h3>
-<p>All analysis was done in <code>R 3.6.3</code> <span class="citation">[<a href="#ref-r_core_team_r_nodate" role="doc-biblioref">73</a>]</span> using the various <code>tidyverse</code> packages <span class="citation">[<a href="#ref-wickham_tidy_2017" role="doc-biblioref">74</a>]</span>, Kaplan-Meier estimates were found using the <code>survival</code> package <span class="citation">[<a href="#ref-therneau_package_2020" role="doc-biblioref">75</a>]</span>, Pseudo-Observations were evaluated with the <code>pseudo</code> package <span class="citation">[<a href="#ref-perme_pseudo_2017" role="doc-biblioref">76</a>]</span>, and the results app was developed using <code>shiny</code><span class="citation">[<a href="#ref-chang_shiny_2020" role="doc-biblioref">77</a>]</span>. The code used for this simulation study is available <a href="https://github.com/MyKo101/IPCW-Logistic">on Github</a> and the results can be seen in a <a href="https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320">shiny app</a></p>
+<p>All analysis was done in <code>R 3.6.3</code> <span class="citation">[<a href="#ref-r_core_team_r_nodate" role="doc-biblioref">74</a>]</span> using the various <code>tidyverse</code> packages <span class="citation">[<a href="#ref-wickham_tidy_2017" role="doc-biblioref">75</a>]</span>, Kaplan-Meier estimates were found using the <code>survival</code> package <span class="citation">[<a href="#ref-therneau_package_2020" role="doc-biblioref">76</a>]</span>, Pseudo-Observations were optimised with the <code>Rcpp</code> package <span class="citation">[<a href="#ref-eddelbuettel_rcpp_2011" role="doc-biblioref">77</a>]</span> and influenced by the <code>pseudo</code> package <span class="citation">[<a href="#ref-perme_pseudo_2017" role="doc-biblioref">78</a>]</span>. The results app was developed using <code>shiny</code><span class="citation">[<a href="#ref-chang_shiny_2020" role="doc-biblioref">79</a>]</span>. The code used for this simulation study is available <a href="https://github.com/MyKo101/IPCW-Logistic">on Github</a> and the results can be seen <a href="https://michael-barrowman.shinyapps.io/IPCW_Calibrations/?_ga=2.129261196.1072091615.1588464259-38998367.1584541320">here</a></p>
 </div>
 </div>
 <div id="results-1" class="section level2" number="3.3">
@@ -585,29 +588,35 @@ Figure 3.9: Coverage for Over-estimating, Perfect and Under-Estimating models ac
 <div id="ref-burton_design_2006">
 <p>[69] A. Burton, D. G. Altman, P. Royston, and R. L. Holder, “The design of simulation studies in medical statistics,” <em>Statistics in Medicine</em>, vol. 25, no. 24, pp. 4279–4292, Dec. 2006, doi: <a href="https://doi.org/10.1002/sim.2673">10.1002/sim.2673</a>.</p>
 </div>
+<div id="ref-shu_methods_2017">
+<p>[70] X. Shu and D. E. Schaubel, “Methods for Contrasting Gap Time Hazard Functions: Application to Repeat Liver Transplantation,” <em>Statistics in biosciences</em>, vol. 9, no. 2, pp. 470–488, Dec. 2017, doi: <a href="https://doi.org/10.1007/s12561-016-9168-6">10.1007/s12561-016-9168-6</a>.</p>
+</div>
 <div id="ref-andersen_pseudo-observations_2010">
-<p>[70] P. K. Andersen and M. Pohar Perme, “Pseudo-observations in survival analysis,” <em>Statistical Methods in Medical Research</em>, vol. 19, no. 1, pp. 71–99, Feb. 2010, doi: <a href="https://doi.org/10.1177/0962280209105020">10.1177/0962280209105020</a>.</p>
+<p>[71] P. K. Andersen and M. Pohar Perme, “Pseudo-observations in survival analysis,” <em>Statistical Methods in Medical Research</em>, vol. 19, no. 1, pp. 71–99, Feb. 2010, doi: <a href="https://doi.org/10.1177/0962280209105020">10.1177/0962280209105020</a>.</p>
 </div>
 <div id="ref-wildscop_biostatistics_2013">
-<p>[71] Wildscop, “Biostatistics and epidemiology with R: Weighted Logistic Regression in R, SPSS, Stata,” <em>biostatistics and epidemiology with R</em>. Feb-2013.</p>
+<p>[72] Wildscop, “Biostatistics and epidemiology with R: Weighted Logistic Regression in R, SPSS, Stata,” <em>biostatistics and epidemiology with R</em>. Feb-2013.</p>
 </div>
 <div id="ref-morris_using_2019">
-<p>[72] T. P. Morris, I. R. White, and M. J. Crowther, “Using simulation studies to evaluate statistical methods,” <em>Statistics in Medicine</em>, vol. 38, no. 11, pp. 2074–2102, 2019, doi: <a href="https://doi.org/10.1002/sim.8086">10.1002/sim.8086</a>.</p>
+<p>[73] T. P. Morris, I. R. White, and M. J. Crowther, “Using simulation studies to evaluate statistical methods,” <em>Statistics in Medicine</em>, vol. 38, no. 11, pp. 2074–2102, 2019, doi: <a href="https://doi.org/10.1002/sim.8086">10.1002/sim.8086</a>.</p>
 </div>
 <div id="ref-r_core_team_r_nodate">
-<p>[73] R. C. Team, “R: A Language and Environment for Statistical Computing.” R Foundation for Statistical Computing, Vienna, Austria, Vienna,</p>
+<p>[74] R. C. Team, “R: A Language and Environment for Statistical Computing.” R Foundation for Statistical Computing, Vienna, Austria, Vienna,</p>
 </div>
 <div id="ref-wickham_tidy_2017">
-<p>[74] H. Wickham, “The tidy tools manifesto.” https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.</p>
+<p>[75] H. Wickham, “The tidy tools manifesto.” https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html, Nov-2017.</p>
 </div>
 <div id="ref-therneau_package_2020">
-<p>[75] T. Therneau, “A package for survival analysis in R,” p. 89, Mar. 2020.</p>
+<p>[76] T. Therneau, “A package for survival analysis in R,” p. 89, Mar. 2020.</p>
+</div>
+<div id="ref-eddelbuettel_rcpp_2011">
+<p>[77] D. Eddelbuettel and R. Francois, “Rcpp: Seamless R and C++ Integration,” <em>Journal of Statistical Software</em>, vol. 40, no. 1, pp. 1–18, Apr. 2011, doi: <a href="https://doi.org/10.18637/jss.v040.i08">10.18637/jss.v040.i08</a>.</p>
 </div>
 <div id="ref-perme_pseudo_2017">
-<p>[76] M. P. Perme, M. Gerster, and K. Rodrigues, “Pseudo: Computes Pseudo-Observations for Modeling.” Jul-2017.</p>
+<p>[78] M. P. Perme, M. Gerster, and K. Rodrigues, “Pseudo: Computes Pseudo-Observations for Modeling.” Jul-2017.</p>
 </div>
 <div id="ref-chang_shiny_2020">
-<p>[77] W. Chang <em>et al.</em>, “Shiny: Web Application Framework for R.” Mar-2020.</p>
+<p>[79] W. Chang <em>et al.</em>, “Shiny: Web Application Framework for R.” Mar-2020.</p>
 </div>
 </div>
             </section>

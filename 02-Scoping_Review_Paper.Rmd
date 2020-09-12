@@ -4,7 +4,6 @@
 `r fb(thesis="\\chaptermark{Scoping Review}")`
 `r Updated(2)`
 
-`r add_downloads(2)`
 
 `r fb(gitbook="Scoping Review Protcol Pre-Print  [here](https://doi.org/10.17605/OSF.IO/HR6QD)")`
 

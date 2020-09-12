@@ -15,7 +15,7 @@ site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
     includes:
-      in_header: "hypothesis.html"
+      in_header: "header.html"
       css: style.css  
     config:
       toc:
@@ -54,13 +54,6 @@ if(knitr:::is_latex_output())
 library(MyThesis)
 
 ```
-
-  
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
 
 
 
