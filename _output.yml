@@ -1,0 +1,18 @@
+bookdown::gitbook:
+  includes:
+    in_header: "header.html"
+    css: style.css  
+  config:
+    toc:
+      collapse: none
+thesisdown::thesis_pdf: 
+  includes:
+    in_header: [header.txt, latex_packages.txt]
+MyThesis::Gitbook_Render:
+    includes:
+      in_header: "header.txt"
+      css: style.css  
+    config:
+      toc:
+        collapse: none
+    highlight: tango

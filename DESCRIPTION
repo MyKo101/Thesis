@@ -30,5 +30,7 @@ Imports:
     forcats,
     stringi,
     stringr,
-    mutils
+    mutils,
+    here,
+    png
 RoxygenNote: 7.1.1

@@ -15,113 +15,6 @@ Trans_short2long <- function(x)
   return(y)
 }
 
-
-#' @export
-Dev_Valid_Paper_Var_Names <- function(.tbl,.variable,group_var=NULL,Full_Comorb=0)
-{
-  .V <- pull(.tbl,as_name(enquo(.variable)))
-  
-  if(!is.null(group_var))
-  {
-    .grp <- rep(NA,length(.V))
-    
-    .grp[grepl("Age",.V,fixed=T)] <- "Age"
-    .grp[grepl("eGFR",.V,fixed=T)] <- "eGFR"
-    .grp[grepl("uPCR",.V,fixed=T)] <- "uPCR"
-    
-    .grp[.V %in% c("CCF","COPD","CVA","DM","HT",
-                   "IHD","LD","MI","PVD","ST")] <- "Comorbidity"
-    
-    
-    .V_g <- grepl(" : ",.V,fixed=T)
-    
-    if(any(.V_g)) 
-    {
-      .grp[!.V_g & is.na(.grp)] <- "Measures"
-      
-      .V_m <- matrix(unlist(str_split(.V[.V_g] ," : ")),ncol=2,byrow=T)
-      
-      .grp[.V_g] <- .V_m[,1]
-      .V[.V_g] <- .V_m[,2]
-    } else .grp[is.na(.grp)] <- "Measures"
-    
-    .grp <- case_when(.grp == "SmokingStatus" ~ "Smoking Status",
-                      .grp == "Primary Renal" ~ "Primary Renal Diagnosis",
-                      T~.grp)
-    
-    .grp_n <- case_when(.grp == "Age" ~ 1,
-                        .grp == "eGFR" ~ 2,
-                        .grp == "uPCR" ~ 3,
-                        .grp == "Measures" ~ 4,
-                        .grp == "Gender" ~ 5,
-                        .grp == "Smoking Status" ~ 6,
-                        .grp == "Primary Renal Diagnosis" ~ 7,
-                        .grp == "Comorbidity" ~ 8,
-                        T ~ 9)
-    
-    
-    
-    .tbl %<>% mutate(group_temp = .grp,
-                     Order = .grp_n,
-                     !!enquo(.variable) := .V) %>%
-      arrange(Order,group_temp) %>%
-      select(-Order) %>%
-      select(group_temp,!!enquo(.variable),everything()) %>%
-      rename(!!enquo(group_var) := group_temp)
-    
-    
-    .V <- pull(.tbl,as_name(enquo(.variable)))
-  }
-  
-  
-  
-  .V <- case_when(.V == "eGFR.Rate" ~ "eGFR Rate",
-                  .V == "log.eGFR.Rate" ~ "log(eGFR Rate)",
-                  .V == "uPCR.Rate" ~ "uPCR Rate",
-                  .V == "log.uPCR.Rate" ~ "log(uPCR Rate)",
-                  .V == "Calcium" ~ "Corrected Calcium",
-                  T ~ .V)
-  
-  .V <- gsub("Former_3Y","Former (3 years+)",.V)
-  .V <- gsub("Non_Smoker","Non-Smoker",.V)
-  
-  if(Full_Comorb == 1)
-  {
-    .V <- case_when(.V == "CCF"  ~ "Congestive Cardiac Failure",
-                    .V == "COPD" ~ "Chronic Obstructive Pulmonary Disease",
-                    .V == "CVA"  ~ "Prior Cerebrovascular Accident",
-                    .V == "DM"   ~ "Diabetes",
-                    .V == "HT"   ~ "Hypertension",
-                    .V == "IHD"  ~ "Ischemic Heart Disease",
-                    .V == "LD"   ~ "Chronic Liver Disease",
-                    .V == "MI"   ~ "Prior Myocardial Infarction",
-                    .V == "PVD"  ~ "Peripheral Vascular Disease",
-                    .V == "ST"   ~ "Solid Tumour")
-  }
-  
-  if(Full_Comorb == 2)
-  {
-    .V <- case_when(.V == "CCF"  ~ "Congestive Cardiac Failure (CCF)",
-                    .V == "COPD" ~ "Chronic Obstructive Pulmonary Disease (COPD)",
-                    .V == "CVA"  ~ "Prior Cerebrovascular Accident (CVA)",
-                    .V == "DM"   ~ "Diabetes (DM)",
-                    .V == "HT"   ~ "Hypertension (HT)",
-                    .V == "IHD"  ~ "Ischemic Heart Disease (IHD)",
-                    .V == "LD"   ~ "Chronic Liver Disease (LD)",
-                    .V == "MI"   ~ "Prior Myocardial Infarction (MI)",
-                    .V == "PVD"  ~ "Peripheral Vascular Disease (PVD)",
-                    .V == "ST"   ~ "Solid Tumour (ST)")
-  }
-  
-  .tbl %<>% mutate(!!enquo(.variable) := .V)
-  
-  .tbl
-  
-}
-
-
-
-
 #' @export
 make_linebreaks <- function(.tbl)
 {
@@ -230,7 +123,11 @@ to_kable <- function(.tbl,caption,...,numeric_cols=NULL,lscape=F,
     if_fun(get_format("gitbook"),
            function(x) mutate_at(x,numeric_cols,
                                  ~gsub("<","&lt;",.,fixed=T) %>%
-                                   gsub(">","&gt;",.,fixed=T)) %>%
+                                   gsub(">","&gt;",.,fixed=T) %>%
+                                   gsub("&lt;strong&gt;","<strong>",.,fixed=T) %>%
+                                   gsub("&lt;/strong&gt;","</strong>",.,fixed=T) %>%
+                                   gsub("&lt;span(.+?)&gt;","<span\\1>",.) %>%
+                                   gsub("&lt;/span&gt;","</span>",.)) %>%
              mutate_at(vars(-numeric_cols),
                        ~gsub("\\^([a-zA-Z0-9])","<sup>\\1</sup>",.) %>%
                          gsub("<strong>","**",.,fixed=T) %>%
@@ -320,4 +217,52 @@ format_table2 <- function(tbl,caption)
 #' @export
 fm <- function(x) footnote_marker_alphabet(x,format=fb("html","latex","latex"))
 
+
+
+#' @export
+my_kbl <- function(x,...,escape=F,font_size=NULL){
+  kbl(x,...,escape=escape) %>%
+  kable_styling(
+    bootstrap_options = c("striped","hover"),
+    latex_options="striped",
+    font_size=font_size,
+    full_width=F
+  )
+}
+
+#'
+clear_blanks <- function(x){
+  x[x == str_dup(" ",nchar(x))] <- ""
+  x
+}
+
+#' @export
+add_numeric_cols <- function(x,...,.font_size=NULL,.digits=3){
+  .cols <- enexprs(...)
+  
+  ws_sym <- fb("&ensp;"," ","\\\\quad")
+  mutate(x,
+         across(
+           c(!!!.cols),
+           . %>%
+             justify(.,d=.digits) %>%
+             clear_blanks %>%
+             set_whitespace(symbol=ws_sym) %>%
+             cell_spec(monospace=T,align="right",font_size=.font_size,
+                       escape=F,extra_css="float:right;")
+         ))
+  
+}
+
+#' @export
+as_caption <- function(...){
+  dots <- enexprs(...)
+  #dots
+  out_str <- exec("str_glue",!!!dots,.sep=" ",.envir=parent.frame())
+  paste0(
+    fb("<font size=\"2\">","{\\small","{\\small"),
+    out_str,
+    fb("</font>","}","}")
+  )
+}
 

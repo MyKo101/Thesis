@@ -9,13 +9,23 @@
 #'
 #'
 #' @export
-go<- function(x=NULL,get.comments=F)
+go<- function(...,get.comments=F)
 {
   devtools::document()
   devtools::install(upgrade="never",dependencies=T)
   library(MyThesis)
   file.edit("index.Rmd")
-  if(!is.null(x))
+  
+  dots <- list(...)
+  dots_num <- vapply(dots,is.numeric,logical(1))
+  dots_log <- vapply(dots,is.logical,logical(1))
+  
+  x <- dots[dots_num]
+  if(length(x) == 0) x <- NULL else x <- x[[1]]
+  y <- dots[dots_log]
+  if(length(y) == 0) y <- NULL else y <- y[[1]]
+  
+  if(!is.null(x) && is.numeric(x))
   {
     x <- if(x<10) paste0("0",x) else paste0(x)
     ff <- list.files()
@@ -25,6 +35,10 @@ go<- function(x=NULL,get.comments=F)
       ff <- lapply(ff,file.edit)
     }
     if(get.comments) Pull_Comments(x)
+  }
+  
+  if(!is.null(y) && is.logical(y) && y){
+    bookdown::render_book("index.Rmd",output_format=bookdown::gitbook())
   }
 }
 

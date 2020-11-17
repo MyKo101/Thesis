@@ -4,16 +4,15 @@ chapter_name: "Chapter "
 appendix_name: "Appendix "
 rmd_files: ["index.Rmd",
             "01-Lit_Report.Rmd",
-            #"02-Scoping_Review_Paper.Rmd",
-            "03-CR_Conf.Rmd",
-            "04-IPCW_logistic.Rmd",
-            "05-Performance_Metrics.Rmd",
-            "06-Dev_Paper.Rmd",
+            "02-CR_Conf.Rmd",
+            "03-IPCW_logistic.Rmd",
+            "04-Performance_Metrics.Rmd",
+            "05-Dev_Paper.Rmd",
             "10-Conclusion.Rmd",
             "appendix.Rmd",
-            "03a-CR_Conf_Supp.Rmd",
-            "04a-IPCW_logistic_Supp.Rmd",
-            "06a-Dev_Paper_Supp.Rmd",
+            "02a-CR_Conf_Supp.Rmd",
+            "03a-IPCW_logistic_Supp.Rmd",
+            "05a-Dev_Paper_Supp.Rmd",
             "99-references.rmd"]
 download: [["thesis.pdf", "PDF"]]
 delete_merged_file: false

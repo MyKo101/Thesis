@@ -5,7 +5,7 @@
 \alias{go}
 \title{Temporary knitting functions}
 \usage{
-go(x = NULL, get.comments = F)
+go(..., get.comments = F)
 }
 \description{
 functions to render my thesis

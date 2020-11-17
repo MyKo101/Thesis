@@ -2,7 +2,7 @@
 # Using Inverse-Probability-of-Censoring-Weights to Estimate Calibration-in-the-Large for Time-to-Event Models {#chap-IPCW-logistic}
 *MA Barrowman, A Pate, GP Martin, CJM Sammut-Powell, M Sperrin*
 `r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large}")`
-`r Updated(4)`
+`r Updated(3)`
 `r html_latex_header()`
 
 
@@ -42,7 +42,7 @@ The LU and PO Methods had increasing absolute Bias over time, regardless of whet
 Clinical prediction models (CPMs) are statistical models/algorithms that aim to predict the presence (diagnostic) or furture occurence (prognostic) of an event of interest, conditional on a set of predictor variables. Before they be implemented in practice, CPMs must be robustly validated. They need to be validated before they are used and a fundamental test of their validity is calibration: the agreement between observed and predicted outcomes. This requires that among individuals with $p\%$ risk of an event, $p\%$ of those have the event across the full risk range [@steyerberg_clinical_2008]. The simplest assessment of calibration is the calibration-in-the-large, which tests for agreement in mean calibration (the weakest form of calibration) [@calster_calibration_2016-1]. With continuous or binary outcomes, such a test is straight-forward: it can be translated to a test for a zero intercept in a regression model with an appropriately transformed linear predictor as an offset, and no other predictors. More complicated measurements of calibration can also be assessed to descibe how calibration changes across the risk range, such as calibration slope (see Appendix \@ref(chap-IPCW-logistic-supp)). Calibration alone is not enough to fully assess a model's performance however and so we also need measures of discrimination (how well models discern between different patients), e.g the c-statistic and overall accuracy, e.g. the Brier Score.
 
 
-In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals [@crowson_assessing_2016]; however we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. Second, <mark>when a Cox Model is used</mark> there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK [@hippisley-cox_derivation_2007], ASCVD [@goff_2013_2014] and ASSIGN [@de_la_iglesia_performance_2011]. Once this is established, estimated survival probabilities are available.
+In the case of time to event models, however, estimation of calibration is complicated in three ways. First, calibration can be computed at multiple time-points and one must decide which time-points to evaluate, and how to integrate over these time-points. The choice and combination of time-points determines what we mean by calibration; this is problem-specific and not the focus of this paper. Calibration can also be integrated over time using the martingale residuals [@crowson_assessing_2016]; however we focus on the case where calibration at a specific time point is of interest - e.g. as is common in clinical decision support. Second, when a Cox Model is used there exists no explicit intercept in the model because of the non-parametric baseline hazard function [@royston_external_2013]. The lack of intercept can be overcome provided sufficient information concerning the baseline survival curve is available (although this is rarely the case as seen in QRISK [@hippisley-cox_derivation_2007], ASCVD [@goff_2013_2014] and ASSIGN [@de_la_iglesia_performance_2011]. Once this is established, estimated survival probabilities are available.
 
 Third, censoring needs to be handled in an appropriate way and this is the core message of this paper. Censoring is commonly overcome by using Kaplan-Meier estimates  [@royston_external_2013;@hippisley-cox_derivation_2007], but the censoring assumptions required for the Kaplan-Meier estimate are stronger than those required for the Cox model: the former requiring unconditional independence (random censoring), the latter requiring independence conditional on covariates only. This is a problem because when miscalibration is found using this approach, it is not clear whether this is genuine miscalibration or a consequence of the different censoring assumptions. Royston [@royston_tools_2014;@royston_tools_2015] has proposed the comparison of KM curves within risk groups, which alleviates the strength of the independence assumption required for the censoring handling to be comparable between the Cox model and the KM curves (since the KM curves now only assume independent censoring within risk group). In these papers a fractional polynomial approach to estimating the baseline survival function (and thus being able to share it efficiently) is also provided. However, this does not allow calculations of the overall calibration of the model, which is of primary interest here.
 
@@ -126,7 +126,7 @@ This is used to calculate an IPCW for all non-censored patients at the last time
 $$
 \omega(t|z) = \frac{1}{1 - G(\min(t,X_i)|z)}
 $$
-<mark>Due to the sensitive nature of this propensity weighting over time, the IPCW is capped at a value of 10 [@shu_methods_2017], this capping should only effect around 2\% of simulated patients.</mark>
+Due to the sensitive nature of this propensity weighting over time, the IPCW is capped at a value of 10 [@shu_methods_2017], this capping should only effect around 2\% of simulated patients.
 
 ### Calibration Measurements
 
@@ -136,8 +136,6 @@ The prediction models were assessed at 100 time points, evenly distributed betwe
 * Logistic Unweighted (LU) - Logistic regression is performed on the non-censored population to predict the binary Observed value using the $\textrm{logit}(E)$ value as an offset and the Intercept of the regression is the estimate of calibration-in-the-large.
 * Logistic Weighted (LW) - As above, but the logistic regression is performed using the IPCW as a weighting for each non-censored patient.
 * Pseudo-Observations (PO) - The contribution of each patient (including censored patients) to the overall Observed value is calculated by removing them from the population and aggregating the difference. Regression is performed with the complimentary log-log function as a link function and the log cumulative hazard as an offset with the Intercept representing the estimate of calibration-in-the-large.
-
-~~Some of these methods produce unusual results for the regressions. Firstly, the weights within the LW method cause the "number of events" being processed (i.e the sum of the weighted events) to be non-integer. This is a minor issue and can be dealt with by most software packages [@wildscop_biostatistics_2013]. Secondly, the PO method produces outcomes that are outside of the (0,1) range [@perme_checking_2008] required for the complimentary log-log function. To combat this, we re-scale the values produced to be with this range and perform the regression as normal. Finally,~~
 
 The KM method is centred around 1 for well performing models, whereas the others are centered around 0, so we subtract 1 from the results of the KM method to bring results to the same scale.
 
@@ -155,8 +153,6 @@ $$
 From this, we can also define our upper and lower bound for a 95% confidence interval as the vectors $\theta_{i,L}(t)$ and $\theta_{i,U}(t)$.
 
 ### Performance Measures
-
-~~The measures we will take as performance measures as the Bias, the Empirical Standard Error, the Median-Bias and the Coverage at time, $t$, along with relevant standard errors and/or confidence intervals [@morris_using_2019]. For most measures, the standard error is easily calculable, but for the Median, it is more appropriate to calculate the confidence interval directly from the sorted values, $\theta_{(1)},\theta_{(2)},...,\theta_{(100)}$, where $\theta_{(50)}$ is the median, the 95\% confidence interval is the interval $\left(\theta_{(40)}, \theta_{(61)}\right)$. To turn this into a Median-Bias, we subtract the true value, $\theta$. These measures can be seen in table \@ref(tab:PM-DGM-time). For the Bias and EmpSE estimates at each time point, Method and Model, the top and bottom 5% of all simulation estimates will be omitted, leaving $N=90$ to avoid biasing the results from large outlier effects. We will also perform a Shapiro-Wilk test for each of the combination of parameters.~~
 
 The measures we will take as performance measures are the Bias, the Empirical Standard Error (EmpSE) and the Coverage (Cov). We will also estimate the MCMC Standard Error of each of these estimates in order to calculate a 95\% confidence interval
 
@@ -187,7 +183,7 @@ tribble(~"Performance Measure",~"Estimation",~"SE",
 
 ```
 
-The bias ~~and median-bias~~ provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are. ~~The shapiro-wilk result will allow us to determine whether the bias or median-bias is more appropriate overall when analysing our data.~~
+The bias provide a measures of how close our estimate is to the true value as per our data generating mechanisms. The coverage will demonstrate how often our confidence intervals surrounding our estimate actually include this true value. The Empirical Standard Error will show us how precise our estimates are.
 
 ### Software
 

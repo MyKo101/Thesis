@@ -4,25 +4,14 @@ date: '`r format(Sys.time(), "%B %Y")`'
 institution: 'University of Manchester'
 division: 'Division of Informatics, Imaging and Data Science'
 advisor: 'Dr. Matthew Sperrin, Prof. Niels Peek, Dr. Glen Martin, Dr. Mark Lambie'
-# If you have more two advisors, un-silence line 7
-#altadvisor: ''
 department: 'School of Health Sciences'
 degree: 'PhD Medicine'
 title: 'Multi-State Clinical Prediction Models in Renal Replacement Therapy'
 #knit: MyThesis::MyRender
 knit: MyThesis::Gitbook_Render
+#knit: bookdown::gitbook
 site: bookdown::bookdown_site
-output: 
-  bookdown::gitbook:
-    includes:
-      in_header: "header.html"
-      css: style.css  
-    config:
-      toc:
-        collapse: section
-  thesisdown::thesis_pdf: 
-    includes:
-      in_header: [header.tex, latex_packages.txt]
+
 #  thesisdown::thesis_word: default
 #  thesisdown::thesis_epub: default
 # If you are creating a PDF you'll need to write your preliminary content (e.g., abstract, acknowledgements) here or
@@ -51,6 +40,10 @@ lof: true
 if(knitr:::is_latex_output())
   options(output.format = "thesis") else 
     options(output.format = "gitbook")
+
+knitr::opts_chunk$set(echo = F)
+options(knitr.kable.NA = "")
+
 library(MyThesis)
 
 ```

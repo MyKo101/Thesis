@@ -2,7 +2,7 @@
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death {#chap-dev-paper}
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
 `r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
-`r Updated(6)`
+`r Updated(5)`
 
 
 ## Abstract {-}
@@ -141,28 +141,7 @@ As seen in table \@ref(tab:Table-One), the Age of the populations had a mean of 
 
 <br>
 ```{r Table-One,echo=F}
-"data/Dev_Paper/TableOne.csv" %>%
-  read_csv(col_types=cols(.default="c"),trim_ws=F) %>% 
-  rename_at(vars(contains("mean.n")),~gsub("mean.n","mean/n",.)) %>%
-  rename_at(vars(contains("IQR.p")),~gsub("IQR.p","IQR/p",.)) %>%
-  mutate(across(.fns=~if_else(trimws(.) == "%","0.00%",.))) %>%
-#  transmute(Variable,
-#            `SKS_mean/n (IQR/p\\%)` = if_else(!is_blank(SKS_mean.n),paste0(SKS_mean.n," (",SKS_IQR.p,")"),""),
-#            `SKS_missing n (p\\%)` = if_else(!is_blank(SKS_n.miss),paste0(SKS_n.miss," (",SKS_p.miss,")"),""),
-#            `SKS_range` = if_else(!is_blank(SKS_min),paste0("[",SKS_min,", ",SKS_max,"]"),""),
-#            `UoG_mean/n (IQR/p\\%)` = if_else(!is_blank(UoG_mean.n),paste0(UoG_mean.n," (",UoG_IQR.p,")"),""),
-#            `UoG_missing n (p\\%)` = if_else(!is_blank(UoG_n.miss),paste0(UoG_n.miss," (",UoG_p.miss,")"),""),
-#            `UoG_range` = if_else(!is_blank(UoG_min),paste0("[",UoG_min,", ",UoG_max,"]"),"")) %>%
-#  
-  to_kable(caption="Patient Demographics, Continuous variables are displayed as mean (Inter-Quartile Range), and Categorical/Comorbidity data as number (percent)",
-           col_names = . %>%
-             gsub("^SKS_","",.)%>% 
-             gsub("^UoG_","",.),
-           col_groups = c("",rep("SKS",6),rep("SERPR",6)),
-           col_groups_sep = T,
-           numeric_cols=2:ncol(.),
-           col_widths=c("26em","13em","11em","14em","14em","14em","19em"))
-
+Print_Population_Table_One(f_size=9)
 ```
 
 

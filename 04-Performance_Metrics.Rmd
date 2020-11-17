@@ -1,0 +1,407 @@
+
+# Prediction Model Performance Metrics for the Validation of Multi-State Clinical Prediction Models {#chap-performance-metrics}
+*MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
+`r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
+`r Updated(4)`
+
+\newcommand{\Death}{\textrm{Death}}
+\newcommand{\RRT}{\textrm{RRT}}
+\newcommand{\CKD}{\textrm{CKD}}
+\newcommand{\P}[1]{\textrm{P}\left(#1\right)}
+\newcommand{\E}[1]{\textrm{E}\left[#1\right]}
+\newcommand{\O}[1]{\textrm{O}\left[#1\right]}
+
+## Introduction
+
+Clinical Prediction Models (CPMs) provide individualised risk of a patient's outcome [@riley_prognosis_2019], based on that patient's predictors. These predictions will usually be in the form of a risk score or probability. However, using traditional modelling techniques, these CPMs will only predict a single outcome. Multi-State Clinical Prediction Models (MS-CPMs) combine the multi-state modelling framework to the prognostic field to provide predictions for multiple outcomes in a single model.
+
+Once a CPM has been developed, it is important to assess how well the model actually performs [@steyerberg_clinical_2008]. This process is called Model Validation and involves comparing the predictions produced by the model to the actual outcomes experienced by patients. It is expected that the development of a CPM will be accompanied by the validation of the model on the same dataset it was developed in (internal validation), using either bootstrapping or cross-validation to account for optimism in the developed model [@steyerberg_overfitting_2009]. Models can also be validated on a novel dataset (external validation), which is used to assess the generalisability and transportability of the model [@steyerberg_towards_2014].
+
+ During validation, there are different aspects of model performance that we can assess and these are measured using specific metrics. For example, to assess the overall Accuracy of a model, we may use the Brier Score [@brier_verification_1950-1] or to analyse how well a model discriminates between patients, we could use the c-statistic [@altman_prognosis_2009].  The current metrics that are commonly used have been designed and extended to work in a variety of model development frameworks. However, these extensions are limited to either a single outcome (as in traditionally developed models) or do not adequately account for the censoring of patients (as commonly occurs in longitudinal data).
+This paper aims to provide use-able extensions to current performance metrics to be used when validating MS-CPMs. It is essential that these extensions are directly comparable with current metrics (to allow for quicker adoption), that they are collapsible to the current metrics and that they adjust for the bias induced by the censoring of patients.
+
+Currently, the most common way to validate an MS-CPMs is by applying traditional methods to compare across two states at a given time and then aggregating the results in an arbitrary manner. Other methodologists have extended existing metrics to multinomial outcomes [@hoorde_assessing_2014], which do not contain a time-based component; to simple competing risks scenarios [@calster_extending_2012-1], which do not contain transient states; or to time dependent outcomes [@schumacher_how_2003]; which do not have multiple states. Spitoni et al **[cite Spitoni 2018]**] developed methods to apply the Brier Score (or any proper score functions) to a multi-state setting and so a simplified and specific version of their work is described in this paper.
+
+It is the hope of the authors that this work will increase the uptake of multi-state models and the sub-field of MS-CPMs will grow appropriately.
+
+## Motivating Data Set
+
+
+Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table \@ref(tab:UoGTableOne)). The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m$^2$, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a "snapshot" of the predictions at the 5 year time point.
+
+```{r UoGTableOne}
+Print_Population_Table_One(SKS=F,f_size=12)
+```
+
+The predictions and metrics applied to them will depend on the population distribution at the 5-year snapshot, which cn be seen in Table \@ref(tab:UoGProportions)
+
+```{r UoGProportions}
+Print_Proportion_tbl("Five_Year_Proportions.csv",f_size=12)
+```
+
+The Three-State model used in our example is designed as an Illness-Death Model [@putter_tutorial_2007], this is one of the simplest MSM designs and has the key advantage over a traditional model that they can predict whether a patient is in or has visited the transient state before reaching the absorbing state (i.e. patient who became ill before dying or who started RRT before dying), see figure \@ref(fig:ThreeStateDiagram). 
+
+```{tikz, ThreeStateDiagram, fig.cap="Layout of the MSM used in the motivating model", fig.align="center"}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\begin{tikzpicture}[
+    sharp corners=2pt,
+    inner sep=7pt,
+    node distance=3cm,
+    >=latex]
+\tikzstyle{my node}=[draw,minimum height=1cm,minimum width=2cm]
+\node[my node] (CKD){CKD};
+\node[my node,right of=CKD](Dead){Dead};
+\node[my node] at ($(CKD)!0.5!(Dead)-(0pt,1.5cm)$) (RRT) {RRT};
+\draw[->] (CKD) -- (RRT);
+\draw[->] (CKD) -- (Dead);
+\draw[->] (RRT) -- (Dead);
+\end{tikzpicture}
+```
+
+For the purposes of this paper, we will not discern between whether a patient in the Death state has visited RRT or not, and so our model has $K=3$ states. If we were to differentiate between these two, then the "Death" state would essentially be split in two, and so the model would have four states to describe the four pathways a patient can take (and so $K=4$).
+
+## Current Approaches
+
+Here we describe three commonly used performance metrics for assessing the performance of a traditional survival  clinical prediction model. These metrics assess the Accuracy, Discrimination and Calibration of the models being validated. Accuracy is an overall measurement of how well the model predicts the outcomes in the patients. Discrimination assesses how well the model discerns between patients; in a two-state model this is a comparison of patients with and without the outcome, and should assign a higher value to those that experience the outcome. Calibration is the agreement between the observed outcomes and the predicted risks across the full risk-range. 
+
+We are applying cross-sectional metrics at a set time point within the setting of a longitudinal model and so we need to account for the censoring of patients and therefore, each uncensored patient at a given time t will be weighted as per the Inverse Probability of Censoring Weighting (IPCW) [@matsuyama_estimation_2008]. This allows the uncensored patient population to be representative of the entire patient population.
+
+
+### Baseline Models
+
+To assess the performance of a model, we must compare the values produced by the performance metrics to those of two baseline models; a random or non-informative model and a perfect model.
+
+A Non-Informative (NI-)model assigns the same probability to all patients to be in any state regardless of covariates and is akin to using the average prevalence in the entire population to define your model. For example, in a Two-State model with an event that occurs in 10% of patients, all patients are predicted to have a 10% chance of having the event. For many metrics, models can be compared to an NI-model to assess whether the model is in fact "better than random".
+
+A Perfect (P-)model is one which successfully assigns a 100% probability to all patients, and the predictions are correct; this is the ideal case and is therefore the standard that most models aim for.
+
+It may also be the case that a model performs worse than a non-informative one, however we will not consider these in detail here as they are considered to be without worth in terms of predictive ability without a well-informed adjustment.
+
+The metrics produced by these baseline models will often depend on the prevalence of each state and/or the number of states. These values can be used as comparators to provide contextual information regarding the strength of model performance. These baselines metrics for the NI-model and the P-model will be referred to as the NI-level and P-level for the metric.
+
+
+### Notation
+
+Throughout this paper, we will use consistent notation which is shown here for reference and to avoid repetition in definitions. The common notations are defined below:
+
+```{r NotationTable}
+tribble(~Notation, ~Meaning,
+        "$N(t)$ or $N$", "Number of (non-censored) patients in a population at time $t$",
+        "$K$", "Number of states predicted by the model",
+        "$P_i^k(t)$ or $P_i^k$", "Predicted probability of whether patient $i$ was in state $k$ at time $t$",
+        "$P_i^{!k}(t)$ or $P_i^{!k}$","Predicted probability of whether patient $i$ was not in state $k$ at time $t$, i.e. $P_i^k + P_i^{!k} = 1$",
+        "$P_i(t)$ or $P_i$","If $K \\neq 2$, vector of predicted probabilities for patient $i$ at time $t$, $P_i = (P_i^1,P_i^2,...,P_i^K)$<br>If $K=2$, then $P_i = P_i^2$ (i.e. predicted probability of the second state at time $t$)",
+        "$P^k(t)$ or $P^k$","The vector of the predicted probabilities of being in state $k$ for the whole population at time $t$",
+        "$P(t)$ or $P$", "If $K \\neq 2$, a $N \\times K$ matrix of predicted probabilities for each state & individual at time $t$<br>If $K=2$, a vector of the predicted probabilities of being in state 2 for the whole population at time $t$",
+        "$O_i^k(t)$ or $O_i^k$","Binary indicator for whether patient $i$ was in state $k$ at time $t$",
+        "$O_i^{!k}(t)$ or $O_i^{!k}$","Binary indicator for whether patient $i$ was not in state $k$ at time $t$, i.e $O_i^k + O_i^{!k} = 1$",
+        "$O_i(t)$ or $O_i$","If $K \\neq 2$, vector of outcomes for patient $i$ at time $t$, $O_i = (O_i^1,O_i^2,...,O_i^K)$<br>If $K=2$, then $O_i = O_i^2$ (i.e. observation of patient in the second state at time $t$)",
+        "$O^k(t)$ or $O^k$","The vector of observed outcomes of being in state $k$ for the whole population at time $t$",
+        "$O(t)$ or $O$","If $K \\neq 2$, a $N \\times K$ matrix of observed proportions for each state & individual at time $t$<br>If $K=2$, a vector of the observed proportions for state 2 for the whole population at time $t$",
+        "$Q_k(t)$ or $Q_k$","The proportion of the population in state $k$ at time $t$",
+        "$Q(t)$ or $Q$","The vector of proportions of the populaton in all states at time $t$, $Q = (Q_1,Q_2,...,Q_K)$",
+        "$\\omega_i(t)$ or $\\omega_i$","Weighting given to patient $i$ at time $t$",
+        "$\\omega(t)$ or $\\omega$","The vector of weights given to entire population at time $t$",
+        "$N_\\omega(t)$ or $N_\\omega$","Weighted size of population at time $t$, $N_\\omega = \\sum_{i=1}^N \\omega_i$"
+        
+        
+        ) %>%
+  my_kbl(caption=as_caption("Common Notation used throughout this paper"),
+         f_size=12) %>%
+  column_spec(1,width="9em")
+```
+Other notation will be define as they are introduced.
+
+
+### Patient Weighting
+
+At a given time after the index date, some patients in our validation data set will be censored and so our performance metrics must adjust for this. Therefore, all patients will be subject to IPCW, which applies a higher weighting to patients who are more likely to be censored. This process is assumed to be independent of the Multi-State process, given a patient's covariates [@spitoni_prediction_2018].
+
+To calculate this weight, first we need to estimate an individual patient's probability of not being censored at the current time point, $G(t|Z)$, where $Z$ is the patient's covariate characteristics and $t$ is the current time point. This is done in our validation cohort using a Cox regression which provides estimated hazard ratios for each of the covariates $\hat{\beta}$ taking the time of censoring as the event-of-interest. Absolute predictions are then calculated using the Breslow estimate of the cumulative baseline hazard function, $\hat{\Lambda}_0$. The estimate, $\hat{G}$, is then given by 
+$$
+\hat{G}(t|Z) = \exp\left(-e^{\beta Z}\hat{\Lambda}_0(t)\right)
+$$
+For a given patient, $i$, with a maximum observed time of $T_i$, we will define $\delta_i = 0$ if the patient was censored and $\delta_i=1$ if the patient moved to an absorbing state (e.g. died) and $z_i$ to be that patient's set of covariates.
+
+We can therefore define the IPCW for patient $i$ at time $t$ to be:
+
+$$
+\omega_i(t) = \frac{I(T_i \le t_i,\delta_i=1)}{\hat{G}(T_i|z_i)} + \frac{I(T_i > t_i)}{\hat{G}(t_i|Z_i)}
+$$
+
+
+By applying this weighted to all patients included at each time point under analysis, we can be confident that our measurements are robust to right-censored data, subject to the assumptions made in their definition.
+
+The metrics defined below (including those traditionally defined elsewhere) have been corrected for the effect of censoring by applying the IPCW, $\omega_i(t)$ to each patient as a multiplicative weight.
+
+
+### Accuracy - Brier Score
+
+For these metrics, we will be taking the measurements of the models at specific time point of $t=5$ years, and so we simplify notation by removing the references to time given above, for example $\omega_i = \omega_i(5\;\textrm{years})$.
+
+the Brier Score is used to assess the overall accuracy of predictions, it assigns a score to each observation dependent on the predicted probability and the outcome. It then averages these scores across the entire population. The Brier Score, adjusted for IPCW, for a single outcome model for a single patient is given by:
+$$
+\textrm{BS}_i = \omega_i\left(P_i - O_i\right)^2
+$$
+
+And for the entire population, we take the weighted average given by the following [@brier_verification_1950-1]
+$$
+\textrm{BS} = \frac{1}{N_\omega}\sum_{i=1}^N\textrm{BS}_i = \frac{1}{N_\omega}\sum_{i=1}^N\omega_i\left(P_i - O_i\right)^2
+$$
+
+A lower Brier score implies a more accurate model (since the Predictions and the Observations will be closer to one another). The P-level of the BS measure is 0 and the NI-level is $Q(1-Q)$.
+
+In order to standardise the Brier Score, we can rescale it by dividing by the NI-level and subtracting it from 1 to give the adjusted Brier Score (aBS):
+
+$$
+\textrm{aBS} = 1-\frac{BS}{Q(1-Q)}
+$$
+The aBS brings the NI-level to 0 and the P-level to 1 and so a higher value for the aBS implies a model accurate model. One thing to note is that it is possible to get negative values for the aBS if a model performs worse than a non-informative model; however in practice this model would essentially be unusable as it is (although still useful if predictions were reversed).
+
+We can use the values of $\textrm{BS}_i$ to calculate a standard deviation and thus build a confidence interval surrounding our overall BS estimate by use of the relevant z-score and assuming the underlying distribution of possible BS scores follow a Normal distribution [@montgomery_applied_2003]. This population-based BS confidence interval can be converted into a confidence interval for the aBS using the above formula. We will also use bootstrapping to construct a confidence interval around our estimate to compare the two methods of CI-building.
+
+### Discrimination - c-statistic
+
+The c-statistic [@austin_interpreting_2012-1] is the most common method to assess the disciminative ability of a prediction model. In a traditional model, this cna be interpreted as the probability that two patients, chosen at random from the two outcome groups, will be correctly discriminated. Here, correct discrimination means that the patient who had the event was predicted to have a high probability of having the event than the patient who did not have the event.
+
+$$
+c = \textrm{Prob}\left(P_i < P_j \;|\; O_i = 0 \;\&\; O_j = 1\right)
+$$
+
+This can be estimated empirically by averaging over all pairs of patients where one is selected from each state:
+
+$$
+\hat{c} = \frac{1}{N_1N_2}\sum_{i \in A_1}\sum_{j \in A_2} \omega_i\omega_jC_2(P_i,P_j)
+$$
+where
+
+$$
+C_2(a,b) = \begin{cases} 1 & a < b\\0 & a > b\\\frac{1}{2}& a = b \end{cases}
+$$
+
+In practice, it will be very rare for two predicted probabilities to be exactly equal, but this case is needed to account for the NI-model and produce the NI-level of 0.5, we also have a P-level of 1 regardless of the prevalence of the two states.
+
+Since the occurence of equal predicted probabilities is rare, the vast majority of the values for the $C_2(a,b)$ will be either 0 or 1. This means we can model the distribution of $C_2$ as a Bernoulli distribution and use this modelling assumption to construct a population-based confidence interval accordingly by taking our standard error as:
+$$
+\sqrt{\frac{\hat{c}(1-\hat{c})}{N_1N_2}}
+$$
+As with the aBS, this population-based confidence interval will be compared to one constructed via bootstrapping.
+
+### Calibration - Intercept and Slope
+
+In a traditional model, the Calibration Intercept is a measure of Calibration-in-the-Large, or overall calibration across the entire population [@altman_prognosis_2009]. Calibration slope indictes how well the model predicts across different prediction values. These metrics can be measured using logistic regression on the probability of the outcome using the logit of the prediction as the predictor in the regression:
+
+$$
+\textrm{E}\left[\textrm{logit}\left(O\right)\right] = \alpha + \beta\textrm{logit}\left(P\right)
+$$
+The estimates of these coefficients, $\hat{\alpha}$ and $\hat{\beta}$ are found using a weighted binomial logistic regression, with weights $\omega_i$. The intercept, $\hat{\alpha}$, can provide a measure of any systemic over- or under-prediction of the outcome within the model. The slope, $\hat{\beta}$, provides a measure of how well the model performs across the population, rather than simply an average of the population (as $\hat{\alpha}$ is). It is advised that the intercept is calculated on its own first using $\textrm{logit}(P)$ as an offset (without a predictor, i.e. fixing $\beta = 1$) and then the slope is calculated using $\hat{\alpha}$ as an offset [@riley_prognosis_2019]; however, for simplicity we have chosen to model them both together.
+
+As the predicted values of an NI-Model would be the same for all patients, a directly calculated NI-model would not converge, however the limit of such a model (as the individual predictions tend to equality) would give NI-levels for the Intercept equal to prevalence ($Q$) and slope equal to 0 (since every subgroup has the same predicted value). For a P-model, the Intercept would be 0 and the slope would be 1.
+
+Most software which can produce these kinds of logistic regression models will have functionality to calculate confidence intervals built-in and so we will use these measures as out population-based confidence interval to compare to the one found via bootstrapping.
+
+These metrics, intercept and slope, are usually described with an interpretation depending on the fit and whether the P-level (0 and 1, respectively) is within the confidence interval and, if not, which direction the miscalibration lies. If the calibration intercept is considered to be above or below the P-Level, then it indicates that the model is systemically under- or over-predicting the results, respectively. Similarly, a calibration slope that is below or above the P-Level is interpreted to mean that the model had predictions that were too extreme or too moderate across the prediction spectrum [@steyerberg_towards_2014].
+
+## Extension to Multi-State Models
+
+### Trivial Extensions
+
+As well as the extension methods described in this paper, each of the traditional performance metrics described above can be applied to a MS-CPM with trivial extension. These require the predictions and outcomes to be reduced toa model with only two states which allows the traditional performance metrics to be directly applied.
+
+The first method, One-Vs-All, is based on whether a patient is in each state or not at a given time. For each state, we take the current state as the outcome state and collapse all other states into a single "not-" state. For example, when analysing the CKD state, we collapse RRT and Death into a single "not-CKD" state. This gives us a metric for each state in the model.
+
+The second method, Pairwise, compares across pairs of states by ignoring predictions unrelated to them at a given time. For each pair of states, we exclude patients not in one of the two states and normalise the two predicted probabilities so that they sum to 1. For example, when assessing CKD vs RRT, we exclude all patients in the Death state, take our outcome state as RRT and divide the predicted probability of being in RRT by the predicted probability of being in either CKD or RRT (i.e. probability of being in RRT given that they are in either RRT or CKD). This gives us a metric for each pair of states in the model.
+
+The third method, Transitionwise, compares patients undergoing a specific transition. We take the subset of patients who were eligible for a transition and classify those who underwent the transition as being in the outcome state and compare them to those that didn't undergo the transition (by the given time). In our example, whne looking at the RRT to Death transition, we would take the subset of all patients who underwent the CKD to RRT transition (i.e. those eligible for the RRT to Death transition) and compare those who transitioned to Death with those who remained in the RRT state.
+
+Note that the subset of patients in the second and third methods are not always equivalent. When analysing RRT to Death or RRT vs Death, the patients in the RRT state are the same, but the patients in the Death state are different (RRT vs Death includes those that went directly from CKD to Death). The predicted probabilities are similarly different.
+
+
+### Accuracy  - Multiple Outcome Brier Score
+
+Brier's original definition of the Brier Score [@brier_verification_1950-1] permits multiple outcomes and for an individual can be calculated as:
+
+$$
+\textrm{BS}_{i,K} = \omega_i\left(\sum_{k=1}^K\left(P_i^k - O_i^k\right)^2\right)
+$$
+We then take an average to find the overall $\textrm{BS}$:
+
+$$
+\textrm{BS}_K=\frac{1}{N_\omega}\sum_{i=1}^N\textrm{BS}_{i,K}=\frac{1}{N_\omega}\sum_{i=1}^N\sum_{k=1}^K\omega_i\left(P_i^k - O_i^k\right)^2
+$$
+The formula for the traditional Brier Score is actually a simplified version of the original Brier Score defined here. Similarly, a lower score implies a more accurate model. If the two Brier Score measures are applied to a Two-State Model, then the multi-state BS above is twice that of the traditional BS, ($\textrm{BS}_K=2\textrm{BS}$), this is because the traditional metric looks at only the outcome state, but the extended method sums over both states.
+
+For this metric, the P-level is 0 and, similar to the traditional metric, the NI-Level is $\sum_{k=1}^kQ_k(1-Q_k)$; because of this, we would need to apply an adjustment similar to the traditional Brier Score:
+
+$$
+\textrm{aBS} = 1-\frac{\textrm{BS}_K}{\sum_{k=1}^kQ_k(1-Q_k)}
+$$
+Note that due to the relationship between $\textrm{BS}$ and $\textrm{BS}_2$, the doubling that occurs cancels out between the numerator and denominator and so this adjustment works on the same scale as the previously defined $\textrm{aBS}$ (and thus is given the same name).
+
+As with the traditional $\textrm{BS}$ metric, each patient will have their own $\textrm{BS}_K$ measurement and so we can find the population-based confidence interval for the $\textrm{BS}_K$ by using the standard deviation of these values. This can once again be converted into a confidence interval for the $\textrm{aBS}$ and compared to the one found via bootstrapping.
+
+### Discrimination - Polytomous Discriminatory Index
+
+Intuitively, the extension of the c-statistic would be the probability that $K$ patients, chosen randomly from each of the outcome groups, will be correctly discriminated. In this case, what it is to be correctly discriminated needs to be defined. The Polytomous Discriminitory Index (PDI) provides a definition for this discrimination [@calster_extending_2012-1]. We define a $K$-uple of patients as an ordered set of $K$ patients where one patients is from each of the outcomes. A $K$-tuple of patients s well discriminated for a state $k$ if the patient in state $k$ was predicted to have the highest probability of being in state $k$ compared to the others in the $K$-tuple. If we let patients $i_j$ be a patient in state $j$, then the PDI for state $k$ in that $K$-tuple can be given as:
+
+$$
+C_K^k(i_1,i_2,...,i_k,...,i_K)=\begin{cases}1 & P_{i_k}^k > \max\left(P_{i_j}\;:\;j\neq k\right)\\0 & P_{i_k}^k < \max\left(P_{i_j}\;:\;j\neq k\right)\\\frac{1}{m} & P_{i_k}^k  =\max\left(P_{i_j}\;:\;j\neq k\right),\;m=\left|\left\{j\;:\;P_{i_j}^k=P_{i_k}^k\right\}\right|\\\end{cases}
+$$
+
+This definition also includes the caveat that if there are ties for the maximum predicted probability by assigning $\sfrac{1}{m}$ when that occurs, where $m$ is the number of patient (including $i_k$ tying for highest probability).
+
+For a $K$-tuple of patients, we also define their combined IPCW as the product of their individual IPCWs. This allows us to define a PDI for a $K$-tuple in a given state.
+
+$$
+\textrm{PDI}_K^k(i_1,i_2,...,i_K)=\left(\prod_{j=1}^K\omega_{i_j}\right)C_K^k(i_1,i_2,...,i_K)
+$$
+This allows us to define average weighted PDI for a $K$-tuple of patients as:
+
+$$
+\textrm{PDI}_K(i_1,i_2,...,i_K)=\frac{1}{K}\sum_{k=1}^K\textrm{PDI}_K^k(i_1,i_2,...,i_K)
+$$
+
+Or, we can summarise by finding the average PDI for a given state across the whole population:
+
+$$
+\textrm{PDI}_K^k = \left(\frac{1}{\prod_{k=1}^KN_k}\right)\sum_{i_1 \in A_1}\sum_{i_2 \in A_2}...\sum_{i_K \in A_K}\textrm{PDI}_K^k(i_1,i_2,...,i_K)
+$$
+
+These averages can be averaged again to get an overall measure of PDI:
+
+$$
+\begin{align*}
+\textrm{PDI}_K&=\frac{1}{K}\sum_{k=1}^K\textrm{PDI}_K^k \\&= \left(\frac{1}{\prod_{k=1}^KN_k}\right)\sum_{i_1 \in A_1}\sum_{i_2 \in A_2}...\sum_{i_K \in A_K}\textrm{PDI}_K(i_1,i_2,...,i_K)
+\end{align*}
+$$
+Similar to the c-statistic, the P-model would score a PDI of 1, however the NI-model would achieve a PDI of $\sfrac{1}{K}$. Therefore, we need to adjust this PDI to correct the scaling to be that of he common c-statistic:
+
+$$
+c = \left(\textrm{PDI}_K\right)^{log_K(2)}
+$$
+
+Since this new measure is on the same scale as the c-statistic, we can just refer to it as such.
+
+As with the c-statistic, values of the $C_k^K$ which are neither 0 nor 1 will be rare and so we can once again model this as a Bernoulli distribution. For calculation of confidence intervals, we take our $n$ as the number of possible $K$-tuples. We can then compare this population-based confidence interval with a bootstrapped estimate.
+
+
+#### Computational Limitations
+
+One major drawback of the PDI is that for large datasets and/or with many states, it can be computationally intensive. Therefore, an estimated PDI can be found by taking a sample of the $K$-tuples. To ensure robustness against censoring, each $K$-tuple should be drawn into th sample with probability inverse to the IPCW of that sample, where the IPCW of a $K$-tuple is calculated above as the probability of its elements. This is equivalent to drawing patients from each outcome with probability $\sfrac{\omega_j}{N_\omega}$. In this case, the calculations of the PDI remain similar, but each patient would be reset with a $\omega_j=1$ (as the weighting has already been applied during sampling). This would also allow for an empirical estimate of a confidence interval.
+
+### Calibration - Multinomial Intercept, Matched and Unmatched Slopes
+
+Since the traditional calibration metrics described above use a binomial logistic regression, it seems logical that the multi-dimensional extension for a multi-state models uses a multinomial logistic regression to provide parallel interpretation [@hoorde_assessing_2014]. Unlike the other measures, we must choose a state to be our base-state, $k=1$, this is usually the most populous initial state; however this choice is arbitrary and clinical reasoning may lead to a more logical choice. We then estimate the following series of regressions for all $k>1$:
+
+$$
+\textrm{E}\left[\textrm{log}\left(\frac{O^k}{O^1}\right)\right] = \alpha_k+\beta_{2,k}\textrm{log}\left(\frac{P^2}{P^1}\right) + ... +\beta_{K,k}\textrm{log}\left(\frac{P^K}{P^1}\right)
+$$
+Once again, using $\omega_i$ as weights for each patient during the regression process. This process estimates the $\alpha$ and $\beta$ to provide a $(K-1)$ length vector of intercept terms, $\hat{\alpha} = \left\{\hat{\alpha_2},\hat{\alpha_3},...,\hat{\alpha_K}\right\}$ and a $(K-1)\times(K-1)$ dimension matrix of slope terms, $\hat{\beta}$ with subscripts running from 2 to $K$ in both dimensions.
+
+The baseline models produce values similar to those found in the traditional calibration intercept and slope metrics, but directly extended to a multi-dimensional space. The P-Level for the Intercept would therefore be the zero-vector of length $(K-1)$ and the Slope would be the Identity matrix for $(K-1)$ dimensions. The NI-Level for the Intercept would be the prevalence (without the first state), $\left\{Q_2,Q_3,...,Q_K\right\}$, and the Slope would be the zero-matrix for $(K-1)$ dimensions.
+
+Software packages that can produce multinomial logistic regression [@ripley_package_2016] can also automatically produce confidence intervals surrounding these estimates, which can be arranged as a CI-vector and CI-matrix and can be compared to bootstrapped estimates.
+
+
+
+
+As discussed earlier, traditional calibration measures are often associated with an interpretation depending on whether the model over- or under-predicts or has predictions that are too extreme or too moderate. Because of this, the multinomial extensions of these metrics cannot be aggregated to a single value (as with the other performance metric extensions), since doing so would lose a lot of information. Instead, we discuss their interpretations of different elements of the Intercept vector and Slope matrix
+
+The Intercept vector can be interpreted to have an element for every state except the default one. Therefore in our example, the first element of the Intercept vector is associated with the RRT state (state 2) and the second element is the Death state (state 3). Similarly, the Slope matrix has its rows and columns associated with these states (in the same order).
+
+Intercept values below 0 imply that the associated state is over-predicted by the model, and values above 0 imply the state is under-predicted. By summing the entire Intercept vector, we can get a feel for how well the default state is calibrated. If the sum is below 0 (implying that on aggregate all other states are over-predicted) it implies that the default state is under-predicted, and vice versa.
+
+The Matched-Slope, or the diagonal of the Slope matrix can be thought of as a vector with a single state associated with it (since the row-state and the column-state are the same state). If the values in the Matched-Slope are below 1, it implies that the predictions for that state are too moderate and if they are above 1, it implies that they are too extreme.
+
+The Unmatched-Slope allows us to assess the Assumption of Idependence of Irrelevant Alternatives (IIA) [@arrow_social_2012]. This assumes the predictions of one state is removed, the ratio of the observations in the other states will stay the same. More specifically, when dealing with a row/column state pair it means that we have found a correlation between the predictions of the row-state and the observations of the column-state. This implies that if the row-state were removed from our model and we were to re-standardise the other predictions, the predictions from the column-state would differ _more_ than would be expected if we only relied on the infomation from the Matched-Slope.
+
+If the Unmatched-Slope for the row/column-state pair is less than 0, then the removal of the row-state implies that the predictions from the new model would more _over-predict_ the column-state compared to the original model. For complicated models, this kind of measure can provide insight into which states could potentially be dropped if they have a strong effect on other state's predictions. This is especially true if these changes to the predictions could potentially counteract the over/under-prediction found in the Matched-Slope.
+
+## Application to Real-World Data
+
+### Accuracy
+
+Due to the prevalence of the different states in our population, the NI-levels for each the trivial extensions, and indeed the Multi-State version of the Brier Score would be different. These NI-levels can be seen \@ref(tab:NIBrier), and in order for the Brier Score to be considered better than Non-Informative, it would have to be _lower_ than these values. Fortunately, due to the correction applied to the aBS, the NI-level and P-level are 0 and 1 respectively, regardless of population.
+
+```{r NIBrier}
+Print_NI_Brier()
+```
+
+
+Amongst the Pairwise, One-Vs-All and Transition based Brier Scores, the lowest (best) score is the RRT vs All score of 0.025, which translates to an adjusted Brier Score of 0.774. However, the highest adjusted Brier Score is 0.818 for the CKD vs All transition. The MSM has an aBS of 0.802 indicating a very strong discrimination level.
+
+```{r AccuracyTable}
+Print_metric("Methods_Paper_Valid.csv","Accuracy")
+```
+
+The two sets of Confidence Intervals are roughly consistent, which demonstrates that the population-based values are suitable for use when estimating the standard errors for these metrics.
+
+### Discrimination
+
+For the c-statistic, the NI-level is 0.5 and P-level is 1, however for the PDI in the three state model, the NI-level is 0.333 and P-leve is 1, which is why we adjust the PDI to coincide with the c-statistic.
+
+```{r DiscriminationTable}
+Print_metric("Methods_Paper_Valid.csv","Discrimination")
+```
+
+The Death vs all comparison achieves the highest c-statistic with 0.795, however the MSM score is still significant with a PDI of 0.614 against an NI-level of 0.333, which converts to a c-statistic of 0.735. The calculated confidence interval for the PDI (and thus the overall MSM c-statistic) are very narrow. This would be due to the large number of comparisons being made (the product of the population of all states involved). The bootstrapped standard error for these values are therefore much higher giving a wider confidence interval.
+
+### Calibration
+
+The P-level for the Intercept is 0, or a vector of 0's (of the same length as the number of states). Several of the estimates for the intercept were significantly different from 0 at the 5% level (i.e. their confidence interval did not include 0). Death vs All was significantly above 0 and RRT vs All was significantly below 0, indicating umder- and over-predictive behaviours, respectively. RRT vs Death was not significantly different from 0, but the other two Pairwise values were under-predictive, and all of the Transition measures of the c-statistic were over-predictive.
+
+
+```{r InterceptTable}
+Print_metric("Methods_Paper_Valid.csv","Intercept")
+```
+
+In the MSM results, both the Intercept values were statistically below 0 meaning that our predictions were over-predicting both of these states, which indicates that the CKD state was being under-predicted by our model.
+
+For the Calibration Slope, we would ideally have a P-level of 1 for the traditional Slope, and a 2x2 identity matrix for the MSM extension. The Slope for the RRT vs All group was slightly above 1 indicating that the model's predictions are grouped too tightly and should be spread out within the prediction range.
+
+For the CKD vs Death Pairwise comparison, the Slope of 0.881 is statistically significantly lower than 0 and indicates that the predictions are too sparse and would need to be gathered inwards.
+
+```{r SlopeTable}
+Print_metric("Methods_Paper_Valid.csv","Slope")
+```
+
+For the 2x2 matrix produced for the MSM extension, the Matched-Slope is statistically above 1 for the Death state (the second value on the diagonal 2), this indicates that the predictions of the Death state are slightly too moderate to match the observed data, and would need to be spread slightly to match. The Unmatched-Slope (those taken from the off-diagonal) are all significantly below 0, meaning that the model does not strictly follow the independence of irrelevant alternatives assumption and therefore the removal of one of the states _does_ have a small effect on the others.
+
+## Discussion
+
+In this paper, we have extended the current methods of model validation to a Multi-State framework. These extensions and their relevant adjustments have been normalised to allow for their predictive ability to be understandable at the same scale regardless of the number of states. This can allow researchers to directly compare the predictive ability of more complicated models to simpler ones.
+
+The results from applying our validation metrics to our model show consistency with trivial extensions (where traditional metrics are applied to sub-sections of the model), which adds to their robustness.
+
+For the Brier Score, the extension is simple and also provides an updated version of the Brier Score, the aBS, which sets the level of a Non-informative (also known as a Random Model) to be 0 with a Perfect model scoring 1. Models that are worse than a Non-Informative model, score less than 0. Although not useful for direct application, models that score in this negative range can be used to inform other models or by simply altering their outcomes (e.g. by swapping states), a new model can be developed (which would have to undergo a similar validation process). The results from our model demonstrate consistecy between the extensions to the traditional
+
+The Discrimination, which is traditionally most commonly measured using the c-statistic has various ways of being extended, most of which have been studied by Van Calster et al [@calster_extending_2012-1]. We chose to use their Polytomous Discriminatory Index, as it was the most robust one and provided a reasonable level for a Non-Infomative model. It was also simple to standardise to the same scale as the more well-known c-statistic.
+
+The Calibration measurements provided more complexity in their extensions as the concept of a Calibration Intercept and Calibration Slope have been well studied elsewhere, the effect of inter-state dependency has not. The Intercept provides an understanding of how over- or under-predicted a state is within a population, and thus also provides an idea of how under- or over- predicted the "default" state is. The Matched-Slope (i.e. the diagonals of the Slope matrix) is interprettable similar to the standard Calibration Slope as it provides an idea of how moderate predictions are compared to the observations and could be used to adjust a model if required.
+
+The Unmatched-Slope provides an indication of how well the model satisfies the assumption of irrelevant alternatives (IIA). If the IIA had held for the Unmatched-Slope, it would imply that the removal of the one state, for example, RRT, would simply normalise the other predictions (of the CKD and Death states) to have the same ratio, but so that they sum to 1. However, the value in the RRT row and Death column (top right) is negative and statistically different from 0. The breaking of this assumption implies that the removal of the RRT state would _increase_ the values of the predictions in the Death state compared to those in the CKD state, therefore:
+
+$$
+\frac{\E{\P{\Death|\;!\RRT}}}{\E{\P{\CKD|\;!\RRT}}} > 
+\frac{\O{\P{\Death}}}{\O{\P{\CKD}]}}
+$$
+
+The value in the bottom-left of the Calibration Slope Matrix is also negative and so the same interpretation happens for the values of the RRT predictions if Death were removed as a state. Since these two values are statistically close, however, this implies that the removal of CKD would have little effect on the ratio of the predictions for RRT with Death. 
+
+Although some of the methods demonstrated here were developed by others in categorical outcome data [@brier_verification_1950-1; @calster_extending_2012-1]; we are the first to apply them to a Multi-State scenario. This included the application of the IPCW to account for a time-trend and censoring and providing suitable adjustments to allow for cross-comparisons, regardless of the number of states. Before this work, it was previously un-assessable whether the additional information (e.g. prediction of Death alone or Death from multiple causes) came at a cost to model performance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
