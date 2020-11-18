@@ -47,6 +47,7 @@ options(knitr.kable.NA = "")
 library(MyThesis)
 
 ```
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 
@@ -110,6 +111,7 @@ Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/
 # Literature Report {#chap-lit-report}
 `r fb(thesis="\\chaptermark{Literaure Report}")` `r Updated(1)`
 `r html_latex_header()`
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 ## Introduction
@@ -592,6 +594,7 @@ This paper has demonstrated that unmeasured confounding in observational studies
 `r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large}")`
 `r Updated(3)`
 `r html_latex_header()`
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 ## Abstract {-}
@@ -858,6 +861,7 @@ knitr::include_graphics("figure/IPCW_Logistic/No Slope/Plot_b(1)_g(-1)_e(0.5)_M(
 *MA Barrowman, GP Martin, N Peek, M Lambie, M Sperrin*
 `r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
 `r Updated(4)`
+<script src="https://hypothes.is/embed.js" async></script>
 
 \newcommand{\Death}{\textrm{Death}}
 \newcommand{\RRT}{\textrm{RRT}}
@@ -1268,6 +1272,7 @@ Although some of the methods demonstrated here were developed by others in categ
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
 `r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
 `r Updated(5)`
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 ## Abstract {-}
@@ -1503,6 +1508,7 @@ All three models produced for this work performed well in terms of accuracy, cal
 # Conclusion {#chap-conclusion}
 `r fb(thesis="\\chaptermark{Conclusion}")`
 `r Updated(10)`
+<script src="https://hypothes.is/embed.js" async></script>
 
 Here is where my concluding section will go.
 
@@ -1519,6 +1525,7 @@ The end.
 
 # How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
 `r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding - Supp}")`
+<script src="https://hypothes.is/embed.js" async></script>
 
 ## Simulation Details
 
@@ -1537,6 +1544,7 @@ Due to the relationship between the cause specific hazard functions and the subd
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material {#chap-IPCW-logistic-supp}
 `r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large - Supp}")`
+<script src="https://hypothes.is/embed.js" async></script>
 
 ## Calibration Slope
 
@@ -1564,6 +1572,7 @@ Brief discussion, much briefer than the main points.
 
 # Development and External Validation of a Multi-State Clinical Prediction Model for Chronic Kidney Disease Patients Progressing onto Renal Replacement Therapy and Death - Supplementary Material{#chap-dev-paper-supp}
 `r fb(thesis="\\chaptermark{Development and Validation of MSCPM - Supp}")`
+<script src="https://hypothes.is/embed.js" async></script>
 
 ## Statistical Analysis
 
