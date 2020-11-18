@@ -3,7 +3,7 @@
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
 `r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding}")`
 `r Updated(2)`
-
+<script src="https://hypothes.is/embed.js" async></script>
 
 Published as: **MA Barrowman**, N Peek, M Lambie et al, How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies, BMC Medical Research Methodology (2019) doi: [10.1186/s12874-019-0808-7](https://doi.org/10.1186/s12874-019-0808-7)
 

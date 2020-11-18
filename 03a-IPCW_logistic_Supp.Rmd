@@ -1,6 +1,7 @@
 
 # Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material {#chap-IPCW-logistic-supp}
 `r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large - Supp}")`
+<script src="https://hypothes.is/embed.js" async></script>
 
 ## Calibration Slope
 

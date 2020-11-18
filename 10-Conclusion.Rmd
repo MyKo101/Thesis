@@ -2,6 +2,7 @@
 # Conclusion {#chap-conclusion}
 `r fb(thesis="\\chaptermark{Conclusion}")`
 `r Updated(10)`
+<script src="https://hypothes.is/embed.js" async></script>
 
 Here is where my concluding section will go.
 

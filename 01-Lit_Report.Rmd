@@ -2,6 +2,7 @@
 # Literature Report {#chap-lit-report}
 `r fb(thesis="\\chaptermark{Literaure Report}")` `r Updated(1)`
 `r html_latex_header()`
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 ## Introduction

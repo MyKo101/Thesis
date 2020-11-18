@@ -4,6 +4,7 @@
 `r fb(thesis="\\chaptermark{IPCW Calibration-in-the-Large}")`
 `r Updated(3)`
 `r html_latex_header()`
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 ## Abstract {-}

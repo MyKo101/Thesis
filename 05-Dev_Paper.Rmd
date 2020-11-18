@@ -3,6 +3,7 @@
 *MA Barrowman, GP Martin, N Peek, M Lambie, W Hulme, R Chinnadurai, J Lees, P Kalra, P Mark, J Traynor, M Sperrin*
 `r fb(thesis="\\chaptermark{Development and Validation of MSCPM}")`
 `r Updated(5)`
+<script src="https://hypothes.is/embed.js" async></script>
 
 
 ## Abstract {-}

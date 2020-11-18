@@ -385,7 +385,7 @@ In the UK in 2014, 71.8% of RRT patients had begun with HD, 20.0% were given PD,
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
 `r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding}")`
 `r Updated(2)`
-
+<script src="https://hypothes.is/embed.js" async></script>
 
 Published as: **MA Barrowman**, N Peek, M Lambie et al, How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies, BMC Medical Research Methodology (2019) doi: [10.1186/s12874-019-0808-7](https://doi.org/10.1186/s12874-019-0808-7)
 
@@ -503,7 +503,7 @@ Print_Scenario_Table()
 The first row of Fig. 3 shows the results for Scenario 1 (No Effect). When $\beta_1=\beta_2=0$ (the green line), correlation between $U$ and $Z$ doesn't imbue any bias on the treatment effect estimate for either event under any of the three measures, since all of the subdistribution treatment effects (estimated, calculated and hypothetical RCT) are approximately zero. When $\beta_1>0$, there is a strong positive association between correlation ($\rho$) and the RCT and CSH biases for the event-of-interest and a negative association for the RCT bias for the competing event. Similarly, these associations are reversed when $\beta_1<0$.
 
 
-```{r ch02Res1, fig.cap="Results from Scenario 1",fig.align="center", out.height="50%"}
+```{r ch02Res1, fig.cap="Results from Scenario 1",fig.align="center"}
 Print_CRConf_Res(1)
 ```
 
