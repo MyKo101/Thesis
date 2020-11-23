@@ -81,6 +81,7 @@ Print_CRConf_Res <- function(ScNum){
   
   leg_scale <- 2.5
   buffer_width <- 30
+  plot_ratio <- 1.4
   
   res_png <- png::readPNG(res_file)
   leg_png <- png::readPNG(leg_file)
@@ -94,16 +95,25 @@ Print_CRConf_Res <- function(ScNum){
   plot_width <- res_width + leg_width + buffer_width
   plot_height <- res_height
   
+  frame_height <- plot_width/plot_ratio
+  
+  plot_bottom <- (frame_height -plot_height)/2
+  
   op <- par(mar = rep(0,4))
   
-  plot(NULL,xlim=c(0,plot_width),ylim=c(0,plot_height),
+  plot(NULL,xlim=c(0,plot_width),ylim=c(0,frame_height),
        axes=F,xlab="",ylab="")
   
-  rasterImage(res_png,0,0,res_width,res_height)
-  rasterImage(leg_png,res_width + buffer_width,
-              res_height/2 - leg_height/2,
+  rasterImage(res_png,
+              0,
+              plot_bottom,
+              res_width,
+              plot_bottom + res_height)
+  rasterImage(leg_png,
+              res_width + buffer_width,
+              plot_bottom + res_height/2 - leg_height/2,
               res_width + buffer_width + leg_width,
-              res_height/2 + leg_height/2)
+              plot_bottom + res_height/2 + leg_height/2)
   
   par(op)
 }

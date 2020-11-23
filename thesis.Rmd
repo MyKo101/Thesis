@@ -120,7 +120,7 @@ Everything here is hosted in a [Github repo](https://https://github.com/MyKo101/
 
 The idea of prognosis dates back to ancient Greece with the work of Hippocrates [@hippocrates_genuine_1886] and is derived from the Greek for "know before" meaning to forecast the future. Within the sphere of healthcare, it is defined as the risk of future health outcomes in patients, particularly patients with a certain disease or health condition. Prognosis allows clinicians to provide patients with a prediction of how their disease will progress and is usually given as a probability of having an event in a prespecified number of years. For example, QRISK3 [@hippisley-cox_development_2017] provides a probability that a patient will have a heart attack or stroke in the next 10 years. Prognostic research encompasses any work which enhances the field of prognosis, whether through methodological advancements, field-specific prognostic modeling or educational material designed to improve general knowledge of prognosis. Prognostic models come under the wider umbrella of predictive models which also includes diagnostic models; because of this most of the keys points in the field or prognostic modeling can be applied to diagnostic models with little to no change.
 
-Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the effect of screening for asymptomatic diseases (such as with mammograms[@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to the definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown sub-type of a disease (such as Brugada syndrome as a type of cardiovascular disease[@probst_long-term_2010])
+Prognosis allows clinicians to evaluate the natural history of a patient (i.e. the course of a patient's future without any intervention) in order to establish the effect of screening for asymptomatic diseases (such as with mammograms [@hemingway_prognosis_2013]). Prognosis research can be used to develop new definitions of diseases, whether a redefinition of an existing disease (such as the extension to the definition of myocardial infarction to include non-fatal events [@thygesen_universal_2007]) or a previously unknown sub-type of a disease (such as Brugada syndrome as a type of cardiovascular disease [@probst_long-term_2010])
 
 In general, prognosis research can be broken down into four main categories, with three subcategories [@riley_prognosis_2019]:
 
@@ -134,7 +134,7 @@ In general, prognosis research can be broken down into four main categories, wit
 
 For a particular outcome, prognostic research will usually progress through these types, beginning with papers designed to evaluate overall prognosis within a whole population and then focusing in on more specificity and granularity towards individualised, causal predictions.
 
-The model development and validation will usually occur in the same paper [@collins_transparent_2015;@moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual derivation of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [@steyerberg_overfitting_2009].
+The model development and validation will usually occur in the same paper [@collins_transparent_2015; @moons_transparent_2015]. studies into all three of the subcategories of prognostic model research *should* be completed before a model is used in clinical practice [@riley_external_2016], although this does not always occur [@steyerberg_prognosis_2013]. External validation is considered by some to be more important than the actual derivation of the model as it demonstrates generalisability of the model [@collins_systematic_2013], whereas a model on it's own may be highly susceptible to overfitting [@steyerberg_overfitting_2009].
 
 ### Fundamental Prognosis Research
 
@@ -204,11 +204,11 @@ Along with the EPV assessment mentioned earlier, Counsell et al's systematic rev
 
 ## Competing Risks & Multi-State Models
 
-Many diseases are measured in stages of progression or as types or variants. Often, patients can switch from one of these stages to another whilst they are being studied. If being in a different stage of the disease is believed to affect the way that the patient's condition behaves then it is important to account for this when modeling a disease. The simplest way is to have the disease stage/type as a covariate and ensure that it is updated accurately. However, if it is believed that a disease behaves wildly differently when at different stages, then this might not be feasible, especially if the stage can interact with other covariates. The solution to this is to use MSMs to map patients progression through the different stages of the disease**???**, where each stage is modelled as a state in the MSM.
+Many diseases are measured in stages of progression or as types or variants. Often, patients can switch from one of these stages to another whilst they are being studied. If being in a different stage of the disease is believed to affect the way that the patient's condition behaves then it is important to account for this when modeling a disease. The simplest way is to have the disease stage/type as a covariate and ensure that it is updated accurately. However, if it is believed that a disease behaves wildly differently when at different stages, then this might not be feasible, especially if the stage can interact with other covariates. The solution to this is to use MSMs to map patients progression through the different stages of the disease [#17], where each stage is modelled as a state in the MSM.
 
 ### Traditional Survival Analysis
 
-From survival analysis, a hazard function is a measure of the intensity of moving from one state to another (whether that is from alive to death, functioning to non-functioning or something more complicated as in an MSM). If we have T be the random variable defining the time of the event (or transition), then a hazard function is usually defined as**???** 
+From survival analysis, a hazard function is a measure of the intensity of moving from one state to another (whether that is from alive to death, functioning to non-functioning or something more complicated as in an MSM). If we have T be the random variable defining the time of the event (or transition), then a hazard function is usually defined as [#105][#106] 
 
 $$
 h(t) = \frac{-\d \log S(t)}{\d t} = \lim_{\Delta t \to 0}\frac{\textrm{Prob}\left(T \le t + \Delta T\,|\,T\ge t\right)}{\Delta t}
@@ -229,7 +229,7 @@ A function that is useful in estimating the survival of a population is the Kapl
 $$
 \hat{S}(t) = \prod_{j:\;t_j \le t}\left(1 - \frac{d_j}{n_j}\right)
 $$
-In this definition, $t_j$ is the $j$th event time, $n_j$ is the number of patients still at risk at time $t_j$ (i.e those event-free at time this time) and $d_j$ is the number of patients who had an event at time $t_j$. Kaplan-Meier estimates assume independence between the event we are modelling and censoring**???**. See figure \@ref(fig:KM-example) for a typical K-M plot for two populations:
+In this definition, $t_j$ is the $j$th event time, $n_j$ is the number of patients still at risk at time $t_j$ (i.e those event-free at time this time) and $d_j$ is the number of patients who had an event at time $t_j$. Kaplan-Meier estimates assume independence between the event we are modelling and censoring [#106]. See figure \@ref(fig:KM-example) for a typical K-M plot for two populations:
 ```{r KM-example, echo=F, fig.cap="Example plot of Kaplan-Meier estimator for two populations"}
 set.seed(10001)
 n <- 100
@@ -282,7 +282,7 @@ $$
 $$
 The logit function can then be undone to provide a probability that an outcome occurs, such as the probability of a specific prognosis.
 
-Within the realm of survival analysis, we have an extra dimension to include in our calculations, time, and this includes the fact that some patients are not observed after certain dates (i.e censoring). To combat this additional dimension, the most common form of regression in survival analysis, the Cox model[@cox_regression_1972] avoids estimating the intercept altogether and produces proportional hazard estimates for each covariate. The predicted values from the model are positioned within the hazard function, described above and give an idea of how a covariate increases or decreases the hazard of an event:
+Within the realm of survival analysis, we have an extra dimension to include in our calculations, time, and this includes the fact that some patients are not observed after certain dates (i.e censoring). To combat this additional dimension, the most common form of regression in survival analysis, the Cox model [@cox_regression_1972] avoids estimating the intercept altogether and produces proportional hazard estimates for each covariate. The predicted values from the model are positioned within the hazard function, described above and give an idea of how a covariate increases or decreases the hazard of an event:
 $$
 h(t|Z) = h_0(t)\exp\left(\beta_1 Z_1 + \beta_2 Z_2 + ... + \beta_m Z_m \right)
 $$
@@ -307,13 +307,13 @@ $$
 
 ### Competing Risks
 
-A Competing Risk (CR) can be thought of simply as survival analysis where a cause of death, $D \in {1, ..., K}$ is also observed**???**. When patients are recovering from a disease, more than one event can play a role, but often one event is of more interest than the other**???**. This competing event can also prevent the event-of-interest from occurring. For example, if we are modeling discharge from hospital after surgery (event-of-interest), patients can also die whilst in hospital (competing event) which prevents the former from happening. Depending on clinical context, non-administrative right censoring can be modeled as a competing risk**???** because censoring times are not always independent of event times**???**. If healthier patients are less likely to use medical services, then they are more likely to be lost to followup meaning a negative correlation with event time and vice versa if a less healthy person is more likely to leave a study (e.g. they become too ill to continue in the study). If the competing event and event-of-interest are not independent, then this can cause bias in the Kaplan-Meier estimator**???**. Issues can arise with the naive Kaplain-Meier approach in CR, wherein the probability of having the events sum to more than 100%, even though the events can not occur together**???**.
+A Competing Risk (CR) can be thought of simply as survival analysis where a cause of death, $D \in {1, ..., K}$ is also observed [#106]. When patients are recovering from a disease, more than one event can play a role, but often one event is of more interest than the other [#106]. This competing event can also prevent the event-of-interest from occurring. For example, if we are modeling discharge from hospital after surgery (event-of-interest), patients can also die whilst in hospital (competing event) which prevents the former from happening. Depending on clinical context, non-administrative right censoring can be modeled as a competing risk [#108] because censoring times are not always independent of event times [#106]. If healthier patients are less likely to use medical services, then they are more likely to be lost to followup meaning a negative correlation with event time and vice versa if a less healthy person is more likely to leave a study (e.g. they become too ill to continue in the study). If the competing event and event-of-interest are not independent, then this can cause bias in the Kaplan-Meier estimator [#106]. Issues can arise with the naive Kaplain-Meier approach in CR, wherein the probability of having the events sum to more than 100%, even though the events can not occur together [#106].
 
 We can adjust the previous definitely for a hazard function to become a cause-specific hazard function as:
 $$
 h_k(t) \lim_{\Delta t \to 0}\frac{\textrm{Prob}\left(T \le t + \Delta T,\,D=k\,|\,T\ge t\right)}{\Delta t}
 $$
-where $k$ is the event we are assessing. Cause specific hazard (CSH) estimates may be found by treating the data as simple survival data and the competing events as a censoring event**???**. In order to translate these into an event-free Survival probability (or marginal survival probability), we need to sum these hazard functions together;
+where $k$ is the event we are assessing. Cause specific hazard (CSH) estimates may be found by treating the data as simple survival data and the competing events as a censoring event [#108]. In order to translate these into an event-free Survival probability (or marginal survival probability), we need to sum these hazard functions together;
 $$
 S(t) = \textrm{Prob}(T>t) = \exp\left(-\int_0^t \sum_{k=1}^K h_k(u) \d u\right)
 $$
@@ -321,7 +321,7 @@ In traditional survival analysis, the probability of having the event, is simply
 $$
 \mathcal{P}_k(t) = \int_0^t S(u-)h_k(u) \d u
 $$
-This can be broken down as the probabilty of surviving until time $u$, $S(u-)$ and then the instantaneous probability of the event occurring at that time, $\lambda_h(u)$. We integrate this over all the possible event times on the range $(0,t]$. This $\mathcal{P}$ is usually referred to as the cumulative incidence function, CIF. The CIF for a transition depends on all the other transition intensties through the $S(u-)$ component of the integrand**???**. 
+This can be broken down as the probabilty of surviving until time $u$, $S(u-)$ and then the instantaneous probability of the event occurring at that time, $\lambda_h(u)$. We integrate this over all the possible event times on the range $(0,t]$. This $\mathcal{P}$ is usually referred to as the cumulative incidence function, CIF. The CIF for a transition depends on all the other transition intensties through the $S(u-)$ component of the integrand [#108]. 
 
 The cumulative distribution function, $F$, grows from 0 to 1 as the probability of having had an event increases over time. This assumes that eventually all patients will have the event (and thus $\lim_{t \to \infty}F(t) = 1$). In regards to the cumulative incidence function, patients who have a competing event are precluded from having the event-of-interest and therefore the assumption that all patients will have the event does not hold. For this reason, the CIF is bounded within the range $[0,1)$ and never reaches 1 and is thus known as a subdistribution**???**.
 
@@ -330,7 +330,7 @@ $$
 h(t) = \frac{-\d\log\left(1-F(t)\right)}{\d t} \qquad \qquad \lambda_h(t) = \frac{-\d\log\left(1-\mathcal{P}_h(t)\right)}{\d t} 
 $$
 
-Fine & Gray **???** developed a method analogous to the Cox proportional hazards model for these subdistributions. The Proportional Subdistribution Hazards method (PSHM) calculates the hazard ratios for events occurring based on the CIF, $\mathcal{P}$**???**, and subdistribution hazard where the Cox model uses the cumulative distribution function, $F$**???** and the cause-specific hazard.
+Fine & Gray [#111] developed a method analogous to the Cox proportional hazards model for these subdistributions. The Proportional Subdistribution Hazards method (PSHM) calculates the hazard ratios for events occurring based on the CIF, $\mathcal{P}$**???**, and subdistribution hazard where the Cox model uses the cumulative distribution function, $F$**???** and the cause-specific hazard.
 $$
 \tilde{\lambda}_k(t) = \tilde{lambda}_{k0}(t)\exp\left(\beta_k^TZ\right)
 $$
@@ -343,17 +343,17 @@ In this context, patients who have the competing event remain in the risk set fo
 
 ## Chronic Kidney Disease
 
- Chronic diseases, especially non-communicable ones, have now become the major cause of morbidity and mortality around the world[@atkins_epidemiology_2005]. In particular, Chronic Kidney Disease (CKD) is a global health concern[@collins_systematic_2013] and is thus a major burden on healthcare utilisation worldwide[@mills_systematic_2015]. This is unsurprising given that, in the UK, 7,411 patients commenced RRT in 2004 alone which equates to a rate of 115 per million people[@gilg_uk_2016]. Part of this prevalence is believed to be increasing due to increased incidences of diabetes[@collins_systematic_2013] which contribute 26.9% of new RRT diagnosis in the UK in 2014[@gilg_uk_2016]. In 2013, the NHS spent 2% of its budget on kidney replacement therapy[@collins_systematic_2013;@ansell_9th_2007] and in 2008, 5.9% of the Medicare expenditure was spent on managing patients with End-Stage Renal Disease (ESRD)[@collins_systematic_2013;@collins_us_2011]. The progression of CKD amongst sufferers is believed to be homogeneous with respect to time**???**, meaning that it increases continuously at steady rate.
+ Chronic diseases, especially non-communicable ones, have now become the major cause of morbidity and mortality around the world [@atkins_epidemiology_2005]. In particular, Chronic Kidney Disease (CKD) is a global health concern [@collins_systematic_2013] and is thus a major burden on healthcare utilisation worldwide [@mills_systematic_2015]. This is unsurprising given that, in the UK, 7,411 patients commenced RRT in 2004 alone which equates to a rate of 115 per million people [@gilg_uk_2016]. Part of this prevalence is believed to be increasing due to increased incidences of diabetes [@collins_systematic_2013] which contribute 26.9% of new RRT diagnosis in the UK in 2014 [@gilg_uk_2016]. In 2013, the NHS spent 2% of its budget on kidney replacement therapy [@collins_systematic_2013;@ansell_9th_2007] and in 2008, 5.9% of the Medicare expenditure was spent on managing patients with End-Stage Renal Disease (ESRD) [@collins_systematic_2013;@collins_us_2011]. The progression of CKD amongst sufferers is believed to be homogeneous with respect to time [#17], meaning that it increases continuously at steady rate.
 
-CKD treatment typically consists of either palliative care or a type of RRT. In the real world, it is difficult to make decisions on RRT for patients suffering from ESRD since, as with any disease, there is a lot of variability in the individuals[@tamura_optimizing_2012]. This variability is particularly prominent amongst older patients, which leads to variation in treatment methods from different physicians[@ohare_regional_2010]. Because of this, it is important to identify, as early as possible, patients who are likely to progress from CKD to ESRD[@collins_systematic_2013]. Tamura et al[@tamura_optimizing_2012] provides a framework for deciding which RRT patients should receive based on three factors: life expectancy, risks and benefits of competing treatment strategies and patient preference. This framework does not require precision, but rather a general idea of whether a patient is above or below average (median). These three factors allows for three key choices to be made for the patient: choice of dialysis modality (i.e. HD vs PD), choice of vascular access for HD, and whether or not to be referred for kidney transplantation.
+CKD treatment typically consists of either palliative care or a type of RRT. In the real world, it is difficult to make decisions on RRT for patients suffering from ESRD since, as with any disease, there is a lot of variability in the individuals [@tamura_optimizing_2012]. This variability is particularly prominent amongst older patients, which leads to variation in treatment methods from different physicians [@ohare_regional_2010]. Because of this, it is important to identify, as early as possible, patients who are likely to progress from CKD to ESRD [@collins_systematic_2013]. Tamura et al [@tamura_optimizing_2012] provides a framework for deciding which RRT patients should receive based on three factors: life expectancy, risks and benefits of competing treatment strategies and patient preference. This framework does not require precision, but rather a general idea of whether a patient is above or below average (median). These three factors allows for three key choices to be made for the patient: choice of dialysis modality (i.e. HD vs PD), choice of vascular access for HD, and whether or not to be referred for kidney transplantation.
 
-Transferring from one dialysis modality to the other initially increases burden on patients and, for the first few weeks, has a higher mortality rate[@tina_shih_impact_2005]. Before beginning HD, patients and physicians must decide on the vascular access method which is basically how the HD will be administered. There are three main methods of vascular access: CVCs, AVFs and AVGs[@tamura_optimizing_2012]. In the US, 80% of patients who are given HD, begin it with a CVC[@foley_hemodialysis_2009]. CVCs are usually used as a temporary placement until a more permanent fistula or graft can be given to the patient[@tamura_optimizing_2012]. However, it can take time for AVF and AVG patency to occur and so their effects are not immediate. Current guidelines recommend using AVFs over AVGs as the method of permanent access which are both preferred over the temporary access provided by CVC, unless HD is predicted to be only a short-term treatment (i.e. because of expected kidney transplant or extremely high expected mortality)[@vascular_access_work_group_clinical_2006]. It is clear that these mortality estimates of patients are currently wildly incorrect as it has been found that two-thirds of deceased patients who had undergone AVF placement had died before it was even used[@richardson_should_2009].
+Transferring from one dialysis modality to the other initially increases burden on patients and, for the first few weeks, has a higher mortality rate [@tina_shih_impact_2005]. Before beginning HD, patients and physicians must decide on the vascular access method which is basically how the HD will be administered. There are three main methods of vascular access: CVCs, AVFs and AVGs [@tamura_optimizing_2012]. In the US, 80% of patients who are given HD, begin it with a CVC [@foley_hemodialysis_2009]. CVCs are usually used as a temporary placement until a more permanent fistula or graft can be given to the patient [@tamura_optimizing_2012]. However, it can take time for AVF and AVG patency to occur and so their effects are not immediate. Current guidelines recommend using AVFs over AVGs as the method of permanent access which are both preferred over the temporary access provided by CVC, unless HD is predicted to be only a short-term treatment (i.e. because of expected kidney transplant or extremely high expected mortality) [@vascular_access_work_group_clinical_2006]. It is clear that these mortality estimates of patients are currently wildly incorrect as it has been found that two-thirds of deceased patients who had undergone AVF placement had died before it was even used [@richardson_should_2009].
 
-It is suggested that PD gives an early benefit over HD using CVC due to the high infection rates caused by CVC. However, this benefit might be balanced out by the higher risk of modality failure and a common need to transfer to HD later, which merely pushes the higher CVC risk back[@perl_hemodialysis_2011]. In recent years, It has been observed that survival amongst patients given PD has increased to levels similar to HD[@mehrotra_similar_2011], although this is likely biased due to the difference in patient's selected for the each modality[@tamura_optimizing_2012].
+It is suggested that PD gives an early benefit over HD using CVC due to the high infection rates caused by CVC. However, this benefit might be balanced out by the higher risk of modality failure and a common need to transfer to HD later, which merely pushes the higher CVC risk back [@perl_hemodialysis_2011]. In recent years, It has been observed that survival amongst patients given PD has increased to levels similar to HD [@mehrotra_similar_2011], although this is likely biased due to the difference in patient's selected for the each modality [@tamura_optimizing_2012].
 
-Kidney Transplants are often hard to come by as there can be dificulties in finding compatible donors**???**. Living donors provide a better prognosis for recipients than deceased ones, but even deceased-donor transplantation implies a 48-82% decrease in mortality compared to remaining on dialysis**???**. For each patient, donors can be classified as being from a Standard Criteria Donor (SCD) or an Expanded Criteria Donor (ECD) list**???**. An ECD is, as the name implies, a much broader list of patients than appear on an SCD. Using an ECD comes with a shorter time on the waiting list for a transplant, but a higher risk of allograft loss and so a decision must be made about a patient of whether they are at higher risk of mortality if they remain on the waiting list for a longer period of time, or whether the risk of an unsuccessful transplant is worth it[@tamura_optimizing_2012]. As with transfering between dialysis modalities, there is an extremely high increase in risk for the first two weeks after transplantation (compared with staying on dialysis), this risk reduces until 7-8 months after transplantation, where the cumulative mortality of both options becomes equivalent, and afterwards is lower for the transplanted patients[@tamura_optimizing_2012]. It is worth noting that there is no upper age limit on kidney transplantation[@tamura_optimizing_2012] and it has actually been found that kidney transplantation was cost-effective amongst patients over 6530. This makes sense as, for patient's over 65, the average time spent on the waiting list for a new kidney is 7-8 months[@tamura_optimizing_2012].
+Kidney Transplants are often hard to come by as there can be dificulties in finding compatible donors [#26]. Living donors provide a better prognosis for recipients than deceased ones, but even deceased-donor transplantation implies a 48-82% decrease in mortality compared to remaining on dialysis [#27][#28]. For each patient, donors can be classified as being from a Standard Criteria Donor (SCD) or an Expanded Criteria Donor (ECD) list [#29]. An ECD is, as the name implies, a much broader list of patients than appear on an SCD. Using an ECD comes with a shorter time on the waiting list for a transplant, but a higher risk of allograft loss and so a decision must be made about a patient of whether they are at higher risk of mortality if they remain on the waiting list for a longer period of time, or whether the risk of an unsuccessful transplant is worth it [@tamura_optimizing_2012]. As with transfering between dialysis modalities, there is an extremely high increase in risk for the first two weeks after transplantation (compared with staying on dialysis), this risk reduces until 7-8 months after transplantation, where the cumulative mortality of both options becomes equivalent, and afterwards is lower for the transplanted patients [@tamura_optimizing_2012]. It is worth noting that there is no upper age limit on kidney transplantation [@tamura_optimizing_2012] and it has actually been found that kidney transplantation was cost-effective amongst patients over 6530. This makes sense as, for patient's over 65, the average time spent on the waiting list for a new kidney is 7-8 months [@tamura_optimizing_2012].
 
-In the UK in 2014, 71.8% of RRT patients had begun with HD, 20.0% were given PD, 8.2% were lined up to receive a kidney transplant[@gilg_uk_2016]. Of the patients who were initially assigned to received HD in 2009, 54.4% had died by 2014 and 34.4% of those still alive had been transfered to a different modality, PD had a lower mortality rate, 35.1%, but a higher transfer rate, 75.3%[@gilg_uk_2016]. These transitions are demonstrated graphically in Figure 1. Although these numbers do not account for the differences between the patients these two modalities were given to, it shows that there are major differences between modalities and that transitioning between treatments is common. These differences between modalities and the prevalence of transitions line up quite well with the idea of using an MSM as a representation for this process.
+In the UK in 2014, 71.8% of RRT patients had begun with HD, 20.0% were given PD, 8.2% were lined up to receive a kidney transplant [@gilg_uk_2016]. Of the patients who were initially assigned to received HD in 2009, 54.4% had died by 2014 and 34.4% of those still alive had been transfered to a different modality, PD had a lower mortality rate, 35.1%, but a higher transfer rate, 75.3% [@gilg_uk_2016]. These transitions are demonstrated graphically in Figure 1. Although these numbers do not account for the differences between the patients these two modalities were given to, it shows that there are major differences between modalities and that transitioning between treatments is common. These differences between modalities and the prevalence of transitions line up quite well with the idea of using an MSM as a representation for this process.
 
 ### Clinical Prediction Models
 
@@ -383,13 +383,13 @@ In the UK in 2014, 71.8% of RRT patients had begun with HD, 20.0% were given PD,
 <!--chapter:end:01-Lit_Report.Rmd-->
 
 
-# How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies {#chap-Conf-CR}
+# How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies {#chap-Conf-CR}
 *MA Barrowman, N Peek, M Lambie, GP Martin, M Sperrin*
 `r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding}")`
 `r Updated(2)`
 <script src="https://hypothes.is/embed.js" async></script>
 
-Published as: **MA Barrowman**, N Peek, M Lambie et al, How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies, BMC Medical Research Methodology (2019) doi: [10.1186/s12874-019-0808-7](https://doi.org/10.1186/s12874-019-0808-7)
+Published as: **MA Barrowman**, N Peek, M Lambie et al, How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies, BMC Medical Research Methodology (2019) doi: [10.1186/s12874-019-0808-7](https://doi.org/10.1186/s12874-019-0808-7)
 
 ## Abstract {-}
 
@@ -447,14 +447,14 @@ In the above equations, $\beta$ and $\gamma$ are the effects of the confounding 
 knitr::include_graphics("figure/CR_Conf/Transition_Diagram.png")
 ```
 
-We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [@whuber_generate_2017]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in **Additional file 1**. Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. \@ref(fig:ModelDAGch02), where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
+We simulated populations of 10,000 patients to ensure small confidence intervals around our treatment effect estimates in each simulation. Each simulated population had a distinct value for $\beta$ and $\gamma$. In order to simulate the confounding of $U$ and $Z$, we generated these values such that $\textrm{Corr}(U,Z) = \rho$ and $\Pr(Z = 1) = \pi$ [@whuber_generate_2017]. Population end times and type of event were generated using the relevant hazard functions. The full process for the simulations can be found in Appendix \@ref(chap-Conf-CR-supp-B). Due to the methods used to generate the populations, the possible values for $\rho$ are bounded by the choice of $\pi$ such that when $\pi = 0.5$, $\left|\rho\right| <= 0.797$ and when $\pi = 0.1$ (or $\pi=0.9$), $\left|\rho\right| <= 0.57$. The relationship between the parameters can be seen in the Directed Acyclic Graph (DAG) shown in Fig. \@ref(fig:ModelDAGch02), where $T$ is the event time and $\delta$ is the event type indicator (1 for event-of-interest and 2 for competing event).
 
 
 ```{r ModelDAGch02,echo=F, fig.align="center", fig.cap="Directed Acyclic Graph showing the relationship between some of the parameters", out.width="450px"}
 knitr::include_graphics("figure/CR_Conf/DAG.png")
 ```
 
-From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, $\Gamma_1$ and $\Gamma_2$, to be in these conditions [@grambauer_proportional_2010] (See **Additional file 2**). It's worth noting that the values of $\Gamma$ will depend on the current value of $\rho$ since they are calculated using the expected distribution of end-times. However, it has been shown [@haller_flexible_2014; @latouche_misspecified_2007] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the "true" values of the $\Gamma$ will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [@grambauer_proportional_2010].
+From this, we also explicitly calculated what we would expect the true subdistribution treatment effects, $\Gamma_1$ and $\Gamma_2$, to be in these conditions [@grambauer_proportional_2010] (See Appendix \@ref(chap-Conf-CR-supp-A)). It's worth noting that the values of $\Gamma$ will depend on the current value of $\rho$ since they are calculated using the expected distribution of end-times. However, it has been shown [@haller_flexible_2014; @latouche_misspecified_2007] that, due to the relationship between the Cause-Specific Hazard (CSH) and the Subdistribution Hazard (SH), only one proportional hazards assumption can be true. Therefore the "true" values of the $\Gamma$ will be misspecified and represent a least false parameter (which itself is an estimate of the time-dependent truth) [@grambauer_proportional_2010].
 
 
 We used the simulated data to estimate the treatment effects under the Cox and Fine & Gray regression methods. We specify that $U$ is unmeasured and so it wasn't included in the analysis models. As discussed earlier, the Cox model defines the risk set at time $t$ to be all patients who have not had any event by time $t$, whereas the Fine & Gray defines it to be those who have not had the event-of-interest (or competing event) by time $t$.
@@ -886,7 +886,7 @@ It is the hope of the authors that this work will increase the uptake of multi-s
 ## Motivating Data Set
 
 
-Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table \@ref(tab:UoGTableOne)). The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m$^2$, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a "snapshot" of the predictions at the 5 year time point.
+Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death (See Chapter \@ref(chap-dev-paper)). The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table \@ref(tab:UoGTableOne)). The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m$^2$, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a "snapshot" of the predictions at the 5 year time point.
 
 ```{r UoGTableOne}
 Print_Population_Table_One(SKS=F,f_size=12)
@@ -1244,7 +1244,7 @@ The Unmatched-Slope provides an indication of how well the model satisfies the a
 
 $$
 \frac{\E{\P{\Death|\;!\RRT}}}{\E{\P{\CKD|\;!\RRT}}} > 
-\frac{\O{\P{\Death}}}{\O{\P{\CKD}]}}
+\frac{\O{\P{\Death}}}{\O{\P{\CKD}}}
 $$
 
 The value in the bottom-left of the Calibration Slope Matrix is also negative and so the same interpretation happens for the values of the RRT predictions if Death were removed as a state. Since these two values are statistically close, however, this implies that the removal of CKD would have little effect on the ratio of the predictions for RRT with Death. 
@@ -1523,21 +1523,160 @@ The end.
 <!--chapter:end:appendix.Rmd-->
 
 
-# How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
+# How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material {#chap-Conf-CR-supp}
 `r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding - Supp}")`
 <script src="https://hypothes.is/embed.js" async></script>
 
-## Simulation Details
+## Simulation Details {#chap-Conf-CR-supp-A}
 
 <!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM1_ESM.docx -->
 
-The populations 
+The populations used in these simulations are generated such that $\textrm{Corr}\left(U,Z\right) = \rho$ and $\P{Z=1} = \pi$. These baseline populations are then acted on by the event-of-interest and competing event hazard functions. These are combined into the cumulative hazard function. These are defined as follows:
 
-## Mathematics of Subdistribution Hazards
+$$
+\begin{align*}
+\lambda_1(t|U,Z) = ke^{\beta_1U+\gamma_1Z}\lambda_0(t)&
+\lambda_2(t|U,Z) = ke^{\beta_2U+\gamma_2Z}\lambda_0(t)
+\end{align*}
+$$
+$$
+\Lambda(t|U,Z) = \int_0^t\lambda_1(s|U,Z) + \lambda_2(s|U,Z) \d s
+$$
+Let $\phi$ and $\Phi$ be the pdf and cdf of for the standard Normal distribution respectively and $I$ be the identity function. The process for generating the covriates and outcome data for a patient is given in Table \@ref(tab:ch02SimGenTable).
+
+```{r ch02SimGenTable}
+tribble(
+  ~Step, ~Variable, ~Calculation, ~Description,
+   1, "x_0", "x_0 = \\Phi^{-1}(\\pi)",
+    "This is the value of $x \\sim N(0,1)$ such that $\\P{x<x_0} = \\pi$",
+   2, "r",r"(r = \frac{\rho\sqrt{\pi(1-\pi)}}{\phi(x_0)})",
+    "This is used to ensure $\\textrm{Corr}(U,Z) = \\rho$",
+   3, "Y_1","Y_{1i} \\sim N(0,1)", 
+    "Generate 10,000 random normal numbers",
+   4, "Y_2","Y_{2i} \\sim N(0,1)", 
+    "Generate 10,000 random normal numbers",
+   5, "U", "U_i = Y_{1i}r+Y_{2i}\\sqrt{1-r^2}",
+    "This defined $U \\sim N(0,1)$ such that $\\textrm{Corr}(U,Y_1) = r$",
+   6, "Z", "Z_i = I(\\Phi(Y_{1i}) < \\pi)",
+    "This defined $Z$ such that $\\P{Z=1} = \\pi$",
+   7, "\\lambda_1(t)", "\\lambda_{1i}(t) = \\lambda_1(t|U_i,Z_i)",
+    "Define an array of hazard functions",
+   8, "\\lambda_2(t)", "\\lambda_{2i}(t) = \\lambda_2(t|U_i,Z_i)",
+    "Define an array of hazard functions",
+   9, "\\Lambda(t)", "\\Lambda_i(t) = \\Lambda(t|U_i,|Z_i)",
+    "Define an array of cumulative hazard functions",
+  10, "S(t)","S_i(t) = \\exp(-\\Lambda_i(t))",
+    "Define an array of Survival functions",
+  11, "V_1", "V_{1i} \\sim Unif(0,1)", 
+    "Generate 10,000 random uniform numbers",
+  12, "V_2", "V_{2i} \\sim Unif(0,1)", 
+    "Generate 10,000 random uniform numbers",
+  13, "T", "T_i = S_i^{-1}(V_{1i})", 
+    "Solve (numerically or explicitly depending on $\\lambda_0$)",
+  13, "\\delta",r"(\delta_i = 1+ I(V_2 > \frac{\lambda_{1i}(T_i)}{\lambda_{1i}(T_i) + \lambda_{2i}(T_i)}))",
+    "Generate which event occurs"
+  
+) %>%
+  mutate(across(c(Variable,Calculation),
+                . %>%
+                  str_replace_all("\\(",r"(\\left()") %>%
+                  str_replace_all("\\)",r"(\\right))") %>%
+                  paste0("$",.,"$")
+                  )
+  ) %>%
+  my_kbl(caption=as_caption("Table showing the steps taken to generate",
+                            "each simulated population"))
+```
+
+due to the square root in Step 5, we restain $|r| < 1$. This coupled with the definition of $r$ in Step 2 means that the values of $\rho$ and $\pi$ are limited by each other such that:
+
+$$
+\left|\frac{\rho\sqrt{\pi\left(1-\pi\right)}}{\phi\left(x_0\right)}\right| < 1
+$$
+Therefore, we have bouds on $\rho$ dependent on $\pi$:
+
+$$
+\left|\rho\right| < \frac{\phi\left(x_0\right)}{\sqrt{\pi\left(1-\pi\right)}}
+$$
+Since $x_0$ is dependent on $\pi$, $\phi(x_0)$ is also dependent on $\pi$ and can be approximated by
+
+$$
+\phi\left(x_0\right) \approx \frac{8}{5}\pi\left(1-\pi\right)
+$$
+And thus the bound on $\rho$ can be approximated by:
+$$
+\left|\rho\right| < \frac{8}{5}\sqrt{\pi\left(1-\pi\right)}
+$$
+This provides us with the bounds discussed in the main text.
+
+## Mathematics of Subdistribution Hazards {#chap-Conf-CR-supp-B}
 
 <!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM2_ESM.docx -->
 
-Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportio
+Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportional and so the SH functions are not. In order to find the "true" SH treatment effect for the event-of-interest, we have to find the least false parameter [@grambauer_proportional_2010]. to do this, we must solve the following equation for $b(\Gamma_1) = 0$:
+$$
+b\left(\Gamma_1\right) = \int_0^\infty
+\frac{\left(1-F_1\left(t|Z=0\right)\right) f_1\left(t|Z=1\right) - e^{\Gamma_1} \left(1-F_1\left(t|Z=1\right)\right) f_1\left(t|Z=0\right)} {\left(1-\pi\right) \left(1-F_1\left(t|Z=0\right)\right) + \pi e^{\Gamma_1}\left(1-F_1\left(t|Z=1\right)\right)} \d t
+$$
+where $f_1$ and $F_1$ are the pdf and cdf of the subdistribution for the event-of-interest. These are defined as
+
+$$
+\begin{align*}
+f_1(t|Z) &= \lambda_1(t|Z)S(t|Z)\\
+F_1(t|Z) &= \int_0^t f_1(u|Z) \d u
+\end{align*}
+$$
+
+In populations where only a single event occurs, these are the same as the pdf and cdf of the distribution for the event. We have previously defined our hazard functions as (with $k_j = k$ if $j=1$ and 1 otherwise)
+$$
+\lambda_j(t|U,Z) = k_je^{\beta_jU + \gamma_jZ}\lambda_0(t)
+$$
+and s to find $\lambda_j(t|Z)$, we need to eliminate $U$ from our equation by finding the expectation of $U$ given $Z$.
+
+$$
+\begin{align*}
+\E{e^{\beta U}|Z=0} &= \E{e^{\beta U}|Y_1 < x_0}\\
+&= \E{e^\beta\left(rY_1+\sqrt{1-r^2}Y_2\right)|Y_1 < x_0}\\
+&= \E{e^{Y_2}}^{\beta\sqrt{1-r^2}}\times\E{e^{Y_1}|Y_1<x_0}^{\beta r}\\
+&= \left(e^\frac{1}{2}\right)^{\beta\sqrt{1-r^2}} \times \left(\int_{-\infty}^{x_0} e^y\left(\frac{\phi\left(y\right)}{\Phi\left(x_0\right)}\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times \left(\int_{-\infty}^{x_0} e^y\phi\left(y\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times e^{\beta r}{2} \left(\int_{-\infty}^{x_0} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}\left(y-1\right)^2} \d y \right)^{\beta r}\\
+&= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right) }}{1-\pi} \times \left(\int_{-\infty}^{x_0-1} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}w^2} \d w \right)^{\beta r}\\
+\E{e^{\beta U}|Z=0} &= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)\left(\Phi\left(x_0 - 1\right)\right)^{\beta r}}}{1-\pi}
+\end{align*}
+$$
+Walking through each step:
+
+ 1. We defined $Z$ from $Y_1$ and so we can substitute $Z=0$ with $Y_1 < x_0$ (See Appendix \@ref(chap-Conf-CR-supp-A)).
+ 2. We defined $U$ based on $Y_1$ and $Y_2$ so we can substitute this formula in (See Appendix \@ref(chap-Conf-CR-supp-A)).
+ 3. The expectation of a product is the product of the expectations so this can be split. Similarly, powers are taken out of the expectation. $Y_1$ and $Y_2$ are independent so is dropped fro the left-hand expectations.
+ 4. First expectation follows since $Y_2 \sim N(0,1)$. The second is the expectation of a truncated Normal distribution.
+ 5. By definition, $\Phi(x_0) = 1-\pi$, so we can replace and bring it out of the intergal.
+ 6. Substituting the formula for $\phi(y)$ (Normal pdf). Note that $\tau$ is used rather than $2\pi$ to avoid notation confusion. The powers of $e$ are combined and simplified (using completing the square) and the constant is taken out of the integral.
+ 7. Substituting $w = y-1$ inside the integral and not forgetting to change the limit.
+ 8. The formula under the integration is again the Normal pdf, so we can evaluate the Normal cdf.
+
+Similarly, for $Z=1$, we swap the less than sign in the first line and evaluate the integral on a different range:
+
+$$
+\begin{align*}
+\E{e^{\beta U}|Z=0} &= \E{e^{\beta U}|Y_1 < x_0}\\
+&= \E{e^\beta\left(rY_1+\sqrt{1-r^2}Y_2\right)|Y_1 < x_0}\\
+&= \E{e^{Y_2}}^{\beta\sqrt{1-r^2}}\times\E{e^{Y_1}|Y_1<x_0}^{\beta r}\\
+&= \left(e^\frac{1}{2}\right)^{\beta\sqrt{1-r^2}} \times \left(\int_{x_0}^{\infty} e^y\left(\frac{\phi\left(y\right)}{\Phi\left(x_0\right)}\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times \left(\int_{x_0}^{\infty} e^y\phi\left(y\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times e^{\beta r}{2} \left(\int_{x_0}^{\infty} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}\left(y-1\right)^2} \d y \right)^{\beta r}\\
+&= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right) }}{1-\pi} \times \left(\int_{x_0-1}^{\infty} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}w^2} \d w \right)^{\beta r}\\
+\E{e^{\beta U}|Z=0} &= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)\left(1-\Phi\left(x_0 - 1\right)\right)^{\beta r}}}{1-\pi}
+\end{align*}
+$$
+
+By defining $\pi_1 = 1-\Phi(x_0 - 1)$, these can be combined to be:
+
+$$
+\E{e^{\beta U}| Z = z} = \left(e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)} \right)\left( \frac{\left( z\pi_1 + \left(1-z\right)\left(1-\pi_1\right) \right)^{\beta r}}{ z\pi + \left(1-z\right)\left(1-\pi\right) } \right)\lambda_0(t)
+$$
+This can then be used to produce a formula for $\Lambda(t|Z)$ and then $S(t|Z)$. From $\lambda_1(t|Z)$ and $S(t|Z)$, we can find $f_1(t|Z)$ and $F_1(t|Z)$ using the above equarions and thus $\Gamma_1$ can be found. This process can be repeated to find $\Gamma_2$ by exchanging $f_1$ and $F_1$ for $f_2$ and $F_2$ and evaluation similarly.
 
 <!--chapter:end:02a-CR_Conf_Supp.Rmd-->
 

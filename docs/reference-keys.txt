@@ -37,6 +37,7 @@ tab:PH-Three
 tab:IV-Three
 tab:EV-Three
 fig:Example-Predictions-trend
+tab:ch02SimGenTable
 tab:PH-Two
 eq:CH-Two-16
 tab:IV-Two
@@ -131,8 +132,8 @@ calculator-1
 discussion-4
 chap-conclusion
 chap-Conf-CR-supp
-simulation-details
-mathematics-of-subdistribution-hazards
+chap-Conf-CR-supp-A
+chap-Conf-CR-supp-B
 chap-IPCW-logistic-supp
 calibration-slope
 results-6

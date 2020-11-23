@@ -28,7 +28,7 @@ It is the hope of the authors that this work will increase the uptake of multi-s
 ## Motivating Data Set
 
 
-Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death [cite Dev/Valid Paper]. The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table \@ref(tab:UoGTableOne)). The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m$^2$, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a "snapshot" of the predictions at the 5 year time point.
+Throughout this paper we will use a model developed in Chronic Kidney Disease (CKD) patients to assess their progression onto Renal Replacement Therapy (RRT) and/or Death (See Chapter \@ref(chap-dev-paper)). The model was developed using data from the Salford Kidney Study (SKS) and then applied to an external dataset derived from the West of Scotland (see Table \@ref(tab:UoGTableOne)). The original model predicts the probability that a patient has begun RRT and/or died after their first recorded eGFR below 60 ml/min/1.73m$^2$, by any time in the future (reliable up to 10 years). For the purposes of this paper, we will take a "snapshot" of the predictions at the 5 year time point.
 
 ```{r UoGTableOne}
 Print_Population_Table_One(SKS=F,f_size=12)
@@ -386,7 +386,7 @@ The Unmatched-Slope provides an indication of how well the model satisfies the a
 
 $$
 \frac{\E{\P{\Death|\;!\RRT}}}{\E{\P{\CKD|\;!\RRT}}} > 
-\frac{\O{\P{\Death}}}{\O{\P{\CKD}]}}
+\frac{\O{\P{\Death}}}{\O{\P{\CKD}}}
 $$
 
 The value in the bottom-left of the Calibration Slope Matrix is also negative and so the same interpretation happens for the values of the RRT predictions if Death were removed as a state. Since these two values are statistically close, however, this implies that the removal of CKD would have little effect on the ratio of the predictions for RRT with Death. 

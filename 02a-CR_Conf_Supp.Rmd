@@ -1,16 +1,155 @@
 
-# How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material {#chap-Conf-CR-supp}
+# How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material {#chap-Conf-CR-supp}
 `r fb(thesis="\\chaptermark{Competing Risks and Unmeasured Confounding - Supp}")`
 <script src="https://hypothes.is/embed.js" async></script>
 
-## Simulation Details
+## Simulation Details {#chap-Conf-CR-supp-A}
 
 <!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM1_ESM.docx -->
 
-The populations 
+The populations used in these simulations are generated such that $\textrm{Corr}\left(U,Z\right) = \rho$ and $\P{Z=1} = \pi$. These baseline populations are then acted on by the event-of-interest and competing event hazard functions. These are combined into the cumulative hazard function. These are defined as follows:
 
-## Mathematics of Subdistribution Hazards
+$$
+\begin{align*}
+\lambda_1(t|U,Z) = ke^{\beta_1U+\gamma_1Z}\lambda_0(t)&
+\lambda_2(t|U,Z) = ke^{\beta_2U+\gamma_2Z}\lambda_0(t)
+\end{align*}
+$$
+$$
+\Lambda(t|U,Z) = \int_0^t\lambda_1(s|U,Z) + \lambda_2(s|U,Z) \d s
+$$
+Let $\phi$ and $\Phi$ be the pdf and cdf of for the standard Normal distribution respectively and $I$ be the identity function. The process for generating the covriates and outcome data for a patient is given in Table \@ref(tab:ch02SimGenTable).
+
+```{r ch02SimGenTable}
+tribble(
+  ~Step, ~Variable, ~Calculation, ~Description,
+   1, "x_0", "x_0 = \\Phi^{-1}(\\pi)",
+    "This is the value of $x \\sim N(0,1)$ such that $\\P{x<x_0} = \\pi$",
+   2, "r",r"(r = \frac{\rho\sqrt{\pi(1-\pi)}}{\phi(x_0)})",
+    "This is used to ensure $\\textrm{Corr}(U,Z) = \\rho$",
+   3, "Y_1","Y_{1i} \\sim N(0,1)", 
+    "Generate 10,000 random normal numbers",
+   4, "Y_2","Y_{2i} \\sim N(0,1)", 
+    "Generate 10,000 random normal numbers",
+   5, "U", "U_i = Y_{1i}r+Y_{2i}\\sqrt{1-r^2}",
+    "This defined $U \\sim N(0,1)$ such that $\\textrm{Corr}(U,Y_1) = r$",
+   6, "Z", "Z_i = I(\\Phi(Y_{1i}) < \\pi)",
+    "This defined $Z$ such that $\\P{Z=1} = \\pi$",
+   7, "\\lambda_1(t)", "\\lambda_{1i}(t) = \\lambda_1(t|U_i,Z_i)",
+    "Define an array of hazard functions",
+   8, "\\lambda_2(t)", "\\lambda_{2i}(t) = \\lambda_2(t|U_i,Z_i)",
+    "Define an array of hazard functions",
+   9, "\\Lambda(t)", "\\Lambda_i(t) = \\Lambda(t|U_i,|Z_i)",
+    "Define an array of cumulative hazard functions",
+  10, "S(t)","S_i(t) = \\exp(-\\Lambda_i(t))",
+    "Define an array of Survival functions",
+  11, "V_1", "V_{1i} \\sim Unif(0,1)", 
+    "Generate 10,000 random uniform numbers",
+  12, "V_2", "V_{2i} \\sim Unif(0,1)", 
+    "Generate 10,000 random uniform numbers",
+  13, "T", "T_i = S_i^{-1}(V_{1i})", 
+    "Solve (numerically or explicitly depending on $\\lambda_0$)",
+  13, "\\delta",r"(\delta_i = 1+ I(V_2 > \frac{\lambda_{1i}(T_i)}{\lambda_{1i}(T_i) + \lambda_{2i}(T_i)}))",
+    "Generate which event occurs"
+  
+) %>%
+  mutate(across(c(Variable,Calculation),
+                . %>%
+                  str_replace_all("\\(",r"(\\left()") %>%
+                  str_replace_all("\\)",r"(\\right))") %>%
+                  paste0("$",.,"$")
+                  )
+  ) %>%
+  my_kbl(caption=as_caption("Table showing the steps taken to generate",
+                            "each simulated population"))
+```
+
+due to the square root in Step 5, we restain $|r| < 1$. This coupled with the definition of $r$ in Step 2 means that the values of $\rho$ and $\pi$ are limited by each other such that:
+
+$$
+\left|\frac{\rho\sqrt{\pi\left(1-\pi\right)}}{\phi\left(x_0\right)}\right| < 1
+$$
+Therefore, we have bouds on $\rho$ dependent on $\pi$:
+
+$$
+\left|\rho\right| < \frac{\phi\left(x_0\right)}{\sqrt{\pi\left(1-\pi\right)}}
+$$
+Since $x_0$ is dependent on $\pi$, $\phi(x_0)$ is also dependent on $\pi$ and can be approximated by
+
+$$
+\phi\left(x_0\right) \approx \frac{8}{5}\pi\left(1-\pi\right)
+$$
+And thus the bound on $\rho$ can be approximated by:
+$$
+\left|\rho\right| < \frac{8}{5}\sqrt{\pi\left(1-\pi\right)}
+$$
+This provides us with the bounds discussed in the main text.
+
+## Mathematics of Subdistribution Hazards {#chap-Conf-CR-supp-B}
 
 <!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM2_ESM.docx -->
 
-Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportio
+Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportional and so the SH functions are not. In order to find the "true" SH treatment effect for the event-of-interest, we have to find the least false parameter [@grambauer_proportional_2010]. to do this, we must solve the following equation for $b(\Gamma_1) = 0$:
+$$
+b\left(\Gamma_1\right) = \int_0^\infty
+\frac{\left(1-F_1\left(t|Z=0\right)\right) f_1\left(t|Z=1\right) - e^{\Gamma_1} \left(1-F_1\left(t|Z=1\right)\right) f_1\left(t|Z=0\right)} {\left(1-\pi\right) \left(1-F_1\left(t|Z=0\right)\right) + \pi e^{\Gamma_1}\left(1-F_1\left(t|Z=1\right)\right)} \d t
+$$
+where $f_1$ and $F_1$ are the pdf and cdf of the subdistribution for the event-of-interest. These are defined as
+
+$$
+\begin{align*}
+f_1(t|Z) &= \lambda_1(t|Z)S(t|Z)\\
+F_1(t|Z) &= \int_0^t f_1(u|Z) \d u
+\end{align*}
+$$
+
+In populations where only a single event occurs, these are the same as the pdf and cdf of the distribution for the event. We have previously defined our hazard functions as (with $k_j = k$ if $j=1$ and 1 otherwise)
+$$
+\lambda_j(t|U,Z) = k_je^{\beta_jU + \gamma_jZ}\lambda_0(t)
+$$
+and s to find $\lambda_j(t|Z)$, we need to eliminate $U$ from our equation by finding the expectation of $U$ given $Z$.
+
+$$
+\begin{align*}
+\E{e^{\beta U}|Z=0} &= \E{e^{\beta U}|Y_1 < x_0}\\
+&= \E{e^\beta\left(rY_1+\sqrt{1-r^2}Y_2\right)|Y_1 < x_0}\\
+&= \E{e^{Y_2}}^{\beta\sqrt{1-r^2}}\times\E{e^{Y_1}|Y_1<x_0}^{\beta r}\\
+&= \left(e^\frac{1}{2}\right)^{\beta\sqrt{1-r^2}} \times \left(\int_{-\infty}^{x_0} e^y\left(\frac{\phi\left(y\right)}{\Phi\left(x_0\right)}\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times \left(\int_{-\infty}^{x_0} e^y\phi\left(y\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times e^{\beta r}{2} \left(\int_{-\infty}^{x_0} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}\left(y-1\right)^2} \d y \right)^{\beta r}\\
+&= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right) }}{1-\pi} \times \left(\int_{-\infty}^{x_0-1} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}w^2} \d w \right)^{\beta r}\\
+\E{e^{\beta U}|Z=0} &= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)\left(\Phi\left(x_0 - 1\right)\right)^{\beta r}}}{1-\pi}
+\end{align*}
+$$
+Walking through each step:
+
+ 1. We defined $Z$ from $Y_1$ and so we can substitute $Z=0$ with $Y_1 < x_0$ (See Appendix \@ref(chap-Conf-CR-supp-A)).
+ 2. We defined $U$ based on $Y_1$ and $Y_2$ so we can substitute this formula in (See Appendix \@ref(chap-Conf-CR-supp-A)).
+ 3. The expectation of a product is the product of the expectations so this can be split. Similarly, powers are taken out of the expectation. $Y_1$ and $Y_2$ are independent so is dropped fro the left-hand expectations.
+ 4. First expectation follows since $Y_2 \sim N(0,1)$. The second is the expectation of a truncated Normal distribution.
+ 5. By definition, $\Phi(x_0) = 1-\pi$, so we can replace and bring it out of the intergal.
+ 6. Substituting the formula for $\phi(y)$ (Normal pdf). Note that $\tau$ is used rather than $2\pi$ to avoid notation confusion. The powers of $e$ are combined and simplified (using completing the square) and the constant is taken out of the integral.
+ 7. Substituting $w = y-1$ inside the integral and not forgetting to change the limit.
+ 8. The formula under the integration is again the Normal pdf, so we can evaluate the Normal cdf.
+
+Similarly, for $Z=1$, we swap the less than sign in the first line and evaluate the integral on a different range:
+
+$$
+\begin{align*}
+\E{e^{\beta U}|Z=0} &= \E{e^{\beta U}|Y_1 < x_0}\\
+&= \E{e^\beta\left(rY_1+\sqrt{1-r^2}Y_2\right)|Y_1 < x_0}\\
+&= \E{e^{Y_2}}^{\beta\sqrt{1-r^2}}\times\E{e^{Y_1}|Y_1<x_0}^{\beta r}\\
+&= \left(e^\frac{1}{2}\right)^{\beta\sqrt{1-r^2}} \times \left(\int_{x_0}^{\infty} e^y\left(\frac{\phi\left(y\right)}{\Phi\left(x_0\right)}\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times \left(\int_{x_0}^{\infty} e^y\phi\left(y\right) \d y \right)^{\beta r}\\
+&= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times e^{\beta r}{2} \left(\int_{x_0}^{\infty} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}\left(y-1\right)^2} \d y \right)^{\beta r}\\
+&= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right) }}{1-\pi} \times \left(\int_{x_0-1}^{\infty} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}w^2} \d w \right)^{\beta r}\\
+\E{e^{\beta U}|Z=0} &= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)\left(1-\Phi\left(x_0 - 1\right)\right)^{\beta r}}}{1-\pi}
+\end{align*}
+$$
+
+By defining $\pi_1 = 1-\Phi(x_0 - 1)$, these can be combined to be:
+
+$$
+\E{e^{\beta U}| Z = z} = \left(e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)} \right)\left( \frac{\left( z\pi_1 + \left(1-z\right)\left(1-\pi_1\right) \right)^{\beta r}}{ z\pi + \left(1-z\right)\left(1-\pi\right) } \right)\lambda_0(t)
+$$
+This can then be used to produce a formula for $\Lambda(t|Z)$ and then $S(t|Z)$. From $\lambda_1(t|Z)$ and $S(t|Z)$, we can find $f_1(t|Z)$ and $F_1(t|Z)$ using the above equarions and thus $\Gamma_1$ can be found. This process can be repeated to find $\Gamma_2$ by exchanging $f_1$ and $F_1$ for $f_2$ and $F_2$ and evaluation similarly.

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Appendix A How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
-  <meta name="description" content="Appendix A How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <title>Appendix A How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy</title>
+  <meta name="description" content="Appendix A How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Appendix A How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta property="og:title" content="Appendix A How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Appendix A How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
+  <meta name="twitter:title" content="Appendix A How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material | Multi-State Clinical Prediction Models in Renal Replacement Therapy" />
   
   
   
@@ -107,7 +107,7 @@ div.abstract{
 <li class="chapter" data-level="1.4.1" data-path="chap-lit-report.html"><a href="chap-lit-report.html#clinical-prediction-models-1"><i class="fa fa-check"></i><b>1.4.1</b> Clinical Prediction Models</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html"><i class="fa fa-check"></i><b>2</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies</a>
+<li class="chapter" data-level="2" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html"><i class="fa fa-check"></i><b>2</b> How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies</a>
 <ul>
 <li class="chapter" data-level="" data-path="chap-Conf-CR.html"><a href="chap-Conf-CR.html#abstract-1"><i class="fa fa-check"></i>Abstract</a>
 <ul>
@@ -214,10 +214,10 @@ div.abstract{
 </ul></li>
 <li class="chapter" data-level="6" data-path="chap-conclusion.html"><a href="chap-conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
 <li class="appendix"><span><b>Appendices</b></span></li>
-<li class="chapter" data-level="A" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html"><i class="fa fa-check"></i><b>A</b> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material</a>
+<li class="chapter" data-level="A" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html"><i class="fa fa-check"></i><b>A</b> How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material</a>
 <ul>
-<li class="chapter" data-level="A.1" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#simulation-details"><i class="fa fa-check"></i><b>A.1</b> Simulation Details</a></li>
-<li class="chapter" data-level="A.2" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#mathematics-of-subdistribution-hazards"><i class="fa fa-check"></i><b>A.2</b> Mathematics of Subdistribution Hazards</a></li>
+<li class="chapter" data-level="A.1" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#chap-Conf-CR-supp-A"><i class="fa fa-check"></i><b>A.1</b> Simulation Details</a></li>
+<li class="chapter" data-level="A.2" data-path="chap-Conf-CR-supp.html"><a href="chap-Conf-CR-supp.html#chap-Conf-CR-supp-B"><i class="fa fa-check"></i><b>A.2</b> Mathematics of Subdistribution Hazards</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="chap-IPCW-logistic-supp.html"><a href="chap-IPCW-logistic-supp.html"><i class="fa fa-check"></i><b>B</b> Inverse Probability Weighting Adjustment of the Logistic Regression Calibration-in-the-Large - Supplementary Material</a>
 <ul>
@@ -260,18 +260,327 @@ div.abstract{
 
             <section class="normal" id="section-">
 <div id="chap-Conf-CR-supp" class="section level1" number="7">
-<h1><span class="header-section-number">Appendix A</span> How unmeasured confounding in a competing risks setting can affect treatment effect estimates in observational studies - Supplementary Material</h1>
+<h1><span class="header-section-number">Appendix A</span> How Unmeasured Confounding in a Competing Risks Setting Can Affect Treatment Effect Estimates in Observational Studies - Supplementary Material</h1>
 <script src="https://hypothes.is/embed.js" async></script>
-<div id="simulation-details" class="section level2" number="7.1">
+<div id="chap-Conf-CR-supp-A" class="section level2" number="7.1">
 <h2><span class="header-section-number">A.1</span> Simulation Details</h2>
 <!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM1_ESM.docx -->
-<p>The populations</p>
+<p>The populations used in these simulations are generated such that <span class="math inline">\(\textrm{Corr}\left(U,Z\right) = \rho\)</span> and <span class="math inline">\(\textrm{P}\left(Z=1\right) = \pi\)</span>. These baseline populations are then acted on by the event-of-interest and competing event hazard functions. These are combined into the cumulative hazard function. These are defined as follows:</p>
+<p><span class="math display">\[
+\begin{align*}
+\lambda_1(t|U,Z) = ke^{\beta_1U+\gamma_1Z}\lambda_0(t)&amp;
+\lambda_2(t|U,Z) = ke^{\beta_2U+\gamma_2Z}\lambda_0(t)
+\end{align*}
+\]</span>
+<span class="math display">\[
+\Lambda(t|U,Z) = \int_0^t\lambda_1(s|U,Z) + \lambda_2(s|U,Z) \;\textrm{d}s
+\]</span>
+Let <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\Phi\)</span> be the pdf and cdf of for the standard Normal distribution respectively and <span class="math inline">\(I\)</span> be the identity function. The process for generating the covriates and outcome data for a patient is given in Table <a href="chap-Conf-CR-supp.html#tab:ch02SimGenTable">A.1</a>.</p>
+<table class="table table-striped table-hover" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:ch02SimGenTable">Table A.1: </span><font size="2">Table showing the steps taken to generate each simulated population</font>
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Step
+</th>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Calculation
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(x_0\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(x_0 = \Phi^{-1}\left(\pi\right)\)</span>
+</td>
+<td style="text-align:left;">
+This is the value of <span class="math inline">\(x \sim N(0,1)\)</span> such that <span class="math inline">\(\textrm{P}\left(x&lt;x_0\right) = \pi\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(r\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(r = \frac{\rho\sqrt{\pi\left(1-\pi\right)}}{\phi\left(x_0\right)}\)</span>
+</td>
+<td style="text-align:left;">
+This is used to ensure <span class="math inline">\(\textrm{Corr}(U,Z) = \rho\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(Y_1\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(Y_{1i} \sim N\left(0,1\right)\)</span>
+</td>
+<td style="text-align:left;">
+Generate 10,000 random normal numbers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(Y_2\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(Y_{2i} \sim N\left(0,1\right)\)</span>
+</td>
+<td style="text-align:left;">
+Generate 10,000 random normal numbers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(U\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(U_i = Y_{1i}r+Y_{2i}\sqrt{1-r^2}\)</span>
+</td>
+<td style="text-align:left;">
+This defined <span class="math inline">\(U \sim N(0,1)\)</span> such that <span class="math inline">\(\textrm{Corr}(U,Y_1) = r\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(Z\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(Z_i = I\left(\Phi\left(Y_{1i}\right) &lt; \pi\right)\)</span>
+</td>
+<td style="text-align:left;">
+This defined <span class="math inline">\(Z\)</span> such that <span class="math inline">\(\textrm{P}\left(Z=1\right) = \pi\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda_1\left(t\right)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda_{1i}\left(t\right) = \lambda_1\left(t|U_i,Z_i\right)\)</span>
+</td>
+<td style="text-align:left;">
+Define an array of hazard functions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda_2\left(t\right)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\lambda_{2i}\left(t\right) = \lambda_2\left(t|U_i,Z_i\right)\)</span>
+</td>
+<td style="text-align:left;">
+Define an array of hazard functions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\Lambda\left(t\right)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\Lambda_i\left(t\right) = \Lambda\left(t|U_i,|Z_i\right)\)</span>
+</td>
+<td style="text-align:left;">
+Define an array of cumulative hazard functions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(S\left(t\right)\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(S_i\left(t\right) = \exp\left(-\Lambda_i\left(t\right)\right)\)</span>
+</td>
+<td style="text-align:left;">
+Define an array of Survival functions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(V_1\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(V_{1i} \sim Unif\left(0,1\right)\)</span>
+</td>
+<td style="text-align:left;">
+Generate 10,000 random uniform numbers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(V_2\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(V_{2i} \sim Unif\left(0,1\right)\)</span>
+</td>
+<td style="text-align:left;">
+Generate 10,000 random uniform numbers
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(T\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(T_i = S_i^{-1}\left(V_{1i}\right)\)</span>
+</td>
+<td style="text-align:left;">
+Solve (numerically or explicitly depending on <span class="math inline">\(\lambda_0\)</span>)
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\delta\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\delta_i = 1+ I\left(V_2 &gt; \frac{\lambda_{1i}\left(T_i\right)}{\lambda_{1i}\left(T_i\right) + \lambda_{2i}\left(T_i\right)}\right)\)</span>
+</td>
+<td style="text-align:left;">
+Generate which event occurs
+</td>
+</tr>
+</tbody>
+</table>
+<p>due to the square root in Step 5, we restain <span class="math inline">\(|r| &lt; 1\)</span>. This coupled with the definition of <span class="math inline">\(r\)</span> in Step 2 means that the values of <span class="math inline">\(\rho\)</span> and <span class="math inline">\(\pi\)</span> are limited by each other such that:</p>
+<p><span class="math display">\[
+\left|\frac{\rho\sqrt{\pi\left(1-\pi\right)}}{\phi\left(x_0\right)}\right| &lt; 1
+\]</span>
+Therefore, we have bouds on <span class="math inline">\(\rho\)</span> dependent on <span class="math inline">\(\pi\)</span>:</p>
+<p><span class="math display">\[
+\left|\rho\right| &lt; \frac{\phi\left(x_0\right)}{\sqrt{\pi\left(1-\pi\right)}}
+\]</span>
+Since <span class="math inline">\(x_0\)</span> is dependent on <span class="math inline">\(\pi\)</span>, <span class="math inline">\(\phi(x_0)\)</span> is also dependent on <span class="math inline">\(\pi\)</span> and can be approximated by</p>
+<p><span class="math display">\[
+\phi\left(x_0\right) \approx \frac{8}{5}\pi\left(1-\pi\right)
+\]</span>
+And thus the bound on <span class="math inline">\(\rho\)</span> can be approximated by:
+<span class="math display">\[
+\left|\rho\right| &lt; \frac{8}{5}\sqrt{\pi\left(1-\pi\right)}
+\]</span>
+This provides us with the bounds discussed in the main text.</p>
 </div>
-<div id="mathematics-of-subdistribution-hazards" class="section level2" number="7.2">
+<div id="chap-Conf-CR-supp-B" class="section level2" number="7.2">
 <h2><span class="header-section-number">A.2</span> Mathematics of Subdistribution Hazards</h2>
 <!-- https://static-content.springer.com/esm/art%3A10.1186%2Fs12874-019-0808-7/MediaObjects/12874_2019_808_MOESM2_ESM.docx -->
-<p>Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportio</p>
+<p>Due to the relationship between the cause specific hazard functions and the subdistribution hazard functions they cannot both satisfy the proportional hazards assumption. We have defined CSH functions to be proportional and so the SH functions are not. In order to find the “true” SH treatment effect for the event-of-interest, we have to find the least false parameter <span class="citation">[<a href="#ref-grambauer_proportional_2010" role="doc-biblioref">74</a>]</span>. to do this, we must solve the following equation for <span class="math inline">\(b(\Gamma_1) = 0\)</span>:
+<span class="math display">\[
+b\left(\Gamma_1\right) = \int_0^\infty
+\frac{\left(1-F_1\left(t|Z=0\right)\right) f_1\left(t|Z=1\right) - e^{\Gamma_1} \left(1-F_1\left(t|Z=1\right)\right) f_1\left(t|Z=0\right)} {\left(1-\pi\right) \left(1-F_1\left(t|Z=0\right)\right) + \pi e^{\Gamma_1}\left(1-F_1\left(t|Z=1\right)\right)} \;\textrm{d}t
+\]</span>
+where <span class="math inline">\(f_1\)</span> and <span class="math inline">\(F_1\)</span> are the pdf and cdf of the subdistribution for the event-of-interest. These are defined as</p>
+<p><span class="math display">\[
+\begin{align*}
+f_1(t|Z) &amp;= \lambda_1(t|Z)S(t|Z)\\
+F_1(t|Z) &amp;= \int_0^t f_1(u|Z) \;\textrm{d}u
+\end{align*}
+\]</span></p>
+<p>In populations where only a single event occurs, these are the same as the pdf and cdf of the distribution for the event. We have previously defined our hazard functions as (with <span class="math inline">\(k_j = k\)</span> if <span class="math inline">\(j=1\)</span> and 1 otherwise)
+<span class="math display">\[
+\lambda_j(t|U,Z) = k_je^{\beta_jU + \gamma_jZ}\lambda_0(t)
+\]</span>
+and s to find <span class="math inline">\(\lambda_j(t|Z)\)</span>, we need to eliminate <span class="math inline">\(U\)</span> from our equation by finding the expectation of <span class="math inline">\(U\)</span> given <span class="math inline">\(Z\)</span>.</p>
+<p><span class="math display">\[
+\begin{align*}
+\textrm{E}\left[e^{\beta U}|Z=0\right] &amp;= \textrm{E}\left[e^{\beta U}|Y_1 &lt; x_0\right]\\
+&amp;= \textrm{E}\left[e^\beta\left(rY_1+\sqrt{1-r^2}Y_2\right)|Y_1 &lt; x_0\right]\\
+&amp;= \textrm{E}\left[e^{Y_2}\right]^{\beta\sqrt{1-r^2}}\times\textrm{E}\left[e^{Y_1}|Y_1&lt;x_0\right]^{\beta r}\\
+&amp;= \left(e^\frac{1}{2}\right)^{\beta\sqrt{1-r^2}} \times \left(\int_{-\infty}^{x_0} e^y\left(\frac{\phi\left(y\right)}{\Phi\left(x_0\right)}\right) \;\textrm{d}y \right)^{\beta r}\\
+&amp;= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times \left(\int_{-\infty}^{x_0} e^y\phi\left(y\right) \;\textrm{d}y \right)^{\beta r}\\
+&amp;= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times e^{\beta r}{2} \left(\int_{-\infty}^{x_0} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}\left(y-1\right)^2} \;\textrm{d}y \right)^{\beta r}\\
+&amp;= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right) }}{1-\pi} \times \left(\int_{-\infty}^{x_0-1} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}w^2} \;\textrm{d}w \right)^{\beta r}\\
+\textrm{E}\left[e^{\beta U}|Z=0\right] &amp;= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)\left(\Phi\left(x_0 - 1\right)\right)^{\beta r}}}{1-\pi}
+\end{align*}
+\]</span>
+Walking through each step:</p>
+<ol style="list-style-type: decimal">
+<li>We defined <span class="math inline">\(Z\)</span> from <span class="math inline">\(Y_1\)</span> and so we can substitute <span class="math inline">\(Z=0\)</span> with <span class="math inline">\(Y_1 &lt; x_0\)</span> (See Appendix <a href="chap-Conf-CR-supp.html#chap-Conf-CR-supp-A">A.1</a>).</li>
+<li>We defined <span class="math inline">\(U\)</span> based on <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> so we can substitute this formula in (See Appendix <a href="chap-Conf-CR-supp.html#chap-Conf-CR-supp-A">A.1</a>).</li>
+<li>The expectation of a product is the product of the expectations so this can be split. Similarly, powers are taken out of the expectation. <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent so is dropped fro the left-hand expectations.</li>
+<li>First expectation follows since <span class="math inline">\(Y_2 \sim N(0,1)\)</span>. The second is the expectation of a truncated Normal distribution.</li>
+<li>By definition, <span class="math inline">\(\Phi(x_0) = 1-\pi\)</span>, so we can replace and bring it out of the intergal.</li>
+<li>Substituting the formula for <span class="math inline">\(\phi(y)\)</span> (Normal pdf). Note that <span class="math inline">\(\tau\)</span> is used rather than <span class="math inline">\(2\pi\)</span> to avoid notation confusion. The powers of <span class="math inline">\(e\)</span> are combined and simplified (using completing the square) and the constant is taken out of the integral.</li>
+<li>Substituting <span class="math inline">\(w = y-1\)</span> inside the integral and not forgetting to change the limit.</li>
+<li>The formula under the integration is again the Normal pdf, so we can evaluate the Normal cdf.</li>
+</ol>
+<p>Similarly, for <span class="math inline">\(Z=1\)</span>, we swap the less than sign in the first line and evaluate the integral on a different range:</p>
+<p><span class="math display">\[
+\begin{align*}
+\textrm{E}\left[e^{\beta U}|Z=0\right] &amp;= \textrm{E}\left[e^{\beta U}|Y_1 &lt; x_0\right]\\
+&amp;= \textrm{E}\left[e^\beta\left(rY_1+\sqrt{1-r^2}Y_2\right)|Y_1 &lt; x_0\right]\\
+&amp;= \textrm{E}\left[e^{Y_2}\right]^{\beta\sqrt{1-r^2}}\times\textrm{E}\left[e^{Y_1}|Y_1&lt;x_0\right]^{\beta r}\\
+&amp;= \left(e^\frac{1}{2}\right)^{\beta\sqrt{1-r^2}} \times \left(\int_{x_0}^{\infty} e^y\left(\frac{\phi\left(y\right)}{\Phi\left(x_0\right)}\right) \;\textrm{d}y \right)^{\beta r}\\
+&amp;= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times \left(\int_{x_0}^{\infty} e^y\phi\left(y\right) \;\textrm{d}y \right)^{\beta r}\\
+&amp;= \frac{e^\frac{\beta\sqrt{1-r^2}}{2}}{1-\pi} \times e^{\beta r}{2} \left(\int_{x_0}^{\infty} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}\left(y-1\right)^2} \;\textrm{d}y \right)^{\beta r}\\
+&amp;= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right) }}{1-\pi} \times \left(\int_{x_0-1}^{\infty} \frac{1}{\sqrt{\tau}} e^{-\frac{1}{2}w^2} \;\textrm{d}w \right)^{\beta r}\\
+\textrm{E}\left[e^{\beta U}|Z=0\right] &amp;= \frac{e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)\left(1-\Phi\left(x_0 - 1\right)\right)^{\beta r}}}{1-\pi}
+\end{align*}
+\]</span></p>
+<p>By defining <span class="math inline">\(\pi_1 = 1-\Phi(x_0 - 1)\)</span>, these can be combined to be:</p>
+<p><span class="math display">\[
+\textrm{E}\left[e^{\beta U}| Z = z\right] = \left(e^{\frac{\beta}{2}\left(r + \sqrt{1-r^2}\right)} \right)\left( \frac{\left( z\pi_1 + \left(1-z\right)\left(1-\pi_1\right) \right)^{\beta r}}{ z\pi + \left(1-z\right)\left(1-\pi\right) } \right)\lambda_0(t)
+\]</span>
+This can then be used to produce a formula for <span class="math inline">\(\Lambda(t|Z)\)</span> and then <span class="math inline">\(S(t|Z)\)</span>. From <span class="math inline">\(\lambda_1(t|Z)\)</span> and <span class="math inline">\(S(t|Z)\)</span>, we can find <span class="math inline">\(f_1(t|Z)\)</span> and <span class="math inline">\(F_1(t|Z)\)</span> using the above equarions and thus <span class="math inline">\(\Gamma_1\)</span> can be found. This process can be repeated to find <span class="math inline">\(\Gamma_2\)</span> by exchanging <span class="math inline">\(f_1\)</span> and <span class="math inline">\(F_1\)</span> for <span class="math inline">\(f_2\)</span> and <span class="math inline">\(F_2\)</span> and evaluation similarly.</p>
 
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-grambauer_proportional_2010">
+<p>[74] N. Grambauer, M. Schumacher, and J. Beyersmann, “Proportional subdistribution hazards modeling offers a summary analysis, even if misspecified,” <em>Stat Med</em>, vol. 29, 2010, doi: <a href="https://doi.org/10.1002/sim.3786">10.1002/sim.3786</a>.</p>
 </div>
 </div>
             </section>
